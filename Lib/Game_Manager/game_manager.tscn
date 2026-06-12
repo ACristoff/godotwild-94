@@ -5,6 +5,7 @@
 
 [node name="GameManager" type="Node" unique_id=554058649]
 script = ExtResource("1_7omqw")
+debug_mode = true
 
 [node name="MenuUI" type="CanvasLayer" parent="." unique_id=1679395588]
 
