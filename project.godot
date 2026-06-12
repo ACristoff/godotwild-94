@@ -27,7 +27,6 @@ buses/default_bus_layout="uid://bc5yyy02quh5r"
 
 SignalBus="*res://Lib/SignalBus/signal_bus.tscn"
 AudMan="*res://Lib/Audio_Manager/audio_manager.tscn"
-GameManager="*res://Lib/Game_Manager/game_manager.gd"
 
 [debug]
 
