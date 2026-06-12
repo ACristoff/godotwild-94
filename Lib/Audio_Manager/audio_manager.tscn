@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dshbwjn818ip2"]
+
+[ext_resource type="Script" uid="uid://15k03adwbrca" path="res://Lib/Audio_Manager/audio_manager.gd" id="1_lbeag"]
+
+[node name="AMGR" type="Node"]
+script = ExtResource("1_lbeag")
+
+[node name="MusicManager" type="AudioStreamPlayer" parent="."]
+
+[node name="FadeTimer" type="Timer" parent="MusicManager"]
+
+[connection signal="finished" from="MusicManager" to="." method="_on_music_manager_finished"]
+[connection signal="timeout" from="MusicManager/FadeTimer" to="." method="_on_fade_timer_timeout"]

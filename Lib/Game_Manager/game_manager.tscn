@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpd3hr3oj8eku"]
+
+[ext_resource type="Script" uid="uid://dctefpcpjml37" path="res://Lib/Game_Manager/game_manager.gd" id="1_7omqw"]
+[ext_resource type="PackedScene" uid="uid://coksihbtre2rd" path="res://UI/Menus/Splash_Screen/splash_screen.tscn" id="2_0mw2e"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_7omqw")
+
+[node name="MenuUI" type="CanvasLayer" parent="."]
+
+[node name="Transitions" type="CanvasLayer" parent="."]
+
+[node name="Splash" parent="Transitions" instance=ExtResource("2_0mw2e")]
