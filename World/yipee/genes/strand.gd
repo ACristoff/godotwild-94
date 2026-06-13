@@ -2,6 +2,7 @@ class_name Strand
 extends Resource
 
 @export var display_name: String = ""
+@export var tooltip: String = ""
 
 # Stat buffs/nerfs
 func modify_stat(base_value: float, yipee_data) -> float:
