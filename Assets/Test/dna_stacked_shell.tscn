@@ -8,6 +8,7 @@
 
 [node name="DNAStackedShell" type="Node2D" unique_id=1936980544]
 script = ExtResource("1_0c7q7")
+ID = null
 
 [node name="DnaAllele1" type="Sprite2D" parent="." unique_id=1141063690]
 texture_filter = 3
@@ -45,5 +46,14 @@ offset_bottom = 67.0
 
 [node name="Timer" type="Timer" parent="." unique_id=1955339137]
 wait_time = 0.05
+autostart = true
+
+[node name="Label" type="Label" parent="." unique_id=698003915]
+offset_left = 662.0
+offset_top = -52.0
+offset_right = 890.0
+offset_bottom = 58.0
+theme_override_font_sizes/font_size = 74
+text = "0"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

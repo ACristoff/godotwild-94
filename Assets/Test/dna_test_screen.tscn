@@ -3,13 +3,17 @@
 [ext_resource type="Script" uid="uid://dufxpqu2r5sh0" path="res://Assets/Test/dna_test_screen.gd" id="1_7ihee"]
 [ext_resource type="PackedScene" uid="uid://6looit7fo72" path="res://Assets/Test/dna_stacked_shell.tscn" id="2_ijr3j"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ijr3j"]
+size = Vector2(1089, 1201)
+
 [node name="DNATestScreen" type="Node2D" unique_id=2140591040]
 script = ExtResource("1_7ihee")
 
 [node name="DNA" type="Node2D" parent="." unique_id=168700534]
-position = Vector2(760, 0)
+position = Vector2(4, -38)
 
 [node name="DNAStackedShell" parent="DNA" unique_id=1936980544 instance=ExtResource("2_ijr3j")]
+ID = 0
 anim_start_frame = 11
 
 [node name="DnaAllele1" parent="DNA/DNAStackedShell" index="0" unique_id=1141063690]
@@ -26,206 +30,52 @@ frame = 11
 
 [node name="DNAStackedShell2" parent="DNA" unique_id=1240801642 instance=ExtResource("2_ijr3j")]
 position = Vector2(0, 150)
+ID = 1
 anim_start_frame = 9
 
 [node name="DNAStackedShell3" parent="DNA" unique_id=1237795546 instance=ExtResource("2_ijr3j")]
 position = Vector2(0, 300)
+ID = 2
 anim_start_frame = 7
 
 [node name="DNAStackedShell4" parent="DNA" unique_id=1213718929 instance=ExtResource("2_ijr3j")]
 position = Vector2(0, 450)
+ID = 3
 anim_start_frame = 5
 
 [node name="DNAStackedShell5" parent="DNA" unique_id=898139654 instance=ExtResource("2_ijr3j")]
 position = Vector2(0, 600)
+ID = 4
 anim_start_frame = 3
 
 [node name="DNAStackedShell6" parent="DNA" unique_id=858876537 instance=ExtResource("2_ijr3j")]
 position = Vector2(0, 750)
+ID = 5
 anim_start_frame = 1
 
 [node name="DNAStackedShell7" parent="DNA" unique_id=1449613694 instance=ExtResource("2_ijr3j")]
 position = Vector2(0, 900)
-anim_start_frame = 46
+ID = 6
+anim_start_frame = 45
 
 [node name="DNAStackedShell8" parent="DNA" unique_id=1583672614 instance=ExtResource("2_ijr3j")]
 position = Vector2(0, 1050)
-anim_start_frame = 44
+ID = 7
+anim_start_frame = 43
 
-[node name="DNA2" type="Node2D" parent="." unique_id=1622347864]
-position = Vector2(-957, 0)
+[node name="Area2D" type="Area2D" parent="DNA" unique_id=55206718]
+position = Vector2(-1, 525)
 
-[node name="DNAStackedShell" parent="DNA2" unique_id=1781701907 instance=ExtResource("2_ijr3j")]
-anim_start_frame = 11
-
-[node name="DnaAllele1" parent="DNA2/DNAStackedShell" index="0" unique_id=1141063690]
-frame = 11
-
-[node name="DnaAllele2" parent="DNA2/DNAStackedShell" index="1" unique_id=245642215]
-frame = 11
-
-[node name="DnaShell1" parent="DNA2/DNAStackedShell" index="2" unique_id=1537355024]
-frame = 11
-
-[node name="DnaShell2" parent="DNA2/DNAStackedShell" index="3" unique_id=1005190979]
-frame = 11
-
-[node name="DNAStackedShell2" parent="DNA2" unique_id=882148864 instance=ExtResource("2_ijr3j")]
-position = Vector2(0, 150)
-anim_start_frame = 9
-
-[node name="DnaAllele1" parent="DNA2/DNAStackedShell2" index="0" unique_id=1141063690]
-position = Vector2(-15, 0)
-frame = 9
-
-[node name="DnaAllele2" parent="DNA2/DNAStackedShell2" index="1" unique_id=245642215]
-position = Vector2(14, -2)
-frame = 9
-
-[node name="DnaShell1" parent="DNA2/DNAStackedShell2" index="2" unique_id=1537355024]
-position = Vector2(-15, 0)
-frame = 9
-
-[node name="DnaShell2" parent="DNA2/DNAStackedShell2" index="3" unique_id=1005190979]
-position = Vector2(14, -2)
-frame = 9
-
-[node name="DNAStackedShell3" parent="DNA2" unique_id=1405897450 instance=ExtResource("2_ijr3j")]
-position = Vector2(0, 300)
-anim_start_frame = 7
-
-[node name="DnaAllele1" parent="DNA2/DNAStackedShell3" index="0" unique_id=1141063690]
-position = Vector2(-29, 0)
-frame = 7
-
-[node name="DnaAllele2" parent="DNA2/DNAStackedShell3" index="1" unique_id=245642215]
-position = Vector2(27, -2)
-frame = 7
-
-[node name="DnaShell1" parent="DNA2/DNAStackedShell3" index="2" unique_id=1537355024]
-position = Vector2(-29, 0)
-frame = 7
-
-[node name="DnaShell2" parent="DNA2/DNAStackedShell3" index="3" unique_id=1005190979]
-position = Vector2(27, -2)
-frame = 7
-
-[node name="DNAStackedShell4" parent="DNA2" unique_id=1731189886 instance=ExtResource("2_ijr3j")]
-position = Vector2(0, 450)
-anim_start_frame = 5
-
-[node name="DnaAllele1" parent="DNA2/DNAStackedShell4" index="0" unique_id=1141063690]
-position = Vector2(-40, 0)
-frame = 5
-
-[node name="DnaAllele2" parent="DNA2/DNAStackedShell4" index="1" unique_id=245642215]
-position = Vector2(39, -2)
-frame = 5
-
-[node name="DnaShell1" parent="DNA2/DNAStackedShell4" index="2" unique_id=1537355024]
-position = Vector2(-40, 0)
-frame = 5
-
-[node name="DnaShell2" parent="DNA2/DNAStackedShell4" index="3" unique_id=1005190979]
-position = Vector2(39, -2)
-frame = 5
-
-[node name="DNAStackedShell5" parent="DNA2" unique_id=386851899 instance=ExtResource("2_ijr3j")]
-position = Vector2(0, 600)
-anim_start_frame = 3
-
-[node name="DnaAllele1" parent="DNA2/DNAStackedShell5" index="0" unique_id=1141063690]
-position = Vector2(-48, 0)
-frame = 3
-
-[node name="DnaAllele2" parent="DNA2/DNAStackedShell5" index="1" unique_id=245642215]
-position = Vector2(47, -2)
-frame = 3
-
-[node name="DnaShell1" parent="DNA2/DNAStackedShell5" index="2" unique_id=1537355024]
-position = Vector2(-48, 0)
-frame = 3
-
-[node name="DnaShell2" parent="DNA2/DNAStackedShell5" index="3" unique_id=1005190979]
-position = Vector2(47, -2)
-frame = 3
-
-[node name="DNAStackedShell6" parent="DNA2" unique_id=723865619 instance=ExtResource("2_ijr3j")]
-position = Vector2(0, 750)
-anim_start_frame = 1
-
-[node name="DnaAllele1" parent="DNA2/DNAStackedShell6" index="0" unique_id=1141063690]
-position = Vector2(-53, 0)
-frame = 1
-
-[node name="DnaAllele2" parent="DNA2/DNAStackedShell6" index="1" unique_id=245642215]
-position = Vector2(51, -2)
-frame = 1
-
-[node name="DnaShell1" parent="DNA2/DNAStackedShell6" index="2" unique_id=1537355024]
-position = Vector2(-53, 0)
-frame = 1
-
-[node name="DnaShell2" parent="DNA2/DNAStackedShell6" index="3" unique_id=1005190979]
-position = Vector2(51, -2)
-frame = 1
-
-[node name="DNAStackedShell7" parent="DNA2" unique_id=354395073 instance=ExtResource("2_ijr3j")]
-position = Vector2(0, 900)
-anim_start_frame = 46
-
-[node name="DnaAllele1" parent="DNA2/DNAStackedShell7" index="0" unique_id=1141063690]
-position = Vector2(-53, 0)
-frame = 46
-
-[node name="DnaAllele2" parent="DNA2/DNAStackedShell7" index="1" unique_id=245642215]
-z_index = 1
-position = Vector2(50, -2)
-frame = 46
-
-[node name="DnaShell1" parent="DNA2/DNAStackedShell7" index="2" unique_id=1537355024]
-position = Vector2(-53, 0)
-frame = 46
-
-[node name="DnaShell2" parent="DNA2/DNAStackedShell7" index="3" unique_id=1005190979]
-z_index = 1
-position = Vector2(50, -2)
-frame = 46
-
-[node name="DNAStackedShell8" parent="DNA2" unique_id=2056029789 instance=ExtResource("2_ijr3j")]
-position = Vector2(0, 1050)
-anim_start_frame = 44
-
-[node name="DnaAllele1" parent="DNA2/DNAStackedShell8" index="0" unique_id=1141063690]
-position = Vector2(-49, 0)
-frame = 44
-
-[node name="DnaAllele2" parent="DNA2/DNAStackedShell8" index="1" unique_id=245642215]
-z_index = 1
-position = Vector2(46, -2)
-frame = 44
-
-[node name="DnaShell1" parent="DNA2/DNAStackedShell8" index="2" unique_id=1537355024]
-position = Vector2(-49, 0)
-frame = 44
-
-[node name="DnaShell2" parent="DNA2/DNAStackedShell8" index="3" unique_id=1005190979]
-z_index = 1
-position = Vector2(46, -2)
-frame = 44
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DNA/Area2D" unique_id=596103110]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_ijr3j")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1555822255]
 position = Vector2(0, 470)
 zoom = Vector2(0.475, 0.475)
 
 [connection signal="pressed" from="DNA/DNAStackedShell/Button" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="DNA/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="DNA/Area2D" to="." method="_on_area_2d_mouse_exited"]
 
 [editable path="DNA/DNAStackedShell"]
-[editable path="DNA2/DNAStackedShell"]
-[editable path="DNA2/DNAStackedShell2"]
-[editable path="DNA2/DNAStackedShell3"]
-[editable path="DNA2/DNAStackedShell4"]
-[editable path="DNA2/DNAStackedShell5"]
-[editable path="DNA2/DNAStackedShell6"]
-[editable path="DNA2/DNAStackedShell7"]
-[editable path="DNA2/DNAStackedShell8"]
