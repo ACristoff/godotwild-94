@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b40emqyavaiij"
-path="res://.godot/imported/ArabianTemple.png-80fe5253c9a15b7d0ed86e056bdd9469.ctex"
+uid="uid://dv44aroq03tli"
+path="res://.godot/imported/Yip.png-be5c5bc08b631b5843c5e25ea50c4a29.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Test/ArabianTemple.png"
-dest_files=["res://.godot/imported/ArabianTemple.png-80fe5253c9a15b7d0ed86e056bdd9469.ctex"]
+source_file="res://Assets/yipee/Yip.png"
+dest_files=["res://.godot/imported/Yip.png-be5c5bc08b631b5843c5e25ea50c4a29.ctex"]
 
 [params]
 
