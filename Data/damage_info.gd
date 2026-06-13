@@ -2,7 +2,7 @@ class_name DamageInfo
 extends RefCounted
 
 #To be honest I'm not sure how many types and effects we'll support, this is a constraint thing
-enum Type { PHYSICAL, FIRE, POISON, ICE, PIERCE }
+enum Type { PHYSICAL, FIRE, POISON, ICE, PIERCE, LIFESTEAL }
 
 #Defaults to 0 damage
 var amount: float = 0.0

@@ -14,6 +14,8 @@ extends Resource
 
 @export var helix: Helix
 
+@export var status_effect
+
 func _init() -> void:
 	if helix == null:
 		helix = Helix.new()
