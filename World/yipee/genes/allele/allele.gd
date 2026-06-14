@@ -11,7 +11,7 @@ enum Side { LEFT, RIGHT }
 @export var tier: int = 1
 
 # Passive Stat buffs/nerfs
-func modify_stat(base_value: float, yipee_data) -> float:
+func modify_stat(base_value: float, _yipee_data) -> float:
 	return base_value
 
 #Daily life triggers
@@ -34,14 +34,14 @@ func on_ally_take_damage() -> void:
 func on_status_gained() -> void:
 	pass
 
-func on_attack(damage_data: DamageInfo, battle) -> void:
+func on_attack(_damage_data: DamageInfo, _battle) -> void:
 	pass
 
-func on_hit(damage_data: DamageInfo, battle) -> void:
+func on_hit(_damage_data: DamageInfo, _battle) -> void:
 	pass
 
-func on_take_damage(damage_data: DamageInfo, battle) -> void:
+func on_take_damage(_damage_data: DamageInfo, _battle) -> void:
 	pass
 
-func on_death(battle) -> void:
+func on_death(_battle) -> void:
 	pass

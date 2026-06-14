@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cs60rupx5pqbw" path="res://World/yipee/yipee.gd" id="1_4lw1p"]
 [ext_resource type="Texture2D" uid="uid://dv44aroq03tli" path="res://Assets/yipee/Yip.png" id="1_6pxaa"]
 [ext_resource type="Script" uid="uid://81jkr63gjvq8" path="res://World/yipee/components/health.gd" id="3_0w75r"]
+[ext_resource type="Script" uid="uid://cgytvo8likyf3" path="res://World/yipee/components/attack.gd" id="4_igyue"]
 
 [node name="Yipee" type="Node2D" unique_id=580016765]
 script = ExtResource("1_4lw1p")
@@ -15,3 +16,7 @@ texture = ExtResource("1_6pxaa")
 [node name="Health" type="Node" parent="." unique_id=984730394]
 script = ExtResource("3_0w75r")
 metadata/_custom_type_script = "uid://81jkr63gjvq8"
+
+[node name="Attack" type="Node" parent="." unique_id=1181095809]
+script = ExtResource("4_igyue")
+metadata/_custom_type_script = "uid://cgytvo8likyf3"

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://yby6jmfdxrll"]
+
+[ext_resource type="Script" uid="uid://b4u23f3r2uryx" path="res://World/debug/debug_test_yip.gd" id="1_iw8sy"]
+
+[node name="DebugTestYip" type="Node2D" unique_id=824386162]
+script = ExtResource("1_iw8sy")

@@ -36,8 +36,5 @@ func _derived(base: float, stat: BodyMap.Stat) -> float:
 	return result
 
 
-
-
-
 func clone() -> YipeeData:
 	return duplicate(true) as YipeeData

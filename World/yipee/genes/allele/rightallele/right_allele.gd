@@ -2,10 +2,17 @@ class_name RightAllele extends Allele
 
 @export var body_part: Texture2D
 @export var set_id: StringName
+@export var buff: float = 0.0
 
 func _init():
 	side = Allele.Side.RIGHT
 
-#small modify value type shit
-func modify_stat(base_value: float, yipee_data) -> float:
-	return base_value
+#small passive buff for this slot's stat
+func modify_stat(base_value: float, _yipee_data) -> float:
+	match BodyMap.SLOT_BUFF.get(slot, BodyMap.BuffMode.NONE):
+		BodyMap.BuffMode.FLAT:
+			return base_value + buff * tier
+		BodyMap.BuffMode.PERCENT:
+			return base_value * (1.0 + buff * tier)
+		_:
+			return base_value

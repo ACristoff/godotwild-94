@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://vdrjb582dc4v"]
+
+[ext_resource type="Texture2D" uid="uid://6xdsjsnsd8ld" path="res://Assets/Environment/Scenes/BattleField/BattleField.png" id="1_aqlep"]
+
+[node name="Battle" type="Node2D" unique_id=1472135385]
+
+[node name="Background" type="TextureRect" parent="." unique_id=36736255]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_aqlep")
