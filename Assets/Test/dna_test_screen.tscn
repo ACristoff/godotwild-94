@@ -13,7 +13,6 @@ script = ExtResource("1_7ihee")
 position = Vector2(4, -38)
 
 [node name="DNAStackedShell" parent="DNA" unique_id=1936980544 instance=ExtResource("2_ijr3j")]
-ID = 0
 anim_start_frame = 11
 
 [node name="DnaAllele1" parent="DNA/DNAStackedShell" index="0" unique_id=1141063690]
@@ -23,45 +22,40 @@ frame = 11
 frame = 11
 
 [node name="DnaShell1" parent="DNA/DNAStackedShell" index="2" unique_id=1537355024]
+z_index = 2
 frame = 11
 
 [node name="DnaShell2" parent="DNA/DNAStackedShell" index="3" unique_id=1005190979]
+z_index = -2
 frame = 11
 
 [node name="DNAStackedShell2" parent="DNA" unique_id=1240801642 instance=ExtResource("2_ijr3j")]
 position = Vector2(0, 150)
-ID = 1
-anim_start_frame = 9
+anim_start_frame = 8
 
 [node name="DNAStackedShell3" parent="DNA" unique_id=1237795546 instance=ExtResource("2_ijr3j")]
 position = Vector2(0, 300)
-ID = 2
-anim_start_frame = 7
+anim_start_frame = 5
 
 [node name="DNAStackedShell4" parent="DNA" unique_id=1213718929 instance=ExtResource("2_ijr3j")]
 position = Vector2(0, 450)
-ID = 3
-anim_start_frame = 5
+anim_start_frame = 2
 
 [node name="DNAStackedShell5" parent="DNA" unique_id=898139654 instance=ExtResource("2_ijr3j")]
 position = Vector2(0, 600)
-ID = 4
-anim_start_frame = 3
+anim_start_frame = 47
 
 [node name="DNAStackedShell6" parent="DNA" unique_id=858876537 instance=ExtResource("2_ijr3j")]
 position = Vector2(0, 750)
-ID = 5
-anim_start_frame = 1
+anim_start_frame = 44
 
 [node name="DNAStackedShell7" parent="DNA" unique_id=1449613694 instance=ExtResource("2_ijr3j")]
 position = Vector2(0, 900)
-ID = 6
-anim_start_frame = 45
+anim_start_frame = 41
 
 [node name="DNAStackedShell8" parent="DNA" unique_id=1583672614 instance=ExtResource("2_ijr3j")]
 position = Vector2(0, 1050)
-ID = 7
-anim_start_frame = 43
+anim_start_frame = 38
 
 [node name="Area2D" type="Area2D" parent="DNA" unique_id=55206718]
 position = Vector2(-1, 525)
@@ -74,8 +68,12 @@ shape = SubResource("RectangleShape2D_ijr3j")
 position = Vector2(0, 470)
 zoom = Vector2(0.475, 0.475)
 
-[connection signal="pressed" from="DNA/DNAStackedShell/Button" to="." method="_on_button_pressed"]
+[node name="Timer" type="Timer" parent="." unique_id=1348414813]
+wait_time = 0.05
+autostart = true
+
 [connection signal="mouse_entered" from="DNA/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="DNA/Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
 [editable path="DNA/DNAStackedShell"]

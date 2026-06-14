@@ -6,7 +6,6 @@
 [ext_resource type="Shader" uid="uid://c3ptn4an844pu" path="res://Assets/Shaders/pixeloutline.gdshader" id="4_d33cm"]
 [ext_resource type="Texture2D" uid="uid://cfqpmshy0vgiy" path="res://Assets/Test/shell1.png" id="4_nydv0"]
 [ext_resource type="Texture2D" uid="uid://iovvy3flps0h" path="res://Assets/Test/shell2.png" id="5_evcsh"]
-[ext_resource type="Texture2D" uid="uid://bk1v4xjii2mle" path="res://Assets/Test/SlotTitles.png" id="7_nydv0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_evcsh"]
 shader = ExtResource("4_d33cm")
@@ -31,12 +30,6 @@ shader = ExtResource("4_d33cm")
 shader_parameter/clr = Color(0, 0, 0, 1)
 shader_parameter/type = 2
 shader_parameter/thickness = 4.0
-
-[sub_resource type="Gradient" id="Gradient_nydv0"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_evcsh"]
-gradient = SubResource("Gradient_nydv0")
 
 [node name="DNAStackedShell" type="Node2D" unique_id=1936980544]
 script = ExtResource("1_0c7q7")
@@ -63,7 +56,7 @@ vframes = 12
 frame = 23
 
 [node name="DnaShell1" type="Sprite2D" parent="." unique_id=1537355024]
-modulate = Color(0.47058824, 0.29411766, 0.8, 1)
+modulate = Color(0.24, 0.24, 0.24, 1)
 z_index = -2
 texture_filter = 3
 material = SubResource("ShaderMaterial_nydv0")
@@ -73,7 +66,7 @@ vframes = 12
 frame = 23
 
 [node name="DnaShell2" type="Sprite2D" parent="." unique_id=1005190979]
-modulate = Color(0.4724002, 0.296, 0.8, 1)
+modulate = Color(0.24, 0.24, 0.24, 1)
 z_index = 2
 texture_filter = 3
 material = SubResource("ShaderMaterial_0c7q7")
@@ -81,29 +74,3 @@ texture = ExtResource("5_evcsh")
 hframes = 4
 vframes = 12
 frame = 23
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=818594923]
-z_index = -3
-texture_filter = 3
-custom_minimum_size = Vector2(0, 150)
-offset_left = -1012.0
-offset_top = -75.0
-offset_right = -648.0
-offset_bottom = 75.0
-mouse_filter = 2
-
-[node name="TextureRect" type="TextureRect" parent="ColorRect" unique_id=2109559205]
-layout_mode = 0
-offset_left = 364.0
-offset_right = 994.0
-offset_bottom = 150.0
-texture = SubResource("GradientTexture1D_evcsh")
-
-[node name="SlotTitles" type="Sprite2D" parent="." unique_id=41635054]
-z_index = -3
-texture_filter = 3
-position = Vector2(-576, 0)
-texture = ExtResource("7_nydv0")
-hframes = 4
-vframes = 2
-frame = 7

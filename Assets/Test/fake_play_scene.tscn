@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cq1781vyhitgy"]
+
+[ext_resource type="PackedScene" uid="uid://38s8fl53yrsg" path="res://Assets/Test/dna_test_screen.tscn" id="1_1tnvo"]
+
+[node name="FakePlayScene" type="Node2D" unique_id=2057159836]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1714407251]
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer" unique_id=151901335]
+texture_filter = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer" unique_id=551156345]
+transparent_bg = true
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+physics_object_picking = true
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="DNATestScreen" parent="CanvasLayer/SubViewportContainer/SubViewport" unique_id=2140591040 instance=ExtResource("1_1tnvo")]
+texture_filter = 3
+position = Vector2(268.99997, 47.999996)
+scale = Vector2(0.4, 0.4)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=224801334]
+position = Vector2(308, 174)
+zoom = Vector2(3, 3)

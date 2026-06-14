@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://mfexqiv6jc3r"]
+
+[ext_resource type="PackedScene" uid="uid://38s8fl53yrsg" path="res://Assets/Test/dna_test_screen.tscn" id="1_nxbwt"]
+
+[node name="MainGam" type="Node2D" unique_id=525782911]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=732317189]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer" unique_id=1410950628]
+texture_filter = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_shrink = 3
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer" unique_id=325311364]
+handle_input_locally = false
+size = Vector2i(1855, 1277)
+render_target_update_mode = 4
+
+[node name="DNATestScreen" parent="CanvasLayer/SubViewportContainer/SubViewport" unique_id=2140591040 instance=ExtResource("1_nxbwt")]
+position = Vector2(326.33334, 122.66667)
