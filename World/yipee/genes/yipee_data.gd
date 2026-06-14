@@ -19,17 +19,25 @@ func _init() -> void:
 		helix = Helix.new()
 
 func get_health() -> float:
-	return _derived(base_health, Helix.Slot.HEALTH)
- 
+	return _derived(base_health, BodyMap.Stat.HEALTH)
+
 func get_attack() -> float:
-	return _derived(base_attack, Helix.Slot.ATTACK)
- 
+	return _derived(base_attack, BodyMap.Stat.ATTACK)
+
 func get_cooldown() -> float:
-	return _derived(base_cooldown, Helix.Slot.COOLDOWN)
- 
-func _derived(base: float, slot: Helix.Slot) -> float:
-	var strand := helix.get_strand(slot)
-	return strand.modify_stat(base, self) if strand else base 
+	return _derived(base_cooldown, BodyMap.Stat.COOLDOWN)
+
+func _derived(base: float, stat: BodyMap.Stat) -> float:
+	var result := base
+	for slot: Helix.Slot in BodyMap.STAT_SLOTS[stat]:
+		var strand := helix.get_strand(slot)
+		if strand:
+			result = strand.modify_stat(result, self)
+	return result
+
+
+
+
 
 func clone() -> YipeeData:
 	return duplicate(true) as YipeeData

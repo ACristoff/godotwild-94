@@ -26,6 +26,9 @@ func get_strand(slot: Slot) -> Strand:
 	return strands[slot]
 
 func set_strand(slot: Slot, strand: Strand) -> void:
+	assert(strand.left == null or strand.left.slot == slot, "Strand slot doesn't match its left allele")
+	if strand.slot != slot:
+		return
 	strands[slot] = strand
 	emit_changed()
 
