@@ -1,10 +1,138 @@
 [gd_scene format=3 uid="uid://vdrjb582dc4v"]
 
+[ext_resource type="Script" uid="uid://b1owneonh5qw1" path="res://World/battle/battle.gd" id="1_2qnjf"]
 [ext_resource type="Texture2D" uid="uid://6xdsjsnsd8ld" path="res://Assets/Environment/Scenes/BattleField/BattleField.png" id="1_aqlep"]
+[ext_resource type="Script" uid="uid://dpr2powm23rue" path="res://World/yipee/genes/yipee_data.gd" id="2_xg215"]
+[ext_resource type="Texture2D" uid="uid://bouvm8wo3pupb" path="res://Assets/Environment/Scenes/BattleField/YipTeamSlot.png" id="3_l3nu1"]
+
+[sub_resource type="Resource" id="Resource_xg215"]
+script = ExtResource("2_xg215")
+yipee_name = "Korone"
+base_health = 15
+base_attack = 5
+base_cooldown = 4.0
+metadata/_custom_type_script = "uid://dpr2powm23rue"
+
+[sub_resource type="Resource" id="Resource_55a63"]
+script = ExtResource("2_xg215")
+yipee_name = "Tealy_Man"
+base_health = 20
+base_attack = 10
+base_cooldown = 8.0
+metadata/_custom_type_script = "uid://dpr2powm23rue"
+
+[sub_resource type="Resource" id="Resource_m52jh"]
+script = ExtResource("2_xg215")
+yipee_name = "Amane Kanata"
+base_health = 25
+base_attack = 7
+base_cooldown = 5.0
+metadata/_custom_type_script = "uid://dpr2powm23rue"
+
+[sub_resource type="Resource" id="Resource_vm2tg"]
+script = ExtResource("2_xg215")
+yipee_name = "Houshoue Marine"
+base_health = 12
+base_attack = 3
+base_cooldown = 2.0
+metadata/_custom_type_script = "uid://dpr2powm23rue"
+
+[sub_resource type="Resource" id="Resource_yvvln"]
+script = ExtResource("2_xg215")
+yipee_name = "Yipkin Yippa"
+base_health = 1
+base_cooldown = 10.0
+metadata/_custom_type_script = "uid://dpr2powm23rue"
+
+[sub_resource type="Resource" id="Resource_263ry"]
+script = ExtResource("2_xg215")
+yipee_name = "Tenma Maemi"
+base_health = 8
+base_attack = 5
+metadata/_custom_type_script = "uid://dpr2powm23rue"
 
 [node name="Battle" type="Node2D" unique_id=1472135385]
+script = ExtResource("1_2qnjf")
+player_team_data = Array[ExtResource("2_xg215")]([SubResource("Resource_xg215"), SubResource("Resource_55a63"), SubResource("Resource_m52jh"), null, null])
+enemy_team_data = Array[ExtResource("2_xg215")]([SubResource("Resource_vm2tg"), SubResource("Resource_yvvln"), SubResource("Resource_263ry"), null, null])
 
 [node name="Background" type="TextureRect" parent="." unique_id=36736255]
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1_aqlep")
+
+[node name="PlayerTeam" type="Node2D" parent="." unique_id=114531491]
+position = Vector2(745, 734)
+
+[node name="Spawn_1" type="TextureRect" parent="PlayerTeam" unique_id=192796315]
+offset_left = -32.0
+offset_top = -4.0
+offset_right = 32.0
+offset_bottom = 60.0
+texture = ExtResource("3_l3nu1")
+
+[node name="Spawn_2" type="TextureRect" parent="PlayerTeam" unique_id=1616274677]
+offset_left = -114.0
+offset_top = -7.0
+offset_right = -50.0
+offset_bottom = 57.0
+texture = ExtResource("3_l3nu1")
+
+[node name="Spawn_3" type="TextureRect" parent="PlayerTeam" unique_id=610924588]
+offset_left = -202.0
+offset_top = -8.0
+offset_right = -138.0
+offset_bottom = 56.0
+texture = ExtResource("3_l3nu1")
+
+[node name="Spawn_4" type="TextureRect" parent="PlayerTeam" unique_id=887505675]
+offset_left = -299.0
+offset_top = -10.0
+offset_right = -235.0
+offset_bottom = 54.0
+texture = ExtResource("3_l3nu1")
+
+[node name="Spawn_5" type="TextureRect" parent="PlayerTeam" unique_id=960313706]
+offset_left = -395.0
+offset_top = -14.0
+offset_right = -331.0
+offset_bottom = 50.0
+texture = ExtResource("3_l3nu1")
+
+[node name="EnemyTeam" type="Node2D" parent="." unique_id=411227365]
+position = Vector2(1192, 738)
+
+[node name="Spawn_1" type="TextureRect" parent="EnemyTeam" unique_id=631574954]
+offset_left = -32.0
+offset_top = -4.0
+offset_right = 32.0
+offset_bottom = 60.0
+texture = ExtResource("3_l3nu1")
+
+[node name="Spawn_2" type="TextureRect" parent="EnemyTeam" unique_id=1099078699]
+offset_left = 49.0
+offset_top = -2.0
+offset_right = 113.0
+offset_bottom = 62.0
+texture = ExtResource("3_l3nu1")
+
+[node name="Spawn_3" type="TextureRect" parent="EnemyTeam" unique_id=456105167]
+offset_left = 135.0
+offset_top = -7.0
+offset_right = 199.0
+offset_bottom = 57.0
+texture = ExtResource("3_l3nu1")
+
+[node name="Spawn_4" type="TextureRect" parent="EnemyTeam" unique_id=538621844]
+offset_left = 241.0
+offset_top = -7.0
+offset_right = 305.0
+offset_bottom = 57.0
+texture = ExtResource("3_l3nu1")
+
+[node name="Spawn_5" type="TextureRect" parent="EnemyTeam" unique_id=955131045]
+offset_left = 349.0
+offset_top = -3.0
+offset_right = 413.0
+offset_bottom = 61.0
+texture = ExtResource("3_l3nu1")
