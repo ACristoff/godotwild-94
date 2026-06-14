@@ -1,4 +1,4 @@
-class_name SplashStrand extends Strand
+class_name SplashAllele extends LeftAllele
 
 @export var radius: int = 1
 @export var falloff: float = 0.5

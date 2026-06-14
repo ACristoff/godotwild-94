@@ -1,24 +1,32 @@
-class_name Strand
-extends Resource
+class_name Strand extends Resource
 
-@export var display_name: String = ""
-@export var tooltip: String = ""
+@export var slot: Helix.Slot
+@export var left: LeftAllele
+@export var right: RightAllele
 
-# Stat buffs/nerfs
 func modify_stat(base_value: float, yipee_data) -> float:
-	return base_value
+	var result := base_value
+	if left:
+		result = left.modify_stat(result, yipee_data)
+	if right:
+		result = right.modify_stat(result, yipee_data)
+	return result
 
-func on_attack(damage_data: DamageInfo, battle) -> void:
-	pass
+func get_body_part() -> Texture2D:
+	if right == null:
+		return null
+	return right.body_part
 
-func on_hit(damage_data: DamageInfo, battle) -> void:
-	pass
+func split() -> Array[Allele]:
+	return [left, right]
 
-func on_take_damage(damage_data: DamageInfo, battle) -> void:
-	pass
-
-func on_death(battle) -> void:
-	pass
-
-func on_breed() -> void:
-	pass
+static func combine(new_left: LeftAllele, new_right: RightAllele) -> Strand:
+	if new_left == null or new_right == null:
+		return null
+	if new_left.slot != new_right.slot:
+		return null
+	var strand := Strand.new()
+	strand.left = new_left
+	strand.right = new_right
+	strand.slot = new_left.slot
+	return strand

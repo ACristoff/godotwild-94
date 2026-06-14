@@ -1,4 +1,4 @@
-class_name FireStrand extends Strand
+class_name FireAllele extends LeftAllele
 
 
 #Does fire damage, applies fire status
