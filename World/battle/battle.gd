@@ -1,5 +1,7 @@
 extends Node2D
 
+enum Team { PLAYER, ENEMY, NONE }
+
 @export var battle_speed: float = 1.0
 
 @export var player_team_data: Array[YipeeData]
@@ -35,20 +37,20 @@ func _ready():
 		enemy_team.append(new_yip)
 	#Wire up all the yips
 	for yip in player_team:
-		wire_signals(yip, "player")
+		wire_signals(yip, Team.PLAYER)
 	for yip in enemy_team:
-		wire_signals(yip, "enemy")
+		wire_signals(yip, Team.ENEMY)
 
-func wire_signals(yip: Yipee, team: String):
+func wire_signals(yip: Yipee, team: Team):
 	yip.attack.attack_ready.connect(_on_attack_ready.bind(team))
 	yip.health.died.connect(_on_died.bind(yip))
 
-func _on_attack_ready(damage: DamageInfo, team: String) -> void:
+func _on_attack_ready(damage: DamageInfo, team: Team) -> void:
 	if _battle_over:
 		return
 	
 	var target = null
-	if team == "player":
+	if team == Team.PLAYER:
 		target = get_first_alive("enemy")
 	else:
 		target = get_first_alive("player")
@@ -64,6 +66,24 @@ func _on_attack_ready(damage: DamageInfo, team: String) -> void:
 		target.health.current_health, target.health.max_health])
 	target.health.take_damage(damage)
 
+
+
+func check_for_victory() -> Team:
+	var player_alive = false
+	var enemy_alive = false
+	for yip: Yipee in player_team:
+		if yip.health.current_health > 0:
+			player_alive = true
+			break
+	for yip: Yipee in enemy_team:
+		if yip.health.current_health > 0:
+			enemy_alive = true
+			break
+	if player_alive == true && enemy_alive == false:
+		return Team.PLAYER
+	if player_alive == false && enemy_alive == true:
+		return Team.ENEMY
+	return Team.NONE
 
 func get_first_alive(team: String) -> Yipee:
 	if team == "player":
@@ -82,9 +102,9 @@ func _on_died(corpse: Yipee) -> void:
 	
 	print(corpse.data.yipee_name, " fucking died!")
 	corpse.scale.y = -1
-	#_battle_over = true
-	#print("%s wins!" % winner.data.yipee_name)
-	pass
+	if check_for_victory() != Team.NONE:
+		print("Battle over!", check_for_victory())
+		_battle_over = true
 
 func _process(delta):
 	if _battle_over != true:
