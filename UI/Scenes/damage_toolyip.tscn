@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cxcii53yccour"]
+
+[ext_resource type="Script" uid="uid://bcrpsp30dll1e" path="res://UI/Scripts/damage_toolyip.gd" id="1_jxjw7"]
+[ext_resource type="Texture2D" uid="uid://bg5f0ibitqrce" path="res://UI/Textures/StatUI.png" id="1_va2ot"]
+[ext_resource type="FontFile" uid="uid://6nvj4320wbu4" path="res://UI/Fonts/Vaticanus-G3yVG.ttf" id="2_nj4kq"]
+
+[node name="MarginContainer" type="MarginContainer" unique_id=53233444]
+offset_right = 20.0
+offset_bottom = 11.0
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("1_jxjw7")
+
+[node name="DamageToolyip" type="NinePatchRect" parent="." unique_id=2112080649]
+self_modulate = Color(0.25800002, 0.86, 0.45866674, 1)
+texture_filter = 3
+custom_minimum_size = Vector2(20, 11)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_va2ot")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Label" type="Label" parent="DamageToolyip" unique_id=704642333]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -5.5
+offset_right = 10.0
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_nj4kq")
+theme_override_font_sizes/font_size = 8
+text = "9"
+horizontal_alignment = 1
+vertical_alignment = 1

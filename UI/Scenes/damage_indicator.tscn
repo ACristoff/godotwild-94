@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://b1wbuxori6udj"]
+
+[ext_resource type="Script" uid="uid://cgyhm7yt34iia" path="res://UI/Scripts/damage_indicator.gd" id="1_t25mr"]
+[ext_resource type="FontFile" uid="uid://6nvj4320wbu4" path="res://UI/Fonts/Vaticanus-G3yVG.ttf" id="2_t25mr"]
+
+[node name="DamageIndicator" type="Node2D" unique_id=2049733839]
+script = ExtResource("1_t25mr")
+
+[node name="Handle" type="Node2D" parent="." unique_id=24391767]
+
+[node name="Text" type="Label" parent="Handle" unique_id=1666455869]
+texture_filter = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_t25mr")
+theme_override_font_sizes/font_size = 8
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="End" type="Marker2D" parent="." unique_id=1951948869]

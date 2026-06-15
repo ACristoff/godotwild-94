@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://bmdpogph1dw37"]
+
+[ext_resource type="Texture2D" uid="uid://bcrv3534foclh" path="res://UI/Textures/UIPanel.png" id="1_32pgk"]
+[ext_resource type="Script" uid="uid://cubsvbs3x7q27" path="res://UI/Scripts/health_bar.gd" id="1_sk0yw"]
+[ext_resource type="Texture2D" uid="uid://cnhmh8kaynhyc" path="res://UI/Textures/Sheild.png" id="2_1natu"]
+[ext_resource type="Texture2D" uid="uid://bdc122yit4ji1" path="res://UI/Textures/HealthBar.png" id="2_27k4o"]
+[ext_resource type="FontFile" uid="uid://6nvj4320wbu4" path="res://UI/Fonts/Vaticanus-G3yVG.ttf" id="4_w4xj8"]
+
+[node name="HealthBar" type="Control" unique_id=1814523002]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_sk0yw")
+max_health = 30
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1787134499]
+self_modulate = Color(0.17, 0.07423333, 0.059500005, 1)
+texture_filter = 3
+layout_mode = 0
+offset_top = -5.0
+offset_right = 52.0
+offset_bottom = 5.0
+texture = ExtResource("1_32pgk")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="NinePatchRect" unique_id=348252769]
+self_modulate = Color(0.5698, 0.77, 0.16940002, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 52.0
+value = 52.0
+texture_progress = ExtResource("2_27k4o")
+
+[node name="HealthText" type="Label" parent="NinePatchRect/TextureProgressBar" unique_id=1704906348]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 2.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_w4xj8")
+theme_override_font_sizes/font_size = 8
+text = "20/20"
+vertical_alignment = 1
+
+[node name="Shield" type="TextureRect" parent="NinePatchRect" unique_id=122780691]
+visible = false
+self_modulate = Color(0.20784314, 0.39215687, 0.67058825, 1)
+z_index = 2
+texture_filter = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.019
+anchor_right = 1.019
+anchor_bottom = 1.0
+offset_left = -15.988003
+offset_top = -12.0
+offset_right = 16.011997
+offset_bottom = 9.0
+texture = ExtResource("2_1natu")
+
+[node name="ShieldText" type="Label" parent="NinePatchRect/Shield" unique_id=2084156647]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -5.0
+offset_right = 6.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_w4xj8")
+theme_override_font_sizes/font_size = 8
+text = "999"
+horizontal_alignment = 1
+
+[node name="StatusAilments" type="HFlowContainer" parent="." unique_id=1422613452]
+custom_minimum_size = Vector2(58.64, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -30.0
+offset_right = 62.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/h_separation = -2
+theme_override_constants/v_separation = -1
+reverse_fill = true
+
+[node name="YipStats" type="HFlowContainer" parent="." unique_id=190191826]
+custom_minimum_size = Vector2(58.64, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = 59.0
+offset_right = 62.0
+offset_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/h_separation = -2
+theme_override_constants/v_separation = -1
+alignment = 1
+
+[node name="DamageIndicatorSpawn" type="Marker2D" parent="." unique_id=124558974]
+position = Vector2(52, 0)
