@@ -7,6 +7,8 @@ signal died
 var max_health: int = 0
 var current_health: int = 0
 
+var shield: int = 0
+
 func setup(max_hp: float) -> void:
 	max_health = roundi(max_hp)
 	current_health = max_health
@@ -15,7 +17,7 @@ func setup(max_hp: float) -> void:
 func take_damage(damage_data: DamageInfo) -> void:
 	if current_health <= 0:
 		return
-	current_health = maxi(current_health - roundi(damage_data.amount), 0)
+	current_health = maxi(current_health - roundi(damage_data.amount - shield), 0)
 	health_changed.emit(current_health, max_health)
 	if current_health <= 0:
 		died.emit()
