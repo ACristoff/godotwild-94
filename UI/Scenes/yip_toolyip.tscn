@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="4_c6xv3"]
 [ext_resource type="Texture2D" uid="uid://c8pupi4jdpi4f" path="res://UI/Textures/DNAUI1.png" id="5_xh8su"]
 [ext_resource type="Texture2D" uid="uid://cpcgek38dfbym" path="res://UI/Textures/DNAUI2.png" id="6_f61sd"]
+[ext_resource type="PackedScene" uid="uid://cxcii53yccour" path="res://UI/Scenes/damage_toolyip.tscn" id="8_xcmme"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o7fgy"]
 
@@ -24,6 +25,7 @@ width = 12
 [node name="YipToolyip" type="Control" unique_id=399779298]
 layout_mode = 3
 anchors_preset = 0
+pivot_offset = Vector2(-19, -11)
 script = ExtResource("1_xcmme")
 
 [node name="MainPanel" type="NinePatchRect" parent="." unique_id=323900239]
@@ -31,8 +33,10 @@ self_modulate = Color(0.44, 0.33410668, 0.2728, 1)
 texture_filter = 3
 custom_minimum_size = Vector2(86, 0)
 layout_mode = 0
-offset_right = 86.0
-offset_bottom = 68.0
+offset_left = 19.0
+offset_top = 16.0
+offset_right = 105.0
+offset_bottom = 84.0
 texture = ExtResource("1_tytya")
 patch_margin_left = 1
 patch_margin_top = 1
@@ -183,16 +187,12 @@ text = "HP:9999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=409036291]
-position = Vector2(45, 17)
-zoom = Vector2(6.91, 6.91)
-
 [node name="DNA" type="Control" parent="." unique_id=81975585]
 anchors_preset = 0
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 39.0
-offset_bottom = 39.0
+offset_left = 18.0
+offset_top = 15.0
+offset_right = 58.0
+offset_bottom = 55.0
 
 [node name="LeftGene1" type="TextureRect" parent="DNA" unique_id=1867089722]
 texture_filter = 3
@@ -522,11 +522,10 @@ theme_override_constants/separation = 0
 z_index = 1
 texture_filter = 3
 layout_mode = 2
-theme_override_colors/font_color = Color(0.14901961, 0.14901961, 0.14901961, 1)
+theme_override_colors/font_color = Color(0.21, 0.21, 0.21, 1)
 theme_override_fonts/font = ExtResource("2_o7fgy")
 theme_override_font_sizes/font_size = 8
 text = "ATK"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="DNA/VBoxContainer/SlotType1" unique_id=839583179]
@@ -541,11 +540,10 @@ texture = SubResource("GradientTexture1D_f61sd")
 z_index = 1
 texture_filter = 3
 layout_mode = 2
-theme_override_colors/font_color = Color(0.14901961, 0.14901961, 0.14901961, 1)
+theme_override_colors/font_color = Color(0.21, 0.21, 0.21, 1)
 theme_override_fonts/font = ExtResource("2_o7fgy")
 theme_override_font_sizes/font_size = 8
 text = "ATK"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="DNA/VBoxContainer/SlotType2" unique_id=1918393271]
@@ -560,11 +558,10 @@ texture = SubResource("GradientTexture1D_f61sd")
 z_index = 1
 texture_filter = 3
 layout_mode = 2
-theme_override_colors/font_color = Color(0.14901961, 0.14901961, 0.14901961, 1)
+theme_override_colors/font_color = Color(0.21, 0.21, 0.21, 1)
 theme_override_fonts/font = ExtResource("2_o7fgy")
 theme_override_font_sizes/font_size = 8
 text = "ATK"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="DNA/VBoxContainer/SlotType3" unique_id=1558022463]
@@ -579,11 +576,10 @@ texture = SubResource("GradientTexture1D_f61sd")
 z_index = 1
 texture_filter = 3
 layout_mode = 2
-theme_override_colors/font_color = Color(0.14901961, 0.14901961, 0.14901961, 1)
+theme_override_colors/font_color = Color(0.21, 0.21, 0.21, 1)
 theme_override_fonts/font = ExtResource("2_o7fgy")
 theme_override_font_sizes/font_size = 8
 text = "ATK"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="DNA/VBoxContainer/SlotType4" unique_id=1145867367]
@@ -598,11 +594,10 @@ texture = SubResource("GradientTexture1D_f61sd")
 z_index = 1
 texture_filter = 3
 layout_mode = 2
-theme_override_colors/font_color = Color(0.14901961, 0.14901961, 0.14901961, 1)
+theme_override_colors/font_color = Color(0.21, 0.21, 0.21, 1)
 theme_override_fonts/font = ExtResource("2_o7fgy")
 theme_override_font_sizes/font_size = 8
 text = "ATK"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="DNA/VBoxContainer/SlotType5" unique_id=1175456966]
@@ -617,11 +612,10 @@ texture = SubResource("GradientTexture1D_f61sd")
 z_index = 1
 texture_filter = 3
 layout_mode = 2
-theme_override_colors/font_color = Color(0.14901961, 0.14901961, 0.14901961, 1)
+theme_override_colors/font_color = Color(0.21, 0.21, 0.21, 1)
 theme_override_fonts/font = ExtResource("2_o7fgy")
 theme_override_font_sizes/font_size = 8
 text = "ATK"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="DNA/VBoxContainer/SlotType6" unique_id=1954764851]
@@ -636,11 +630,10 @@ texture = SubResource("GradientTexture1D_f61sd")
 z_index = 1
 texture_filter = 3
 layout_mode = 2
-theme_override_colors/font_color = Color(0.14901961, 0.14901961, 0.14901961, 1)
+theme_override_colors/font_color = Color(0.21, 0.21, 0.21, 1)
 theme_override_fonts/font = ExtResource("2_o7fgy")
 theme_override_font_sizes/font_size = 8
 text = "ATK"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="DNA/VBoxContainer/SlotType7" unique_id=883438140]
@@ -655,11 +648,10 @@ texture = SubResource("GradientTexture1D_f61sd")
 z_index = 1
 texture_filter = 3
 layout_mode = 2
-theme_override_colors/font_color = Color(0.14901961, 0.14901961, 0.14901961, 1)
+theme_override_colors/font_color = Color(0.21, 0.21, 0.21, 1)
 theme_override_fonts/font = ExtResource("2_o7fgy")
 theme_override_font_sizes/font_size = 8
 text = "ATK"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="DNA/VBoxContainer/SlotType8" unique_id=2063997816]
@@ -682,24 +674,46 @@ z_index = 1
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 88.0
-offset_top = 1.0
-offset_right = 130.0
-offset_bottom = 14.0
+offset_left = 107.0
+offset_top = 17.0
+offset_right = 149.0
+offset_bottom = 30.0
 grow_horizontal = 2
 theme_override_constants/h_separation = -2
 theme_override_constants/v_separation = -1
 last_wrap_alignment = 2
 
+[node name="MarginContainer" parent="StatsFlowContainer" unique_id=53233444 instance=ExtResource("8_xcmme")]
+layout_mode = 2
+
 [node name="StatsContainer" type="NinePatchRect" parent="." unique_id=70282764]
 self_modulate = Color(0.21960784, 0.16862746, 0.13725491, 1)
 texture_filter = 3
 layout_mode = 0
-offset_left = 87.0
-offset_right = 130.0
-offset_bottom = 27.0
+offset_left = 106.0
+offset_top = 16.0
+offset_right = 149.0
+offset_bottom = 43.0
 texture = ExtResource("1_tytya")
 patch_margin_left = 1
 patch_margin_top = 1
 patch_margin_right = 1
 patch_margin_bottom = 1
+
+[node name="MouseHover" type="Panel" parent="." unique_id=3622155]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 17.0
+offset_top = 3.0
+offset_right = 105.0
+offset_bottom = 101.0
+mouse_filter = 2
+
+[node name="MouseHover2" type="Panel" parent="." unique_id=1758508056]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 105.0
+offset_top = 3.0
+offset_right = 149.0
+offset_bottom = 43.0
+mouse_filter = 2

@@ -16,8 +16,8 @@ static var colors = {
 	
 	"ATK": Color.from_string("9e3434", Color.BLACK),
 	"ATKAUG": Color.from_string("cf6142", Color.BLACK),
-	"HP": Color.from_string("98a83b", Color.BLACK),
-	"HPAUG": Color.from_string("5c7fe7", Color.BLACK),
+	"HP": Color.from_string("66ff1f", Color.BLACK),
+	"HPAUG": Color.from_string("ffe11f", Color.BLACK),
 	"CD": Color.from_string("5dbcd4", Color.BLACK),
 	"BREED": Color.from_string("7c40ff", Color.BLACK),
 	"SPEC": Color.from_string("eb6ec5", Color.BLACK),

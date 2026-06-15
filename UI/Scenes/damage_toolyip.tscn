@@ -14,7 +14,7 @@ theme_override_constants/margin_bottom = 1
 script = ExtResource("1_jxjw7")
 
 [node name="DamageToolyip" type="NinePatchRect" parent="." unique_id=2112080649]
-self_modulate = Color(0.25800002, 0.86, 0.45866674, 1)
+self_modulate = Color(1, 0.8826667, 0.120000005, 1)
 texture_filter = 3
 custom_minimum_size = Vector2(20, 11)
 layout_mode = 2

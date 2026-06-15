@@ -1,24 +1,31 @@
 [gd_scene format=3 uid="uid://cq1781vyhitgy"]
 
 [ext_resource type="PackedScene" uid="uid://38s8fl53yrsg" path="res://Assets/Test/dna_test_screen.tscn" id="1_1tnvo"]
+[ext_resource type="Texture2D" uid="uid://cem1feyqvc36p" path="res://Assets/yipee/Yipretard.png" id="2_m6k4n"]
+[ext_resource type="Texture2D" uid="uid://chgxh20a6geap" path="res://Assets/Test/FieldMockup.png" id="3_is5fb"]
+[ext_resource type="Script" uid="uid://drggk5rc3mnw0" path="res://Assets/Test/yipretard.gd" id="3_pw4ey"]
+[ext_resource type="Texture2D" uid="uid://dv44aroq03tli" path="res://Assets/yipee/Yip.png" id="5_x1daf"]
 
 [node name="FakePlayScene" type="Node2D" unique_id=2057159836]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1714407251]
+[node name="UI" type="CanvasLayer" parent="." unique_id=1714407251]
 scale = Vector2(3, 3)
 transform = Transform2D(3, 0, 0, 3, 0, 0)
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer" unique_id=151901335]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="UI" unique_id=151901335]
 texture_filter = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -1.0
-offset_bottom = -1.0
+offset_left = 175.33333
+offset_top = -66.0
+offset_right = 175.33325
+offset_bottom = -66.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer" unique_id=551156345]
+[node name="SubViewport" type="SubViewport" parent="UI/SubViewportContainer" unique_id=551156345]
 transparent_bg = true
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
@@ -26,11 +33,39 @@ physics_object_picking = true
 size = Vector2i(640, 360)
 render_target_update_mode = 4
 
-[node name="DNATestScreen" parent="CanvasLayer/SubViewportContainer/SubViewport" unique_id=2140591040 instance=ExtResource("1_1tnvo")]
+[node name="DNATestScreen" parent="UI/SubViewportContainer/SubViewport" unique_id=2140591040 instance=ExtResource("1_1tnvo")]
 texture_filter = 3
 position = Vector2(268.99997, 47.999996)
 scale = Vector2(0.4, 0.4)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=224801334]
-position = Vector2(308, 174)
+position = Vector2(320, 180)
 zoom = Vector2(3, 3)
+
+[node name="Yipretard" type="Sprite2D" parent="." unique_id=1333914073]
+z_index = 2
+texture_filter = 3
+position = Vector2(182, 209)
+texture = ExtResource("2_m6k4n")
+script = ExtResource("3_pw4ey")
+
+[node name="Panel" type="Panel" parent="Yipretard" unique_id=1139955345]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -19.0
+offset_top = -19.0
+offset_right = 21.0
+offset_bottom = 21.0
+
+[node name="FieldMockup" type="Sprite2D" parent="." unique_id=1197048856]
+visible = false
+position = Vector2(308, 174)
+texture = ExtResource("3_is5fb")
+
+[node name="Yip" type="Sprite2D" parent="." unique_id=1122166625]
+position = Vector2(-58, 201)
+texture = ExtResource("5_x1daf")
+
+[node name="FieldMockup2" type="Sprite2D" parent="." unique_id=360335434]
+texture_filter = 3
+position = Vector2(320, 180)
+texture = ExtResource("3_is5fb")
