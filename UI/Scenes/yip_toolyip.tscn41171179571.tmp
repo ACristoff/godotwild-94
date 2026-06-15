@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="4_c6xv3"]
 [ext_resource type="Texture2D" uid="uid://c8pupi4jdpi4f" path="res://UI/Textures/DNAUI1.png" id="5_xh8su"]
 [ext_resource type="Texture2D" uid="uid://cpcgek38dfbym" path="res://UI/Textures/DNAUI2.png" id="6_f61sd"]
+[ext_resource type="PackedScene" uid="uid://cxcii53yccour" path="res://UI/Scenes/damage_toolyip.tscn" id="7_f61sd"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o7fgy"]
 
@@ -680,16 +681,25 @@ offset_bottom = 66.0
 [node name="StatsFlowContainer" type="FlowContainer" parent="." unique_id=2007240977]
 z_index = 1
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 88.0
 offset_top = 1.0
 offset_right = 130.0
 offset_bottom = 14.0
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/h_separation = -2
 theme_override_constants/v_separation = -1
+alignment = 1
 last_wrap_alignment = 2
+
+[node name="MarginContainer" parent="StatsFlowContainer" unique_id=53233444 instance=ExtResource("7_f61sd")]
+layout_mode = 2
+
+[node name="MarginContainer5" parent="StatsFlowContainer" unique_id=1464899260 instance=ExtResource("7_f61sd")]
+layout_mode = 2
 
 [node name="StatsContainer" type="NinePatchRect" parent="." unique_id=70282764]
 self_modulate = Color(0.21960784, 0.16862746, 0.13725491, 1)
