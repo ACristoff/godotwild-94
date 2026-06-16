@@ -67,11 +67,19 @@ func spawn_damage_indicator(value, type):
 	
 	
 func update_ailments(status_name: String, ailment_value: int):
-	for ailment in current_ailments:
+	for i in current_ailments.size():
+		var ailment = current_ailments[i]
 		if ailment["status_name"] == status_name:
-			ailment["value"] = ailment_value
-			ailment["node"].value = ailment_value
+			if ailment_value <= 0:
+				ailment["node"].queue_free()
+				current_ailments.remove_at(i)
+			else:
+				ailment["value"] = ailment_value
+				ailment["node"].value = ailment_value
 			return
+	# not currently shown:
+	if ailment_value <= 0:
+		return
 	var dmg_note = DAMAGE_TOOLYIP.instantiate()
 	status_ailments.add_child(dmg_note)
 	dmg_note.ailment_name = status_name
