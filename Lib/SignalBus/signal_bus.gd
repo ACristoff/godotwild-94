@@ -2,8 +2,7 @@ extends Node
 
 #Turn off unused signal warning in project to get rid of the dumb warnings
 #I KNOW WHAT IM DOING GODOT HECK OFF
-
-
+var permadeath: bool = false
 
 # Signal that will be triggered when game pauses
 signal pause_game

@@ -1,15 +1,17 @@
 [gd_scene format=3 uid="uid://c1ht4xb03f2jn"]
 
 [ext_resource type="Script" uid="uid://cs60rupx5pqbw" path="res://World/yipee/yipee.gd" id="1_4lw1p"]
-[ext_resource type="Texture2D" uid="uid://dv44aroq03tli" path="res://Assets/yipee/Yip.png" id="1_6pxaa"]
+[ext_resource type="Texture2D" uid="uid://cem1feyqvc36p" path="res://Assets/yipee/Yipretard.png" id="2_tt34i"]
 [ext_resource type="Script" uid="uid://81jkr63gjvq8" path="res://World/yipee/components/health.gd" id="3_0w75r"]
 [ext_resource type="Script" uid="uid://cgytvo8likyf3" path="res://World/yipee/components/attack.gd" id="4_igyue"]
+[ext_resource type="PackedScene" uid="uid://bmdpogph1dw37" path="res://UI/Scenes/health_bar.tscn" id="5_tt34i"]
 
 [node name="Yipee" type="Node2D" unique_id=580016765]
 script = ExtResource("1_4lw1p")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2107584426]
-texture = ExtResource("1_6pxaa")
+scale = Vector2(3, 3)
+texture = ExtResource("2_tt34i")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=824352016]
 
@@ -20,3 +22,12 @@ metadata/_custom_type_script = "uid://81jkr63gjvq8"
 [node name="Attack" type="Node" parent="." unique_id=1181095809]
 script = ExtResource("4_igyue")
 metadata/_custom_type_script = "uid://cgytvo8likyf3"
+
+[node name="HealthBar" parent="." unique_id=1814523002 instance=ExtResource("5_tt34i")]
+visible = false
+offset_left = -74.0
+offset_top = -98.0
+offset_right = -74.0
+offset_bottom = -98.0
+scale = Vector2(3, 3)
+max_health = 50

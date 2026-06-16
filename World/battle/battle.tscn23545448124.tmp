@@ -6,6 +6,9 @@
 
 [node name="Battle" type="Node2D" unique_id=1472135385]
 script = ExtResource("1_2qnjf")
+battle_speed = null
+player_team_data = null
+enemy_team_data = null
 
 [node name="Background" type="TextureRect" parent="." unique_id=36736255]
 offset_right = 1920.0

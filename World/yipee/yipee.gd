@@ -8,6 +8,9 @@ extends Node2D
 @onready var health: Health = $Health
 @onready var attack: Attack = $Attack
 
+@onready var health_UI: HealthBar = $HealthBar
+@onready var sprite: Sprite2D = $Sprite2D
+
 func _ready() -> void:
 	health.setup(data.get_health())
 	attack.setup(data.get_cooldown(), data.get_attack())

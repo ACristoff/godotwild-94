@@ -16,10 +16,25 @@ func _spawn(data: YipeeData, pos: Vector2) -> Yipee:
 	var yip := preload("res://World/yipee/yipee.tscn").instantiate() as Yipee
 	yip.data = data
 	yip.position = pos
+	
 	add_child(yip)
+	yip.health_UI.visible = true
+	yip.health_UI.current_health = yip.health.current_health
+	yip.health_UI.max_health = yip.health.max_health
+	yip.health_UI.update_UI()
 	return yip
 
+#DEBUG
+func generate_random_teams():
+	for i in range(5):
+		var new_yip = YipeeData.generate_yip(YipeeData.YipTier.ULTRARARE)
+		player_team_data.append(new_yip)
+		var new_yip2 = YipeeData.generate_yip(YipeeData.YipTier.ULTRARARE)
+		enemy_team_data.append(new_yip2)
+	pass
+
 func _ready():
+	generate_random_teams()
 	#Spawn player team
 	for i in range(5):
 		if i >= player_team_data.size() or player_team_data[i] == null:
@@ -33,7 +48,7 @@ func _ready():
 			break
 		var spawn = get_node("EnemyTeam/Spawn_" + str(i + 1))
 		var new_yip = _spawn(enemy_team_data[i], spawn.global_position)
-		new_yip.scale.x = -1
+		new_yip.sprite.scale.x = new_yip.sprite.scale.x * -1 
 		enemy_team.append(new_yip)
 	#Wire up all the yips
 	for yip in player_team:
@@ -49,7 +64,7 @@ func _on_attack_ready(damage: DamageInfo, team: Team) -> void:
 	if _battle_over:
 		return
 	
-	var target = null
+	var target: Yipee = null
 	if team == Team.PLAYER:
 		target = get_first_alive("enemy")
 	else:
@@ -65,6 +80,7 @@ func _on_attack_ready(damage: DamageInfo, team: Team) -> void:
 		damage.source.data.yipee_name, target.data.yipee_name, damage.amount,
 		target.health.current_health, target.health.max_health])
 	target.health.take_damage(damage)
+	target.health_UI.health_change(damage.amount, "PHYSICAL")
 
 
 
