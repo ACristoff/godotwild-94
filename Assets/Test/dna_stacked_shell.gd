@@ -12,13 +12,15 @@ var test_slot_type
 @onready var color_rect: ColorRect = $ColorRect
 @onready var slot_titles: Sprite2D = $SlotTitles
 
-
+@export var title_offset = 0
 @export var anim_start_frame = 0
 
 var possible = ["atk", "hp", "trait", "def", "spec", "cd", "breed", "null"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	color_rect.position.x += title_offset * 5
+	slot_titles.position.x += title_offset * 5
 	test_slot_type = possible.pick_random()
 	set_slot(test_slot_type)
 	await get_tree().process_frame
