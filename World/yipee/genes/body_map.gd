@@ -10,7 +10,6 @@ const STAT_SLOTS := {
 	Stat.BREEDING: [Helix.Slot.BREED_AUGMENT],
 }
 
-
 #This is for the right alleles
 enum BuffMode { FLAT, PERCENT, NONE }
 
@@ -24,3 +23,5 @@ const SLOT_BUFF := {
 	Helix.Slot.SPECIALIZATION: BuffMode.NONE,
 	Helix.Slot.BREED_AUGMENT: BuffMode.NONE,
 }
+
+enum Part { NONE, FEET, BODY, WINGS, TAIL, HEAD, MISC, EARS, MOUTH, EYES }

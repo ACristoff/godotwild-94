@@ -1,4 +1,4 @@
-extends Node2D
+class_name YipBody extends Node2D
 
 @onready var body_parts: Node2D = $"."
 
@@ -12,8 +12,52 @@ extends Node2D
 @onready var mouth: Sprite2D = $Mouth
 @onready var eyes: Sprite2D = $Eyes
 
+var _part_sprites: Dictionary
+
 var main_color : Color
 var size_mult : float = 1.0
+
+func _ready() -> void:
+	_part_sprites = {
+		BodyMap.Part.FEET: feet,
+		BodyMap.Part.BODY: body,
+		BodyMap.Part.WINGS: wings,
+		BodyMap.Part.TAIL: tail,
+		BodyMap.Part.HEAD: head,
+		BodyMap.Part.MISC: misc,
+		BodyMap.Part.EARS: ears,
+		BodyMap.Part.MOUTH: mouth,
+		BodyMap.Part.EYES: eyes,
+	}
+
+func apply_helix(helix: Helix) -> void:
+	if helix == null:
+		return
+	var dyes: Array[Color] = []
+	
+	for strand in helix.strands:
+		#check for empty strand
+		if strand == null:
+			continue
+		if strand.right == null:
+			continue
+		#get right allele
+		var right: RightAllele = strand.right
+		#assign the body part
+		if right.yip_color != Color.WHITE:
+			dyes.append(right.yip_color)
+		if right.body_target == BodyMap.Part.NONE:
+			continue
+		if right.body_part != null:
+			_part_sprites[right.body_target].texture = right.body_part
+	var body_color := Color.WHITE
+	if not dyes.is_empty():
+		body_color = Color(0, 0, 0)
+		for new_color in dyes:
+			body_color += new_color
+		body_color /= dyes.size()
+	_update_color(body_color)
+
 
 func _update_size(mult : float):
 	size_mult = mult

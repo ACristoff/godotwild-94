@@ -48,7 +48,7 @@ func _ready():
 			break
 		var spawn = get_node("EnemyTeam/Spawn_" + str(i + 1))
 		var new_yip = _spawn(enemy_team_data[i], spawn.global_position)
-		new_yip.sprite.scale.x = new_yip.sprite.scale.x * -1 
+		new_yip.body.scale.x = new_yip.body.scale.x * -1 
 		enemy_team.append(new_yip)
 	#Wire up all the yips
 	for yip in player_team:

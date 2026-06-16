@@ -1,34 +1,40 @@
 extends Node
 
+
 func _ready() -> void:
-	#var data := YipeeData.new()      # base_health = 10
-#
-	## flat +2 health cosmetic for the HEALTH slot
-	#var flat := RightAllele.new()
-	#flat.slot = Helix.Slot.HEALTH
-	#flat.buff = 2.0
-#
-	## +10% health cosmetic for the HEALTH_AUGMENT slot
-	#var pct := RightAllele.new()
-	#pct.slot = Helix.Slot.HEALTH_AUGMENT
-	#pct.buff = 0.1
-#
-	## wrap each in a strand (left can stay empty — modify_stat null-guards it)
-	#var s1 := Strand.new()
-	#s1.slot = Helix.Slot.HEALTH
-	#s1.right = flat
-#
-	#var s2 := Strand.new()
-	#s2.slot = Helix.Slot.HEALTH_AUGMENT
-	#s2.right = pct
-#
-	#data.helix.set_strand(Helix.Slot.HEALTH, s1)
-	#data.helix.set_strand(Helix.Slot.HEALTH_AUGMENT, s2)
-#
-	#print("health = ", data.get_health())   # expect (10 + 2) * 1.1 = 13.2
-	#var new_yip: YipeeData = YipeeData.generate_yip(YipeeData.YipTier.COMMON)
-	#prints(new_yip,"age", new_yip.age, "attack", new_yip.base_attack, "health", new_yip.base_health, new_yip.base_cooldown)
-	#var new_yip2: YipeeData = YipeeData.generate_yip(YipeeData.YipTier.COMMON)
-	#prints(new_yip2,"age", new_yip2.age, "attack", new_yip2.base_attack, "health", new_yip2.base_health, new_yip2.base_cooldown)
-	
-	pass
+	# --- Sample 1: BODY part, red dye ---
+	var body_allele := RightAllele.new()
+	body_allele.slot = Helix.Slot.HEALTH        # any slot; body_target drives the look
+	body_allele.body_target = BodyMap.Part.BODY
+	body_allele.body_part = preload("res://Assets/yipee/BodyPartsEdited/CoveredBody.png")
+	body_allele.yip_color = Color(1, 0, 0)      # red dye
+	body_allele.allele_name = "Test Body (red)"
+
+	# --- Sample 2: HEAD part, blue dye ---
+	var head_allele := RightAllele.new()
+	head_allele.slot = Helix.Slot.ATTACK
+	head_allele.body_target = BodyMap.Part.EYES
+	head_allele.body_part = preload("res://Assets/yipee/BodyPartsEdited/WinkEyes.png")
+	head_allele.yip_color = Color(0, 0, 1)      # blue dye
+	head_allele.allele_name = "Test Head (blue)"
+
+	# --- wire both into a helix ---
+	var helix := Helix.new()
+	var s1 := Strand.new()
+	s1.slot = Helix.Slot.HEALTH
+	s1.right = body_allele
+	helix.strands[Helix.Slot.HEALTH] = s1
+
+	var s2 := Strand.new()
+	s2.slot = Helix.Slot.ATTACK
+	s2.right = head_allele
+	helix.strands[Helix.Slot.ATTACK] = s2
+
+	# --- build data + spawn ---
+	var data := YipeeData.new()
+	data.helix = helix
+
+	var yip := preload("res://World/yipee/yipee.tscn").instantiate()
+	yip.data = data                # MUST be set before add_child — _ready reads it
+	yip.position = Vector2(960, 540)
+	add_child(yip)

@@ -1,6 +1,8 @@
 class_name RightAllele extends Allele
 
 @export var body_part: Texture2D
+@export var body_target: BodyMap.Part = BodyMap.Part.NONE
+@export var yip_color: Color = Color.WHITE
 @export var set_id: StringName
 @export var buff: float = 0.0
 

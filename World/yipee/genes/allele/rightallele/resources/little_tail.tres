@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://bskh0ra1ltawv"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_15g86"]
+[ext_resource type="Texture2D" uid="uid://dxud2xm07vbfx" path="res://Assets/yipee/BodyPartsEdited/LittleTail.png" id="1_qbhus"]
+
+[resource]
+script = ExtResource("1_15g86")
+body_part = ExtResource("1_qbhus")
+body_target = 4
+set_id = &"NONE"
+buff = 5.0
+slot = 2
+allele_name = "Little Tail"
+tooltip = "I HIT YOU WITH MY TAIL"
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

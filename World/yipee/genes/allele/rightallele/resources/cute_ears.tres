@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://dqac76ipaijhm"]
+
+[ext_resource type="Texture2D" uid="uid://bm4k6mcjao43f" path="res://Assets/yipee/BodyPartsEdited/CuteEars.png" id="1_255yq"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_wo7my"]
+
+[resource]
+script = ExtResource("1_wo7my")
+body_part = ExtResource("1_255yq")
+body_target = 7
+set_id = &"BEAR"
+buff = 0.02
+slot = 1
+allele_name = "Cute Ears"
+tooltip = "Rawr :3"
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

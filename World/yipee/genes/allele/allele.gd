@@ -2,13 +2,16 @@ class_name Allele
 extends Resource
 
 enum Side { LEFT, RIGHT }
+enum AlleleRarity { COMMON, UNCOMMON, RARE, ULTRARARE}
 
-@export var side: Allele.Side
+var side: Allele.Side
 @export var slot: Helix.Slot
+
 
 @export var allele_name: String = ""
 @export var tooltip: String = ""
 @export var tier: int = 1
+@export var rarity: AlleleRarity = AlleleRarity.COMMON
 
 # Passive Stat buffs/nerfs
 func modify_stat(base_value: float, _yipee_data) -> float:
