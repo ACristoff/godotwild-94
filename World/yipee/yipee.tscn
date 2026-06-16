@@ -11,6 +11,8 @@
 [node name="Yipee" type="Node2D" unique_id=580016765]
 script = ExtResource("1_4lw1p")
 
+[node name="SpriteContainer" type="Node2D" parent="." unique_id=1391703183]
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2107584426]
 scale = Vector2(3, 3)
 texture = ExtResource("2_tt34i")
