@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://cm16uwdk0k36m"]
+
+[ext_resource type="Script" uid="uid://bun2ba6anmnie" path="res://World/yipee/yip_visuals.gd" id="1_m1hkj"]
+[ext_resource type="Shader" uid="uid://cunw3siw1ijem" path="res://Assets/Shaders/yip_body_part_coloring.gdshader" id="2_ckis3"]
+[ext_resource type="Texture2D" uid="uid://cpl2cbqcw8mkn" path="res://Assets/yipee/BodyPartsEdited/DefaultFeet.png" id="3_wkbj6"]
+[ext_resource type="Texture2D" uid="uid://f37oxkwutbpw" path="res://Assets/yipee/BodyPartsEdited/DefaultBody.png" id="4_xswnl"]
+[ext_resource type="Texture2D" uid="uid://brb0mugv0jhlq" path="res://Assets/yipee/BodyPartsEdited/DefaultMouth.png" id="6_2d4jw"]
+[ext_resource type="Texture2D" uid="uid://ds7mgdsjrnpjh" path="res://Assets/yipee/BodyPartsEdited/DefaultHead64.png" id="6_skvs2"]
+[ext_resource type="Texture2D" uid="uid://bd0gw7n42yp0o" path="res://Assets/yipee/BodyPartsEdited/DefaultEyes.png" id="9_xswnl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fjbme"]
+shader = ExtResource("2_ckis3")
+shader_parameter/from_color = Color(1, 1, 1, 1)
+shader_parameter/to_color = Color(1, 1, 1, 1)
+shader_parameter/modulate_from_color = Color(0.79607844, 0.85882354, 0.9882353, 1)
+shader_parameter/modulate_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5876g"]
+shader = ExtResource("2_ckis3")
+shader_parameter/from_color = Color(1, 1, 1, 1)
+shader_parameter/to_color = Color(1, 1, 1, 1)
+shader_parameter/modulate_from_color = Color(0.79607844, 0.85882354, 0.9882353, 1)
+shader_parameter/modulate_color = Color(1, 1, 1, 1)
+
+[node name="BodyParts" type="Node2D" unique_id=1418422023]
+texture_filter = 3
+script = ExtResource("1_m1hkj")
+
+[node name="Feet" type="Sprite2D" parent="." unique_id=1134384492]
+material = SubResource("ShaderMaterial_fjbme")
+texture = ExtResource("3_wkbj6")
+
+[node name="Body" type="Sprite2D" parent="." unique_id=2060721043]
+material = SubResource("ShaderMaterial_5876g")
+texture = ExtResource("4_xswnl")
+
+[node name="Tail" type="Sprite2D" parent="." unique_id=2710217]
+material = SubResource("ShaderMaterial_5876g")
+
+[node name="Wings" type="Sprite2D" parent="." unique_id=1097039327]
+material = SubResource("ShaderMaterial_5876g")
+
+[node name="Head" type="Sprite2D" parent="." unique_id=293114598]
+material = SubResource("ShaderMaterial_5876g")
+texture = ExtResource("6_skvs2")
+
+[node name="Misc" type="Sprite2D" parent="." unique_id=981484355]
+material = SubResource("ShaderMaterial_5876g")
+
+[node name="Ears" type="Sprite2D" parent="." unique_id=2049323421]
+material = SubResource("ShaderMaterial_5876g")
+
+[node name="Mouth" type="Sprite2D" parent="." unique_id=2071850856]
+material = SubResource("ShaderMaterial_5876g")
+texture = ExtResource("6_2d4jw")
+
+[node name="Eyes" type="Sprite2D" parent="." unique_id=1402129529]
+texture = ExtResource("9_xswnl")
