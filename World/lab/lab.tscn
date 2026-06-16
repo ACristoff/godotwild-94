@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://b4hhhfjv5dy4w"]
+
+[ext_resource type="Texture2D" uid="uid://sp7u6evl5n7n" path="res://Assets/Environment/Scenes/Laboratory/LabFloor.png" id="1_nl8f2"]
+[ext_resource type="Texture2D" uid="uid://c1xvm0thbin5l" path="res://Assets/Environment/Scenes/Laboratory/LabScreen.png" id="2_fne6d"]
+[ext_resource type="Texture2D" uid="uid://dp6fox832wacg" path="res://Assets/Environment/Scenes/Laboratory/LabPieces.png" id="3_ems3l"]
+[ext_resource type="Texture2D" uid="uid://blbxak2oo2t0j" path="res://Assets/Environment/Scenes/Laboratory/LabPiecesOver.png" id="4_uroyv"]
+[ext_resource type="PackedScene" uid="uid://38s8fl53yrsg" path="res://Assets/Test/dna_test_screen.tscn" id="5_ieswn"]
+
+[node name="Lab" type="Node2D" unique_id=1804512105]
+
+[node name="LabFloor" type="Sprite2D" parent="." unique_id=1479778400]
+texture_filter = 3
+position = Vector2(320, 180)
+texture = ExtResource("1_nl8f2")
+
+[node name="LabScreen" type="Sprite2D" parent="." unique_id=760138046]
+texture_filter = 3
+position = Vector2(320, 180)
+texture = ExtResource("2_fne6d")
+
+[node name="LabPieces" type="Sprite2D" parent="." unique_id=1245527304]
+texture_filter = 3
+position = Vector2(320, 180)
+texture = ExtResource("3_ems3l")
+
+[node name="LabPiecesOver" type="Sprite2D" parent="." unique_id=360956867]
+texture_filter = 3
+position = Vector2(320, 180)
+texture = ExtResource("4_uroyv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1911432724]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer" unique_id=1477775606]
+texture_filter = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 3
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer" unique_id=1842217819]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="DNATestScreen" parent="CanvasLayer/SubViewportContainer/SubViewport" unique_id=2140591040 instance=ExtResource("5_ieswn")]
+position = Vector2(1016, 129)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1227908562]
+position = Vector2(320, 180)
+zoom = Vector2(3, 3)

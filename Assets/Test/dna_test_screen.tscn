@@ -64,10 +64,6 @@ position = Vector2(-1, 525)
 position = Vector2(-0.5, -1)
 shape = SubResource("RectangleShape2D_ijr3j")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1555822255]
-position = Vector2(0, 470)
-zoom = Vector2(0.475, 0.475)
-
 [node name="Timer" type="Timer" parent="." unique_id=1348414813]
 wait_time = 0.05
 autostart = true
