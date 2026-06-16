@@ -26,7 +26,7 @@ metadata/_custom_type_script = "uid://ckc2iq0roikyx"
 script = ExtResource("2_xg215")
 yipee_name = "Faglord"
 tier = 3
-base_cooldown = 5.0
+base_cooldown = 1.0
 helix = SubResource("Resource_td780")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 

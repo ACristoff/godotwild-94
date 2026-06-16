@@ -74,7 +74,7 @@ func update_ailments(status_name: String, ailment_value: int):
 			return
 	var dmg_note = DAMAGE_TOOLYIP.instantiate()
 	status_ailments.add_child(dmg_note)
-	dmg_note.status_name = status_name
+	dmg_note.ailment_name = status_name
 	dmg_note.value = ailment_value
 	current_ailments.append({
 		"status_name": status_name,

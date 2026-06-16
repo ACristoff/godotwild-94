@@ -16,7 +16,11 @@ enum Slot {
 const SLOT_COUNT := 8
 
 ## Indexed by Slot. Entries may be null (empty rung).
-@export var strands: Array[Strand] = []
+@export var strands: Array[Strand] = []:
+	set(value):
+		strands = value
+		if strands.size() < SLOT_COUNT:
+			strands.resize(SLOT_COUNT)
 
 func _init() -> void:
 	if strands.size() < SLOT_COUNT:

@@ -4,7 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://cem1feyqvc36p" path="res://Assets/yipee/Yipretard.png" id="2_tt34i"]
 [ext_resource type="Script" uid="uid://81jkr63gjvq8" path="res://World/yipee/components/health.gd" id="3_0w75r"]
 [ext_resource type="Script" uid="uid://cgytvo8likyf3" path="res://World/yipee/components/attack.gd" id="4_igyue"]
+[ext_resource type="Script" uid="uid://cyixrd0wnn7a" path="res://World/yipee/components/ability_runner.gd" id="5_mjiai"]
 [ext_resource type="PackedScene" uid="uid://bmdpogph1dw37" path="res://UI/Scenes/health_bar.tscn" id="5_tt34i"]
+[ext_resource type="Script" uid="uid://duy3ch27wcqnc" path="res://World/yipee/components/status_effects.gd" id="7_2cy03"]
 
 [node name="Yipee" type="Node2D" unique_id=580016765]
 script = ExtResource("1_4lw1p")
@@ -22,6 +24,14 @@ metadata/_custom_type_script = "uid://81jkr63gjvq8"
 [node name="Attack" type="Node" parent="." unique_id=1181095809]
 script = ExtResource("4_igyue")
 metadata/_custom_type_script = "uid://cgytvo8likyf3"
+
+[node name="AbilityRunner" type="Node" parent="." unique_id=1098575653]
+script = ExtResource("5_mjiai")
+metadata/_custom_type_script = "uid://cyixrd0wnn7a"
+
+[node name="StatusEffects" type="Node" parent="." unique_id=811308808]
+script = ExtResource("7_2cy03")
+metadata/_custom_type_script = "uid://duy3ch27wcqnc"
 
 [node name="HealthBar" parent="." unique_id=1814523002 instance=ExtResource("5_tt34i")]
 visible = false

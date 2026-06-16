@@ -26,10 +26,10 @@ func _spawn(data: YipeeData, pos: Vector2) -> Yipee:
 
 #DEBUG
 func generate_random_teams():
-	for i in range(5):
+	for i in range(1):
 		var new_yip = YipeeData.generate_yip(YipeeData.YipTier.ULTRARARE)
-		player_team_data.append(new_yip)
-		var new_yip2 = YipeeData.generate_yip(YipeeData.YipTier.ULTRARARE)
+		#player_team_data.append(new_yip)
+		var new_yip2 = YipeeData.generate_yip(YipeeData.YipTier.COMMON)
 		enemy_team_data.append(new_yip2)
 	pass
 
@@ -59,6 +59,7 @@ func _ready():
 func wire_signals(yip: Yipee, team: Team):
 	yip.attack.attack_ready.connect(_on_attack_ready.bind(team))
 	yip.health.died.connect(_on_died.bind(yip))
+	yip.status.status_tick.connect(_on_status_tick.bind(yip))
 
 func _on_attack_ready(damage: DamageInfo, team: Team) -> void:
 	if _battle_over:
@@ -75,14 +76,26 @@ func _on_attack_ready(damage: DamageInfo, team: Team) -> void:
 		return
 	
 	#prints(damage, damage.amount, damage.target, team, target)
+	var attacker := damage.source as Yipee
 	damage.target = target
 	print("%s hit %s for %d → %d/%d" % [
 		damage.source.data.yipee_name, target.data.yipee_name, damage.amount,
 		target.health.current_health, target.health.max_health])
+	
+	# attacker's strands mutate the OUTGOING hit (FireAllele stamps FIRE here)
+	attacker.ability.on_attack(damage, self)
+	apply_damage(target, damage)
+	# post-hit reactions (splash, lifesteal…) fan out AFTER the hit lands
+	attacker.ability.on_hit(damage, self)
+
+func apply_damage(target: Yipee, damage: DamageInfo) -> void:
+	# target's strands mutate the INCOMING hit (resist/shield) before it lands
+	target.ability.on_take_damage(damage, self)
 	target.health.take_damage(damage)
-	target.health_UI.health_change(damage.amount, "PHYSICAL")
+	target.health_UI.health_change(damage.amount, damage_type_name(damage))
 
-
+func damage_type_name(damage: DamageInfo) -> String:
+	return DamageInfo.Type.keys()[damage.type]
 
 func check_for_victory() -> Team:
 	var player_alive = false
@@ -116,17 +129,26 @@ func _on_died(corpse: Yipee) -> void:
 	if _battle_over:
 		return
 	
+	corpse.ability.on_death(self)
 	print(corpse.data.yipee_name, " fucking died!")
 	corpse.scale.y = -1
 	if check_for_victory() != Team.NONE:
-		print("Battle over!", check_for_victory())
+		prints("Battle over!", check_for_victory())
 		_battle_over = true
+
+func _on_status_tick(damage: DamageInfo, owner_yip: Yipee) -> void:
+	if _battle_over:
+		return
+	damage.target = owner_yip
+	apply_damage(owner_yip, damage)
 
 func _process(delta):
 	if _battle_over != true:
 		for yip: Yipee in player_team:
 			if yip.health.current_health > 0:
 				yip.attack.tick(delta * battle_speed)
+				yip.status.tick(delta * battle_speed)
 		for yip: Yipee in enemy_team:
 			if yip.health.current_health > 0:
 				yip.attack.tick(delta * battle_speed)
+				yip.status.tick(delta * battle_speed)
