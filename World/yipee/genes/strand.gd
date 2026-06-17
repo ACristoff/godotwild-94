@@ -80,15 +80,20 @@ func get_body_part() -> Texture2D:
 	return right.body_part
 
 func split() -> Array[Allele]:
-	return [left, right]
+	var out: Array[Allele] = []
+	if left:
+		out.append(left)
+	if right:
+		out.append(right)
+	return out
 
 static func combine(new_left: LeftAllele, new_right: RightAllele) -> Strand:
-	if new_left == null or new_right == null:
+	if new_left == null and new_right == null:
 		return null
-	if new_left.slot != new_right.slot:
+	if new_left != null and new_right != null and new_left.slot != new_right.slot:
 		return null
 	var strand := Strand.new()
 	strand.left = new_left
 	strand.right = new_right
-	strand.slot = new_left.slot
+	strand.slot = new_left.slot if new_left != null else new_right.slot
 	return strand
