@@ -12,7 +12,6 @@ extends Node2D
 @onready var body: YipBody = $BodyParts
 
 @onready var health_UI: HealthBar = $HealthBar
-@onready var sprite: Sprite2D = $Sprite2D
 
 
 func _ready() -> void:

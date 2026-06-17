@@ -59,7 +59,7 @@ func _ready():
 
 
 func get_yip_tier():
-	var random = randi_range(0, 100)
+	var random = randi_range(0, 99)
 	var current_odds = yip_tier_dictionaries[field_level]
 	
 	var total = 0
@@ -68,16 +68,8 @@ func get_yip_tier():
 		if random < total:
 			return odd
 
-		#var random = randi_range(0, 100)
-		#var current_odds = fill_chance_by_tier[yip_tier]
-		#
-		#if random < current_odds:
-			#var strand := Strand.new()
-			#strand.slot = types.pick_random()
-			#helix.strands[i] = strand
-
 func chance_to_fill(yip_tier: YipeeData.YipTier) -> bool:
-	var random = randi_range(0, 100)
+	var random = randi_range(0, 99)
 	var current_odds = allele_fill_chance_by_tier[yip_tier]
 	
 	if random < current_odds:
@@ -113,7 +105,7 @@ func spawn_yip():
 	var new_helix := Helix.generate_random()
 	var mutated_helix : Helix = generate_alleles(yip_tier, new_helix)
 	
-	new_yip_data.helix = new_helix
+	new_yip_data.helix = mutated_helix
 	new_yip.data = new_yip_data
 	new_yip.position = random_location()
 	
