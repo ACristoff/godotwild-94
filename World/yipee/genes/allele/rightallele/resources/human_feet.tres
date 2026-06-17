@@ -7,7 +7,7 @@
 script = ExtResource("1_l2if3")
 body_part = ExtResource("1_t4wg1")
 body_target = 1
-slot = 7
+slot = 6
 allele_name = "Hominid Mobility"
 rarity = 2
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

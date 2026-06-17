@@ -1,5 +1,12 @@
 [gd_scene format=3 uid="uid://ck3x2jswx268u"]
 
+[ext_resource type="Script" uid="uid://dvclhivib348r" path="res://World/field/field.gd" id="1_2j5an"]
+[ext_resource type="Texture2D" uid="uid://boj74to4iulqd" path="res://Assets/Environment/Scenes/CaptureField/CaptureField.png" id="1_ed8vu"]
+
 [node name="Field" type="Node2D" unique_id=1076215709]
+script = ExtResource("1_2j5an")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1448066629]
+position = Vector2(960.11096, 539.99994)
+scale = Vector2(3.0003471, 2.9999998)
+texture = ExtResource("1_ed8vu")

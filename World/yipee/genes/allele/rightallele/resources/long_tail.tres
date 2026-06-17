@@ -7,7 +7,7 @@
 script = ExtResource("1_6g06r")
 body_part = ExtResource("1_dutrc")
 body_target = 4
-slot = 5
+slot = 4
 allele_name = "Long Tail"
 rarity = 2
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

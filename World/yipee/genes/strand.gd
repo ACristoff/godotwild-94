@@ -1,6 +1,6 @@
 class_name Strand extends Resource
 
-@export var slot: Helix.Slot
+@export var slot: BodyMap.Slot
 @export var left: LeftAllele
 @export var right: RightAllele
 

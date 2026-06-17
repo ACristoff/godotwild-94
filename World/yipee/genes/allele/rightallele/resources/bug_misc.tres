@@ -8,6 +8,6 @@ script = ExtResource("1_vkcl3")
 body_part = ExtResource("1_ppsbq")
 body_target = 6
 buff = 0.05
-slot = 7
+slot = 6
 allele_name = "Antennae"
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

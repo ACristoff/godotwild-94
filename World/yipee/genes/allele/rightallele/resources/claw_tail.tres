@@ -7,7 +7,7 @@
 script = ExtResource("1_0aq75")
 body_part = ExtResource("1_yci6u")
 body_target = 4
-slot = 7
+slot = 6
 allele_name = "Plucker"
 rarity = 2
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

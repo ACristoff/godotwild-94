@@ -61,22 +61,26 @@ func get_cooldown() -> float:
 
 func _derived(base: float, stat: BodyMap.Stat) -> float:
 	var result := base
-	for slot: Helix.Slot in BodyMap.STAT_SLOTS[stat]:
-		var strand := helix.get_strand(slot)
-		if strand:
+	var slot_types: Array = BodyMap.STAT_SLOTS[stat]
+	for strand in helix.strands:
+		if strand == null:
+			continue
+		if slot_types.has(strand.slot):
 			result = strand.modify_stat(result, self)
 	return result
 
 func clone() -> YipeeData:
 	return duplicate(true) as YipeeData
 
-
-
-static func generate_yip(tier: YipTier) -> YipeeData:
+static func generate_yip(chosen_tier: YipTier) -> YipeeData:
 	var new_yip = YipeeData.new()
 	
-	new_yip.tier = tier
-	new_yip.base_attack = randi_range(YIP_TABLE[tier]["ATK"][0], YIP_TABLE[tier]["ATK"][1])
-	new_yip.base_health = randi_range(YIP_TABLE[tier]["HP"][0], YIP_TABLE[tier]["HP"][1])
-	new_yip.base_cooldown = randf_range(YIP_TABLE[tier]["COOLDOWN"][0], YIP_TABLE[tier]["COOLDOWN"][1])
+	new_yip.tier = chosen_tier
+	new_yip.base_attack = randi_range(YIP_TABLE[chosen_tier]["ATK"][0], YIP_TABLE[chosen_tier]["ATK"][1])
+	new_yip.base_health = randi_range(YIP_TABLE[chosen_tier]["HP"][0], YIP_TABLE[chosen_tier]["HP"][1])
+	new_yip.base_cooldown = randf_range(YIP_TABLE[chosen_tier]["COOLDOWN"][0], YIP_TABLE[chosen_tier]["COOLDOWN"][1])
+	
+	var new_helix: Helix = Helix.generate_random()
+	new_yip.helix = new_helix	
+	
 	return new_yip

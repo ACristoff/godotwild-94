@@ -7,7 +7,7 @@
 script = ExtResource("1_26ulh")
 body_part = ExtResource("1_qnf3t")
 body_target = 6
-slot = 7
+slot = 6
 allele_name = "Soothsayer"
 rarity = 3
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

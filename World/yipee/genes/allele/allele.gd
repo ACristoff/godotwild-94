@@ -5,7 +5,7 @@ enum Side { LEFT, RIGHT }
 enum AlleleRarity { COMMON, UNCOMMON, RARE, ULTRARARE}
 
 var side: Allele.Side
-@export var slot: Helix.Slot
+@export var slot: BodyMap.Slot
 
 
 @export var allele_name: String = ""

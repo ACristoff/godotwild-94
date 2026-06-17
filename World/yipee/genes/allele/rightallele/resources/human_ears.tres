@@ -7,7 +7,7 @@
 script = ExtResource("1_mj4uw")
 body_part = ExtResource("1_o2mwj")
 body_target = 7
-slot = 5
+slot = 4
 allele_name = "Ear Drum"
 rarity = 1
 metadata/_custom_type_script = "uid://hpdocbvx27nb"
