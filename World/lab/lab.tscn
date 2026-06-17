@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://38s8fl53yrsg" path="res://Assets/Test/dna_test_screen.tscn" id="5_ieswn"]
 [ext_resource type="Texture2D" uid="uid://djdujp6j5ud2u" path="res://Assets/Environment/Scenes/Laboratory/Conveyor.png" id="6_fne6d"]
 [ext_resource type="Texture2D" uid="uid://hw33tjyvck3t" path="res://UI/Textures/Gene.png" id="8_uroyv"]
+[ext_resource type="PackedScene" uid="uid://ba2i2glrfw55d" path="res://World/areas.tscn" id="9_ieswn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uroyv"]
 shader = ExtResource("4_ems3l")
@@ -44,36 +45,23 @@ glow_bloom = 0.2
 
 [node name="LabFloor" type="Sprite2D" parent="." unique_id=1479778400]
 texture_filter = 3
-position = Vector2(320, 180)
+position = Vector2(960, 540)
+scale = Vector2(3, 3)
 texture = ExtResource("1_nl8f2")
 
 [node name="Conveyor" type="Sprite2D" parent="." unique_id=724460789]
 texture_filter = 3
-position = Vector2(158, 235)
+position = Vector2(450, 692)
+scale = Vector2(3, 3)
 texture = ExtResource("6_fne6d")
 hframes = 2
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1270990920]
-offset_left = 230.0
-offset_top = -12.0
-offset_right = 719.0
-offset_bottom = 277.0
-mouse_filter = 2
-color = Color(0.11327667, 0.039100002, 0.17, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="." unique_id=707207655]
-offset_left = 217.0
-offset_top = 33.0
-offset_right = 249.0
-offset_bottom = 217.0
-mouse_filter = 2
-color = Color(0.11327667, 0.039100002, 0.17, 1)
-
-[node name="ColorRect3" type="ColorRect" parent="." unique_id=1520145188]
-offset_left = 373.0
-offset_top = 266.0
-offset_right = 586.0
-offset_bottom = 288.0
+offset_left = 690.0
+offset_top = -39.0
+offset_right = 1179.0
+offset_bottom = 250.0
+scale = Vector2(3, 3)
 mouse_filter = 2
 color = Color(0.11327667, 0.039100002, 0.17, 1)
 
@@ -87,6 +75,7 @@ offset_right = 626.0
 offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(3, 3)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -141,40 +130,45 @@ title_offset = 84
 
 [node name="ColorRect4" type="ColorRect" parent="." unique_id=749799674]
 material = SubResource("ShaderMaterial_uroyv")
-offset_left = 230.0
-offset_top = 1.0
-offset_right = 687.0
-offset_bottom = 276.0
+offset_left = 691.0
+offset_top = 2.0
+offset_right = 1148.0
+offset_bottom = 277.0
+scale = Vector2(3, 3)
 mouse_filter = 2
 
 [node name="LabScreen" type="Sprite2D" parent="." unique_id=760138046]
 texture_filter = 3
-position = Vector2(320, 180)
+position = Vector2(960, 540)
+scale = Vector2(3, 3)
 texture = ExtResource("2_fne6d")
 
 [node name="LabPieces" type="Sprite2D" parent="." unique_id=1245527304]
 texture_filter = 3
-position = Vector2(320, 180)
+position = Vector2(960, 540)
+scale = Vector2(3, 3)
 texture = ExtResource("3_ems3l")
 
 [node name="LabPiecesOver" type="Sprite2D" parent="." unique_id=360956867]
 texture_filter = 3
-position = Vector2(320, 180)
+position = Vector2(960, 540)
+scale = Vector2(3, 3)
 texture = ExtResource("4_uroyv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1911432724]
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1227908562]
-position = Vector2(320, 180)
-zoom = Vector2(3, 3)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=939278799]
 environment = SubResource("Environment_ems3l")
 
 [node name="Gene" type="Sprite2D" parent="." unique_id=18300664]
+visible = false
 texture_filter = 3
 position = Vector2(480, 58)
 texture = ExtResource("8_uroyv")
+
+[node name="Areas" parent="." unique_id=1408748551 instance=ExtResource("9_ieswn")]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=482508547]
 
 [editable path="Control/SubViewportContainer/SubViewport/DNATestScreen"]
 [editable path="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA/DNAStackedShell"]

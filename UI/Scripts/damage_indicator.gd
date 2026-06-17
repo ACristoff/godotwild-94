@@ -29,22 +29,33 @@ func popup(damage = 0, type = "PHYSICAL"):
 	#text.add_theme_font_size_override("font_size", 6)
 	print("type =", type)
 	match type:
+		"PHYSICAL":
+			text.self_modulate = TypeColors.colors["PHYSICAL"]
 		"FIRE":
 			text.self_modulate = TypeColors.colors["FIRE"]
-		"crit":
-			text.self_modulate = Color.RED
-		"fire":
-			text.self_modulate = Color.ORANGE_RED
-		"poison":
-			text.self_modulate = Color.WEB_PURPLE
-		"zap":
-			text.self_modulate = Color.GOLD
-			wow_factor = 0
+		"POISON":
+			text.self_modulate = TypeColors.colors["POISON"]
+		"WEB":
+			text.self_modulate = TypeColors.colors["WEB"]
+		"ICE":
+			text.self_modulate = TypeColors.colors["ICE"]
+		"ELECTRIC":
+			text.self_modulate = TypeColors.colors["ELECTRIC"]
+		"BLEED":
+			text.self_modulate = TypeColors.colors["BLEED"]
+		"HAZED":
+			text.self_modulate = TypeColors.colors["HAZED"]
+		"FREEZE": 
+			text.self_modulate = TypeColors.colors["FREEZE"]
+		"LIFESTEAL":
+			text.self_modulate = TypeColors.colors["LIFESTEAL"]
+		"HEAL":
+			text.self_modulate = TypeColors.colors["HEAL"]
 	
 	text.text = str(int(damage))
 	if tween:
 		tween.kill()
-	var font_sizes = [8, 16, 32, 64]
+	var font_sizes = [48, 96, 192, 384]
 	var t = clampf(float(damage) / 1000.0, 0.0, 1.0)
 	var index = mini(int(t * font_sizes.size()), font_sizes.size() - 1)
 	var new_size = font_sizes[index]
@@ -62,7 +73,7 @@ func popup(damage = 0, type = "PHYSICAL"):
 	tween.set_parallel(true)
 	#tween.parallel().tween_method(set_font_size, 8.0, 16.0, 0.1)
 	tween.tween_method(move_along_curve, 0.0, 1.0, .8)
-	tween.parallel().tween_method(set_font_size, current_size, 8.0, 0.15)
+	tween.parallel().tween_method(set_font_size, current_size, 48.0, 0.15)
 	tween.parallel().tween_property(text, "modulate", color, .3).set_delay(.5)
 	tween.set_parallel(false)
 	tween.tween_property(text, "modulate", color, .3)

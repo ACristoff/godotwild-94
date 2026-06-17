@@ -24,4 +24,7 @@ func make_damage() -> DamageInfo:
 	var damage := DamageInfo.new()
 	damage.amount = power
 	damage.source = get_parent()
+	
+	$"../ActionsAnim".play("Attack")
+	$"../ThrowPunchAnim".play("Punch")
 	return damage

@@ -15,12 +15,18 @@ func setup(max_hp: float) -> void:
 	health_changed.emit(current_health, max_health)
 
 func take_damage(damage_data: DamageInfo) -> void:
+	$"../HitAnim".play("GotHit")
+	$"../ActionsAnim".play("Hit")
 	if current_health <= 0:
 		return
 	current_health = maxi(current_health - roundi(damage_data.amount - shield), 0)
 	health_changed.emit(current_health, max_health)
 	if current_health <= 0:
 		died.emit()
+		#await get_tree().process_frame
+		#await get_tree().process_frame
+		#$"../ActionsAnim".play("Death")
+		$"../HealthBar".hide()
 
 func heal(amount: float) -> void:
 	if current_health <= 0:

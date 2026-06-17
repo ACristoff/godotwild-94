@@ -40,15 +40,16 @@ func _ready():
 		if i >= player_team_data.size() or player_team_data[i] == null:
 			break
 		var spawn = get_node("PlayerTeam/Spawn_" + str(i + 1))
-		var new_yip = _spawn(player_team_data[i], spawn.global_position)
+		var new_yip = _spawn(player_team_data[i], spawn.global_position + Vector2(105, 45))
 		player_team.append(new_yip)
 	#Spawn enemy team
 	for i in range(5):
 		if i >= enemy_team_data.size() or enemy_team_data[i] == null:
 			break
 		var spawn = get_node("EnemyTeam/Spawn_" + str(i + 1))
-		var new_yip = _spawn(enemy_team_data[i], spawn.global_position)
+		var new_yip = _spawn(enemy_team_data[i], spawn.global_position + Vector2(105, 45))
 		new_yip.body.scale.x = new_yip.body.scale.x * -1 
+		new_yip.enemy_flip()
 		enemy_team.append(new_yip)
 	#Wire up all the yips
 	for yip in player_team:
@@ -135,7 +136,6 @@ func _on_died(corpse: Yipee) -> void:
 	if check_for_victory() != Team.NONE:
 		prints("Battle over!", check_for_victory())
 		_battle_over = true
-
 func _on_status_tick(damage: DamageInfo, owner_yip: Yipee) -> void:
 	if _battle_over:
 		return

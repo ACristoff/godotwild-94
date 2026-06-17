@@ -9,6 +9,7 @@ static var colors = {
 	"ELECTRIC": Color.from_string("ffb133", Color.BLACK),
 	"BLEED": Color.from_string("4a0f0f", Color.BLACK),
 	"HAZED": Color.from_string("88ad6d", Color.BLACK),
+	"FREEZE": Color.from_string("82fff5", Color.BLACK),
 	
 	"PHYSICAL": Color.from_string("b53131", Color.BLACK),
 	"LIFESTEAL": Color.from_string("7a0049", Color.BLACK),

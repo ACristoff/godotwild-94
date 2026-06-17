@@ -1,10 +1,10 @@
 class_name Field extends Node2D
 
-var field_level = 0
+var field_level = 3
 var base_slot_chance = 25
 var base_yip_tier_chance = 25
 
-var yips = 12
+var yips = 30
 
 var yip_tier_odds_0: Dictionary = {
 	YipeeData.YipTier.COMMON: 50,

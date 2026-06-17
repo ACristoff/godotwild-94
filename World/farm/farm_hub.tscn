@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://nftefyq1mjfs"]
+
+[ext_resource type="Texture2D" uid="uid://tvdccdi2svbw" path="res://Assets/Environment/Scenes/FarmHub/CaptureField.png" id="1_uce31"]
+[ext_resource type="Texture2D" uid="uid://cde766uqhwhye" path="res://Assets/Environment/Scenes/FarmHub/FarmFenceOver.png" id="2_kiiwq"]
+[ext_resource type="Texture2D" uid="uid://dchflrmjnwtq6" path="res://Assets/Environment/Scenes/FarmHub/FarmFenceOverReal.png" id="3_4wsdy"]
+[ext_resource type="Texture2D" uid="uid://cqbisn13rvdd" path="res://Assets/Environment/Scenes/FarmHub/FarmBreedingBarn.png" id="4_goe80"]
+[ext_resource type="Texture2D" uid="uid://csonk8c5dj0ht" path="res://Assets/Environment/Scenes/FarmHub/FarmLab.png" id="5_odbp6"]
+[ext_resource type="Texture2D" uid="uid://bouvm8wo3pupb" path="res://Assets/Environment/Scenes/BattleField/YipTeamSlot.png" id="6_4wsdy"]
+[ext_resource type="PackedScene" uid="uid://ba2i2glrfw55d" path="res://World/areas.tscn" id="7_goe80"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_goe80"]
+size = Vector2(451, 272)
+
+[node name="FarmHub" type="Node2D" unique_id=1302684830]
+texture_filter = 3
+
+[node name="CaptureField" type="Sprite2D" parent="." unique_id=1283365202]
+texture_filter = 3
+position = Vector2(960, 540)
+scale = Vector2(3, 3)
+texture = ExtResource("1_uce31")
+
+[node name="FarmFenceOver" type="Sprite2D" parent="." unique_id=384913322]
+position = Vector2(960, 540)
+scale = Vector2(3, 3)
+texture = ExtResource("2_kiiwq")
+
+[node name="FarmFenceOverReal" type="Sprite2D" parent="." unique_id=1623166164]
+position = Vector2(960, 540)
+scale = Vector2(3, 3)
+texture = ExtResource("3_4wsdy")
+
+[node name="FarmBreedingBarn" type="Sprite2D" parent="." unique_id=1895500106]
+position = Vector2(960, 540)
+scale = Vector2(3, 3)
+texture = ExtResource("4_goe80")
+
+[node name="FarmLab" type="Sprite2D" parent="." unique_id=2027895717]
+position = Vector2(960, 540)
+scale = Vector2(3, 3)
+texture = ExtResource("5_odbp6")
+
+[node name="Slots" type="Node2D" parent="." unique_id=2018565995]
+scale = Vector2(3, 3)
+
+[node name="YipTeamSlot" type="Sprite2D" parent="Slots" unique_id=1045852]
+texture_filter = 3
+position = Vector2(166, 309)
+texture = ExtResource("6_4wsdy")
+
+[node name="YipTeamSlot2" type="Sprite2D" parent="Slots" unique_id=849101087]
+texture_filter = 3
+position = Vector2(230, 309)
+texture = ExtResource("6_4wsdy")
+
+[node name="YipTeamSlot3" type="Sprite2D" parent="Slots" unique_id=1437709564]
+texture_filter = 3
+position = Vector2(294, 309)
+texture = ExtResource("6_4wsdy")
+
+[node name="YipTeamSlot4" type="Sprite2D" parent="Slots" unique_id=771988295]
+texture_filter = 3
+position = Vector2(358, 309)
+texture = ExtResource("6_4wsdy")
+
+[node name="YipTeamSlot5" type="Sprite2D" parent="Slots" unique_id=1770956784]
+texture_filter = 3
+position = Vector2(422, 309)
+texture = ExtResource("6_4wsdy")
+
+[node name="Areas" parent="." unique_id=1408748551 instance=ExtResource("7_goe80")]
+
+[node name="BreedFarmSlot" type="Area2D" parent="." unique_id=990957553]
+position = Vector2(661, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BreedFarmSlot" unique_id=410419710]
+position = Vector2(215.5, 126)
+shape = SubResource("RectangleShape2D_goe80")

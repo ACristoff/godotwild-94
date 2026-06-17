@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://cnhmh8kaynhyc" path="res://UI/Textures/Sheild.png" id="2_1natu"]
 [ext_resource type="Texture2D" uid="uid://bdc122yit4ji1" path="res://UI/Textures/HealthBar.png" id="2_27k4o"]
 [ext_resource type="FontFile" uid="uid://6nvj4320wbu4" path="res://UI/Fonts/Vaticanus-G3yVG.ttf" id="4_w4xj8"]
+[ext_resource type="Texture2D" uid="uid://b8jbj5t66yeht" path="res://UI/Textures/CDBar.png" id="6_sk0yw"]
+[ext_resource type="Texture2D" uid="uid://71bifi5ddniy" path="res://UI/Textures/CDBarOver.png" id="7_dvd2k"]
 
 [node name="HealthBar" type="Control" unique_id=1814523002]
 layout_mode = 3
@@ -87,6 +89,24 @@ theme_override_fonts/font = ExtResource("4_w4xj8")
 theme_override_font_sizes/font_size = 8
 text = "999"
 horizontal_alignment = 1
+
+[node name="CDBar" type="Control" parent="NinePatchRect" unique_id=666442421]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="NinePatchRect/CDBar" unique_id=1401815567]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 22.0
+offset_right = 34.0
+offset_bottom = 56.0
+max_value = 34.0
+fill_mode = 3
+texture_under = ExtResource("6_sk0yw")
+texture_progress = ExtResource("7_dvd2k")
 
 [node name="StatusAilments" type="HFlowContainer" parent="." unique_id=1422613452]
 custom_minimum_size = Vector2(58.64, 0)

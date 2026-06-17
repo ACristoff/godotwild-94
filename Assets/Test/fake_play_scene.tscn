@@ -32,7 +32,8 @@ position = Vector2(308, 174)
 texture = ExtResource("3_is5fb")
 
 [node name="Yip" type="Sprite2D" parent="." unique_id=1122166625]
-position = Vector2(-58, 201)
+texture_filter = 3
+position = Vector2(-76, 181)
 texture = ExtResource("5_x1daf")
 
 [node name="FieldMockup2" type="Sprite2D" parent="." unique_id=360335434]

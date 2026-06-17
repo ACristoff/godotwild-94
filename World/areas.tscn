@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://ba2i2glrfw55d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wsdy"]
+size = Vector2(620, 564)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4wsdy"]
+radius = 36.0
+height = 138.0
+
+[node name="Areas" type="Node2D" unique_id=1408748551]
+
+[node name="MainPen" type="Area2D" parent="." unique_id=1457590473]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainPen" unique_id=195685785]
+position = Vector2(300, 272)
+shape = SubResource("RectangleShape2D_4wsdy")
+
+[node name="TeamSlot" type="Area2D" parent="." unique_id=1340362752]
+position = Vector2(500, 930)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeamSlot" unique_id=463593819]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_4wsdy")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TeamSlot" unique_id=1864416285]
+position = Vector2(192, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_4wsdy")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="TeamSlot" unique_id=2140482653]
+position = Vector2(384, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_4wsdy")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="TeamSlot" unique_id=1981103689]
+position = Vector2(576, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_4wsdy")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="TeamSlot" unique_id=1710208917]
+position = Vector2(768, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_4wsdy")

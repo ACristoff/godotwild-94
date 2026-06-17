@@ -24,6 +24,7 @@ var current_ailments = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	current_health = max_health
+	
 	#in ready youd instantiate all the yips stats on the YipStats flowbox
 
 func health_change(change : int, type : String):
@@ -32,10 +33,11 @@ func health_change(change : int, type : String):
 		return
 	if amount_of_change < 0:
 		amount_of_change *= -1
-		spawn_damage_indicator(amount_of_change, type)
+		spawn_damage_indicator(change, type)
 		current_health += amount_of_change
 		return
-	spawn_damage_indicator(amount_of_change, type)
+	spawn_damage_indicator(change, type)
+	#print("YOOOOOOOO  ", amount_of_change)
 	current_health -= change
 	
 	HP_graphic_step_size = float(HP_graphic_size) / float(max_health)
