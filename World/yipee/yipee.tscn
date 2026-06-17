@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cs60rupx5pqbw" path="res://World/yipee/yipee.gd" id="1_4lw1p"]
 [ext_resource type="PackedScene" uid="uid://cm16uwdk0k36m" path="res://World/yipee/yip_visuals.tscn" id="2_2j0cg"]
-[ext_resource type="Texture2D" uid="uid://cem1feyqvc36p" path="res://Assets/yipee/Yipretard.png" id="2_tt34i"]
 [ext_resource type="Script" uid="uid://81jkr63gjvq8" path="res://World/yipee/components/health.gd" id="3_0w75r"]
 [ext_resource type="Script" uid="uid://cgytvo8likyf3" path="res://World/yipee/components/attack.gd" id="4_igyue"]
 [ext_resource type="Script" uid="uid://cyixrd0wnn7a" path="res://World/yipee/components/ability_runner.gd" id="5_mjiai"]
@@ -14,11 +13,6 @@ script = ExtResource("1_4lw1p")
 
 [node name="BodyParts" parent="." unique_id=1418422023 instance=ExtResource("2_2j0cg")]
 scale = Vector2(3, 3)
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2107584426]
-visible = false
-scale = Vector2(3, 3)
-texture = ExtResource("2_tt34i")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=824352016]
 
