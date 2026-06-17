@@ -34,7 +34,8 @@ func _ready() -> void:
 	var data := YipeeData.new()
 	data.helix = helix
 
-	var yip := preload("res://World/yipee/yipee.tscn").instantiate()
+	var yip: Yipee = preload("res://World/yipee/yipee.tscn").instantiate()
 	yip.data = data                # MUST be set before add_child — _ready reads it
 	yip.position = Vector2(960, 540)
 	add_child(yip)
+	#print()
