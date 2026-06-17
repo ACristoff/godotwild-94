@@ -4,7 +4,7 @@ var field_level = 0
 var base_slot_chance = 25
 var base_yip_tier_chance = 25
 
-var yips = 3
+var yips = 12
 
 var yip_tier_odds_0: Dictionary = {
 	YipeeData.YipTier.COMMON: 50,
@@ -41,9 +41,17 @@ var yip_tier_dictionaries = [
 	yip_tier_odds_3
 ]
 
-var allele_tier_odds: Dictionary = {
-	
+var allele_fill_chance_by_tier = {
+	YipeeData.YipTier.COMMON: 25,
+	YipeeData.YipTier.UNCOMMON: 50,
+	YipeeData.YipTier.RARE: 55,
+	YipeeData.YipTier.ULTRARARE: 90
 }
+
+
+#var allele_tier_odds: Dictionary = {
+	#YipeeData.YipTier.COMMON: 
+#}
 
 func _ready():
 	for i in yips:
@@ -60,25 +68,51 @@ func get_yip_tier():
 		if random < total:
 			return odd
 
-func get_allele_tier():
-	pass
+		#var random = randi_range(0, 100)
+		#var current_odds = fill_chance_by_tier[yip_tier]
+		#
+		#if random < current_odds:
+			#var strand := Strand.new()
+			#strand.slot = types.pick_random()
+			#helix.strands[i] = strand
 
-func generate_allele():
+func chance_to_fill(yip_tier: YipeeData.YipTier) -> bool:
+	var random = randi_range(0, 100)
+	var current_odds = allele_fill_chance_by_tier[yip_tier]
 	
-	pass
+	if random < current_odds:
+		return true
+	return false
+
+func generate_alleles(tier: YipeeData.YipTier, helix: Helix) -> Helix:
+	
+	for strand in helix.strands:
+		if strand == null:
+			continue
+		
+		if chance_to_fill(tier) == true:
+			#right
+			strand.right = AlleleLibrary.random_right(strand.slot, yip_tier_dictionaries[field_level])
+		if chance_to_fill(tier) == true:
+			#left
+			pass
+	return helix
 
 func random_location() -> Vector2:
-	var x = randi_range(200, 800)
-	var y = randi_range(200, 800)
+	var x = randi_range(0, 1920)
+	var y = randi_range(0, 1080)
 	var random = Vector2(x, y)
 	return random
 
 
 func spawn_yip():
 	var yip_tier = get_yip_tier()
+	#var yip_tier = YipeeData.YipTier.ULTRARARE
 	var new_yip_data: YipeeData = YipeeData.generate_yip(yip_tier)
 	var new_yip := preload("res://World/yipee/yipee.tscn").instantiate() as Yipee
 	var new_helix := Helix.generate_random()
+	var mutated_helix : Helix = generate_alleles(yip_tier, new_helix)
+	
 	new_yip_data.helix = new_helix
 	new_yip.data = new_yip_data
 	new_yip.position = random_location()
