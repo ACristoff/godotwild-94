@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://r48rpjbxrdkk"]
+
+[ext_resource type="Script" uid="uid://bsfa0qeqbmix" path="res://UI/Scripts/allele_hover.gd" id="1_7ojlc"]
+
+[node name="R_allele1" type="Panel" unique_id=2129192060]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(20, 8)
+offset_right = 20.0
+offset_bottom = 8.0
+script = ExtResource("1_7ojlc")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

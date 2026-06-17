@@ -10,6 +10,7 @@ var amnt_of_stats : int
 var tooltip_hovering := false
 var yip_owner
 var set_hover = false
+var shown = true
 
 var increment = 0
 
@@ -48,6 +49,12 @@ func set_slot_visuals(type):
 	node.self_modulate = get_color(type)
 	node = node.get_child(0)
 	node.self_modulate = get_color(type)
+	
+func become_visible():
+	if !shown:
+		popup()
+		show()
+		shown = true
 
 func random_debug_setter():
 	for i in range(1, 9):
@@ -80,6 +87,9 @@ func get_total_rect(node: Control) -> Rect2:
 		if child is Control:
 			rect = rect.merge(get_total_rect(child))
 	return rect
+	
+func popup():
+	$AnimationPlayer.play("pop")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://blbxak2oo2t0j" path="res://Assets/Environment/Scenes/Laboratory/LabPiecesOver.png" id="4_uroyv"]
 [ext_resource type="PackedScene" uid="uid://38s8fl53yrsg" path="res://Assets/Test/dna_test_screen.tscn" id="5_ieswn"]
 [ext_resource type="Texture2D" uid="uid://djdujp6j5ud2u" path="res://Assets/Environment/Scenes/Laboratory/Conveyor.png" id="6_fne6d"]
+[ext_resource type="Texture2D" uid="uid://hw33tjyvck3t" path="res://UI/Textures/Gene.png" id="8_uroyv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uroyv"]
 shader = ExtResource("4_ems3l")
@@ -169,6 +170,11 @@ zoom = Vector2(3, 3)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=939278799]
 environment = SubResource("Environment_ems3l")
+
+[node name="Gene" type="Sprite2D" parent="." unique_id=18300664]
+texture_filter = 3
+position = Vector2(480, 58)
+texture = ExtResource("8_uroyv")
 
 [editable path="Control/SubViewportContainer/SubViewport/DNATestScreen"]
 [editable path="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA/DNAStackedShell"]

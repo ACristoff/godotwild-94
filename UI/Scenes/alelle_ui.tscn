@@ -1,0 +1,219 @@
+[gd_scene format=3 uid="uid://cckwntee1s0l4"]
+
+[ext_resource type="Script" uid="uid://d00ic1re1l86i" path="res://UI/Scripts/alelle_ui.gd" id="1_6tcmc"]
+[ext_resource type="Texture2D" uid="uid://bcrv3534foclh" path="res://UI/Textures/UIPanel.png" id="1_ydn44"]
+[ext_resource type="FontFile" uid="uid://6nvj4320wbu4" path="res://UI/Fonts/Vaticanus-G3yVG.ttf" id="2_d66ip"]
+[ext_resource type="Texture2D" uid="uid://hw33tjyvck3t" path="res://UI/Textures/Gene.png" id="3_d66ip"]
+[ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="4_g53l3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g53l3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6tcmc"]
+
+[sub_resource type="Animation" id="Animation_6tcmc"]
+resource_name = "Pop"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainPanel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.11439636, 0.11705674, 0.2),
+"transitions": PackedFloat32Array(0.2030631, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.075, 0.985), Vector2(1.073, 0.89), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainPanel:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.08779256, 0.13301903),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.05235988, 0.017453292, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ppimr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainPanel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainPanel:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.05235988]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_chwp6"]
+_data = {
+&"Pop": SubResource("Animation_6tcmc"),
+&"RESET": SubResource("Animation_ppimr")
+}
+
+[node name="Alelle_UI" type="Control" unique_id=1917264788]
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_6tcmc")
+
+[node name="MainPanel" type="NinePatchRect" parent="." unique_id=1688179199]
+texture_filter = 3
+custom_minimum_size = Vector2(86, 0)
+layout_mode = 0
+offset_top = 12.0
+offset_right = 92.0
+offset_bottom = 22.0
+rotation = -0.05235988
+pivot_offset = Vector2(0, -12.04)
+texture = ExtResource("1_ydn44")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel" unique_id=1137033911]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -17.0
+offset_bottom = -7.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="Gene2" type="NinePatchRect" parent="MainPanel" unique_id=1957767952]
+texture_filter = 3
+layout_mode = 0
+offset_left = -1.0
+offset_top = -41.0
+offset_right = 107.0
+offset_bottom = 30.0
+texture = ExtResource("3_d66ip")
+patch_margin_left = 11
+patch_margin_right = 18
+
+[node name="MainPanel2" type="NinePatchRect" parent="MainPanel/Gene2" unique_id=308161464]
+texture_filter = 3
+layout_mode = 0
+offset_left = 2.0
+offset_top = 30.0
+offset_right = 54.0
+offset_bottom = 41.0
+texture = ExtResource("1_ydn44")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Name" type="Label" parent="MainPanel/Gene2/MainPanel2" unique_id=97529741]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.19, 0.16118334, 0.1406, 1)
+theme_override_fonts/font = ExtResource("2_d66ip")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_g53l3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6tcmc")
+text = "Allele"
+
+[node name="MainPanel3" type="NinePatchRect" parent="MainPanel/Gene2" unique_id=253295928]
+texture_filter = 3
+layout_mode = 0
+offset_left = 53.0
+offset_top = 30.0
+offset_right = 80.0
+offset_bottom = 41.0
+texture = ExtResource("1_ydn44")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Type" type="Label" parent="MainPanel/Gene2/MainPanel3" unique_id=2040403477]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 42.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(1, 0.84705883, 0.7411765, 1)
+theme_override_fonts/font = ExtResource("2_d66ip")
+theme_override_font_sizes/font_size = 8
+text = "Effect"
+
+[node name="Level" type="Label" parent="MainPanel/Gene2" unique_id=2005169275]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 81.0
+offset_top = 32.0
+offset_right = 121.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(1, 0.84705883, 0.7411765, 1)
+theme_override_fonts/font = ExtResource("4_g53l3")
+theme_override_font_sizes/font_size = 8
+text = "lv.1"
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel" unique_id=663645865]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="Label" type="Label" parent="MainPanel/MarginContainer" unique_id=1129034058]
+custom_minimum_size = Vector2(88, 0)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_d66ip")
+theme_override_font_sizes/font_size = 8
+text = "Increases ATK by 30%"
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="Panel" type="Panel" parent="." unique_id=2065991314]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 107.0
+offset_bottom = 22.0
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1999555899]
+libraries/ = SubResource("AnimationLibrary_chwp6")

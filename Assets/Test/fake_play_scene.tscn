@@ -14,7 +14,7 @@ zoom = Vector2(3, 3)
 [node name="Yipretard" type="Sprite2D" parent="." unique_id=1333914073]
 z_index = 2
 texture_filter = 3
-position = Vector2(182, 209)
+position = Vector2(195, 185)
 texture = ExtResource("2_m6k4n")
 script = ExtResource("3_pw4ey")
 
@@ -24,6 +24,7 @@ offset_left = -19.0
 offset_top = -19.0
 offset_right = 21.0
 offset_bottom = 21.0
+mouse_filter = 1
 
 [node name="FieldMockup" type="Sprite2D" parent="." unique_id=1197048856]
 visible = false
@@ -38,3 +39,6 @@ texture = ExtResource("5_x1daf")
 texture_filter = 3
 position = Vector2(320, 180)
 texture = ExtResource("3_is5fb")
+
+[connection signal="mouse_entered" from="Yipretard/Panel" to="Yipretard" method="_on_panel_mouse_entered"]
+[connection signal="mouse_exited" from="Yipretard/Panel" to="Yipretard" method="_on_panel_mouse_exited"]

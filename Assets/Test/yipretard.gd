@@ -38,11 +38,12 @@ func _process(delta: float) -> void:
 	else:
 		tooltip_hovering = false
 	if hovering or tooltip_hovering:
-		current_tt.global_position.y = spawn_pos.y - 105
+		current_tt.global_position.y = spawn_pos.y - 99
 		current_tt.global_position.x = spawn_pos.x - 55
 		current_tt.global_position.x = clamp(current_tt.global_position.x, 0, screen_size.x - tt_size.x)
 		current_tt.global_position.y = clamp(current_tt.global_position.y, 0, screen_size.y - tt_size.y)
-		current_tt.show()
+		current_tt.become_visible()
 	else:
 		current_tt.hide()
+		current_tt.shown = false
 		current_tt.global_position = self.global_position

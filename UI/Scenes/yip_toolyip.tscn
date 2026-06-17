@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c8pupi4jdpi4f" path="res://UI/Textures/DNAUI1.png" id="5_xh8su"]
 [ext_resource type="Texture2D" uid="uid://cpcgek38dfbym" path="res://UI/Textures/DNAUI2.png" id="6_f61sd"]
 [ext_resource type="PackedScene" uid="uid://cxcii53yccour" path="res://UI/Scenes/damage_toolyip.tscn" id="8_xcmme"]
+[ext_resource type="PackedScene" uid="uid://r48rpjbxrdkk" path="res://UI/Scenes/allele_hover.tscn" id="9_sy6ok"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o7fgy"]
 
@@ -21,6 +22,63 @@ colors = PackedColorArray(0.57, 0.57, 0.57, 0.5058824, 1, 1, 1, 0)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_f61sd"]
 gradient = SubResource("Gradient_xh8su")
 width = 12
+
+[sub_resource type="Animation" id="Animation_sy6ok"]
+resource_name = "pop"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DNA:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(4.756827, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StatsFlowContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(4.141059, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StatsContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainPanel:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.11705674, 0.2, 0.22879273, 0.3),
+"transitions": PackedFloat32Array(0.8122525, 0.27739242, 1, 0.5946036, 1),
+"update": 0,
+"values": [Vector2(0.195, 1e-05), Vector2(0.659, 1.11), Vector2(1, 1), Vector2(1.12, 0.94), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o4pju"]
+_data = {
+&"pop": SubResource("Animation_sy6ok")
+}
 
 [node name="YipToolyip" type="Control" unique_id=399779298]
 layout_mode = 3
@@ -37,6 +95,9 @@ offset_left = 19.0
 offset_top = 16.0
 offset_right = 105.0
 offset_bottom = 84.0
+scale = Vector2(0.195, 1e-05)
+pivot_offset_ratio = Vector2(0.5, 1)
+mouse_filter = 0
 texture = ExtResource("1_tytya")
 patch_margin_left = 1
 patch_margin_top = 1
@@ -58,6 +119,7 @@ texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.4
+mouse_filter = 0
 texture = ExtResource("1_tytya")
 patch_margin_left = 1
 patch_margin_top = 1
@@ -75,6 +137,7 @@ offset_top = 2.0
 offset_right = -2.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme_override_colors/font_color = Color(1, 0.84833336, 0.74, 1)
 theme_override_colors/selection_color = Color(0.14901961, 0.14901961, 0.14901961, 1)
 theme_override_constants/minimum_character_width = 4
@@ -123,6 +186,7 @@ offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("3_8eq83")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/TextureRect" unique_id=1311802334]
@@ -132,6 +196,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = -18
 
 [node name="ActualSeconds" type="Label" parent="MainPanel/TextureRect/VBoxContainer" unique_id=55184367]
@@ -187,12 +252,82 @@ text = "HP:9999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Alleles" type="HBoxContainer" parent="MainPanel" unique_id=1688296728]
+z_index = 10
+layout_mode = 0
+offset_left = 18.0
+offset_top = 2.0
+offset_right = 59.0
+offset_bottom = 66.0
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="Effects" type="VBoxContainer" parent="MainPanel/Alleles" unique_id=1645217549]
+layout_mode = 2
+mouse_filter = 0
+theme_override_constants/separation = 0
+
+[node name="R_allele1" parent="MainPanel/Alleles/Effects" unique_id=2129192060 instance=ExtResource("9_sy6ok")]
+layout_mode = 2
+
+[node name="R_allele2" parent="MainPanel/Alleles/Effects" unique_id=1266414659 instance=ExtResource("9_sy6ok")]
+layout_mode = 2
+
+[node name="R_allele3" parent="MainPanel/Alleles/Effects" unique_id=2025636568 instance=ExtResource("9_sy6ok")]
+layout_mode = 2
+
+[node name="R_allele4" parent="MainPanel/Alleles/Effects" unique_id=16067312 instance=ExtResource("9_sy6ok")]
+layout_mode = 2
+
+[node name="R_allele5" parent="MainPanel/Alleles/Effects" unique_id=1198413547 instance=ExtResource("9_sy6ok")]
+layout_mode = 2
+
+[node name="R_allele6" parent="MainPanel/Alleles/Effects" unique_id=249885333 instance=ExtResource("9_sy6ok")]
+layout_mode = 2
+
+[node name="R_allele7" parent="MainPanel/Alleles/Effects" unique_id=1621654074 instance=ExtResource("9_sy6ok")]
+layout_mode = 2
+
+[node name="R_allele8" parent="MainPanel/Alleles/Effects" unique_id=2109849827 instance=ExtResource("9_sy6ok")]
+layout_mode = 2
+
+[node name="Visuals" type="VBoxContainer" parent="MainPanel/Alleles" unique_id=2117453864]
+layout_mode = 2
+mouse_filter = 0
+theme_override_constants/separation = 0
+
+[node name="L_allele1" parent="MainPanel/Alleles/Visuals" unique_id=773263100 instance=ExtResource("9_sy6ok")]
+layout_mode = 2
+
+[node name="L_allele2" parent="MainPanel/Alleles/Visuals" unique_id=1459935457 instance=ExtResource("9_sy6ok")]
+layout_mode = 2
+
+[node name="L_allele3" parent="MainPanel/Alleles/Visuals" unique_id=676046620 instance=ExtResource("9_sy6ok")]
+layout_mode = 2
+
+[node name="L_allele4" parent="MainPanel/Alleles/Visuals" unique_id=1252178967 instance=ExtResource("9_sy6ok")]
+layout_mode = 2
+
+[node name="L_allele5" parent="MainPanel/Alleles/Visuals" unique_id=1568193829 instance=ExtResource("9_sy6ok")]
+layout_mode = 2
+
+[node name="L_allele6" parent="MainPanel/Alleles/Visuals" unique_id=1079782464 instance=ExtResource("9_sy6ok")]
+layout_mode = 2
+
+[node name="L_allele7" parent="MainPanel/Alleles/Visuals" unique_id=1078098084 instance=ExtResource("9_sy6ok")]
+layout_mode = 2
+
+[node name="L_allele8" parent="MainPanel/Alleles/Visuals" unique_id=1276020697 instance=ExtResource("9_sy6ok")]
+layout_mode = 2
+
 [node name="DNA" type="Control" parent="." unique_id=81975585]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 0
 offset_left = 18.0
 offset_top = 15.0
 offset_right = 58.0
 offset_bottom = 55.0
+mouse_filter = 2
 
 [node name="LeftGene1" type="TextureRect" parent="DNA" unique_id=1867089722]
 texture_filter = 3
@@ -516,6 +651,7 @@ offset_left = 60.0
 offset_top = 3.0
 offset_right = 72.0
 offset_bottom = 67.0
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="SlotType1" type="Label" parent="DNA/VBoxContainer" unique_id=2123406175]
@@ -534,6 +670,7 @@ layout_mode = 0
 offset_left = -1.0
 offset_right = 12.0
 offset_bottom = 8.0
+mouse_filter = 2
 texture = SubResource("GradientTexture1D_f61sd")
 
 [node name="SlotType2" type="Label" parent="DNA/VBoxContainer" unique_id=2029435239]
@@ -552,6 +689,7 @@ layout_mode = 0
 offset_left = -1.0
 offset_right = 12.0
 offset_bottom = 8.0
+mouse_filter = 2
 texture = SubResource("GradientTexture1D_f61sd")
 
 [node name="SlotType3" type="Label" parent="DNA/VBoxContainer" unique_id=2123700072]
@@ -570,6 +708,7 @@ layout_mode = 0
 offset_left = -1.0
 offset_right = 12.0
 offset_bottom = 8.0
+mouse_filter = 2
 texture = SubResource("GradientTexture1D_f61sd")
 
 [node name="SlotType4" type="Label" parent="DNA/VBoxContainer" unique_id=375216063]
@@ -588,6 +727,7 @@ layout_mode = 0
 offset_left = -1.0
 offset_right = 12.0
 offset_bottom = 8.0
+mouse_filter = 2
 texture = SubResource("GradientTexture1D_f61sd")
 
 [node name="SlotType5" type="Label" parent="DNA/VBoxContainer" unique_id=484687148]
@@ -606,6 +746,7 @@ layout_mode = 0
 offset_left = -1.0
 offset_right = 12.0
 offset_bottom = 8.0
+mouse_filter = 2
 texture = SubResource("GradientTexture1D_f61sd")
 
 [node name="SlotType6" type="Label" parent="DNA/VBoxContainer" unique_id=1670659724]
@@ -624,6 +765,7 @@ layout_mode = 0
 offset_left = -1.0
 offset_right = 12.0
 offset_bottom = 8.0
+mouse_filter = 2
 texture = SubResource("GradientTexture1D_f61sd")
 
 [node name="SlotType7" type="Label" parent="DNA/VBoxContainer" unique_id=619313114]
@@ -642,6 +784,7 @@ layout_mode = 0
 offset_left = -1.0
 offset_right = 12.0
 offset_bottom = 8.0
+mouse_filter = 2
 texture = SubResource("GradientTexture1D_f61sd")
 
 [node name="SlotType8" type="Label" parent="DNA/VBoxContainer" unique_id=870596270]
@@ -660,6 +803,7 @@ layout_mode = 0
 offset_left = -1.0
 offset_right = 12.0
 offset_bottom = 8.0
+mouse_filter = 2
 texture = SubResource("GradientTexture1D_f61sd")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=371432101]
@@ -668,8 +812,10 @@ offset_left = 71.0
 offset_top = 2.0
 offset_right = 94.0
 offset_bottom = 66.0
+mouse_filter = 2
 
 [node name="StatsFlowContainer" type="FlowContainer" parent="." unique_id=2007240977]
+modulate = Color(1, 1, 1, 0)
 z_index = 1
 layout_mode = 1
 anchors_preset = 10
@@ -679,14 +825,17 @@ offset_top = 17.0
 offset_right = 149.0
 offset_bottom = 30.0
 grow_horizontal = 2
+mouse_filter = 2
 theme_override_constants/h_separation = -2
 theme_override_constants/v_separation = -1
 last_wrap_alignment = 2
 
 [node name="MarginContainer" parent="StatsFlowContainer" unique_id=53233444 instance=ExtResource("8_xcmme")]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="StatsContainer" type="NinePatchRect" parent="." unique_id=70282764]
+modulate = Color(1, 1, 1, 0)
 self_modulate = Color(0.21960784, 0.16862746, 0.13725491, 1)
 texture_filter = 3
 layout_mode = 0
@@ -704,9 +853,9 @@ patch_margin_bottom = 1
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 17.0
-offset_top = 3.0
-offset_right = 105.0
-offset_bottom = 101.0
+offset_top = 5.0
+offset_right = 106.0
+offset_bottom = 86.0
 mouse_filter = 2
 
 [node name="MouseHover2" type="Panel" parent="." unique_id=1758508056]
@@ -717,3 +866,11 @@ offset_top = 3.0
 offset_right = 149.0
 offset_bottom = 43.0
 mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=162132146]
+libraries/ = SubResource("AnimationLibrary_o4pju")
+
+[connection signal="mouse_entered" from="MouseHover" to="." method="_on_mouse_hover_mouse_entered"]
+[connection signal="mouse_exited" from="MouseHover" to="." method="_on_mouse_hover_mouse_exited"]
+[connection signal="mouse_entered" from="MouseHover2" to="." method="_on_mouse_hover_2_mouse_entered"]
+[connection signal="mouse_exited" from="MouseHover2" to="." method="_on_mouse_hover_2_mouse_exited"]
