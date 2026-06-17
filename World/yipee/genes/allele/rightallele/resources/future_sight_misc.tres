@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://bc8kutmkdvm2i"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_26ulh"]
+[ext_resource type="Texture2D" uid="uid://dgpswdcot3o2n" path="res://Assets/yipee/BodyPartsEdited/FutureSightMisc.png" id="1_qnf3t"]
+
+[resource]
+script = ExtResource("1_26ulh")
+body_part = ExtResource("1_qnf3t")
+body_target = 6
+slot = 7
+allele_name = "Soothsayer"
+rarity = 3
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

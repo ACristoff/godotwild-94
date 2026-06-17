@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://bayohq4c2pdw2"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_3wvvq"]
+[ext_resource type="Texture2D" uid="uid://07w5m0rx81by" path="res://Assets/yipee/BodyPartsEdited/CyborgEyes.png" id="1_atdwv"]
+
+[resource]
+script = ExtResource("1_3wvvq")
+body_part = ExtResource("1_atdwv")
+body_target = 9
+slot = 2
+allele_name = "Cyborg"
+rarity = 3
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://dekuyun57vqna"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_l2if3"]
+[ext_resource type="Texture2D" uid="uid://c0080ara1f6wp" path="res://Assets/yipee/BodyPartsEdited/HumanFeet.png" id="1_t4wg1"]
+
+[resource]
+script = ExtResource("1_l2if3")
+body_part = ExtResource("1_t4wg1")
+body_target = 1
+slot = 7
+allele_name = "Hominid Mobility"
+rarity = 2
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

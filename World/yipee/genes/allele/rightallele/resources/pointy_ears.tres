@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://dicmbq352cii0"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_0eott"]
+[ext_resource type="Texture2D" uid="uid://cc6q1mvj5xfsi" path="res://Assets/yipee/BodyPartsEdited/PointyEars.png" id="1_dmnbr"]
+
+[resource]
+script = ExtResource("1_0eott")
+body_part = ExtResource("1_dmnbr")
+body_target = 7
+slot = 5
+allele_name = "Pointy"
+rarity = 1
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

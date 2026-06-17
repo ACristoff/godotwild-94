@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://dhs7xyso55hwy"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_wkhnr"]
+[ext_resource type="Texture2D" uid="uid://gkyki6ie70ru" path="res://Assets/yipee/BodyPartsEdited/ScorpionTail.png" id="1_ylnew"]
+
+[resource]
+script = ExtResource("1_wkhnr")
+body_part = ExtResource("1_ylnew")
+body_target = 4
+slot = 2
+allele_name = "Scorpian"
+rarity = 1
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

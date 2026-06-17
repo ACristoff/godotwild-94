@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://dxc620173d05j"]
+
+[ext_resource type="Texture2D" uid="uid://bqvyhp1nogero" path="res://Assets/yipee/BodyPartsEdited/DevilTail.png" id="1_fb04o"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_xl0j2"]
+
+[resource]
+script = ExtResource("1_xl0j2")
+body_part = ExtResource("1_fb04o")
+body_target = 4
+slot = 1
+allele_name = "Devil"
+rarity = 2
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

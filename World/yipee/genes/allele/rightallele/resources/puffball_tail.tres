@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://cw7n4d6o0uqwx"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_8ktvb"]
+[ext_resource type="Texture2D" uid="uid://dt1fuhjmhi2it" path="res://Assets/yipee/BodyPartsEdited/PuffBallTail.png" id="1_qjdbr"]
+
+[resource]
+script = ExtResource("1_8ktvb")
+body_part = ExtResource("1_qjdbr")
+body_target = 4
+buff = 0.05
+slot = 3
+allele_name = "Cotton Ball"
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

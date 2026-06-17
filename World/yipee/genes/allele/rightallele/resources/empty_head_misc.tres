@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://bdyssmktfa3fi"]
+
+[ext_resource type="Texture2D" uid="uid://dq348hux1iwo7" path="res://Assets/yipee/BodyPartsEdited/HeadEmptyMisc.png" id="1_vwhrj"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_y72xc"]
+
+[resource]
+script = ExtResource("1_y72xc")
+body_part = ExtResource("1_vwhrj")
+body_target = 6
+buff = 0.05
+slot = 7
+allele_name = "Smaller Brain"
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

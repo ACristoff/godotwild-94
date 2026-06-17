@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://d035jfnxqde3c"]
+
+[ext_resource type="Texture2D" uid="uid://cqtrqq8ss1rwd" path="res://Assets/yipee/BodyPartsEdited/NikkiMouth.png" id="1_c6lge"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_oacbf"]
+
+[resource]
+script = ExtResource("1_oacbf")
+body_part = ExtResource("1_c6lge")
+body_target = 8
+buff = 4.0
+slot = 5
+allele_name = "Depression"
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://dckd4vj5uch06"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_l02dr"]
+[ext_resource type="Texture2D" uid="uid://ciffh5b38x1ji" path="res://Assets/yipee/BodyPartsEdited/Whiskers.png" id="1_tgh34"]
+
+[resource]
+script = ExtResource("1_l02dr")
+body_part = ExtResource("1_tgh34")
+body_target = 6
+buff = 0.05
+slot = 1
+allele_name = "Whiskers"
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

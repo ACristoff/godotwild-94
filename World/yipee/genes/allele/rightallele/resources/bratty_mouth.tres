@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://drypg58gw0i5y"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_1ss6s"]
+[ext_resource type="Texture2D" uid="uid://ccwwb40n3fg5y" path="res://Assets/yipee/BodyPartsEdited/BrattyMouth.png" id="1_y42kn"]
+
+[resource]
+script = ExtResource("1_1ss6s")
+body_part = ExtResource("1_y42kn")
+body_target = 8
+slot = 1
+allele_name = "Bratty"
+rarity = 1
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

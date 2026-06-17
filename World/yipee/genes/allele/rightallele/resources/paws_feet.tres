@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://bd6l8lm1tusoc"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_0nv5u"]
+[ext_resource type="Texture2D" uid="uid://dj45yo7y53iyx" path="res://Assets/yipee/BodyPartsEdited/PawsFeet.png" id="1_s2ttx"]
+
+[resource]
+script = ExtResource("1_0nv5u")
+body_part = ExtResource("1_s2ttx")
+body_target = 1
+buff = 5.0
+slot = 2
+allele_name = "Paws"
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

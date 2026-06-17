@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://da3vex324a1rt"]
+
+[ext_resource type="Texture2D" uid="uid://c1mx1hj4lh2md" path="res://Assets/yipee/BodyPartsEdited/WickTail.png" id="1_wibfa"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_y5xro"]
+
+[resource]
+script = ExtResource("1_y5xro")
+body_part = ExtResource("1_wibfa")
+body_target = 4
+slot = 3
+allele_name = "Fuse"
+rarity = 1
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

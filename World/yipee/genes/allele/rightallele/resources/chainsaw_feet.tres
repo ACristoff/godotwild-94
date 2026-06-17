@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://dhp51vr11v1ov"]
+
+[ext_resource type="Texture2D" uid="uid://jaj03uv0osob" path="res://Assets/yipee/BodyPartsEdited/ChainsawFeet.png" id="1_j7fda"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_w3s5k"]
+
+[resource]
+script = ExtResource("1_w3s5k")
+body_part = ExtResource("1_j7fda")
+body_target = 1
+slot = 2
+allele_name = "Chainsaws"
+tooltip = "Idk what evolution was cooking either."
+rarity = 2
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

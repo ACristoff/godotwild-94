@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://dyxrgh6dl4e5c"]
+
+[ext_resource type="Texture2D" uid="uid://5ybayus3b3x8" path="res://Assets/yipee/BodyPartsEdited/AlienAntennaeMisc.png" id="1_rllpw"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_s7kgm"]
+
+[resource]
+script = ExtResource("1_s7kgm")
+body_part = ExtResource("1_rllpw")
+body_target = 6
+buff = 0.05
+slot = 7
+allele_name = "WiFi"
+rarity = 1
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

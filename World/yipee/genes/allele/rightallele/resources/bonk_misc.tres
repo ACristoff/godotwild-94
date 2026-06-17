@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://clmny47rxgsyl"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_5rgnn"]
+[ext_resource type="Texture2D" uid="uid://dcg0n67k0jxpv" path="res://Assets/yipee/BodyPartsEdited/BonkMisc.png" id="1_m5lmp"]
+
+[resource]
+script = ExtResource("1_5rgnn")
+body_part = ExtResource("1_m5lmp")
+body_target = 6
+slot = 3
+allele_name = "Head Trauma"
+rarity = 2
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

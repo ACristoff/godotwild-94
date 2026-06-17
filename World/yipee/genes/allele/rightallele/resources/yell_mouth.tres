@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://ij8pt84iv8ah"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_73v45"]
+[ext_resource type="Texture2D" uid="uid://dshni82h80rcg" path="res://Assets/yipee/BodyPartsEdited/YellMouth.png" id="1_cm0tu"]
+
+[resource]
+script = ExtResource("1_73v45")
+body_part = ExtResource("1_cm0tu")
+body_target = 8
+buff = 5.0
+slot = 2
+allele_name = "Loud"
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

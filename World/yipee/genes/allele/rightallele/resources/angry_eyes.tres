@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://cculaw8i0sirc"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_cispl"]
+[ext_resource type="Texture2D" uid="uid://bl70jrsahd0rm" path="res://Assets/yipee/BodyPartsEdited/AngerEyes.png" id="1_n3s8l"]
+
+[resource]
+script = ExtResource("1_cispl")
+body_part = ExtResource("1_n3s8l")
+body_target = 9
+buff = 8.0
+slot = 2
+allele_name = "Short Temper"
+rarity = 1
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

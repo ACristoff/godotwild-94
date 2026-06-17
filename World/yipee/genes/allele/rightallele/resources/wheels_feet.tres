@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://dnvm26x1rh2wb"]
+
+[ext_resource type="Texture2D" uid="uid://b73l1gfqe14mc" path="res://Assets/yipee/BodyPartsEdited/SqueakyFeet.png" id="1_4lwat"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_bgf3g"]
+
+[resource]
+script = ExtResource("1_bgf3g")
+body_part = ExtResource("1_4lwat")
+body_target = 1
+slot = 5
+allele_name = "Wheels"
+rarity = 2
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://cwnhd2x26f1q3"]
+
+[ext_resource type="Texture2D" uid="uid://b577mpo2qvuin" path="res://Assets/yipee/BodyPartsEdited/SpiderEyes.png" id="1_inm3n"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_sgp32"]
+
+[resource]
+script = ExtResource("1_sgp32")
+body_part = ExtResource("1_inm3n")
+body_target = 9
+allele_name = "Arachnid"
+rarity = 2
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://cg8t15rp3mhit"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_08as4"]
+[ext_resource type="Texture2D" uid="uid://dcqqhr20i5ci5" path="res://Assets/yipee/BodyPartsEdited/RatTail.png" id="1_kmanq"]
+
+[resource]
+script = ExtResource("1_08as4")
+body_part = ExtResource("1_kmanq")
+body_target = 4
+slot = 1
+allele_name = "Squeaky"
+rarity = 2
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

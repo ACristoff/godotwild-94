@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://cqm8hxp6nrwps"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_41hdv"]
+[ext_resource type="Texture2D" uid="uid://i5l6qy8cnica" path="res://Assets/yipee/BodyPartsEdited/ToothyMouth.png" id="1_kdxpq"]
+
+[resource]
+script = ExtResource("1_41hdv")
+body_part = ExtResource("1_kdxpq")
+body_target = 8
+buff = 5.0
+slot = 2
+allele_name = "Toothy"
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

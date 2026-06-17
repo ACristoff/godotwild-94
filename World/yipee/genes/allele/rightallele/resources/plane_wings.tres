@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://c1e4w31nkvu32"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_hisnf"]
+[ext_resource type="Texture2D" uid="uid://jsph8xjw275m" path="res://Assets/yipee/BodyPartsEdited/PlaneWings.png" id="1_n81kd"]
+
+[resource]
+script = ExtResource("1_hisnf")
+body_part = ExtResource("1_n81kd")
+body_target = 3
+slot = 5
+allele_name = "Aviation"
+rarity = 3
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

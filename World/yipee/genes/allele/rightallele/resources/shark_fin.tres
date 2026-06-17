@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://c2nwaho2fr6qi"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_7hjuq"]
+[ext_resource type="Texture2D" uid="uid://bonj3pamiusrc" path="res://Assets/yipee/BodyPartsEdited/SharkFin.png" id="1_51nku"]
+
+[resource]
+script = ExtResource("1_7hjuq")
+body_part = ExtResource("1_51nku")
+body_target = 6
+slot = 5
+allele_name = "Fin"
+rarity = 2
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

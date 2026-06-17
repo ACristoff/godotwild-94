@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://cyrdyttncsqpa"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_ihlmc"]
+[ext_resource type="Texture2D" uid="uid://djmynxyept11p" path="res://Assets/yipee/BodyPartsEdited/SpikesFeet.png" id="1_shqyo"]
+
+[resource]
+script = ExtResource("1_ihlmc")
+body_part = ExtResource("1_shqyo")
+body_target = 1
+slot = 5
+allele_name = "Spiky"
+rarity = 1
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

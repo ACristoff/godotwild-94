@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://bi8axtlt8hww2"]
+
+[ext_resource type="Texture2D" uid="uid://camu4xjvso6hv" path="res://Assets/yipee/BodyPartsEdited/ScaredEyes.png" id="1_2k7bw"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_m0djo"]
+
+[resource]
+script = ExtResource("1_m0djo")
+body_part = ExtResource("1_2k7bw")
+body_target = 9
+slot = 5
+allele_name = "Skittish"
+rarity = 1
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

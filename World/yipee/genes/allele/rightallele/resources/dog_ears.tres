@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://cw22rf6u7lx7w"]
+
+[ext_resource type="Texture2D" uid="uid://bg5ki5c6llty2" path="res://Assets/yipee/BodyPartsEdited/DogEars.png" id="1_foa3a"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_nihi5"]
+
+[resource]
+script = ExtResource("1_nihi5")
+body_part = ExtResource("1_foa3a")
+body_target = 7
+buff = 0.05
+slot = 1
+allele_name = "Dog Ears"
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

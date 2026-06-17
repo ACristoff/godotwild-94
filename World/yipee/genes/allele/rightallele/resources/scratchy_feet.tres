@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://b5mmo7rrkl88r"]
+
+[ext_resource type="Texture2D" uid="uid://dkpghecegab4m" path="res://Assets/yipee/BodyPartsEdited/ScratchyFeet.png" id="1_bylsh"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_f3ymq"]
+
+[resource]
+script = ExtResource("1_f3ymq")
+body_part = ExtResource("1_bylsh")
+body_target = 1
+slot = 7
+allele_name = "Stropping"
+rarity = 1
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://d2kfvjymukg82"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_72grg"]
+[ext_resource type="Texture2D" uid="uid://b5mrk5g1ujfub" path="res://Assets/yipee/BodyPartsEdited/CheeseEyes.png" id="1_t3lyo"]
+
+[resource]
+script = ExtResource("1_72grg")
+body_part = ExtResource("1_t3lyo")
+body_target = 9
+slot = 7
+allele_name = "Ocular"
+rarity = 1
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://b4cacgseyrlxa"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_dnnv6"]
+[ext_resource type="Texture2D" uid="uid://cewa4q4dg15xk" path="res://Assets/yipee/BodyPartsEdited/LongHornMisc.png" id="1_kfk1v"]
+
+[resource]
+script = ExtResource("1_dnnv6")
+body_part = ExtResource("1_kfk1v")
+body_target = 6
+slot = 2
+allele_name = "Long Horns"
+rarity = 2
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

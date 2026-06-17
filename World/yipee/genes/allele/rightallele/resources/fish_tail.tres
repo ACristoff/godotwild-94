@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://ccrtxjgsqgxk4"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_bhjcr"]
+[ext_resource type="Texture2D" uid="uid://8big6kxi72vl" path="res://Assets/yipee/BodyPartsEdited/FishTail.png" id="1_wd8jy"]
+
+[resource]
+script = ExtResource("1_bhjcr")
+body_part = ExtResource("1_wd8jy")
+body_target = 4
+slot = 3
+allele_name = "Nautical"
+rarity = 2
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

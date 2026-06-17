@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://c2hh1sdnbiii7"]
+
+[ext_resource type="Texture2D" uid="uid://b2hd584opc6gv" path="res://Assets/yipee/BodyPartsEdited/WinkEyes.png" id="1_4tjlc"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_xvjho"]
+
+[resource]
+script = ExtResource("1_xvjho")
+body_part = ExtResource("1_4tjlc")
+body_target = 9
+buff = 0.05
+slot = 7
+allele_name = "Frisky"
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

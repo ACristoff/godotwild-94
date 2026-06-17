@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://cpwaytslqdlbw"]
+
+[ext_resource type="Texture2D" uid="uid://cexs04qx1onns" path="res://Assets/yipee/BodyPartsEdited/AvatarMisc.png" id="1_23spe"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_cmwqw"]
+
+[resource]
+script = ExtResource("1_cmwqw")
+body_part = ExtResource("1_23spe")
+body_target = 6
+slot = 1
+allele_name = "Arrow"
+rarity = 3
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

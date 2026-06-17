@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://3a3fdjmo8emu"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_0aq75"]
+[ext_resource type="Texture2D" uid="uid://c2da3pmfess6r" path="res://Assets/yipee/BodyPartsEdited/ClawTail.png" id="1_yci6u"]
+
+[resource]
+script = ExtResource("1_0aq75")
+body_part = ExtResource("1_yci6u")
+body_target = 4
+slot = 7
+allele_name = "Plucker"
+rarity = 2
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

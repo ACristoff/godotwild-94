@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://conuhaniauivk"]
+
+[ext_resource type="Texture2D" uid="uid://uikt5tk8ls2u" path="res://Assets/yipee/BodyPartsEdited/GatlingTail.png" id="1_aoxrl"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_qrmup"]
+
+[resource]
+script = ExtResource("1_qrmup")
+body_part = ExtResource("1_aoxrl")
+body_target = 4
+slot = 2
+allele_name = "Gatling"
+rarity = 3
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

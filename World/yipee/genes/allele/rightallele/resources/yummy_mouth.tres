@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://dqasjg426w6ql"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_5xax0"]
+[ext_resource type="Texture2D" uid="uid://bkhn6xdhwls4y" path="res://Assets/yipee/BodyPartsEdited/YummyMouth.png" id="1_dy5np"]
+
+[resource]
+script = ExtResource("1_5xax0")
+body_part = ExtResource("1_dy5np")
+body_target = 8
+buff = 4.0
+slot = 5
+allele_name = "Large Appetite"
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

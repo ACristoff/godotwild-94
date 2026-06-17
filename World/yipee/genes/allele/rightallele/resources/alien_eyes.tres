@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://djl1dxa4c7t6p"]
+
+[ext_resource type="Texture2D" uid="uid://boa77qqkbftyd" path="res://Assets/yipee/BodyPartsEdited/AlienEyes.png" id="1_3ww4y"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_64lvx"]
+
+[resource]
+script = ExtResource("1_64lvx")
+body_part = ExtResource("1_3ww4y")
+body_target = 9
+buff = 10.0
+allele_name = "Alien Eyes"
+tooltip = "Vorp"
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

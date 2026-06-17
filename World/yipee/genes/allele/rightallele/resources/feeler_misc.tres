@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://bbtr8ga1alrxw"]
+
+[ext_resource type="Texture2D" uid="uid://d4fh6tvnyoi2x" path="res://Assets/yipee/BodyPartsEdited/FeelerMisc.png" id="1_j2qkn"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_thu2q"]
+
+[resource]
+script = ExtResource("1_thu2q")
+body_part = ExtResource("1_j2qkn")
+body_target = 6
+slot = 7
+allele_name = "Feeler"
+rarity = 1
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

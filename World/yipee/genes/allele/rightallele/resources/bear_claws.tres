@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://dpt2xuwpsqmw6"]
+
+[ext_resource type="Texture2D" uid="uid://ciwcil6c26utb" path="res://Assets/yipee/BodyPartsEdited/BearClawsFeet.png" id="1_6igrh"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_t4lkt"]
+
+[resource]
+script = ExtResource("1_t4lkt")
+body_part = ExtResource("1_6igrh")
+body_target = 1
+buff = 6.0
+slot = 2
+allele_name = "Viscious"
+rarity = 1
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

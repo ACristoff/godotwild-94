@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://c355jp71k5wbv"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_3htxk"]
+[ext_resource type="Texture2D" uid="uid://qgi23usoffn" path="res://Assets/yipee/BodyPartsEdited/AngelWings.png" id="1_46nen"]
+
+[resource]
+script = ExtResource("1_3htxk")
+body_part = ExtResource("1_46nen")
+body_target = 3
+slot = 7
+allele_name = "Holy"
+rarity = 2
+metadata/_custom_type_script = "uid://hpdocbvx27nb"
