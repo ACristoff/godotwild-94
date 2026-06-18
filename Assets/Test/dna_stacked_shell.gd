@@ -126,3 +126,19 @@ func tick_forward():
 	dna_shell_2.frame = current_frame
 
 	update_depth()
+
+
+func _on_button_mouse_entered() -> void:
+	pass # Replace with function body.
+
+
+func _on_button_mouse_exited() -> void:
+	pass # Replace with function body.
+
+
+func _on_area_2d_mouse_entered() -> void:
+	pass # Replace with function body.
+
+
+func _on_area_2d_mouse_exited() -> void:
+	pass # Replace with function body.

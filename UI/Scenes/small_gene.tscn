@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c7hhcdnirt18v"]
+
+[ext_resource type="Texture2D" uid="uid://bsxxbhm6sgqhs" path="res://UI/Textures/gene_small.png" id="1_0dm3f"]
+[ext_resource type="PackedScene" uid="uid://r48rpjbxrdkk" path="res://UI/Scenes/allele_hover.tscn" id="2_wd5gd"]
+
+[node name="SmallGene" type="Node2D" unique_id=1127096935]
+
+[node name="GeneSmall" type="Sprite2D" parent="." unique_id=83779546]
+texture_filter = 3
+texture = ExtResource("1_0dm3f")
+
+[node name="R_allele1" parent="." unique_id=2129192060 instance=ExtResource("2_wd5gd")]
+offset_left = -25.0
+offset_top = -8.0
+offset_right = 24.0
+offset_bottom = 7.0

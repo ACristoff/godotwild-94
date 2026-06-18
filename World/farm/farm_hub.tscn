@@ -15,6 +15,7 @@
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="13_lx74c"]
 [ext_resource type="Texture2D" uid="uid://1lmfe1dpron4" path="res://Assets/Environment/Scenes/BattleField/Coin.png" id="14_4wbmb"]
 [ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="15_4wbmb"]
+[ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="16_0l0ir"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_goe80"]
 size = Vector2(495, 343)
@@ -195,7 +196,6 @@ texture = ExtResource("6_4wsdy")
 texture = ExtResource("7_odbp6")
 
 [node name="BreedingBarnLargeDoor" type="Sprite2D" parent="BreedingBarnGrass" unique_id=683145878]
-visible = false
 texture = ExtResource("9_ay8hv")
 
 [node name="BreedFarmSlot" type="Area2D" parent="BreedingBarnGrass" unique_id=990957553]
@@ -205,7 +205,6 @@ collision_layer = 64
 collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BreedingBarnGrass/BreedFarmSlot" unique_id=410419710]
-visible = false
 position = Vector2(237.5, 161.5)
 shape = SubResource("RectangleShape2D_goe80")
 
@@ -318,65 +317,93 @@ patch_margin_top = 10
 patch_margin_right = 30
 patch_margin_bottom = 10
 
-[node name="ButtonRefresh3" type="NinePatchRect" parent="." unique_id=854729518]
-modulate = Color(0.48, 0.1392, 0.1448799, 1)
+[node name="BattleButtonIcon" type="NinePatchRect" parent="." unique_id=854729518]
+self_modulate = Color(0.47843137, 0.13725491, 0.14509805, 1)
 z_index = 4096
 texture_filter = 3
-offset_left = 1538.0
-offset_top = 843.0
-offset_right = 1656.3333
-offset_bottom = 906.77783
+offset_left = 1658.0
+offset_top = 907.0
+offset_right = 1776.3333
+offset_bottom = 970.77783
 scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("15_4wbmb")
 patch_margin_left = 15
 patch_margin_top = 10
 patch_margin_right = 30
 patch_margin_bottom = 10
 
-[node name="Label3" type="Label" parent="." unique_id=1525903938]
+[node name="Battle" type="Label" parent="BattleButtonIcon" unique_id=1525903938]
 z_index = 4096
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1638.0
-offset_top = 922.0
-offset_right = 1794.0
-offset_bottom = 964.0
+offset_left = 25.333313
+offset_top = 26.333344
+offset_right = 181.33331
+offset_bottom = 68.33334
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("13_lx74c")
-theme_override_font_sizes/font_size = 48
 text = "BaTTLE"
 
 [node name="ButtonRefresh4" type="NinePatchRect" parent="." unique_id=330317884]
-modulate = Color(0.59442496, 0.65, 0.2795, 1)
+self_modulate = Color(0.59607846, 0.6509804, 0.2784314, 1)
 z_index = 4096
 texture_filter = 3
-offset_left = 27.0
-offset_top = 899.0
-offset_right = 102.666626
-offset_bottom = 935.77783
+offset_left = 103.0
+offset_top = 936.00006
+offset_right = 178.66663
+offset_bottom = 972.7779
 scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("15_4wbmb")
 patch_margin_left = 15
 patch_margin_top = 10
 patch_margin_right = 30
 patch_margin_bottom = 10
 
-[node name="Label4" type="Label" parent="." unique_id=594134474]
+[node name="Label4" type="Label" parent="ButtonRefresh4" unique_id=594134474]
 z_index = 4096
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 62.0
-offset_top = 935.0
-offset_right = 218.0
-offset_bottom = 977.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("13_lx74c")
-theme_override_font_sizes/font_size = 48
 text = "FIELD"
+horizontal_alignment = 1
+vertical_alignment = 1
 
+[node name="FieldButton" type="Button" parent="." unique_id=1621616947 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 27.0
+offset_top = 899.0
+offset_right = 254.0
+offset_bottom = 1010.0
+script = ExtResource("16_0l0ir")
+target_highlight = NodePath("../ButtonRefresh4")
+
+[node name="BattleButton" type="Button" parent="." unique_id=1653903005 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 1538.0
+offset_top = 843.0
+offset_right = 1893.0
+offset_bottom = 1035.0
+script = ExtResource("16_0l0ir")
+target_highlight = NodePath("../BattleButtonIcon")
+
+[connection signal="area_entered" from="BreedingBarnGrass/BreedFarmSlot" to="Areas" method="_on_breed_farm_slot_area_entered"]
+[connection signal="area_exited" from="BreedingBarnGrass/BreedFarmSlot" to="Areas" method="_on_breed_farm_slot_area_exited"]
 [connection signal="mouse_entered" from="LabNew/TextureButton" to="." method="_on_texture_button_mouse_entered"]
 [connection signal="mouse_exited" from="LabNew/TextureButton" to="." method="_on_texture_button_mouse_exited"]
+[connection signal="button_down" from="FieldButton" to="FieldButton" method="_on_button_down"]
+[connection signal="button_up" from="FieldButton" to="FieldButton" method="_on_button_up"]
+[connection signal="mouse_entered" from="FieldButton" to="FieldButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="FieldButton" to="FieldButton" method="_on_mouse_exited"]
+[connection signal="button_down" from="BattleButton" to="BattleButton" method="_on_button_down"]
+[connection signal="button_up" from="BattleButton" to="BattleButton" method="_on_button_up"]
+[connection signal="mouse_entered" from="BattleButton" to="BattleButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BattleButton" to="BattleButton" method="_on_mouse_exited"]

@@ -194,6 +194,9 @@ _data = {
 &"start": SubResource("Animation_evcsh")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nydv0"]
+size = Vector2(844, 158)
+
 [node name="DNAStackedShell" type="Node2D" unique_id=1936980544]
 script = ExtResource("1_0c7q7")
 anim_start_frame = 23
@@ -269,3 +272,11 @@ frame = 7
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1966281911]
 libraries/ = SubResource("AnimationLibrary_acq5j")
 autoplay = &"start"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=764485258]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=595499736]
+shape = SubResource("RectangleShape2D_nydv0")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

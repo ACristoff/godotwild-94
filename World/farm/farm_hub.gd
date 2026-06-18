@@ -13,7 +13,5 @@ func _process(delta: float) -> void:
 
 func _on_texture_button_mouse_entered() -> void:
 	$LabDoor2.play("DoorOpen")
-
-
 func _on_texture_button_mouse_exited() -> void:
 	$LabDoor2.play("DoorClose")

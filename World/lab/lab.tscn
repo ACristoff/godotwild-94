@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c1xvm0thbin5l" path="res://Assets/Environment/Scenes/Laboratory/LabScreen.png" id="2_fne6d"]
 [ext_resource type="Texture2D" uid="uid://dp6fox832wacg" path="res://Assets/Environment/Scenes/Laboratory/LabPieces.png" id="3_ems3l"]
 [ext_resource type="Shader" uid="uid://bwvmkd4i76b3p" path="res://Assets/Shaders/CRT.gdshader" id="4_ems3l"]
+[ext_resource type="PackedScene" uid="uid://c7hhcdnirt18v" path="res://UI/Scenes/small_gene.tscn" id="4_mntup"]
 [ext_resource type="Texture2D" uid="uid://blbxak2oo2t0j" path="res://Assets/Environment/Scenes/Laboratory/LabPiecesOver.png" id="4_uroyv"]
 [ext_resource type="PackedScene" uid="uid://38s8fl53yrsg" path="res://Assets/Test/dna_test_screen.tscn" id="5_ieswn"]
 [ext_resource type="Texture2D" uid="uid://djdujp6j5ud2u" path="res://Assets/Environment/Scenes/Laboratory/Conveyor.png" id="6_fne6d"]
@@ -73,6 +74,13 @@ height = 370
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.8835617, 0.34459698)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_co32c"]
+radius = 78.99994
+height = 452.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_co32c"]
+size = Vector2(636, 162)
 
 [node name="Lab" type="Node2D" unique_id=1804512105]
 
@@ -164,6 +172,10 @@ title_offset = 73
 [node name="DNAStackedShell8" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" parent_id_path=PackedInt32Array(2140591040, 168700534) index="7" unique_id=1583672614]
 title_offset = 84
 
+[node name="SmallGene" parent="." unique_id=1127096935 instance=ExtResource("4_mntup")]
+position = Vector2(1801, 186)
+scale = Vector2(3, 3)
+
 [node name="ColorRect4" type="ColorRect" parent="." unique_id=749799674]
 material = SubResource("ShaderMaterial_uroyv")
 offset_left = 691.0
@@ -197,9 +209,10 @@ texture = ExtResource("4_uroyv")
 environment = SubResource("Environment_ems3l")
 
 [node name="Gene" type="Sprite2D" parent="." unique_id=18300664]
-visible = false
+modulate = Color(0.5409905, 0.5409905, 0.5409905, 1)
 texture_filter = 3
-position = Vector2(480, 58)
+position = Vector2(1431, 176)
+scale = Vector2(3, 3)
 texture = ExtResource("8_uroyv")
 
 [node name="Areas" parent="." unique_id=1408748551 instance=ExtResource("9_ieswn")]
@@ -248,6 +261,25 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("11_mntup")
 theme_override_font_sizes/font_size = 48
 text = "fARM"
+
+[node name="LaunchPad" type="Area2D" parent="." unique_id=374070610]
+position = Vector2(1620, 948)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaunchPad" unique_id=661496477]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_co32c")
+
+[node name="ConveyorArea" type="Area2D" parent="." unique_id=1841991491]
+position = Vector2(301, 676)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConveyorArea" unique_id=1506238159]
+position = Vector2(78, 1)
+shape = SubResource("RectangleShape2D_co32c")
+
+[connection signal="area_entered" from="LaunchPad" to="Areas" method="_on_launch_pad_area_entered"]
+[connection signal="area_exited" from="LaunchPad" to="Areas" method="_on_launch_pad_area_exited"]
+[connection signal="area_entered" from="ConveyorArea" to="Areas" method="_on_conveyor_area_area_entered"]
+[connection signal="area_exited" from="ConveyorArea" to="Areas" method="_on_conveyor_area_area_exited"]
 
 [editable path="Control/SubViewportContainer/SubViewport/DNATestScreen"]
 [editable path="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA/DNAStackedShell"]
