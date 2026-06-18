@@ -1,20 +1,21 @@
 [gd_scene format=3 uid="uid://crypekq181eq4"]
 
-[ext_resource type="Script" uid="uid://dvclhivib348r" path="res://World/field/field.gd" id="1_2j5an"]
-[ext_resource type="Texture2D" uid="uid://boj74to4iulqd" path="res://Assets/Environment/Scenes/CaptureField/CaptureField.png" id="1_ed8vu"]
-[ext_resource type="Texture2D" uid="uid://1lmfe1dpron4" path="res://Assets/Environment/Scenes/BattleField/Coin.png" id="3_umylx"]
-[ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="4_2vufn"]
-[ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="5_2vufn"]
-[ext_resource type="Texture2D" uid="uid://chftxxvwdvkgk" path="res://Assets/Environment/Scenes/BattleField/LockButton.png" id="6_lws5d"]
+[ext_resource type="Script" uid="uid://dvclhivib348r" path="res://World/field/field.gd" id="1_sj8ve"]
+[ext_resource type="Texture2D" uid="uid://boj74to4iulqd" path="res://Assets/Environment/Scenes/CaptureField/CaptureField.png" id="2_lwms1"]
+[ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="3_6l7jc"]
+[ext_resource type="Texture2D" uid="uid://1lmfe1dpron4" path="res://Assets/Environment/Scenes/BattleField/Coin.png" id="4_rh655"]
+[ext_resource type="PackedScene" uid="uid://dqgfurgu7jsbg" path="res://UI/Scenes/yip_toolyip.tscn" id="5_8ubfp"]
+[ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="6_ju3ud"]
+[ext_resource type="Texture2D" uid="uid://chftxxvwdvkgk" path="res://Assets/Environment/Scenes/BattleField/LockButton.png" id="7_748j3"]
 
 [node name="Field" type="Node2D" unique_id=1076215709]
-script = ExtResource("1_2j5an")
+script = ExtResource("1_sj8ve")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1448066629]
 texture_filter = 3
 position = Vector2(960.11096, 539.99994)
 scale = Vector2(3.0003471, 2.9999998)
-texture = ExtResource("1_ed8vu")
+texture = ExtResource("2_lwms1")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=802236130]
 scale = Vector2(3, 3)
@@ -49,7 +50,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
 theme_override_colors/font_outline_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
 theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("4_2vufn")
+theme_override_fonts/font = ExtResource("3_6l7jc")
 theme_override_font_sizes/font_size = 16
 text = "20"
 
@@ -63,7 +64,9 @@ theme_override_constants/margin_bottom = 5
 [node name="Coin" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer/MarginContainer" unique_id=700725205]
 texture_filter = 3
 layout_mode = 2
-texture = ExtResource("3_umylx")
+texture = ExtResource("4_rh655")
+
+[node name="YipToolyip" parent="CanvasLayer" unique_id=399779298 instance=ExtResource("5_8ubfp")]
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1490005837]
 position = Vector2(960, 1080)
@@ -77,7 +80,7 @@ offset_top = 957.0
 offset_right = 911.0
 offset_bottom = 982.77783
 scale = Vector2(3, 3)
-texture = ExtResource("5_2vufn")
+texture = ExtResource("6_ju3ud")
 patch_margin_left = 15
 patch_margin_top = 10
 patch_margin_right = 30
@@ -91,7 +94,7 @@ offset_top = 698.0
 offset_right = 1709.0
 offset_bottom = 741.0
 scale = Vector2(3, 3)
-texture = ExtResource("5_2vufn")
+texture = ExtResource("6_ju3ud")
 patch_margin_left = 15
 patch_margin_top = 10
 patch_margin_right = 30
@@ -108,7 +111,7 @@ offset_right = 1044.0
 offset_bottom = 1010.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_2vufn")
+theme_override_fonts/font = ExtResource("3_6l7jc")
 theme_override_font_sizes/font_size = 48
 text = "Refresh"
 
@@ -117,7 +120,7 @@ z_index = 4096
 texture_filter = 3
 position = Vector2(960, 921.00006)
 scale = Vector2(3, 3)
-texture = ExtResource("6_lws5d")
+texture = ExtResource("7_748j3")
 hframes = 2
 
 [node name="LockLabel" type="Label" parent="." unique_id=1535533734]
@@ -126,7 +129,7 @@ offset_left = 912.0
 offset_top = 899.0
 offset_right = 1008.0
 offset_bottom = 927.0
-theme_override_fonts/font = ExtResource("4_2vufn")
+theme_override_fonts/font = ExtResource("3_6l7jc")
 theme_override_font_sizes/font_size = 32
 text = "Lock"
 
@@ -139,7 +142,7 @@ offset_top = 899.0
 offset_right = 1741.6666
 offset_bottom = 935.77783
 scale = Vector2(3, 3)
-texture = ExtResource("5_2vufn")
+texture = ExtResource("6_ju3ud")
 patch_margin_left = 15
 patch_margin_top = 10
 patch_margin_right = 30
@@ -156,7 +159,7 @@ offset_right = 1857.0
 offset_bottom = 977.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_2vufn")
+theme_override_fonts/font = ExtResource("3_6l7jc")
 theme_override_font_sizes/font_size = 48
 text = "Farm"
 

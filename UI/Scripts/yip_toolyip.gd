@@ -1,4 +1,4 @@
-extends Control
+class_name Toolyip extends Control
 
 var amnt_of_stats : int
 
@@ -8,9 +8,11 @@ var amnt_of_stats : int
 @onready var mouse_hover: Panel = $MouseHover
 @onready var mouse_hover_2: Panel = $MouseHover2
 var tooltip_hovering := false
-var yip_owner
+#var yip_owner
 var set_hover = false
 var shown = true
+
+var tt_size = Vector2(149, 84)
 
 var increment = 0
 
@@ -24,9 +26,19 @@ var types = [
 	"SPEC"
 ]
 
+const SLOT_KEYS := {
+	BodyMap.Slot.HEALTH: "HP",
+	BodyMap.Slot.HEALTH_AUGMENT: "HPAUG",
+	BodyMap.Slot.ATTACK: "ATK",
+	BodyMap.Slot.ATTACK_AUGMENT: "ATKAUG",
+	BodyMap.Slot.COOLDOWN: "CD",
+	BodyMap.Slot.SPECIALIZATION: "SPEC",
+	BodyMap.Slot.BREED_AUGMENT: "BREED",
+	BodyMap.Slot.NONE: "NULL",
+}
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	random_debug_setter()
 	for i in range(1, 9):
 		var node
 		node = get_node("DNA/LeftGene" + str(i))
@@ -34,6 +46,23 @@ func _ready() -> void:
 		node = get_node("DNA/RightGene" + str(i))
 		node.self_modulate = get_color("NULL")
 	print(get_total_rect(self))
+
+func display(yip: Yipee) -> void:
+	var helix: Helix = yip.data.helix
+	increment = 0
+	for i in range(Helix.RUNG_COUNT):
+		var strand: Strand = helix.strands[i] if i < helix.strands.size() else null
+		var key = "NULL"
+		if strand != null:
+			key = SLOT_KEYS.get(strand.slot, "NULL")
+		set_slot_visuals(key)
+		var left_filled = strand != null and strand.left != null
+		var right_filled = strand != null and strand.right != null
+		get_node("DNA/LeftGene" + str(i + 1)).self_modulate = get_color(key) if left_filled else get_color("NULL")
+		get_node("DNA/RightGene" + str(i + 1)).self_modulate = get_color(key) if right_filled else get_color("NULL")
+	shown = false
+	become_visible()
+
 
 func set_slot_visuals(type):
 	#increment = 0
@@ -56,11 +85,11 @@ func become_visible():
 		show()
 		shown = true
 
-func random_debug_setter():
-	for i in range(1, 9):
-		var type = types.pick_random()
-		set_slot_visuals(type)
-	increment = 0
+#func random_debug_setter():
+	#for i in range(1, 9):
+		#var type = types.pick_random()
+		#set_slot_visuals(type)
+	#increment = 0
 
 func get_color(type):
 	match type:
@@ -94,8 +123,6 @@ func popup():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if mouse_hover.get_global_rect().has_point(get_global_mouse_position()) or mouse_hover_2.get_global_rect().has_point(get_global_mouse_position()):
-		if yip_owner.hovering == true:
-			set_hover = true
 		if set_hover:
 			tooltip_hovering = true
 			#print("tooltip, ", tooltip_hovering)

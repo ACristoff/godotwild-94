@@ -11,6 +11,9 @@ var tt_active = false
 var hovering := false
 var tooltip_hovering := false
 
+
+var tt_size = Vector2(149, 84)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -25,8 +28,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var screen_size = get_viewport().get_visible_rect().size / 3
-	var tt_size = Vector2(149, 84)
-	
 	if panel.get_global_rect().has_point(get_global_mouse_position()):
 		hovering = true
 		#print("yippy, ", tooltip_hovering)

@@ -765,6 +765,9 @@ _data = {
 &"RESET": SubResource("Animation_6vhmf")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vhmf"]
+size = Vector2(126.5, 128)
+
 [node name="Yipee" type="Node2D" unique_id=580016765]
 script = ExtResource("1_4lw1p")
 
@@ -851,5 +854,14 @@ scale = Vector2(3, 3)
 texture = ExtResource("12_6vhmf")
 hframes = 3
 frame = 1
+
+[node name="HoverArea" type="Area2D" parent="." unique_id=2084336627]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HoverArea" unique_id=629930061]
+position = Vector2(1.75, -42)
+shape = SubResource("RectangleShape2D_6vhmf")
+
+[connection signal="mouse_entered" from="HoverArea" to="." method="_on_hover_area_mouse_entered"]
+[connection signal="mouse_exited" from="HoverArea" to="." method="_on_hover_area_mouse_exited"]
 
 [editable path="HealthBar"]

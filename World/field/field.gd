@@ -48,15 +48,33 @@ var allele_fill_chance_by_tier = {
 	YipeeData.YipTier.ULTRARARE: 90
 }
 
-
-#var allele_tier_odds: Dictionary = {
-	#YipeeData.YipTier.COMMON: 
-#}
+@onready var tooltip = $CanvasLayer/YipToolyip
 
 func _ready():
+	#tooltip.yip_owner = self
+	tooltip.hide()
 	for i in yips:
-		spawn_yip()
+		var new_yip = spawn_yip()
+		wire_yip(new_yip)
 
+func wire_yip(yip: Yipee) -> void:
+	yip.yip_hovered.connect(_on_yip_hovered)
+	yip.yip_unhovered.connect(_on_yip_unhovered)
+
+func _on_yip_hovered(yip: Yipee) -> void:
+	print('im hovered')
+	var screen_size = get_viewport().get_visible_rect().size / 3
+	tooltip.display(yip)
+	var screen_pos = yip.get_global_transform_with_canvas().origin
+	tooltip.global_position = $CanvasLayer.transform.affine_inverse() * screen_pos
+	tooltip.global_position.y -= 99
+	tooltip.global_position.x -= 55
+	tooltip.global_position.x = clamp(tooltip.global_position.x, 0, screen_size.x - tooltip.tt_size.x)
+	tooltip.global_position.y = clamp(tooltip.global_position.y, 0, screen_size.y - tooltip.tt_size.y)
+
+func _on_yip_unhovered() -> void:
+	print('yip unhovered')
+	tooltip.hide()
 
 func get_yip_tier():
 	var random = randi_range(0, 99)
@@ -96,7 +114,7 @@ func random_location() -> Vector2:
 	return random
 
 
-func spawn_yip():
+func spawn_yip() -> Yipee:
 	var yip_tier = get_yip_tier()
 	#var yip_tier = YipeeData.YipTier.ULTRARARE
 	var new_yip_data: YipeeData = YipeeData.generate_yip(yip_tier)
@@ -107,3 +125,4 @@ func spawn_yip():
 	
 	
 	add_child(new_yip)
+	return new_yip
