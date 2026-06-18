@@ -1,0 +1,670 @@
+[gd_scene format=3 uid="uid://fvt51j1fwmic"]
+
+[ext_resource type="Script" uid="uid://coyhr8bwoy7bk" path="res://UI/Scripts/start_cutscene.gd" id="1_nj425"]
+[ext_resource type="Texture2D" uid="uid://boj74to4iulqd" path="res://Assets/Environment/Scenes/CaptureField/CaptureField.png" id="1_wbdih"]
+[ext_resource type="Texture2D" uid="uid://s6c2wlnqr63u" path="res://UI/Textures/Letterbody.png" id="2_alyq6"]
+[ext_resource type="Texture2D" uid="uid://dtm57ksfnf5vm" path="res://UI/Textures/LetterLip.png" id="3_jtax5"]
+[ext_resource type="Texture2D" uid="uid://c2s0nte2ixde6" path="res://UI/Textures/LetterStamp.png" id="4_kgl4q"]
+[ext_resource type="Texture2D" uid="uid://do2w720rck68e" path="res://UI/Textures/StampBack.png" id="5_kw6rw"]
+[ext_resource type="Texture2D" uid="uid://bu25b116ccctr" path="res://UI/Textures/LetterJustPaper.png" id="6_jtax5"]
+[ext_resource type="Texture2D" uid="uid://ch8oia8iqbewe" path="res://UI/Textures/LetterHand.png" id="7_kgl4q"]
+[ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="7_kw6rw"]
+
+[sub_resource type="Animation" id="Animation_kw6rw"]
+resource_name = "Attempt1"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.6155722, 1),
+"update": 0,
+"values": [Vector2(2.7, 2.7), Vector2(3, 3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.45062524, 1),
+"update": 0,
+"values": [-0.116937056, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_nj425"]
+resource_name = "Attempt2"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.40612632, 1),
+"update": 0,
+"values": [Vector2(2.5, 2.5), Vector2(3, 3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.40612623, 1),
+"update": 0,
+"values": [0.23561946, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_5ac60"]
+resource_name = "ByeByeLetter"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(2.0705302, 1),
+"update": 0,
+"values": [Vector2(960, 1540), Vector2(960, 2401)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LetterHand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(2.0705302, 1),
+"update": 0,
+"values": [Vector2(957, 540), Vector2(957, 1401)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Darkness:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.43333337, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.7529412), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_alyq6"]
+resource_name = "OpenLetter"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/LetterLip:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, -1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/LetterStamp:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/StampBack:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/StampBack:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, -2]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D/LetterStamp:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, -1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node2D/StampBack:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, -1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Node2D/ColorRect/LetterJustPaper:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.3333334),
+"transitions": PackedFloat32Array(1, 2.4622886, 1),
+"update": 0,
+"values": [Vector2(544.6389, 746.1647), Vector2(544.6389, 746.1647), Vector2(544.639, 367.675)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Node2D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.3333334),
+"transitions": PackedFloat32Array(1, 3.3635848, 1),
+"update": 0,
+"values": [Vector2(960, 540), Vector2(960, 540), Vector2(960, 1540)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Node2D/LetterStamp:z_index")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Node2D/LetterLip:z_index")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [6, -1]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Node2D/ColorRect/LetterJustPaper:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("LetterHand:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(1.2666668, 2),
+"transitions": PackedFloat32Array(0.35355344, 1),
+"update": 0,
+"values": [Vector2(957, 834), Vector2(957, 540)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Node2D/ColorRect/LetterJustPaper2:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 1.3333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Node2D/ColorRect/ColorRect:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 1.3333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Button2:mouse_filter")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Button:mouse_filter")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 2]
+}
+
+[sub_resource type="Animation" id="Animation_jtax5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/LetterLip:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/LetterStamp:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/StampBack:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/StampBack:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D/LetterStamp:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node2D/StampBack:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Node2D/ColorRect/LetterJustPaper:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(544.6389, 746.1647)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Node2D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(960, 540)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Node2D/LetterStamp:z_index")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Node2D/LetterLip:z_index")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Node2D/ColorRect/LetterJustPaper:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("LetterHand:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(957, 834)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Node2D/ColorRect/LetterJustPaper2:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Node2D/ColorRect/ColorRect:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Node2D:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 3)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Node2D:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Button2:mouse_filter")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Button:mouse_filter")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Darkness:color")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.7529412)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kgl4q"]
+_data = {
+&"Attempt1": SubResource("Animation_kw6rw"),
+&"Attempt2": SubResource("Animation_nj425"),
+&"ByeByeLetter": SubResource("Animation_5ac60"),
+&"OpenLetter": SubResource("Animation_alyq6"),
+&"RESET": SubResource("Animation_jtax5")
+}
+
+[node name="StartCutscene" type="Node2D" unique_id=588285204]
+texture_filter = 3
+script = ExtResource("1_nj425")
+
+[node name="CaptureField" type="Sprite2D" parent="." unique_id=1422440106]
+z_index = -10
+position = Vector2(960, 540)
+scale = Vector2(3, 3)
+texture = ExtResource("1_wbdih")
+
+[node name="Darkness" type="ColorRect" parent="." unique_id=1417784038]
+z_index = -9
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.7529412)
+
+[node name="Node2D" type="Node2D" parent="." unique_id=246514067]
+position = Vector2(960, 540)
+scale = Vector2(3, 3)
+
+[node name="Letterbody" type="Sprite2D" parent="Node2D" unique_id=569664337]
+z_index = 6
+texture_filter = 3
+texture = ExtResource("2_alyq6")
+
+[node name="LetterBack" type="ColorRect" parent="Node2D/Letterbody" unique_id=527297667]
+z_index = -6
+offset_left = -139.0
+offset_top = -43.0
+offset_right = 123.0
+offset_bottom = 31.0
+mouse_filter = 2
+color = Color(0.56078434, 0.5803922, 0.59607846, 1)
+
+[node name="LetterLip" type="Sprite2D" parent="Node2D" unique_id=1324293390]
+z_index = 6
+position = Vector2(-9.333313, -42.66667)
+texture = ExtResource("3_jtax5")
+offset = Vector2(9.3333435, 42.666656)
+
+[node name="LetterStamp" type="Sprite2D" parent="Node2D" unique_id=705638232]
+z_index = 6
+position = Vector2(-9.333313, -42.66667)
+texture = ExtResource("4_kgl4q")
+offset = Vector2(9.333313, 42.33333)
+
+[node name="StampBack" type="Sprite2D" parent="Node2D" unique_id=286218036]
+z_index = 4
+position = Vector2(-9.3333435, -42.66667)
+texture = ExtResource("5_kw6rw")
+offset = Vector2(9.333374, 42.66667)
+
+[node name="ColorRect" type="ColorRect" parent="Node2D" unique_id=1619685742]
+clip_children = 1
+offset_left = -545.30554
+offset_top = -686.8313
+offset_right = 556.9575
+offset_bottom = 58.666565
+mouse_filter = 2
+
+[node name="LetterJustPaper" type="Sprite2D" parent="Node2D/ColorRect" unique_id=503957454]
+position = Vector2(544.6389, 746.1647)
+texture = ExtResource("6_jtax5")
+
+[node name="Label" type="Label" parent="Node2D/ColorRect/LetterJustPaper" unique_id=1955092160]
+offset_left = -127.333466
+offset_top = -33.51033
+offset_right = 114.99988
+offset_bottom = 193.48967
+theme_override_colors/font_color = Color(0.3764706, 0.3372549, 0.26666668, 1)
+theme_override_fonts/font = ExtResource("7_kw6rw")
+theme_override_font_sizes/font_size = 8
+text = "Dear customer, 
+
+Congratulations! On your acceptance into the Animal Diversity Repopulation Program. 
+
+You may have never heard of an animal but now that can change. Here at Tardigate our scientists have been busy at work recreating animal species based on loose knowledge of animals in the ancient world.
+
+Your job is simple, find animals and encourage reproduction! Under no circumstances are you allowed to perform blood sports with your animals.
+
+Sincerely, Bob Gate.
+"
+autowrap_mode = 3
+
+[node name="LetterJustPaper2" type="Sprite2D" parent="Node2D/ColorRect" unique_id=421728533]
+visible = false
+position = Vector2(530.30554, 727.498)
+rotation = 3.1415925
+texture = ExtResource("6_jtax5")
+
+[node name="ColorRect" type="ColorRect" parent="Node2D/ColorRect" unique_id=958247400]
+visible = false
+layout_mode = 0
+offset_left = 405.30554
+offset_top = 537.1647
+offset_right = 669.6389
+offset_bottom = 577.1647
+color = Color(1, 0.8901961, 0.80784315, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1206082846]
+libraries/ = SubResource("AnimationLibrary_kgl4q")
+
+[node name="LetterHand" type="Sprite2D" parent="." unique_id=2113320170]
+position = Vector2(957, 834)
+scale = Vector2(3, 3)
+texture = ExtResource("7_kgl4q")
+
+[node name="Button" type="Button" parent="." unique_id=2008669235]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 524.0
+offset_top = 404.0
+offset_right = 1348.0
+offset_bottom = 723.0
+
+[node name="Button2" type="Button" parent="." unique_id=845707150]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -15.0
+offset_top = -12.0
+offset_right = 1937.0
+offset_bottom = 1096.0
+mouse_filter = 2
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
