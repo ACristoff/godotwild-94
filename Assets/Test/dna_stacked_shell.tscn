@@ -197,6 +197,12 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nydv0"]
 size = Vector2(844, 158)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evcsh"]
+size = Vector2(296, 95)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_acq5j"]
+size = Vector2(295, 94)
+
 [node name="DNAStackedShell" type="Node2D" unique_id=1936980544]
 script = ExtResource("1_0c7q7")
 anim_start_frame = 23
@@ -278,5 +284,21 @@ autoplay = &"start"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=595499736]
 shape = SubResource("RectangleShape2D_nydv0")
 
+[node name="RightAlleleHover" type="Area2D" parent="." unique_id=1161670177]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightAlleleHover" unique_id=1849240713]
+position = Vector2(148, -0.5)
+shape = SubResource("RectangleShape2D_evcsh")
+
+[node name="LeftAllele" type="Area2D" parent="." unique_id=1547107903]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftAllele" unique_id=175151506]
+position = Vector2(-148.5, 0)
+shape = SubResource("RectangleShape2D_acq5j")
+
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_entered" from="RightAlleleHover" to="." method="_on_right_allele_hover_mouse_entered"]
+[connection signal="mouse_exited" from="RightAlleleHover" to="." method="_on_right_allele_hover_mouse_exited"]
+[connection signal="mouse_entered" from="LeftAllele" to="." method="_on_left_allele_mouse_entered"]
+[connection signal="mouse_exited" from="LeftAllele" to="." method="_on_left_allele_mouse_exited"]

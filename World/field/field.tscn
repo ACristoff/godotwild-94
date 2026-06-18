@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://crypekq181eq4"]
+[gd_scene format=3 uid="uid://bvrbnp53em4jb"]
 
 [ext_resource type="Script" uid="uid://dvclhivib348r" path="res://World/field/field.gd" id="1_sj8ve"]
 [ext_resource type="Texture2D" uid="uid://boj74to4iulqd" path="res://Assets/Environment/Scenes/CaptureField/CaptureField.png" id="2_lwms1"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dqgfurgu7jsbg" path="res://UI/Scenes/yip_toolyip.tscn" id="5_8ubfp"]
 [ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="6_ju3ud"]
 [ext_resource type="Texture2D" uid="uid://chftxxvwdvkgk" path="res://Assets/Environment/Scenes/BattleField/LockButton.png" id="7_748j3"]
+[ext_resource type="Script" uid="uid://dqvqbetgnjsnh" path="res://UI/Scripts/lock_button_graphic.gd" id="8_6l7jc"]
+[ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="8_lwms1"]
 
 [node name="Field" type="Node2D" unique_id=1076215709]
 script = ExtResource("1_sj8ve")
@@ -72,19 +74,35 @@ texture = ExtResource("4_rh655")
 position = Vector2(960, 1080)
 
 [node name="ButtonRefreshButtonIcon" type="NinePatchRect" parent="." unique_id=886724320]
-modulate = Color(1, 0.36, 0.46666688, 1)
+self_modulate = Color(1, 0.36078432, 0.46666667, 1)
 z_index = 4096
 texture_filter = 3
-offset_left = 819.0
-offset_top = 957.0
-offset_right = 911.0
-offset_bottom = 982.77783
+offset_left = 911.0
+offset_top = 983.00006
+offset_right = 1003.0
+offset_bottom = 1008.7779
 scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("6_ju3ud")
 patch_margin_left = 15
 patch_margin_top = 10
 patch_margin_right = 30
 patch_margin_bottom = 10
+
+[node name="RefreshLabel" type="Label" parent="ButtonRefreshButtonIcon" unique_id=748704720]
+z_index = 4096
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 173.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_6l7jc")
+text = "Refresh"
 
 [node name="ButtonRefresh2" type="NinePatchRect" parent="." unique_id=697281044]
 z_index = 4096
@@ -100,21 +118,6 @@ patch_margin_top = 10
 patch_margin_right = 30
 patch_margin_bottom = 10
 
-[node name="Label" type="Label" parent="." unique_id=748704720]
-z_index = 4096
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 876.0
-offset_top = 982.0
-offset_right = 1044.0
-offset_bottom = 1010.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_6l7jc")
-theme_override_font_sizes/font_size = 48
-text = "Refresh"
-
 [node name="LockButtonGraphic" type="Sprite2D" parent="." unique_id=1330098914]
 z_index = 4096
 texture_filter = 3
@@ -123,55 +126,84 @@ scale = Vector2(3, 3)
 texture = ExtResource("7_748j3")
 hframes = 2
 
-[node name="LockLabel" type="Label" parent="." unique_id=1535533734]
+[node name="LockLabel" type="Label" parent="LockButtonGraphic" unique_id=1535533734]
 z_index = 4096
-offset_left = 912.0
-offset_top = 899.0
-offset_right = 1008.0
-offset_bottom = 927.0
+offset_left = -12.0000105
+offset_top = -5.666697
+offset_right = 83.99999
+offset_bottom = 22.333303
 theme_override_fonts/font = ExtResource("3_6l7jc")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 8
 text = "Lock"
 
 [node name="FarmButtonIcon" type="NinePatchRect" parent="." unique_id=1533065683]
-modulate = Color(0.65, 0.409175, 0.2795, 1)
+self_modulate = Color(0.6509804, 0.40784314, 0.2784314, 1)
 z_index = 4096
 texture_filter = 3
-offset_left = 1666.0
-offset_top = 899.0
-offset_right = 1741.6666
-offset_bottom = 935.77783
+offset_left = 1742.0001
+offset_top = 936.00006
+offset_right = 1817.6667
+offset_bottom = 972.7779
 scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("6_ju3ud")
 patch_margin_left = 15
 patch_margin_top = 10
 patch_margin_right = 30
 patch_margin_bottom = 10
 
-[node name="Label3" type="Label" parent="." unique_id=1630255620]
+[node name="FarmLabel" type="Label" parent="FarmButtonIcon" unique_id=1630255620]
 z_index = 4096
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1701.0
-offset_top = 935.0
-offset_right = 1857.0
-offset_bottom = 977.0
+offset_left = 11.666626
+offset_top = 12.0
+offset_right = 167.66663
+offset_bottom = 54.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_6l7jc")
-theme_override_font_sizes/font_size = 48
 text = "Farm"
 
-[node name="RefreshButton" type="Button" parent="." unique_id=1106415485]
+[node name="RefreshButton" type="Button" parent="." unique_id=1106415485 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
 z_index = 4096
 offset_left = 819.0
 offset_top = 956.0
 offset_right = 1095.0
 offset_bottom = 1035.0
+script = ExtResource("8_lwms1")
+target_highlight = NodePath("../ButtonRefreshButtonIcon")
 
-[node name="LockButton" type="Button" parent="." unique_id=1234442090]
+[node name="LockButton" type="Button" parent="." unique_id=1234442090 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
 offset_left = 891.0
 offset_top = 888.0
 offset_right = 1030.0
 offset_bottom = 951.0
+script = ExtResource("8_6l7jc")
+target_highlight = NodePath("../LockButtonGraphic")
+
+[node name="FarmButton" type="Button" parent="." unique_id=745597056 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 1666.0
+offset_top = 899.0
+offset_right = 1893.0
+offset_bottom = 1010.0
+script = ExtResource("8_lwms1")
+target_highlight = NodePath("../FarmButtonIcon")
+
+[connection signal="button_down" from="RefreshButton" to="RefreshButton" method="_on_button_down"]
+[connection signal="button_up" from="RefreshButton" to="RefreshButton" method="_on_button_up"]
+[connection signal="mouse_entered" from="RefreshButton" to="RefreshButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="RefreshButton" to="RefreshButton" method="_on_mouse_exited"]
+[connection signal="button_down" from="LockButton" to="LockButton" method="_on_button_down"]
+[connection signal="button_up" from="LockButton" to="LockButton" method="_on_button_up"]
+[connection signal="mouse_entered" from="LockButton" to="LockButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="LockButton" to="LockButton" method="_on_mouse_exited"]
+[connection signal="button_down" from="FarmButton" to="FarmButton" method="_on_button_down"]
+[connection signal="button_up" from="FarmButton" to="FarmButton" method="_on_button_up"]
+[connection signal="mouse_entered" from="FarmButton" to="FarmButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="FarmButton" to="FarmButton" method="_on_mouse_exited"]

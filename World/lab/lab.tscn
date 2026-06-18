@@ -4,13 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://c1xvm0thbin5l" path="res://Assets/Environment/Scenes/Laboratory/LabScreen.png" id="2_fne6d"]
 [ext_resource type="Texture2D" uid="uid://dp6fox832wacg" path="res://Assets/Environment/Scenes/Laboratory/LabPieces.png" id="3_ems3l"]
 [ext_resource type="Shader" uid="uid://bwvmkd4i76b3p" path="res://Assets/Shaders/CRT.gdshader" id="4_ems3l"]
-[ext_resource type="PackedScene" uid="uid://c7hhcdnirt18v" path="res://UI/Scenes/small_gene.tscn" id="4_mntup"]
 [ext_resource type="Texture2D" uid="uid://blbxak2oo2t0j" path="res://Assets/Environment/Scenes/Laboratory/LabPiecesOver.png" id="4_uroyv"]
 [ext_resource type="PackedScene" uid="uid://38s8fl53yrsg" path="res://Assets/Test/dna_test_screen.tscn" id="5_ieswn"]
 [ext_resource type="Texture2D" uid="uid://djdujp6j5ud2u" path="res://Assets/Environment/Scenes/Laboratory/Conveyor.png" id="6_fne6d"]
-[ext_resource type="Texture2D" uid="uid://hw33tjyvck3t" path="res://UI/Textures/Gene.png" id="8_uroyv"]
 [ext_resource type="PackedScene" uid="uid://ba2i2glrfw55d" path="res://World/areas.tscn" id="9_ieswn"]
 [ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="10_co32c"]
+[ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="11_co32c"]
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="11_mntup"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uroyv"]
@@ -172,10 +171,6 @@ title_offset = 73
 [node name="DNAStackedShell8" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" parent_id_path=PackedInt32Array(2140591040, 168700534) index="7" unique_id=1583672614]
 title_offset = 84
 
-[node name="SmallGene" parent="." unique_id=1127096935 instance=ExtResource("4_mntup")]
-position = Vector2(1801, 186)
-scale = Vector2(3, 3)
-
 [node name="ColorRect4" type="ColorRect" parent="." unique_id=749799674]
 material = SubResource("ShaderMaterial_uroyv")
 offset_left = 691.0
@@ -208,13 +203,6 @@ texture = ExtResource("4_uroyv")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=939278799]
 environment = SubResource("Environment_ems3l")
 
-[node name="Gene" type="Sprite2D" parent="." unique_id=18300664]
-modulate = Color(0.5409905, 0.5409905, 0.5409905, 1)
-texture_filter = 3
-position = Vector2(1431, 176)
-scale = Vector2(3, 3)
-texture = ExtResource("8_uroyv")
-
 [node name="Areas" parent="." unique_id=1408748551 instance=ExtResource("9_ieswn")]
 
 [node name="Area2D" type="Area2D" parent="." unique_id=482508547]
@@ -233,33 +221,34 @@ range_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_mntup")
 
 [node name="ButtonRefresh4" type="NinePatchRect" parent="." unique_id=1620178412]
-modulate = Color(0.6509804, 0.40784314, 0.2784314, 1)
+self_modulate = Color(0.6509804, 0.40784314, 0.2784314, 1)
 z_index = 4096
 texture_filter = 3
-offset_left = 27.0
-offset_top = 899.0
-offset_right = 102.666626
-offset_bottom = 935.77783
+offset_left = 103.0
+offset_top = 935.00006
+offset_right = 178.66663
+offset_bottom = 971.7779
 scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("10_co32c")
 patch_margin_left = 15
 patch_margin_top = 10
 patch_margin_right = 30
 patch_margin_bottom = 10
 
-[node name="Label4" type="Label" parent="." unique_id=87403317]
+[node name="Label4" type="Label" parent="ButtonRefresh4" unique_id=87403317]
 z_index = 4096
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 62.0
-offset_top = 935.0
-offset_right = 218.0
-offset_bottom = 977.0
+offset_left = 11.666668
+offset_top = 12.0
+offset_right = 167.66667
+offset_bottom = 54.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("11_mntup")
-theme_override_font_sizes/font_size = 48
 text = "fARM"
 
 [node name="LaunchPad" type="Area2D" parent="." unique_id=374070610]
@@ -276,10 +265,27 @@ position = Vector2(301, 676)
 position = Vector2(78, 1)
 shape = SubResource("RectangleShape2D_co32c")
 
+[node name="SmallGeneCanvas" type="CanvasLayer" parent="." unique_id=145482404]
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
+
+[node name="FarmButton" type="Button" parent="." unique_id=1652736024 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 27.0
+offset_top = 898.0
+offset_right = 254.0
+offset_bottom = 1009.0
+script = ExtResource("11_co32c")
+target_highlight = NodePath("../ButtonRefresh4")
+
 [connection signal="area_entered" from="LaunchPad" to="Areas" method="_on_launch_pad_area_entered"]
 [connection signal="area_exited" from="LaunchPad" to="Areas" method="_on_launch_pad_area_exited"]
 [connection signal="area_entered" from="ConveyorArea" to="Areas" method="_on_conveyor_area_area_entered"]
 [connection signal="area_exited" from="ConveyorArea" to="Areas" method="_on_conveyor_area_area_exited"]
+[connection signal="button_down" from="FarmButton" to="FarmButton" method="_on_button_down"]
+[connection signal="button_up" from="FarmButton" to="FarmButton" method="_on_button_up"]
+[connection signal="mouse_entered" from="FarmButton" to="FarmButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="FarmButton" to="FarmButton" method="_on_mouse_exited"]
 
 [editable path="Control/SubViewportContainer/SubViewport/DNATestScreen"]
 [editable path="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA/DNAStackedShell"]

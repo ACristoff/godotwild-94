@@ -127,18 +127,25 @@ func tick_forward():
 
 	update_depth()
 
-
-func _on_button_mouse_entered() -> void:
-	pass # Replace with function body.
-
-
-func _on_button_mouse_exited() -> void:
-	pass # Replace with function body.
-
-
 func _on_area_2d_mouse_entered() -> void:
-	pass # Replace with function body.
-
+	$DnaShell1.self_modulate = Color(1.526, 1.526, 1.526, 1.0)
+	$DnaShell2.self_modulate = Color(1.526, 1.526, 1.526, 1.0)
 
 func _on_area_2d_mouse_exited() -> void:
-	pass # Replace with function body.
+	$DnaShell1.self_modulate = Color("ffffffff")
+	$DnaShell2.self_modulate = Color("ffffffff")
+
+
+func _on_right_allele_hover_mouse_entered() -> void:
+	$DnaAllele1.self_modulate = Color(1.526, 1.526, 1.526, 1.0)
+
+func _on_right_allele_hover_mouse_exited() -> void:
+	$DnaAllele1.self_modulate = Color("ffffffff")
+
+
+func _on_left_allele_mouse_entered() -> void:
+	$DnaAllele2.self_modulate = Color(1.526, 1.526, 1.526, 1.0)
+
+
+func _on_left_allele_mouse_exited() -> void:
+	$DnaAllele2.self_modulate = Color("ffffffff")
