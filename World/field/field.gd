@@ -101,10 +101,7 @@ func spawn_yip():
 	#var yip_tier = YipeeData.YipTier.ULTRARARE
 	var new_yip_data: YipeeData = YipeeData.generate_yip(yip_tier)
 	var new_yip := preload("res://World/yipee/yipee.tscn").instantiate() as Yipee
-	var new_helix := Helix.generate_random(yip_tier)
-	var mutated_helix : Helix = generate_alleles(yip_tier, new_helix)
-	
-	new_yip_data.helix = mutated_helix
+	generate_alleles(yip_tier, new_yip_data.helix)
 	new_yip.data = new_yip_data
 	new_yip.position = random_location()
 	

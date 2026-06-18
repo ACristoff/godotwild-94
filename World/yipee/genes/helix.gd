@@ -27,13 +27,13 @@ static func generate_random(yip_tier: YipeeData.YipTier = YipeeData.YipTier.COMM
 	var helix := Helix.new()
 	var types := BodyMap.Slot.values()
 	for i in RUNG_COUNT:
-		#var random = randi_range(0, 100)
-		#var current_odds = fill_chance_by_tier[yip_tier]
-		#
-		#if random < current_odds:
-		var strand := Strand.new()
-		strand.slot = types.pick_random()
-		helix.strands[i] = strand
+		var random = randi_range(0, 99)
+		var current_odds = fill_chance_by_tier[yip_tier]
+		
+		if random < current_odds:
+			var strand := Strand.new()
+			strand.slot = types.pick_random()
+			helix.strands[i] = strand
 	
 	return helix
 
