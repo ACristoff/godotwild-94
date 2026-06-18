@@ -71,3 +71,13 @@ d={
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+2d_physics/layer_7="Yip_Snapping"
+2d_physics/layer_8="TeamSlots"
+
+[rendering]
+
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true

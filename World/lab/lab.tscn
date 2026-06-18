@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://djdujp6j5ud2u" path="res://Assets/Environment/Scenes/Laboratory/Conveyor.png" id="6_fne6d"]
 [ext_resource type="Texture2D" uid="uid://hw33tjyvck3t" path="res://UI/Textures/Gene.png" id="8_uroyv"]
 [ext_resource type="PackedScene" uid="uid://ba2i2glrfw55d" path="res://World/areas.tscn" id="9_ieswn"]
+[ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="10_co32c"]
+[ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="11_mntup"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uroyv"]
 shader = ExtResource("4_ems3l")
@@ -35,21 +37,54 @@ shader_parameter/roll_strength = 0.15
 shader_parameter/glow_strength = 0.25
 shader_parameter/glow_threshold = 0.65
 
+[sub_resource type="Gradient" id="Gradient_ieswn"]
+colors = PackedColorArray(0.0070000077, 0, 0.06, 1, 0.9716667, 0.95, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_04eem"]
+gradient = SubResource("Gradient_ieswn")
+
 [sub_resource type="Environment" id="Environment_ems3l"]
 background_mode = 3
 glow_enabled = true
 glow_strength = 1.02
 glow_bloom = 0.2
+adjustment_enabled = true
+adjustment_brightness = 0.71
+adjustment_color_correction = SubResource("GradientTexture1D_04eem")
+
+[sub_resource type="Gradient" id="Gradient_04eem"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_co32c"]
+gradient = SubResource("Gradient_04eem")
+width = 1930
+height = 1278
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.9691781, 0.5385231)
+
+[sub_resource type="Gradient" id="Gradient_co32c"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mntup"]
+gradient = SubResource("Gradient_co32c")
+width = 1167
+height = 370
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8835617, 0.34459698)
 
 [node name="Lab" type="Node2D" unique_id=1804512105]
 
 [node name="LabFloor" type="Sprite2D" parent="." unique_id=1479778400]
+light_mask = 3
 texture_filter = 3
 position = Vector2(960, 540)
 scale = Vector2(3, 3)
 texture = ExtResource("1_nl8f2")
 
 [node name="Conveyor" type="Sprite2D" parent="." unique_id=724460789]
+light_mask = 3
 texture_filter = 3
 position = Vector2(450, 692)
 scale = Vector2(3, 3)
@@ -66,6 +101,7 @@ mouse_filter = 2
 color = Color(0.11327667, 0.039100002, 0.17, 1)
 
 [node name="Control" type="Control" parent="." unique_id=748581926]
+light_mask = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -169,6 +205,49 @@ texture = ExtResource("8_uroyv")
 [node name="Areas" parent="." unique_id=1408748551 instance=ExtResource("9_ieswn")]
 
 [node name="Area2D" type="Area2D" parent="." unique_id=482508547]
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=688176565]
+position = Vector2(1235, 449)
+energy = 2.62
+blend_mode = 2
+texture = SubResource("GradientTexture2D_co32c")
+
+[node name="PointLight2D2" type="PointLight2D" parent="." unique_id=210127561]
+position = Vector2(640, 669)
+color = Color(0.32186756, 0, 0.58456355, 1)
+energy = 12.71
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_mntup")
+
+[node name="ButtonRefresh4" type="NinePatchRect" parent="." unique_id=1620178412]
+modulate = Color(0.6509804, 0.40784314, 0.2784314, 1)
+z_index = 4096
+texture_filter = 3
+offset_left = 27.0
+offset_top = 899.0
+offset_right = 102.666626
+offset_bottom = 935.77783
+scale = Vector2(3, 3)
+texture = ExtResource("10_co32c")
+patch_margin_left = 15
+patch_margin_top = 10
+patch_margin_right = 30
+patch_margin_bottom = 10
+
+[node name="Label4" type="Label" parent="." unique_id=87403317]
+z_index = 4096
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 62.0
+offset_top = 935.0
+offset_right = 218.0
+offset_bottom = 977.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_mntup")
+theme_override_font_sizes/font_size = 48
+text = "fARM"
 
 [editable path="Control/SubViewportContainer/SubViewport/DNATestScreen"]
 [editable path="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA/DNAStackedShell"]

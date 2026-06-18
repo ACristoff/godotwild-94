@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_wekoi")
 body_part = ExtResource("1_ple76")
-body_target = 7
+body_target = 8
 slot = 6
 allele_name = "Bill"
 rarity = 1

@@ -10,6 +10,8 @@ height = 138.0
 [node name="Areas" type="Node2D" unique_id=1408748551]
 
 [node name="MainPen" type="Area2D" parent="." unique_id=1457590473]
+collision_layer = 64
+collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainPen" unique_id=195685785]
 position = Vector2(300, 272)
@@ -17,6 +19,8 @@ shape = SubResource("RectangleShape2D_4wsdy")
 
 [node name="TeamSlot" type="Area2D" parent="." unique_id=1340362752]
 position = Vector2(500, 930)
+collision_layer = 192
+collision_mask = 192
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TeamSlot" unique_id=463593819]
 rotation = 1.5707964

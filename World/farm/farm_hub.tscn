@@ -1,18 +1,134 @@
 [gd_scene format=3 uid="uid://nftefyq1mjfs"]
 
+[ext_resource type="Script" uid="uid://p6gqqj5hfm4f" path="res://World/farm/farm_hub.gd" id="1_ny6x8"]
 [ext_resource type="Texture2D" uid="uid://tvdccdi2svbw" path="res://Assets/Environment/Scenes/FarmHub/CaptureField.png" id="1_uce31"]
 [ext_resource type="Texture2D" uid="uid://cde766uqhwhye" path="res://Assets/Environment/Scenes/FarmHub/FarmFenceOver.png" id="2_kiiwq"]
 [ext_resource type="Texture2D" uid="uid://dchflrmjnwtq6" path="res://Assets/Environment/Scenes/FarmHub/FarmFenceOverReal.png" id="3_4wsdy"]
-[ext_resource type="Texture2D" uid="uid://cqbisn13rvdd" path="res://Assets/Environment/Scenes/FarmHub/FarmBreedingBarn.png" id="4_goe80"]
-[ext_resource type="Texture2D" uid="uid://csonk8c5dj0ht" path="res://Assets/Environment/Scenes/FarmHub/FarmLab.png" id="5_odbp6"]
 [ext_resource type="Texture2D" uid="uid://bouvm8wo3pupb" path="res://Assets/Environment/Scenes/BattleField/YipTeamSlot.png" id="6_4wsdy"]
 [ext_resource type="PackedScene" uid="uid://ba2i2glrfw55d" path="res://World/areas.tscn" id="7_goe80"]
+[ext_resource type="Texture2D" uid="uid://5d0vbve07hjh" path="res://Assets/Environment/Scenes/FarmHub/BreedingBarnLarge.png" id="7_odbp6"]
+[ext_resource type="Texture2D" uid="uid://bd4u7facxi6dq" path="res://Assets/Environment/Scenes/FarmHub/BreedingBarnGrass.png" id="7_w8qn1"]
+[ext_resource type="Texture2D" uid="uid://bhqukfxfk2svc" path="res://Assets/Environment/Scenes/FarmHub/BreedingBarnLargeDoor.png" id="9_ay8hv"]
+[ext_resource type="Texture2D" uid="uid://7lmsn8pli0l1" path="res://Assets/Environment/Scenes/FarmHub/LabNew.png" id="9_b6oao"]
+[ext_resource type="Texture2D" uid="uid://h0lhg7i0ofx3" path="res://Assets/Environment/Scenes/FarmHub/DoorLabInside.png" id="10_8bbuy"]
+[ext_resource type="Texture2D" uid="uid://dlnlf64ces3iv" path="res://Assets/Environment/Scenes/FarmHub/LabDoor.png" id="11_ny6x8"]
+[ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="13_lx74c"]
+[ext_resource type="Texture2D" uid="uid://1lmfe1dpron4" path="res://Assets/Environment/Scenes/BattleField/Coin.png" id="14_4wbmb"]
+[ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="15_4wbmb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_goe80"]
-size = Vector2(451, 272)
+size = Vector2(495, 343)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_b6oao"]
+polygon = PackedVector2Array(-1, -0.33333588, -3, -0.33333588, -3, -1.3333359, -5, -1.3333359, -5, -2.3333359, -7, -2.3333359, -7, -3.3333359, -9, -3.3333359, -9, -4, -9, -4.333336, -11, -4.333336, -11, -5.333336, -13, -5.333336, -13, -6.333336, -15, -6.333336, -15, -7.333336, -17, -7.333336, -17, -8.333336, -19, -8.333336, -19, -9.333336, -21, -9.333336, -21, -10.333336, -23, -10.333336, -23, -11.333336, -25, -11.333336, -25, -12.333336, -27, -12.333336, -27, -13.333336, -29, -13.333336, -29, -14.333336, -31, -14.333336, -31, -15.333336, -33, -15.333336, -33, -16.333336, -35, -16.333336, -35, -17.333336, -37, -17.333336, -37, -18.333336, -39, -18.333336, -39, -19.333336, -41, -19.333336, -41, -20.333336, -43, -20.333336, -43, -21.333336, -45, -21.333336, -45, -34, 62, -34.333336, 61.666687, 43.333336, 31, 60.666664, 7, 60.666664, 7, 59.666664, 5, 59.666664, 5, 58.666664, 3, 58.666664, 3, 57.666664, 1, 57.666664, 1, 56.666664, -1, 56.666664)
+
+[sub_resource type="Gradient" id="Gradient_8bbuy"]
+colors = PackedColorArray(1.6858962, 0.6379646, 2.2501678, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ny6x8"]
+gradient = SubResource("Gradient_8bbuy")
+width = 132
+height = 109
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7777778, 0.8333333)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lx74c"]
+polygon = PackedVector2Array(246, -54.33333, 244, -54.33333, 244, -55.33333, 242, -55.33333, 242, -56.33333, 240, -56.33333, 239.66669, -57.33333, 238, -57.33333, 238, -58.33333, 236, -58.33333, 236, -59.33333, 234, -59.33333, 234, -60.33333, 232, -60.33333, 232, -61.33333, 230, -61.33333, 230, -62.33333, 228, -62.33333, 228, -63.33333, 226, -63.33333, 226, -64.33333, 224, -64.33333, 224, -65.33333, 222, -65.33333, 222, -66.33333, 220, -66.33333, 220, -67.33333, 218, -67.33333, 218, -68.33333, 216, -68.33333, 216, -69.33333, 214, -69.33333, 214, -70.33333, 212, -70.33333, 212, -71.33333, 211, -71.33333, 211, -69.666664, 213, -69.666664, 213, -17, 215, -17, 215, -16.333328, 215, -16, 217, -16, 217, -15, 219, -15, 219, -14, 221, -14, 221, -13, 223, -13, 223, -12, 225, -12, 225, -11.333328, 225, -11, 227, -11, 227, -10, 229, -10, 229, -9, 231, -9, 231, -8, 233, -8, 233, -7, 235, -7, 235, -6, 236.66669, -6, 237, -6, 237, -5, 238.66669, -5, 239, -5, 239, -4, 241, -4, 241, -3, 243, -3, 243, -2, 245, -2, 245, -1, 245.66669, -1, 246, -1)
+
+[sub_resource type="Animation" id="Animation_b6oao"]
+resource_name = "DoorClose"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LabDoor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.36666667, 0.46666667, 0.53333336, 0.6000001),
+"transitions": PackedFloat32Array(3.999999, 0.34151012, 2.8284268, 0.45062512, 2.7320802, 1),
+"update": 0,
+"values": [Vector2(960, 381), Vector2(960, 540), Vector2(960, 519.705), Vector2(960, 540), Vector2(960, 533.59), Vector2(960, 540)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorLabInside:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(5.2618666, 5.2618666, 5.2618666, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8bbuy"]
+resource_name = "DoorOpen"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LabDoor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.3660218, 1),
+"update": 0,
+"values": [Vector2(960, 540), Vector2(960, 381)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorLabInside:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.15932015, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(5.2618666, 5.2618666, 5.2618666, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ny6x8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LabDoor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(960, 540)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorLabInside:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(5.2618666, 5.2618666, 5.2618666, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lx74c"]
+_data = {
+&"DoorClose": SubResource("Animation_b6oao"),
+&"DoorOpen": SubResource("Animation_8bbuy"),
+&"RESET": SubResource("Animation_ny6x8")
+}
 
 [node name="FarmHub" type="Node2D" unique_id=1302684830]
 texture_filter = 3
+script = ExtResource("1_ny6x8")
 
 [node name="CaptureField" type="Sprite2D" parent="." unique_id=1283365202]
 texture_filter = 3
@@ -29,16 +145,6 @@ texture = ExtResource("2_kiiwq")
 position = Vector2(960, 540)
 scale = Vector2(3, 3)
 texture = ExtResource("3_4wsdy")
-
-[node name="FarmBreedingBarn" type="Sprite2D" parent="." unique_id=1895500106]
-position = Vector2(960, 540)
-scale = Vector2(3, 3)
-texture = ExtResource("4_goe80")
-
-[node name="FarmLab" type="Sprite2D" parent="." unique_id=2027895717]
-position = Vector2(960, 540)
-scale = Vector2(3, 3)
-texture = ExtResource("5_odbp6")
 
 [node name="Slots" type="Node2D" parent="." unique_id=2018565995]
 scale = Vector2(3, 3)
@@ -70,9 +176,207 @@ texture = ExtResource("6_4wsdy")
 
 [node name="Areas" parent="." unique_id=1408748551 instance=ExtResource("7_goe80")]
 
-[node name="BreedFarmSlot" type="Area2D" parent="." unique_id=990957553]
-position = Vector2(661, 0)
+[node name="BreedingBarnGrass" type="Sprite2D" parent="." unique_id=1289160848]
+position = Vector2(960, 540)
+scale = Vector2(3, 3)
+texture = ExtResource("7_w8qn1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BreedFarmSlot" unique_id=410419710]
-position = Vector2(215.5, 126)
+[node name="BreedSlot" type="Sprite2D" parent="BreedingBarnGrass" unique_id=1885099663]
+texture_filter = 3
+position = Vector2(-48.999992, -87.000046)
+texture = ExtResource("6_4wsdy")
+
+[node name="BreedSlot2" type="Sprite2D" parent="BreedingBarnGrass" unique_id=1310198949]
+texture_filter = 3
+position = Vector2(10.000191, -87.000046)
+texture = ExtResource("6_4wsdy")
+
+[node name="BreedingBarnLarge" type="Sprite2D" parent="BreedingBarnGrass" unique_id=2130652893]
+texture = ExtResource("7_odbp6")
+
+[node name="BreedingBarnLargeDoor" type="Sprite2D" parent="BreedingBarnGrass" unique_id=683145878]
+visible = false
+texture = ExtResource("9_ay8hv")
+
+[node name="BreedFarmSlot" type="Area2D" parent="BreedingBarnGrass" unique_id=990957553]
+position = Vector2(-99.66666, -180)
+scale = Vector2(0.33333334, 0.33333334)
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BreedingBarnGrass/BreedFarmSlot" unique_id=410419710]
+visible = false
+position = Vector2(237.5, 161.5)
 shape = SubResource("RectangleShape2D_goe80")
+
+[node name="Label" type="Label" parent="BreedingBarnGrass/BreedFarmSlot" unique_id=1392108914]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="DoorLabInside" type="Sprite2D" parent="." unique_id=2113473119]
+self_modulate = Color(5.2618666, 5.2618666, 5.2618666, 1)
+position = Vector2(960, 539)
+scale = Vector2(3, 3)
+texture = ExtResource("10_8bbuy")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="DoorLabInside" unique_id=808387601]
+position = Vector2(247, -53.333336)
+occluder = SubResource("OccluderPolygon2D_b6oao")
+
+[node name="PointLight2D" type="PointLight2D" parent="DoorLabInside" unique_id=643232895]
+position = Vector2(223.33337, -27.666672)
+rotation = 0.27277866
+color = Color(0.6499996, 0, 1, 1)
+energy = 1.6
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_ny6x8")
+
+[node name="LabDoor" type="Sprite2D" parent="." unique_id=1653245711]
+light_mask = 0
+position = Vector2(960, 540)
+scale = Vector2(3, 3)
+texture = ExtResource("11_ny6x8")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="LabDoor" unique_id=420901110]
+occluder = SubResource("OccluderPolygon2D_lx74c")
+
+[node name="LabNew" type="Sprite2D" parent="." unique_id=2123183148]
+position = Vector2(960.00006, 540)
+scale = Vector2(3, 3)
+texture = ExtResource("9_b6oao")
+
+[node name="TextureButton" type="Button" parent="LabNew" unique_id=1428114972]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 107.99997
+offset_top = -180.00006
+offset_right = 319.99997
+offset_bottom = 8.666672
+
+[node name="LabDoor2" type="AnimationPlayer" parent="." unique_id=2037295825]
+libraries/ = SubResource("AnimationLibrary_lx74c")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=459188768]
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1348349465]
+layout_mode = 3
+anchor_left = 0.33400002
+anchor_right = 0.33400002
+offset_left = -85.28003
+offset_top = 166.0
+offset_right = -45.28003
+offset_bottom = 206.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=710200657]
+layout_mode = 0
+offset_left = -4.666687
+offset_top = 36.66667
+offset_right = 97.33331
+offset_bottom = 125.66667
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control/HBoxContainer" unique_id=766808128]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = -10
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/HBoxContainer/MarginContainer2" unique_id=1365974164]
+texture_filter = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("13_lx74c")
+theme_override_font_sizes/font_size = 16
+text = "20"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/HBoxContainer" unique_id=2083464319]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 5
+
+[node name="Coin" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer/MarginContainer" unique_id=1503344730]
+texture_filter = 3
+layout_mode = 2
+texture = ExtResource("14_4wbmb")
+
+[node name="ButtonRefresh2" type="NinePatchRect" parent="." unique_id=252918501]
+z_index = 4096
+texture_filter = 3
+offset_left = 1617.0
+offset_top = 698.0
+offset_right = 1709.0
+offset_bottom = 741.0
+scale = Vector2(3, 3)
+texture = ExtResource("15_4wbmb")
+patch_margin_left = 15
+patch_margin_top = 10
+patch_margin_right = 30
+patch_margin_bottom = 10
+
+[node name="ButtonRefresh3" type="NinePatchRect" parent="." unique_id=854729518]
+modulate = Color(0.48, 0.1392, 0.1448799, 1)
+z_index = 4096
+texture_filter = 3
+offset_left = 1538.0
+offset_top = 843.0
+offset_right = 1656.3333
+offset_bottom = 906.77783
+scale = Vector2(3, 3)
+texture = ExtResource("15_4wbmb")
+patch_margin_left = 15
+patch_margin_top = 10
+patch_margin_right = 30
+patch_margin_bottom = 10
+
+[node name="Label3" type="Label" parent="." unique_id=1525903938]
+z_index = 4096
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1638.0
+offset_top = 922.0
+offset_right = 1794.0
+offset_bottom = 964.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("13_lx74c")
+theme_override_font_sizes/font_size = 48
+text = "BaTTLE"
+
+[node name="ButtonRefresh4" type="NinePatchRect" parent="." unique_id=330317884]
+modulate = Color(0.59442496, 0.65, 0.2795, 1)
+z_index = 4096
+texture_filter = 3
+offset_left = 27.0
+offset_top = 899.0
+offset_right = 102.666626
+offset_bottom = 935.77783
+scale = Vector2(3, 3)
+texture = ExtResource("15_4wbmb")
+patch_margin_left = 15
+patch_margin_top = 10
+patch_margin_right = 30
+patch_margin_bottom = 10
+
+[node name="Label4" type="Label" parent="." unique_id=594134474]
+z_index = 4096
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 62.0
+offset_top = 935.0
+offset_right = 218.0
+offset_bottom = 977.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("13_lx74c")
+theme_override_font_sizes/font_size = 48
+text = "FIELD"
+
+[connection signal="mouse_entered" from="LabNew/TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="LabNew/TextureButton" to="." method="_on_texture_button_mouse_exited"]
