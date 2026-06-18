@@ -68,7 +68,7 @@ texture = ExtResource("3_umylx")
 [node name="Node2D" type="Node2D" parent="." unique_id=1490005837]
 position = Vector2(960, 1080)
 
-[node name="ButtonRefresh" type="NinePatchRect" parent="." unique_id=886724320]
+[node name="ButtonRefreshButtonIcon" type="NinePatchRect" parent="." unique_id=886724320]
 modulate = Color(1, 0.36, 0.46666688, 1)
 z_index = 4096
 texture_filter = 3
@@ -112,7 +112,7 @@ theme_override_fonts/font = ExtResource("4_2vufn")
 theme_override_font_sizes/font_size = 48
 text = "Refresh"
 
-[node name="LockButton" type="Sprite2D" parent="." unique_id=1330098914]
+[node name="LockButtonGraphic" type="Sprite2D" parent="." unique_id=1330098914]
 z_index = 4096
 texture_filter = 3
 position = Vector2(960, 921.00006)
@@ -120,7 +120,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("6_lws5d")
 hframes = 2
 
-[node name="Label2" type="Label" parent="." unique_id=1535533734]
+[node name="LockLabel" type="Label" parent="." unique_id=1535533734]
 z_index = 4096
 offset_left = 912.0
 offset_top = 899.0
@@ -130,7 +130,7 @@ theme_override_fonts/font = ExtResource("4_2vufn")
 theme_override_font_sizes/font_size = 32
 text = "Lock"
 
-[node name="ButtonRefresh3" type="NinePatchRect" parent="." unique_id=1533065683]
+[node name="FarmButtonIcon" type="NinePatchRect" parent="." unique_id=1533065683]
 modulate = Color(0.65, 0.409175, 0.2795, 1)
 z_index = 4096
 texture_filter = 3
@@ -159,3 +159,16 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("4_2vufn")
 theme_override_font_sizes/font_size = 48
 text = "Farm"
+
+[node name="RefreshButton" type="Button" parent="." unique_id=1106415485]
+z_index = 4096
+offset_left = 819.0
+offset_top = 956.0
+offset_right = 1095.0
+offset_bottom = 1035.0
+
+[node name="LockButton" type="Button" parent="." unique_id=1234442090]
+offset_left = 891.0
+offset_top = 888.0
+offset_right = 1030.0
+offset_bottom = 951.0
