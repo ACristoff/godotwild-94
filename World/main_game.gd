@@ -20,7 +20,8 @@ func change_location(location: SignalBus.Locations) -> void:
 func _ready():
 	change_location(SignalBus.Locations.FARM)
 	SignalBus.go_to.connect(change_location)
+	SignalBus.opening_scene_finished.connect(_on_opening_finished)
 
-## Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-	#pass
+func _on_opening_finished() -> void:
+	SignalBus.game_started = true
+	change_location(SignalBus.Locations.FIELD)
