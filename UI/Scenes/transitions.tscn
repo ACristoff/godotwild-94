@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://6m80lus3lyd1"]
+
+[ext_resource type="Shader" uid="uid://1j2oa02wrjc2" path="res://Assets/Shaders/Transition.gdshader" id="1_uexky"]
+[ext_resource type="Script" uid="uid://dlptpbhog6snp" path="res://UI/Scripts/transitions.gd" id="1_xnyjm"]
+[ext_resource type="Texture2D" uid="uid://cem1feyqvc36p" path="res://Assets/yipee/Yipretard.png" id="2_xnyjm"]
+
+[sub_resource type="Gradient" id="Gradient_ukj8f"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2idxh"]
+gradient = SubResource("Gradient_ukj8f")
+fill_to = Vector2(1, 0.32905984)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_arixe"]
+shader = ExtResource("1_uexky")
+shader_parameter/progress = 0.0
+shader_parameter/width = 1.0
+shader_parameter/tile_texture = ExtResource("2_xnyjm")
+shader_parameter/tile_pixel_size = 128.0
+shader_parameter/tile_grown_scale = 3.7780001794549998
+shader_parameter/transition_texture = SubResource("GradientTexture2D_2idxh")
+
+[sub_resource type="Animation" id="Animation_oypi1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ih2yx"]
+resource_name = "Transition_In"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_of56s"]
+resource_name = "Transition_Out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_am41d"]
+_data = {
+&"RESET": SubResource("Animation_oypi1"),
+&"Transition_In": SubResource("Animation_ih2yx"),
+&"Transition_Out": SubResource("Animation_of56s")
+}
+
+[node name="Transitions" type="Control" unique_id=305134357]
+z_index = 4096
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xnyjm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1867280162]
+layer = 3220
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=2145181002]
+texture_filter = 3
+material = SubResource("ShaderMaterial_arixe")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=972443350]
+libraries/ = SubResource("AnimationLibrary_am41d")
+autoplay = &"Transition_Out"
+speed_scale = 0.5
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
