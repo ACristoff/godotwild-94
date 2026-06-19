@@ -10,6 +10,7 @@ const location_dictionary = {
 }
 
 func change_location(location: SignalBus.Locations) -> void:
+	print('going to new location', location)
 	var new_location = location_dictionary[location].instantiate()
 	add_child(new_location)
 	child_scene.queue_free()

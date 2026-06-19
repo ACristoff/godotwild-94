@@ -4,7 +4,7 @@ enum Team { PLAYER, ENEMY, NONE }
 
 @export var battle_speed: float = 1.0
 
-@export var player_team_data: Array[YipeeData]
+@export var player_team_data := SignalBus.yip_party.values()
 @export var enemy_team_data: Array[YipeeData]
 
 var player_team = []
@@ -27,7 +27,7 @@ func _spawn(data: YipeeData, pos: Vector2) -> Yipee:
 #DEBUG
 func generate_random_teams():
 	for i in range(1):
-		var new_yip = YipeeData.generate_yip(YipeeData.YipTier.ULTRARARE)
+		#var new_yip = YipeeData.generate_yip(YipeeData.YipTier.ULTRARARE)
 		#player_team_data.append(new_yip)
 		var new_yip2 = YipeeData.generate_yip(YipeeData.YipTier.COMMON)
 		enemy_team_data.append(new_yip2)
@@ -36,6 +36,7 @@ func generate_random_teams():
 func _ready():
 	generate_random_teams()
 	#Spawn player team
+	print( 'player team data ', player_team_data)
 	for i in range(5):
 		if i >= player_team_data.size() or player_team_data[i] == null:
 			break
