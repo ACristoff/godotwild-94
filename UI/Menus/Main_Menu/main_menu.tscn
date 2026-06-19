@@ -54,8 +54,8 @@ grow_vertical = 2
 theme_override_constants/separation = 20
 
 [node name="Start" type="Button" parent="Control/VBoxContainer" unique_id=297747043 node_paths=PackedStringArray("target_highlight")]
-self_modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(243.768, 131.722)
+self_modulate = Color(0, 0, 0, 0)
+custom_minimum_size = Vector2(358.783, 131.722)
 layout_mode = 2
 text = "Start"
 script = ExtResource("2_arllm")
@@ -158,7 +158,7 @@ text = "Settings"
 
 [node name="Credits" type="Button" parent="Control/VBoxContainer" unique_id=1449093066 node_paths=PackedStringArray("target_highlight")]
 self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(238.668, 77.642)
+custom_minimum_size = Vector2(307.923, 106.617)
 layout_mode = 2
 text = "Credits
 "
@@ -210,7 +210,7 @@ text = "Credits"
 
 [node name="Quit" type="Button" parent="Control/VBoxContainer" unique_id=1805391408 node_paths=PackedStringArray("target_highlight")]
 self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(238.668, 106.617)
+custom_minimum_size = Vector2(307.923, 106.617)
 layout_mode = 2
 text = "Quit
 "
