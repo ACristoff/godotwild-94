@@ -2,12 +2,10 @@
 
 [ext_resource type="Script" uid="uid://b1owneonh5qw1" path="res://World/battle/battle.gd" id="1_2qnjf"]
 [ext_resource type="Texture2D" uid="uid://6xdsjsnsd8ld" path="res://Assets/Environment/Scenes/BattleField/BattleField.png" id="1_aqlep"]
-[ext_resource type="Script" uid="uid://dpr2powm23rue" path="res://World/yipee/genes/yipee_data.gd" id="2_xg215"]
 [ext_resource type="Texture2D" uid="uid://bouvm8wo3pupb" path="res://Assets/Environment/Scenes/BattleField/YipTeamSlot.png" id="3_l3nu1"]
 
 [node name="Battle" type="Node2D" unique_id=1472135385]
 script = ExtResource("1_2qnjf")
-player_team_data = Array[ExtResource("2_xg215")]([])
 
 [node name="Background" type="TextureRect" parent="." unique_id=36736255]
 texture_filter = 3

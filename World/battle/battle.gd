@@ -4,7 +4,7 @@ enum Team { PLAYER, ENEMY, NONE }
 
 @export var battle_speed: float = 1.0
 
-@export var player_team_data := SignalBus.yip_party.values()
+var player_team_data := SignalBus.yip_party.values()
 @export var enemy_team_data: Array[YipeeData]
 
 var player_team = []
@@ -36,7 +36,7 @@ func generate_random_teams():
 func _ready():
 	generate_random_teams()
 	#Spawn player team
-	print( 'player team data ', player_team_data)
+	print( 'player team data ', player_team_data, SignalBus.yip_party)
 	for i in range(5):
 		if i >= player_team_data.size() or player_team_data[i] == null:
 			break

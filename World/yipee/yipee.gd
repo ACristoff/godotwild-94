@@ -38,6 +38,7 @@ func _ready() -> void:
 	ability.setup(data.helix)
 	body.apply_helix(data.helix)
 	status.effects_changed.connect(health_UI.update_ailments)
+	attack.progress_changed.connect(_on_cooldown_changed)
 
 func enemy_flip():
 	cd_bar.scale.x *= -1
@@ -50,6 +51,8 @@ func _on_hover_area_mouse_entered():
 func _on_hover_area_mouse_exited():
 	yip_unhovered.emit()
 
+func _on_cooldown_changed(fraction):
+	health_UI.update_cooldown(fraction)
 
 
 """

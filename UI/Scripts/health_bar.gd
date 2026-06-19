@@ -5,12 +5,14 @@ class_name HealthBar extends Control
 @onready var shield_text: Label = $NinePatchRect/Shield/ShieldText
 @onready var shield: TextureRect = $NinePatchRect/Shield
 @onready var damage_indicator_spawn: Marker2D = $DamageIndicatorSpawn
+@onready var status_ailments: HFlowContainer = $StatusAilments
+@onready var yip_stats: HFlowContainer = $YipStats
+@onready var cooldown_bar: TextureProgressBar = $NinePatchRect/CDBar/TextureProgressBar
 
 const DAMAGE_TOOLYIP = preload("uid://cxcii53yccour")
 const DAMAGE_INDICATOR = preload("uid://b1wbuxori6udj")
 
-@onready var status_ailments: HFlowContainer = $StatusAilments
-@onready var yip_stats: HFlowContainer = $YipStats
+
 
 @export var max_health : int
 
@@ -26,6 +28,10 @@ func _ready() -> void:
 	current_health = max_health
 	
 	#in ready youd instantiate all the yips stats on the YipStats flowbox
+
+func update_cooldown(current):
+	var converted = int(current * 34)
+	cooldown_bar.value = converted
 
 func health_change(change : int, type : String):
 	var amount_of_change = current_health - change
@@ -66,8 +72,8 @@ func spawn_damage_indicator(value, type):
 	get_tree().get_root().add_child(dmg_indicator)
 	dmg_indicator.global_position = damage_indicator_spawn.global_position
 	dmg_indicator.popup(value, type)
-	
-	
+
+
 func update_ailments(status_name: String, ailment_value: int):
 	for i in current_ailments.size():
 		var ailment = current_ailments[i]

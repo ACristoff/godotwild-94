@@ -155,9 +155,20 @@ func buy_yip(yip_bought: Yipee) -> void:
 		spend_coins(yip_cost)
 		SignalBus.yip_inventory.append(yip_bought.data)
 		all_yips.erase(yip_bought)
+		#SignalBus.yip_party[1] = yip_bought.data
+		var empty_slot = check_empty_party()
+		if empty_slot > 0:
+			SignalBus.yip_party[empty_slot] = yip_bought.data
 		yip_bought.queue_free()
 		tooltip.hide()
 		print(SignalBus.yip_inventory)
+
+func check_empty_party() -> int:
+	for slot in SignalBus.yip_party:
+		print('slot', slot)
+		if SignalBus.yip_party[slot] == null:
+			return slot
+	return 0
 
 func spend_coins(cost: int) -> void:
 	SignalBus.coins -= cost

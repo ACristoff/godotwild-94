@@ -14,7 +14,7 @@ var yip_party = {
 	4: null,
 	5: null
 }
-var coins: int = 6
+var coins: int = 12
 enum Locations { FARM, FIELD, LAB, BATTLE }
 var game_started: bool = false
 

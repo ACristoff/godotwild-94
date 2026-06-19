@@ -1,10 +1,13 @@
 class_name Attack extends Node
 
 signal attack_ready(damage: DamageInfo)
+signal progress_changed(fraction: float)
 
 var cooldown: float = 2.0
 var power: float = 0.0
 var _elapsed: float = 0.0
+
+
 
 func setup(attack_cooldown: float, attack_power: float) -> void:
 	cooldown = attack_cooldown
@@ -19,6 +22,9 @@ func tick(delta) -> void:
 	while _elapsed >= cooldown:
 		_elapsed -= cooldown
 		attack_ready.emit(make_damage())
+	
+	
+	progress_changed.emit(_elapsed / cooldown)
 
 func make_damage() -> DamageInfo:
 	var damage := DamageInfo.new()
