@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bvrbnp53em4jb"]
+[gd_scene format=3 uid="uid://crypekq181eq4"]
 
 [ext_resource type="Script" uid="uid://dvclhivib348r" path="res://World/field/field.gd" id="1_sj8ve"]
 [ext_resource type="Texture2D" uid="uid://boj74to4iulqd" path="res://Assets/Environment/Scenes/CaptureField/CaptureField.png" id="2_lwms1"]
@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dqgfurgu7jsbg" path="res://UI/Scenes/yip_toolyip.tscn" id="5_8ubfp"]
 [ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="6_ju3ud"]
 [ext_resource type="Texture2D" uid="uid://chftxxvwdvkgk" path="res://Assets/Environment/Scenes/BattleField/LockButton.png" id="7_748j3"]
-[ext_resource type="Script" uid="uid://dqvqbetgnjsnh" path="res://UI/Scripts/lock_button_graphic.gd" id="8_6l7jc"]
-[ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="8_lwms1"]
+[ext_resource type="Script" path="res://UI/Scripts/lock_button_graphic.gd" id="8_6l7jc"]
+[ext_resource type="Script" path="res://UI/Scripts/button_effects.gd" id="8_lwms1"]
 
 [node name="Field" type="Node2D" unique_id=1076215709]
 script = ExtResource("1_sj8ve")
@@ -199,6 +199,7 @@ target_highlight = NodePath("../FarmButtonIcon")
 [connection signal="button_up" from="RefreshButton" to="RefreshButton" method="_on_button_up"]
 [connection signal="mouse_entered" from="RefreshButton" to="RefreshButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="RefreshButton" to="RefreshButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="RefreshButton" to="." method="_on_refresh_button_pressed"]
 [connection signal="button_down" from="LockButton" to="LockButton" method="_on_button_down"]
 [connection signal="button_up" from="LockButton" to="LockButton" method="_on_button_up"]
 [connection signal="mouse_entered" from="LockButton" to="LockButton" method="_on_mouse_entered"]

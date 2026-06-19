@@ -1,10 +1,10 @@
 class_name Field extends Node2D
 
-var field_level = 3
+var field_level = 0
 var base_slot_chance = 25
 var base_yip_tier_chance = 25
 
-var yips_to_spawn = 3
+var yips_to_spawn = 3 + field_level
 
 var yip_tier_odds_0: Dictionary = {
 	YipeeData.YipTier.COMMON: 50,
@@ -117,10 +117,13 @@ func random_location() -> Vector2:
 	return random
 
 func clear_yips() -> void:
-	for yip in all_yips:
-		
+	var yip_count = all_yips.size()
+	var total_yips = all_yips.duplicate()
+	for i in yip_count:
+		var yip = total_yips[i]
 		all_yips.erase(yip)
 		yip.queue_free()
+		print(all_yips)
 
 func spawn_yip() -> Yipee:
 	var yip_tier = get_yip_tier()
@@ -138,3 +141,8 @@ func spawn_yip() -> Yipee:
 
 func _on_refresh_button_pressed():
 	clear_yips()
+	for i in yips_to_spawn:
+		var new_yip = spawn_yip()
+		wire_yip(new_yip)
+		all_yips.append(new_yip)
+	pass # Replace with function body.
