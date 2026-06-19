@@ -20,6 +20,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_goe80"]
 size = Vector2(495, 343)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0l0ir"]
+size = Vector2(436.6667, 83.33336)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wkn3d"]
+size = Vector2(155.33333, 67.00001)
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_b6oao"]
 polygon = PackedVector2Array(-1, -0.33333588, -3, -0.33333588, -3, -1.3333359, -5, -1.3333359, -5, -2.3333359, -7, -2.3333359, -7, -3.3333359, -9, -3.3333359, -9, -4, -9, -4.333336, -11, -4.333336, -11, -5.333336, -13, -5.333336, -13, -6.333336, -15, -6.333336, -15, -7.333336, -17, -7.333336, -17, -8.333336, -19, -8.333336, -19, -9.333336, -21, -9.333336, -21, -10.333336, -23, -10.333336, -23, -11.333336, -25, -11.333336, -25, -12.333336, -27, -12.333336, -27, -13.333336, -29, -13.333336, -29, -14.333336, -31, -14.333336, -31, -15.333336, -33, -15.333336, -33, -16.333336, -35, -16.333336, -35, -17.333336, -37, -17.333336, -37, -18.333336, -39, -18.333336, -39, -19.333336, -41, -19.333336, -41, -20.333336, -43, -20.333336, -43, -21.333336, -45, -21.333336, -45, -34, 62, -34.333336, 61.666687, 43.333336, 31, 60.666664, 7, 60.666664, 7, 59.666664, 5, 59.666664, 5, 58.666664, 3, 58.666664, 3, 57.666664, 1, 57.666664, 1, 56.666664, -1, 56.666664)
 
@@ -211,6 +217,17 @@ shape = SubResource("RectangleShape2D_goe80")
 [node name="Label" type="Label" parent="BreedingBarnGrass/BreedFarmSlot" unique_id=1392108914]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="GrazingArea" type="Area2D" parent="BreedingBarnGrass" unique_id=1416391288]
+unique_name_in_owner = true
+
+[node name="Graze_Bottom" type="CollisionShape2D" parent="BreedingBarnGrass/GrazingArea" unique_id=1026138679]
+position = Vector2(-58, 66.666664)
+shape = SubResource("RectangleShape2D_0l0ir")
+
+[node name="Graze_Top" type="CollisionShape2D" parent="BreedingBarnGrass/GrazingArea" unique_id=98963990]
+position = Vector2(-11, -12.333333)
+shape = SubResource("RectangleShape2D_wkn3d")
 
 [node name="DoorLabInside" type="Sprite2D" parent="." unique_id=2113473119]
 self_modulate = Color(5.2618666, 5.2618666, 5.2618666, 1)
