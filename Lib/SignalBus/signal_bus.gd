@@ -15,7 +15,7 @@ var yip_party = {
 	5: null
 }
 var coins: int = 12
-enum Locations { FARM, FIELD, LAB, BATTLE }
+enum Locations { FARM, FIELD, LAB, BATTLE, WIN_LOSE }
 var game_started: bool = false
 
 var current_health = 3
@@ -28,6 +28,8 @@ signal pause_game
 signal game_state_changed(new_state)
 
 signal debug_mode(debug_type)
+
+signal battle_finished(victory: bool)
 
 signal transition_start
 

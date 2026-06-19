@@ -168,9 +168,9 @@ func _on_next():
 	var battle_end_cond = check_for_victory()
 	
 	if battle_end_cond == Team.PLAYER:
-		pass
+		SignalBus.battle_finished.emit(true)
 	if battle_end_cond == Team.ENEMY:
-		pass
+		SignalBus.battle_finished.emit(false)
 
 func _on_status_tick(damage: DamageInfo, owner_yip: Yipee) -> void:
 	if _battle_over:
