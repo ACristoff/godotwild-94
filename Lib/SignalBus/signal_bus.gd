@@ -18,6 +18,9 @@ var coins: int = 12
 enum Locations { FARM, FIELD, LAB, BATTLE }
 var game_started: bool = false
 
+var current_health = 3
+var current_wins = 1
+
 # Signal that will be triggered when game pauses
 signal pause_game
 
@@ -35,3 +38,5 @@ signal finish_transition
 signal go_to(new_area: Locations)
 
 signal opening_scene_finished
+
+signal day_finished
