@@ -13,10 +13,7 @@ var yip_party = {
 }
 var coins: int = 6
 enum Locations { FARM, FIELD, LAB, BATTLE }
-
-#const areas = {
-	#
-#}
+var game_started: bool = false
 
 # Signal that will be triggered when game pauses
 signal pause_game
