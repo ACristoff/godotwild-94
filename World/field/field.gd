@@ -48,14 +48,18 @@ var allele_fill_chance_by_tier = {
 	YipeeData.YipTier.ULTRARARE: 90
 }
 
-@onready var tooltip = $CanvasLayer/YipToolyip
+@onready var coin_label: Label = $CanvasLayer/Control/HBoxContainer/MarginContainer2/CoinLabel
+@onready var tooltip: Toolyip = $CanvasLayer/YipToolyip
 
 var all_yips:  Array[Yipee] = []
 
 var focused_yip: Yipee = null
 
+
+
 func _ready():
 	#tooltip.yip_owner = self
+	coin_label.text = str(SignalBus.coins)
 	tooltip.hide()
 	for i in yips_to_spawn:
 		var new_yip = spawn_yip()
@@ -131,31 +135,58 @@ func clear_yips() -> void:
 
 func spawn_yip() -> Yipee:
 	var yip_tier = get_yip_tier()
-	#var yip_tier = YipeeData.YipTier.ULTRARARE
 	var new_yip_data: YipeeData = YipeeData.generate_yip(yip_tier)
 	var new_yip := preload("res://World/yipee/yipee.tscn").instantiate() as Yipee
 	generate_alleles(yip_tier, new_yip_data.helix)
 	new_yip.data = new_yip_data
 	new_yip.position = random_location()
 	
-	
 	add_child(new_yip)
 	return new_yip
 
 func buy_yip(yip_bought: Yipee) -> void:
-	SignalBus.yip_inventory.append(yip_bought)
-	all_yips.erase(yip_bought)
-	yip_bought.queue_free()
-	tooltip.hide()
-	print(SignalBus.yip_inventory)
+	var yip_cost = calculate_yip_price(yip_bought)
+	print(yip_cost, '<- price')
+	if check_coinage(yip_cost) == false:
+		print('not enough money!')
+		return
+	else:
+	#happy path
+		spend_coins(yip_cost)
+		SignalBus.yip_inventory.append(yip_bought.data)
+		all_yips.erase(yip_bought)
+		yip_bought.queue_free()
+		tooltip.hide()
+		print(SignalBus.yip_inventory)
 
+func spend_coins(cost: int) -> void:
+	SignalBus.coins -= cost
+	coin_label.text = str(SignalBus.coins)
+	print('yip bought for', cost, '.', 'left in wallet' )
+	pass
+
+func check_coinage(price: int):
+	if price <= SignalBus.coins:
+		return true
+	else:
+		return false
+
+func calculate_yip_price(yip: Yipee) -> int:
+	var cost = 3
+	match yip.data.tier:
+		YipeeData.YipTier.UNCOMMON:
+			cost = 4
+		YipeeData.YipTier.RARE:
+			cost = 5
+		YipeeData.YipTier.ULTRARARE:
+			cost = 6
+	return cost
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if focused_yip:
 			print('buy yip', focused_yip)
 			buy_yip(focused_yip)
-		#print(focused_yip)
 
 func _on_refresh_button_pressed():
 	clear_yips()
@@ -163,4 +194,9 @@ func _on_refresh_button_pressed():
 		var new_yip = spawn_yip()
 		wire_yip(new_yip)
 		all_yips.append(new_yip)
+	pass # Replace with function body.
+
+
+func _on_farm_button_pressed():
+	SignalBus.go_to_farm.emit()
 	pass # Replace with function body.

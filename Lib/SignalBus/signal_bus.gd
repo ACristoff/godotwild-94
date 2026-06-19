@@ -11,7 +11,12 @@ var yip_party = {
 	4: null,
 	5: null
 }
-var coins = 0
+var coins: int = 6
+enum Locations { FARM, FIELD, LAB, BATTLE }
+
+#const areas = {
+	#
+#}
 
 # Signal that will be triggered when game pauses
 signal pause_game
@@ -26,3 +31,5 @@ signal transition_start
 signal transition_finished
 
 signal finish_transition
+
+signal go_to(new_area: Locations)

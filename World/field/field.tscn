@@ -45,7 +45,7 @@ layout_mode = 2
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = -10
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/HBoxContainer/MarginContainer2" unique_id=1754656024]
+[node name="CoinLabel" type="Label" parent="CanvasLayer/Control/HBoxContainer/MarginContainer2" unique_id=1754656024]
 texture_filter = 3
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -208,3 +208,4 @@ target_highlight = NodePath("../FarmButtonIcon")
 [connection signal="button_up" from="FarmButton" to="FarmButton" method="_on_button_up"]
 [connection signal="mouse_entered" from="FarmButton" to="FarmButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="FarmButton" to="FarmButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="FarmButton" to="." method="_on_farm_button_pressed"]
