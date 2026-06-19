@@ -403,6 +403,7 @@ target_highlight = NodePath("../BattleButtonIcon")
 [connection signal="button_up" from="FieldButton" to="FieldButton" method="_on_button_up"]
 [connection signal="mouse_entered" from="FieldButton" to="FieldButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="FieldButton" to="FieldButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="FieldButton" to="." method="_on_field_button_pressed"]
 [connection signal="button_down" from="BattleButton" to="BattleButton" method="_on_button_down"]
 [connection signal="button_up" from="BattleButton" to="BattleButton" method="_on_button_up"]
 [connection signal="mouse_entered" from="BattleButton" to="BattleButton" method="_on_mouse_entered"]

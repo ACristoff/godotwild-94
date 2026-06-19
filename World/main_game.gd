@@ -4,23 +4,22 @@ extends Node2D
 
 const location_dictionary = {
 	SignalBus.Locations.FARM: preload("res://World/farm/farm_hub.tscn"),
-	SignalBus.Locations.FIELD: '',
-	SignalBus.Locations.LAB: '',
-	SignalBus.Locations.BATTLE: '',
+	SignalBus.Locations.FIELD: preload("res://World/field/field.tscn"),
+	SignalBus.Locations.LAB: preload("res://World/lab/lab.tscn"),
+	SignalBus.Locations.BATTLE: preload("res://World/battle/battle.tscn"),
 }
 
 func change_location(location: SignalBus.Locations) -> void:
-	
+	var new_location = location_dictionary[location].instantiate()
+	add_child(new_location)
 	child_scene.queue_free()
-	
-	pass
+	child_scene = new_location
 
 ## Called when the node enters the scene tree for the first time.
 func _ready():
 	change_location(SignalBus.Locations.FARM)
-	pass # Replace with function body.
-#
-#
+	SignalBus.go_to.connect(change_location)
+
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 	#pass
