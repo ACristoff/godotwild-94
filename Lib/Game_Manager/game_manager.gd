@@ -33,9 +33,11 @@ var current_scene = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.game_state_changed.connect(change_scene.bind())
+	print(Engine.get_version_info())
 	if debug_mode == true:
 		$Transitions/Splash.queue_free()
 		SignalBus.game_state_changed.emit("Main")
+		SignalBus.game_started = true
 
 
 func change_scene(new_state: String):
