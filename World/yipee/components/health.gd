@@ -1,5 +1,6 @@
 class_name Health extends Node
 
+const HURT_HIT = preload("uid://bngmp5ra6pka1")
 signal health_changed(current: int, maximum: int)
 #fucking DIED
 signal died
@@ -15,6 +16,7 @@ func setup(max_hp: float) -> void:
 	health_changed.emit(current_health, max_health)
 
 func take_damage(damage_data: DamageInfo) -> void:
+	AudMan.play_sfx_wav(HURT_HIT, -16.0, false)
 	$"../HitAnim".play("GotHit")
 	$"../ActionsAnim".play("Hit")
 	if current_health <= 0:

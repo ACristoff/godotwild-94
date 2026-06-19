@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://bncby6k75jgqs"]
+
+[ext_resource type="Texture2D" uid="uid://dmmkuposo5ygv" path="res://UI/Textures/Trophy.png" id="1_asrpj"]
+[ext_resource type="Script" uid="uid://w2int2baaimx" path="res://UI/Scripts/win_lose_screen.gd" id="1_smsqj"]
+[ext_resource type="Texture2D" uid="uid://cydxip81wgpg" path="res://UI/Textures/Heart.png" id="2_smsqj"]
+
+[node name="WinLoseScreen" type="Control" unique_id=1484486205]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_smsqj")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=524952739]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1798814511]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="Trophies" type="HBoxContainer" parent="VBoxContainer" unique_id=313487775]
+layout_mode = 2
+
+[node name="Trophy1" type="TextureRect" parent="VBoxContainer/Trophies" unique_id=720768769]
+modulate = Color(0.12225223, 0.12225223, 0.12225223, 1)
+self_modulate = Color(1, 0.85, 0.39999998, 1)
+layout_mode = 2
+texture = ExtResource("1_asrpj")
+
+[node name="Trophy2" type="TextureRect" parent="VBoxContainer/Trophies" unique_id=1486390650]
+modulate = Color(0.12225223, 0.12225223, 0.12225223, 1)
+self_modulate = Color(1, 0.85, 0.39999998, 1)
+layout_mode = 2
+texture = ExtResource("1_asrpj")
+
+[node name="Trophy3" type="TextureRect" parent="VBoxContainer/Trophies" unique_id=1807089997]
+modulate = Color(0.12225223, 0.12225223, 0.12225223, 1)
+self_modulate = Color(1, 0.85, 0.39999998, 1)
+layout_mode = 2
+texture = ExtResource("1_asrpj")
+
+[node name="Trophy4" type="TextureRect" parent="VBoxContainer/Trophies" unique_id=282606097]
+modulate = Color(0.12225223, 0.12225223, 0.12225223, 1)
+self_modulate = Color(1, 0.85, 0.39999998, 1)
+layout_mode = 2
+texture = ExtResource("1_asrpj")
+
+[node name="Trophy5" type="TextureRect" parent="VBoxContainer/Trophies" unique_id=1132200015]
+modulate = Color(0.12225223, 0.12225223, 0.12225223, 1)
+self_modulate = Color(1, 0.85, 0.39999998, 1)
+layout_mode = 2
+texture = ExtResource("1_asrpj")
+
+[node name="Hearts" type="HBoxContainer" parent="VBoxContainer" unique_id=137325126]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Heart1" type="TextureRect" parent="VBoxContainer/Hearts" unique_id=1813316920]
+self_modulate = Color(1, 0.29000002, 0.29000002, 1)
+layout_mode = 2
+texture = ExtResource("2_smsqj")
+
+[node name="Heart2" type="TextureRect" parent="VBoxContainer/Hearts" unique_id=1030712121]
+self_modulate = Color(1, 0.29000002, 0.29000002, 1)
+layout_mode = 2
+texture = ExtResource("2_smsqj")
+
+[node name="Heart3" type="TextureRect" parent="VBoxContainer/Hearts" unique_id=1456968810]
+self_modulate = Color(1, 0.29000002, 0.29000002, 1)
+layout_mode = 2
+texture = ExtResource("2_smsqj")

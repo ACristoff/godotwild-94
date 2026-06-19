@@ -1,5 +1,6 @@
 class_name Attack extends Node
 
+const HITMARKER = preload("uid://bikprebh0m0p1")
 signal attack_ready(damage: DamageInfo)
 signal progress_changed(fraction: float)
 
@@ -30,7 +31,7 @@ func make_damage() -> DamageInfo:
 	var damage := DamageInfo.new()
 	damage.amount = power
 	damage.source = get_parent()
-	
+	AudMan.play_sfx_wav(HITMARKER, -16.0, false)
 	$"../ActionsAnim".play("Attack")
 	$"../ThrowPunchAnim".play("Punch")
 	return damage
