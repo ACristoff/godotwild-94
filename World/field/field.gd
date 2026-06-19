@@ -52,6 +52,8 @@ var allele_fill_chance_by_tier = {
 
 var all_yips:  Array[Yipee] = []
 
+var focused_yip: Yipee = null
+
 func _ready():
 	#tooltip.yip_owner = self
 	tooltip.hide()
@@ -74,10 +76,12 @@ func _on_yip_hovered(yip: Yipee) -> void:
 	tooltip.global_position.x -= 55
 	tooltip.global_position.x = clamp(tooltip.global_position.x, 0, screen_size.x - tooltip.tt_size.x)
 	tooltip.global_position.y = clamp(tooltip.global_position.y, 0, screen_size.y - tooltip.tt_size.y)
+	focused_yip = yip
 
 func _on_yip_unhovered() -> void:
 	print('yip unhovered')
 	tooltip.hide()
+	focused_yip = null
 
 func get_yip_tier():
 	var random = randi_range(0, 99)
@@ -138,6 +142,20 @@ func spawn_yip() -> Yipee:
 	add_child(new_yip)
 	return new_yip
 
+func buy_yip(yip_bought: Yipee) -> void:
+	SignalBus.yip_inventory.append(yip_bought)
+	all_yips.erase(yip_bought)
+	yip_bought.queue_free()
+	tooltip.hide()
+	print(SignalBus.yip_inventory)
+
+
+func _input(event):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if focused_yip:
+			print('buy yip', focused_yip)
+			buy_yip(focused_yip)
+		#print(focused_yip)
 
 func _on_refresh_button_pressed():
 	clear_yips()

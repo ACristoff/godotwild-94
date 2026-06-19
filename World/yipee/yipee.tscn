@@ -858,7 +858,6 @@ frame = 1
 [node name="HoverArea" type="Area2D" parent="." unique_id=2084336627]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HoverArea" unique_id=629930061]
-position = Vector2(1.75, -42)
 shape = SubResource("RectangleShape2D_6vhmf")
 
 [connection signal="mouse_entered" from="HoverArea" to="." method="_on_hover_area_mouse_entered"]

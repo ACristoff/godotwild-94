@@ -11,6 +11,7 @@ var yip_party = {
 	4: null,
 	5: null
 }
+var coins = 0
 
 # Signal that will be triggered when game pauses
 signal pause_game

@@ -93,7 +93,7 @@ func apply_damage(target: Yipee, damage: DamageInfo) -> void:
 	# target's strands mutate the INCOMING hit (resist/shield) before it lands
 	target.ability.on_take_damage(damage, self)
 	target.health.take_damage(damage)
-	target.health_UI.health_change(damage.amount, damage_type_name(damage))
+	target.health_UI.health_change(int(damage.amount), damage_type_name(damage))
 
 func damage_type_name(damage: DamageInfo) -> String:
 	return DamageInfo.Type.keys()[damage.type]
