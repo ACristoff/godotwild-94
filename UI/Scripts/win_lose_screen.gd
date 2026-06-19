@@ -18,6 +18,7 @@ func lost_match():
 	if SignalBus.current_health <= 0:
 		lose_final()
 	else:
+		await get_tree().create_timer(5.0).timeout
 		next_day()
 
 func lose_final():
@@ -31,6 +32,7 @@ func won_match():
 	if SignalBus.current_wins >= 6:
 		win_final()
 	else:
+		await get_tree().create_timer(5.0).timeout
 		next_day()
 
 func win_final():
