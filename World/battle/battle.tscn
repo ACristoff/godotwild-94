@@ -144,3 +144,13 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("5_55a63")
 theme_override_font_sizes/font_size = 32
 text = "00:00"
+
+[node name="NextButton" type="Button" parent="CanvasLayer2" unique_id=1153481518]
+visible = false
+offset_left = 1700.0
+offset_top = 922.0
+offset_right = 1857.9355
+offset_bottom = 990.0
+text = "NEXT -> "
+
+[connection signal="pressed" from="CanvasLayer2/NextButton" to="." method="_on_next_button_pressed"]

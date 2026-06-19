@@ -157,9 +157,21 @@ func _on_died(corpse: Yipee) -> void:
 	corpse.ability.on_death(self)
 	print(corpse.data.yipee_name, " fucking died!")
 	corpse.scale.y = -1
-	if check_for_victory() != Team.NONE:
+	var battle_end_cond = check_for_victory()
+	if battle_end_cond != Team.NONE:
 		prints("Battle over!", check_for_victory())
 		_battle_over = true
+		$CanvasLayer2/NextButton.visible = true
+		#TODO make button visible
+
+func _on_next():
+	var battle_end_cond = check_for_victory()
+	
+	if battle_end_cond == Team.PLAYER:
+		pass
+	if battle_end_cond == Team.ENEMY:
+		pass
+
 func _on_status_tick(damage: DamageInfo, owner_yip: Yipee) -> void:
 	if _battle_over:
 		return
@@ -178,3 +190,7 @@ func _process(delta):
 			if yip.health.current_health > 0:
 				yip.attack.tick(delta * battle_speed)
 				yip.status.tick(delta * battle_speed)
+
+
+func _on_next_button_pressed() -> void:
+	_on_next()
