@@ -19,16 +19,44 @@ var all_yips:  Array[Yipee] = []
 func _ready() -> void:
 	for yip in SignalBus.yip_inventory:
 		print(yip)
+		print("HEY WE GOT A YIPPIE HERE")
+		spawn_yip(yip)
 		#var new_yip = spawn_yip()
 		#wire_yip(new_yip)
 		#all_yips.append(new_yip)
 		pass
 
-## TODO: Edit spawn yip code
-func spawn_yip(data: YipeeData, pos: Vector2) -> Yipee:
+## TODO: Edit spawn yip code, maybe make it so yips don't spawn in the same spot
+func get_random_point_in_area() -> Vector2:
+	# Array to store each collision shape
+	var shapes : Array[CollisionShape2D] = []
+	
+	# Grab each Collisionshape2D
+	for child in %GrazingArea.get_children():
+		# Check if its shape is CollisionShape2D
+		if child is CollisionShape2D:
+			# Check if its shape is RectangleShape2D
+			if child.shape is RectangleShape2D:
+				shapes.append(child)
+	if shapes.is_empty():
+		push_error("Why is this empty stupid add some grazing space!!!!!!")
+		return Vector2.ZERO
+	
+	# Randomly selecting a grazing spot
+	var grazing_spot : CollisionShape2D = shapes[randi() % shapes.size()]
+	var grazing_shape : RectangleShape2D = shapes[randi() % shapes.size()].shape
+	
+	var extents : Vector2 = grazing_shape.size / 2.0
+	
+	# To store random spawn point
+	var random_point_in_grazing_area : Vector2 = Vector2(randf_range(-extents.x, extents.x), randf_range(-extents.y, extents.y))
+	
+	return grazing_spot.to_global(random_point_in_grazing_area)
+
+func spawn_yip(data: YipeeData) -> Yipee:
 	var yip := preload("res://World/yipee/yipee.tscn").instantiate() as Yipee
 	yip.data = data
-	yip.position = pos
+	yip.position = get_random_point_in_area()
 	
 	add_child(yip)
 	yip.health_UI.visible = false
