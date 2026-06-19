@@ -3,7 +3,10 @@ extends Node
 #Turn off unused signal warning in project to get rid of the dumb warnings
 #I KNOW WHAT IM DOING GODOT HECK OFF
 var permadeath: bool = false
+
+## Farm scene we should see yips from here in that farm area
 var yip_inventory: Array[YipeeData] = []
+## Where will store yips globally
 var yip_party = {
 	1: null,
 	2: null,

@@ -24,6 +24,7 @@ func _ready() -> void:
 		#all_yips.append(new_yip)
 		pass
 
+## TODO: Edit spawn yip code
 func spawn_yip(data: YipeeData, pos: Vector2) -> Yipee:
 	var yip := preload("res://World/yipee/yipee.tscn").instantiate() as Yipee
 	yip.data = data
@@ -41,8 +42,6 @@ func wire_yip(yip: Yipee) -> void:
 	#yip.yip_unhovered.connect(_on_yip_unhovered)
 	print('wire yip', yip)
 
-
-
 func _on_texture_button_mouse_entered() -> void:
 	$LabDoor2.play("DoorOpen")
 func _on_texture_button_mouse_exited() -> void:
@@ -50,4 +49,8 @@ func _on_texture_button_mouse_exited() -> void:
 
 func _on_field_button_pressed():
 	SignalBus.go_to.emit(SignalBus.Locations.FIELD)
+	pass # Replace with function body.
+
+func _on_battle_button_pressed():
+	SignalBus.go_to.emit(SignalBus.Locations.BATTLE)
 	pass # Replace with function body.
