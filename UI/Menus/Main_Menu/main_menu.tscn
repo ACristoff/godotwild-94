@@ -1,6 +1,22 @@
 [gd_scene format=3 uid="uid://bwkclnyt7oq4p"]
 
 [ext_resource type="Script" uid="uid://ccddycag1l2p8" path="res://UI/Menus/Main_Menu/main_menu.gd" id="1_fid7t"]
+[ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="2_arllm"]
+[ext_resource type="Texture2D" uid="uid://faxcv28qvle2" path="res://UI/Menus/Main_Menu/Textures/YIP.png" id="2_nxdey"]
+[ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="3_arllm"]
+[ext_resource type="Texture2D" uid="uid://do18q6ei6pj5y" path="res://UI/Menus/Main_Menu/Textures/Letters1.png" id="3_mjxqv"]
+[ext_resource type="Texture2D" uid="uid://b6wgi46ipvd1f" path="res://UI/Menus/Main_Menu/Textures/MMButton.png" id="3_y3pci"]
+[ext_resource type="Texture2D" uid="uid://chbt21dpu2eec" path="res://UI/Menus/Main_Menu/Textures/Letters2.png" id="4_k1wg1"]
+[ext_resource type="Texture2D" uid="uid://dc5dag54q8j1k" path="res://UI/Menus/Main_Menu/Textures/Letters3.png" id="5_8v21i"]
+[ext_resource type="Texture2D" uid="uid://f6mqbratx0i0" path="res://UI/Menus/Main_Menu/Textures/Letters4.png" id="6_mirvn"]
+[ext_resource type="Texture2D" uid="uid://b5dwbuq6lgd7t" path="res://UI/Menus/Main_Menu/Textures/Letters5.png" id="7_arllm"]
+[ext_resource type="Texture2D" uid="uid://bhxjba36exgqc" path="res://UI/Menus/Main_Menu/Textures/Letters6.png" id="8_y3pci"]
+[ext_resource type="Texture2D" uid="uid://db76ka4fdxqca" path="res://UI/Menus/Main_Menu/Textures/Letters7.png" id="9_i2im2"]
+[ext_resource type="Texture2D" uid="uid://dpi3gidlqrhmf" path="res://UI/Menus/Main_Menu/Textures/Letters8.png" id="10_hkq0q"]
+[ext_resource type="Texture2D" uid="uid://bw201e06acwm3" path="res://UI/Menus/Main_Menu/Textures/Letters9.png" id="11_pje28"]
+[ext_resource type="Texture2D" uid="uid://d2skq2ngrg8lf" path="res://UI/Menus/Main_Menu/Textures/Letters10.png" id="12_wgv4n"]
+[ext_resource type="Texture2D" uid="uid://dkmdfj43a21hc" path="res://UI/Menus/Main_Menu/Textures/Letters11.png" id="13_ow6ou"]
+[ext_resource type="Texture2D" uid="uid://cem1feyqvc36p" path="res://Assets/yipee/Yipretard.png" id="14_k1wg1"]
 
 [node name="MainMenu" type="Control" unique_id=548279742]
 layout_mode = 3
@@ -29,31 +45,221 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -119.0
+offset_top = -63.0
+offset_right = 119.0
+offset_bottom = 421.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 20
 
-[node name="Start" type="Button" parent="Control/VBoxContainer" unique_id=297747043]
+[node name="Start" type="Button" parent="Control/VBoxContainer" unique_id=297747043 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(243.768, 131.722)
 layout_mode = 2
 text = "Start"
+script = ExtResource("2_arllm")
+target_highlight = NodePath("ButtonPlay")
 
-[node name="Settings" type="Button" parent="Control/VBoxContainer" unique_id=576648496]
+[node name="ButtonPlay" type="NinePatchRect" parent="Control/VBoxContainer/Start" unique_id=670215522]
+self_modulate = Color(0.8352941, 0.3882353, 0.4745098, 1)
+z_index = 4096
+texture_filter = 3
+custom_minimum_size = Vector2(119.061, 44.524)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.77777
+offset_top = -17.7695
+offset_right = 39.77777
+offset_bottom = 17.7695
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("3_y3pci")
+patch_margin_left = 7
+patch_margin_top = 10
+patch_margin_right = 28
+patch_margin_bottom = 10
+
+[node name="PlayLabel" type="Label" parent="Control/VBoxContainer/Start/ButtonPlay" unique_id=1693795338]
+modulate = Color(0.91764706, 0.8862745, 0.7647059, 1)
+z_index = 4096
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -7.0
+offset_right = 25.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_arllm")
+text = "Play"
+
+[node name="Settings" type="Button" parent="Control/VBoxContainer" unique_id=576648496 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(0, 0, 0, 0)
+custom_minimum_size = Vector2(238.668, 106.617)
 layout_mode = 2
 text = "Settings
 "
+script = ExtResource("2_arllm")
+target_highlight = NodePath("SettingsButton")
 
-[node name="Credits" type="Button" parent="Control/VBoxContainer" unique_id=1449093066]
+[node name="SettingsButton" type="NinePatchRect" parent="Control/VBoxContainer/Settings" unique_id=1963612904]
+self_modulate = Color(0.30980393, 0.6666667, 0.75686276, 1)
+z_index = 4096
+texture_filter = 3
+custom_minimum_size = Vector2(102.641, 35.539)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.77777
+offset_top = -17.7695
+offset_right = 39.77777
+offset_bottom = 17.7695
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("3_y3pci")
+patch_margin_left = 7
+patch_margin_top = 10
+patch_margin_right = 28
+patch_margin_bottom = 10
+
+[node name="SettingsLabel" type="Label" parent="Control/VBoxContainer/Settings/SettingsButton" unique_id=1563029112]
+modulate = Color(0.91764706, 0.8862745, 0.7647059, 1)
+z_index = 4096
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -7.0
+offset_right = 25.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_arllm")
+text = "Settings"
+
+[node name="Credits" type="Button" parent="Control/VBoxContainer" unique_id=1449093066 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(238.668, 77.642)
 layout_mode = 2
 text = "Credits
 "
+script = ExtResource("2_arllm")
+target_highlight = NodePath("CreditsButton")
 
-[node name="Quit" type="Button" parent="Control/VBoxContainer" unique_id=1805391408]
+[node name="CreditsButton" type="NinePatchRect" parent="Control/VBoxContainer/Credits" unique_id=474598314]
+self_modulate = Color(0.45882353, 0.69411767, 0.32156864, 1)
+z_index = 4096
+texture_filter = 3
+custom_minimum_size = Vector2(102.641, 35.539)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.77777
+offset_top = -17.7695
+offset_right = 39.77777
+offset_bottom = 17.7695
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("3_y3pci")
+patch_margin_left = 7
+patch_margin_top = 10
+patch_margin_right = 28
+patch_margin_bottom = 10
+
+[node name="CreditsLabel" type="Label" parent="Control/VBoxContainer/Credits/CreditsButton" unique_id=949807213]
+modulate = Color(0.91764706, 0.8862745, 0.7647059, 1)
+z_index = 4096
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -7.0
+offset_right = 25.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_arllm")
+text = "Credits"
+
+[node name="Quit" type="Button" parent="Control/VBoxContainer" unique_id=1805391408 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(238.668, 106.617)
 layout_mode = 2
 text = "Quit
 "
+script = ExtResource("2_arllm")
+target_highlight = NodePath("QuitButton")
+
+[node name="QuitButton" type="NinePatchRect" parent="Control/VBoxContainer/Quit" unique_id=336067638]
+self_modulate = Color(0.8784314, 0.80784315, 0.36078432, 1)
+z_index = 4096
+texture_filter = 3
+custom_minimum_size = Vector2(102.641, 35.539)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.77777
+offset_top = -17.7695
+offset_right = 39.77777
+offset_bottom = 17.7695
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("3_y3pci")
+patch_margin_left = 7
+patch_margin_top = 10
+patch_margin_right = 28
+patch_margin_bottom = 10
+
+[node name="QuitLabel" type="Label" parent="Control/VBoxContainer/Quit/QuitButton" unique_id=2016797081]
+modulate = Color(0.91764706, 0.8862745, 0.7647059, 1)
+z_index = 4096
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -7.0
+offset_right = 25.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_arllm")
+text = "Quit"
+horizontal_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1306055351]
 layout_mode = 1
@@ -63,9 +269,126 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.4029827, 0.30457458, 0.54506356, 1)
+color = Color(0.2901961, 0.3019608, 0.3882353, 1)
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1501238738]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -403.0
+offset_right = 100.0
+offset_bottom = -303.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("2_nxdey")
+
+[node name="Letters1" type="Sprite2D" parent="." unique_id=1503707415]
+texture_filter = 3
+position = Vector2(575.46277, 358.9839)
+rotation = 0.06981317
+scale = Vector2(3, 3)
+texture = ExtResource("3_mjxqv")
+
+[node name="Letters2" type="Sprite2D" parent="." unique_id=2083505245]
+texture_filter = 3
+position = Vector2(653.46277, 337.9839)
+rotation = -0.05235988
+scale = Vector2(3, 3)
+texture = ExtResource("4_k1wg1")
+
+[node name="Letters3" type="Sprite2D" parent="." unique_id=854518142]
+texture_filter = 3
+position = Vector2(738.46277, 356.9839)
+rotation = 0.08726646
+scale = Vector2(3, 3)
+texture = ExtResource("5_8v21i")
+
+[node name="Letters4" type="Sprite2D" parent="." unique_id=1682447963]
+texture_filter = 3
+position = Vector2(815.46277, 335.98392)
+rotation = -0.034906585
+scale = Vector2(3, 3)
+texture = ExtResource("6_mirvn")
+
+[node name="Letters5" type="Sprite2D" parent="." unique_id=283619927]
+texture_filter = 3
+position = Vector2(900.4627, 361.9839)
+rotation = 0.05235988
+scale = Vector2(3, 3)
+texture = ExtResource("7_arllm")
+
+[node name="Letters6" type="Sprite2D" parent="." unique_id=1501708857]
+texture_filter = 3
+position = Vector2(980.4628, 335.9839)
+rotation = -0.12217305
+scale = Vector2(3, 3)
+texture = ExtResource("8_y3pci")
+
+[node name="Letters7" type="Sprite2D" parent="." unique_id=1621829716]
+texture_filter = 3
+position = Vector2(1064.4629, 366.9839)
+rotation = 0.06981317
+scale = Vector2(3, 3)
+texture = ExtResource("9_i2im2")
+
+[node name="Letters8" type="Sprite2D" parent="." unique_id=592829658]
+texture_filter = 3
+position = Vector2(1142.4628, 342.9839)
+rotation = 0.034906585
+scale = Vector2(3, 3)
+texture = ExtResource("10_hkq0q")
+
+[node name="Letters9" type="Sprite2D" parent="." unique_id=2027428175]
+texture_filter = 3
+position = Vector2(1219.4628, 358.9839)
+rotation = -0.10471976
+scale = Vector2(3, 3)
+texture = ExtResource("11_pje28")
+
+[node name="Letters10" type="Sprite2D" parent="." unique_id=926027424]
+texture_filter = 3
+position = Vector2(1297.4628, 339.9839)
+rotation = 0.13962634
+scale = Vector2(3, 3)
+texture = ExtResource("12_wgv4n")
+
+[node name="Letters11" type="Sprite2D" parent="." unique_id=1362391997]
+texture_filter = 3
+position = Vector2(1381.4629, 364.98392)
+rotation = -0.034906585
+scale = Vector2(3, 3)
+texture = ExtResource("13_ow6ou")
+
+[node name="Yipretard" type="Sprite2D" parent="." unique_id=2137884103]
+texture_filter = 3
+position = Vector2(642, 1011)
+scale = Vector2(3, 3)
+texture = ExtResource("14_k1wg1")
+
+[connection signal="button_down" from="Control/VBoxContainer/Start" to="Control/VBoxContainer/Start" method="_on_button_down"]
+[connection signal="button_up" from="Control/VBoxContainer/Start" to="Control/VBoxContainer/Start" method="_on_button_up"]
+[connection signal="mouse_entered" from="Control/VBoxContainer/Start" to="Control/VBoxContainer/Start" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Control/VBoxContainer/Start" to="Control/VBoxContainer/Start" method="_on_mouse_exited"]
 [connection signal="pressed" from="Control/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="button_down" from="Control/VBoxContainer/Settings" to="Control/VBoxContainer/Settings" method="_on_button_down"]
+[connection signal="button_up" from="Control/VBoxContainer/Settings" to="Control/VBoxContainer/Settings" method="_on_button_up"]
+[connection signal="mouse_entered" from="Control/VBoxContainer/Settings" to="Control/VBoxContainer/Settings" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Control/VBoxContainer/Settings" to="Control/VBoxContainer/Settings" method="_on_mouse_exited"]
 [connection signal="pressed" from="Control/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="button_down" from="Control/VBoxContainer/Credits" to="Control/VBoxContainer/Credits" method="_on_button_down"]
+[connection signal="button_up" from="Control/VBoxContainer/Credits" to="Control/VBoxContainer/Credits" method="_on_button_up"]
+[connection signal="mouse_entered" from="Control/VBoxContainer/Credits" to="Control/VBoxContainer/Credits" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Control/VBoxContainer/Credits" to="Control/VBoxContainer/Credits" method="_on_mouse_exited"]
 [connection signal="pressed" from="Control/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="button_down" from="Control/VBoxContainer/Quit" to="Control/VBoxContainer/Quit" method="_on_button_down"]
+[connection signal="button_up" from="Control/VBoxContainer/Quit" to="Control/VBoxContainer/Quit" method="_on_button_up"]
+[connection signal="mouse_entered" from="Control/VBoxContainer/Quit" to="Control/VBoxContainer/Quit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Control/VBoxContainer/Quit" to="Control/VBoxContainer/Quit" method="_on_mouse_exited"]
 [connection signal="pressed" from="Control/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
