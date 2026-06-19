@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 func update_color():
 	pass
 	
-func update_info(name, side, description, level, slot):
+func update_info(name_of, side, description, slot, level:int = 1):
 	$MainPanel/Gene2/MainPanel2/Name.text = str(name)
 	$MainPanel/Gene2/MainPanel3/Type.text = str(side)
 	$MainPanel/Gene2/Level.text = str(level)
