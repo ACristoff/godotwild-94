@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://dcygbqrcpm2s0" path="res://UI/Menus/Main_Menu/Textures/title1.png" id="7_0i2kd"]
 [ext_resource type="Texture2D" uid="uid://d1ej2bv6jxt1w" path="res://UI/Menus/Main_Menu/Textures/title2.png" id="8_hnlan"]
 [ext_resource type="Texture2D" uid="uid://gn4fufqsbhnt" path="res://UI/Menus/Main_Menu/Textures/title3.png" id="9_sugnf"]
-[ext_resource type="Texture2D" uid="uid://t4r4sh86uffg" path="res://UI/Menus/Main_Menu/Textures/ScreenLightbig.png" id="10_hnlan"]
 
 [sub_resource type="Animation" id="Animation_u0von"]
 resource_name = "Begin"
@@ -464,12 +463,6 @@ texture_filter = 3
 position = Vector2(960, 529)
 scale = Vector2(2, 2)
 texture = ExtResource("9_sugnf")
-
-[node name="ScreenLightbig" type="Sprite2D" parent="." unique_id=1301372170]
-texture_filter = 3
-position = Vector2(960.00006, 540)
-scale = Vector2(3, 3)
-texture = ExtResource("10_hnlan")
 
 [connection signal="pressed" from="Control/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
