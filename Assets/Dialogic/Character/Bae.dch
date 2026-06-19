@@ -1,0 +1,49 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+&"_translation_id": "",
+&"color": Color(1, 1, 1, 1),
+&"custom_info": {
+"prefix": "",
+"sound_mood_default": "",
+"sound_moods": {},
+"style": "MainStyle",
+"suffix": ""
+},
+&"default_portrait": "Happy",
+&"description": "",
+&"display_name": "Bae",
+&"mirror": false,
+&"nicknames": [""],
+&"offset": Vector2(0, -180),
+&"portraits": {
+"Happy": {
+"export_overrides": {
+"image": "\"res://Assets/character_portraits/HappyBae.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Livid": {
+"export_overrides": {
+"image": "\"res://Assets/character_portraits/LividBae.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Pissed": {
+"export_overrides": {
+"image": "\"res://Assets/character_portraits/PissedBae.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
+&"scale": 3.0
+}

@@ -43,19 +43,19 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SlotTitles:modulate")
+tracks/0/path = NodePath("RectHandle/SlotTitles:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1.176, 1.176, 1.176, 1)]
+"values": [Color(1.1759251, 1.1759251, 1.1759251, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:position")
+tracks/1/path = NodePath("RectHandle/ColorRect:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -67,74 +67,127 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect:size")
+tracks/2/path = NodePath("RectHandle/SlotTitles:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(364, 150)]
+"values": [Vector2(-916, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SlotTitles:position")
+tracks/3/path = NodePath("RectHandle/SlotTitles:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-984, 0)]
+"values": [Vector2(1, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("SlotTitles:scale")
+tracks/4/path = NodePath("RectHandle/ColorRect:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(1e-05, 1)]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("ColorRect:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+
+[sub_resource type="Animation" id="Animation_acq5j"]
+resource_name = "appear"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RectHandle/ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1419.9999, -75)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RectHandle/ColorRect:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RectHandle/SlotTitles:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-915.9999, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RectHandle/SlotTitles:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RectHandle/SlotTitles:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1.176, 1.176, 1.176, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_evcsh"]
 resource_name = "start"
+length = 2.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SlotTitles:modulate")
+tracks/0/path = NodePath("RectHandle/SlotTitles:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.20000002, 0.36666667, 1.5666667, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1.176, 1.176, 1.176, 1), Color(1, 1, 1, 1)]
+"values": [Color(1.1759251, 1.1759251, 1.1759251, 0), Color(1.2237577, 1.2237577, 1.2237577, 1), Color(1, 1, 1, 1), Color(1.176, 1.176, 1.176, 1), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:position")
+tracks/1/path = NodePath("RectHandle/ColorRect:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(1.5666667, 2.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-1420, -75), Vector2(858, -75)]
@@ -142,60 +195,49 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect:size")
+tracks/2/path = NodePath("RectHandle/SlotTitles:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(1.5666667, 2.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(364, 150), Vector2(364, 150)]
+"values": [Vector2(-916, 0), Vector2(1294, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SlotTitles:position")
+tracks/3/path = NodePath("RectHandle/SlotTitles:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-984, 0), Vector2(1294, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("SlotTitles:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.39, 1),
+"times": PackedFloat32Array(1.8333334, 2.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(3.755, 1e-05)]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("ColorRect:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.39, 1),
-"transitions": PackedFloat32Array(1, 1),
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RectHandle/ColorRect:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.96666664, 1.8333334, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(7.66, 1e-05)]
+"values": [Vector2(1e-05, 1), Vector2(1e-05, 1), Vector2(1, 1), Vector2(1, 1), Vector2(7.66, 1e-05)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_acq5j"]
 _data = {
 &"RESET": SubResource("Animation_nydv0"),
+&"appear": SubResource("Animation_acq5j"),
 &"start": SubResource("Animation_evcsh")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nydv0"]
-size = Vector2(844, 158)
+size = Vector2(844, 148)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evcsh"]
 size = Vector2(296, 95)
@@ -247,7 +289,11 @@ hframes = 4
 vframes = 12
 frame = 23
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=818594923]
+[node name="RectHandle" type="Node2D" parent="." unique_id=1992296222]
+position = Vector2(-305, 0)
+
+[node name="ColorRect" type="ColorRect" parent="RectHandle" unique_id=818594923]
+modulate = Color(1, 1, 1, 0.69803923)
 z_index = -3
 texture_filter = 3
 custom_minimum_size = Vector2(0, 150)
@@ -255,21 +301,22 @@ offset_left = -1420.0
 offset_top = -75.0
 offset_right = -1056.0
 offset_bottom = 75.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
+scale = Vector2(1e-05, 1)
+pivot_offset_ratio = Vector2(0, 0.5)
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="ColorRect" unique_id=2109559205]
+[node name="TextureRect" type="TextureRect" parent="RectHandle/ColorRect" unique_id=2109559205]
 layout_mode = 0
-offset_left = 364.0
+offset_left = 363.71875
 offset_right = 994.0
 offset_bottom = 150.0
 texture = SubResource("GradientTexture1D_evcsh")
 
-[node name="SlotTitles" type="Sprite2D" parent="." unique_id=41635054]
-modulate = Color(1.176, 1.176, 1.176, 1)
+[node name="SlotTitles" type="Sprite2D" parent="RectHandle" unique_id=41635054]
+modulate = Color(1.1759251, 1.1759251, 1.1759251, 0)
 z_index = -3
 texture_filter = 3
-position = Vector2(-984, 0)
+position = Vector2(-916, 0)
 texture = ExtResource("7_nydv0")
 hframes = 4
 vframes = 2
@@ -277,7 +324,6 @@ frame = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1966281911]
 libraries/ = SubResource("AnimationLibrary_acq5j")
-autoplay = &"start"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=764485258]
 

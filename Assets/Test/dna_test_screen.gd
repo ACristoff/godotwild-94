@@ -8,6 +8,8 @@ var height
 var spacing
 var sub_spacing
 
+var current_slot = 0
+
 var king_index : int
 var king_offset : int
 
@@ -17,8 +19,35 @@ func _ready() -> void:
 	height *= scale.y
 	spacing = height / 8
 	sub_spacing = spacing / 3
-	print(shells)
+	#print(shells)
+	update_visuals()
 
+func update_visuals():
+	current_slot = 0
+	for i in shells:
+		#print("play")
+		i.play_anim()
+		await get_tree().create_timer(0.15).timeout
+		
+		
+enum Slot {
+	HEALTH,
+	HEALTH_AUGMENT,
+	ATTACK,
+	ATTACK_AUGMENT,
+	COOLDOWN,
+	SPECIALIZATION,
+	BREED_AUGMENT,
+	NONE
+}
+
+
+func set_slot(slot: BodyMap.Slot):
+	#set the color of the strand to the type
+	var node = get_node("DNA/DNAStackedShell" + str(current_slot))
+	node.set_slot(slot)
+	current_slot += 1
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -31,7 +60,7 @@ func _process(delta: float) -> void:
 		var subquadrant_size = spacing / 3.0
 		var subquadrant = int(within_quadrant / subquadrant_size)
 		subquadrant = clamp(subquadrant, 0, 2)
-		print("Quadrant:", quadrant, " Sub:", subquadrant)
+		#print("Quadrant:", quadrant, " Sub:", subquadrant)
 		king_index = quadrant
 		#for i in shells:
 			#i.subquadrant_king = subquadrant

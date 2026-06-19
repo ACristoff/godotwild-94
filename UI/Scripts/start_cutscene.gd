@@ -22,6 +22,8 @@ func _on_button_pressed() -> void:
 			$AnimationPlayer.play("Attempt2")
 		2:
 			hit_amnt += 1
+			#$AnimationPlayer.play("RESET")
+			$Node2D.rotation_degrees = 0
 			$AnimationPlayer.play("OpenLetter")
 		3:
 			return
@@ -30,6 +32,8 @@ func _on_button_pressed() -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "OpenLetter":
 		letteropened = true
+	if anim_name == "ByeByeLetter":
+		Dialogic.start("Intro")
 
 
 func _on_button_2_pressed() -> void:

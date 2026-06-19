@@ -18,6 +18,18 @@ func _process(delta: float) -> void:
 func update_color():
 	pass
 	
+func update_info(name, side, description, level, slot):
+	$MainPanel/Gene2/MainPanel2/Name.text = str(name)
+	$MainPanel/Gene2/MainPanel3/Type.text = str(side)
+	$MainPanel/Gene2/Level.text = str(level)
+	$MainPanel/MarginContainer/Label.text = str(description)
+	if TypeColors.colors.has(slot):
+		self.modulate = TypeColors.colors[slot]
+	
+	
+	
+	
+	
 func squish():
 	AudMan.play_sfx_wav(CRT_CLICK, 0.0, false)
 	$AnimationPlayer.play("Pop")

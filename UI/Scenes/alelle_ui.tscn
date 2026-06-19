@@ -73,6 +73,7 @@ _data = {
 }
 
 [node name="Alelle_UI" type="Control" unique_id=1917264788]
+modulate = Color(0.23000002, 0.49949992, 1, 1)
 z_index = 10
 layout_mode = 3
 anchors_preset = 0
@@ -80,6 +81,7 @@ mouse_filter = 2
 script = ExtResource("1_6tcmc")
 
 [node name="MainPanel" type="NinePatchRect" parent="." unique_id=1688179199]
+self_modulate = Color(2.2241454, 2.2241454, 2.2241454, 1)
 texture_filter = 3
 custom_minimum_size = Vector2(86, 0)
 layout_mode = 0
@@ -115,6 +117,7 @@ patch_margin_left = 11
 patch_margin_right = 18
 
 [node name="MainPanel2" type="NinePatchRect" parent="MainPanel/Gene2" unique_id=308161464]
+self_modulate = Color(1.6852883, 1.6852883, 1.6852883, 1)
 texture_filter = 3
 layout_mode = 0
 offset_left = 2.0
@@ -146,6 +149,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_6tcmc")
 text = "Allele"
 
 [node name="MainPanel3" type="NinePatchRect" parent="MainPanel/Gene2" unique_id=253295928]
+self_modulate = Color(1.6852883, 1.6852883, 1.6852883, 1)
 texture_filter = 3
 layout_mode = 0
 offset_left = 53.0
@@ -183,6 +187,7 @@ theme_override_font_sizes/font_size = 8
 text = "lv.1"
 
 [node name="MarginContainer" type="MarginContainer" parent="MainPanel" unique_id=663645865]
+modulate = Color(1.6852883, 1.6852883, 1.6852883, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

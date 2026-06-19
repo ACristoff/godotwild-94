@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://b4hhhfjv5dy4w"]
 
 [ext_resource type="Texture2D" uid="uid://sp7u6evl5n7n" path="res://Assets/Environment/Scenes/Laboratory/LabFloor.png" id="1_nl8f2"]
+[ext_resource type="Script" uid="uid://drystwk6ff0ow" path="res://World/lab/lab.gd" id="1_vq6iu"]
 [ext_resource type="Texture2D" uid="uid://c1xvm0thbin5l" path="res://Assets/Environment/Scenes/Laboratory/LabScreen.png" id="2_fne6d"]
 [ext_resource type="Texture2D" uid="uid://dp6fox832wacg" path="res://Assets/Environment/Scenes/Laboratory/LabPieces.png" id="3_ems3l"]
 [ext_resource type="Shader" uid="uid://bwvmkd4i76b3p" path="res://Assets/Shaders/CRT.gdshader" id="4_ems3l"]
+[ext_resource type="Texture2D" uid="uid://dhyaufaxs6hjv" path="res://UI/Textures/cyanspeenspritesheet.png" id="4_mntup"]
 [ext_resource type="Texture2D" uid="uid://blbxak2oo2t0j" path="res://Assets/Environment/Scenes/Laboratory/LabPiecesOver.png" id="4_uroyv"]
+[ext_resource type="Texture2D" uid="uid://rwpaxb4jhtyk" path="res://UI/Textures/Arrow.png" id="5_be18q"]
 [ext_resource type="PackedScene" uid="uid://38s8fl53yrsg" path="res://Assets/Test/dna_test_screen.tscn" id="5_ieswn"]
 [ext_resource type="Texture2D" uid="uid://djdujp6j5ud2u" path="res://Assets/Environment/Scenes/Laboratory/Conveyor.png" id="6_fne6d"]
 [ext_resource type="PackedScene" uid="uid://ba2i2glrfw55d" path="res://World/areas.tscn" id="9_ieswn"]
@@ -81,7 +84,84 @@ height = 452.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_co32c"]
 size = Vector2(636, 162)
 
+[sub_resource type="Animation" id="Animation_be18q"]
+resource_name = "Flash"
+length = 1.06
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NoConnectionFound:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.53, 1.06),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_vq6iu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NoConnectionFound:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_skhjb"]
+_data = {
+&"Flash": SubResource("Animation_be18q"),
+&"RESET": SubResource("Animation_vq6iu")
+}
+
+[sub_resource type="Animation" id="Animation_skhjb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/SubViewportContainer/SubViewport/Cyanspeenspritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_n5q1j"]
+resource_name = "Spin"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/SubViewportContainer/SubViewport/Cyanspeenspritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.23333335, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.40000004, 0.43333337, 0.4666667, 0.5, 0.53333336, 0.5666667, 0.6, 0.6333334, 0.6666667, 0.70000005, 0.73333335, 0.7666667, 0.8000001, 0.8333334, 0.86666673, 0.90000004, 0.9333334, 0.9666667, 1, 1.0333334, 1.0666667, 1.1, 1.1333334, 1.1666667, 1.2, 1.2333333, 1.2666668, 1.3000001, 1.3333334, 1.3666668, 1.4000001, 1.4333334, 1.4666667, 1.5000001, 1.5333334, 1.5666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sf1g0"]
+_data = {
+&"RESET": SubResource("Animation_skhjb"),
+&"Spin": SubResource("Animation_n5q1j")
+}
+
 [node name="Lab" type="Node2D" unique_id=1804512105]
+script = ExtResource("1_vq6iu")
 
 [node name="LabFloor" type="Sprite2D" parent="." unique_id=1479778400]
 light_mask = 3
@@ -148,28 +228,64 @@ position = Vector2(302, 28)
 scale = Vector2(0.2, 0.2)
 
 [node name="DNAStackedShell" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" parent_id_path=PackedInt32Array(2140591040, 168700534) index="0" unique_id=1936980544]
-title_offset = 72
+title_offset = 65
 
 [node name="DNAStackedShell2" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" parent_id_path=PackedInt32Array(2140591040, 168700534) index="1" unique_id=1240801642]
-title_offset = 72
+title_offset = 60
 
 [node name="DNAStackedShell3" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" parent_id_path=PackedInt32Array(2140591040, 168700534) index="2" unique_id=1237795546]
-title_offset = 71
+title_offset = 56
 
 [node name="DNAStackedShell4" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" parent_id_path=PackedInt32Array(2140591040, 168700534) index="3" unique_id=1213718929]
-title_offset = 71
+title_offset = 54
 
 [node name="DNAStackedShell5" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" parent_id_path=PackedInt32Array(2140591040, 168700534) index="4" unique_id=898139654]
-title_offset = 71
+title_offset = 54
 
 [node name="DNAStackedShell6" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" parent_id_path=PackedInt32Array(2140591040, 168700534) index="5" unique_id=858876537]
-title_offset = 73
+title_offset = 58
 
 [node name="DNAStackedShell7" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" parent_id_path=PackedInt32Array(2140591040, 168700534) index="6" unique_id=1449613694]
-title_offset = 73
+title_offset = 62
 
 [node name="DNAStackedShell8" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" parent_id_path=PackedInt32Array(2140591040, 168700534) index="7" unique_id=1583672614]
-title_offset = 84
+title_offset = 66
+
+[node name="Cyanspeenspritesheet" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport" unique_id=235109698]
+position = Vector2(382.66672, 111.666664)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_mntup")
+hframes = 12
+vframes = 4
+
+[node name="NoConnectionFound" type="Label" parent="." unique_id=1816128812]
+offset_left = 786.0
+offset_top = 30.0
+offset_right = 1917.0
+offset_bottom = 205.0
+theme_override_colors/font_color = Color(0, 0.75686276, 0.7137255, 1)
+theme_override_fonts/font = ExtResource("11_mntup")
+theme_override_font_sizes/font_size = 83
+text = "NO CONNECTION FOUND"
+
+[node name="PlaceYip" type="Label" parent="." unique_id=22579479]
+offset_left = 994.0
+offset_top = 354.0
+offset_right = 1386.0
+offset_bottom = 659.0
+theme_override_colors/font_color = Color(0, 0.75686276, 0.7137255, 1)
+theme_override_fonts/font = ExtResource("11_mntup")
+theme_override_font_sizes/font_size = 58
+text = "Place Yip on launch
+pad"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Arrow" type="Sprite2D" parent="." unique_id=2076793394]
+texture_filter = 3
+position = Vector2(1592, 751)
+scale = Vector2(1.9259255, 0.36538458)
+texture = ExtResource("5_be18q")
 
 [node name="ColorRect4" type="ColorRect" parent="." unique_id=749799674]
 material = SubResource("ShaderMaterial_uroyv")
@@ -277,6 +393,15 @@ offset_right = 254.0
 offset_bottom = 1009.0
 script = ExtResource("11_co32c")
 target_highlight = NodePath("../ButtonRefresh4")
+
+[node name="NoConnectionFoundAnim" type="AnimationPlayer" parent="." unique_id=1883718793]
+libraries/ = SubResource("AnimationLibrary_skhjb")
+autoplay = &"Flash"
+
+[node name="Spin" type="AnimationPlayer" parent="." unique_id=1678701049]
+libraries/ = SubResource("AnimationLibrary_sf1g0")
+autoplay = &"Spin"
+speed_scale = 0.3
 
 [connection signal="area_entered" from="LaunchPad" to="Areas" method="_on_launch_pad_area_entered"]
 [connection signal="area_exited" from="LaunchPad" to="Areas" method="_on_launch_pad_area_exited"]
