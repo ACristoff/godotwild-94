@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://d2tgf0trp406f" path="res://World/battle/levels/level.gd" id="2_sml2w"]
 [ext_resource type="Script" uid="uid://cra0emwdv78rw" path="res://World/yipee/genes/strand.gd" id="3_hpjvn"]
 [ext_resource type="Resource" uid="uid://dyxrgh6dl4e5c" path="res://World/yipee/genes/allele/rightallele/resources/alien_antennae_misc.tres" id="4_6i0uw"]
-[ext_resource type="Resource" path="res://Assets/Dialogic/Timelines/BaeEncounter.dtl" id="5_hpjvn"]
+[ext_resource type="Resource" uid="uid://bg3dw2dhd884f" path="res://Assets/Dialogic/Timelines/BaeEncounter.dtl" id="5_hpjvn"]
 
 [sub_resource type="Resource" id="Resource_ptjmb"]
 script = ExtResource("3_hpjvn")

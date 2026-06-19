@@ -12,3 +12,6 @@ func _on_credits_pressed():
 
 func _on_quit_pressed():
 	SignalBus.game_state_changed.emit("Quit")
+
+func _on_feedback_pressed() -> void:
+	pass # Replace with function body.
