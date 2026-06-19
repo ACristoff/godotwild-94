@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://dtbvcb0ico5sc"]
 
 [ext_resource type="Script" uid="uid://l8848xmq4xyy" path="res://World/main_game.gd" id="1_l2kwh"]
+[ext_resource type="PackedScene" uid="uid://fvt51j1fwmic" path="res://UI/Scenes/start_cutscene.tscn" id="2_uwvnw"]
 
 [node name="MainGame" type="Node2D" unique_id=585464246]
 script = ExtResource("1_l2kwh")
+
+[node name="StartCutscene" parent="." unique_id=588285204 instance=ExtResource("2_uwvnw")]

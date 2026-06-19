@@ -33,3 +33,5 @@ signal transition_finished
 signal finish_transition
 
 signal go_to(new_area: Locations)
+
+signal opening_scene_finished

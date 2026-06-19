@@ -198,5 +198,4 @@ func _on_refresh_button_pressed():
 
 
 func _on_farm_button_pressed():
-	SignalBus.go_to_farm.emit()
-	pass # Replace with function body.
+	SignalBus.go_to.emit(SignalBus.Locations.FARM)
