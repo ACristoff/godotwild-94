@@ -4,7 +4,7 @@ var field_level = 3
 var base_slot_chance = 25
 var base_yip_tier_chance = 25
 
-var yips = 30
+var yips_to_spawn = 3
 
 var yip_tier_odds_0: Dictionary = {
 	YipeeData.YipTier.COMMON: 50,
@@ -50,12 +50,15 @@ var allele_fill_chance_by_tier = {
 
 @onready var tooltip = $CanvasLayer/YipToolyip
 
+var all_yips:  Array[Yipee] = []
+
 func _ready():
 	#tooltip.yip_owner = self
 	tooltip.hide()
-	for i in yips:
+	for i in yips_to_spawn:
 		var new_yip = spawn_yip()
 		wire_yip(new_yip)
+		all_yips.append(new_yip)
 
 func wire_yip(yip: Yipee) -> void:
 	yip.yip_hovered.connect(_on_yip_hovered)
@@ -113,6 +116,11 @@ func random_location() -> Vector2:
 	var random = Vector2(x, y)
 	return random
 
+func clear_yips() -> void:
+	for yip in all_yips:
+		
+		all_yips.erase(yip)
+		yip.queue_free()
 
 func spawn_yip() -> Yipee:
 	var yip_tier = get_yip_tier()
@@ -126,3 +134,7 @@ func spawn_yip() -> Yipee:
 	
 	add_child(new_yip)
 	return new_yip
+
+
+func _on_refresh_button_pressed():
+	clear_yips()
