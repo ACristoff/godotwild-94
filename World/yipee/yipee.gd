@@ -1,6 +1,10 @@
 class_name Yipee 
 extends Node2D
 
+const MAIN_CHARACTER_FOOTSTEP_GRASS_STEP_3 = preload("uid://bkwvuoumm61h3")
+const YIP_BUFF = preload("uid://nkypm8ojycqe")
+
+
 ##Base Yipee class.
 @onready var cd_bar: Control = $HealthBar/NinePatchRect/CDBar
 @onready var punch_handle: Node2D = $PunchHandle
