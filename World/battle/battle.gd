@@ -3,13 +3,14 @@ extends Node2D
 enum Team { PLAYER, ENEMY, NONE }
 
 @export var battle_speed: float = 1.0
-
+@export var level: Level
+@onready var enemy_team_data: Array[YipeeData]
 var player_team_data := SignalBus.yip_party.values()
-@export var enemy_team_data: Array[YipeeData]
 
 var player_team = []
 var enemy_team = []
 
+var _battle_started: bool = false
 var _battle_over: bool = false
 
 func _spawn(data: YipeeData, pos: Vector2) -> Yipee:
@@ -34,7 +35,10 @@ func generate_random_teams():
 	pass
 
 func _ready():
-	generate_random_teams()
+	if level:
+		enemy_team_data = level.enemy_team
+	#generate_random_teams()
+	_play_intro()
 	#Spawn player team
 	print( 'player team data ', player_team_data, SignalBus.yip_party)
 	for i in range(5):
@@ -57,6 +61,25 @@ func _ready():
 		wire_signals(yip, Team.PLAYER)
 	for yip in enemy_team:
 		wire_signals(yip, Team.ENEMY)
+	
+
+func _play_intro() -> void:
+	if level and level.intro_animation:
+		var anim := level.intro_animation.instantiate()
+		add_child(anim)
+		anim.tree_exited.connect(_play_intro_timeline)
+	else:
+		_play_intro_timeline()
+
+func _play_intro_timeline() -> void:
+	if level and level.intro_timeline:
+		Dialogic.timeline_ended.connect(_on_intro_finished)
+		Dialogic.start(level.intro_timeline)
+	else:
+		_battle_started = true
+
+func _on_intro_finished() -> void:
+	_battle_started = true
 
 func wire_signals(yip: Yipee, team: Team):
 	yip.attack.attack_ready.connect(_on_attack_ready.bind(team))
@@ -134,9 +157,21 @@ func _on_died(corpse: Yipee) -> void:
 	corpse.ability.on_death(self)
 	print(corpse.data.yipee_name, " fucking died!")
 	corpse.scale.y = -1
-	if check_for_victory() != Team.NONE:
+	var battle_end_cond = check_for_victory()
+	if battle_end_cond != Team.NONE:
 		prints("Battle over!", check_for_victory())
 		_battle_over = true
+		$CanvasLayer2/NextButton.visible = true
+		#TODO make button visible
+
+func _on_next():
+	var battle_end_cond = check_for_victory()
+	
+	if battle_end_cond == Team.PLAYER:
+		pass
+	if battle_end_cond == Team.ENEMY:
+		pass
+
 func _on_status_tick(damage: DamageInfo, owner_yip: Yipee) -> void:
 	if _battle_over:
 		return
@@ -144,6 +179,8 @@ func _on_status_tick(damage: DamageInfo, owner_yip: Yipee) -> void:
 	apply_damage(owner_yip, damage)
 
 func _process(delta):
+	if not _battle_started:
+		return
 	if _battle_over != true:
 		for yip: Yipee in player_team:
 			if yip.health.current_health > 0:
@@ -153,3 +190,7 @@ func _process(delta):
 			if yip.health.current_health > 0:
 				yip.attack.tick(delta * battle_speed)
 				yip.status.tick(delta * battle_speed)
+
+
+func _on_next_button_pressed() -> void:
+	_on_next()
