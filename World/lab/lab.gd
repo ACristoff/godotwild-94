@@ -1,14 +1,44 @@
 extends Node2D
-var yip_placed = true
+@export var sample_yip: YipeeData
 
+var yip_placed = false
+var focused_yip: Yipee = null
+var dragged_yip: Yipee = null
+var drag_offset: Vector2 = Vector2.ZERO
 
+var yip_on_launch_pad: Yipee = null
+
+@onready var launch_pad = $LaunchPad
+@onready var conveyor = $ConveyorArea
+@onready var dna_screen = $Control/SubViewportContainer/SubViewport/DNATestScreen
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	update_screen()
+	if SignalBus.debug_mode == true && sample_yip != null:
+		print('debug')
+		spawn_yip(sample_yip)
+
+func spawn_yip(data: YipeeData) -> Yipee:
+	var yip : Yipee = preload("res://World/yipee/yipee.tscn").instantiate() as Yipee
+	yip.data = data
+	yip.global_position = Vector2(300,300)
+	yip.data.can_be_grabbed = true
+	add_child(yip)
+	yip.z_index = 100
+	yip.health_UI.visible = false
+	yip.animation_player.play(&"Spawn")
+	yip.yip_hovered.connect(_on_yip_hovered)
+	yip.yip_unhovered.connect(_on_yip_unhovered)
+	return yip
+
+func _on_yip_hovered(yip: Yipee) -> void:
+	focused_yip = yip
+
+func _on_yip_unhovered() -> void:
+	focused_yip = null
 
 func update_screen():
-	pass
 	if yip_placed:
 		$Control/SubViewportContainer/SubViewport/DNATestScreen.show()
 		$Control/SubViewportContainer/SubViewport/Cyanspeenspritesheet.hide()
@@ -21,3 +51,48 @@ func update_screen():
 		$Arrow.show()
 		$PlaceYip.show()
 		$NoConnectionFound.modulate = Color(1.0, 1.0, 1.0, 1.0)
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			if focused_yip:
+				dragged_yip = focused_yip
+				# remember the grab point so the yip follows the cursor from where you grabbed it
+				drag_offset = dragged_yip.global_position - get_global_mouse_position()
+		else:
+			dragged_yip = null
+	elif event is InputEventMouseMotion:
+		if dragged_yip:
+			dragged_yip.global_position = get_global_mouse_position() + drag_offset
+
+func set_yip_to_launch(yip: Yipee) -> void:
+	update_screen()
+	dna_screen.display_helix(yip.data.helix)
+	pass
+
+func clear_launch() -> void:
+	update_screen()
+	pass
+
+func _on_launch_pad_area_entered(area):
+	print("on_launch_pad_area_entered", area, area.get_parent())
+	var yip = area.get_parent()
+	if yip_on_launch_pad == null:
+		yip_on_launch_pad = yip
+		yip_placed = true
+		set_yip_to_launch(yip)
+
+func _on_launch_pad_area_exited(area):
+	
+	var yip = area.get_parent()
+	prints("on_launch_pad_area_exited", area, yip, yip_on_launch_pad)
+	if yip_on_launch_pad == yip:
+		yip_placed = false
+		yip_on_launch_pad = null
+		clear_launch()
+
+
+func _on_conveyor_area_area_entered(area):
+	print("on_conveyor_area_area_entered", area)
+
+	

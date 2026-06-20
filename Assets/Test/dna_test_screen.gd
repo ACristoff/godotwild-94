@@ -86,6 +86,14 @@ func _process(delta: float) -> void:
 			shells[i].set_frame(frame)
 
 
+func display_helix(helix: Helix) -> void:
+	for i in shells.size():
+		var strand: Strand = helix.strands[i]
+		if strand == null or strand.slot == BodyMap.Slot.NONE:
+			shells[i].set_slot("NONE")
+		else:
+			shells[i].set_slot(BodyMap.Slot.keys()[strand.slot])
+
 func _on_area_2d_mouse_entered() -> void:
 	#print("hi")
 	$Timer.stop()

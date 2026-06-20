@@ -11,6 +11,9 @@
 [ext_resource type="Resource" uid="uid://bkoj12ws844c3" path="res://World/battle/levels/bladabeer2.tres" id="9_e30yk"]
 [ext_resource type="Resource" uid="uid://dyvdhk217xukr" path="res://World/battle/levels/jocelyntheyippa3.tres" id="10_v7kkf"]
 [ext_resource type="Resource" uid="uid://bh2d8owmcbne5" path="res://World/battle/levels/berg3.tres" id="11_f6gyy"]
+[ext_resource type="Resource" uid="uid://blo0ieb3u4dan" path="res://World/battle/levels/drinsaneo1.tres" id="12_e30yk"]
+[ext_resource type="Resource" uid="uid://6rn88cebcpna" path="res://World/battle/levels/godotdestroyer.tres" id="13_v7kkf"]
+[ext_resource type="Resource" uid="uid://rbwqwvobgtnx" path="res://World/battle/levels/bae.tres" id="14_f6gyy"]
 
 [sub_resource type="Resource" id="Resource_goquv"]
 script = ExtResource("7_dq3qm")
@@ -27,10 +30,20 @@ script = ExtResource("7_dq3qm")
 levels = Array[ExtResource("4_xkfpm")]([ExtResource("10_v7kkf"), ExtResource("11_f6gyy")])
 metadata/_custom_type_script = "uid://ihlwlq687iua"
 
+[sub_resource type="Resource" id="Resource_0nlon"]
+script = ExtResource("7_dq3qm")
+levels = Array[ExtResource("4_xkfpm")]([ExtResource("12_e30yk"), ExtResource("13_v7kkf")])
+metadata/_custom_type_script = "uid://ihlwlq687iua"
+
+[sub_resource type="Resource" id="Resource_yely4"]
+script = ExtResource("7_dq3qm")
+levels = Array[ExtResource("4_xkfpm")]([ExtResource("14_f6gyy")])
+metadata/_custom_type_script = "uid://ihlwlq687iua"
+
 [node name="MainGame" type="Node2D" unique_id=585464246]
 script = ExtResource("1_l2kwh")
 
 [node name="StartCutscene" parent="." unique_id=588285204 instance=ExtResource("2_uwvnw")]
 
 [node name="FightOrganizer" parent="." unique_id=239455206 instance=ExtResource("3_ob8fe")]
-brackets = Array[ExtResource("7_dq3qm")]([SubResource("Resource_goquv"), SubResource("Resource_enera"), SubResource("Resource_2w4tv"), null, null])
+brackets = Array[ExtResource("7_dq3qm")]([SubResource("Resource_goquv"), SubResource("Resource_enera"), SubResource("Resource_2w4tv"), SubResource("Resource_0nlon"), SubResource("Resource_yely4")])
