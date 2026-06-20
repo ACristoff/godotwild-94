@@ -1,7 +1,11 @@
-[gd_resource type="Resource" script_class="LeftAllele" format=3 uid="uid://d1usn64ukjx1f"]
+[gd_resource type="Resource" script_class="PoisonAllele" format=3 uid="uid://d1usn64ukjx1f"]
 
-[ext_resource type="Script" uid="uid://mc42eixh1d8t" path="res://World/yipee/genes/allele/leftallele/left_allele.gd" id="1_ca4e4"]
+[ext_resource type="Script" uid="uid://cjd0l70h5j8jh" path="res://World/yipee/genes/allele/leftallele/subclasses/poison_allele.gd" id="1_ca4e4"]
 
 [resource]
 script = ExtResource("1_ca4e4")
-metadata/_custom_type_script = "uid://mc42eixh1d8t"
+poison_stacks = 4
+slot = 3
+allele_name = "Tipped"
+tooltip = "Actions apply (stacks) poison"
+metadata/_custom_type_script = "uid://cjd0l70h5j8jh"
