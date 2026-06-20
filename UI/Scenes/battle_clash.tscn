@@ -1,0 +1,173 @@
+[gd_scene format=3 uid="uid://dhjkgi4r0o822"]
+
+[ext_resource type="Texture2D" uid="uid://w7j2mv3smk5a" path="res://UI/Menus/Main_Menu/Textures/VSwall.png" id="1_bwf80"]
+[ext_resource type="Texture2D" uid="uid://c5vftm78nfq7b" path="res://UI/Menus/Main_Menu/Textures/Versus.png" id="2_4g84l"]
+[ext_resource type="Shader" uid="uid://d0ysxiqng256p" path="res://Assets/Shaders/battle_clash.gdshader" id="3_hkdoa"]
+
+[sub_resource type="Animation" id="Animation_4g84l"]
+resource_name = "BattleStart"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnonWall:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-147, 540), Vector2(1084, 540)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemyWall:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2067, 540), Vector2(840.99994, 540.00006)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Versus:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9666667, 1, 1.3),
+"transitions": PackedFloat32Array(1, 1, 0.2588163, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(3.5, 3.5), Vector2(3, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_hkdoa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnonWall:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-147, 540)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemyWall:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2067, 540)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Versus:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1pe7o"]
+_data = {
+&"BattleStart": SubResource("Animation_4g84l"),
+&"RESET": SubResource("Animation_hkdoa")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1pe7o"]
+shader = ExtResource("3_hkdoa")
+shader_parameter/alpha = 1.0
+shader_parameter/inner_radius = 0.0
+shader_parameter/outer_radius = 2.59
+
+[node name="BattleClash" type="Control" unique_id=1404553391]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=733712090]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnonWall" type="Sprite2D" parent="." unique_id=123435474]
+modulate = Color(0.27, 0.27, 0.27, 1)
+texture_filter = 3
+position = Vector2(-147, 540)
+scale = Vector2(3, 3)
+texture = ExtResource("1_bwf80")
+
+[node name="ColorRect3" type="ColorRect" parent="AnonWall" unique_id=2127754646]
+offset_left = -361.33334
+offset_top = -180.0
+offset_right = -175.33334
+offset_bottom = 180.0
+
+[node name="EnemyWall" type="Sprite2D" parent="." unique_id=935053153]
+modulate = Color(0.4070667, 0.25800002, 0.43, 1)
+texture_filter = 3
+position = Vector2(2067, 540)
+rotation = -3.1415927
+scale = Vector2(3, 3)
+texture = ExtResource("1_bwf80")
+
+[node name="ColorRect4" type="ColorRect" parent="EnemyWall" unique_id=56147933]
+offset_left = -491.33328
+offset_top = -180.00002
+offset_right = -305.33328
+offset_bottom = 179.99998
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=437261134]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -0.5
+offset_right = 0.5
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1093763097]
+libraries/ = SubResource("AnimationLibrary_1pe7o")
+autoplay = &"BattleStart"
+
+[node name="Versus" type="Sprite2D" parent="." unique_id=2044497686]
+texture_filter = 3
+position = Vector2(960, 540)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("2_4g84l")
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=1282769304]
+material = SubResource("ShaderMaterial_1pe7o")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
