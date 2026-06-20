@@ -6,14 +6,16 @@ var permadeath: bool = false
 
 ## Farm scene we should see yips from here in that farm area
 var yip_inventory: Array[YipeeData] = []
+
 ## Where will store yips globally
-var yip_party = {
+var yip_party : Dictionary[int, YipeeData] = {
 	1: null,
 	2: null,
 	3: null,
 	4: null,
 	5: null
 }
+
 var coins: int = 12
 enum Locations { FARM, FIELD, LAB, BATTLE, WIN_LOSE }
 var game_started: bool = false
