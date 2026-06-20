@@ -1,0 +1,97 @@
+[gd_resource type="Resource" script_class="Level" format=3 uid="uid://c6lk0uxpqgwjh"]
+
+[ext_resource type="Script" uid="uid://dpr2powm23rue" path="res://World/yipee/genes/yipee_data.gd" id="1_elg88"]
+[ext_resource type="Script" uid="uid://d2tgf0trp406f" path="res://World/battle/levels/level.gd" id="2_4jhbh"]
+[ext_resource type="Script" uid="uid://ckc2iq0roikyx" path="res://World/yipee/genes/helix.gd" id="2_t07iy"]
+[ext_resource type="Script" uid="uid://cra0emwdv78rw" path="res://World/yipee/genes/strand.gd" id="3_5wwoa"]
+[ext_resource type="Resource" uid="uid://o0sjwlaxfwyr" path="res://World/yipee/genes/allele/rightallele/resources/happy_mouth.tres" id="4_8m51q"]
+
+[sub_resource type="Resource" id="Resource_34gaj"]
+script = ExtResource("3_5wwoa")
+slot = 4
+right = ExtResource("4_8m51q")
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_l33p1"]
+script = ExtResource("3_5wwoa")
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_yig2v"]
+script = ExtResource("3_5wwoa")
+slot = 4
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_lj6cx"]
+script = ExtResource("3_5wwoa")
+slot = 7
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_53v36"]
+script = ExtResource("3_5wwoa")
+slot = 7
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_db65q"]
+script = ExtResource("3_5wwoa")
+slot = 7
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_w4p3v"]
+script = ExtResource("3_5wwoa")
+slot = 7
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_7n7iy"]
+script = ExtResource("3_5wwoa")
+slot = 7
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_tmujv"]
+script = ExtResource("2_t07iy")
+strands = Array[ExtResource("3_5wwoa")]([SubResource("Resource_34gaj"), SubResource("Resource_l33p1"), SubResource("Resource_yig2v"), SubResource("Resource_lj6cx"), SubResource("Resource_53v36"), SubResource("Resource_db65q"), SubResource("Resource_w4p3v"), SubResource("Resource_7n7iy")])
+metadata/_custom_type_script = "uid://ckc2iq0roikyx"
+
+[sub_resource type="Resource" id="Resource_elg88"]
+script = ExtResource("1_elg88")
+yipee_name = "Todd"
+age = 43
+base_health = 18
+base_cooldown = 8.0
+helix = SubResource("Resource_tmujv")
+metadata/_custom_type_script = "uid://dpr2powm23rue"
+
+[sub_resource type="Resource" id="Resource_4jhbh"]
+script = ExtResource("1_elg88")
+yipee_name = "Jeff"
+age = 62
+base_health = 11
+base_attack = 4
+base_cooldown = 7.2
+helix = SubResource("Resource_tmujv")
+metadata/_custom_type_script = "uid://dpr2powm23rue"
+
+[sub_resource type="Resource" id="Resource_dl7v5"]
+script = ExtResource("1_elg88")
+yipee_name = "Bill"
+age = 50
+base_health = 12
+base_attack = 2
+base_cooldown = 7.5
+helix = SubResource("Resource_tmujv")
+metadata/_custom_type_script = "uid://dpr2powm23rue"
+
+[sub_resource type="Resource" id="Resource_8m51q"]
+script = ExtResource("1_elg88")
+yipee_name = "Ryan"
+age = 23
+base_health = 7
+base_attack = 3
+base_cooldown = 6.6
+helix = SubResource("Resource_tmujv")
+metadata/_custom_type_script = "uid://dpr2powm23rue"
+
+[resource]
+script = ExtResource("2_4jhbh")
+level_name = "Office Guy"
+enemy_team = Array[ExtResource("1_elg88")]([SubResource("Resource_elg88"), SubResource("Resource_4jhbh"), SubResource("Resource_dl7v5"), SubResource("Resource_8m51q")])
+metadata/_custom_type_script = "uid://d2tgf0trp406f"

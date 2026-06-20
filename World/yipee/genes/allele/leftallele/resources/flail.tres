@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_qspyc")
-poison_stacks = 20
+poison_stacks = 7
 slot = 3
 allele_name = "Flail"
 tooltip = "Actions apply {stacks} poison"

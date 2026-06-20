@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bncby6k75jgqs"]
 
 [ext_resource type="Texture2D" uid="uid://dmmkuposo5ygv" path="res://UI/Textures/Trophy.png" id="1_asrpj"]
-[ext_resource type="Script" uid="uid://cfhs28ya51muj" path="res://UI/Scenes/win_lose_screen_container.gd" id="1_jqq6x"]
+[ext_resource type="Script" path="res://UI/Scenes/win_lose_screen_container.gd" id="1_jqq6x"]
 [ext_resource type="Script" uid="uid://w2int2baaimx" path="res://UI/Scripts/win_lose_screen.gd" id="1_smsqj"]
 [ext_resource type="Texture2D" uid="uid://cydxip81wgpg" path="res://UI/Textures/Heart.png" id="2_smsqj"]
 
@@ -65,12 +65,6 @@ layout_mode = 2
 texture = ExtResource("1_asrpj")
 
 [node name="Trophy4" type="TextureRect" parent="WinLoseScreen/VBoxContainer/Trophies" unique_id=282606097]
-modulate = Color(0.12225223, 0.12225223, 0.12225223, 1)
-self_modulate = Color(1, 0.85, 0.39999998, 1)
-layout_mode = 2
-texture = ExtResource("1_asrpj")
-
-[node name="Trophy5" type="TextureRect" parent="WinLoseScreen/VBoxContainer/Trophies" unique_id=1132200015]
 modulate = Color(0.12225223, 0.12225223, 0.12225223, 1)
 self_modulate = Color(1, 0.85, 0.39999998, 1)
 layout_mode = 2
