@@ -19,12 +19,12 @@ func change_location(location: SignalBus.Locations) -> void:
 
 ## Called when the node enters the scene tree for the first time.
 func _ready():
-	#change_location(SignalBus.Locations.FARM)
 	SignalBus.go_to.connect(change_location)
 	SignalBus.day_finished.connect(_on_day_end)
-	#SignalBus.opening_scene_finished.connect(_on_opening_finished)
-	Dialogic.signal_event.connect(_on_opening_finished)
 	SignalBus.battle_finished.connect(_on_battle_finished)
+	Dialogic.signal_event.connect(_on_opening_finished)
+	if SignalBus.debug_mode == true:
+		change_location(SignalBus.Locations.FARM)
 
 func _on_battle_finished(victory: bool) -> void:
 	change_location(SignalBus.Locations.WIN_LOSE)
