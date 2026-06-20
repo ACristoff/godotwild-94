@@ -4,6 +4,9 @@
 
 [resource]
 script = ExtResource("1_gjge4")
+flat_mods = Dictionary[int, int]({
+0: 10
+})
 allele_name = "Curl"
 tooltip = "Adds ten health"
 metadata/_custom_type_script = "uid://mc42eixh1d8t"
