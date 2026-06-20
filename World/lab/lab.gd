@@ -75,21 +75,24 @@ func clear_launch() -> void:
 	pass
 
 func _on_launch_pad_area_entered(area):
-	print("on_launch_pad_area_entered", area, area.get_parent())
-	var yip = area.get_parent()
+	var yip := area.get_parent() as Yipee
+	if yip == null:
+		return
 	if yip_on_launch_pad == null:
 		yip_on_launch_pad = yip
 		yip_placed = true
 		set_yip_to_launch(yip)
 
 func _on_launch_pad_area_exited(area):
-	
-	var yip = area.get_parent()
-	prints("on_launch_pad_area_exited", area, yip, yip_on_launch_pad)
-	if yip_on_launch_pad == yip:
-		yip_placed = false
-		yip_on_launch_pad = null
-		clear_launch()
+	var yip := area.get_parent() as Yipee
+	if yip == null or yip_on_launch_pad != yip:
+		return
+	for overlapping_area in launch_pad.get_overlapping_areas():
+		if overlapping_area.get_parent() == yip:
+			return
+	yip_placed = false
+	yip_on_launch_pad = null
+	clear_launch()
 
 
 func _on_conveyor_area_area_entered(area):
