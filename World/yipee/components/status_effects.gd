@@ -64,6 +64,7 @@ func _tick_ice(effect: StatusEffect, delta: float) -> void:
 			effect.frozen = true
 			effect.melt_interval = ICE_MELT_START
 			effect.clock = 0.0
+			effects_changed.emit(_visual_name(Kind.ICE), 0)
 			effects_changed.emit("FREEZE", effect.stacks)
 		return
 	
