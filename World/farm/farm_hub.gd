@@ -8,18 +8,7 @@ var dragged_yip: Yipee = null
 var drag_offset : Vector2 = Vector2.ZERO
 @onready var coin_label: Label = $CanvasLayer/Control/HBoxContainer/MarginContainer2/CoinLabel
 
-#func _spawn(data: YipeeData, pos: Vector2) -> Yipee:
-	#var yip := preload("res://World/yipee/yipee.tscn").instantiate() as Yipee
-	#yip.data = data
-	#yip.position = pos
-	#
-	#add_child(yip)
-	#yip.health_UI.visible = true
-	#yip.health_UI.current_health = yip.health.current_health
-	#yip.health_UI.max_health = yip.health.max_health
-	#yip.health_UI.update_UI()
-	#return yip
-
+#region Built in Functions
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	coin_label.text = str(SignalBus.coins)
@@ -27,12 +16,12 @@ func _ready() -> void:
 		print(yip)
 		print("HEY WE GOT A YIPPIE HERE")
 		wire_yip(spawn_yip(yip))
-		#var new_yip = spawn_yip()
-		#wire_yip(new_yip)
-		#all_yips.append(new_yip)
-		
-		pass
-		
+
+# On exit set it so no one can be grabbed
+func _exit_tree() -> void:
+	for yip_data in SignalBus.yip_inventory:
+		yip_data.can_be_grabbed = false
+
 func _input(event : InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -53,6 +42,9 @@ func _input(event : InputEvent) -> void:
 	elif event is InputEventMouseMotion:
 		if dragged_yip:
 			dragged_yip.global_position = get_global_mouse_position() + drag_offset
+
+#endregion
+
 
 #region Farm Hub Functions
 
@@ -84,7 +76,7 @@ func get_random_point_in_area() -> Vector2:
 	return grazing_spot.to_global(random_point_in_grazing_area)
 
 func spawn_yip(data: YipeeData) -> Yipee:
-	var yip := preload("res://World/yipee/yipee.tscn").instantiate() as Yipee
+	var yip : Yipee = preload("res://World/yipee/yipee.tscn").instantiate() as Yipee
 	yip.data = data
 	if yip.data.farm_last_known_position == Vector2.ZERO:
 		yip.global_position = get_random_point_in_area()
@@ -100,6 +92,7 @@ func spawn_yip(data: YipeeData) -> Yipee:
 	yip.health_UI.current_health = yip.health.current_health
 	yip.health_UI.max_health = yip.health.max_health
 	yip.health_UI.update_UI()
+	
 	return yip
 
 func _drop_yip(yip: Yipee) -> void:
