@@ -56,6 +56,9 @@ var can_be_grabbed : bool = false
 # I want them to run back to the old position if possible with a cute animation. We can slide them for now
 # When the yip is spawned in the farm hub, set this variable, we will be spawning the yip in the safe areas.
 var farm_last_known_position : Vector2 = Vector2.ZERO
+
+# Remember party location between scenes if placed in a party
+@export_range(0, 5, 1) var yip_party_slot : int 
 #endregion
 
 func _init() -> void:

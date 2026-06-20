@@ -142,6 +142,10 @@ func spawn_yip() -> Yipee:
 	new_yip.position = random_location()
 	
 	add_child(new_yip)
+	
+	# So they do the idle animation
+	new_yip.animation_player.play(&"IdleNormal")
+	
 	return new_yip
 
 func buy_yip(yip_bought: Yipee) -> void:
