@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://djdujp6j5ud2u" path="res://Assets/Environment/Scenes/Laboratory/Conveyor.png" id="6_fne6d"]
 [ext_resource type="PackedScene" uid="uid://ba2i2glrfw55d" path="res://World/areas.tscn" id="9_ieswn"]
 [ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="10_co32c"]
-[ext_resource type="Script" path="res://UI/Scripts/button_effects.gd" id="11_co32c"]
+[ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="11_co32c"]
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="11_mntup"]
 
 [sub_resource type="Resource" id="Resource_5722r"]
