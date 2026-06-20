@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="IceAllele" format=3 uid="uid://bkh7fd37lucf2"]
+
+[ext_resource type="Script" path="res://World/yipee/genes/allele/leftallele/subclasses/ice_allele.gd" id="1_awc1k"]
+
+[resource]
+script = ExtResource("1_awc1k")
+ice_stacks = 20
+allele_name = "Shatter"
+tooltip = "Apply {ICE} Freeze stacks"
+rarity = 3

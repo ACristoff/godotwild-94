@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ChargeAllele" format=3 uid="uid://cidq54ye38vgy"]
+
+[ext_resource type="Script" path="res://World/yipee/genes/allele/leftallele/subclasses/charge_adjacent_allele.gd" id="1_52sa5"]
+
+[resource]
+script = ExtResource("1_52sa5")
+charge_amount = 2.0
+slot = 4
+allele_name = "Rally"
+tooltip = "Charge adjacent allies for {charge} seconds"
+rarity = 3

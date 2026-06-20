@@ -9,6 +9,6 @@ percent_mods = Dictionary[int, float]({
 })
 slot = 4
 allele_name = "Flee"
-tooltip = "+(cooldown) Cooldown Speed"
+tooltip = "+{cooldown_pct} Cooldown Speed"
 rarity = 1
 metadata/_custom_type_script = "uid://mc42eixh1d8t"

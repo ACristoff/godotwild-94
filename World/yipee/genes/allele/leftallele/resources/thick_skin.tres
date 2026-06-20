@@ -8,5 +8,5 @@ flat_mods = Dictionary[int, int]({
 0: 20
 })
 allele_name = "Thick Skin"
-tooltip = "+(health) Max Health"
+tooltip = "+{health} Max Health"
 metadata/_custom_type_script = "uid://mc42eixh1d8t"

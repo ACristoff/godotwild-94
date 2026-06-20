@@ -9,6 +9,6 @@ flat_mods = Dictionary[int, int]({
 })
 slot = 2
 allele_name = "Maul"
-tooltip = "(attack) Physical Damage"
+tooltip = "{attack} Physical Damage"
 rarity = 3
 metadata/_custom_type_script = "uid://mc42eixh1d8t"

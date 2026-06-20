@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ShieldAllele" format=3 uid="uid://7m6t7oqy1ptn"]
+
+[ext_resource type="Script" path="res://World/yipee/genes/allele/leftallele/subclasses/shield_on_attack.gd" id="1_a81ja"]
+
+[resource]
+script = ExtResource("1_a81ja")
+shield_amount = 8
+slot = 1
+allele_name = "Protect"
+tooltip = "Shield {shield} on action"

@@ -7,5 +7,5 @@ script = ExtResource("1_m5arr")
 heal_amount = 35
 slot = 1
 allele_name = "Feed"
-tooltip = "Heal lowest HP ally (heal)"
+tooltip = "Heal lowest HP ally {heal}"
 rarity = 1

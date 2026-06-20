@@ -5,9 +5,10 @@
 [resource]
 script = ExtResource("1_c2bff")
 flat_mods = Dictionary[int, int]({
-1: 20
+1: 30
 })
 slot = 2
-allele_name = "big jerk off arm"
+allele_name = "Swing"
+tooltip = "{attack} Physical Damage"
 rarity = 2
 metadata/_custom_type_script = "uid://mc42eixh1d8t"

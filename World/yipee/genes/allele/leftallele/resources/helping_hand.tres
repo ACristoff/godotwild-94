@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ChargeFrontAllele" format=3 uid="uid://dbn5p03hws0ot"]
+
+[ext_resource type="Script" path="res://World/yipee/genes/allele/leftallele/subclasses/charge_front_allele.gd" id="1_w4an1"]
+
+[resource]
+script = ExtResource("1_w4an1")
+slot = 4
+allele_name = "Helping Hand"
+tooltip = "Charge ally in front for {charge} seconds"
+rarity = 1
