@@ -6,5 +6,5 @@
 script = ExtResource("1_5u1le")
 slot = 3
 allele_name = "Friction"
-tooltip = "Actions apply (stacks) poison"
+tooltip = "Actions apply {stacks} fire"
 metadata/_custom_type_script = "uid://dyxlwepq1ygrc"

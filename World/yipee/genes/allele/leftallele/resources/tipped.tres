@@ -7,5 +7,5 @@ script = ExtResource("1_ca4e4")
 poison_stacks = 4
 slot = 3
 allele_name = "Tipped"
-tooltip = "Actions apply (stacks) poison"
+tooltip = "Actions apply {stacks} poison"
 metadata/_custom_type_script = "uid://cjd0l70h5j8jh"

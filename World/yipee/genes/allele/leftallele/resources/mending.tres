@@ -10,4 +10,4 @@ flat_mods = Dictionary[int, int]({
 })
 slot = 1
 allele_name = "Mending"
-tooltip = "+(health) Max Health and heal lowest HP ally (heal)"
+tooltip = "+{health} Max Health and heal lowest HP ally {heal}"

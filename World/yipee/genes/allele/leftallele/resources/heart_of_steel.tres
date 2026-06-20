@@ -8,6 +8,6 @@ flat_mods = Dictionary[int, int]({
 0: 300
 })
 allele_name = "Heart Of Steel"
-tooltip = "+(health) Max Health"
+tooltip = "+{health} Max Health"
 rarity = 3
 metadata/_custom_type_script = "uid://mc42eixh1d8t"

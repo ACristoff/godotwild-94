@@ -7,6 +7,6 @@ script = ExtResource("1_qspyc")
 poison_stacks = 20
 slot = 3
 allele_name = "Flail"
-tooltip = "Actions apply (stacks) poison"
+tooltip = "Actions apply {stacks} poison"
 rarity = 2
 metadata/_custom_type_script = "uid://cjd0l70h5j8jh"
