@@ -6,7 +6,7 @@ var all_yips:  Array[Yipee] = []
 var focused_yip: Yipee = null
 var dragged_yip: Yipee = null
 var drag_offset : Vector2 = Vector2.ZERO
-
+@onready var coin_label: Label = $CanvasLayer/Control/HBoxContainer/MarginContainer2/CoinLabel
 
 #func _spawn(data: YipeeData, pos: Vector2) -> Yipee:
 	#var yip := preload("res://World/yipee/yipee.tscn").instantiate() as Yipee
@@ -22,6 +22,7 @@ var drag_offset : Vector2 = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	coin_label.text = str(SignalBus.coins)
 	for yip in SignalBus.yip_inventory:
 		print(yip)
 		print("HEY WE GOT A YIPPIE HERE")
@@ -29,6 +30,7 @@ func _ready() -> void:
 		#var new_yip = spawn_yip()
 		#wire_yip(new_yip)
 		#all_yips.append(new_yip)
+		
 		pass
 		
 func _input(event : InputEvent) -> void:
