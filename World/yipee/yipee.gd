@@ -41,6 +41,7 @@ func _ready() -> void:
 	attack.setup(data.get_cooldown(), data.get_attack())
 	ability.setup(data.helix)
 	body.apply_helix(data.helix)
+	status.setup(health)
 	status.effects_changed.connect(health_UI.update_ailments)
 	attack.progress_changed.connect(_on_cooldown_changed)
 

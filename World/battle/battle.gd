@@ -215,11 +215,13 @@ func _process(delta):
 	if _battle_over != true:
 		for yip: Yipee in player_team:
 			if yip.health.current_health > 0:
-				yip.attack.tick(delta * battle_speed)
+				if not yip.status.is_frozen():
+					yip.attack.tick(delta * battle_speed)
 				yip.status.tick(delta * battle_speed)
 		for yip: Yipee in enemy_team:
 			if yip.health.current_health > 0:
-				yip.attack.tick(delta * battle_speed)
+				if not yip.status.is_frozen():
+					yip.attack.tick(delta * battle_speed)
 				yip.status.tick(delta * battle_speed)
 
 
