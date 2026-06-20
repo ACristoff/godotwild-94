@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LeftAllele" format=3 uid="uid://lifs2chtemol"]
+
+[ext_resource type="Script" uid="uid://mc42eixh1d8t" path="res://World/yipee/genes/allele/leftallele/left_allele.gd" id="1_ko5qx"]
+
+[resource]
+script = ExtResource("1_ko5qx")
+flat_mods = Dictionary[int, int]({
+0: 300
+})
+allele_name = "Heart Of Steel"
+tooltip = "+(health) Max Health"
+rarity = 3
+metadata/_custom_type_script = "uid://mc42eixh1d8t"

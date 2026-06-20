@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LeftAllele" format=3 uid="uid://dpameiob5gmqe"]
+
+[ext_resource type="Script" uid="uid://mc42eixh1d8t" path="res://World/yipee/genes/allele/leftallele/left_allele.gd" id="1_jjc6k"]
+
+[resource]
+script = ExtResource("1_jjc6k")
+flat_mods = Dictionary[int, int]({
+1: 50
+})
+slot = 2
+allele_name = "Maul"
+tooltip = "(attack) Physical Damage"
+rarity = 3
+metadata/_custom_type_script = "uid://mc42eixh1d8t"
