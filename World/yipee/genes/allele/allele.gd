@@ -13,6 +13,12 @@ var side: Allele.Side
 @export var tier: int = 1
 @export var rarity: AlleleRarity = AlleleRarity.COMMON
 
+func flat_for(_stat: BodyMap.Stat) -> float:
+	return 0.0
+
+func percent_for(_stat: BodyMap.Stat) -> float:
+	return 0.0
+
 # Passive Stat buffs/nerfs
 func modify_stat(base_value: float, _yipee_data) -> float:
 	return base_value

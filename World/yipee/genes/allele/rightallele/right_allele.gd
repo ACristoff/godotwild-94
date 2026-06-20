@@ -18,3 +18,13 @@ func modify_stat(base_value: float, _yipee_data) -> float:
 			return base_value * (1.0 + buff * tier)
 		_:
 			return base_value
+
+func flat_for(stat: BodyMap.Stat) -> float:
+	if BodyMap.STAT_SLOTS[stat].has(slot) and BodyMap.SLOT_BUFF.get(slot, BodyMap.BuffMode.NONE) == BodyMap.BuffMode.FLAT:
+		return buff * tier
+	return 0.0
+
+func percent_for(stat: BodyMap.Stat) -> float:
+	if BodyMap.STAT_SLOTS[stat].has(slot) and BodyMap.SLOT_BUFF.get(slot, BodyMap.BuffMode.NONE) == BodyMap.BuffMode.PERCENT:
+		return buff * tier
+	return 0.0

@@ -60,14 +60,18 @@ func get_cooldown() -> float:
 	return _derived(base_cooldown, BodyMap.Stat.COOLDOWN)
 
 func _derived(base: float, stat: BodyMap.Stat) -> float:
-	var result := base
-	var slot_types: Array = BodyMap.STAT_SLOTS[stat]
+	var flat_sum := 0.0
+	var pct_sum := 0.0
 	for strand in helix.strands:
 		if strand == null:
 			continue
-		if slot_types.has(strand.slot):
-			result = strand.modify_stat(result, self)
-	return result
+		if strand.left:
+			flat_sum += strand.left.flat_for(stat)
+			pct_sum += strand.left.percent_for(stat)
+		if strand.right:
+			flat_sum += strand.right.flat_for(stat)
+			pct_sum += strand.right.percent_for(stat)
+	return maxf(0.0, (base + flat_sum) * (1.0 + pct_sum))
 
 func clone() -> YipeeData:
 	return duplicate(true) as YipeeData
