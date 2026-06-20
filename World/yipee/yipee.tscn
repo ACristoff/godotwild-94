@@ -321,10 +321,10 @@ tracks/1/path = NodePath("AnimScaleHandle:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.8),
+"times": PackedFloat32Array(0, 0.4, 0.79999995),
 "transitions": PackedFloat32Array(12.553336, 0.16493852, 1),
 "update": 0,
-"values": [Vector2(-30.305, 66), Vector2(-30.305, 58.07), Vector2(-30.305, 66)]
+"values": [Vector2(0, 66), Vector2(0, 63), Vector2(0, 66)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -958,10 +958,13 @@ shape = SubResource("RectangleShape2D_6vhmf")
 collision_layer = 192
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FarmSlot" unique_id=1668434296]
+position = Vector2(0, 39)
 shape = SubResource("CircleShape2D_6vhmf")
 debug_color = Color(1, 0, 0, 0.41960785)
 
 [connection signal="animation_finished" from="ActionsAnim" to="." method="_on_actions_anim_animation_finished"]
+[connection signal="animation_finished" from="ThrowPunchAnim" to="." method="_on_throw_punch_anim_animation_finished"]
+[connection signal="animation_finished" from="HitAnim" to="." method="_on_hit_anim_animation_finished"]
 [connection signal="mouse_entered" from="HoverArea" to="." method="_on_hover_area_mouse_entered"]
 [connection signal="mouse_exited" from="HoverArea" to="." method="_on_hover_area_mouse_exited"]
 

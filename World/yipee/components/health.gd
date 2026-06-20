@@ -29,6 +29,7 @@ func take_damage(damage_data: DamageInfo) -> void:
 	current_health = maxi(current_health - incoming, 0)
 	health_changed.emit(current_health, max_health)
 	if current_health <= 0:
+		$"..".dead = true
 		died.emit()
 		$"../HealthBar".hide()
 

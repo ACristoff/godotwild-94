@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bouvm8wo3pupb" path="res://Assets/Environment/Scenes/BattleField/YipTeamSlot.png" id="3_l3nu1"]
 [ext_resource type="PackedScene" uid="uid://dqgfurgu7jsbg" path="res://UI/Scenes/yip_toolyip.tscn" id="4_xg215"]
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="5_55a63"]
+[ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="6_m52jh"]
+[ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="6_vm2tg"]
 
 [node name="Battle" type="Node2D" unique_id=1472135385]
 script = ExtResource("1_2qnjf")
@@ -143,12 +145,116 @@ theme_override_fonts/font = ExtResource("5_55a63")
 theme_override_font_sizes/font_size = 32
 text = "00:00"
 
-[node name="NextButton" type="Button" parent="CanvasLayer2" unique_id=1153481518]
+[node name="NextButton" type="Button" parent="CanvasLayer2" unique_id=1153481518 node_paths=PackedStringArray("target_highlight")]
 visible = false
-offset_left = 1700.0
-offset_top = 922.0
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 1657.0
+offset_top = 888.0
 offset_right = 1857.9355
 offset_bottom = 990.0
 text = "NEXT -> "
+script = ExtResource("6_vm2tg")
+target_highlight = NodePath("ButtonRefresh6")
 
+[node name="ButtonRefresh6" type="NinePatchRect" parent="CanvasLayer2/NextButton" unique_id=1487449404]
+self_modulate = Color(0.36569998, 0.69, 0.641355, 1)
+z_index = 4096
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 67.0
+offset_top = 34.0
+offset_right = -66.95654
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("6_m52jh")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Label4" type="Label" parent="CanvasLayer2/NextButton/ButtonRefresh6" unique_id=1630117906]
+z_index = 4096
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_55a63")
+text = "Next"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRefresh4" type="NinePatchRect" parent="." unique_id=625433581]
+self_modulate = Color(0.2795, 0.5512, 0.65, 1)
+z_index = 4096
+texture_filter = 3
+offset_left = 1070.0001
+offset_top = 52.0
+offset_right = 1105.3335
+offset_bottom = 74.25928
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("6_m52jh")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Label4" type="Label" parent="ButtonRefresh4" unique_id=575396045]
+z_index = 4096
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.1111245
+offset_top = -0.24690756
+offset_right = 2.111126
+offset_bottom = -0.24690819
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_55a63")
+text = "1X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRefresh5" type="NinePatchRect" parent="." unique_id=1106679204]
+self_modulate = Color(0.36569998, 0.69, 0.641355, 1)
+z_index = 4096
+texture_filter = 3
+offset_left = 935.00006
+offset_top = 52.0
+offset_right = 982.889
+offset_bottom = 74.25928
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("6_m52jh")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="GameSpeedButton" type="Button" parent="." unique_id=1172839671 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 1035.0
+offset_top = 30.0
+offset_right = 1141.0
+offset_bottom = 97.0
+script = ExtResource("6_vm2tg")
+target_highlight = NodePath("../ButtonRefresh4")
+
+[connection signal="button_down" from="CanvasLayer2/NextButton" to="CanvasLayer2/NextButton" method="_on_button_down"]
+[connection signal="button_up" from="CanvasLayer2/NextButton" to="CanvasLayer2/NextButton" method="_on_button_up"]
+[connection signal="mouse_entered" from="CanvasLayer2/NextButton" to="CanvasLayer2/NextButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer2/NextButton" to="CanvasLayer2/NextButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer2/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="button_down" from="GameSpeedButton" to="GameSpeedButton" method="_on_button_down"]
+[connection signal="button_up" from="GameSpeedButton" to="GameSpeedButton" method="_on_button_up"]
+[connection signal="mouse_entered" from="GameSpeedButton" to="GameSpeedButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GameSpeedButton" to="GameSpeedButton" method="_on_mouse_exited"]
