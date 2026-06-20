@@ -26,6 +26,8 @@ var debug_mode: bool = true
 
 var victories: int = 0 
 
+var allele_inventory: Array[Allele]
+
 # Signal that will be triggered when game pauses
 signal pause_game
 
