@@ -20,12 +20,12 @@ collision_mask = 64
 position = Vector2(316, 281)
 shape = SubResource("RectangleShape2D_4wsdy")
 
-[node name="TeamSlot" type="Area2D" parent="." unique_id=1340362752]
+[node name="TeamSlot1" type="Area2D" parent="." unique_id=1340362752]
 position = Vector2(500, 930)
 collision_layer = 192
 collision_mask = 192
 
-[node name="TeamSlot_1" type="CollisionShape2D" parent="TeamSlot" unique_id=463593819]
+[node name="TeamSlot_1" type="CollisionShape2D" parent="TeamSlot1" unique_id=463593819]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_4wsdy")
 
@@ -67,8 +67,8 @@ shape = SubResource("CapsuleShape2D_4wsdy")
 
 [connection signal="area_entered" from="MainPen" to="." method="_on_main_pen_area_entered"]
 [connection signal="area_exited" from="MainPen" to="." method="_on_main_pen_area_exited"]
-[connection signal="area_entered" from="TeamSlot" to="." method="_on_team_slot_area_entered"]
-[connection signal="area_exited" from="TeamSlot" to="." method="_on_team_slot_area_exited"]
+[connection signal="area_entered" from="TeamSlot1" to="." method="_on_team_slot_area_entered"]
+[connection signal="area_exited" from="TeamSlot1" to="." method="_on_team_slot_area_exited"]
 [connection signal="area_entered" from="TeamSlot2" to="." method="_on_team_slot_2_area_entered"]
 [connection signal="area_exited" from="TeamSlot2" to="." method="_on_team_slot_2_area_exited"]
 [connection signal="area_entered" from="TeamSlot3" to="." method="_on_team_slot_3_area_entered"]
