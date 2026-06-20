@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var child_scene = $StartCutscene
+@onready var fight_org: FightOrganizer = $FightOrganizer
 
 const location_dictionary = {
 	SignalBus.Locations.FARM: preload("res://World/farm/farm_hub.tscn"),
@@ -10,12 +11,27 @@ const location_dictionary = {
 	SignalBus.Locations.WIN_LOSE: preload("res://UI/Scenes/win_lose_screen.tscn")
 }
 
+const music = {
+	SignalBus.Locations.FARM: preload("res://Assets/Audio/Music/YIP_FARM_MKII.mp3"),
+	SignalBus.Locations.FIELD: preload("res://Assets/Audio/Music/YIP_FARM_MKII.mp3"),
+	SignalBus.Locations.LAB: preload("res://Assets/Audio/Music/YIP_LAB.mp3"),
+	SignalBus.Locations.BATTLE: preload("res://Assets/Audio/Music/YIP_BATTLE.mp3"),
+	SignalBus.Locations.WIN_LOSE: null
+}
+
+
 func change_location(location: SignalBus.Locations) -> void:
 	print('going to new location', location)
 	var new_location = location_dictionary[location].instantiate()
+	
+	if location == SignalBus.Locations.BATTLE && SignalBus.debug_mode == false:
+		var next_fight = fight_org.get_next_fight()
+		new_location.level = next_fight
 	add_child(new_location)
 	child_scene.queue_free()
 	child_scene = new_location
+	AudMan.play_music(music[location])
+	
 
 ## Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,6 +39,7 @@ func _ready():
 	SignalBus.day_finished.connect(_on_day_end)
 	SignalBus.battle_finished.connect(_on_battle_finished)
 	Dialogic.signal_event.connect(_on_opening_finished)
+	#AudMan.play_music()
 	if SignalBus.debug_mode == true:
 		change_location(SignalBus.Locations.FARM)
 
