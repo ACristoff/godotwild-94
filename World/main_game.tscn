@@ -3,6 +3,13 @@
 [ext_resource type="Script" uid="uid://l8848xmq4xyy" path="res://World/main_game.gd" id="1_l2kwh"]
 [ext_resource type="PackedScene" uid="uid://fvt51j1fwmic" path="res://UI/Scenes/start_cutscene.tscn" id="2_uwvnw"]
 [ext_resource type="PackedScene" uid="uid://bu5gvxs3lu0ir" path="res://Lib/Fight_Organizer/fight_organizer.tscn" id="3_ob8fe"]
+[ext_resource type="Script" uid="uid://d2tgf0trp406f" path="res://World/battle/levels/level.gd" id="4_xkfpm"]
+[ext_resource type="Script" uid="uid://ihlwlq687iua" path="res://Lib/Fight_Organizer/bracket.gd" id="7_dq3qm"]
+
+[sub_resource type="Resource" id="Resource_goquv"]
+script = ExtResource("7_dq3qm")
+levels = Array[ExtResource("4_xkfpm")]([null, null])
+metadata/_custom_type_script = "uid://ihlwlq687iua"
 
 [node name="MainGame" type="Node2D" unique_id=585464246]
 script = ExtResource("1_l2kwh")
@@ -10,3 +17,4 @@ script = ExtResource("1_l2kwh")
 [node name="StartCutscene" parent="." unique_id=588285204 instance=ExtResource("2_uwvnw")]
 
 [node name="FightOrganizer" parent="." unique_id=239455206 instance=ExtResource("3_ob8fe")]
+brackets = Array[ExtResource("7_dq3qm")]([SubResource("Resource_goquv"), null, null, null, null])
