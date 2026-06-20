@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bu5gvxs3lu0ir"]
+
+[ext_resource type="Script" uid="uid://bpkg0uk86a6jl" path="res://Lib/Fight_Organizer/fight_organizer.gd" id="1_u5tyy"]
+
+[node name="FightOrganizer" type="Node" unique_id=239455206]
+script = ExtResource("1_u5tyy")
