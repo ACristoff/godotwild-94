@@ -18,8 +18,12 @@
 [ext_resource type="Texture2D" uid="uid://bw201e06acwm3" path="res://UI/Menus/Main_Menu/Textures/Letters9.png" id="11_pje28"]
 [ext_resource type="Texture2D" uid="uid://d2skq2ngrg8lf" path="res://UI/Menus/Main_Menu/Textures/Letters10.png" id="12_wgv4n"]
 [ext_resource type="Texture2D" uid="uid://dkmdfj43a21hc" path="res://UI/Menus/Main_Menu/Textures/Letters11.png" id="13_ow6ou"]
-[ext_resource type="Texture2D" uid="uid://cem1feyqvc36p" path="res://Assets/yipee/Yipretard.png" id="14_k1wg1"]
 [ext_resource type="Texture2D" uid="uid://bexv5th636atf" path="res://UI/Menus/Main_Menu/Textures/FeedbackButton.png" id="20_hkq0q"]
+[ext_resource type="Texture2D" uid="uid://dgl80self73xv" path="res://UI/Menus/Main_Menu/Textures/deathmode2.png" id="21_ow6ou"]
+[ext_resource type="Texture2D" uid="uid://dn1xt2faan58n" path="res://UI/Menus/Main_Menu/Textures/deathmode1.png" id="22_mnimd"]
+[ext_resource type="Texture2D" uid="uid://0hr6b2bcchso" path="res://UI/Menus/Main_Menu/Textures/cover.png" id="22_plu0x"]
+[ext_resource type="Texture2D" uid="uid://d2b3nopg51vag" path="res://UI/Menus/Main_Menu/Textures/deathmode3.png" id="23_plu0x"]
+[ext_resource type="Texture2D" uid="uid://cabv7ai86nqur" path="res://UI/Menus/Main_Menu/Textures/Permadeath.png" id="25_plu0x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pje28"]
 shader = ExtResource("5_i2im2")
@@ -29,6 +33,268 @@ shader_parameter/repeat_x = 3.000000095
 shader_parameter/repeat_y = 3.000000095
 shader_parameter/row_offset = 1.0
 shader_parameter/texture_to_scroll = ExtResource("6_hkq0q")
+shader_parameter/tint_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_e60ur"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Deathmode1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1188, 529)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Title:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Permadeath:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(961, 389.00003)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Permadeath:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Deathmode1:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Deathmode1/Deathmode3:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ColorRect2:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.2901961, 0.3019608, 0.3882353, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ColorRect:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ColorRect:material:shader_parameter/tint_color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("WorldEnvironment:environment:adjustment_brightness")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_bbijb"]
+resource_name = "deathmode"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Deathmode1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.31864014, 1),
+"update": 0,
+"values": [Vector2(1188, 529), Vector2(1188, 592)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Title:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.4829681, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -62)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Permadeath:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.48296806, 1),
+"update": 0,
+"values": [Vector2(961, 424.00003), Vector2(961, 389.00003)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Permadeath:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(2.3133948, 2.3133948, 2.3133948, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Deathmode1:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Deathmode1/Deathmode3:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ColorRect2:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.2901961, 0.3019608, 0.3882353, 1), Color(0.2974635, 0.19616163, 0.19622758, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ColorRect:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ColorRect:material:shader_parameter/tint_color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.48000002, 0.48000002, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("WorldEnvironment:environment:adjustment_brightness")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.71]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e60ur"]
+_data = {
+&"RESET": SubResource("Animation_e60ur"),
+&"deathmode": SubResource("Animation_bbijb")
+}
+
+[sub_resource type="Environment" id="Environment_mnimd"]
+background_mode = 3
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+adjustment_enabled = true
 
 [node name="MainMenu" type="Control" unique_id=548279742]
 layout_mode = 3
@@ -76,7 +342,7 @@ theme_override_constants/separation = 20
 
 [node name="Start" type="Button" parent="Control/VBoxContainer" unique_id=297747043 node_paths=PackedStringArray("target_highlight")]
 self_modulate = Color(0, 0, 0, 0)
-custom_minimum_size = Vector2(358.783, 131.722)
+custom_minimum_size = Vector2(358.783, 132)
 layout_mode = 2
 text = "Start"
 script = ExtResource("2_arllm")
@@ -86,7 +352,7 @@ target_highlight = NodePath("ButtonPlay")
 self_modulate = Color(0.8352941, 0.3882353, 0.4745098, 1)
 z_index = 4096
 texture_filter = 3
-custom_minimum_size = Vector2(119.061, 44.524)
+custom_minimum_size = Vector2(119.061, 45)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -289,113 +555,111 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -840.0
+offset_left = -21.0
+offset_top = -23.0
+offset_right = -861.0
+offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
 mouse_filter = 2
 texture = ExtResource("6_hkq0q")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1501238738]
+[node name="Title" type="Node2D" parent="." unique_id=690617306]
+
+[node name="TextureRect" type="TextureRect" parent="Title" unique_id=1501238738]
 texture_filter = 3
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -403.0
-offset_right = 100.0
-offset_bottom = -303.0
+offset_left = 860.0
+offset_top = 137.0
+offset_right = 1060.0
+offset_bottom = 237.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("2_nxdey")
 
-[node name="Letters1" type="Sprite2D" parent="." unique_id=1503707415]
+[node name="Letters1" type="Sprite2D" parent="Title" unique_id=1503707415]
 texture_filter = 3
 position = Vector2(575.46277, 358.9839)
-rotation = 0.06981317
+rotation = 0.06981316
 scale = Vector2(3, 3)
 texture = ExtResource("3_mjxqv")
 
-[node name="Letters2" type="Sprite2D" parent="." unique_id=2083505245]
+[node name="Letters2" type="Sprite2D" parent="Title" unique_id=2083505245]
 texture_filter = 3
 position = Vector2(653.46277, 337.9839)
-rotation = -0.05235988
-scale = Vector2(3, 3)
+rotation = -0.052359883
+scale = Vector2(2.9999998, 2.9999998)
 texture = ExtResource("4_k1wg1")
 
-[node name="Letters3" type="Sprite2D" parent="." unique_id=854518142]
+[node name="Letters3" type="Sprite2D" parent="Title" unique_id=854518142]
 texture_filter = 3
 position = Vector2(738.46277, 356.9839)
 rotation = 0.08726646
 scale = Vector2(3, 3)
 texture = ExtResource("5_8v21i")
 
-[node name="Letters4" type="Sprite2D" parent="." unique_id=1682447963]
+[node name="Letters4" type="Sprite2D" parent="Title" unique_id=1682447963]
 texture_filter = 3
 position = Vector2(815.46277, 335.98392)
 rotation = -0.034906585
 scale = Vector2(3, 3)
 texture = ExtResource("6_mirvn")
 
-[node name="Letters5" type="Sprite2D" parent="." unique_id=283619927]
+[node name="Letters5" type="Sprite2D" parent="Title" unique_id=283619927]
 texture_filter = 3
 position = Vector2(900.4627, 361.9839)
-rotation = 0.05235988
-scale = Vector2(3, 3)
+rotation = 0.052359883
+scale = Vector2(2.9999998, 2.9999998)
 texture = ExtResource("7_arllm")
 
-[node name="Letters6" type="Sprite2D" parent="." unique_id=1501708857]
+[node name="Letters6" type="Sprite2D" parent="Title" unique_id=1501708857]
 texture_filter = 3
 position = Vector2(980.4628, 335.9839)
 rotation = -0.12217305
 scale = Vector2(3, 3)
 texture = ExtResource("8_y3pci")
 
-[node name="Letters7" type="Sprite2D" parent="." unique_id=1621829716]
+[node name="Letters7" type="Sprite2D" parent="Title" unique_id=1621829716]
 texture_filter = 3
 position = Vector2(1064.4629, 366.9839)
-rotation = 0.06981317
+rotation = 0.06981316
 scale = Vector2(3, 3)
 texture = ExtResource("9_i2im2")
 
-[node name="Letters8" type="Sprite2D" parent="." unique_id=592829658]
+[node name="Letters8" type="Sprite2D" parent="Title" unique_id=592829658]
 texture_filter = 3
 position = Vector2(1142.4628, 342.9839)
 rotation = 0.034906585
 scale = Vector2(3, 3)
 texture = ExtResource("10_hkq0q")
 
-[node name="Letters9" type="Sprite2D" parent="." unique_id=2027428175]
+[node name="Letters9" type="Sprite2D" parent="Title" unique_id=2027428175]
 texture_filter = 3
 position = Vector2(1219.4628, 358.9839)
 rotation = -0.10471976
-scale = Vector2(3, 3)
+scale = Vector2(3.0000002, 3.0000002)
 texture = ExtResource("11_pje28")
 
-[node name="Letters10" type="Sprite2D" parent="." unique_id=926027424]
+[node name="Letters10" type="Sprite2D" parent="Title" unique_id=926027424]
 texture_filter = 3
 position = Vector2(1297.4628, 339.9839)
-rotation = 0.13962634
+rotation = 0.13962635
 scale = Vector2(3, 3)
 texture = ExtResource("12_wgv4n")
 
-[node name="Letters11" type="Sprite2D" parent="." unique_id=1362391997]
+[node name="Letters11" type="Sprite2D" parent="Title" unique_id=1362391997]
 texture_filter = 3
 position = Vector2(1381.4629, 364.98392)
 rotation = -0.034906585
 scale = Vector2(3, 3)
 texture = ExtResource("13_ow6ou")
-
-[node name="Yipretard" type="Sprite2D" parent="." unique_id=2137884103]
-texture_filter = 3
-position = Vector2(642, 1011)
-scale = Vector2(3, 3)
-texture = ExtResource("14_k1wg1")
 
 [node name="Feedback" type="LinkButton" parent="." unique_id=379715933]
 self_modulate = Color(0, 0, 0, 0)
@@ -414,6 +678,49 @@ offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(3, 3)
 texture = ExtResource("20_hkq0q")
+
+[node name="Deathmode2" type="Sprite2D" parent="." unique_id=1602504798]
+texture_filter = 3
+position = Vector2(1188, 529)
+scale = Vector2(3, 3)
+texture = ExtResource("21_ow6ou")
+
+[node name="Cover" type="Sprite2D" parent="Deathmode2" unique_id=919432780]
+z_index = 1
+position = Vector2(0, -0.3333435)
+texture = ExtResource("22_plu0x")
+
+[node name="Deathmode1" type="Sprite2D" parent="." unique_id=1848248048]
+texture_filter = 3
+position = Vector2(1188, 529)
+scale = Vector2(3, 3)
+texture = ExtResource("22_mnimd")
+
+[node name="Deathmode3" type="Sprite2D" parent="Deathmode1" unique_id=769290214]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(0.33333334, -20)
+texture = ExtResource("23_plu0x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1237779840]
+libraries/ = SubResource("AnimationLibrary_e60ur")
+
+[node name="Permadeath" type="Sprite2D" parent="." unique_id=195107132]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 3
+position = Vector2(961, 389.00003)
+scale = Vector2(3, 3)
+texture = ExtResource("25_plu0x")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=979963543]
+environment = SubResource("Environment_mnimd")
+
+[node name="Button" type="Button" parent="." unique_id=1652181310]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 1149.0
+offset_top = 463.0
+offset_right = 1230.0
+offset_bottom = 601.0
 
 [connection signal="button_down" from="Control/VBoxContainer/Start" to="Control/VBoxContainer/Start" method="_on_button_down"]
 [connection signal="button_up" from="Control/VBoxContainer/Start" to="Control/VBoxContainer/Start" method="_on_button_up"]
@@ -439,3 +746,4 @@ texture = ExtResource("20_hkq0q")
 [connection signal="button_up" from="Feedback" to="Feedback" method="_on_button_up"]
 [connection signal="mouse_entered" from="Feedback" to="Feedback" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Feedback" to="Feedback" method="_on_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
