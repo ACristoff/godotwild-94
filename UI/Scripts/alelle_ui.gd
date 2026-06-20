@@ -19,12 +19,14 @@ func update_color():
 	pass
 
 func update_info(allele_name: String, side: String, desc: String, slot, level: int = 1) -> void:
+	$MainPanel.size.y = 0
 	name_of_gene.text = allele_name
 	type_of_gene.text = side
 	level_of_gene.text = str(level)
 	description.text = desc
 	if TypeColors.colors.has(slot):
 		self.modulate = TypeColors.colors[slot]
+	$MainPanel.size.y += $MainPanel/MarginContainer/Label.size.y
 
 
 

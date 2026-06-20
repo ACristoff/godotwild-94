@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b4hhhfjv5dy4w"]
 
 [ext_resource type="Texture2D" uid="uid://sp7u6evl5n7n" path="res://Assets/Environment/Scenes/Laboratory/LabFloor.png" id="1_nl8f2"]
-[ext_resource type="Script" path="res://World/lab/lab.gd" id="1_vq6iu"]
+[ext_resource type="Script" uid="uid://drystwk6ff0ow" path="res://World/lab/lab.gd" id="1_vq6iu"]
 [ext_resource type="Texture2D" uid="uid://c1xvm0thbin5l" path="res://Assets/Environment/Scenes/Laboratory/LabScreen.png" id="2_fne6d"]
 [ext_resource type="Texture2D" uid="uid://dp6fox832wacg" path="res://Assets/Environment/Scenes/Laboratory/LabPieces.png" id="3_ems3l"]
 [ext_resource type="Shader" uid="uid://bwvmkd4i76b3p" path="res://Assets/Shaders/CRT.gdshader" id="4_ems3l"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://djdujp6j5ud2u" path="res://Assets/Environment/Scenes/Laboratory/Conveyor.png" id="6_fne6d"]
 [ext_resource type="PackedScene" uid="uid://ba2i2glrfw55d" path="res://World/areas.tscn" id="9_ieswn"]
 [ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="10_co32c"]
-[ext_resource type="Script" path="res://UI/Scripts/button_effects.gd" id="11_co32c"]
+[ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="11_co32c"]
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="11_mntup"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uroyv"]
