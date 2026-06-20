@@ -35,6 +35,7 @@ func _ready() -> void:
 	SignalBus.game_state_changed.connect(change_scene.bind())
 	print(Engine.get_version_info())
 	if debug_mode == true:
+		SignalBus.debug_mode = true
 		$Transitions/Splash.queue_free()
 		SignalBus.game_state_changed.emit("Main")
 		SignalBus.game_started = true
