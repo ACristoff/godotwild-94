@@ -13,6 +13,9 @@ var enemy_team = []
 var _battle_started: bool = false
 var _battle_over: bool = false
 
+var focused_yip: Yipee = null
+@onready var tooltip: Toolyip = $CanvasLayer/YipToolyip
+
 func _spawn(data: YipeeData, pos: Vector2) -> Yipee:
 	var yip := preload("res://World/yipee/yipee.tscn").instantiate() as Yipee
 	yip.data = data
@@ -23,6 +26,7 @@ func _spawn(data: YipeeData, pos: Vector2) -> Yipee:
 	yip.health_UI.current_health = yip.health.current_health
 	yip.health_UI.max_health = yip.health.max_health
 	yip.health_UI.update_UI()
+	wire_yip(yip)
 	return yip
 
 #DEBUG
@@ -34,7 +38,32 @@ func generate_random_teams():
 		enemy_team_data.append(new_yip2)
 	pass
 
+
+func _on_yip_hovered(yip: Yipee) -> void:
+	if _battle_started == false:
+		return
+	print('im hovered')
+	var screen_size = get_viewport().get_visible_rect().size / 3
+	tooltip.display(yip)
+	var screen_pos = yip.get_global_transform_with_canvas().origin
+	tooltip.global_position = $CanvasLayer.transform.affine_inverse() * screen_pos
+	tooltip.global_position.y -= 99
+	tooltip.global_position.x -= 55
+	tooltip.global_position.x = clamp(tooltip.global_position.x, 0, screen_size.x - tooltip.tt_size.x)
+	tooltip.global_position.y = clamp(tooltip.global_position.y, 0, screen_size.y - tooltip.tt_size.y)
+	focused_yip = yip
+
+func _on_yip_unhovered() -> void:
+	print('yip unhovered')
+	tooltip.hide()
+	focused_yip = null
+
+func wire_yip(yip: Yipee) -> void:
+	yip.yip_hovered.connect(_on_yip_hovered)
+	yip.yip_unhovered.connect(_on_yip_unhovered)
+
 func _ready():
+	tooltip.hide()
 	if level:
 		enemy_team_data = level.enemy_team
 	#generate_random_teams()
