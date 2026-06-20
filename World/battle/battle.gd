@@ -143,10 +143,12 @@ func _on_attack_ready(damage: DamageInfo, team: Team) -> void:
 	attacker.ability.on_hit(damage, self)
 
 func apply_damage(target: Yipee, damage: DamageInfo) -> void:
-	# target's strands mutate the INCOMING hit (resist/shield) before it lands
 	target.ability.on_take_damage(damage, self)
+	var hp_before := target.health.current_health
 	target.health.take_damage(damage)
-	target.health_UI.health_change(int(damage.amount), damage_type_name(damage))
+	var hp_lost := hp_before - target.health.current_health
+	target.health_UI.current_shield = target.health.shield
+	target.health_UI.health_change(hp_lost, damage_type_name(damage))
 
 func damage_type_name(damage: DamageInfo) -> String:
 	return DamageInfo.Type.keys()[damage.type]
