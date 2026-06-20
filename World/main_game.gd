@@ -24,7 +24,7 @@ func change_location(location: SignalBus.Locations) -> void:
 	print('going to new location', location)
 	var new_location = location_dictionary[location].instantiate()
 	
-	if location == SignalBus.Locations.BATTLE:
+	if location == SignalBus.Locations.BATTLE && SignalBus.debug_mode == false:
 		var next_fight = fight_org.get_next_fight()
 		new_location.level = next_fight
 	add_child(new_location)
