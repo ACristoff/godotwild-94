@@ -14,24 +14,24 @@ enum YipTier {
 
 const YIP_TABLE := {
 	YipTier.COMMON: {
-		"HP": [40, 80],
-		"ATK": [1, 5],
-		"COOLDOWN": [4.5, 8.0],
+		"HP": [10, 15],
+		"ATK": [1, 3],
+		"COOLDOWN": [7.0, 8.0],
 	},
 	YipTier.UNCOMMON: {
-		"HP": [60, 100],
-		"ATK": [6, 15],
-		"COOLDOWN": [4.0, 7.5],
+		"HP": [16, 21],
+		"ATK": [4, 6],
+		"COOLDOWN": [6.5, 6.9],
 	},
 	YipTier.RARE: {
-		"HP": [120, 230],
-		"ATK": [16, 40],
-		"COOLDOWN": [3.5, 6.0],
+		"HP": [22, 30],
+		"ATK": [7, 9],
+		"COOLDOWN": [5, 6.4],
 	},
 	YipTier.ULTRARARE: {
-		"HP": [300, 400],
-		"ATK": [41, 70],
-		"COOLDOWN": [3.0, 5.5],
+		"HP": [31, 42],
+		"ATK": [10, 14],
+		"COOLDOWN": [4, 4.9],
 	},
 }
 
