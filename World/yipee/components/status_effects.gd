@@ -47,8 +47,9 @@ func _emit_tick_damage(effect: StatusEffect) -> void:
 	var dmg := DamageInfo.new()
 	dmg.amount = effect.stacks
 	dmg.type = _kind_to_type(effect.kind)
+	if effect.kind == Kind.POISON:
+		dmg.tags.append(&"ignore_shield")
 	status_tick.emit(dmg)
-
 func _visual_name(kind: Kind) -> String:
 	return DamageInfo.Type.keys()[_kind_to_type(kind)]
 

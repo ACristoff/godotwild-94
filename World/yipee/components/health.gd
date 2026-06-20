@@ -22,7 +22,7 @@ func take_damage(damage_data: DamageInfo) -> void:
 	if current_health <= 0:
 		return
 	var incoming := roundi(damage_data.amount)
-	if shield > 0:
+	if shield > 0 and not damage_data.tags.has(&"ignore_shield"):
 		var absorbed := mini(shield, incoming)
 		shield -= absorbed
 		incoming -= absorbed
