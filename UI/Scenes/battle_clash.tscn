@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dhjkgi4r0o822"]
 
 [ext_resource type="Texture2D" uid="uid://w7j2mv3smk5a" path="res://UI/Menus/Main_Menu/Textures/VSwall.png" id="1_bwf80"]
+[ext_resource type="Script" uid="uid://da6q2ddnpbxsn" path="res://UI/Scripts/battle_clash.gd" id="1_sut0k"]
 [ext_resource type="Texture2D" uid="uid://c5vftm78nfq7b" path="res://UI/Menus/Main_Menu/Textures/Versus.png" id="2_4g84l"]
 [ext_resource type="Texture2D" uid="uid://p6ulevyqsv3g" path="res://UI/Menus/Main_Menu/Textures/Anon.png" id="2_hwdmq"]
 [ext_resource type="Shader" uid="uid://d0ysxiqng256p" path="res://Assets/Shaders/battle_clash.gdshader" id="3_hkdoa"]
@@ -36,7 +37,7 @@ shader_parameter/glow_threshold = 0.65
 
 [sub_resource type="Animation" id="Animation_4g84l"]
 resource_name = "BattleStart"
-length = 1.3
+length = 4.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -44,10 +45,10 @@ tracks/0/path = NodePath("AnonWall:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1, 3.5000002, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-147, 540), Vector2(1084, 540)]
+"values": [Vector2(-147, 540), Vector2(1084, 540), Vector2(1084, 540), Vector2(-147, 540)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -56,10 +57,10 @@ tracks/1/path = NodePath("EnemyWall:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1, 3.5000002, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(2067, 540), Vector2(840.99994, 540.00006)]
+"values": [Vector2(2067, 540), Vector2(840.99994, 540.00006), Vector2(841, 540.00006), Vector2(2067, 540)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -72,6 +73,42 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 0.2588163, 1),
 "update": 0,
 "values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(3.5, 3.5), Vector2(3, 3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 1.0333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Versus:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3.4666667, 3.5000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect3:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_hkdoa"]
@@ -112,6 +149,42 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(1e-05, 1e-05)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Versus:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect3:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1pe7o"]
 _data = {
@@ -126,12 +199,14 @@ shader_parameter/inner_radius = 0.0
 shader_parameter/outer_radius = 2.59
 
 [node name="BattleClash" type="Control" unique_id=1404553391]
+z_index = 4096
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_sut0k")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=733712090]
 layout_mode = 1
@@ -269,3 +344,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
