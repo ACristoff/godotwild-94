@@ -15,7 +15,7 @@ const music = {
 	SignalBus.Locations.FIELD: preload("res://Assets/Audio/Music/YIP_FARM_MKII.mp3"),
 	SignalBus.Locations.LAB: preload("res://Assets/Audio/Music/YIP_LAB.mp3"),
 	SignalBus.Locations.BATTLE: preload("res://Assets/Audio/Music/YIP_BATTLE.mp3"),
-	#SignalBus.Locations.WIN_LOSE: preload("res://Assets/Audio/Sounds/YIP_BATTLE_VICTORY.wav")
+	SignalBus.Locations.WIN_LOSE: null
 }
 
 
