@@ -10,6 +10,7 @@ var yip_on_launch_pad: Yipee = null
 
 @onready var launch_pad = $LaunchPad
 @onready var conveyor = $ConveyorArea
+@onready var dna_screen = $Control/SubViewportContainer/SubViewport/DNATestScreen
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -66,6 +67,7 @@ func _input(event: InputEvent) -> void:
 
 func set_yip_to_launch(yip: Yipee) -> void:
 	update_screen()
+	dna_screen.display_helix(yip.data.helix)
 	pass
 
 func clear_launch() -> void:
