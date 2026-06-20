@@ -12,11 +12,21 @@ var drag_offset : Vector2 = Vector2.ZERO
 
 var team_slots: Array[Area2D]
 
+## Where will store yips globally
+var yip_farm_party_position : Dictionary[int, Yipee] = {
+	1: null,
+	2: null,
+	3: null,
+	4: null,
+	5: null
+}
+
 #endregion
 
 #region Built in Functions
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Setting up party slots
 	for child in special_areas.get_children():
 		if child.name != &"MainPen":
 			print(child.name)
@@ -25,6 +35,8 @@ func _ready() -> void:
 			child.area_exited.connect(_on_any_area_exited.bind(child))
 	
 	coin_label.text = str(SignalBus.coins)
+	
+	#Setting up and spawning yips
 	for yip in SignalBus.yip_inventory:
 		wire_yip(spawn_yip(yip))
 
@@ -49,7 +61,7 @@ func _input(event : InputEvent) -> void:
 				dragged_yip = null
 				
 	elif event is InputEventMouseMotion:
-		print(SignalBus.yip_party)
+		#print(SignalBus.yip_party)
 		if dragged_yip:
 			dragged_yip.global_position = get_global_mouse_position() + drag_offset
 
@@ -85,35 +97,47 @@ func get_random_point_in_area() -> Vector2:
 	return grazing_spot.to_global(random_point_in_grazing_area)
 
 func spawn_yip(data: YipeeData) -> Yipee:
+	# Creating yip node
 	var yip : Yipee = preload("res://World/yipee/yipee.tscn").instantiate() as Yipee
+	# Setting data
 	yip.data = data
+	
+	# Checking if this yip already had a farm position
 	if yip.data.farm_last_known_position == Vector2.ZERO:
 		yip.global_position = get_random_point_in_area()
 		print("Generated Position: ", yip.global_position)
 		yip.data.farm_last_known_position = yip.global_position
+	# If it already had one then place it there
 	else:
 		yip.global_position = yip.data.farm_last_known_position
-		
+	
+	# It can be dragged and dropped
 	yip.data.can_be_grabbed = true
 	
 	# Remember party location between scenes if placed in a party
 	if yip.data.yip_party_slot != 0:
 		yip.global_position = team_slots[yip.data.yip_party_slot - 1].global_position
-		SignalBus.yip_party[yip.data.yip_party_slot] = yip
+		SignalBus.yip_party[yip.data.yip_party_slot] = yip.data
+		yip_farm_party_position[yip.data.yip_party_slot] = yip
 	
+	# Add to scene
 	add_child(yip)
 	yip.health_UI.visible = false
 	yip.health_UI.current_health = yip.health.current_health
 	yip.health_UI.max_health = yip.health.max_health
 	yip.health_UI.update_UI()
 	
+	# Play spawn animation
+	# TODO: Change it so if they had a last known position for it just to play the idle
 	yip.animation_player.play(&"Spawn")
 	
 	return yip
 
 func _drop_yip(yip: Yipee) -> void:
+	# Party slot
 	var landed_slot: Area2D = null
 	
+	# Check if our yip is overlapping with a party slot and store it
 	for slot in team_slots:
 		if slot.overlaps_area(yip.farmslot):
 			landed_slot = slot
@@ -121,24 +145,46 @@ func _drop_yip(yip: Yipee) -> void:
 			
 	# We are hovering over a slot
 	if landed_slot != null:
-		# Grab slot number
-		var slot_number : int = int(landed_slot.name.right(1))
 		
+		# Grab the slot number
+		var slot_number : int = int(landed_slot.name.right(1))
+	
 		# Find if another yip already occupies the target slot
-		var displaced_yip: Yipee = SignalBus.yip_party[slot_number]
+		var displaced_yip_data: YipeeData = SignalBus.yip_party[slot_number]
+		var displaced_yip_node: Yipee = yip_farm_party_position[slot_number]
 		
 		# Updating party position
 		for key in SignalBus.yip_party.keys():
-			if SignalBus.yip_party[key] == yip:
+			
+			# Remove yip from old slot
+			if SignalBus.yip_party[key] == yip.data:
 				SignalBus.yip_party[key] = null
-		SignalBus.yip_party[slot_number] = yip
+				yip_farm_party_position[key] = null
+				
+		# Put yip in new slot
+		SignalBus.yip_party[slot_number] = yip.data
+		yip_farm_party_position[slot_number] = yip
 
-		# If someone was already in that slot, move them to the slot the dragged yip vacated
-		if displaced_yip != null and displaced_yip != yip:
+		# Swapping logic
+		# Yip in target slot and is not one we are moving
+		if displaced_yip_data != null and displaced_yip_data != yip.data:
+			
+			# get slot number of old dragged yip
 			var old_slot_number : int = yip.data.yip_party_slot
-			SignalBus.yip_party[old_slot_number] = displaced_yip
-			displaced_yip.data.yip_party_slot = old_slot_number
-			displaced_yip.global_position = team_slots[old_slot_number - 1].global_position
+			
+			# dragged yip came from another party slot
+			if old_slot_number != 0:
+				# Move displaced yip into the slot the dragged yip came from
+				SignalBus.yip_party[old_slot_number] = displaced_yip_data
+				displaced_yip_data.yip_party_slot = old_slot_number
+				
+				yip_farm_party_position[old_slot_number] = displaced_yip_node
+				if displaced_yip_node != null:
+					displaced_yip_node.global_position = team_slots[old_slot_number - 1].global_position
+			else:
+				displaced_yip_data.yip_party_slot = 0
+				if displaced_yip_node != null:
+					displaced_yip_node.global_position = displaced_yip_node.data.farm_last_known_position
 		
 		# Updating our position
 		yip.global_position = landed_slot.global_position
@@ -157,6 +203,7 @@ func _drop_yip(yip: Yipee) -> void:
 	# Removing yip from party when we removing it
 	if yip.data.yip_party_slot != 0:
 		SignalBus.yip_party[yip.data.yip_party_slot] = null
+		yip_farm_party_position[yip.data.yip_party_slot] = null
 		yip.data.yip_party_slot = 0
 
 #endregion 
