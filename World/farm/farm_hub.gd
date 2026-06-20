@@ -49,6 +49,7 @@ func _input(event : InputEvent) -> void:
 				dragged_yip = null
 				
 	elif event is InputEventMouseMotion:
+		print(SignalBus.yip_party)
 		if dragged_yip:
 			dragged_yip.global_position = get_global_mouse_position() + drag_offset
 
@@ -98,6 +99,7 @@ func spawn_yip(data: YipeeData) -> Yipee:
 	# Remember party location between scenes if placed in a party
 	if yip.data.yip_party_slot != 0:
 		yip.global_position = team_slots[yip.data.yip_party_slot - 1].global_position
+		SignalBus.yip_party[yip.data.yip_party_slot] = yip
 	
 	add_child(yip)
 	yip.health_UI.visible = false
@@ -122,11 +124,21 @@ func _drop_yip(yip: Yipee) -> void:
 		# Grab slot number
 		var slot_number : int = int(landed_slot.name.right(1))
 		
+		# Find if another yip already occupies the target slot
+		var displaced_yip: Yipee = SignalBus.yip_party[slot_number]
+		
 		# Updating party position
 		for key in SignalBus.yip_party.keys():
 			if SignalBus.yip_party[key] == yip:
 				SignalBus.yip_party[key] = null
 		SignalBus.yip_party[slot_number] = yip
+
+		# If someone was already in that slot, move them to the slot the dragged yip vacated
+		if displaced_yip != null and displaced_yip != yip:
+			var old_slot_number : int = yip.data.yip_party_slot
+			SignalBus.yip_party[old_slot_number] = displaced_yip
+			displaced_yip.data.yip_party_slot = old_slot_number
+			displaced_yip.global_position = team_slots[old_slot_number - 1].global_position
 		
 		# Updating our position
 		yip.global_position = landed_slot.global_position
@@ -142,7 +154,10 @@ func _drop_yip(yip: Yipee) -> void:
 		# If it is not, then don't place it there, place it at its last known location
 		yip.global_position = yip.data.farm_last_known_position
 	
-	yip.data.yip_party_slot = 0
+	# Removing yip from party when we removing it
+	if yip.data.yip_party_slot != 0:
+		SignalBus.yip_party[yip.data.yip_party_slot] = null
+		yip.data.yip_party_slot = 0
 
 #endregion 
 
