@@ -102,14 +102,27 @@ func spawn_yip(data: YipeeData) -> Yipee:
 	# Setting data
 	yip.data = data
 	
+	# Add to scene
+	add_child(yip)
+	yip.health_UI.visible = false
+	yip.health_UI.current_health = yip.health.current_health
+	yip.health_UI.max_health = yip.health.max_health
+	yip.health_UI.update_UI()
+	
+	
+	
+	
 	# Checking if this yip already had a farm position
 	if yip.data.farm_last_known_position == Vector2.ZERO:
 		yip.global_position = get_random_point_in_area()
 		print("Generated Position: ", yip.global_position)
 		yip.data.farm_last_known_position = yip.global_position
+		yip.animation_player.play(&"Spawn")
+		
 	# If it already had one then place it there
 	else:
 		yip.global_position = yip.data.farm_last_known_position
+		yip.animation_player.play(&"IdleNormal")
 	
 	# It can be dragged and dropped
 	yip.data.can_be_grabbed = true
@@ -119,17 +132,6 @@ func spawn_yip(data: YipeeData) -> Yipee:
 		yip.global_position = team_slots[yip.data.yip_party_slot - 1].global_position
 		SignalBus.yip_party[yip.data.yip_party_slot] = yip.data
 		yip_farm_party_position[yip.data.yip_party_slot] = yip
-	
-	# Add to scene
-	add_child(yip)
-	yip.health_UI.visible = false
-	yip.health_UI.current_health = yip.health.current_health
-	yip.health_UI.max_health = yip.health.max_health
-	yip.health_UI.update_UI()
-	
-	# Play spawn animation
-	# TODO: Change it so if they had a last known position for it just to play the idle
-	yip.animation_player.play(&"Spawn")
 	
 	return yip
 
