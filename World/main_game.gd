@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var child_scene = $StartCutscene
+@onready var fight_org: FightOrganizer = $FightOrganizer
 
 const location_dictionary = {
 	SignalBus.Locations.FARM: preload("res://World/farm/farm_hub.tscn"),
@@ -22,6 +23,10 @@ const music = {
 func change_location(location: SignalBus.Locations) -> void:
 	print('going to new location', location)
 	var new_location = location_dictionary[location].instantiate()
+	
+	if location == SignalBus.Locations.BATTLE:
+		var next_fight = fight_org.get_next_fight()
+		new_location.level = next_fight
 	add_child(new_location)
 	child_scene.queue_free()
 	child_scene = new_location
