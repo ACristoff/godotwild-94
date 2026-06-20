@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://cc2m0xv2od8x1" path="res://World/yipee/genes/allele/leftallele/resources/cold_blow.tres" id="4_xdbi0"]
 [ext_resource type="Resource" uid="uid://dbmqnu4wl12sq" path="res://World/yipee/genes/allele/rightallele/resources/dumb_eyes.tres" id="5_251ed"]
 [ext_resource type="Resource" uid="uid://bkdhu17uly40u" path="res://World/yipee/genes/allele/rightallele/resources/dumb_mouth.tres" id="6_vecic"]
+[ext_resource type="PackedScene" uid="uid://bb71km7j75a23" path="res://UI/Scenes/berg.tscn" id="7_j04d7"]
 [ext_resource type="Script" uid="uid://d2tgf0trp406f" path="res://World/battle/levels/level.gd" id="7_sfdi1"]
 
 [sub_resource type="Resource" id="Resource_d7e7h"]
@@ -39,4 +40,5 @@ metadata/_custom_type_script = "uid://dpr2powm23rue"
 script = ExtResource("7_sfdi1")
 level_name = "Berg"
 enemy_team = Array[ExtResource("1_idvg4")]([SubResource("Resource_q1f8t"), null, null, null])
+intro_animation = ExtResource("7_j04d7")
 metadata/_custom_type_script = "uid://d2tgf0trp406f"
