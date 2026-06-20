@@ -115,7 +115,7 @@ func generate_alleles(tier: YipeeData.YipTier, helix: Helix) -> Helix:
 			strand.right = AlleleLibrary.random_right(strand.slot, yip_tier_dictionaries[field_level])
 		if chance_to_fill(tier) == true:
 			#left
-			pass
+			strand.left = AlleleLibrary.random_left(strand.slot, yip_tier_dictionaries[field_level])
 	return helix
 
 func random_location() -> Vector2:

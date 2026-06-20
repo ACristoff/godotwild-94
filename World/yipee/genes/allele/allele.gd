@@ -4,6 +4,8 @@ extends Resource
 enum Side { LEFT, RIGHT }
 enum AlleleRarity { COMMON, UNCOMMON, RARE, ULTRARARE}
 
+const MAX_TIER := 3
+
 var side: Allele.Side
 @export var slot: BodyMap.Slot
 
@@ -12,6 +14,23 @@ var side: Allele.Side
 @export var tooltip: String = ""
 @export var tier: int = 1
 @export var rarity: AlleleRarity = AlleleRarity.COMMON
+
+
+static func can_fuse(a: Allele, b: Allele) -> bool:
+	return a != null and b != null \
+		and a != b \
+		and a.get_script() == b.get_script() \
+		and a.slot == b.slot \
+		and a.allele_name == b.allele_name \
+		and a.tier == b.tier \
+		and a.tier < MAX_TIER
+
+static func fuse(a: Allele, b: Allele) -> Allele:
+	if not can_fuse(a, b):
+		return null
+	var fused: Allele = a.duplicate(true)
+	fused.tier = a.tier + 1
+	return fused
 
 
 func get_tooltip() -> String:
