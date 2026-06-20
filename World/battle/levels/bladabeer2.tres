@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Level" format=3 uid="uid://idckb1ocks6o"]
+[gd_resource type="Resource" script_class="Level" format=3 uid="uid://bkoj12ws844c3"]
 
 [ext_resource type="Script" uid="uid://dpr2powm23rue" path="res://World/yipee/genes/yipee_data.gd" id="1_pi8j7"]
 [ext_resource type="Script" uid="uid://d2tgf0trp406f" path="res://World/battle/levels/level.gd" id="2_78ol4"]
