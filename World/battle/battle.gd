@@ -71,7 +71,9 @@ func _ready():
 	#Spawn player team
 	print( 'player team data ', player_team_data, SignalBus.yip_party)
 	for i in range(5):
-		if i >= player_team_data.size() or player_team_data[i] == null:
+		if player_team_data[i] == null:
+			continue
+		if i >= player_team_data.size():
 			break
 		var spawn = get_node("PlayerTeam/Spawn_" + str(i + 1))
 		var new_yip = _spawn(player_team_data[i], spawn.global_position + Vector2(105, 45))
