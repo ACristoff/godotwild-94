@@ -15,13 +15,14 @@ func _process(delta):
 		music_manager.volume_db = music_manager.volume_db - (30 * delta)
 
 func switch_songs(fade = true):
+	new_music.set_loop(loop_music)
+	current_music = new_music
 	if fade:
 		fade_timer.start()
 	else:
 		music_manager.stream = new_music
 		music_manager.volume_db = new_volume
 		music_manager.play()
-		current_music = new_music
 
 #Music bus
 #Plays an mp3 file
@@ -29,18 +30,14 @@ func switch_songs(fade = true):
 #takes a looped argument defaults to true
 #takes a fade argument defaults to true
 func play_music(music: AudioStreamMP3, volume = 0, looped = true, fade = true) -> AudioStreamPlayer:
-	#music_manager.playing = true
-	if current_music:
-		new_music = music
-		new_volume = volume
-		switch_songs(fade)
-		return
+	# Already playing this track — leave it alone.
+	if current_music == music:
+		return music_manager
+
 	loop_music = looped
-	current_music = music
-	current_music.set_loop(looped)
-	music_manager.stream = music
-	music_manager.volume_db = volume
-	music_manager.play()
+	new_music = music
+	new_volume = volume
+	switch_songs(fade)
 	return music_manager
 
 func stop_music():
@@ -143,6 +140,7 @@ func on_sound_finished(sound_player):
 	sound_player.queue_free()
 
 func _on_fade_timer_timeout():
+	fade_timer.stop()
 	music_manager.stream = new_music
 	music_manager.volume_db = new_volume
 	music_manager.play()
