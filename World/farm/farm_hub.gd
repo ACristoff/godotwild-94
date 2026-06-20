@@ -55,9 +55,11 @@ func _input(event : InputEvent) -> void:
 				# Remember offset so the yip doesn't jump so its center snaps to the cursor
 				drag_offset = dragged_yip.global_position - get_global_mouse_position()
 				print("Picked up a yip", dragged_yip)
+				dragged_yip.animation_player.play(&"Grabbed")
 		else:
 			if dragged_yip:
 				_drop_yip(dragged_yip)
+				dragged_yip.animation_player.play(&"RESET")
 				dragged_yip = null
 				
 	elif event is InputEventMouseMotion:
@@ -233,7 +235,7 @@ func wire_yip(yip: Yipee) -> void:
 	yip.animation_player.animation_finished.connect(_on_yip_animation_finished.bind(yip))
 
 func _on_yip_animation_finished(anim_name: StringName, yip: Yipee) -> void:
-	if anim_name == &"Spawn":
+	if anim_name == &"Spawn" or anim_name == &"RESET":
 		print(yip, " finished spawning")
 		yip.animation_player.play(&"IdleNormal")
 
