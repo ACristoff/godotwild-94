@@ -1,10 +1,9 @@
 [gd_resource type="Resource" script_class="HealAllele" format=3 uid="uid://cqnr5f7maaf6n"]
 
-[ext_resource type="Script" path="res://World/yipee/genes/allele/leftallele/subclasses/heal_ally_allele.gd" id="1_888c8"]
+[ext_resource type="Script" uid="uid://4g6xaf361eqk" path="res://World/yipee/genes/allele/leftallele/subclasses/heal_ally_allele.gd" id="1_888c8"]
 
 [resource]
 script = ExtResource("1_888c8")
-heal_amount = 15
 slot = 1
 allele_name = "Lick Wound"
 tooltip = "Heal lowest HP ally {heal}"
