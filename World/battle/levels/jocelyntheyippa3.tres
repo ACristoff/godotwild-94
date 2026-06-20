@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://ckag7btt5nspw" path="res://World/yipee/genes/allele/leftallele/resources/flail.tres" id="4_w3gv5"]
 [ext_resource type="Resource" uid="uid://cpak0ql3b4vo8" path="res://World/yipee/genes/allele/rightallele/resources/slug_feet.tres" id="5_4ad2o"]
 [ext_resource type="Resource" uid="uid://cqnr5f7maaf6n" path="res://World/yipee/genes/allele/leftallele/resources/lick_wound.tres" id="6_nr0yc"]
-[ext_resource type="PackedScene" path="res://UI/Scenes/battle_clash.tscn" id="7_ehs1y"]
+[ext_resource type="PackedScene" uid="uid://dhjkgi4r0o822" path="res://UI/Scenes/battle_clash.tscn" id="7_ehs1y"]
 [ext_resource type="Script" uid="uid://d2tgf0trp406f" path="res://World/battle/levels/level.gd" id="7_g64sg"]
 
 [sub_resource type="Resource" id="Resource_ogjr6"]

@@ -2,14 +2,12 @@
 
 [ext_resource type="Script" uid="uid://b1owneonh5qw1" path="res://World/battle/battle.gd" id="1_2qnjf"]
 [ext_resource type="Texture2D" uid="uid://6xdsjsnsd8ld" path="res://Assets/Environment/Scenes/BattleField/BattleField.png" id="1_aqlep"]
-[ext_resource type="Resource" uid="uid://dyvdhk217xukr" path="res://World/battle/levels/jocelyntheyippa3.tres" id="2_m52jh"]
 [ext_resource type="Texture2D" uid="uid://bouvm8wo3pupb" path="res://Assets/Environment/Scenes/BattleField/YipTeamSlot.png" id="3_l3nu1"]
 [ext_resource type="PackedScene" uid="uid://dqgfurgu7jsbg" path="res://UI/Scenes/yip_toolyip.tscn" id="4_xg215"]
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="5_55a63"]
 
 [node name="Battle" type="Node2D" unique_id=1472135385]
 script = ExtResource("1_2qnjf")
-level = ExtResource("2_m52jh")
 
 [node name="Background" type="TextureRect" parent="." unique_id=36736255]
 texture_filter = 3

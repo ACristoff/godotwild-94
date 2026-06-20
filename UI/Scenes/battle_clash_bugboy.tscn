@@ -260,7 +260,7 @@ texture_filter = 3
 texture = ExtResource("2_3amnv")
 
 [node name="ColorRect3" type="ColorRect" parent="AnonWall/AnonWallColor" unique_id=2127754646]
-offset_left = -361.33334
+offset_left = -484.0
 offset_top = -180.0
 offset_right = -175.33334
 offset_bottom = 180.0
