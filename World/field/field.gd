@@ -7,30 +7,30 @@ var base_yip_tier_chance = 25
 var yips_to_spawn = 3 + field_level
 
 var yip_tier_odds_0: Dictionary = {
-	YipeeData.YipTier.COMMON: 50,
-	YipeeData.YipTier.UNCOMMON: 30,
-	YipeeData.YipTier.RARE: 15,
-	YipeeData.YipTier.ULTRARARE: 5
+	YipeeData.YipTier.COMMON: 95,
+	YipeeData.YipTier.UNCOMMON: 4,
+	YipeeData.YipTier.RARE: 1,
+	YipeeData.YipTier.ULTRARARE: 0
 }
 
 var yip_tier_odds_1: Dictionary = {
-	YipeeData.YipTier.COMMON: 40,
-	YipeeData.YipTier.UNCOMMON: 30,
-	YipeeData.YipTier.RARE: 20,
-	YipeeData.YipTier.ULTRARARE: 10
+	YipeeData.YipTier.COMMON: 60,
+	YipeeData.YipTier.UNCOMMON: 25,
+	YipeeData.YipTier.RARE: 10,
+	YipeeData.YipTier.ULTRARARE: 5
 }
 
 var yip_tier_odds_2: Dictionary = {
-	YipeeData.YipTier.COMMON: 20,
-	YipeeData.YipTier.UNCOMMON: 25,
+	YipeeData.YipTier.COMMON: 10,
+	YipeeData.YipTier.UNCOMMON: 40,
 	YipeeData.YipTier.RARE: 40,
-	YipeeData.YipTier.ULTRARARE: 15
+	YipeeData.YipTier.ULTRARARE: 10
 }
 
 var yip_tier_odds_3: Dictionary = {
-	YipeeData.YipTier.COMMON: 5,
-	YipeeData.YipTier.UNCOMMON: 45,
-	YipeeData.YipTier.RARE: 30,
+	YipeeData.YipTier.COMMON: 0,
+	YipeeData.YipTier.UNCOMMON: 30,
+	YipeeData.YipTier.RARE: 50,
 	YipeeData.YipTier.ULTRARARE: 20
 }
 
