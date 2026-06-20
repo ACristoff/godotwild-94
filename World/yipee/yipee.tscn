@@ -617,6 +617,43 @@ _data = {
 &"Spawn": SubResource("Animation_fo53w")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_khqkn"]
+animation = &"IdleNormal"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6vhmf"]
+animation = &"IdleNormal"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_151j8"]
+animation = &"Spawn"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_khqkn"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_151j8"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_vrfs1"]
+states/IdleNormal/node = SubResource("AnimationNodeAnimation_6vhmf")
+states/IdleNormal/position = Vector2(473.68567, 216)
+states/Spawn/node = SubResource("AnimationNodeAnimation_151j8")
+states/Spawn/position = Vector2(310.68567, 216)
+states/Start/position = Vector2(161, 216)
+transitions = ["Start", "Spawn", SubResource("AnimationNodeStateMachineTransition_khqkn"), "Spawn", "IdleNormal", SubResource("AnimationNodeStateMachineTransition_151j8")]
+graph_offset = Vector2(-527.31433, 0)
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vrfs1"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ot5o3"]
+states/IdleNormal/node = SubResource("AnimationNodeAnimation_khqkn")
+states/IdleNormal/position = Vector2(220.4107, 287)
+states/Spawn_Idle/node = SubResource("AnimationNodeStateMachine_vrfs1")
+states/Spawn_Idle/position = Vector2(220.4107, 193)
+states/Start/position = Vector2(1, 268)
+transitions = ["Start", "Spawn_Idle", SubResource("AnimationNodeStateMachineTransition_vrfs1")]
+graph_offset = Vector2(-731.5893, 0)
+
 [sub_resource type="Animation" id="Animation_7esd8"]
 resource_name = "Punch"
 length = 0.3
@@ -787,6 +824,10 @@ scale = Vector2(3, 3)
 
 [node name="ActionsAnim" type="AnimationPlayer" parent="." unique_id=824352016]
 libraries/ = SubResource("AnimationLibrary_7esd8")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1739083428]
+tree_root = SubResource("AnimationNodeStateMachine_ot5o3")
+anim_player = NodePath("../ActionsAnim")
 
 [node name="Health" type="Node" parent="." unique_id=984730394]
 script = ExtResource("3_0w75r")
