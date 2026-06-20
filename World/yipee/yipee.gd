@@ -21,7 +21,17 @@ const YIP_BUFF = preload("uid://nkypm8ojycqe")
 @onready var health_UI: HealthBar = $HealthBar
 @onready var hover_area: Area2D = $HoverArea
 
-@onready var animation_tree : AnimationTree = $AnimationTree
+#region Farm Hub stuff
+# Yip can only be picked up in the Farm Hub.
+# This will also let us know when they are in the farm hub
+var can_be_grabbed : bool = false
+
+# If the yip gets dragged off screen, we snap it back to its last known location
+# I want them to run back to the old position if possible with a cute animation. We can slide them for now
+# When the yip is spawned in the farm hub, set this variable, we will be spawning the yip in the safe areas.
+var farm_last_known_position : Vector2 = Vector2.ZERO
+
+#endregion
 
 signal yip_hovered(yip_data: Yipee)
 signal yip_unhovered
