@@ -62,8 +62,8 @@ func update_depth():
 		dna_shell_2.z_index = -2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+#func _process(delta: float) -> void:
+	#pass
 	#print(current_frame)
 	#if start:
 		#$Timer.start()

@@ -14,22 +14,21 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-	
+
 func update_color():
 	pass
-	
-func update_info(name_of, side, description, slot, level:int = 1):
-	$MainPanel/Gene2/MainPanel2/Name.text = str(name)
-	$MainPanel/Gene2/MainPanel3/Type.text = str(side)
-	$MainPanel/Gene2/Level.text = str(level)
-	$MainPanel/MarginContainer/Label.text = str(description)
+
+func update_info(allele_name: String, side: String, desc: String, slot, level: int = 1) -> void:
+	name_of_gene.text = allele_name
+	type_of_gene.text = side
+	level_of_gene.text = str(level)
+	description.text = desc
 	if TypeColors.colors.has(slot):
 		self.modulate = TypeColors.colors[slot]
-	
-	
-	
-	
-	
+
+
+
+
 func squish():
 	AudMan.play_sfx_wav(CRT_CLICK, 0.0, false)
 	$AnimationPlayer.play("Pop")

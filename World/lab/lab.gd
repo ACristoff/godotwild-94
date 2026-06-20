@@ -7,11 +7,6 @@ var yip_placed = true
 func _ready() -> void:
 	update_screen()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
 func update_screen():
 	pass
 	if yip_placed:

@@ -1,10 +1,15 @@
 class_name Toolyip extends Control
 
+const STAT_PIP = preload("res://UI/Scenes/damage_toolyip.tscn")
+
 var amnt_of_stats : int
 
 @onready var stats_flow_container: FlowContainer = $StatsFlowContainer
 @onready var stats_container: NinePatchRect = $StatsContainer
-
+@onready var name_field: LineEdit = $MainPanel/HBoxContainer/Name/LineEdit
+@onready var age_label: Label = $MainPanel/HBoxContainer/Age/Label
+@onready var hp_label: Label = $MainPanel/Age2/Label
+@onready var cooldown_label: Label = $MainPanel/TextureRect/VBoxContainer/ActualSeconds
 @onready var mouse_hover: Panel = $MouseHover
 @onready var mouse_hover_2: Panel = $MouseHover2
 var tooltip_hovering := false
@@ -48,6 +53,12 @@ func _ready() -> void:
 	print(get_total_rect(self))
 
 func display(yip: Yipee) -> void:
+	var data: YipeeData = yip.data
+	name_field.text = data.yipee_name if data.yipee_name != "" else "WILD YIP"
+	age_label.text = "Age:%d" % data.age
+	hp_label.text = "HP:%d" % roundi(data.get_health())
+	cooldown_label.text = "%.1f" % data.get_cooldown()
+	
 	var helix: Helix = yip.data.helix
 	increment = 0
 	for i in range(Helix.RUNG_COUNT):
@@ -60,9 +71,38 @@ func display(yip: Yipee) -> void:
 		var right_filled = strand != null and strand.right != null
 		get_node("DNA/LeftGene" + str(i + 1)).self_modulate = get_color(key) if left_filled else get_color("NULL")
 		get_node("DNA/RightGene" + str(i + 1)).self_modulate = get_color(key) if right_filled else get_color("NULL")
+		get_node("MainPanel/Alleles/Effects/R_allele" + str(i + 1)).set_allele(
+			strand.left if strand else null, "LEFT", key)
+		get_node("MainPanel/Alleles/Visuals/L_allele" + str(i + 1)).set_allele(
+			strand.right if strand else null, "RIGHT", key)
+	
+	var pips := {}
+	var atk := roundi(data.get_attack())
+	if atk > 0:
+		pips["PHYSICAL"] = atk
+	for strand in helix.strands:
+		if strand == null:
+			continue
+		for allele in [strand.left, strand.right]:
+			if allele == null:
+				continue
+			var contrib: Dictionary = allele.get_damage_pips()
+			for type in contrib:
+				pips[type] = pips.get(type, 0) + contrib[type]
+	_rebuild_stat_pips(pips)
 	shown = false
 	become_visible()
 
+func _rebuild_stat_pips(pips: Dictionary) -> void:
+	for child in stats_flow_container.get_children():
+		child.queue_free()
+	for type in pips:
+		if pips[type] <= 0:
+			continue
+		var pip = STAT_PIP.instantiate()
+		pip.name = type
+		pip.value = pips[type]
+		stats_flow_container.add_child(pip)
 
 func set_slot_visuals(type):
 	#increment = 0
@@ -78,7 +118,7 @@ func set_slot_visuals(type):
 	node.self_modulate = get_color(type)
 	node = node.get_child(0)
 	node.self_modulate = get_color(type)
-	
+
 func become_visible():
 	if !shown:
 		popup()
@@ -116,12 +156,12 @@ func get_total_rect(node: Control) -> Rect2:
 		if child is Control:
 			rect = rect.merge(get_total_rect(child))
 	return rect
-	
+
 func popup():
 	$AnimationPlayer.play("pop")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if mouse_hover.get_global_rect().has_point(get_global_mouse_position()) or mouse_hover_2.get_global_rect().has_point(get_global_mouse_position()):
 		if set_hover:
 			tooltip_hovering = true

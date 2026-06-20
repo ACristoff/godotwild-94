@@ -32,6 +32,8 @@ static func fuse(a: Allele, b: Allele) -> Allele:
 	fused.tier = a.tier + 1
 	return fused
 
+func get_damage_pips() -> Dictionary:
+	return {}
 
 func get_tooltip() -> String:
 	return tooltip
