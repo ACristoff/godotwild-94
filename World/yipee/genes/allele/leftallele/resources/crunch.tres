@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LeftAllele" format=3 uid="uid://d0rd6qgaclolt"]
+
+[ext_resource type="Script" uid="uid://mc42eixh1d8t" path="res://World/yipee/genes/allele/leftallele/left_allele.gd" id="1_6du33"]
+
+[resource]
+script = ExtResource("1_6du33")
+flat_mods = Dictionary[int, int]({
+1: 20
+})
+slot = 2
+allele_name = "Crunch"
+tooltip = "(attack) Physical Damage"
+rarity = 1
+metadata/_custom_type_script = "uid://mc42eixh1d8t"
