@@ -860,6 +860,7 @@ frame = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HoverArea" unique_id=629930061]
 shape = SubResource("RectangleShape2D_6vhmf")
 
+[connection signal="animation_finished" from="ActionsAnim" to="." method="_on_actions_anim_animation_finished"]
 [connection signal="mouse_entered" from="HoverArea" to="." method="_on_hover_area_mouse_entered"]
 [connection signal="mouse_exited" from="HoverArea" to="." method="_on_hover_area_mouse_exited"]
 

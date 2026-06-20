@@ -45,7 +45,6 @@ func _input(event : InputEvent) -> void:
 
 #endregion
 
-
 #region Farm Hub Functions
 
 ## TODO: Edit spawn yip code, maybe make it so yips don't spawn in the same spot
@@ -93,6 +92,8 @@ func spawn_yip(data: YipeeData) -> Yipee:
 	yip.health_UI.max_health = yip.health.max_health
 	yip.health_UI.update_UI()
 	
+	yip.animation_player.play(&"Spawn")
+	
 	return yip
 
 func _drop_yip(yip: Yipee) -> void:
@@ -126,6 +127,12 @@ func _on_battle_button_pressed():
 func wire_yip(yip: Yipee) -> void:
 	yip.yip_hovered.connect(_on_yip_hovered)
 	yip.yip_unhovered.connect(_on_yip_unhovered)
+	yip.animation_player.animation_finished.connect(_on_yip_animation_finished.bind(yip))
+
+func _on_yip_animation_finished(anim_name: StringName, yip: Yipee) -> void:
+	if anim_name == &"Spawn":
+		print(yip, " finished spawning")
+		yip.animation_player.play(&"IdleNormal")
 
 func _on_yip_hovered(yip: Yipee) -> void:
 	print('yip hovered in farm hub')
@@ -134,5 +141,5 @@ func _on_yip_hovered(yip: Yipee) -> void:
 func _on_yip_unhovered() -> void:
 	print('yip unhovered in farm hub')
 	focused_yip = null
-	
+
 #endregion
