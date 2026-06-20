@@ -86,11 +86,14 @@ func get_random_point_in_area() -> Vector2:
 func spawn_yip(data: YipeeData) -> Yipee:
 	var yip := preload("res://World/yipee/yipee.tscn").instantiate() as Yipee
 	yip.data = data
-	yip.global_position = get_random_point_in_area()
-	print("Generated Position: ", yip.global_position)
-	
-	yip.farm_last_known_position = yip.global_position
-	yip.can_be_grabbed = true
+	if yip.data.farm_last_known_position == Vector2.ZERO:
+		yip.global_position = get_random_point_in_area()
+		print("Generated Position: ", yip.global_position)
+		yip.data.farm_last_known_position = yip.global_position
+	else:
+		yip.global_position = yip.data.farm_last_known_position
+		
+	yip.data.can_be_grabbed = true
 	
 	add_child(yip)
 	yip.health_UI.visible = false
@@ -103,10 +106,10 @@ func _drop_yip(yip: Yipee) -> void:
 	# Check if yip is inside of the  grazing area
 	# If it is, then place it there, set last known location
 	if %GrazingArea.overlaps_area(yip.hover_area):
-		yip.farm_last_known_position = yip.global_position
+		yip.data.farm_last_known_position = yip.global_position
 	else:
 		# If it is not, then don't place it there, place it at its last known location
-		yip.global_position = yip.farm_last_known_position
+		yip.global_position = yip.data.farm_last_known_position
 
 #endregion 
 
