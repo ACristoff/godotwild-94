@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Level" format=3 uid="uid://bi6sf8cd18sgm"]
+[gd_resource type="Resource" script_class="Level" format=3 uid="uid://doqdiq58q6mu7"]
 
 [ext_resource type="Script" uid="uid://dpr2powm23rue" path="res://World/yipee/genes/yipee_data.gd" id="1_1heok"]
 [ext_resource type="Script" uid="uid://ckc2iq0roikyx" path="res://World/yipee/genes/helix.gd" id="2_b3vih"]

@@ -31,6 +31,8 @@ func switch_songs(fade = true):
 #takes a fade argument defaults to true
 func play_music(music: AudioStreamMP3, volume = 0, looped = true, fade = true) -> AudioStreamPlayer:
 	# Already playing this track — leave it alone.
+	if music == null:
+		return
 	if current_music == music:
 		return music_manager
 
