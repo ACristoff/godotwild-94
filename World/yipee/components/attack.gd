@@ -24,7 +24,12 @@ func tick(delta) -> void:
 		_elapsed -= cooldown
 		attack_ready.emit(make_damage())
 	
-	
+	progress_changed.emit(_elapsed / cooldown)
+
+func charge(seconds: float) -> void:
+	if cooldown <= 0.0:
+		return
+	_elapsed = minf(_elapsed + seconds, cooldown)
 	progress_changed.emit(_elapsed / cooldown)
 
 func make_damage() -> DamageInfo:
