@@ -13,6 +13,10 @@ var side: Allele.Side
 @export var tier: int = 1
 @export var rarity: AlleleRarity = AlleleRarity.COMMON
 
+
+func get_tooltip() -> String:
+	return tooltip
+
 func flat_for(_stat: BodyMap.Stat) -> float:
 	return 0.0
 
