@@ -1,0 +1,139 @@
+[gd_resource type="Resource" script_class="Level" format=3 uid="uid://bbdaf751fbph3"]
+
+[ext_resource type="Script" uid="uid://dpr2powm23rue" path="res://World/yipee/genes/yipee_data.gd" id="1_7jv8h"]
+[ext_resource type="Script" uid="uid://d2tgf0trp406f" path="res://World/battle/levels/level.gd" id="2_2cjmx"]
+[ext_resource type="Script" uid="uid://ckc2iq0roikyx" path="res://World/yipee/genes/helix.gd" id="2_ajmqr"]
+[ext_resource type="Script" uid="uid://cra0emwdv78rw" path="res://World/yipee/genes/strand.gd" id="3_q8ydj"]
+[ext_resource type="Resource" uid="uid://d2kfvjymukg82" path="res://World/yipee/genes/allele/rightallele/resources/cheese_eyes.tres" id="4_thdv7"]
+[ext_resource type="Resource" uid="uid://cqf7ntdguf0sq" path="res://World/yipee/genes/allele/rightallele/resources/bug_misc.tres" id="5_5jal4"]
+[ext_resource type="Resource" uid="uid://b8pgghssi11m0" path="res://World/yipee/genes/allele/rightallele/resources/beetle_wings.tres" id="6_kth1c"]
+[ext_resource type="Resource" uid="uid://cwnhd2x26f1q3" path="res://World/yipee/genes/allele/rightallele/resources/spider_eyes.tres" id="7_h21x1"]
+[ext_resource type="Resource" uid="uid://d1usn64ukjx1f" path="res://World/yipee/genes/allele/leftallele/resources/tipped.tres" id="8_7vmcp"]
+
+[sub_resource type="Resource" id="Resource_qjr2q"]
+script = ExtResource("3_q8ydj")
+slot = 6
+right = ExtResource("4_thdv7")
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_as4v3"]
+script = ExtResource("3_q8ydj")
+slot = 7
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_40vbg"]
+script = ExtResource("3_q8ydj")
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_3oghm"]
+script = ExtResource("3_q8ydj")
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_oegu7"]
+script = ExtResource("3_q8ydj")
+slot = 6
+right = ExtResource("5_5jal4")
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_j1i36"]
+script = ExtResource("3_q8ydj")
+slot = 1
+right = ExtResource("6_kth1c")
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_u5o0m"]
+script = ExtResource("3_q8ydj")
+slot = 7
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_5qgh3"]
+script = ExtResource("3_q8ydj")
+slot = 7
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_6ga0p"]
+script = ExtResource("3_q8ydj")
+slot = 7
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_ixsi6"]
+script = ExtResource("2_ajmqr")
+strands = Array[ExtResource("3_q8ydj")]([SubResource("Resource_qjr2q"), SubResource("Resource_as4v3"), SubResource("Resource_40vbg"), SubResource("Resource_3oghm"), SubResource("Resource_oegu7"), SubResource("Resource_j1i36"), SubResource("Resource_u5o0m"), SubResource("Resource_5qgh3"), SubResource("Resource_6ga0p")])
+metadata/_custom_type_script = "uid://ckc2iq0roikyx"
+
+[sub_resource type="Resource" id="Resource_audep"]
+script = ExtResource("1_7jv8h")
+yipee_name = "Buggy"
+age = 2
+base_health = 10
+base_attack = 2
+helix = SubResource("Resource_ixsi6")
+metadata/_custom_type_script = "uid://dpr2powm23rue"
+
+[sub_resource type="Resource" id="Resource_tcvuu"]
+script = ExtResource("3_q8ydj")
+right = ExtResource("7_h21x1")
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_ki5ye"]
+script = ExtResource("3_q8ydj")
+slot = 7
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_ghprt"]
+script = ExtResource("3_q8ydj")
+slot = 3
+left = ExtResource("8_7vmcp")
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_7b21f"]
+script = ExtResource("3_q8ydj")
+slot = 3
+left = ExtResource("8_7vmcp")
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_nb73l"]
+script = ExtResource("3_q8ydj")
+slot = 7
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_364go"]
+script = ExtResource("3_q8ydj")
+slot = 7
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_apx71"]
+script = ExtResource("3_q8ydj")
+slot = 7
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_1w2l7"]
+script = ExtResource("3_q8ydj")
+slot = 7
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_kt0ah"]
+script = ExtResource("3_q8ydj")
+slot = 7
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_k6trn"]
+script = ExtResource("2_ajmqr")
+strands = Array[ExtResource("3_q8ydj")]([SubResource("Resource_tcvuu"), SubResource("Resource_ki5ye"), SubResource("Resource_ghprt"), SubResource("Resource_7b21f"), SubResource("Resource_nb73l"), SubResource("Resource_364go"), SubResource("Resource_apx71"), SubResource("Resource_1w2l7"), SubResource("Resource_kt0ah")])
+metadata/_custom_type_script = "uid://ckc2iq0roikyx"
+
+[sub_resource type="Resource" id="Resource_jpgy3"]
+script = ExtResource("1_7jv8h")
+yipee_name = "Araknik"
+age = 3
+base_health = 5
+base_attack = 0
+base_cooldown = 4.0
+helix = SubResource("Resource_k6trn")
+metadata/_custom_type_script = "uid://dpr2powm23rue"
+
+[resource]
+script = ExtResource("2_2cjmx")
+level_name = "Yip Catcher"
+enemy_team = Array[ExtResource("1_7jv8h")]([SubResource("Resource_audep"), SubResource("Resource_jpgy3")])
+metadata/_custom_type_script = "uid://d2tgf0trp406f"

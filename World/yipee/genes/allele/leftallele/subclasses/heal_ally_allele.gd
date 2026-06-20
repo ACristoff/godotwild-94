@@ -19,11 +19,16 @@ func on_attack(damage_data: DamageInfo, battle) -> void:
 
 func _lowest_health_ally(allies: Array) -> Yipee:
 	var best: Yipee = null
+	var best_missing := 0
 	for ally: Yipee in allies:
 		if not ally.health.is_alive():
 			continue
-		if best == null or ally.health.current_health < best.health.current_health:
+		var missing := ally.health.max_health - ally.health.current_health
+		if missing <= 0:
+			continue  # already at full HP, skip
+		if best == null or missing > best_missing:
 			best = ally
+			best_missing = missing
 	return best
 
 func _tooltip_subs() -> Dictionary:
