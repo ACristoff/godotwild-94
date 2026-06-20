@@ -83,7 +83,7 @@ static func generate_yip(chosen_tier: YipTier) -> YipeeData:
 	new_yip.base_attack = randi_range(YIP_TABLE[chosen_tier]["ATK"][0], YIP_TABLE[chosen_tier]["ATK"][1])
 	new_yip.base_health = randi_range(YIP_TABLE[chosen_tier]["HP"][0], YIP_TABLE[chosen_tier]["HP"][1])
 	new_yip.base_cooldown = randf_range(YIP_TABLE[chosen_tier]["COOLDOWN"][0], YIP_TABLE[chosen_tier]["COOLDOWN"][1])
-	
+	new_yip.age = randi_range(1,20)
 	var new_helix: Helix = Helix.generate_random(chosen_tier)
 	new_yip.helix = new_helix
 	

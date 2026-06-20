@@ -8,16 +8,6 @@ const LETTER_IMPACT = preload("uid://dxdi7wy5wcxmn")
 const LETTER_OPEN = preload("uid://duikmvorwvx5")
 
 
-
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _on_button_pressed() -> void:
 	match  hit_amnt:
 		0:

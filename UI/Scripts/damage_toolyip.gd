@@ -13,6 +13,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	label.text = str(value)
 	match name:
+		"PHYSICAL":
+			damage_toolyip.self_modulate = TypeColors.colors["PHYSICAL"]
 		"FIRE":
 			damage_toolyip.self_modulate = TypeColors.colors["FIRE"]
 		"POISON":

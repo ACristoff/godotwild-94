@@ -42,4 +42,6 @@ func _on_opening_finished(argument: String) -> void:
 
 func _on_day_end() -> void:
 	SignalBus.coins += 6
+	for yip in SignalBus.yip_inventory:
+		yip.age += 1
 	change_location(SignalBus.Locations.FARM)
