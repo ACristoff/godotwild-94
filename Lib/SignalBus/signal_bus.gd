@@ -20,6 +20,7 @@ var game_started: bool = false
 
 var current_health = 3
 var current_wins = 1
+var debug_mode: bool = false
 
 # Signal that will be triggered when game pauses
 signal pause_game
@@ -27,7 +28,7 @@ signal pause_game
 # Signal that will be triggered when game pauses
 signal game_state_changed(new_state)
 
-signal debug_mode(debug_type)
+#signal debug_mode(debug_type)
 
 signal battle_finished(victory: bool)
 
