@@ -59,6 +59,9 @@ var farm_last_known_position : Vector2 = Vector2.ZERO
 
 # Remember party location between scenes if placed in a party
 @export_range(0, 5, 1) var yip_party_slot : int 
+
+# Remember party location between scenes if placed in a party
+@export_range(0, 2, 1) var yip_barn_slot : int 
 #endregion
 
 func _init() -> void:

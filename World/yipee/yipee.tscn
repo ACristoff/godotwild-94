@@ -955,7 +955,7 @@ frame = 1
 shape = SubResource("RectangleShape2D_6vhmf")
 
 [node name="FarmSlot" type="Area2D" parent="." unique_id=525943513]
-collision_layer = 192
+collision_layer = 224
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FarmSlot" unique_id=1668434296]
 position = Vector2(0, 39)

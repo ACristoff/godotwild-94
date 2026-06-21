@@ -18,6 +18,12 @@
 [ext_resource type="PackedScene" uid="uid://dqgfurgu7jsbg" path="res://UI/Scenes/yip_toolyip.tscn" id="15_wkn3d"]
 [ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="16_0l0ir"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wkn3d"]
+height = 46.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nw8d0"]
+height = 46.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_goe80"]
 size = Vector2(495, 343)
 
@@ -189,27 +195,47 @@ position = Vector2(960, 540)
 scale = Vector2(3, 3)
 texture = ExtResource("7_w8qn1")
 
-[node name="BreedSlot" type="Sprite2D" parent="BreedingBarnGrass" unique_id=1885099663]
+[node name="BreedSlot1" type="Sprite2D" parent="BreedingBarnGrass" unique_id=1885099663]
 texture_filter = 3
 position = Vector2(-48.999992, -87.000046)
 texture = ExtResource("6_4wsdy")
+
+[node name="b_slot1" type="Area2D" parent="BreedingBarnGrass/BreedSlot1" unique_id=1319590809]
+unique_name_in_owner = true
+collision_layer = 192
+collision_mask = 192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BreedingBarnGrass/BreedSlot1/b_slot1" unique_id=387172319]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_wkn3d")
 
 [node name="BreedSlot2" type="Sprite2D" parent="BreedingBarnGrass" unique_id=1310198949]
 texture_filter = 3
 position = Vector2(10.000191, -87.000046)
 texture = ExtResource("6_4wsdy")
 
+[node name="b_slot2" type="Area2D" parent="BreedingBarnGrass/BreedSlot2" unique_id=859506220]
+unique_name_in_owner = true
+collision_layer = 192
+collision_mask = 192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BreedingBarnGrass/BreedSlot2/b_slot2" unique_id=1819109133]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_nw8d0")
+
 [node name="BreedingBarnLarge" type="Sprite2D" parent="BreedingBarnGrass" unique_id=2130652893]
 texture = ExtResource("7_odbp6")
 
 [node name="BreedingBarnLargeDoor" type="Sprite2D" parent="BreedingBarnGrass" unique_id=683145878]
+unique_name_in_owner = true
 texture = ExtResource("9_ay8hv")
 
 [node name="BreedFarmSlot" type="Area2D" parent="BreedingBarnGrass" unique_id=990957553]
+unique_name_in_owner = true
 position = Vector2(-99.66666, -180)
 scale = Vector2(0.33333334, 0.33333334)
-collision_layer = 64
-collision_mask = 64
+collision_layer = 32
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BreedingBarnGrass/BreedFarmSlot" unique_id=410419710]
 position = Vector2(237.5, 161.5)
