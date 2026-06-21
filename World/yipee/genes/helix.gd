@@ -26,6 +26,7 @@ func _init() -> void:
 static func generate_random(yip_tier: YipeeData.YipTier = YipeeData.YipTier.COMMON) -> Helix:
 	var helix := Helix.new()
 	var types := BodyMap.Slot.values()
+	types.erase(BodyMap.Slot.SPECIALIZATION)
 	for i in RUNG_COUNT:
 		var random = randi_range(0, 99)
 		var current_odds = fill_chance_by_tier[yip_tier]

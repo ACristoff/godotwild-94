@@ -101,8 +101,6 @@ func _rebuild_stat_pips(pips: Dictionary) -> void:
 			continue
 		var pip = STAT_PIP.instantiate()
 		stats_flow_container.add_child(pip)
-		# Set after add_child so the chip's setters run with is_node_ready() true:
-		# ailment_name drives the chip colour, value drives the number.
 		pip.ailment_name = type
 		pip.value = pips[type]
 
