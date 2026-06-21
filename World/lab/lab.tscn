@@ -42,9 +42,33 @@ left = ExtResource("6_ffgas")
 right = ExtResource("7_58ib8")
 metadata/_custom_type_script = "uid://cra0emwdv78rw"
 
+[sub_resource type="Resource" id="Resource_ffgas"]
+script = ExtResource("3_8wn1l")
+slot = 3
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_58ib8"]
+script = ExtResource("3_8wn1l")
+slot = 4
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_iggas"]
+script = ExtResource("3_8wn1l")
+slot = 5
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_u463x"]
+script = ExtResource("3_8wn1l")
+slot = 6
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_wckeq"]
+script = ExtResource("3_8wn1l")
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
 [sub_resource type="Resource" id="Resource_qrl5x"]
 script = ExtResource("2_sf1g0")
-strands = Array[ExtResource("3_8wn1l")]([SubResource("Resource_5722r"), SubResource("Resource_r58b7"), SubResource("Resource_bx8m8")])
+strands = Array[ExtResource("3_8wn1l")]([SubResource("Resource_5722r"), SubResource("Resource_r58b7"), SubResource("Resource_bx8m8"), SubResource("Resource_ffgas"), SubResource("Resource_58ib8"), SubResource("Resource_iggas"), SubResource("Resource_u463x"), SubResource("Resource_wckeq")])
 metadata/_custom_type_script = "uid://ckc2iq0roikyx"
 
 [sub_resource type="Resource" id="Resource_n5q1j"]

@@ -13,10 +13,3 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 		return null
 	set_drag_preview(lab.make_chip_preview(allele))
 	return { "allele": allele, "source": "helix", "rung": rung, "side": side }
-
-func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
-	return lab != null and dna_screen != null \
-		and lab.can_place_allele(data, dna_screen.drop_rung, dna_screen.drop_side)
-
-func _drop_data(_at_position: Vector2, data: Variant) -> void:
-	lab.place_allele(data, dna_screen.drop_rung, dna_screen.drop_side)

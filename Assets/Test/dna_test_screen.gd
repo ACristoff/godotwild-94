@@ -44,6 +44,12 @@ func clear_drop_target(rung: int, side: String) -> void:
 		drop_rung = -1
 		drop_side = ""
 
+func rung_at_local(viewport_pos: Vector2) -> int:
+	var local_y = viewport_pos.y - area_2d.global_position.y
+	local_y += height / 2.0
+	var quadrant = int(local_y / spacing)
+	return clamp(quadrant, 0, 7)
+
 func update_visuals():
 	current_slot = 0
 	for i in shells:
@@ -73,38 +79,38 @@ func set_slot(slot: BodyMap.Slot):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if detect_hover:
-		var local_y = get_global_mouse_position().y - area_2d.global_position.y
-		local_y += height / 2.0
-		var quadrant = int(local_y / spacing)
-		quadrant = clamp(quadrant, 0, 7)
-		var within_quadrant = fmod(local_y, spacing)
-		var subquadrant_size = spacing / 3.0
-		var subquadrant = int(within_quadrant / subquadrant_size)
-		subquadrant = clamp(subquadrant, 0, 2)
-		#print("Quadrant:", quadrant, " Sub:", subquadrant)
-		king_index = quadrant
-		#for i in shells:
-			#i.subquadrant_king = subquadrant
-			#if i == shells[quadrant]:
-				#continue 
-			#i.current_king = current_shell
-			#i.submit_to_the_king()
-		#current_shell.face_forward()
-	
-		match subquadrant:
-			0:
-				king_offset = -1
-			1:
-				king_offset = 0
-			2:
-				king_offset = 1
-				
-		var center_frame = 29 + king_offset
-		for i in range(shells.size()):
-			var distance = i - king_index
-			var frame = center_frame - distance * 3
-			frame = wrapi(frame, 0, 48)
-			shells[i].set_frame(frame)
+		face_toward(get_global_mouse_position())
+
+func face_toward(world_pos: Vector2) -> void:
+	var local_y = world_pos.y - area_2d.global_position.y
+	local_y += height / 2.0
+	var quadrant = int(local_y / spacing)
+	quadrant = clamp(quadrant, 0, 7)
+	var within_quadrant = fmod(local_y, spacing)
+	var subquadrant_size = spacing / 3.0
+	var subquadrant = int(within_quadrant / subquadrant_size)
+	subquadrant = clamp(subquadrant, 0, 2)
+	king_index = quadrant
+	match subquadrant:
+		0:
+			king_offset = -1
+		1:
+			king_offset = 0
+		2:
+			king_offset = 1
+	var center_frame = 29 + king_offset
+	for i in range(shells.size()):
+		var distance = i - king_index
+		var frame = center_frame - distance * 3
+		frame = wrapi(frame, 0, 48)
+		shells[i].set_frame(frame)
+
+func set_dragging(active: bool) -> void:
+	if active:
+		detect_hover = false
+		$Timer.stop()
+	else:
+		$Timer.start()
 
 
 func display_helix(helix: Helix) -> void:

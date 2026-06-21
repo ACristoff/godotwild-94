@@ -5,9 +5,9 @@
 
 [node name="AlleleChip" type="TextureRect" unique_id=1304432060]
 custom_minimum_size = Vector2(48, 48)
-offset_left = -22.0
+offset_left = -23.0
 offset_top = -24.0
-offset_right = 26.0
+offset_right = 25.0
 offset_bottom = 24.0
 mouse_filter = 0
 texture = ExtResource("1_chip")

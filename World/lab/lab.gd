@@ -10,6 +10,7 @@ var yip_on_launch_pad: Yipee = null
 var yip_on_conveyor: Yipee = null
 const ALLELE_UI = preload("uid://cckwntee1s0l4")  # alelle_ui.tscn
 const ALLELE_CHIP = preload("res://UI/Scenes/allele_chip.tscn")
+const HELIX_DROP_OVERLAY = preload("res://UI/Scripts/helix_drop_overlay.gd")
 
 var allele_tooltip
 
@@ -37,11 +38,29 @@ func _ready() -> void:
 	helix_surface.dna_screen = dna_screen
 	left_inventory.lab = self
 	right_inventory.lab = self
+	_build_helix_drop_overlay()
 	if SignalBus.debug_mode == true && sample_yip != null:
 		seed_debug_alleles()
 		#sample_yip.helix = Helix.generate_debug()
 		spawn_yip(sample_yip)
 	rebuild_inventory()
+
+func _build_helix_drop_overlay() -> void:
+	var overlay := Control.new()
+	overlay.name = "HelixDropOverlay"
+	overlay.set_script(HELIX_DROP_OVERLAY)
+	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	overlay.lab = self
+	overlay.dna_screen = dna_screen
+	helix_surface.get_parent().add_child(overlay)
+	overlay.anchor_left = helix_surface.anchor_left
+	overlay.anchor_top = helix_surface.anchor_top
+	overlay.anchor_right = helix_surface.anchor_right
+	overlay.anchor_bottom = helix_surface.anchor_bottom
+	overlay.offset_left = helix_surface.offset_left
+	overlay.offset_top = helix_surface.offset_top
+	overlay.offset_right = helix_surface.offset_right
+	overlay.offset_bottom = helix_surface.offset_bottom
 
 func _ignore_mouse_recursive(node: Node) -> void:
 	if node is Control:
@@ -106,6 +125,8 @@ func _on_yip_unhovered() -> void:
 	focused_yip = null
 
 func update_screen():
+	left_inventory.visible = yip_placed
+	right_inventory.visible = yip_placed
 	if yip_placed:
 		$Control/SubViewportContainer/SubViewport/DNATestScreen.show()
 		$Control/SubViewportContainer/SubViewport/Cyanspeenspritesheet.hide()
@@ -173,6 +194,7 @@ func rebuild_inventory() -> void:
 		var chip = ALLELE_CHIP.instantiate()
 		if allele is LeftAllele:
 			left_inventory.add_child(chip)
+			chip.flip_h = true
 		else:
 			right_inventory.add_child(chip)
 		chip.setup(allele, index)
@@ -181,6 +203,16 @@ func current_helix() -> Helix:
 	if yip_on_launch_pad == null:
 		return null
 	return yip_on_launch_pad.data.helix
+
+func rung_for_slot(slot: BodyMap.Slot) -> int:
+	var helix := current_helix()
+	if helix == null:
+		return -1
+	for rung_index in helix.strands.size():
+		var strand: Strand = helix.strands[rung_index]
+		if strand != null and strand.slot == slot:
+			return rung_index
+	return -1
 
 func can_place_allele(data: Variant, rung_index: int, side: String) -> bool:
 	if typeof(data) != TYPE_DICTIONARY or not data.has("allele"):
@@ -233,6 +265,7 @@ func allele_at(rung_index: int, side: String) -> Allele:
 func make_chip_preview(allele: Allele) -> Control:
 	var chip = ALLELE_CHIP.instantiate()
 	chip.setup(allele, -1)
+	chip.flip_h = allele is LeftAllele
 	chip.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	return chip
 
