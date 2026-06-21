@@ -53,6 +53,8 @@ func change_scene(new_state: String):
 		return OK
 	if new_state == "Main":
 		_clear_menu_ui()
+		if current_scene != null:
+			current_scene.queue_free()
 		var new_scene = Menu_Scenes[new_state].instantiate()
 		$MenuUI.add_child(new_scene)
 		current_scene = new_scene

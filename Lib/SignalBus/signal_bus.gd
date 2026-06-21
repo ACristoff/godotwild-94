@@ -24,6 +24,12 @@ var yip_party : Dictionary[int, YipeeData] = {
 	5: null
 }
 
+## The two breeding-barn parent slots
+var yip_breed_barn : Dictionary[int, YipeeData] = {
+	1: null,
+	2: null
+}
+
 var coins: int = 12
 enum Locations { FARM, FIELD, LAB, BATTLE, WIN_LOSE }
 var game_started: bool = false
