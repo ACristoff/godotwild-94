@@ -33,6 +33,7 @@ func _get_drag_data(_pos: Vector2) -> Variant:
 	var preview := TextureRect.new()
 	preview.texture = texture
 	preview.modulate = modulate
+	preview.flip_h = flip_h
 	preview.custom_minimum_size = custom_minimum_size
 	preview.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	set_drag_preview(preview)
