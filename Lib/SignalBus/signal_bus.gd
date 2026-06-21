@@ -21,7 +21,7 @@ enum Locations { FARM, FIELD, LAB, BATTLE, WIN_LOSE }
 var game_started: bool = false
 
 var current_health = 3
-var current_wins = 1
+var current_wins = 0
 var debug_mode: bool = true
 
 var victories: int = 0 

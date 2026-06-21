@@ -81,16 +81,19 @@ layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="Heart1" type="TextureRect" parent="WinLoseScreen/VBoxContainer/Hearts" unique_id=1813316920]
+modulate = Color(0.19215687, 0.19215687, 0.19215687, 1)
 self_modulate = Color(1, 0.29000002, 0.29000002, 1)
 layout_mode = 2
 texture = ExtResource("2_smsqj")
 
 [node name="Heart2" type="TextureRect" parent="WinLoseScreen/VBoxContainer/Hearts" unique_id=1030712121]
+modulate = Color(0.19215687, 0.19215687, 0.19215687, 1)
 self_modulate = Color(1, 0.29000002, 0.29000002, 1)
 layout_mode = 2
 texture = ExtResource("2_smsqj")
 
 [node name="Heart3" type="TextureRect" parent="WinLoseScreen/VBoxContainer/Hearts" unique_id=1456968810]
+modulate = Color(0.19215687, 0.19215687, 0.19215687, 1)
 self_modulate = Color(1, 0.29000002, 0.29000002, 1)
 layout_mode = 2
 texture = ExtResource("2_smsqj")
