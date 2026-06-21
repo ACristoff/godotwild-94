@@ -13,15 +13,24 @@ var current_slot = 0
 var king_index : int
 var king_offset : int
 
-# Called when the node enters the scene tree for the first time.
+signal allele_hovered(allele: Allele, side: String)
+signal allele_unhovered
+
 func _ready() -> void:
 	height = collision_shape_2d.shape.size.y
 	height *= scale.y
 	spacing = height / 8
 	sub_spacing = spacing / 3
-	#print(shells)
+	for shell in shells:
+		shell.allele_hovered.connect(_on_shell_allele_hovered)
+		shell.allele_unhovered.connect(_on_shell_allele_unhovered)
 	update_visuals()
 
+func _on_shell_allele_hovered(allele: Allele, side: String) -> void:
+	allele_hovered.emit(allele, side)
+
+func _on_shell_allele_unhovered() -> void:
+	allele_unhovered.emit()
 func update_visuals():
 	current_slot = 0
 	for i in shells:
@@ -90,10 +99,10 @@ func display_helix(helix: Helix) -> void:
 		var strand: Strand = helix.strands[i]
 		if strand == null or strand.slot == BodyMap.Slot.NONE:
 			shells[i].set_slot("NONE")
-			shells[i].set_allele_fill(false, false)
+			shells[i].set_alleles(null, null)
 		else:
 			shells[i].set_slot(BodyMap.Slot.keys()[strand.slot])
-			shells[i].set_allele_fill(strand.left != null, strand.right != null)
+			shells[i].set_alleles(strand.left, strand.right)
 
 func _on_area_2d_mouse_entered() -> void:
 	#print("hi")

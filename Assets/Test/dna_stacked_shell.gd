@@ -9,6 +9,12 @@ var setter = false
 
 var test_slot_type
 
+signal allele_hovered(allele: Allele, side: String)
+signal allele_unhovered
+
+var left_allele: Allele = null
+var right_allele: Allele = null
+
 @onready var rect_handle: Node2D = $RectHandle
 @onready var color_rect: ColorRect = $RectHandle/ColorRect
 @onready var slot_titles: Sprite2D = $RectHandle/SlotTitles
@@ -122,10 +128,12 @@ func set_slot(type):
 			dna_shell_2.modulate = Color.from_string("3d3d3d", Color.BLACK)
 	slot_color = dna_shell_1.modulate
 
-func set_allele_fill(has_left: bool, has_right: bool) -> void:
+func set_alleles(left: Allele, right: Allele) -> void:
+	left_allele = left
+	right_allele = right
 	var empty := Color.from_string("3d3d3d", Color.BLACK)
-	dna_allele_2.modulate = slot_color if has_left else empty   # DnaAllele2 = LEFT
-	dna_allele_1.modulate = slot_color if has_right else empty  # DnaAllele1 = RIGHT
+	dna_allele_2.modulate = slot_color if left != null else empty   # DnaAllele2 = LEFT
+	dna_allele_1.modulate = slot_color if right != null else empty  # DnaAllele1 = RIGHT
 
 func tick_forward():
 	current_frame += 1
@@ -156,22 +164,24 @@ func _on_area_2d_mouse_exited() -> void:
 
 func _on_right_allele_hover_mouse_entered() -> void:
 	$AnimationPlayer.play("appear")
-	#$AnimationPlayer.play("RESET")
 	$DnaAllele1.self_modulate = Color(1.526, 1.526, 1.526, 1.0)
+	if right_allele != null:
+		allele_hovered.emit(right_allele, "RIGHT")
 
 func _on_right_allele_hover_mouse_exited() -> void:
-	
 	$AnimationPlayer.play("RESET")
 	$DnaAllele1.self_modulate = Color("ffffffff")
-
+	if right_allele != null:
+		allele_unhovered.emit()
 
 func _on_left_allele_mouse_entered() -> void:
 	$AnimationPlayer.play("appear")
-	#$AnimationPlayer.play("RESET")
 	$DnaAllele2.self_modulate = Color(1.526, 1.526, 1.526, 1.0)
-
+	if left_allele != null:
+		allele_hovered.emit(left_allele, "LEFT")
 
 func _on_left_allele_mouse_exited() -> void:
-	
 	$AnimationPlayer.play("RESET")
 	$DnaAllele2.self_modulate = Color("ffffffff")
+	if left_allele != null:
+		allele_unhovered.emit()
