@@ -1,6 +1,8 @@
 extends Button
 
 @export var target_highlight := Node
+@export var growth_scale : int = 3
+@export var click_sound : AudioStreamWAV = preload("res://Assets/Audio/Sounds/UI_Tick_03.wav")
 #@export var secondary_target_highlight := Node
 
 func _ready() -> void:
@@ -15,13 +17,14 @@ func _on_mouse_exited() -> void:
 	#secondary_target_highlight.modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 func _on_button_down() -> void:
+	AudMan.play_sfx_wav(click_sound, -8.0, false)
 	var tween = create_tween()
 	tween.set_parallel(true)
-	tween.tween_property(target_highlight, "scale", Vector2(2.95, 2.95), 0.05)
+	tween.tween_property(target_highlight, "scale", Vector2(growth_scale - 0.05, growth_scale - 0.05), 0.05)
 	#tween.tween_property(secondary_target_highlight, "scale", Vector2(0.98, 0.98), 0.05)
 
 func _on_button_up() -> void:
 	var tween = create_tween()
 	tween.set_parallel(true)
-	tween.tween_property(target_highlight, "scale", Vector2(3, 3), 0.05)
+	tween.tween_property(target_highlight, "scale", Vector2(growth_scale, growth_scale), 0.05)
 	#tween.tween_property(secondary_target_highlight, "scale", Vector2(1, 1), 0.05)
