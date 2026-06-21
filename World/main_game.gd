@@ -5,10 +5,6 @@ extends Node2D
 
 const transition_screen = preload("res://UI/Scenes/transitions.tscn")
 
-func spawn_transition():
-	var trans = transition_screen.instantiate()
-	add_child(trans)
-
 const location_dictionary = {
 	SignalBus.Locations.FARM: preload("res://World/farm/farm_hub.tscn"),
 	SignalBus.Locations.FIELD: preload("res://World/field/field.tscn"),
@@ -26,18 +22,27 @@ const music = {
 }
 
 
+
+
 func change_location(location: SignalBus.Locations) -> void:
 	print('going to new location', location)
 	var new_location = location_dictionary[location].instantiate()
-	
 	if location == SignalBus.Locations.BATTLE && SignalBus.debug_mode == false:
 		var next_fight = fight_org.get_next_fight()
 		new_location.level = next_fight
+	if location != SignalBus.Locations.BATTLE:
+		var trans = spawn_transition()
+		await trans.screen_covered
+
 	add_child(new_location)
 	child_scene.queue_free()
 	child_scene = new_location
 	AudMan.play_music(music[location])
-	
+
+func spawn_transition() -> Node:
+	var trans = transition_screen.instantiate()
+	add_child(trans)
+	return trans
 
 ## Called when the node enters the scene tree for the first time.
 func _ready():
@@ -50,7 +55,7 @@ func _ready():
 		change_location(SignalBus.Locations.FARM)
 
 func _on_battle_finished(victory: bool) -> void:
-	change_location(SignalBus.Locations.WIN_LOSE)
+	await change_location(SignalBus.Locations.WIN_LOSE)
 	await get_tree().create_timer(2.0).timeout
 	if victory == true:
 		child_scene.won_match()

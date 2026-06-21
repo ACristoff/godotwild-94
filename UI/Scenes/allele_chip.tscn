@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://wcxanrbutred"]
+
+[ext_resource type="Texture2D" uid="uid://bsxxbhm6sgqhs" path="res://UI/Textures/gene_small.png" id="1_chip"]
+[ext_resource type="Script" uid="uid://cfxm1yk53dfcg" path="res://UI/Scripts/allele_chip.gd" id="2_chip"]
+
+[node name="AlleleChip" type="TextureRect" unique_id=1304432060]
+custom_minimum_size = Vector2(48, 48)
+offset_left = -22.0
+offset_top = -24.0
+offset_right = 26.0
+offset_bottom = 24.0
+mouse_filter = 0
+texture = ExtResource("1_chip")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("2_chip")
