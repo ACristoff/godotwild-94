@@ -231,3 +231,14 @@ func _process(delta):
 
 func _on_next_button_pressed() -> void:
 	_on_next()
+
+
+func _on_game_speed_button_pressed() -> void:
+	if battle_speed == 1:
+		battle_speed = 2
+		$ButtonRefresh4/SpeedLabel.text = "2x"
+		$ButtonRefresh4.self_modulate = Color("478da6")
+	else:
+		battle_speed = 1
+		$ButtonRefresh4/SpeedLabel.text = "1x"
+		$ButtonRefresh4.self_modulate = Color("2a3661ff")

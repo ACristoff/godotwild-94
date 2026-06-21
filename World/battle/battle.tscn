@@ -207,7 +207,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="Label4" type="Label" parent="ButtonRefresh4" unique_id=575396045]
+[node name="SpeedLabel" type="Label" parent="ButtonRefresh4" unique_id=575396045]
 z_index = 4096
 layout_mode = 1
 anchors_preset = 15
@@ -258,3 +258,4 @@ target_highlight = NodePath("../ButtonRefresh4")
 [connection signal="button_up" from="GameSpeedButton" to="GameSpeedButton" method="_on_button_up"]
 [connection signal="mouse_entered" from="GameSpeedButton" to="GameSpeedButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="GameSpeedButton" to="GameSpeedButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="GameSpeedButton" to="." method="_on_game_speed_button_pressed"]
