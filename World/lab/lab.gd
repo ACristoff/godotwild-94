@@ -8,10 +8,11 @@ var drag_offset: Vector2 = Vector2.ZERO
 
 var yip_on_launch_pad: Yipee = null
 var yip_on_conveyor: Yipee = null
-const ALLELE_UI = preload("uid://cckwntee1s0l4")  # alelle_ui.tscn
+const ALLELE_UI = preload("uid://cckwntee1s0l4")
 const ALLELE_CHIP = preload("res://UI/Scenes/allele_chip.tscn")
 const HELIX_DROP_OVERLAY = preload("res://UI/Scripts/helix_drop_overlay.gd")
-
+var team_slots: Array[Area2D] = []
+var yip_lab_party_position: Dictionary[int, Yipee] = {1: null, 2: null, 3: null, 4: null, 5: null}
 var allele_tooltip
 
 @onready var canvas_layer = $CanvasLayer
@@ -23,6 +24,8 @@ var allele_tooltip
 @onready var left_inventory = $CanvasLayer/LeftInventory
 @onready var right_inventory = $CanvasLayer/RightInventory
 @onready var helix_surface = $Control/SubViewportContainer
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,6 +42,9 @@ func _ready() -> void:
 	left_inventory.lab = self
 	right_inventory.lab = self
 	_build_helix_drop_overlay()
+	for child in areas.get_children():
+		if child.name != &"MainPen":
+			team_slots.append(child)
 	if SignalBus.debug_mode == true && sample_yip != null:
 		seed_debug_alleles()
 		#sample_yip.helix = Helix.generate_debug()
@@ -106,16 +112,21 @@ func get_random_point_in_area() -> Vector2:
 func spawn_yip(data: YipeeData) -> Yipee:
 	var yip : Yipee = preload("res://World/yipee/yipee.tscn").instantiate() as Yipee
 	yip.data = data
-	#yip.global_position = Vector2(300,300)
-	yip.global_position = get_random_point_in_area()
-	print(yip.global_position)
-	yip.data.can_be_grabbed = true
 	add_child(yip)
 	yip.z_index = 100
 	yip.health_UI.visible = false
-	yip.animation_player.play(&"Spawn")
+	yip.data.can_be_grabbed = true
 	yip.yip_hovered.connect(_on_yip_hovered)
 	yip.yip_unhovered.connect(_on_yip_unhovered)
+	
+	if yip.data.yip_party_slot != 0:
+		yip.global_position = team_slots[yip.data.yip_party_slot - 1].global_position
+		yip_lab_party_position[yip.data.yip_party_slot] = yip
+		yip.animation_player.play(&"IdleNormal")
+	else:
+		yip.global_position = get_random_point_in_area()
+		yip.animation_player.play(&"Spawn")
+	
 	return yip
 
 func _on_yip_hovered(yip: Yipee) -> void:
