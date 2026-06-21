@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://cb2jggjfn6m6d"]
 
+[ext_resource type="Script" uid="uid://blxadt0jnvdon" path="res://UI/Scripts/settings.gd" id="1_jk7ur"]
 [ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="1_ty03o"]
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="2_c4f4i"]
+[ext_resource type="Texture2D" uid="uid://c5qwf286x8k71" path="res://UI/Menus/Main_Menu/Textures/Arrow (2).png" id="3_4fob1"]
+[ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="4_sv3nx"]
 
 [node name="Settings" type="CanvasLayer" unique_id=359164329]
+script = ExtResource("1_jk7ur")
 
 [node name="ButtonRefresh5" type="NinePatchRect" parent="." unique_id=1673092843]
 self_modulate = Color(0.8, 0.8, 0.8, 1)
@@ -15,10 +19,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -23.944458
-offset_top = -11.129639
-offset_right = 23.944458
-offset_bottom = 11.129639
+offset_left = -146.88
+offset_top = -102.185
+offset_right = 146.88
+offset_bottom = 102.185
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
@@ -57,16 +61,371 @@ text = "Back"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SettingsLabel" type="Label" parent="ButtonRefresh5" unique_id=665866748]
-layout_mode = 0
-offset_left = 67.093346
-offset_top = 3.8516643
-offset_right = 223.76001
-offset_bottom = 43.51833
-theme_override_colors/font_color = Color(0.7254902, 0.92156863, 0.43137255, 1)
-theme_override_colors/font_outline_color = Color(0.22352941, 0.28235295, 0.13333334, 1)
-theme_override_constants/outline_size = 6
+[node name="BackButton" type="Button" parent="ButtonRefresh5/ButtonRefresh6" unique_id=682168400 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_sv3nx")
+target_highlight = NodePath("..")
+growth_scale = 1
+
+[node name="ButtonRefresh7" type="NinePatchRect" parent="ButtonRefresh5" unique_id=436848619]
+self_modulate = Color(0.46511114, 0.6162186, 0.21819714, 1)
+z_index = 4096
+texture_filter = 3
+layout_mode = 1
+offset_left = 4.4266777
+offset_top = 44.184998
+offset_right = 290.21335
+offset_bottom = 201.51834
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("1_ty03o")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="ButtonRefresh5/ButtonRefresh7" unique_id=492011437]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ButtonRefresh5/ButtonRefresh7/MarginContainer" unique_id=524015922]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer" unique_id=418932057]
+layout_mode = 2
+
+[node name="Setting" type="VBoxContainer" parent="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1006252445]
+custom_minimum_size = Vector2(116, 74)
+layout_mode = 2
+
+[node name="AllSounds" type="Label" parent="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Setting" unique_id=1881729912]
+layout_mode = 2
+size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_c4f4i")
-text = "Settings"
+theme_override_font_sizes/font_size = 16
+text = "All Sounds"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Music" type="Label" parent="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Setting" unique_id=627299021]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_c4f4i")
+theme_override_font_sizes/font_size = 16
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sfx" type="Label" parent="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Setting" unique_id=1990416808]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_c4f4i")
+theme_override_font_sizes/font_size = 16
+text = "SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="VBoxContainer" parent="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer" unique_id=436507108]
+custom_minimum_size = Vector2(24, 74)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button" unique_id=1174472624]
+self_modulate = Color(0.3137255, 0.41568628, 0.14901961, 1)
+layout_mode = 2
+texture = ExtResource("3_4fob1")
+flip_h = true
+
+[node name="ASDN" type="Button" parent="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect" unique_id=1174004438 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_sv3nx")
+target_highlight = NodePath("..")
+growth_scale = 1
+
+[node name="TextureRect2" type="TextureRect" parent="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button" unique_id=1775968334]
+self_modulate = Color(0.3137255, 0.41568628, 0.14901961, 1)
+layout_mode = 2
+texture = ExtResource("3_4fob1")
+flip_h = true
+
+[node name="MDN" type="Button" parent="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect2" unique_id=87139493 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_sv3nx")
+target_highlight = NodePath("..")
+growth_scale = 1
+
+[node name="TextureRect3" type="TextureRect" parent="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button" unique_id=1108547794]
+self_modulate = Color(0.3137255, 0.41568628, 0.14901961, 1)
+layout_mode = 2
+texture = ExtResource("3_4fob1")
+flip_h = true
+
+[node name="SFXDN" type="Button" parent="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect3" unique_id=1768981339 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_sv3nx")
+target_highlight = NodePath("..")
+growth_scale = 1
+
+[node name="Value" type="VBoxContainer" parent="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1718790917]
+custom_minimum_size = Vector2(46, 74)
+layout_mode = 2
+
+[node name="ASL" type="Label" parent="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Value" unique_id=487672520]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_c4f4i")
+theme_override_font_sizes/font_size = 16
+text = "100%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ML" type="Label" parent="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Value" unique_id=1616581963]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_c4f4i")
+theme_override_font_sizes/font_size = 16
+text = "100%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFXL" type="Label" parent="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Value" unique_id=666082581]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_c4f4i")
+theme_override_font_sizes/font_size = 16
+text = "100%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button2" type="VBoxContainer" parent="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer" unique_id=402621086]
+custom_minimum_size = Vector2(24, 74)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2" unique_id=902351424]
+self_modulate = Color(0.3137255, 0.41568628, 0.14901961, 1)
+layout_mode = 2
+texture = ExtResource("3_4fob1")
+
+[node name="ASUP" type="Button" parent="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect" unique_id=711148381 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_sv3nx")
+target_highlight = NodePath("..")
+growth_scale = 1
+
+[node name="TextureRect2" type="TextureRect" parent="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2" unique_id=546879953]
+self_modulate = Color(0.3137255, 0.41568628, 0.14901961, 1)
+layout_mode = 2
+texture = ExtResource("3_4fob1")
+
+[node name="MUP" type="Button" parent="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect2" unique_id=1610893788 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_sv3nx")
+target_highlight = NodePath("..")
+growth_scale = 1
+
+[node name="TextureRect3" type="TextureRect" parent="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2" unique_id=1705264395]
+self_modulate = Color(0.3137255, 0.41568628, 0.14901961, 1)
+layout_mode = 2
+texture = ExtResource("3_4fob1")
+
+[node name="SFXUP" type="Button" parent="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect3" unique_id=2006372197 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_sv3nx")
+target_highlight = NodePath("..")
+growth_scale = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ButtonRefresh5/ButtonRefresh7" unique_id=1416151564]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.119995
+offset_top = 109.333336
+offset_right = -4.0
+offset_bottom = -3.3333435
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonRefresh8" type="NinePatchRect" parent="ButtonRefresh5/ButtonRefresh7/HBoxContainer" unique_id=517431021]
+self_modulate = Color(0.3137255, 0.41568628, 0.14901961, 1)
+z_index = 4096
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_ty03o")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MM" type="Label" parent="ButtonRefresh5/ButtonRefresh7/HBoxContainer/ButtonRefresh8" unique_id=1813887580]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_c4f4i")
+text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="ButtonRefresh5/ButtonRefresh7/HBoxContainer/ButtonRefresh8" unique_id=447742606 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_sv3nx")
+target_highlight = NodePath("..")
+growth_scale = 1
+
+[node name="ButtonRefresh9" type="NinePatchRect" parent="ButtonRefresh5/ButtonRefresh7/HBoxContainer" unique_id=1213937648]
+self_modulate = Color(0.3137255, 0.41568628, 0.14901961, 1)
+z_index = 4096
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_ty03o")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="BackLabel" type="Label" parent="ButtonRefresh5/ButtonRefresh7/HBoxContainer/ButtonRefresh9" unique_id=1097830424]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_c4f4i")
+text = "Restart"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="ButtonRefresh5/ButtonRefresh7/HBoxContainer/ButtonRefresh9" unique_id=436263890 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_sv3nx")
+target_highlight = NodePath("..")
+growth_scale = 1
+
+[node name="SettingsLabel" type="Label" parent="ButtonRefresh5" unique_id=665866748]
+layout_mode = 0
+offset_left = 65.76001
+offset_top = 0.5183308
+offset_right = 290.88
+offset_bottom = 48.51833
+theme_override_colors/font_color = Color(0.14184, 0.18, 0.08460001, 1)
+theme_override_colors/font_outline_color = Color(0.22352941, 0.28235295, 0.13333334, 1)
+theme_override_fonts/font = ExtResource("2_c4f4i")
+text = "
+Settings
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_down" from="ButtonRefresh5/ButtonRefresh6/BackButton" to="ButtonRefresh5/ButtonRefresh6/BackButton" method="_on_button_down"]
+[connection signal="button_up" from="ButtonRefresh5/ButtonRefresh6/BackButton" to="ButtonRefresh5/ButtonRefresh6/BackButton" method="_on_button_up"]
+[connection signal="mouse_entered" from="ButtonRefresh5/ButtonRefresh6/BackButton" to="ButtonRefresh5/ButtonRefresh6/BackButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonRefresh5/ButtonRefresh6/BackButton" to="ButtonRefresh5/ButtonRefresh6/BackButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="ButtonRefresh5/ButtonRefresh6/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="button_down" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect/ASDN" to="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect/ASDN" method="_on_button_down"]
+[connection signal="button_up" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect/ASDN" to="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect/ASDN" method="_on_button_up"]
+[connection signal="mouse_entered" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect/ASDN" to="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect/ASDN" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect/ASDN" to="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect/ASDN" method="_on_mouse_exited"]
+[connection signal="pressed" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect/ASDN" to="." method="_on_asdn_pressed"]
+[connection signal="button_down" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect2/MDN" to="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect2/MDN" method="_on_button_down"]
+[connection signal="button_up" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect2/MDN" to="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect2/MDN" method="_on_button_up"]
+[connection signal="mouse_entered" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect2/MDN" to="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect2/MDN" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect2/MDN" to="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect2/MDN" method="_on_mouse_exited"]
+[connection signal="pressed" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect2/MDN" to="." method="_on_mdn_pressed"]
+[connection signal="button_down" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect3/SFXDN" to="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect3/SFXDN" method="_on_button_down"]
+[connection signal="button_up" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect3/SFXDN" to="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect3/SFXDN" method="_on_button_up"]
+[connection signal="mouse_entered" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect3/SFXDN" to="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect3/SFXDN" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect3/SFXDN" to="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect3/SFXDN" method="_on_mouse_exited"]
+[connection signal="pressed" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button/TextureRect3/SFXDN" to="." method="_on_sfxdn_pressed"]
+[connection signal="button_down" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect/ASUP" to="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect/ASUP" method="_on_button_down"]
+[connection signal="button_up" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect/ASUP" to="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect/ASUP" method="_on_button_up"]
+[connection signal="mouse_entered" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect/ASUP" to="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect/ASUP" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect/ASUP" to="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect/ASUP" method="_on_mouse_exited"]
+[connection signal="pressed" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect/ASUP" to="." method="_on_asup_pressed"]
+[connection signal="button_down" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect2/MUP" to="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect2/MUP" method="_on_button_down"]
+[connection signal="button_up" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect2/MUP" to="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect2/MUP" method="_on_button_up"]
+[connection signal="mouse_entered" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect2/MUP" to="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect2/MUP" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect2/MUP" to="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect2/MUP" method="_on_mouse_exited"]
+[connection signal="pressed" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect2/MUP" to="." method="_on_mup_pressed"]
+[connection signal="button_down" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect3/SFXUP" to="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect3/SFXUP" method="_on_button_down"]
+[connection signal="button_up" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect3/SFXUP" to="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect3/SFXUP" method="_on_button_up"]
+[connection signal="mouse_entered" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect3/SFXUP" to="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect3/SFXUP" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect3/SFXUP" to="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect3/SFXUP" method="_on_mouse_exited"]
+[connection signal="pressed" from="ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Button2/TextureRect3/SFXUP" to="." method="_on_sfxup_pressed"]
+[connection signal="button_down" from="ButtonRefresh5/ButtonRefresh7/HBoxContainer/ButtonRefresh8/MainMenuButton" to="ButtonRefresh5/ButtonRefresh7/HBoxContainer/ButtonRefresh8/MainMenuButton" method="_on_button_down"]
+[connection signal="button_up" from="ButtonRefresh5/ButtonRefresh7/HBoxContainer/ButtonRefresh8/MainMenuButton" to="ButtonRefresh5/ButtonRefresh7/HBoxContainer/ButtonRefresh8/MainMenuButton" method="_on_button_up"]
+[connection signal="mouse_entered" from="ButtonRefresh5/ButtonRefresh7/HBoxContainer/ButtonRefresh8/MainMenuButton" to="ButtonRefresh5/ButtonRefresh7/HBoxContainer/ButtonRefresh8/MainMenuButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonRefresh5/ButtonRefresh7/HBoxContainer/ButtonRefresh8/MainMenuButton" to="ButtonRefresh5/ButtonRefresh7/HBoxContainer/ButtonRefresh8/MainMenuButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="ButtonRefresh5/ButtonRefresh7/HBoxContainer/ButtonRefresh8/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="button_down" from="ButtonRefresh5/ButtonRefresh7/HBoxContainer/ButtonRefresh9/RestartButton" to="ButtonRefresh5/ButtonRefresh7/HBoxContainer/ButtonRefresh9/RestartButton" method="_on_button_down"]
+[connection signal="button_up" from="ButtonRefresh5/ButtonRefresh7/HBoxContainer/ButtonRefresh9/RestartButton" to="ButtonRefresh5/ButtonRefresh7/HBoxContainer/ButtonRefresh9/RestartButton" method="_on_button_up"]
+[connection signal="mouse_entered" from="ButtonRefresh5/ButtonRefresh7/HBoxContainer/ButtonRefresh9/RestartButton" to="ButtonRefresh5/ButtonRefresh7/HBoxContainer/ButtonRefresh9/RestartButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonRefresh5/ButtonRefresh7/HBoxContainer/ButtonRefresh9/RestartButton" to="ButtonRefresh5/ButtonRefresh7/HBoxContainer/ButtonRefresh9/RestartButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="ButtonRefresh5/ButtonRefresh7/HBoxContainer/ButtonRefresh9/RestartButton" to="." method="_on_restart_button_pressed"]
