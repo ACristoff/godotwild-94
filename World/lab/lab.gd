@@ -311,3 +311,8 @@ func _on_conveyor_area_area_entered(area):
 
 func _on_conveyor_area_area_exited(area):
 	pass # Replace with function body.
+
+
+func _on_farm_button_pressed():
+	SignalBus.go_to.emit(SignalBus.Locations.FARM)
+	pass # Replace with function body.

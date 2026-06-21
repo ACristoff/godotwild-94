@@ -491,6 +491,7 @@ speed_scale = 0.3
 [connection signal="button_up" from="FarmButton" to="FarmButton" method="_on_button_up"]
 [connection signal="mouse_entered" from="FarmButton" to="FarmButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="FarmButton" to="FarmButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="FarmButton" to="." method="_on_farm_button_pressed"]
 
 [editable path="Control/SubViewportContainer/SubViewport/DNATestScreen"]
 [editable path="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA/DNAStackedShell"]

@@ -383,9 +383,13 @@ func _on_any_area_exited(entered_area: Area2D, source_area: Area2D) -> void:
 
 func _on_area_2d_mouse_entered() -> void:
 	$LabDoor2.play("DoorOpen")
+
 func _on_area_2d_mouse_exited() -> void:
 	$LabDoor2.play("DoorClose")
 
+func _on_lab_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		SignalBus.go_to.emit(SignalBus.Locations.LAB)
 
 func _on_team_slots_next() -> void:
 	SignalBus.party_slot_tutorial_clicked = true
