@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="11_co32c"]
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="11_mntup"]
 [ext_resource type="Script" uid="uid://dn0twegwjngg0" path="res://UI/Scripts/inventory_drop.gd" id="12_invdrop"]
+[ext_resource type="Texture2D" uid="uid://duipa70vx5fn3" path="res://UI/Menus/Main_Menu/Textures/SettingsButt.png" id="24_58ib8"]
 
 [sub_resource type="Resource" id="Resource_5722r"]
 script = ExtResource("3_8wn1l")
@@ -483,6 +484,36 @@ libraries/ = SubResource("AnimationLibrary_sf1g0")
 autoplay = &"Spin"
 speed_scale = 0.3
 
+[node name="SettingsButton" type="Button" parent="." unique_id=225103772 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 94.0
+offset_bottom = 94.0
+text = "Settings"
+script = ExtResource("11_co32c")
+target_highlight = NodePath("")
+
+[node name="SettingsButtonOver" type="NinePatchRect" parent="." unique_id=656298927]
+self_modulate = Color(0.59607846, 0.6509804, 0.2784314, 1)
+z_index = 4096
+texture_filter = 3
+offset_left = 34.0
+offset_top = 34.0
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("10_co32c")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="SettingsButt" type="Sprite2D" parent="SettingsButtonOver" unique_id=1424752254]
+position = Vector2(15, 15)
+texture = ExtResource("24_58ib8")
+
 [connection signal="area_entered" from="LaunchPad" to="." method="_on_launch_pad_area_entered"]
 [connection signal="area_exited" from="LaunchPad" to="." method="_on_launch_pad_area_exited"]
 [connection signal="area_entered" from="ConveyorArea" to="." method="_on_conveyor_area_area_entered"]
@@ -492,6 +523,10 @@ speed_scale = 0.3
 [connection signal="mouse_entered" from="FarmButton" to="FarmButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="FarmButton" to="FarmButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="FarmButton" to="." method="_on_farm_button_pressed"]
+[connection signal="button_down" from="SettingsButton" to="SettingsButton" method="_on_button_down"]
+[connection signal="button_up" from="SettingsButton" to="SettingsButton" method="_on_button_up"]
+[connection signal="mouse_entered" from="SettingsButton" to="SettingsButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="SettingsButton" to="SettingsButton" method="_on_mouse_exited"]
 
 [editable path="Control/SubViewportContainer/SubViewport/DNATestScreen"]
 [editable path="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA/DNAStackedShell"]

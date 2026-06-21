@@ -7,9 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://dqgfurgu7jsbg" path="res://UI/Scenes/yip_toolyip.tscn" id="5_8ubfp"]
 [ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="6_ju3ud"]
 [ext_resource type="Texture2D" uid="uid://chftxxvwdvkgk" path="res://Assets/Environment/Scenes/BattleField/LockButton.png" id="7_748j3"]
-[ext_resource type="Script" path="res://UI/Scripts/lock_button_graphic.gd" id="8_6l7jc"]
+[ext_resource type="Script" uid="uid://dqvqbetgnjsnh" path="res://UI/Scripts/lock_button_graphic.gd" id="8_6l7jc"]
 [ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="8_lwms1"]
 [ext_resource type="Texture2D" uid="uid://ck0oxmum5r402" path="res://Assets/Environment/Scenes/CaptureField/UpgradeSign.png" id="10_rh655"]
+[ext_resource type="Texture2D" uid="uid://duipa70vx5fn3" path="res://UI/Menus/Main_Menu/Textures/SettingsButt.png" id="11_8ubfp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6l7jc"]
 size = Vector2(1161, 702)
@@ -250,6 +251,36 @@ rare 2%
 ultra-rare 2%"
 horizontal_alignment = 2
 
+[node name="SettingsButton" type="Button" parent="." unique_id=711255681 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 94.0
+offset_bottom = 94.0
+text = "Settings"
+script = ExtResource("8_lwms1")
+target_highlight = NodePath("")
+
+[node name="SettingsButtonOver" type="NinePatchRect" parent="." unique_id=1122439127]
+self_modulate = Color(0.59607846, 0.6509804, 0.2784314, 1)
+z_index = 4096
+texture_filter = 3
+offset_left = 34.0
+offset_top = 34.0
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("6_ju3ud")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="SettingsButt" type="Sprite2D" parent="SettingsButtonOver" unique_id=237522819]
+position = Vector2(15, 15)
+texture = ExtResource("11_8ubfp")
+
 [connection signal="button_down" from="RefreshButton" to="RefreshButton" method="_on_button_down"]
 [connection signal="button_up" from="RefreshButton" to="RefreshButton" method="_on_button_up"]
 [connection signal="mouse_entered" from="RefreshButton" to="RefreshButton" method="_on_mouse_entered"]
@@ -264,3 +295,7 @@ horizontal_alignment = 2
 [connection signal="mouse_entered" from="FarmButton" to="FarmButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="FarmButton" to="FarmButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="FarmButton" to="." method="_on_farm_button_pressed"]
+[connection signal="button_down" from="SettingsButton" to="SettingsButton" method="_on_button_down"]
+[connection signal="button_up" from="SettingsButton" to="SettingsButton" method="_on_button_up"]
+[connection signal="mouse_entered" from="SettingsButton" to="SettingsButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="SettingsButton" to="SettingsButton" method="_on_mouse_exited"]
