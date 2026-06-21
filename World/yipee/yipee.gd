@@ -21,7 +21,6 @@ const YIP_BUFF = preload("uid://nkypm8ojycqe")
 @onready var health_UI: HealthBar = $HealthBar
 @onready var hover_area: Area2D = $HoverArea
 @onready var farmslot: Area2D = $FarmSlot
-
 @onready var animation_player : AnimationPlayer = $ActionsAnim
 
 @onready var cost_of_yip: Sprite2D = $CostOfYip

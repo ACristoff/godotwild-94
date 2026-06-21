@@ -965,6 +965,7 @@ shape = SubResource("CircleShape2D_6vhmf")
 debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="CostOfYip" type="Sprite2D" parent="." unique_id=876915544]
+visible = false
 self_modulate = Color(0.64, 0.35850662, 0.05759998, 1)
 texture_filter = 3
 position = Vector2(2, 84)

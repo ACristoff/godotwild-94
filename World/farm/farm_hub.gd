@@ -220,6 +220,7 @@ func spawn_yip(data: YipeeData, index : int) -> Yipee:
 	yip.health_UI.current_health = yip.health.current_health
 	yip.health_UI.max_health = yip.health.max_health
 	yip.health_UI.update_UI()
+	#yip.cost.visible = false
 	
 	# Checking if this yip already had a farm position
 	if yip.data.farm_last_known_position == Vector2.ZERO:

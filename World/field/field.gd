@@ -48,6 +48,13 @@ var allele_fill_chance_by_tier = {
 	YipeeData.YipTier.ULTRARARE: 90
 }
 
+var yip_costs = {
+	YipeeData.YipTier.COMMON: 3,
+	YipeeData.YipTier.UNCOMMON: 4,
+	YipeeData.YipTier.RARE: 5,
+	YipeeData.YipTier.ULTRARARE: 6
+}
+
 @onready var coin_label: Label = $CanvasLayer/Control/HBoxContainer/MarginContainer2/CoinLabel
 @onready var tooltip: Toolyip = $CanvasLayer/YipToolyip
 
@@ -276,7 +283,9 @@ func spawn_yip(index : int) -> Yipee:
 	
 	new_yip.data = new_yip_data
 	new_yip.position = resserved_spots[index]
-	
+	new_yip.cost_of_yip.visible = true
+	var yip_cost = 3 + yip_costs[yip_tier]
+	new_yip.cost.text = "$" + str(yip_cost)
 	add_child(new_yip)
 	
 	# So they do the idle animation
@@ -353,7 +362,6 @@ func _on_refresh_button_pressed():
 		var new_yip = spawn_yip(i)
 		wire_yip(new_yip)
 		all_yips.append(new_yip)
-	pass # Replace with function body.
 
 
 func _on_farm_button_pressed():
