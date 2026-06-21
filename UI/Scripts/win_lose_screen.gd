@@ -28,6 +28,8 @@ func lost_match():
 		next_day()
 
 func lose_final():
+	if SignalBus.permadeath:
+		$"../TerminationDeathMode".show()
 	$"../AnimationPlayer".play("Death")
 	
 func won_match():
