@@ -265,7 +265,7 @@ offset_right = 94.0
 offset_bottom = 94.0
 text = "Settings"
 script = ExtResource("6_vm2tg")
-target_highlight = NodePath("")
+target_highlight = NodePath("../SettingsButtonOver")
 
 [node name="SettingsButtonOver" type="NinePatchRect" parent="." unique_id=2125680094]
 self_modulate = Color(0.59607846, 0.6509804, 0.2784314, 1)

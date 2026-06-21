@@ -12,9 +12,11 @@
 [ext_resource type="Resource" uid="uid://b5huwh4j0scxv" path="res://World/yipee/genes/allele/rightallele/resources/mochi_feet.tres" id="8_kcwt3"]
 [ext_resource type="Resource" uid="uid://dekuyun57vqna" path="res://World/yipee/genes/allele/rightallele/resources/human_feet.tres" id="8_pa1ru"]
 [ext_resource type="Resource" uid="uid://7m6t7oqy1ptn" path="res://World/yipee/genes/allele/leftallele/resources/protect.tres" id="9_kcwt3"]
+[ext_resource type="Resource" uid="uid://bkh7fd37lucf2" path="res://World/yipee/genes/allele/leftallele/resources/shatter.tres" id="9_mypgo"]
 [ext_resource type="Resource" uid="uid://clmny47rxgsyl" path="res://World/yipee/genes/allele/rightallele/resources/bonk_misc.tres" id="9_q1f8t"]
 [ext_resource type="Resource" uid="uid://dqac76ipaijhm" path="res://World/yipee/genes/allele/rightallele/resources/cute_ears.tres" id="10_q1f8t"]
 [ext_resource type="Resource" uid="uid://cw7n4d6o0uqwx" path="res://World/yipee/genes/allele/rightallele/resources/puffball_tail.tres" id="11_mypgo"]
+[ext_resource type="Resource" uid="uid://dhj8wy0gt0iax" path="res://World/yipee/genes/allele/leftallele/resources/rapid_swipe.tres" id="15_q1f8t"]
 
 [sub_resource type="Resource" id="Resource_6r48j"]
 script = ExtResource("3_jna2f")
@@ -38,16 +40,22 @@ script = ExtResource("3_jna2f")
 right = ExtResource("8_kcwt3")
 metadata/_custom_type_script = "uid://cra0emwdv78rw"
 
+[sub_resource type="Resource" id="Resource_su15s"]
+script = ExtResource("3_jna2f")
+slot = 3
+left = ExtResource("9_mypgo")
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
 [sub_resource type="Resource" id="Resource_51m3m"]
 script = ExtResource("2_j04d7")
-strands = Array[ExtResource("3_jna2f")]([SubResource("Resource_6r48j"), SubResource("Resource_7ec27"), SubResource("Resource_udnij"), SubResource("Resource_mypgo"), null, null, null, null])
+strands = Array[ExtResource("3_jna2f")]([SubResource("Resource_6r48j"), SubResource("Resource_7ec27"), SubResource("Resource_udnij"), SubResource("Resource_mypgo"), SubResource("Resource_su15s"), null, null, null])
 metadata/_custom_type_script = "uid://ckc2iq0roikyx"
 
 [sub_resource type="Resource" id="Resource_jna2f"]
 script = ExtResource("1_idvg4")
 yipee_name = "Slushee"
 age = 89
-base_health = 10
+base_health = 34
 base_attack = 0
 base_cooldown = 3.0
 helix = SubResource("Resource_51m3m")
@@ -84,9 +92,9 @@ metadata/_custom_type_script = "uid://ckc2iq0roikyx"
 script = ExtResource("1_idvg4")
 yipee_name = "Icey"
 age = 80
-base_health = 23
-base_attack = 4
-base_cooldown = 5.0
+base_health = 32
+base_attack = 0
+base_cooldown = 1.0
 helix = SubResource("Resource_kcwt3")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 
@@ -107,16 +115,22 @@ script = ExtResource("3_jna2f")
 right = ExtResource("7_d7e7h")
 metadata/_custom_type_script = "uid://cra0emwdv78rw"
 
+[sub_resource type="Resource" id="Resource_kpjp1"]
+script = ExtResource("3_jna2f")
+slot = 3
+left = ExtResource("9_mypgo")
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
 [sub_resource type="Resource" id="Resource_mpm6x"]
 script = ExtResource("2_j04d7")
-strands = Array[ExtResource("3_jna2f")]([SubResource("Resource_r5e4s"), SubResource("Resource_crkdg"), SubResource("Resource_c2hok"), null, null, null, null, null])
+strands = Array[ExtResource("3_jna2f")]([SubResource("Resource_r5e4s"), SubResource("Resource_crkdg"), SubResource("Resource_c2hok"), SubResource("Resource_kpjp1"), null, null, null, null])
 metadata/_custom_type_script = "uid://ckc2iq0roikyx"
 
 [sub_resource type="Resource" id="Resource_xdbi0"]
 script = ExtResource("1_idvg4")
 yipee_name = "Freezee"
 age = 99
-base_health = 10
+base_health = 45
 base_attack = 0
 base_cooldown = 3.5
 helix = SubResource("Resource_mpm6x")
@@ -154,9 +168,9 @@ metadata/_custom_type_script = "uid://ckc2iq0roikyx"
 script = ExtResource("1_idvg4")
 yipee_name = "Slush Puppy"
 age = 94
-base_health = 15
+base_health = 60
 base_attack = 0
-base_cooldown = 4.0
+base_cooldown = 1.0
 helix = SubResource("Resource_146xb")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 
@@ -182,15 +196,22 @@ script = ExtResource("3_jna2f")
 right = ExtResource("11_mypgo")
 metadata/_custom_type_script = "uid://cra0emwdv78rw"
 
+[sub_resource type="Resource" id="Resource_habp4"]
+script = ExtResource("3_jna2f")
+left = ExtResource("15_q1f8t")
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
 [sub_resource type="Resource" id="Resource_t6iuq"]
 script = ExtResource("2_j04d7")
-strands = Array[ExtResource("3_jna2f")]([SubResource("Resource_rliym"), SubResource("Resource_kin0k"), SubResource("Resource_d6qoh"), SubResource("Resource_qdpxd"), null, null, null, null])
+strands = Array[ExtResource("3_jna2f")]([SubResource("Resource_rliym"), SubResource("Resource_kin0k"), SubResource("Resource_d6qoh"), SubResource("Resource_qdpxd"), SubResource("Resource_habp4"), null, null, null])
 metadata/_custom_type_script = "uid://ckc2iq0roikyx"
 
 [sub_resource type="Resource" id="Resource_j04d7"]
 script = ExtResource("1_idvg4")
 yipee_name = "Frostee"
 age = 67
+base_health = 60
+base_attack = 20
 helix = SubResource("Resource_t6iuq")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 

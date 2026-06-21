@@ -484,7 +484,7 @@ libraries/ = SubResource("AnimationLibrary_sf1g0")
 autoplay = &"Spin"
 speed_scale = 0.3
 
-[node name="SettingsButton" type="Button" parent="." unique_id=225103772]
+[node name="SettingsButton" type="Button" parent="." unique_id=225103772 node_paths=PackedStringArray("target_highlight")]
 self_modulate = Color(1, 1, 1, 0)
 offset_left = 4.0
 offset_top = 4.0
@@ -492,6 +492,7 @@ offset_right = 94.0
 offset_bottom = 94.0
 text = "Settings"
 script = ExtResource("11_co32c")
+target_highlight = NodePath("../SettingsButtonOver")
 
 [node name="SettingsButtonOver" type="NinePatchRect" parent="." unique_id=656298927]
 self_modulate = Color(0.59607846, 0.6509804, 0.2784314, 1)
