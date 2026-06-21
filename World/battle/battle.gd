@@ -12,9 +12,11 @@ var enemy_team = []
 
 var _battle_started: bool = false
 var _battle_over: bool = false
+var _battle_time: float = 0.0
 
 var focused_yip: Yipee = null
 @onready var tooltip: Toolyip = $CanvasLayer/YipToolyip
+@onready var time_label: Label = $CanvasLayer2/TimeLabel
 
 func _spawn(data: YipeeData, pos: Vector2) -> Yipee:
 	var yip := preload("res://World/yipee/yipee.tscn").instantiate() as Yipee
@@ -234,6 +236,8 @@ func _process(delta):
 	if not _battle_started:
 		return
 	if _battle_over != true:
+		_battle_time += delta
+		update_time_label()
 		for yip: Yipee in player_team:
 			if yip.health.current_health > 0:
 				if not yip.status.is_frozen():
@@ -244,6 +248,13 @@ func _process(delta):
 				if not yip.status.is_frozen():
 					yip.attack.tick(delta * battle_speed)
 				yip.status.tick(delta * battle_speed)
+
+
+func update_time_label() -> void:
+	var total_seconds := int(_battle_time)
+	var minutes := total_seconds / 60
+	var seconds := total_seconds % 60
+	time_label.text = "%d:%02d" % [minutes, seconds]
 
 
 func _on_next_button_pressed() -> void:

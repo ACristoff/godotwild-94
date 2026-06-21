@@ -133,7 +133,7 @@ transform = Transform2D(3, 0, 0, 3, 0, 0)
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=309990707]
 
-[node name="Label" type="Label" parent="CanvasLayer2" unique_id=1677979533]
+[node name="TimeLabel" type="Label" parent="CanvasLayer2" unique_id=1677979533]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -225,7 +225,7 @@ text = "1X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ButtonRefresh5" type="NinePatchRect" parent="." unique_id=1106679204]
+[node name="Timer" type="NinePatchRect" parent="." unique_id=1106679204]
 self_modulate = Color(0.36569998, 0.69, 0.641355, 1)
 z_index = 4096
 texture_filter = 3
