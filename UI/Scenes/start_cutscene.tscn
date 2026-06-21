@@ -10,6 +10,15 @@
 [ext_resource type="Texture2D" uid="uid://bu25b116ccctr" path="res://UI/Textures/LetterJustPaper.png" id="6_jtax5"]
 [ext_resource type="Texture2D" uid="uid://ch8oia8iqbewe" path="res://UI/Textures/LetterHand.png" id="7_kgl4q"]
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="7_kw6rw"]
+[ext_resource type="PackedScene" uid="uid://csxwv0lucvopg" path="res://UI/Scenes/tutorial_box.tscn" id="11_gkieg"]
+[ext_resource type="PackedScene" uid="uid://bnjbivkh30i0f" path="res://UI/Scenes/tutorial_box2.tscn" id="12_31jui"]
+[ext_resource type="PackedScene" uid="uid://bf6bh8uu68nc4" path="res://UI/Scenes/tutorial_box4.tscn" id="13_bxoc8"]
+[ext_resource type="PackedScene" uid="uid://dc16s17k8rlpr" path="res://UI/Scenes/tutorial_box5.tscn" id="14_nngio"]
+[ext_resource type="PackedScene" uid="uid://dryyap22wi4uk" path="res://UI/Scenes/tutorial_box6.tscn" id="15_o70q2"]
+[ext_resource type="PackedScene" uid="uid://cjugm4bdpr41" path="res://UI/Scenes/tutorial_box7.tscn" id="16_3q1fi"]
+[ext_resource type="PackedScene" uid="uid://bb8e7u8p4dyvi" path="res://UI/Scenes/tutorial_box8.tscn" id="17_m5643"]
+[ext_resource type="PackedScene" uid="uid://dvqr4j66enjbg" path="res://UI/Scenes/tutorial_box9.tscn" id="18_hfses"]
+[ext_resource type="PackedScene" uid="uid://dpaojrrfpgvcw" path="res://UI/Scenes/tutorial_box10.tscn" id="19_h43vc"]
 
 [sub_resource type="Animation" id="Animation_kw6rw"]
 resource_name = "Attempt1"
@@ -768,11 +777,97 @@ offset_bottom = 723.0
 [node name="Button2" type="Button" parent="." unique_id=845707150]
 self_modulate = Color(1, 1, 1, 0)
 offset_left = -15.0
-offset_top = -12.0
+offset_top = 34.0
 offset_right = 1937.0
-offset_bottom = 1096.0
+offset_bottom = 1142.0
 mouse_filter = 2
+
+[node name="TutorialBox" parent="." unique_id=1315543526 instance=ExtResource("11_gkieg")]
+visible = false
+offset_left = 900.0
+offset_top = 361.0
+offset_right = 900.0
+offset_bottom = 361.0
+
+[node name="TutorialBox2" parent="." unique_id=30235977 instance=ExtResource("12_31jui")]
+visible = false
+offset_left = 575.0
+offset_top = 312.0
+offset_right = 575.0
+offset_bottom = 312.0
+
+[node name="TutorialBox4" parent="." unique_id=1385658824 instance=ExtResource("13_bxoc8")]
+visible = false
+offset_left = 462.0
+offset_top = 280.0
+offset_right = 462.0
+offset_bottom = 280.0
+
+[node name="TutorialBox5" parent="." unique_id=73759819 instance=ExtResource("14_nngio")]
+visible = false
+offset_left = 462.0
+offset_top = 280.0
+offset_right = 462.0
+offset_bottom = 280.0
+
+[node name="TutorialBox6" parent="." unique_id=480980182 instance=ExtResource("15_o70q2")]
+visible = false
+offset_left = 462.0
+offset_top = 280.0
+offset_right = 462.0
+offset_bottom = 280.0
+
+[node name="TutorialBox7" parent="." unique_id=1467449732 instance=ExtResource("16_3q1fi")]
+visible = false
+offset_left = 462.0
+offset_top = 280.0
+offset_right = 462.0
+offset_bottom = 280.0
+
+[node name="TutorialBox8" parent="." unique_id=105377805 instance=ExtResource("17_m5643")]
+visible = false
+offset_left = 462.0
+offset_top = 280.0
+offset_right = 462.0
+offset_bottom = 280.0
+
+[node name="TutorialBox9" parent="." unique_id=819629981 instance=ExtResource("18_hfses")]
+visible = false
+offset_left = 462.0
+offset_top = 280.0
+offset_right = 462.0
+offset_bottom = 280.0
+
+[node name="TutorialBox10" parent="." unique_id=1450385155 instance=ExtResource("19_h43vc")]
+visible = false
+offset_left = 629.0
+offset_top = 179.0
+offset_right = 629.0
+offset_bottom = 179.0
+
+[node name="StatsContainer2" parent="TutorialBox10/StatsContainer" parent_id_path=PackedInt32Array(1450385155, 1544857490) index="0" unique_id=1191929492]
+self_modulate = Color(0.69, 0.532565, 0.43469998, 0)
+
+[node name="Next" parent="TutorialBox10/StatsContainer/StatsContainer2" index="0" unique_id=255028458]
+visible = false
+
+[node name="Button" parent="TutorialBox10/StatsContainer/StatsContainer2" index="1" unique_id=2146772956]
+offset_left = -55.333336
+offset_top = 34.999992
+offset_right = -28.000023
+offset_bottom = 70.66666
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="next" from="TutorialBox" to="." method="_on_tutorial_box_next"]
+[connection signal="next" from="TutorialBox2" to="." method="_on_tutorial_box_2_next"]
+[connection signal="next" from="TutorialBox4" to="." method="_on_tutorial_box_4_next"]
+[connection signal="next" from="TutorialBox5" to="." method="_on_tutorial_box_5_next"]
+[connection signal="next" from="TutorialBox6" to="." method="_on_tutorial_box_6_next"]
+[connection signal="next" from="TutorialBox7" to="." method="_on_tutorial_box_7_next"]
+[connection signal="next" from="TutorialBox8" to="." method="_on_tutorial_box_8_next"]
+[connection signal="next" from="TutorialBox9" to="." method="_on_tutorial_box_9_next"]
+[connection signal="next" from="TutorialBox10" to="." method="_on_tutorial_box_10_next"]
+
+[editable path="TutorialBox10"]

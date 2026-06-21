@@ -112,6 +112,6 @@ color = Color(0, 0, 0, 1)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=972443350]
 libraries/ = SubResource("AnimationLibrary_am41d")
 autoplay = &"Transition_Out"
-speed_scale = 0.5
+speed_scale = 2.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
