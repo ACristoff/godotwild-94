@@ -7,7 +7,7 @@ class_name Game_Manager
 #Nodes get switched out as children of this node and this is where game-wide data is stored
 #By default, you'd put the node configuration of what is meant to run on launch and have things loop back to main menu
 
-@export var debug_mode: bool = true
+@export var debug_mode: bool = false
 
 @onready var menu_ui: CanvasLayer = $MenuUI
 

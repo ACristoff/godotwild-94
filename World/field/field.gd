@@ -67,7 +67,7 @@ func _ready():
 	coin_label.text = str(SignalBus.coins)
 	tooltip.hide()
 	field_level = SignalBus.victories
-	
+	update_field_labels()
 	resserved_spots = get_random_point_in_area(yips_to_spawn)
 	print("RESERVED SPOTS HERE:", resserved_spots)
 	for i in (yips_to_spawn):
@@ -81,10 +81,10 @@ func update_field_labels():
 	
 	var rates = $UpgradeSign/RateLabel
 	var yip_odds = yip_tier_dictionaries[field_level]
-	var stringy_common = "COMMON " + yip_odds[YipeeData.YipTier.COMMON] + "% \n"
-	var stringy_uncommon = "UNCOMMON " + yip_odds[YipeeData.YipTier.UNCOMMON] + "% \n"
-	var stringy_rare = "RARE " + yip_odds[YipeeData.YipTier.RARE] + "% \n"
-	var stringy_ultrarare = "ULTRA-RARE " + yip_odds[YipeeData.YipTier.ULTRARARE] + "% \n"
+	var stringy_common = "COMMON " + str(yip_odds[YipeeData.YipTier.COMMON]) + "% \n"
+	var stringy_uncommon = "UNCOMMON " + str(yip_odds[YipeeData.YipTier.UNCOMMON]) + "% \n"
+	var stringy_rare = "RARE " + str(yip_odds[YipeeData.YipTier.RARE]) + "% \n"
+	var stringy_ultrarare = "ULTRA-RARE " + str(yip_odds[YipeeData.YipTier.ULTRARARE]) + "% \n"
 	var final = stringy_common + stringy_uncommon + stringy_rare + stringy_ultrarare
 	rates.text = final
 
