@@ -4,6 +4,120 @@
 [ext_resource type="Script" uid="uid://cfhs28ya51muj" path="res://UI/Scenes/win_lose_screen_container.gd" id="1_jqq6x"]
 [ext_resource type="Script" uid="uid://w2int2baaimx" path="res://UI/Scripts/win_lose_screen.gd" id="1_smsqj"]
 [ext_resource type="Texture2D" uid="uid://cydxip81wgpg" path="res://UI/Textures/Heart.png" id="2_smsqj"]
+[ext_resource type="Texture2D" uid="uid://bu25b116ccctr" path="res://UI/Textures/LetterJustPaper.png" id="5_ymjyh"]
+[ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="6_8qkf6"]
+[ext_resource type="Texture2D" uid="uid://b23r3pwtlnxfe" path="res://UI/Menus/Main_Menu/Textures/terminated.png" id="7_8qkf6"]
+[ext_resource type="Texture2D" uid="uid://ch8oia8iqbewe" path="res://UI/Textures/LetterHand.png" id="8_vx6t1"]
+[ext_resource type="Texture2D" uid="uid://b6wgi46ipvd1f" path="res://UI/Menus/Main_Menu/Textures/MMButton.png" id="9_gnttp"]
+[ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="10_lu3uy"]
+
+[sub_resource type="Animation" id="Animation_o4qgk"]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TerminationDeathMode:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.29730183, 1),
+"update": 0,
+"values": [Vector2(-651, 355), Vector2(-651, -602)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Termination:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.29730183, 1),
+"update": 0,
+"values": [Vector2(-651, 355), Vector2(-651, -603)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BattleButtonIcon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.29730183, 1),
+"update": 0,
+"values": [Vector2(679, 1979), Vector2(679, 1022)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ButtonRefresh8:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.29730183, 1),
+"update": 0,
+"values": [Vector2(711, 1841), Vector2(711.00006, 884.00006)]
+}
+
+[sub_resource type="Animation" id="Animation_vx6t1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TerminationDeathMode:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-651, -602)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Termination:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-651, 355)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BattleButtonIcon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.29730183),
+"update": 0,
+"values": [Vector2(679, 1979)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ButtonRefresh8:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.29730183),
+"update": 0,
+"values": [Vector2(711, 1841)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gnttp"]
+_data = {
+&"Death": SubResource("Animation_o4qgk"),
+&"RESET": SubResource("Animation_vx6t1")
+}
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=591911754]
 script = ExtResource("1_jqq6x")
@@ -97,3 +211,211 @@ modulate = Color(0.19215687, 0.19215687, 0.19215687, 1)
 self_modulate = Color(1, 0.29000002, 0.29000002, 1)
 layout_mode = 2
 texture = ExtResource("2_smsqj")
+
+[node name="Termination" type="ColorRect" parent="." unique_id=1775153674]
+clip_children = 1
+texture_filter = 3
+offset_left = -651.0
+offset_top = 355.0
+offset_right = 451.26306
+offset_bottom = 1100.4968
+scale = Vector2(3, 3)
+mouse_filter = 2
+
+[node name="LetterJustPaper" type="Sprite2D" parent="Termination" unique_id=1576323246]
+position = Vector2(544.639, 367.675)
+texture = ExtResource("5_ymjyh")
+
+[node name="Label" type="Label" parent="Termination/LetterJustPaper" unique_id=1073608940]
+offset_left = -127.333466
+offset_top = -33.51033
+offset_right = 114.99988
+offset_bottom = 193.48967
+theme_override_colors/font_color = Color(0.3764706, 0.3372549, 0.26666668, 1)
+theme_override_fonts/font = ExtResource("6_8qkf6")
+theme_override_font_sizes/font_size = 8
+text = "Dear franchisee, 
+
+for days we have sent inspectors to document the state of all the franchisee's farms. Our inspectors have regularly seen your yips in a state with a high likelihood of abuse and neglect
+
+The yips you own deserve better, and so henceforth, you are terminated from the animal diversity repopulation program.
+
+Sincerely, Bob Gate.
+"
+autowrap_mode = 3
+
+[node name="LetterJustPaper2" type="Sprite2D" parent="Termination" unique_id=2097342562]
+position = Vector2(530.30554, 727.498)
+rotation = 3.1415925
+texture = ExtResource("5_ymjyh")
+
+[node name="ColorRect" type="ColorRect" parent="Termination" unique_id=1357287643]
+layout_mode = 0
+offset_left = 405.30554
+offset_top = 537.1647
+offset_right = 669.6389
+offset_bottom = 577.1647
+color = Color(1, 0.8901961, 0.80784315, 1)
+
+[node name="Terminated" type="Sprite2D" parent="Termination" unique_id=312346343]
+texture_filter = 3
+position = Vector2(537, 301)
+texture = ExtResource("7_8qkf6")
+
+[node name="LetterHand" type="Sprite2D" parent="Termination" unique_id=1620560086]
+texture_filter = 3
+position = Vector2(545, 380.6667)
+texture = ExtResource("8_vx6t1")
+
+[node name="TerminationDeathMode" type="ColorRect" parent="." unique_id=488359382]
+visible = false
+clip_children = 1
+texture_filter = 3
+offset_left = -651.0
+offset_top = -602.0
+offset_right = 451.26306
+offset_bottom = 143.49792
+scale = Vector2(3, 3)
+mouse_filter = 2
+
+[node name="LetterJustPaper" type="Sprite2D" parent="TerminationDeathMode" unique_id=1108139842]
+position = Vector2(544.639, 367.675)
+texture = ExtResource("5_ymjyh")
+
+[node name="Label" type="Label" parent="TerminationDeathMode/LetterJustPaper" unique_id=241301913]
+offset_left = -127.333466
+offset_top = -33.51033
+offset_right = 114.99988
+offset_bottom = 193.48967
+theme_override_colors/font_color = Color(0.3764706, 0.3372549, 0.26666668, 1)
+theme_override_fonts/font = ExtResource("6_8qkf6")
+theme_override_font_sizes/font_size = 8
+text = "Dear franchisee, 
+
+for days we have sent inspectors to document the state of the franchisee's farms. After a lengthy audit we have found many yips missing that should be in your care. You have either lost them or let them die.
+
+The yips you owned deserve better, and so henceforth, you are terminated from the animal diversity repopulation program.
+
+Sincerely, Bob Gate.
+"
+autowrap_mode = 3
+
+[node name="LetterJustPaper2" type="Sprite2D" parent="TerminationDeathMode" unique_id=352081322]
+position = Vector2(530.30554, 727.498)
+rotation = 3.1415925
+texture = ExtResource("5_ymjyh")
+
+[node name="ColorRect" type="ColorRect" parent="TerminationDeathMode" unique_id=1815438265]
+layout_mode = 0
+offset_left = 405.30554
+offset_top = 537.1647
+offset_right = 669.6389
+offset_bottom = 577.1647
+color = Color(1, 0.8901961, 0.80784315, 1)
+
+[node name="Terminated" type="Sprite2D" parent="TerminationDeathMode" unique_id=2088753750]
+texture_filter = 3
+position = Vector2(537, 301)
+texture = ExtResource("7_8qkf6")
+
+[node name="LetterHand" type="Sprite2D" parent="TerminationDeathMode" unique_id=54306553]
+texture_filter = 3
+position = Vector2(545, 380.6667)
+texture = ExtResource("8_vx6t1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=648624919]
+libraries/ = SubResource("AnimationLibrary_gnttp")
+
+[node name="BattleButtonIcon" type="NinePatchRect" parent="." unique_id=1162027270]
+self_modulate = Color(0.7, 0.6246333, 0.567, 1)
+z_index = 4096
+texture_filter = 3
+offset_left = 679.0
+offset_top = 1979.0
+offset_right = 783.0288
+offset_bottom = 2003.6173
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("9_gnttp")
+patch_margin_left = 15
+patch_margin_top = 10
+patch_margin_right = 30
+patch_margin_bottom = 10
+
+[node name="Battle" type="Label" parent="BattleButtonIcon" unique_id=2041250743]
+self_modulate = Color(1, 0.8901961, 0.80784315, 1)
+z_index = 4096
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0288067
+offset_top = 5.563751
+offset_right = 161.02882
+offset_bottom = 47.56376
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_8qkf6")
+text = "Feedback"
+
+[node name="Button" type="LinkButton" parent="BattleButtonIcon" unique_id=1023000779]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+uri = "https://forms.gle/RcgjkiqmRx1aAZNx9"
+
+[node name="ButtonRefresh8" type="NinePatchRect" parent="." unique_id=1904533182]
+self_modulate = Color(1, 0.8901961, 0.80784315, 1)
+z_index = 4096
+texture_filter = 3
+offset_left = 711.0
+offset_top = 1841.0
+offset_right = 846.6667
+offset_bottom = 1892.6667
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+texture = ExtResource("9_gnttp")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MM" type="Label" parent="ButtonRefresh8" unique_id=666274895]
+self_modulate = Color(0.3764706, 0.3372549, 0.26666668, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_8qkf6")
+text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="ButtonRefresh8" unique_id=192278266 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_lu3uy")
+target_highlight = NodePath("..")
+
+[connection signal="button_down" from="BattleButtonIcon/Button" to="BattleButtonIcon/Button" method="_on_button_down"]
+[connection signal="button_up" from="BattleButtonIcon/Button" to="BattleButtonIcon/Button" method="_on_button_up"]
+[connection signal="mouse_entered" from="BattleButtonIcon/Button" to="BattleButtonIcon/Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BattleButtonIcon/Button" to="BattleButtonIcon/Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="BattleButtonIcon/Button" to="." method="_on_button_pressed"]
+[connection signal="button_down" from="ButtonRefresh8/MainMenuButton" to="ButtonRefresh8/MainMenuButton" method="_on_button_down"]
+[connection signal="button_up" from="ButtonRefresh8/MainMenuButton" to="ButtonRefresh8/MainMenuButton" method="_on_button_up"]
+[connection signal="mouse_entered" from="ButtonRefresh8/MainMenuButton" to="ButtonRefresh8/MainMenuButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonRefresh8/MainMenuButton" to="ButtonRefresh8/MainMenuButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="ButtonRefresh8/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
