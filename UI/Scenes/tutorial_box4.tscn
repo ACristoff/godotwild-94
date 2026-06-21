@@ -1,0 +1,869 @@
+[gd_scene format=3 uid="uid://bf6bh8uu68nc4"]
+
+[ext_resource type="Script" uid="uid://bhwuytm582rb4" path="res://UI/Scripts/tutorial_box.gd" id="1_yh1mj"]
+[ext_resource type="Texture2D" uid="uid://bcrv3534foclh" path="res://UI/Textures/UIPanel.png" id="2_b3olc"]
+[ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="3_mj3gv"]
+[ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="4_5npwl"]
+[ext_resource type="AudioStream" uid="uid://beme2e24c1ser" path="res://Assets/Audio/Sounds/UI_Tick_Minor.wav" id="5_8grpy"]
+[ext_resource type="FontFile" uid="uid://6nvj4320wbu4" path="res://UI/Fonts/Vaticanus-G3yVG.ttf" id="6_p23cx"]
+[ext_resource type="Texture2D" uid="uid://c70vtydchbplw" path="res://UI/Textures/CDUI.png" id="7_t8rb6"]
+[ext_resource type="PackedScene" uid="uid://r48rpjbxrdkk" path="res://UI/Scenes/allele_hover.tscn" id="8_cw1tx"]
+[ext_resource type="Texture2D" uid="uid://c8pupi4jdpi4f" path="res://UI/Textures/DNAUI1.png" id="9_ovlsg"]
+[ext_resource type="Texture2D" uid="uid://cpcgek38dfbym" path="res://UI/Textures/DNAUI2.png" id="10_cra0e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6rpsl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fajxp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jnmf1"]
+
+[sub_resource type="Gradient" id="Gradient_xh8su"]
+colors = PackedColorArray(0.57, 0.57, 0.57, 0.5058824, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gumfe"]
+gradient = SubResource("Gradient_xh8su")
+width = 12
+
+[node name="TutorialBox" type="Control" unique_id=1315543526]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yh1mj")
+
+[node name="StatsContainer" type="NinePatchRect" parent="." unique_id=1544857490]
+self_modulate = Color(0.69, 0.532565, 0.43469998, 1)
+texture_filter = 3
+layout_mode = 1
+offset_right = 84.333336
+offset_bottom = 38.666668
+scale = Vector2(3, 3)
+texture = ExtResource("2_b3olc")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="StatsContainer2" type="NinePatchRect" parent="StatsContainer" unique_id=1191929492]
+self_modulate = Color(0.69, 0.532565, 0.43469998, 1)
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = 1.333333
+offset_bottom = 16.666668
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_b3olc")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Next" type="Label" parent="StatsContainer/StatsContainer2" unique_id=255028458]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.6666679
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_mj3gv")
+theme_override_font_sizes/font_size = 8
+text = "next"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="StatsContainer/StatsContainer2" unique_id=2146772956 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_5npwl")
+target_highlight = NodePath("..")
+growth_scale = 1
+click_sound = ExtResource("5_8grpy")
+
+[node name="TutorialText" type="Label" parent="StatsContainer" unique_id=1680731529]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.6666667
+offset_top = 2.6666667
+offset_right = 75.000015
+offset_bottom = 39.66666
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("3_mj3gv")
+text = "Hover over a Yip to pull up their info."
+autowrap_mode = 3
+
+[node name="MainPanel" type="NinePatchRect" parent="." unique_id=569391837]
+self_modulate = Color(0.44, 0.33410668, 0.2728, 1)
+texture_filter = 3
+custom_minimum_size = Vector2(86, 0)
+layout_mode = 0
+offset_left = 429.0
+offset_top = 80.0
+offset_right = 515.0
+offset_bottom = 148.0
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 1)
+mouse_filter = 0
+texture = ExtResource("2_b3olc")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel" unique_id=1746334068]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -11.0
+offset_bottom = -1.0
+grow_horizontal = 2
+theme_override_constants/separation = 1
+
+[node name="Name" type="NinePatchRect" parent="MainPanel/HBoxContainer" unique_id=189646119]
+self_modulate = Color(0.4392157, 0.33333334, 0.27450982, 1)
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.4
+mouse_filter = 0
+texture = ExtResource("2_b3olc")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="LineEdit" type="LineEdit" parent="MainPanel/HBoxContainer/Name" unique_id=1366772047]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(1, 0.84833336, 0.74, 1)
+theme_override_colors/selection_color = Color(0.14901961, 0.14901961, 0.14901961, 1)
+theme_override_constants/minimum_character_width = 4
+theme_override_fonts/font = ExtResource("6_p23cx")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6rpsl")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_fajxp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jnmf1")
+text = "WILD YIP"
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+
+[node name="Age" type="NinePatchRect" parent="MainPanel/HBoxContainer" unique_id=271536751]
+self_modulate = Color(0.4392157, 0.33333334, 0.27450982, 1)
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_b3olc")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Label" type="Label" parent="MainPanel/HBoxContainer/Age" unique_id=1970711238]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 42.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(1, 0.84705883, 0.7411765, 1)
+theme_override_fonts/font = ExtResource("6_p23cx")
+theme_override_font_sizes/font_size = 8
+text = "Age:1"
+
+[node name="TextureRect" type="TextureRect" parent="MainPanel" unique_id=2114548337]
+self_modulate = Color(0.32, 0.24304001, 0.2016, 1)
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_t8rb6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/TextureRect" unique_id=256198675]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = -18
+
+[node name="ActualSeconds" type="Label" parent="MainPanel/TextureRect/VBoxContainer" unique_id=784291473]
+texture_filter = 3
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0.8, 0.9766666, 1, 1)
+theme_override_fonts/font = ExtResource("3_mj3gv")
+theme_override_font_sizes/font_size = 8
+text = "8.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sec" type="Label" parent="MainPanel/TextureRect/VBoxContainer" unique_id=985090052]
+texture_filter = 3
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(1, 0.84705883, 0.7411765, 1)
+theme_override_fonts/font = ExtResource("6_p23cx")
+theme_override_font_sizes/font_size = 8
+text = "Sec"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Age2" type="NinePatchRect" parent="MainPanel" unique_id=126877852]
+self_modulate = Color(0.4392157, 0.33333334, 0.27450982, 1)
+texture_filter = 3
+layout_mode = 1
+offset_left = 87.0
+offset_top = -11.0
+offset_right = 116.0
+offset_bottom = -1.0
+size_flags_horizontal = 3
+texture = ExtResource("2_b3olc")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Label" type="Label" parent="MainPanel/Age2" unique_id=313275583]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.55600005, 1, 0.27999997, 1)
+theme_override_fonts/font = ExtResource("6_p23cx")
+theme_override_font_sizes/font_size = 8
+text = "HP:10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Alleles" type="HBoxContainer" parent="MainPanel" unique_id=1848971771]
+z_index = 10
+layout_mode = 0
+offset_left = 18.0
+offset_top = 2.0
+offset_right = 59.0
+offset_bottom = 66.0
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="Effects" type="VBoxContainer" parent="MainPanel/Alleles" unique_id=842884754]
+layout_mode = 2
+mouse_filter = 0
+theme_override_constants/separation = 0
+
+[node name="R_allele1" parent="MainPanel/Alleles/Effects" unique_id=2129192060 instance=ExtResource("8_cw1tx")]
+layout_mode = 2
+
+[node name="R_allele2" parent="MainPanel/Alleles/Effects" unique_id=861908143 instance=ExtResource("8_cw1tx")]
+layout_mode = 2
+
+[node name="R_allele3" parent="MainPanel/Alleles/Effects" unique_id=294451032 instance=ExtResource("8_cw1tx")]
+layout_mode = 2
+
+[node name="R_allele4" parent="MainPanel/Alleles/Effects" unique_id=999476799 instance=ExtResource("8_cw1tx")]
+layout_mode = 2
+
+[node name="R_allele5" parent="MainPanel/Alleles/Effects" unique_id=1293181045 instance=ExtResource("8_cw1tx")]
+layout_mode = 2
+
+[node name="R_allele6" parent="MainPanel/Alleles/Effects" unique_id=1809494689 instance=ExtResource("8_cw1tx")]
+layout_mode = 2
+
+[node name="R_allele7" parent="MainPanel/Alleles/Effects" unique_id=1621658734 instance=ExtResource("8_cw1tx")]
+layout_mode = 2
+
+[node name="R_allele8" parent="MainPanel/Alleles/Effects" unique_id=1015911535 instance=ExtResource("8_cw1tx")]
+layout_mode = 2
+
+[node name="Visuals" type="VBoxContainer" parent="MainPanel/Alleles" unique_id=406267636]
+layout_mode = 2
+mouse_filter = 0
+theme_override_constants/separation = 0
+
+[node name="L_allele1" parent="MainPanel/Alleles/Visuals" unique_id=1148543926 instance=ExtResource("8_cw1tx")]
+layout_mode = 2
+
+[node name="L_allele2" parent="MainPanel/Alleles/Visuals" unique_id=187898174 instance=ExtResource("8_cw1tx")]
+layout_mode = 2
+
+[node name="L_allele3" parent="MainPanel/Alleles/Visuals" unique_id=1924099395 instance=ExtResource("8_cw1tx")]
+layout_mode = 2
+
+[node name="L_allele4" parent="MainPanel/Alleles/Visuals" unique_id=1307340384 instance=ExtResource("8_cw1tx")]
+layout_mode = 2
+
+[node name="L_allele5" parent="MainPanel/Alleles/Visuals" unique_id=150209533 instance=ExtResource("8_cw1tx")]
+layout_mode = 2
+
+[node name="L_allele6" parent="MainPanel/Alleles/Visuals" unique_id=1715876601 instance=ExtResource("8_cw1tx")]
+layout_mode = 2
+
+[node name="L_allele7" parent="MainPanel/Alleles/Visuals" unique_id=1419881309 instance=ExtResource("8_cw1tx")]
+layout_mode = 2
+
+[node name="L_allele8" parent="MainPanel/Alleles/Visuals" unique_id=473363673 instance=ExtResource("8_cw1tx")]
+layout_mode = 2
+
+[node name="DNA" type="Control" parent="." unique_id=304614911]
+anchors_preset = 0
+offset_left = 355.0
+offset_top = -59.0
+offset_right = 395.0
+offset_bottom = -19.0
+scale = Vector2(3, 3)
+mouse_filter = 2
+
+[node name="LeftGene1" type="TextureRect" parent="DNA" unique_id=2004803918]
+self_modulate = Color(0.45882353, 0.45882353, 0.45882353, 1)
+texture_filter = 3
+layout_mode = 0
+offset_top = -24.0
+offset_right = 64.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("9_ovlsg")
+
+[node name="LeftSlot1" type="TextureRect" parent="DNA" unique_id=730958435]
+self_modulate = Color(0.13340001, 0.31303006, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_left = -9.0
+offset_top = -24.0
+offset_right = 55.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("10_cra0e")
+
+[node name="RightGene1" type="TextureRect" parent="DNA" unique_id=1985042255]
+self_modulate = Color(0.13340001, 0.31303006, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_left = 15.0
+offset_top = -24.0
+offset_right = 79.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("9_ovlsg")
+flip_h = true
+
+[node name="RightSlot1" type="TextureRect" parent="DNA" unique_id=818146474]
+self_modulate = Color(0.13340001, 0.31303006, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_left = 24.0
+offset_top = -24.0
+offset_right = 88.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("10_cra0e")
+
+[node name="LeftGene2" type="TextureRect" parent="DNA" unique_id=932360713]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_top = -16.0
+offset_right = 64.0
+offset_bottom = 48.0
+mouse_filter = 2
+texture = ExtResource("9_ovlsg")
+
+[node name="LeftSlot2" type="TextureRect" parent="DNA" unique_id=29760343]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_left = -9.0
+offset_top = -16.0
+offset_right = 55.0
+offset_bottom = 48.0
+mouse_filter = 2
+texture = ExtResource("10_cra0e")
+
+[node name="RightGene2" type="TextureRect" parent="DNA" unique_id=39478203]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_left = 15.0
+offset_top = -16.0
+offset_right = 79.0
+offset_bottom = 48.0
+mouse_filter = 2
+texture = ExtResource("9_ovlsg")
+flip_h = true
+
+[node name="RightSlot2" type="TextureRect" parent="DNA" unique_id=1628314176]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_left = 24.0
+offset_top = -16.0
+offset_right = 88.0
+offset_bottom = 48.0
+mouse_filter = 2
+texture = ExtResource("10_cra0e")
+
+[node name="LeftGene3" type="TextureRect" parent="DNA" unique_id=1901399878]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_top = -8.0
+offset_right = 64.0
+offset_bottom = 56.0
+mouse_filter = 2
+texture = ExtResource("9_ovlsg")
+
+[node name="LeftSlot3" type="TextureRect" parent="DNA" unique_id=708122957]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_left = -9.0
+offset_top = -8.0
+offset_right = 55.0
+offset_bottom = 56.0
+mouse_filter = 2
+texture = ExtResource("10_cra0e")
+
+[node name="RightGene3" type="TextureRect" parent="DNA" unique_id=529826578]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_left = 15.0
+offset_top = -8.0
+offset_right = 79.0
+offset_bottom = 56.0
+mouse_filter = 2
+texture = ExtResource("9_ovlsg")
+flip_h = true
+
+[node name="RightSlot3" type="TextureRect" parent="DNA" unique_id=160561047]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_left = 24.0
+offset_top = -8.0
+offset_right = 88.0
+offset_bottom = 56.0
+mouse_filter = 2
+texture = ExtResource("10_cra0e")
+
+[node name="LeftGene4" type="TextureRect" parent="DNA" unique_id=909426018]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+mouse_filter = 2
+texture = ExtResource("9_ovlsg")
+
+[node name="LeftSlot4" type="TextureRect" parent="DNA" unique_id=1458277711]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_left = -9.0
+offset_right = 55.0
+offset_bottom = 64.0
+mouse_filter = 2
+texture = ExtResource("10_cra0e")
+
+[node name="RightGene4" type="TextureRect" parent="DNA" unique_id=702648719]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_left = 15.0
+offset_right = 79.0
+offset_bottom = 64.0
+mouse_filter = 2
+texture = ExtResource("9_ovlsg")
+flip_h = true
+
+[node name="RightSlot4" type="TextureRect" parent="DNA" unique_id=1424076578]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_left = 24.0
+offset_right = 88.0
+offset_bottom = 64.0
+mouse_filter = 2
+texture = ExtResource("10_cra0e")
+
+[node name="LeftGene5" type="TextureRect" parent="DNA" unique_id=1190164766]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_top = 8.0
+offset_right = 64.0
+offset_bottom = 72.0
+mouse_filter = 2
+texture = ExtResource("9_ovlsg")
+
+[node name="LeftSlot5" type="TextureRect" parent="DNA" unique_id=569467542]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_left = -9.0
+offset_top = 8.0
+offset_right = 55.0
+offset_bottom = 72.0
+mouse_filter = 2
+texture = ExtResource("10_cra0e")
+
+[node name="RightGene5" type="TextureRect" parent="DNA" unique_id=1013882927]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_left = 15.0
+offset_top = 8.0
+offset_right = 79.0
+offset_bottom = 72.0
+mouse_filter = 2
+texture = ExtResource("9_ovlsg")
+flip_h = true
+
+[node name="RightSlot5" type="TextureRect" parent="DNA" unique_id=298559734]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 72.0
+mouse_filter = 2
+texture = ExtResource("10_cra0e")
+
+[node name="LeftGene6" type="TextureRect" parent="DNA" unique_id=2112391686]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_top = 16.0
+offset_right = 64.0
+offset_bottom = 80.0
+mouse_filter = 2
+texture = ExtResource("9_ovlsg")
+
+[node name="LeftSlot6" type="TextureRect" parent="DNA" unique_id=1806383334]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_left = -9.0
+offset_top = 16.0
+offset_right = 55.0
+offset_bottom = 80.0
+mouse_filter = 2
+texture = ExtResource("10_cra0e")
+
+[node name="RightGene6" type="TextureRect" parent="DNA" unique_id=898422879]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_left = 15.0
+offset_top = 16.0
+offset_right = 79.0
+offset_bottom = 80.0
+mouse_filter = 2
+texture = ExtResource("9_ovlsg")
+flip_h = true
+
+[node name="RightSlot6" type="TextureRect" parent="DNA" unique_id=1698940677]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 88.0
+offset_bottom = 80.0
+mouse_filter = 2
+texture = ExtResource("10_cra0e")
+
+[node name="LeftGene7" type="TextureRect" parent="DNA" unique_id=529201709]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_top = 24.0
+offset_right = 64.0
+offset_bottom = 88.0
+mouse_filter = 2
+texture = ExtResource("9_ovlsg")
+
+[node name="LeftSlot7" type="TextureRect" parent="DNA" unique_id=2116111458]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_left = -9.0
+offset_top = 24.0
+offset_right = 55.0
+offset_bottom = 88.0
+mouse_filter = 2
+texture = ExtResource("10_cra0e")
+
+[node name="RightGene7" type="TextureRect" parent="DNA" unique_id=100024531]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_left = 15.0
+offset_top = 24.0
+offset_right = 79.0
+offset_bottom = 88.0
+mouse_filter = 2
+texture = ExtResource("9_ovlsg")
+flip_h = true
+
+[node name="RightSlot7" type="TextureRect" parent="DNA" unique_id=1565237712]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 88.0
+offset_bottom = 88.0
+mouse_filter = 2
+texture = ExtResource("10_cra0e")
+
+[node name="LeftGene8" type="TextureRect" parent="DNA" unique_id=28949237]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_top = 32.0
+offset_right = 64.0
+offset_bottom = 96.0
+mouse_filter = 2
+texture = ExtResource("9_ovlsg")
+
+[node name="LeftSlot8" type="TextureRect" parent="DNA" unique_id=1843069943]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_left = -9.0
+offset_top = 32.0
+offset_right = 55.0
+offset_bottom = 96.0
+mouse_filter = 2
+texture = ExtResource("10_cra0e")
+
+[node name="RightGene8" type="TextureRect" parent="DNA" unique_id=1125888255]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_left = 15.0
+offset_top = 32.0
+offset_right = 79.0
+offset_bottom = 96.0
+mouse_filter = 2
+texture = ExtResource("9_ovlsg")
+flip_h = true
+
+[node name="RightSlot8" type="TextureRect" parent="DNA" unique_id=976024379]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+texture_filter = 3
+layout_mode = 0
+offset_left = 24.0
+offset_top = 32.0
+offset_right = 88.0
+offset_bottom = 96.0
+mouse_filter = 2
+texture = ExtResource("10_cra0e")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DNA" unique_id=781006125]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 3.0
+offset_right = 72.0
+offset_bottom = 67.0
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="SlotType1" type="Label" parent="DNA/VBoxContainer" unique_id=1638997663]
+z_index = 1
+texture_filter = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.068665594, 0.1244783, 0.276548, 1)
+theme_override_fonts/font = ExtResource("6_p23cx")
+theme_override_font_sizes/font_size = 8
+text = "CD"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="DNA/VBoxContainer/SlotType1" unique_id=1095028732]
+self_modulate = Color(0.20999998, 0.69716656, 1, 1)
+z_index = -1
+layout_mode = 0
+offset_left = -1.0
+offset_right = 12.0
+offset_bottom = 8.0
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_gumfe")
+
+[node name="SlotType2" type="Label" parent="DNA/VBoxContainer" unique_id=868073932]
+z_index = 1
+texture_filter = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.21, 0.21, 0.21, 1)
+theme_override_fonts/font = ExtResource("6_p23cx")
+theme_override_font_sizes/font_size = 8
+text = "NONE"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="DNA/VBoxContainer/SlotType2" unique_id=1118403366]
+z_index = -1
+layout_mode = 0
+offset_left = -1.0
+offset_right = 12.0
+offset_bottom = 8.0
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_gumfe")
+
+[node name="SlotType3" type="Label" parent="DNA/VBoxContainer" unique_id=2126642517]
+z_index = 1
+texture_filter = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.21, 0.21, 0.21, 1)
+theme_override_fonts/font = ExtResource("6_p23cx")
+theme_override_font_sizes/font_size = 8
+text = "NONE"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="DNA/VBoxContainer/SlotType3" unique_id=713310351]
+z_index = -1
+layout_mode = 0
+offset_left = -1.0
+offset_right = 12.0
+offset_bottom = 8.0
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_gumfe")
+
+[node name="SlotType4" type="Label" parent="DNA/VBoxContainer" unique_id=2093941819]
+z_index = 1
+texture_filter = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.21, 0.21, 0.21, 1)
+theme_override_fonts/font = ExtResource("6_p23cx")
+theme_override_font_sizes/font_size = 8
+text = "NONE"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="DNA/VBoxContainer/SlotType4" unique_id=1278144844]
+z_index = -1
+layout_mode = 0
+offset_left = -1.0
+offset_right = 12.0
+offset_bottom = 8.0
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_gumfe")
+
+[node name="SlotType5" type="Label" parent="DNA/VBoxContainer" unique_id=1631155573]
+z_index = 1
+texture_filter = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.21, 0.21, 0.21, 1)
+theme_override_fonts/font = ExtResource("6_p23cx")
+theme_override_font_sizes/font_size = 8
+text = "NONE"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="DNA/VBoxContainer/SlotType5" unique_id=1467165893]
+z_index = -1
+layout_mode = 0
+offset_left = -1.0
+offset_right = 12.0
+offset_bottom = 8.0
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_gumfe")
+
+[node name="SlotType6" type="Label" parent="DNA/VBoxContainer" unique_id=253404917]
+z_index = 1
+texture_filter = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.21, 0.21, 0.21, 1)
+theme_override_fonts/font = ExtResource("6_p23cx")
+theme_override_font_sizes/font_size = 8
+text = "NONE"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="DNA/VBoxContainer/SlotType6" unique_id=604060007]
+z_index = -1
+layout_mode = 0
+offset_left = -1.0
+offset_right = 12.0
+offset_bottom = 8.0
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_gumfe")
+
+[node name="SlotType7" type="Label" parent="DNA/VBoxContainer" unique_id=519496567]
+z_index = 1
+texture_filter = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.21, 0.21, 0.21, 1)
+theme_override_fonts/font = ExtResource("6_p23cx")
+theme_override_font_sizes/font_size = 8
+text = "NONE"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="DNA/VBoxContainer/SlotType7" unique_id=715047299]
+z_index = -1
+layout_mode = 0
+offset_left = -1.0
+offset_right = 12.0
+offset_bottom = 8.0
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_gumfe")
+
+[node name="SlotType8" type="Label" parent="DNA/VBoxContainer" unique_id=1054776095]
+z_index = 1
+texture_filter = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.21, 0.21, 0.21, 1)
+theme_override_fonts/font = ExtResource("6_p23cx")
+theme_override_font_sizes/font_size = 8
+text = "NONE"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="DNA/VBoxContainer/SlotType8" unique_id=1490128834]
+z_index = -1
+layout_mode = 0
+offset_left = -1.0
+offset_right = 12.0
+offset_bottom = 8.0
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_gumfe")
+
+[connection signal="button_down" from="StatsContainer/StatsContainer2/Button" to="StatsContainer/StatsContainer2/Button" method="_on_button_down"]
+[connection signal="button_up" from="StatsContainer/StatsContainer2/Button" to="StatsContainer/StatsContainer2/Button" method="_on_button_up"]
+[connection signal="mouse_entered" from="StatsContainer/StatsContainer2/Button" to="StatsContainer/StatsContainer2/Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="StatsContainer/StatsContainer2/Button" to="StatsContainer/StatsContainer2/Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="StatsContainer/StatsContainer2/Button" to="." method="_on_button_pressed"]

@@ -16,11 +16,11 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8eq83"]
 
-[sub_resource type="Gradient" id="Gradient_xh8su"]
+[sub_resource type="Gradient" id="Gradient_sy6ok"]
 colors = PackedColorArray(0.57, 0.57, 0.57, 0.5058824, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_f61sd"]
-gradient = SubResource("Gradient_xh8su")
+gradient = SubResource("Gradient_sy6ok")
 width = 12
 
 [sub_resource type="Animation" id="Animation_sy6ok"]
