@@ -26,7 +26,6 @@ const YIP_BUFF = preload("uid://nkypm8ojycqe")
 @onready var cost_of_yip: Sprite2D = $CostOfYip
 @onready var cost: Label = $CostOfYip/Cost
 
-
 var dead = false
 
 signal yip_hovered(yip_data: Yipee)
@@ -40,7 +39,8 @@ func _ready() -> void:
 	status.setup(health)
 	status.effects_changed.connect(health_UI.update_ailments)
 	attack.progress_changed.connect(_on_cooldown_changed)
-	
+
+\
 func in_battle_dance():
 	$ActionsAnim.play("IdleBattle")
 

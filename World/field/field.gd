@@ -283,10 +283,11 @@ func spawn_yip(index : int) -> Yipee:
 	
 	new_yip.data = new_yip_data
 	new_yip.position = resserved_spots[index]
-	new_yip.cost_of_yip.visible = true
-	var yip_cost = 3 + yip_costs[yip_tier]
-	new_yip.cost.text = "$" + str(yip_cost)
 	add_child(new_yip)
+	
+	new_yip.cost_of_yip.visible = true
+	var yip_cost = yip_costs[yip_tier]
+	new_yip.cost.text = "$" + str(yip_cost)
 	
 	# So they do the idle animation
 	new_yip.animation_player.play(&"IdleNormal")
