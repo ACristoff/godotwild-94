@@ -13,6 +13,7 @@ class_name YipBody extends Node2D
 @onready var eyes: Sprite2D = $Eyes
 
 var _part_sprites: Dictionary
+var _default_textures: Dictionary
 
 var main_color : Color
 var size_mult : float = 1.0
@@ -29,12 +30,16 @@ func _ready() -> void:
 		BodyMap.Part.MOUTH: mouth,
 		BodyMap.Part.EYES: eyes,
 	}
+	for part in _part_sprites:
+		_default_textures[part] = _part_sprites[part].texture
 
 func apply_helix(helix: Helix) -> void:
 	if helix == null:
 		return
+	for part in _part_sprites:
+		_part_sprites[part].texture = _default_textures[part]
 	var dyes: Array[Color] = []
-	
+
 	for strand in helix.strands:
 		#check for empty strand
 		if strand == null:
@@ -80,7 +85,6 @@ func _update_color(color : Color):
 	ears.material.set_shader_parameter("modulate_color", color)
 	mouth.material.set_shader_parameter("to_color", color)
 	mouth.material.set_shader_parameter("modulate_color", color)
-	
 
 func _update_feet(sprite : Texture2D):
 	feet.texture = sprite

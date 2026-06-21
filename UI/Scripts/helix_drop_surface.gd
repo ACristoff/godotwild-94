@@ -15,8 +15,17 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	return { "allele": allele, "source": "helix", "rung": rung, "side": side }
 
 func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
-	return lab != null and dna_screen != null \
-		and lab.can_place_allele(data, dna_screen.drop_rung, dna_screen.drop_side)
+	if lab == null or dna_screen == null:
+		return false
+	return lab.can_place_allele(data, dna_screen.rung_at_mouse(), _side_for(data))
 
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
-	lab.place_allele(data, dna_screen.drop_rung, dna_screen.drop_side)
+	lab.place_allele(data, dna_screen.rung_at_mouse(), _side_for(data))
+
+# The side is fixed by the allele's type (LeftAllele -> LEFT half, RightAllele ->
+# RIGHT half), so there's no need to aim at it on the spinning helix. We only
+# need the rung from the cursor's Y; the type decides the side.
+func _side_for(data: Variant) -> String:
+	if typeof(data) == TYPE_DICTIONARY and data.has("allele"):
+		return "LEFT" if data.allele is LeftAllele else "RIGHT"
+	return ""

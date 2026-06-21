@@ -106,6 +106,8 @@ func _on_yip_unhovered() -> void:
 	focused_yip = null
 
 func update_screen():
+	left_inventory.visible = yip_placed
+	right_inventory.visible = yip_placed
 	if yip_placed:
 		$Control/SubViewportContainer/SubViewport/DNATestScreen.show()
 		$Control/SubViewportContainer/SubViewport/Cyanspeenspritesheet.hide()
@@ -173,6 +175,7 @@ func rebuild_inventory() -> void:
 		var chip = ALLELE_CHIP.instantiate()
 		if allele is LeftAllele:
 			left_inventory.add_child(chip)
+			chip.flip_h = true
 		else:
 			right_inventory.add_child(chip)
 		chip.setup(allele, index)
@@ -181,6 +184,19 @@ func current_helix() -> Helix:
 	if yip_on_launch_pad == null:
 		return null
 	return yip_on_launch_pad.data.helix
+
+# First rung whose strand carries this slot type, or -1 if the placed yip has
+# none. An allele auto-routes to its matching slot, so dropping onto the helix
+# never needs precise aiming.
+func rung_for_slot(slot: BodyMap.Slot) -> int:
+	var helix := current_helix()
+	if helix == null:
+		return -1
+	for rung_index in helix.strands.size():
+		var strand: Strand = helix.strands[rung_index]
+		if strand != null and strand.slot == slot:
+			return rung_index
+	return -1
 
 func can_place_allele(data: Variant, rung_index: int, side: String) -> bool:
 	if typeof(data) != TYPE_DICTIONARY or not data.has("allele"):
