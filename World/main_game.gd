@@ -3,6 +3,12 @@ extends Node2D
 @onready var child_scene = $StartCutscene
 @onready var fight_org: FightOrganizer = $FightOrganizer
 
+const transition_screen = preload("res://UI/Scenes/transitions.tscn")
+
+func spawn_transition():
+	var trans = transition_screen.instantiate()
+	add_child(trans)
+
 const location_dictionary = {
 	SignalBus.Locations.FARM: preload("res://World/farm/farm_hub.tscn"),
 	SignalBus.Locations.FIELD: preload("res://World/field/field.tscn"),

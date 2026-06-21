@@ -234,7 +234,7 @@ _data = {
 shader = ExtResource("3_hkdoa")
 shader_parameter/alpha = 1.0
 shader_parameter/inner_radius = 0.0
-shader_parameter/outer_radius = 127.11693656921386
+shader_parameter/outer_radius = 2.59
 
 [node name="BattleClash" type="CanvasLayer" unique_id=1404525973]
 script = ExtResource("1_sut0k")

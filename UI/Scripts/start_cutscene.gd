@@ -23,6 +23,8 @@ func _on_button_pressed() -> void:
 			$AnimationPlayer.play("OpenLetter")
 		3:
 			return
+		4:
+			return
 
 func letter_hit():
 	AudMan.play_sfx_wav(LETTER_IMPACT, 0.0, false)
@@ -39,3 +41,4 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func _on_button_2_pressed() -> void:
 	if hit_amnt == 3 and letteropened == true:
 		$AnimationPlayer.play("ByeByeLetter")
+		hit_amnt = 4
