@@ -66,7 +66,7 @@ func _ready():
 	#tooltip.yip_owner = self
 	coin_label.text = str(SignalBus.coins)
 	tooltip.hide()
-	field_level = SignalBus.victories
+	field_level = clampi(SignalBus.victories, 0, 4)
 	update_field_labels()
 	resserved_spots = get_random_point_in_area(yips_to_spawn)
 	print("RESERVED SPOTS HERE:", resserved_spots)
