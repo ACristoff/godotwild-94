@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://bd4iooe5ca1qf" path="res://World/yipee/genes/allele/rightallele/resources/turtle_shell.tres" id="8_jj0d2"]
 [ext_resource type="Resource" uid="uid://7m6t7oqy1ptn" path="res://World/yipee/genes/allele/leftallele/resources/protect.tres" id="9_0uqkb"]
 [ext_resource type="PackedScene" uid="uid://l73othniqeaa" path="res://UI/Scenes/battle_clash_godrone.tscn" id="10_gy1jw"]
+[ext_resource type="Resource" uid="uid://djqcpmh7wbkqc" path="res://World/yipee/genes/allele/rightallele/resources/exhaust_wings.tres" id="10_kaai4"]
 
 [sub_resource type="Resource" id="Resource_3kiww"]
 script = ExtResource("3_gy1jw")
@@ -41,64 +42,36 @@ slot = 1
 left = ExtResource("9_0uqkb")
 metadata/_custom_type_script = "uid://cra0emwdv78rw"
 
+[sub_resource type="Resource" id="Resource_qnxwe"]
+script = ExtResource("3_gy1jw")
+slot = 4
+right = ExtResource("10_kaai4")
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_qda7x"]
+script = ExtResource("3_gy1jw")
+slot = 3
+left = ExtResource("6_qda7x")
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
 [sub_resource type="Resource" id="Resource_j5lcu"]
 script = ExtResource("2_3m05i")
-strands = Array[ExtResource("3_gy1jw")]([SubResource("Resource_3kiww"), SubResource("Resource_okgxo"), SubResource("Resource_hfvan"), SubResource("Resource_e2v3s"), SubResource("Resource_wq8gc"), null, null, null])
+strands = Array[ExtResource("3_gy1jw")]([SubResource("Resource_3kiww"), SubResource("Resource_okgxo"), SubResource("Resource_hfvan"), SubResource("Resource_e2v3s"), SubResource("Resource_wq8gc"), SubResource("Resource_qnxwe"), SubResource("Resource_qda7x"), null])
 metadata/_custom_type_script = "uid://ckc2iq0roikyx"
 
 [sub_resource type="Resource" id="Resource_fa0ay"]
 script = ExtResource("1_3kn11")
 yipee_name = "Drone"
 age = 1
-base_health = 12
+base_health = 14
 base_attack = 5
-base_cooldown = 11.0
-helix = SubResource("Resource_j5lcu")
-metadata/_custom_type_script = "uid://dpr2powm23rue"
-
-[sub_resource type="Resource" id="Resource_3m05i"]
-script = ExtResource("1_3kn11")
-yipee_name = "Drone"
-age = 1
-base_health = 12
-base_attack = 5
-base_cooldown = 11.0
-helix = SubResource("Resource_j5lcu")
-metadata/_custom_type_script = "uid://dpr2powm23rue"
-
-[sub_resource type="Resource" id="Resource_gy1jw"]
-script = ExtResource("1_3kn11")
-yipee_name = "Drone"
-age = 1
-base_health = 12
-base_attack = 5
-base_cooldown = 11.0
-helix = SubResource("Resource_j5lcu")
-metadata/_custom_type_script = "uid://dpr2powm23rue"
-
-[sub_resource type="Resource" id="Resource_kaai4"]
-script = ExtResource("1_3kn11")
-yipee_name = "Drone"
-age = 1
-base_health = 12
-base_attack = 5
-base_cooldown = 11.0
-helix = SubResource("Resource_j5lcu")
-metadata/_custom_type_script = "uid://dpr2powm23rue"
-
-[sub_resource type="Resource" id="Resource_qnxwe"]
-script = ExtResource("1_3kn11")
-yipee_name = "Drone"
-age = 1
-base_health = 12
-base_attack = 5
-base_cooldown = 11.0
+base_cooldown = 9.0
 helix = SubResource("Resource_j5lcu")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 
 [resource]
 script = ExtResource("2_6ap7r")
 level_name = "Godrone"
-enemy_team = Array[ExtResource("1_3kn11")]([SubResource("Resource_fa0ay"), SubResource("Resource_3m05i"), SubResource("Resource_gy1jw"), SubResource("Resource_kaai4"), SubResource("Resource_qnxwe")])
+enemy_team = Array[ExtResource("1_3kn11")]([SubResource("Resource_fa0ay")])
 intro_animation = ExtResource("10_gy1jw")
 metadata/_custom_type_script = "uid://d2tgf0trp406f"

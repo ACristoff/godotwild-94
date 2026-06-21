@@ -90,7 +90,6 @@ metadata/_custom_type_script = "uid://cra0emwdv78rw"
 [sub_resource type="Resource" id="Resource_7b21f"]
 script = ExtResource("3_q8ydj")
 slot = 3
-left = ExtResource("8_7vmcp")
 metadata/_custom_type_script = "uid://cra0emwdv78rw"
 
 [sub_resource type="Resource" id="Resource_nb73l"]

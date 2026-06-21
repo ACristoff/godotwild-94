@@ -10,7 +10,10 @@
 [ext_resource type="Resource" uid="uid://doo8ddwtw5xwn" path="res://World/yipee/genes/allele/leftallele/resources/swipe.tres" id="7_xn73a"]
 [ext_resource type="Resource" uid="uid://cqm8hxp6nrwps" path="res://World/yipee/genes/allele/rightallele/resources/toothy_mouth.tres" id="8_jltf5"]
 [ext_resource type="Resource" uid="uid://bd8mkywjkp18t" path="res://World/yipee/genes/allele/rightallele/resources/bat_wings.tres" id="9_s10jc"]
+[ext_resource type="Resource" uid="uid://bl7owj3m2m8ob" path="res://World/yipee/genes/allele/leftallele/resources/runner.tres" id="9_vt30c"]
+[ext_resource type="Resource" uid="uid://bn7xfnwpatv2k" path="res://World/yipee/genes/allele/rightallele/resources/long_tail.tres" id="10_0g1qu"]
 [ext_resource type="Resource" uid="uid://drypg58gw0i5y" path="res://World/yipee/genes/allele/rightallele/resources/bratty_mouth.tres" id="10_2jn60"]
+[ext_resource type="Resource" uid="uid://do32fvqan32c4" path="res://World/yipee/genes/allele/rightallele/resources/human_ears.tres" id="11_l3egu"]
 [ext_resource type="PackedScene" uid="uid://dglqnmeyydlu5" path="res://UI/Scenes/blad.tscn" id="11_qejfg"]
 
 [sub_resource type="Resource" id="Resource_vahbd"]
@@ -52,9 +55,22 @@ left = ExtResource("7_xn73a")
 right = ExtResource("8_jltf5")
 metadata/_custom_type_script = "uid://cra0emwdv78rw"
 
+[sub_resource type="Resource" id="Resource_dvq4v"]
+script = ExtResource("3_8sa2x")
+slot = 4
+left = ExtResource("9_vt30c")
+right = ExtResource("10_0g1qu")
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_c8lwa"]
+script = ExtResource("3_8sa2x")
+left = ExtResource("9_vt30c")
+right = ExtResource("11_l3egu")
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
 [sub_resource type="Resource" id="Resource_lxues"]
 script = ExtResource("2_t6btj")
-strands = Array[ExtResource("3_8sa2x")]([SubResource("Resource_e2jpt"), null, null, null, null, null, null, null])
+strands = Array[ExtResource("3_8sa2x")]([SubResource("Resource_e2jpt"), SubResource("Resource_dvq4v"), SubResource("Resource_c8lwa"), null, null, null, null, null])
 metadata/_custom_type_script = "uid://ckc2iq0roikyx"
 
 [sub_resource type="Resource" id="Resource_07nu8"]
@@ -67,6 +83,20 @@ base_cooldown = 8.0
 helix = SubResource("Resource_lxues")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 
+[sub_resource type="Resource" id="Resource_6qark"]
+script = ExtResource("3_8sa2x")
+slot = 4
+left = ExtResource("9_vt30c")
+right = ExtResource("10_0g1qu")
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_1kwb1"]
+script = ExtResource("3_8sa2x")
+slot = 4
+left = ExtResource("9_vt30c")
+right = ExtResource("11_l3egu")
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
 [sub_resource type="Resource" id="Resource_w5w5b"]
 script = ExtResource("3_8sa2x")
 slot = 2
@@ -75,7 +105,7 @@ metadata/_custom_type_script = "uid://cra0emwdv78rw"
 
 [sub_resource type="Resource" id="Resource_85u5f"]
 script = ExtResource("2_t6btj")
-strands = Array[ExtResource("3_8sa2x")]([null, null, null, null, null, null, null, SubResource("Resource_w5w5b")])
+strands = Array[ExtResource("3_8sa2x")]([SubResource("Resource_6qark"), SubResource("Resource_1kwb1"), null, null, null, null, null, SubResource("Resource_w5w5b")])
 metadata/_custom_type_script = "uid://ckc2iq0roikyx"
 
 [sub_resource type="Resource" id="Resource_p7isi"]
