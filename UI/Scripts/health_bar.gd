@@ -73,7 +73,6 @@ func spawn_damage_indicator(value, type):
 	dmg_indicator.global_position = damage_indicator_spawn.global_position
 	dmg_indicator.popup(value, type)
 
-
 func update_ailments(status_name: String, ailment_value: int):
 	for i in current_ailments.size():
 		var ailment = current_ailments[i]

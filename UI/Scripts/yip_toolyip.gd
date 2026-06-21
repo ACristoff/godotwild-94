@@ -100,9 +100,11 @@ func _rebuild_stat_pips(pips: Dictionary) -> void:
 		if pips[type] <= 0:
 			continue
 		var pip = STAT_PIP.instantiate()
-		pip.name = type
-		pip.value = pips[type]
 		stats_flow_container.add_child(pip)
+		# Set after add_child so the chip's setters run with is_node_ready() true:
+		# ailment_name drives the chip colour, value drives the number.
+		pip.ailment_name = type
+		pip.value = pips[type]
 
 func set_slot_visuals(type):
 	#increment = 0
