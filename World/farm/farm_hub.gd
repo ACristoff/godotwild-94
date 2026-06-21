@@ -18,6 +18,7 @@ var drag_offset : Vector2 = Vector2.ZERO
 
 var team_slots: Array[Area2D]
 @onready var barn_slots: Array[Area2D] = [%b_slot1, %b_slot2]
+@onready var main_pen : Area2D = $Areas/MainPen
 
 ## Where will store yips globally
 var yip_farm_party_position : Dictionary[int, Yipee] = {
@@ -121,18 +122,20 @@ const MIN_DISTANCE_BETWEEN_POINTS: float = 200.0
 const MAX_ATTEMPTS_PER_POINT : int = 30
 var resserved_spots : Array[Vector2] = []
 
+## Collects the rectangle collision shapes that make up the grazeable space:
+## the dedicated GrazingArea plus the MainPen.
+func _grazing_shapes() -> Array[CollisionShape2D]:
+	var shapes : Array[CollisionShape2D] = []
+	for source in [%GrazingArea, main_pen]:
+		for child in source.get_children():
+			if child is CollisionShape2D and child.shape is RectangleShape2D:
+				shapes.append(child)
+	return shapes
+
 ## Picks a random spot for a yip to spawn in, tries to space yips away from eachother, not guranteed.
 func get_random_point_in_area(count : int) -> Array[Vector2]:
 	# Array to store each collision shape
-	var shapes : Array[CollisionShape2D] = []
-
-	# Grab each Collisionshape2D
-	for child in %GrazingArea.get_children():
-		# Check if its shape is CollisionShape2D
-		if child is CollisionShape2D:
-			# Check if its shape is RectangleShape2D
-			if child.shape is RectangleShape2D:
-				shapes.append(child)
+	var shapes : Array[CollisionShape2D] = _grazing_shapes()
 
 	# Error if we don't have any grazing spot
 	if shapes.is_empty():
@@ -323,7 +326,7 @@ func _drop_yip(yip: Yipee) -> void:
 		return
 
 	# Grazing area or snap to graze area
-	if %GrazingArea.overlaps_area(yip.hover_area):
+	if %GrazingArea.overlaps_area(yip.hover_area) or main_pen.overlaps_area(yip.farmslot):
 		yip.data.farm_last_known_position = yip.global_position
 	else:
 		yip.global_position = yip.data.farm_last_known_position
