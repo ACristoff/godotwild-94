@@ -24,6 +24,10 @@ const YIP_BUFF = preload("uid://nkypm8ojycqe")
 
 @onready var animation_player : AnimationPlayer = $ActionsAnim
 
+@onready var cost_of_yip: Sprite2D = $CostOfYip
+@onready var cost: Label = $CostOfYip/Cost
+
+
 var dead = false
 
 signal yip_hovered(yip_data: Yipee)

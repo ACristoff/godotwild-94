@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://4fmv33e3pnws" path="res://Assets/yipee/GetHit.png" id="9_7esd8"]
 [ext_resource type="Texture2D" uid="uid://bs38yoka37nkw" path="res://Assets/Environment/Scenes/BattleField/BearTrap2.png" id="11_6vhmf"]
 [ext_resource type="Texture2D" uid="uid://cnd44vg4ar23d" path="res://Assets/Environment/Scenes/BattleField/yipnervous.png" id="12_6vhmf"]
+[ext_resource type="Texture2D" uid="uid://bg5f0ibitqrce" path="res://UI/Textures/StatUI.png" id="13_khqkn"]
+[ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="14_8rhy8"]
 
 [sub_resource type="Animation" id="Animation_2cy03"]
 resource_name = "Attack"
@@ -961,6 +963,24 @@ collision_layer = 224
 position = Vector2(0, 39)
 shape = SubResource("CircleShape2D_6vhmf")
 debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="CostOfYip" type="Sprite2D" parent="." unique_id=876915544]
+self_modulate = Color(0.64, 0.35850662, 0.05759998, 1)
+texture_filter = 3
+position = Vector2(2, 84)
+scale = Vector2(3, 3)
+texture = ExtResource("13_khqkn")
+
+[node name="Cost" type="Label" parent="CostOfYip" unique_id=598792521]
+texture_filter = 3
+offset_left = -22.0
+offset_top = -4.000002
+offset_right = 22.0
+offset_bottom = 23.999998
+theme_override_fonts/font = ExtResource("14_8rhy8")
+theme_override_font_sizes/font_size = 8
+text = "$3"
+horizontal_alignment = 1
 
 [connection signal="animation_finished" from="ActionsAnim" to="." method="_on_actions_anim_animation_finished"]
 [connection signal="animation_finished" from="ThrowPunchAnim" to="." method="_on_throw_punch_anim_animation_finished"]
