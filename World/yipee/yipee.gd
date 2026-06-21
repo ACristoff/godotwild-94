@@ -37,6 +37,7 @@ func _ready() -> void:
 	ability.setup(data.helix)
 	body.apply_helix(data.helix)
 	status.setup(health)
+	health_UI.populate_yip_stats(data)
 	status.effects_changed.connect(health_UI.update_ailments)
 	attack.progress_changed.connect(_on_cooldown_changed)
 

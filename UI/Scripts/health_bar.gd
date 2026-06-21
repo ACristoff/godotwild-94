@@ -73,6 +73,30 @@ func spawn_damage_indicator(value, type):
 	dmg_indicator.global_position = damage_indicator_spawn.global_position
 	dmg_indicator.popup(value, type)
 
+func populate_yip_stats(data: YipeeData) -> void:
+	var pips := {}
+	var attack_total := roundi(data.get_attack())
+	if attack_total > 0:
+		pips["PHYSICAL"] = attack_total
+	for strand in data.helix.strands:
+		if strand == null:
+			continue
+		for allele in [strand.left, strand.right]:
+			if allele == null:
+				continue
+			var contribution: Dictionary = allele.get_damage_pips()
+			for type in contribution:
+				pips[type] = pips.get(type, 0) + contribution[type]
+	for child in yip_stats.get_children():
+		child.queue_free()
+	for type in pips:
+		if pips[type] <= 0:
+			continue
+		var pip = DAMAGE_TOOLYIP.instantiate()
+		yip_stats.add_child(pip)
+		pip.ailment_name = type
+		pip.value = pips[type]
+
 func update_ailments(status_name: String, ailment_value: int):
 	for i in current_ailments.size():
 		var ailment = current_ailments[i]
