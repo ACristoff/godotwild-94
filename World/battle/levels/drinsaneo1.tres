@@ -7,7 +7,6 @@
 [ext_resource type="Resource" uid="uid://cytxqbligm5fb" path="res://World/yipee/genes/allele/leftallele/resources/large_heart.tres" id="4_icyu1"]
 [ext_resource type="Resource" uid="uid://dmedt0iu4acyk" path="res://World/yipee/genes/allele/rightallele/resources/grate_mouth.tres" id="4_tiiwe"]
 [ext_resource type="Resource" uid="uid://dhs7xyso55hwy" path="res://World/yipee/genes/allele/rightallele/resources/scorpian_tail.tres" id="5_d456c"]
-[ext_resource type="Resource" uid="uid://bg3dw2dhd884f" path="res://Assets/Dialogic/Timelines/BaeEncounter.dtl" id="5_hpjvn"]
 [ext_resource type="Resource" uid="uid://bayohq4c2pdw2" path="res://World/yipee/genes/allele/rightallele/resources/cyborg_eyes.tres" id="6_tjouv"]
 [ext_resource type="Resource" uid="uid://cphj4u484ak60" path="res://World/yipee/genes/allele/leftallele/resources/friction.tres" id="7_4787u"]
 [ext_resource type="Resource" uid="uid://c1e4w31nkvu32" path="res://World/yipee/genes/allele/rightallele/resources/plane_wings.tres" id="7_tkgyq"]
@@ -171,5 +170,4 @@ script = ExtResource("2_sml2w")
 level_name = "Dr. Insaneo!"
 enemy_team = Array[ExtResource("1_hbbem")]([SubResource("Resource_6yp1q"), SubResource("Resource_tiiwe"), SubResource("Resource_bs07x")])
 intro_animation = ExtResource("22_isepg")
-intro_timeline = ExtResource("5_hpjvn")
 metadata/_custom_type_script = "uid://d2tgf0trp406f"

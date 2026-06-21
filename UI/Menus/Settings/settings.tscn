@@ -5,8 +5,17 @@
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="2_c4f4i"]
 [ext_resource type="Texture2D" uid="uid://c5qwf286x8k71" path="res://UI/Menus/Main_Menu/Textures/Arrow (2).png" id="3_4fob1"]
 [ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="4_sv3nx"]
+[ext_resource type="Shader" uid="uid://usb8pelo00ak" path="res://Assets/Shaders/blur.gdshader" id="6_r3e0n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h22ow"]
+shader = ExtResource("6_r3e0n")
+shader_parameter/blur_radius = 0.49200002337
+shader_parameter/blur_amount = 1.0
+shader_parameter/blur_inner = 0.6
+shader_parameter/blur_outer = 0.66
 
 [node name="Settings" type="CanvasLayer" unique_id=359164329]
+process_mode = 3
 layer = 100
 script = ExtResource("1_jk7ur")
 
@@ -384,6 +393,15 @@ Settings
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=695010326]
+material = SubResource("ShaderMaterial_h22ow")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="button_down" from="ButtonRefresh5/ButtonRefresh6/BackButton" to="ButtonRefresh5/ButtonRefresh6/BackButton" method="_on_button_down"]
 [connection signal="button_up" from="ButtonRefresh5/ButtonRefresh6/BackButton" to="ButtonRefresh5/ButtonRefresh6/BackButton" method="_on_button_up"]
