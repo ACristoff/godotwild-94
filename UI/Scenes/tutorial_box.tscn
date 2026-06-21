@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://csxwv0lucvopg"]
+
+[ext_resource type="Texture2D" uid="uid://bcrv3534foclh" path="res://UI/Textures/UIPanel.png" id="1_7uqrf"]
+[ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="2_sw7le"]
+
+[node name="TutorialBox" type="Control" unique_id=1315543526]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StatsContainer" type="NinePatchRect" parent="." unique_id=1544857490]
+self_modulate = Color(0.69, 0.532565, 0.43469998, 1)
+texture_filter = 3
+layout_mode = 1
+offset_right = 83.0
+offset_bottom = 12.666667
+scale = Vector2(3, 3)
+texture = ExtResource("1_7uqrf")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="StatsContainer2" type="NinePatchRect" parent="." unique_id=1191929492]
+self_modulate = Color(0.69, 0.532565, 0.43469998, 1)
+texture_filter = 3
+layout_mode = 1
+offset_left = 170.0
+offset_top = 42.0
+offset_right = 181.66667
+offset_bottom = 51.0
+scale = Vector2(3, 3)
+texture = ExtResource("1_7uqrf")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="TutorialText" type="Label" parent="." unique_id=1680731529]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 126.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("2_sw7le")
+theme_override_font_sizes/font_size = 32
+text = "This is a yip"
+
+[node name="Next" type="Label" parent="." unique_id=255028458]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 126.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("2_sw7le")
+theme_override_font_sizes/font_size = 32
+text = "This is a yip"

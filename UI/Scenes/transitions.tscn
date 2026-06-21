@@ -16,7 +16,7 @@ shader_parameter/progress = 0.0
 shader_parameter/width = 1.0
 shader_parameter/tile_texture = ExtResource("2_xnyjm")
 shader_parameter/tile_pixel_size = 128.0
-shader_parameter/tile_grown_scale = 3.7780001794549998
+shader_parameter/tile_grown_scale = 3.778000179455
 shader_parameter/transition_texture = SubResource("GradientTexture2D_2idxh")
 
 [sub_resource type="Animation" id="Animation_oypi1"]
@@ -51,6 +51,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_of56s"]
 resource_name = "Transition_Out"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -58,10 +59,24 @@ tracks/0/path = NodePath("CanvasLayer/ColorRect:material:shader_parameter/progre
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, 1.0]
+"values": [0.0, 1.0, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"over_whole"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_am41d"]

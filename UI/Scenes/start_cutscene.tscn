@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://coyhr8bwoy7bk" path="res://UI/Scripts/start_cutscene.gd" id="1_nj425"]
 [ext_resource type="Texture2D" uid="uid://boj74to4iulqd" path="res://Assets/Environment/Scenes/CaptureField/CaptureField.png" id="1_wbdih"]
+[ext_resource type="Texture2D" uid="uid://e8dxicqdwqbd" path="res://Assets/yipee/baesyip.png" id="2_5ac60"]
 [ext_resource type="Texture2D" uid="uid://s6c2wlnqr63u" path="res://UI/Textures/Letterbody.png" id="2_alyq6"]
 [ext_resource type="Texture2D" uid="uid://dtm57ksfnf5vm" path="res://UI/Textures/LetterLip.png" id="3_jtax5"]
 [ext_resource type="Texture2D" uid="uid://c2s0nte2ixde6" path="res://UI/Textures/LetterStamp.png" id="4_kgl4q"]
@@ -647,6 +648,11 @@ _data = {
 [node name="StartCutscene" type="Node2D" unique_id=588285204]
 texture_filter = 3
 script = ExtResource("1_nj425")
+
+[node name="Baesyip" type="Sprite2D" parent="." unique_id=1938684100]
+position = Vector2(927.00006, 532)
+scale = Vector2(3, 3)
+texture = ExtResource("2_5ac60")
 
 [node name="CaptureField" type="Sprite2D" parent="." unique_id=1422440106]
 z_index = -10
