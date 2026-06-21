@@ -66,6 +66,7 @@ func _ready():
 	#tooltip.yip_owner = self
 	coin_label.text = str(SignalBus.coins)
 	tooltip.hide()
+	field_level = SignalBus.victories
 	
 	resserved_spots = get_random_point_in_area(yips_to_spawn)
 	print("RESERVED SPOTS HERE:", resserved_spots)
@@ -73,6 +74,19 @@ func _ready():
 		var new_yip = spawn_yip(i)
 		wire_yip(new_yip)
 		all_yips.append(new_yip)
+
+func update_field_labels():
+	var field_sign = $UpgradeSign/UpgradeField
+	field_sign.text = "Lv. " + str(field_level + 1)
+	
+	var rates = $UpgradeSign/RateLabel
+	var yip_odds = yip_tier_dictionaries[field_level]
+	var stringy_common = "COMMON " + yip_odds[YipeeData.YipTier.COMMON] + "% \n"
+	var stringy_uncommon = "UNCOMMON " + yip_odds[YipeeData.YipTier.UNCOMMON] + "% \n"
+	var stringy_rare = "RARE " + yip_odds[YipeeData.YipTier.RARE] + "% \n"
+	var stringy_ultrarare = "ULTRA-RARE " + yip_odds[YipeeData.YipTier.ULTRARARE] + "% \n"
+	var final = stringy_common + stringy_uncommon + stringy_rare + stringy_ultrarare
+	rates.text = final
 
 # So we clear all reservered spots when we leave
 func _exit_tree() -> void:

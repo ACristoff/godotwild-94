@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dqgfurgu7jsbg" path="res://UI/Scenes/yip_toolyip.tscn" id="5_8ubfp"]
 [ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="6_ju3ud"]
 [ext_resource type="Texture2D" uid="uid://chftxxvwdvkgk" path="res://Assets/Environment/Scenes/BattleField/LockButton.png" id="7_748j3"]
-[ext_resource type="Script" uid="uid://dqvqbetgnjsnh" path="res://UI/Scripts/lock_button_graphic.gd" id="8_6l7jc"]
+[ext_resource type="Script" path="res://UI/Scripts/lock_button_graphic.gd" id="8_6l7jc"]
 [ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="8_lwms1"]
 [ext_resource type="Texture2D" uid="uid://ck0oxmum5r402" path="res://Assets/Environment/Scenes/CaptureField/UpgradeSign.png" id="10_rh655"]
 
@@ -237,7 +237,7 @@ theme_override_font_sizes/font_size = 8
 text = "Lv. 1"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="UpgradeSign" unique_id=25999302]
+[node name="RateLabel" type="Label" parent="UpgradeSign" unique_id=25999302]
 offset_left = -67.0
 offset_top = 33.666664
 offset_right = 33.0
