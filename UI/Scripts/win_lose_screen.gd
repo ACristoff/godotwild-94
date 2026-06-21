@@ -2,6 +2,7 @@ extends Control
 
 const YIP_TROPHY_SHEEN = preload("uid://dau7hd7rch48p")
 const YIP_GLASS_BREAK = preload("uid://bt20qh28pdhco")
+const YIP_BATTLE_VICTORY = preload("uid://qxt87ungmeso")
 
 
 func _ready():
@@ -32,14 +33,16 @@ func lose_final():
 func won_match():
 	update_trophies()
 	AudMan.play_sfx_wav(YIP_TROPHY_SHEEN, 0.0, false)
-	if SignalBus.current_wins >= 6:
+	if SignalBus.victories >= 5:
 		win_final()
 	else:
 		await get_tree().create_timer(1.0).timeout
 		next_day()
 
 func win_final():
-	pass
+	$"../PromotionLetter".show()
+	$"../AnimationPlayer".play("Death")
+	AudMan.play_sfx_wav(YIP_BATTLE_VICTORY, 0.0, false)
 	
 func next_day():
 	SignalBus.day_finished.emit()

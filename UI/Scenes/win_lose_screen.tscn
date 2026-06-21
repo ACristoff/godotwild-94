@@ -8,7 +8,9 @@
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="6_8qkf6"]
 [ext_resource type="Texture2D" uid="uid://b23r3pwtlnxfe" path="res://UI/Menus/Main_Menu/Textures/terminated.png" id="7_8qkf6"]
 [ext_resource type="Texture2D" uid="uid://ch8oia8iqbewe" path="res://UI/Textures/LetterHand.png" id="8_vx6t1"]
+[ext_resource type="Texture2D" uid="uid://bbseau7j8c40c" path="res://UI/Menus/Main_Menu/Textures/Promotion.png" id="9_e8fb5"]
 [ext_resource type="Texture2D" uid="uid://b6wgi46ipvd1f" path="res://UI/Menus/Main_Menu/Textures/MMButton.png" id="9_gnttp"]
+[ext_resource type="Texture2D" uid="uid://bt1xijpj8ijlx" path="res://UI/Menus/Main_Menu/Textures/GoldStamp.png" id="10_3lwvx"]
 [ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="10_lu3uy"]
 
 [sub_resource type="Animation" id="Animation_o4qgk"]
@@ -61,6 +63,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(711, 1841), Vector2(711.00006, 884.00006)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PromotionLetter:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.29730183, 1),
+"update": 0,
+"values": [Vector2(-651, 355), Vector2(-651, -602)]
+}
 
 [sub_resource type="Animation" id="Animation_vx6t1"]
 length = 0.001
@@ -111,6 +125,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(0.29730183),
 "update": 0,
 "values": [Vector2(711, 1841)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PromotionLetter:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-651, -602)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gnttp"]
@@ -274,7 +300,7 @@ texture_filter = 3
 offset_left = -651.0
 offset_top = -602.0
 offset_right = 451.26306
-offset_bottom = 143.49792
+offset_bottom = 143.4978
 scale = Vector2(3, 3)
 mouse_filter = 2
 
@@ -323,6 +349,66 @@ texture_filter = 3
 position = Vector2(545, 380.6667)
 texture = ExtResource("8_vx6t1")
 
+[node name="PromotionLetter" type="ColorRect" parent="." unique_id=444142793]
+visible = false
+clip_children = 1
+texture_filter = 3
+offset_left = -651.0
+offset_top = -602.0
+offset_right = 451.26306
+offset_bottom = 143.4978
+scale = Vector2(3, 3)
+mouse_filter = 2
+
+[node name="LetterJustPaper" type="Sprite2D" parent="PromotionLetter" unique_id=145345708]
+position = Vector2(544.639, 367.675)
+texture = ExtResource("5_ymjyh")
+
+[node name="Label" type="Label" parent="PromotionLetter/LetterJustPaper" unique_id=1995570270]
+offset_left = -127.333466
+offset_top = -33.51033
+offset_right = 114.99988
+offset_bottom = 193.48967
+theme_override_colors/font_color = Color(0.3764706, 0.3372549, 0.26666668, 1)
+theme_override_fonts/font = ExtResource("6_8qkf6")
+theme_override_font_sizes/font_size = 8
+text = "Dear franchisee, 
+
+for days we have sent inspectors to document the state of the franchisee's farms. I've heard your yips beyond all the others are strong and healthy. You have proven your mettle as a yip rancher
+
+But now, you have been promoted. You are now one of my elite employees!
+
+Sincerely, Bob Gate.
+"
+autowrap_mode = 3
+
+[node name="LetterJustPaper2" type="Sprite2D" parent="PromotionLetter" unique_id=1142301666]
+position = Vector2(530.30554, 727.498)
+rotation = 3.1415925
+texture = ExtResource("5_ymjyh")
+
+[node name="ColorRect" type="ColorRect" parent="PromotionLetter" unique_id=1104218035]
+layout_mode = 0
+offset_left = 405.30554
+offset_top = 537.1647
+offset_right = 669.6389
+offset_bottom = 577.1647
+color = Color(1, 0.8901961, 0.80784315, 1)
+
+[node name="Terminated" type="Sprite2D" parent="PromotionLetter" unique_id=1989524875]
+texture_filter = 3
+position = Vector2(537, 301)
+texture = ExtResource("9_e8fb5")
+
+[node name="GoldStamp" type="Sprite2D" parent="PromotionLetter" unique_id=1388821741]
+position = Vector2(632, 483)
+texture = ExtResource("10_3lwvx")
+
+[node name="LetterHand" type="Sprite2D" parent="PromotionLetter" unique_id=1109544222]
+texture_filter = 3
+position = Vector2(545, 380.6667)
+texture = ExtResource("8_vx6t1")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=648624919]
 libraries/ = SubResource("AnimationLibrary_gnttp")
 
@@ -333,7 +419,7 @@ texture_filter = 3
 offset_left = 679.0
 offset_top = 1979.0
 offset_right = 783.0288
-offset_bottom = 2003.6173
+offset_bottom = 2003.6168
 scale = Vector2(3, 3)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("9_gnttp")
@@ -375,7 +461,7 @@ texture_filter = 3
 offset_left = 711.0
 offset_top = 1841.0
 offset_right = 846.6667
-offset_bottom = 1892.6667
+offset_bottom = 1892.6669
 scale = Vector2(3, 3)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 size_flags_horizontal = 3
