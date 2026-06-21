@@ -12,7 +12,7 @@ class_name Game_Manager
 @onready var menu_ui: CanvasLayer = $MenuUI
 
 @onready var main_menu = preload("res://UI/Menus/Main_Menu/main_menu.tscn")
-@onready var settings_menu 
+@onready var settings_menu = preload("res://UI/Menus/Settings/settings.tscn")
 @onready var credits_menu = preload("res://UI/Menus/Credits/credits.tscn")
 #@onready var load_save_menu = preload("res://UI/Menus/LoadSave/load_save.tscn")
 @onready var game = preload("res://World/main_game.tscn")
@@ -24,7 +24,7 @@ var current_scene = null
 @onready var Menu_Scenes: Dictionary = {
 	"Main": main_menu,
 	"Start": game,
-	"Settings": 'NOT DONE YET BOZO',
+	"Settings": settings_menu,
 	"Credits": credits_menu,
 	"Pause": 'NOT DONE YET BOZO',
 	"Quit": 'Quit za gameo'
@@ -59,6 +59,11 @@ func change_scene(new_state: String):
 		var new_scene = Menu_Scenes[new_state].instantiate()
 		$MenuUI.add_child(new_scene)
 		current_scene = new_scene
+		return OK
+	if new_state == "Credits":
+		_clear_menu_ui()
+		var new_scene = Menu_Scenes[new_state].instantiate()
+		$MenuUI.add_child(new_scene)
 		return OK
 	if new_state == "Quit":
 		get_tree().quit()

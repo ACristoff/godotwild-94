@@ -62,7 +62,7 @@ func _on_sfxup_pressed() -> void:
 
 
 func _on_main_menu_button_pressed() -> void:
-	pass # Replace with function body.
+	SignalBus.game_state_changed.emit("Main")
 
 
 func _on_restart_button_pressed() -> void:
@@ -70,4 +70,4 @@ func _on_restart_button_pressed() -> void:
 
 
 func _on_back_button_pressed() -> void:
-	pass # Replace with function body.
+	queue_free()
