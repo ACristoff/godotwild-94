@@ -43,6 +43,11 @@ func _ready() -> void:
 		seed_debug_alleles()
 		#sample_yip.helix = Helix.generate_debug()
 		spawn_yip(sample_yip)
+	if SignalBus.debug_mode == false && SignalBus.yip_inventory[0] != null:
+		var inventory = SignalBus.yip_inventory
+		for yip in inventory:
+			spawn_yip(yip)
+	##allele inventory
 	rebuild_inventory()
 
 func _build_helix_drop_overlay() -> void:
