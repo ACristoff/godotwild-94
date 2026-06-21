@@ -316,7 +316,7 @@ func refresh() -> void:
 			yip_on_launch_pad.body.apply_helix(current_helix())
 
 func _on_allele_hovered(allele: Allele, side: String) -> void:
-	var slot_key = BodyMap.Slot.keys()[allele.slot]
+	var slot_key = Toolyip.SLOT_KEYS.get(allele.slot, "NULL")
 	allele_tooltip.update_info(allele.allele_name, side, allele.get_tooltip(), slot_key, allele.tier)
 	allele_tooltip.global_position = get_viewport().get_mouse_position() + Vector2(15, 15)
 	allele_tooltip.show()
