@@ -303,6 +303,7 @@ func buy_yip(yip_bought: Yipee) -> void:
 		var empty_slot = check_empty_party()
 		if empty_slot > 0:
 			SignalBus.yip_party[empty_slot] = yip_bought.data
+			yip_bought.data.yip_party_slot = 6 - empty_slot
 		yip_bought.queue_free()
 		tooltip.hide()
 		print(SignalBus.yip_inventory)

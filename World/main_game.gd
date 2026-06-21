@@ -66,7 +66,7 @@ func _on_battle_finished(victory: bool) -> void:
 func _on_opening_finished(argument: String) -> void:
 	if argument == "opening_finished":
 		SignalBus.game_started = true
-		change_location(SignalBus.Locations.FIELD)
+		change_location(SignalBus.Locations.FARM)
 
 func _on_day_end() -> void:
 	SignalBus.coins += 6
