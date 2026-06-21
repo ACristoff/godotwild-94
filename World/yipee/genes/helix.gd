@@ -38,6 +38,24 @@ static func generate_random(yip_tier: YipeeData.YipTier = YipeeData.YipTier.COMM
 	
 	return helix
 
+## Build a child helix from two parents: per rung, inherit a strand from one
+## parent (coin-flip if both have one), deep-copied so the child shares no refs.
+static func combine(parent_a: Helix, parent_b: Helix) -> Helix:
+	var helix := Helix.new()
+	for rung in RUNG_COUNT:
+		var strand_a: Strand = parent_a.strands[rung]
+		var strand_b: Strand = parent_b.strands[rung]
+		var chosen: Strand = null
+		if strand_a != null and strand_b != null:
+			chosen = strand_a if randi() % 2 == 0 else strand_b
+		elif strand_a != null:
+			chosen = strand_a
+		elif strand_b != null:
+			chosen = strand_b
+		if chosen != null:
+			helix.strands[rung] = chosen.duplicate(true) as Strand
+	return helix
+
 func get_rung(index: int) -> Strand:
 	return strands[index]
 

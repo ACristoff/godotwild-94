@@ -1,5 +1,7 @@
 extends Node2D
 
+const BREED_SOUND := preload("res://Assets/Audio/Sounds/YIPS_FUKN.wav")
+
 #region Variables
 var all_yips:  Array[Yipee] = []
 
@@ -65,6 +67,7 @@ func _ready() -> void:
 		index += 1
 
 	_update_barn_doors()
+	_try_breed()
 
 	#Tutorials
 	if SignalBus.field_clicked:
@@ -103,6 +106,7 @@ func _input(event : InputEvent) -> void:
 			if dragged_yip:
 				_drop_yip(dragged_yip)
 				_update_barn_doors()
+				_try_breed()
 				dragged_yip.animation_player.play(&"RESET")
 				dragged_yip = null
 
@@ -369,9 +373,45 @@ func _relocate_displaced(displaced_data: YipeeData, displaced_node: Yipee, vacat
 		if displaced_node != null:
 			displaced_node.global_position = displaced_node.data.farm_last_known_position
 
+func _barn_is_full() -> bool:
+	return yip_farm_barn_position[1] != null and yip_farm_barn_position[2] != null
+
 func _update_barn_doors() -> void:
-	print("Should the doors be visible: ", (yip_farm_barn_position[1] == null and yip_farm_barn_position[2] == null))
-	farm_doors.visible = (yip_farm_barn_position[1] == null and yip_farm_barn_position[2] == null)
+	farm_doors.visible = _barn_is_full() and not SignalBus.bred_today
+
+func _try_breed() -> void:
+	if SignalBus.bred_today:
+		return
+	var parent_a: YipeeData = SignalBus.yip_breed_barn[1]
+	var parent_b: YipeeData = SignalBus.yip_breed_barn[2]
+	if parent_a == null or parent_b == null:
+		return
+
+	SignalBus.bred_today = true
+	var child := YipeeData.breed(parent_a, parent_b)
+	SignalBus.yip_inventory.append(child)
+	AudMan.play_sfx_wav(BREED_SOUND, 0.0, false)
+
+	var parent_node_a: Yipee = yip_farm_barn_position[1]
+	var parent_node_b: Yipee = yip_farm_barn_position[2]
+	if parent_node_a != null:
+		parent_node_a.visible = false
+	if parent_node_b != null:
+		parent_node_b.visible = false
+
+	await get_tree().create_timer(3.0).timeout
+	if not is_inside_tree():
+		return
+
+	if is_instance_valid(parent_node_a):
+		parent_node_a.visible = true
+	if is_instance_valid(parent_node_b):
+		parent_node_b.visible = true
+
+	var spawn_points := get_random_point_in_area(1)
+	child.farm_last_known_position = spawn_points[0]
+	wire_yip(spawn_yip(child, 0))
+	_update_barn_doors()
 
 # TeamSlot1 (front of the farm row) is the front of the battle formation, which
 # battle reads as party slot 5. Maps a visual TeamSlot number <-> party slot key.
@@ -421,7 +461,8 @@ func _on_any_area_exited(entered_area: Area2D, source_area: Area2D) -> void:
 
 func _on_breed_farm_slot_area_entered(entered_area: Area2D, source_area: Area2D) -> void:
 	print(source_area.name, " was entered by ", entered_area.name)
-	farm_doors.visible = false
+	if not _barn_is_full():
+		farm_doors.visible = false
 
 func _on_breed_farm_slot_area_exited(entered_area: Area2D, source_area: Area2D) -> void:
 	print(source_area.name, " was exited by ", entered_area.name)

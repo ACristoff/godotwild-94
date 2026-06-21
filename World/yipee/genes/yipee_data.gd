@@ -104,5 +104,19 @@ static func generate_yip(chosen_tier: YipTier) -> YipeeData:
 	new_yip.age = randi_range(1,20)
 	var new_helix: Helix = Helix.generate_random(chosen_tier)
 	new_yip.helix = new_helix
-	
+
 	return new_yip
+
+## Breed two parents: best tier of either, averaged base stats, combined helix.
+static func breed(parent_a: YipeeData, parent_b: YipeeData) -> YipeeData:
+	var child := YipeeData.new()
+	child.tier = maxi(parent_a.tier, parent_b.tier)
+	child.base_health = roundi((parent_a.base_health + parent_b.base_health) / 2.0)
+	child.base_attack = roundi((parent_a.base_attack + parent_b.base_attack) / 2.0)
+	child.base_cooldown = (parent_a.base_cooldown + parent_b.base_cooldown) / 2.0
+	child.age = 0
+	child.helix = Helix.combine(parent_a.helix, parent_b.helix)
+	child.yip_party_slot = 0
+	child.yip_barn_slot = 0
+	child.farm_last_known_position = Vector2.ZERO
+	return child
