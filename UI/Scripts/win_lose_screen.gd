@@ -5,6 +5,7 @@ const YIP_GLASS_BREAK = preload("uid://bt20qh28pdhco")
 
 
 func _ready():
+	AudMan.stop_music()
 	update_trophies()
 	update_hearts()
 

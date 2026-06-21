@@ -87,3 +87,9 @@ func _on_tutorial_box_10_next() -> void:
 	$TutorialBox10.hide()
 	Dialogic.start("Intro")
 	
+
+#DEBUG
+func _on_button_3_pressed() -> void:
+	Dialogic.end_timeline()
+	SignalBus.go_to.emit(SignalBus.Locations.FARM)
+	

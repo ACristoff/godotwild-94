@@ -860,6 +860,14 @@ offset_top = 34.999992
 offset_right = -28.000023
 offset_bottom = 70.66666
 
+[node name="Button3" type="Button" parent="." unique_id=1751788722]
+offset_left = 55.0
+offset_top = 51.0
+offset_right = 288.0
+offset_bottom = 211.0
+theme_override_font_sizes/font_size = 111
+text = "Skip"
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
@@ -872,6 +880,7 @@ offset_bottom = 70.66666
 [connection signal="next" from="TutorialBox8" to="." method="_on_tutorial_box_8_next"]
 [connection signal="next" from="TutorialBox9" to="." method="_on_tutorial_box_9_next"]
 [connection signal="next" from="TutorialBox10" to="." method="_on_tutorial_box_10_next"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
 
 [editable path="TutorialBox4"]
 [editable path="TutorialBox10"]
