@@ -5,34 +5,18 @@ const YIP_GLASS_BREAK = preload("uid://bt20qh28pdhco")
 
 
 func _ready():
-	
-	match SignalBus.current_wins:
-		1:
-			$VBoxContainer/Trophies/Trophy1.modulate = Color(1.0, 1.0, 1.0, 1.0)
-		2:
-			$VBoxContainer/Trophies/Trophy1.modulate = Color(1.0, 1.0, 1.0, 1.0)
-			$VBoxContainer/Trophies/Trophy2.modulate = Color(1.0, 1.0, 1.0, 1.0)
-		3:
-			$VBoxContainer/Trophies/Trophy1.modulate = Color(1.0, 1.0, 1.0, 1.0)
-			$VBoxContainer/Trophies/Trophy2.modulate = Color(1.0, 1.0, 1.0, 1.0)
-			$VBoxContainer/Trophies/Trophy3.modulate = Color(1.0, 1.0, 1.0, 1.0)
-		4:
-			$VBoxContainer/Trophies/Trophy1.modulate = Color(1.0, 1.0, 1.0, 1.0)
-			$VBoxContainer/Trophies/Trophy2.modulate = Color(1.0, 1.0, 1.0, 1.0)
-			$VBoxContainer/Trophies/Trophy3.modulate = Color(1.0, 1.0, 1.0, 1.0)
-			$VBoxContainer/Trophies/Trophy4.modulate = Color(1.0, 1.0, 1.0, 1.0)
-		5:
-			$VBoxContainer/Trophies/Trophy1.modulate = Color(1.0, 1.0, 1.0, 1.0)
-			$VBoxContainer/Trophies/Trophy2.modulate = Color(1.0, 1.0, 1.0, 1.0)
-			$VBoxContainer/Trophies/Trophy3.modulate = Color(1.0, 1.0, 1.0, 1.0)
-			$VBoxContainer/Trophies/Trophy4.modulate = Color(1.0, 1.0, 1.0, 1.0)
-			$VBoxContainer/Trophies/Trophy5.modulate = Color(1.0, 1.0, 1.0, 1.0)
+	update_trophies()
 	update_hearts()
 
+func update_trophies():
+	for i in range(1, 6):
+		var trophy = get_node("VBoxContainer/Trophies/Trophy" + str(i))
+		if i <= SignalBus.victories:
+			trophy.modulate = Color.WHITE
+		else:
+			trophy.modulate = Color("313131")
+
 func lost_match():
-	#var node = get_node("VBoxContainer/Hearts/Heart" + str(SignalBus.current_health))
-	#node.set_slot(slot)
-	#SignalBus.current_health -= 1
 	update_hearts()
 	AudMan.play_sfx_wav(YIP_GLASS_BREAK, 0.0, false)
 	if SignalBus.current_health <= 0:
@@ -42,13 +26,10 @@ func lost_match():
 		next_day()
 
 func lose_final():
-	pass
+	$"../AnimationPlayer".play("Death")
 	
 func won_match():
-	SignalBus.current_wins += 1
-	var node = get_node("VBoxContainer/Trophies/Trophy" + str(SignalBus.current_wins))
-	#node.set_slot(slot)
-	node.modulate = Color(1.0, 1.0, 1.0, 1.0)
+	update_trophies()
 	AudMan.play_sfx_wav(YIP_TROPHY_SHEEN, 0.0, false)
 	if SignalBus.current_wins >= 6:
 		win_final()
