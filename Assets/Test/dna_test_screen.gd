@@ -44,17 +44,6 @@ func clear_drop_target(rung: int, side: String) -> void:
 		drop_rung = -1
 		drop_side = ""
 
-# Maps the current mouse Y onto a rung index (0-7), the same vertical math the
-# hover animation in _process uses. The helix drop surface calls this mid-drag:
-# during a Control drag-and-drop the shells' Area2D mouse_entered signals don't
-# fire, so drop_rung/drop_side can't be trusted while dragging — this computes
-# the target rung straight from the cursor instead.
-func rung_at_mouse() -> int:
-	var local_y = get_global_mouse_position().y - area_2d.global_position.y
-	local_y += height / 2.0
-	var quadrant = int(local_y / spacing)
-	return clamp(quadrant, 0, 7)
-
 func update_visuals():
 	current_slot = 0
 	for i in shells:
