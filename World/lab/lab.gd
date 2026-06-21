@@ -7,17 +7,32 @@ var dragged_yip: Yipee = null
 var drag_offset: Vector2 = Vector2.ZERO
 
 var yip_on_launch_pad: Yipee = null
+var yip_on_conveyor: Yipee = null
 
 @onready var launch_pad = $LaunchPad
 @onready var conveyor = $ConveyorArea
 @onready var dna_screen = $Control/SubViewportContainer/SubViewport/DNATestScreen
 @onready var areas = $Areas
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	update_screen()
 	if SignalBus.debug_mode == true && sample_yip != null:
-		print('debug')
+		seed_debug_alleles()
+		#sample_yip.helix = Helix.generate_debug()
 		spawn_yip(sample_yip)
+
+func seed_debug_alleles() -> void:
+	if not SignalBus.allele_inventory.is_empty():
+		return
+	var samples: Array[Allele] = [
+		preload("res://World/yipee/genes/allele/leftallele/resources/bigswing.tres"),
+		preload("res://World/yipee/genes/allele/leftallele/resources/maul.tres"),
+		preload("res://World/yipee/genes/allele/rightallele/resources/angel_wings.tres"),
+		preload("res://World/yipee/genes/allele/rightallele/resources/angry_eyes.tres"),
+	]
+	for sample in samples:
+		SignalBus.allele_inventory.append(sample.duplicate(true))
 
 func get_random_point_in_area() -> Vector2:
 	# Array to store each collision shape
@@ -32,7 +47,6 @@ func get_random_point_in_area() -> Vector2:
 	var grazing_shape : RectangleShape2D = shapes[randi() % shapes.size()].shape
 	
 	var extents : Vector2 = grazing_shape.size / 2.0
-	
 	# To store random spawn point
 	var random_point_in_grazing_area : Vector2 = Vector2(randf_range(-extents.x, extents.x), randf_range(-extents.y, extents.y))
 	
@@ -119,4 +133,5 @@ func _on_launch_pad_area_exited(area):
 func _on_conveyor_area_area_entered(area):
 	print("on_conveyor_area_area_entered", area)
 
-	
+func _on_conveyor_area_area_exited(area):
+	pass # Replace with function body.

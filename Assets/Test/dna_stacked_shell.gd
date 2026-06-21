@@ -16,6 +16,8 @@ var test_slot_type
 @export var title_offset = 0
 @export var anim_start_frame = 0
 
+var slot_color: Color = Color.WHITE
+
 var possible = ["atk", "hp", "trait", "def", "spec", "cd", "breed", "null"]
 
 # Called when the node enters the scene tree for the first time.
@@ -118,6 +120,12 @@ func set_slot(type):
 			slot_titles.frame = 7
 			dna_shell_1.modulate = Color.from_string("3d3d3d", Color.BLACK)
 			dna_shell_2.modulate = Color.from_string("3d3d3d", Color.BLACK)
+	slot_color = dna_shell_1.modulate
+
+func set_allele_fill(has_left: bool, has_right: bool) -> void:
+	var empty := Color.from_string("3d3d3d", Color.BLACK)
+	dna_allele_2.modulate = slot_color if has_left else empty   # DnaAllele2 = LEFT
+	dna_allele_1.modulate = slot_color if has_right else empty  # DnaAllele1 = RIGHT
 
 func tick_forward():
 	current_frame += 1

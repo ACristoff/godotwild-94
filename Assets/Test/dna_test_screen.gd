@@ -28,8 +28,7 @@ func update_visuals():
 		#print("play")
 		i.play_anim()
 		await get_tree().create_timer(0.15).timeout
-		
-		
+
 enum Slot {
 	HEALTH,
 	HEALTH_AUGMENT,
@@ -91,24 +90,23 @@ func display_helix(helix: Helix) -> void:
 		var strand: Strand = helix.strands[i]
 		if strand == null or strand.slot == BodyMap.Slot.NONE:
 			shells[i].set_slot("NONE")
+			shells[i].set_allele_fill(false, false)
 		else:
 			shells[i].set_slot(BodyMap.Slot.keys()[strand.slot])
+			shells[i].set_allele_fill(strand.left != null, strand.right != null)
 
 func _on_area_2d_mouse_entered() -> void:
 	#print("hi")
 	$Timer.stop()
 	detect_hover = true
 
-
 func _on_area_2d_mouse_exited() -> void:
 	$Timer.start()
 	detect_hover = false
 
-
 func _on_timer_timeout() -> void:
 	for i in shells:
 		i.tick_forward()
-
 
 func _on_start_button_pressed() -> void:
 	$Timer.start()

@@ -9,10 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://dp6fox832wacg" path="res://Assets/Environment/Scenes/Laboratory/LabPieces.png" id="3_ems3l"]
 [ext_resource type="Shader" uid="uid://bwvmkd4i76b3p" path="res://Assets/Shaders/CRT.gdshader" id="4_ems3l"]
 [ext_resource type="Texture2D" uid="uid://dhyaufaxs6hjv" path="res://UI/Textures/cyanspeenspritesheet.png" id="4_mntup"]
+[ext_resource type="Resource" uid="uid://vch78531hm1q" path="res://World/yipee/genes/allele/leftallele/resources/rip.tres" id="4_qrl5x"]
 [ext_resource type="Texture2D" uid="uid://blbxak2oo2t0j" path="res://Assets/Environment/Scenes/Laboratory/LabPiecesOver.png" id="4_uroyv"]
+[ext_resource type="Resource" uid="uid://dgc504k70wwd2" path="res://World/yipee/genes/allele/rightallele/resources/dog_tail.tres" id="5_1ax5p"]
 [ext_resource type="Texture2D" uid="uid://rwpaxb4jhtyk" path="res://UI/Textures/Arrow.png" id="5_be18q"]
 [ext_resource type="PackedScene" uid="uid://38s8fl53yrsg" path="res://Assets/Test/dna_test_screen.tscn" id="5_ieswn"]
+[ext_resource type="Resource" uid="uid://cidq54ye38vgy" path="res://World/yipee/genes/allele/leftallele/resources/rally.tres" id="6_ffgas"]
 [ext_resource type="Texture2D" uid="uid://djdujp6j5ud2u" path="res://Assets/Environment/Scenes/Laboratory/Conveyor.png" id="6_fne6d"]
+[ext_resource type="Resource" uid="uid://clmny47rxgsyl" path="res://World/yipee/genes/allele/rightallele/resources/bonk_misc.tres" id="7_58ib8"]
 [ext_resource type="PackedScene" uid="uid://ba2i2glrfw55d" path="res://World/areas.tscn" id="9_ieswn"]
 [ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="10_co32c"]
 [ext_resource type="Script" path="res://UI/Scripts/button_effects.gd" id="11_co32c"]
@@ -20,16 +24,25 @@
 
 [sub_resource type="Resource" id="Resource_5722r"]
 script = ExtResource("3_8wn1l")
+left = ExtResource("4_qrl5x")
 metadata/_custom_type_script = "uid://cra0emwdv78rw"
 
 [sub_resource type="Resource" id="Resource_r58b7"]
 script = ExtResource("3_8wn1l")
 slot = 1
+right = ExtResource("5_1ax5p")
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_bx8m8"]
+script = ExtResource("3_8wn1l")
+slot = 2
+left = ExtResource("6_ffgas")
+right = ExtResource("7_58ib8")
 metadata/_custom_type_script = "uid://cra0emwdv78rw"
 
 [sub_resource type="Resource" id="Resource_qrl5x"]
 script = ExtResource("2_sf1g0")
-strands = Array[ExtResource("3_8wn1l")]([SubResource("Resource_5722r"), SubResource("Resource_r58b7")])
+strands = Array[ExtResource("3_8wn1l")]([SubResource("Resource_5722r"), SubResource("Resource_r58b7"), SubResource("Resource_bx8m8")])
 metadata/_custom_type_script = "uid://ckc2iq0roikyx"
 
 [sub_resource type="Resource" id="Resource_n5q1j"]
@@ -432,6 +445,7 @@ speed_scale = 0.3
 [connection signal="area_entered" from="LaunchPad" to="." method="_on_launch_pad_area_entered"]
 [connection signal="area_exited" from="LaunchPad" to="." method="_on_launch_pad_area_exited"]
 [connection signal="area_entered" from="ConveyorArea" to="." method="_on_conveyor_area_area_entered"]
+[connection signal="area_exited" from="ConveyorArea" to="." method="_on_conveyor_area_area_exited"]
 [connection signal="button_down" from="FarmButton" to="FarmButton" method="_on_button_down"]
 [connection signal="button_up" from="FarmButton" to="FarmButton" method="_on_button_up"]
 [connection signal="mouse_entered" from="FarmButton" to="FarmButton" method="_on_mouse_entered"]
