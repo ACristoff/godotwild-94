@@ -67,20 +67,20 @@ var resserved_spots : Array[Vector2] = []
 
 const MIN_DISTANCE_BETWEEN_POINTS: float = 200.0
 const MAX_ATTEMPTS_PER_POINT : int = 30
+const REFRESH_COST : int = 1
 
 #region Built in
 func _ready():
 	#tooltip.yip_owner = self
 	coin_label.text = str(SignalBus.coins)
 	tooltip.hide()
-	field_level = clampi(SignalBus.victories, 0, 4)
+	field_level = clampi(SignalBus.victories, 0, 3)
+	yips_to_spawn = 3 + field_level
 	update_field_labels()
-	resserved_spots = get_random_point_in_area(yips_to_spawn)
-	print("RESERVED SPOTS HERE:", resserved_spots)
-	for i in (yips_to_spawn):
-		var new_yip = spawn_yip(i)
-		wire_yip(new_yip)
-		all_yips.append(new_yip)
+	if not SignalBus.field_generated_today:
+		generate_field_stock()
+		SignalBus.field_generated_today = true
+	spawn_field_stock()
 
 func update_field_labels():
 	var field_sign = $UpgradeSign/UpgradeField
@@ -275,19 +275,29 @@ func _is_far_enough(point : Vector2, existing_points : Array[Vector2]) -> bool:
 			return false
 	return true
 
-func spawn_yip(index : int) -> Yipee:
-	var yip_tier = get_yip_tier()
-	var new_yip_data: YipeeData = YipeeData.generate_yip(yip_tier)
+func generate_field_stock() -> void:
+	SignalBus.field_stock.clear()
+	for i in yips_to_spawn:
+		var yip_tier = get_yip_tier()
+		var new_yip_data: YipeeData = YipeeData.generate_yip(yip_tier)
+		generate_alleles(yip_tier, new_yip_data.helix)
+		SignalBus.field_stock.append(new_yip_data)
+
+func spawn_field_stock() -> void:
+	resserved_spots = get_random_point_in_area(SignalBus.field_stock.size())
+	for i in SignalBus.field_stock.size():
+		var new_yip = spawn_yip(SignalBus.field_stock[i], i)
+		wire_yip(new_yip)
+		all_yips.append(new_yip)
+
+func spawn_yip(data: YipeeData, index : int) -> Yipee:
 	var new_yip := preload("res://World/yipee/yipee.tscn").instantiate() as Yipee
-	generate_alleles(yip_tier, new_yip_data.helix)
-	
-	new_yip.data = new_yip_data
+	new_yip.data = data
 	new_yip.position = resserved_spots[index]
 	add_child(new_yip)
 	
 	new_yip.cost_of_yip.visible = true
-	var yip_cost = yip_costs[yip_tier]
-	new_yip.cost.text = "$" + str(yip_cost)
+	new_yip.cost.text = "$" + str(yip_costs[data.tier])
 	
 	# So they do the idle animation
 	new_yip.animation_player.play(&"IdleNormal")
@@ -308,6 +318,7 @@ func buy_yip(yip_bought: Yipee) -> void:
 	#happy path
 		spend_coins(yip_cost)
 		SignalBus.yip_inventory.append(yip_bought.data)
+		SignalBus.field_stock.erase(yip_bought.data)
 		all_yips.erase(yip_bought)
 		#SignalBus.yip_party[1] = yip_bought.data
 		var empty_slot = check_empty_party()
@@ -358,11 +369,13 @@ func _input(event):
 			buy_yip(focused_yip)
 
 func _on_refresh_button_pressed():
+	if check_coinage(REFRESH_COST) == false:
+		print('not enough money to refresh!')
+		return
+	spend_coins(REFRESH_COST)
 	clear_yips()
-	for i in yips_to_spawn:
-		var new_yip = spawn_yip(i)
-		wire_yip(new_yip)
-		all_yips.append(new_yip)
+	generate_field_stock()
+	spawn_field_stock()
 
 
 func _on_farm_button_pressed():

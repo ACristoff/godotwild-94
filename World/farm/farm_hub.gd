@@ -386,7 +386,7 @@ func _try_breed() -> void:
 	var parent_b: YipeeData = SignalBus.yip_breed_barn[2]
 	if parent_a == null or parent_b == null:
 		return
-
+	
 	SignalBus.bred_today = true
 	var child := YipeeData.breed(parent_a, parent_b)
 	SignalBus.yip_inventory.append(child)
@@ -402,12 +402,12 @@ func _try_breed() -> void:
 	await get_tree().create_timer(3.0).timeout
 	if not is_inside_tree():
 		return
-
+	
 	if is_instance_valid(parent_node_a):
 		parent_node_a.visible = true
 	if is_instance_valid(parent_node_b):
 		parent_node_b.visible = true
-
+	
 	var spawn_points := get_random_point_in_area(1)
 	child.farm_last_known_position = spawn_points[0]
 	wire_yip(spawn_yip(child, 0))

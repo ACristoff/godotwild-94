@@ -16,6 +16,10 @@ var bred_today: bool = false
 ## Farm scene we should see yips from here in that farm area
 var yip_inventory: Array[YipeeData] = []
 
+## The yips currently available in the field, persisted for the day
+var field_stock: Array[YipeeData] = []
+var field_generated_today: bool = false
+
 ## Where will store yips globally
 var yip_party : Dictionary[int, YipeeData] = {
 	1: null,
