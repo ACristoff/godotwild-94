@@ -13,6 +13,9 @@ var current_slot = 0
 var king_index : int
 var king_offset : int
 
+var drop_rung := -1
+var drop_side := ""
+
 signal allele_hovered(allele: Allele, side: String)
 signal allele_unhovered
 
@@ -31,6 +34,16 @@ func _on_shell_allele_hovered(allele: Allele, side: String) -> void:
 
 func _on_shell_allele_unhovered() -> void:
 	allele_unhovered.emit()
+
+func set_drop_target(rung: int, side: String) -> void:
+	drop_rung = rung
+	drop_side = side
+
+func clear_drop_target(rung: int, side: String) -> void:
+	if drop_rung == rung and drop_side == side:
+		drop_rung = -1
+		drop_side = ""
+
 func update_visuals():
 	current_slot = 0
 	for i in shells:

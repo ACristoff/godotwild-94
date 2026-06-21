@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bq7k2td1qbdri" path="res://UI/Scripts/yip_placeable_areas.gd" id="1_06nh5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wsdy"]
-size = Vector2(554, 518)
+size = Vector2(421, 493)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4wsdy"]
 radius = 36.0
@@ -17,7 +17,7 @@ collision_layer = 64
 collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainPen" unique_id=195685785]
-position = Vector2(303, 280)
+position = Vector2(236.5, 277.5)
 shape = SubResource("RectangleShape2D_4wsdy")
 
 [node name="TeamSlot1" type="Area2D" parent="." unique_id=1340362752]

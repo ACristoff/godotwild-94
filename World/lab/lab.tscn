@@ -19,8 +19,10 @@
 [ext_resource type="Resource" uid="uid://clmny47rxgsyl" path="res://World/yipee/genes/allele/rightallele/resources/bonk_misc.tres" id="7_58ib8"]
 [ext_resource type="PackedScene" uid="uid://ba2i2glrfw55d" path="res://World/areas.tscn" id="9_ieswn"]
 [ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="10_co32c"]
-[ext_resource type="Script" path="res://UI/Scripts/button_effects.gd" id="11_co32c"]
+[ext_resource type="Script" uid="uid://ddygeie0aq8n6" path="res://UI/Scripts/helix_drop_surface.gd" id="11_1ax5p"]
+[ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="11_co32c"]
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="11_mntup"]
+[ext_resource type="Script" uid="uid://dn0twegwjngg0" path="res://UI/Scripts/inventory_drop.gd" id="12_invdrop"]
 
 [sub_resource type="Resource" id="Resource_5722r"]
 script = ExtResource("3_8wn1l")
@@ -254,6 +256,7 @@ offset_bottom = -72.33331
 grow_horizontal = 2
 grow_vertical = 2
 stretch_shrink = 3
+script = ExtResource("11_1ax5p")
 
 [node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer" unique_id=1842217819]
 transparent_bg = true
@@ -354,6 +357,20 @@ scale = Vector2(3, 3)
 texture = ExtResource("4_uroyv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1911432724]
+
+[node name="LeftInventory" type="VBoxContainer" parent="CanvasLayer" unique_id=2077944316]
+offset_left = 769.0
+offset_top = 43.0
+offset_right = 986.0
+offset_bottom = 703.0
+script = ExtResource("12_invdrop")
+
+[node name="RightInventory" type="VBoxContainer" parent="CanvasLayer" unique_id=764300082]
+offset_left = 1676.0
+offset_top = 47.0
+offset_right = 1893.0
+offset_bottom = 724.0
+script = ExtResource("12_invdrop")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=939278799]
 environment = SubResource("Environment_ems3l")

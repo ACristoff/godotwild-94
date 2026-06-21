@@ -69,21 +69,6 @@ func update_depth():
 		dna_shell_1.z_index = 2
 		dna_shell_2.z_index = -2
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-	#pass
-	#print(current_frame)
-	#if start:
-		#$Timer.start()
-		#start = false
-		#setter = true
-	#if !setter:
-		#dna_allele_1.frame = anim_start_frame
-		#dna_allele_2.frame = anim_start_frame
-		#dna_shell_1.frame = anim_start_frame
-		#dna_shell_2.frame = anim_start_frame
-		#current_frame = anim_start_frame
-		
 func set_slot(type):
 	match type:
 		"ATTACK":
@@ -132,21 +117,29 @@ func set_alleles(left: Allele, right: Allele) -> void:
 	left_allele = left
 	right_allele = right
 	var empty := Color.from_string("3d3d3d", Color.BLACK)
-	dna_allele_2.modulate = slot_color if left != null else empty   # DnaAllele2 = LEFT
-	dna_allele_1.modulate = slot_color if right != null else empty  # DnaAllele1 = RIGHT
+	dna_allele_2.modulate = slot_color if left != null else empty
+	dna_allele_1.modulate = slot_color if right != null else empty
 
 func tick_forward():
 	current_frame += 1
-
+	
 	if current_frame >= 48:
 		current_frame = 0
-
+	
 	dna_allele_1.frame = current_frame
 	dna_allele_2.frame = current_frame
 	dna_shell_1.frame = current_frame
 	dna_shell_2.frame = current_frame
-
+	
 	update_depth()
+
+func _report_hover(side: String, entered: bool) -> void:
+	var screen = get_parent().get_parent()
+	var rung: int = screen.shells.find(self)
+	if entered:
+		screen.set_drop_target(rung, side)
+	else:
+		screen.clear_drop_target(rung, side)
 
 func _on_area_2d_mouse_entered() -> void:
 	$AnimationPlayer.play("appear")
@@ -165,23 +158,27 @@ func _on_area_2d_mouse_exited() -> void:
 func _on_right_allele_hover_mouse_entered() -> void:
 	$AnimationPlayer.play("appear")
 	$DnaAllele1.self_modulate = Color(1.526, 1.526, 1.526, 1.0)
+	_report_hover("RIGHT", true)
 	if right_allele != null:
 		allele_hovered.emit(right_allele, "RIGHT")
 
 func _on_right_allele_hover_mouse_exited() -> void:
 	$AnimationPlayer.play("RESET")
 	$DnaAllele1.self_modulate = Color("ffffffff")
+	_report_hover("RIGHT", false)
 	if right_allele != null:
 		allele_unhovered.emit()
 
 func _on_left_allele_mouse_entered() -> void:
 	$AnimationPlayer.play("appear")
 	$DnaAllele2.self_modulate = Color(1.526, 1.526, 1.526, 1.0)
+	_report_hover("LEFT", true)
 	if left_allele != null:
 		allele_hovered.emit(left_allele, "LEFT")
 
 func _on_left_allele_mouse_exited() -> void:
 	$AnimationPlayer.play("RESET")
 	$DnaAllele2.self_modulate = Color("ffffffff")
+	_report_hover("LEFT", false)
 	if left_allele != null:
 		allele_unhovered.emit()

@@ -9,6 +9,7 @@ var drag_offset: Vector2 = Vector2.ZERO
 var yip_on_launch_pad: Yipee = null
 var yip_on_conveyor: Yipee = null
 const ALLELE_UI = preload("uid://cckwntee1s0l4")  # alelle_ui.tscn
+const ALLELE_CHIP = preload("res://UI/Scenes/allele_chip.tscn")
 
 var allele_tooltip
 
@@ -17,6 +18,10 @@ var allele_tooltip
 @onready var conveyor = $ConveyorArea
 @onready var dna_screen = $Control/SubViewportContainer/SubViewport/DNATestScreen
 @onready var areas = $Areas
+
+@onready var left_inventory = $CanvasLayer/LeftInventory
+@onready var right_inventory = $CanvasLayer/RightInventory
+@onready var helix_surface = $Control/SubViewportContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,10 +33,15 @@ func _ready() -> void:
 	allele_tooltip.hide()
 	dna_screen.allele_hovered.connect(_on_allele_hovered)
 	dna_screen.allele_unhovered.connect(_on_allele_unhovered)
+	helix_surface.lab = self
+	helix_surface.dna_screen = dna_screen
+	left_inventory.lab = self
+	right_inventory.lab = self
 	if SignalBus.debug_mode == true && sample_yip != null:
 		seed_debug_alleles()
 		#sample_yip.helix = Helix.generate_debug()
 		spawn_yip(sample_yip)
+	rebuild_inventory()
 
 func _ignore_mouse_recursive(node: Node) -> void:
 	if node is Control:
@@ -150,6 +160,111 @@ func _on_launch_pad_area_exited(area):
 	yip_placed = false
 	yip_on_launch_pad = null
 	clear_launch()
+
+func rebuild_inventory() -> void:
+	if left_inventory == null or right_inventory == null:
+		return
+	for child in left_inventory.get_children():
+		child.queue_free()
+	for child in right_inventory.get_children():
+		child.queue_free()
+	for index in SignalBus.allele_inventory.size():
+		var allele = SignalBus.allele_inventory[index]
+		var chip = ALLELE_CHIP.instantiate()
+		if allele is LeftAllele:
+			left_inventory.add_child(chip)
+		else:
+			right_inventory.add_child(chip)
+		chip.setup(allele, index)
+
+func current_helix() -> Helix:
+	if yip_on_launch_pad == null:
+		return null
+	return yip_on_launch_pad.data.helix
+
+func can_place_allele(data: Variant, rung_index: int, side: String) -> bool:
+	if typeof(data) != TYPE_DICTIONARY or not data.has("allele"):
+		return false
+	if rung_index < 0 or side == "":
+		return false
+	var allele = data.allele
+	if side == "LEFT" and not (allele is LeftAllele):
+		return false
+	if side == "RIGHT" and not (allele is RightAllele):
+		return false
+	var helix := current_helix()
+	if helix == null or rung_index >= helix.strands.size():
+		return false
+	var strand: Strand = helix.strands[rung_index]
+	return strand != null and strand.slot == allele.slot
+
+func place_allele(data: Variant, rung_index: int, side: String) -> void:
+	if not can_place_allele(data, rung_index, side):
+		return
+	var allele: Allele = data.allele
+	var helix := current_helix()
+	var source: String = data.get("source", "inventory")
+	if source == "inventory":
+		var from_index: int = data.get("index", -1)
+		if from_index >= 0 and from_index < SignalBus.allele_inventory.size():
+			SignalBus.allele_inventory.remove_at(from_index)
+	elif source == "helix":
+		clear_helix_slot(data.rung, data.side)
+	var strand: Strand = helix.strands[rung_index]
+	var displaced: Allele = strand.left if side == "LEFT" else strand.right
+	if side == "LEFT":
+		strand.left = allele
+	else:
+		strand.right = allele
+	helix.set_rung(rung_index, strand)
+	if displaced != null:
+		SignalBus.allele_inventory.append(displaced)
+	refresh()
+
+func allele_at(rung_index: int, side: String) -> Allele:
+	var helix := current_helix()
+	if helix == null or rung_index < 0 or rung_index >= helix.strands.size():
+		return null
+	var strand: Strand = helix.strands[rung_index]
+	if strand == null:
+		return null
+	return strand.left if side == "LEFT" else strand.right
+
+func make_chip_preview(allele: Allele) -> Control:
+	var chip = ALLELE_CHIP.instantiate()
+	chip.setup(allele, -1)
+	chip.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	return chip
+
+func clear_helix_slot(rung_index: int, side: String) -> void:
+	var helix := current_helix()
+	if helix == null or rung_index < 0 or rung_index >= helix.strands.size():
+		return
+	var strand: Strand = helix.strands[rung_index]
+	if strand == null:
+		return
+	if side == "LEFT":
+		strand.left = null
+	else:
+		strand.right = null
+	helix.set_rung(rung_index, strand)
+
+func can_return_to_inventory(data: Variant) -> bool:
+	return typeof(data) == TYPE_DICTIONARY and data.get("source", "") == "helix"
+
+func return_to_inventory(data: Variant) -> void:
+	if not can_return_to_inventory(data):
+		return
+	clear_helix_slot(data.rung, data.side)
+	SignalBus.allele_inventory.append(data.allele)
+	refresh()
+
+func refresh() -> void:
+	rebuild_inventory()
+	if yip_on_launch_pad != null:
+		dna_screen.display_helix(current_helix())
+		if yip_on_launch_pad.body:
+			yip_on_launch_pad.body.apply_helix(current_helix())
 
 func _on_allele_hovered(allele: Allele, side: String) -> void:
 	var slot_key = BodyMap.Slot.keys()[allele.slot]
