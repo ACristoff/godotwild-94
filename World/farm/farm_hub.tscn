@@ -508,8 +508,9 @@ offset_bottom = 119.0
 [node name="SettingsButton" type="Button" parent="." unique_id=689254552]
 offset_right = 63.0
 offset_bottom = 61.0
-text = "button."
+text = "Settings"
 
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="area_entered" from="BreedingBarnGrass/BreedFarmSlot" to="Areas" method="_on_breed_farm_slot_area_entered"]
 [connection signal="area_exited" from="BreedingBarnGrass/BreedFarmSlot" to="Areas" method="_on_breed_farm_slot_area_exited"]
 [connection signal="input_event" from="LabNew/Area2D" to="." method="_on_lab_area_2d_input_event"]

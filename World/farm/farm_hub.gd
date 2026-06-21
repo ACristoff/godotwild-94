@@ -450,6 +450,9 @@ func _on_battle_button_pressed():
 		return
 	SignalBus.go_to.emit(SignalBus.Locations.BATTLE)
 
+func _on_settings_button_pressed() -> void:
+	SignalBus.game_state_changed.emit("Settings")
+
 #endregion
 
 #region Signal Stuff

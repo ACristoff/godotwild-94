@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="4_sv3nx"]
 
 [node name="Settings" type="CanvasLayer" unique_id=359164329]
+layer = 100
 script = ExtResource("1_jk7ur")
 
 [node name="ButtonRefresh5" type="NinePatchRect" parent="." unique_id=1673092843]
