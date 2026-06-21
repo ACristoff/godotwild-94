@@ -46,7 +46,8 @@ func change_scene(new_state: String):
 	if debug_mode == true:
 		prints('top level scene changed', new_state, Menu_Scenes[new_state])
 	if new_state == "Start":
-		menu_ui.queue_free()
+		SignalBus.reset_run()
+		_clear_menu_ui()
 		var new_scene = Menu_Scenes[new_state].instantiate()
 		add_child(new_scene)
 		current_scene = new_scene

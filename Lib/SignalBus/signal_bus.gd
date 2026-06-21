@@ -68,3 +68,30 @@ signal go_to(new_area: Locations)
 signal opening_scene_finished
 
 signal day_finished
+
+## Wipe all run progress back to defaults for a fresh game. Leaves settings
+## (permadeath, debug_mode) alone.
+func reset_run() -> void:
+	yip_inventory.clear()
+	field_stock.clear()
+	allele_inventory.clear()
+	for key in yip_party:
+		yip_party[key] = null
+	for key in yip_breed_barn:
+		yip_breed_barn[key] = null
+
+	coins = 12
+	current_health = 3
+	current_wins = 0
+	victories = 0
+	game_started = false
+	field_generated_today = false
+	bred_today = false
+
+	field_clicked = false
+	first_yip_bought = false
+	f_y_b_setter = false
+	party_slot_tutorial_clicked = false
+	breeding_tut_clicked = false
+	twice_speed_clicked = false
+	start_of_second_day = false
