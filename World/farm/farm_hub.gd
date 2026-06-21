@@ -9,6 +9,7 @@ var drag_offset : Vector2 = Vector2.ZERO
 
 @onready var coin_label: Label = $CanvasLayer/Control/HBoxContainer/MarginContainer2/CoinLabel
 @onready var special_areas : Node2D = $Areas
+@onready var tooltip: Toolyip = $CanvasLayer/YipToolyip
 
 var team_slots: Array[Area2D]
 
@@ -35,7 +36,8 @@ func _ready() -> void:
 			child.area_exited.connect(_on_any_area_exited.bind(child))
 	
 	coin_label.text = str(SignalBus.coins)
-	
+	tooltip.hide()
+
 	#Setting up and spawning yips
 	resserved_spots = get_random_point_in_area(SignalBus.yip_inventory.size())
 	var index : int = 0
@@ -341,11 +343,18 @@ func _on_yip_animation_finished(anim_name: StringName, yip: Yipee) -> void:
 		yip.animation_player.play(&"IdleNormal")
 
 func _on_yip_hovered(yip: Yipee) -> void:
-	print('yip hovered in farm hub')
+	var screen_size = get_viewport().get_visible_rect().size / 3
+	tooltip.display(yip)
+	var screen_pos = yip.get_global_transform_with_canvas().origin
+	tooltip.global_position = $CanvasLayer.transform.affine_inverse() * screen_pos
+	tooltip.global_position.y -= 99
+	tooltip.global_position.x -= 55
+	tooltip.global_position.x = clamp(tooltip.global_position.x, 0, screen_size.x - tooltip.tt_size.x)
+	tooltip.global_position.y = clamp(tooltip.global_position.y, 0, screen_size.y - tooltip.tt_size.y)
 	focused_yip = yip
 
 func _on_yip_unhovered() -> void:
-	print('yip unhovered in farm hub')
+	tooltip.hide()
 	focused_yip = null
 	
 func _on_any_area_entered(entered_area: Area2D, source_area: Area2D) -> void:
