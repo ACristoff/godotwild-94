@@ -120,7 +120,7 @@ func _on_yip_hovered(yip: Yipee) -> void:
 
 func _on_yip_unhovered() -> void:
 	print('yip unhovered')
-	tooltip.hide()
+	tooltip.request_hide()
 	focused_yip = null
 #endregion
 

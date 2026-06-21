@@ -12,9 +12,9 @@ var amnt_of_stats : int
 @onready var cooldown_label: Label = $MainPanel/TextureRect/VBoxContainer/ActualSeconds
 @onready var mouse_hover: Panel = $MouseHover
 @onready var mouse_hover_2: Panel = $MouseHover2
-var tooltip_hovering := false
-#var yip_owner
-var set_hover = false
+const HIDE_GRACE := 0.4
+var _yip_hovered := false
+var _hide_grace := 0.0
 var shown = true
 
 var tt_size = Vector2(149, 84)
@@ -90,6 +90,8 @@ func display(yip: Yipee) -> void:
 			for type in contrib:
 				pips[type] = pips.get(type, 0) + contrib[type]
 	_rebuild_stat_pips(pips)
+	_yip_hovered = true
+	_hide_grace = HIDE_GRACE
 	shown = false
 	become_visible()
 
@@ -124,6 +126,13 @@ func become_visible():
 		popup()
 		show()
 		shown = true
+
+func request_hide() -> void:
+	_yip_hovered = false
+
+func _mouse_over_tooltip() -> bool:
+	var mouse := get_global_mouse_position()
+	return mouse_hover.get_global_rect().has_point(mouse) or mouse_hover_2.get_global_rect().has_point(mouse)
 
 #func random_debug_setter():
 	#for i in range(1, 9):
@@ -161,17 +170,14 @@ func popup():
 	$AnimationPlayer.play("pop")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	if mouse_hover.get_global_rect().has_point(get_global_mouse_position()) or mouse_hover_2.get_global_rect().has_point(get_global_mouse_position()):
-		if set_hover:
-			tooltip_hovering = true
-			#print("tooltip, ", tooltip_hovering)
+func _process(delta: float) -> void:
+	if visible:
+		if _yip_hovered or _mouse_over_tooltip():
+			_hide_grace = HIDE_GRACE
 		else:
-			tooltip_hovering = false
-			#print("tooltip, ", tooltip_hovering)
-	else:
-		tooltip_hovering = false
-		set_hover = false
+			_hide_grace -= delta
+			if _hide_grace <= 0.0:
+				hide()
 	amnt_of_stats = stats_flow_container.get_child_count()
 	match amnt_of_stats:
 		1:

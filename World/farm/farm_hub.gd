@@ -494,7 +494,7 @@ func _on_yip_hovered(yip: Yipee) -> void:
 	focused_yip = yip
 
 func _on_yip_unhovered() -> void:
-	tooltip.hide()
+	tooltip.request_hide()
 	focused_yip = null
 
 func _on_area_2d_mouse_entered() -> void:
