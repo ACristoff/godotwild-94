@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://chftxxvwdvkgk" path="res://Assets/Environment/Scenes/BattleField/LockButton.png" id="7_748j3"]
 [ext_resource type="Script" uid="uid://dqvqbetgnjsnh" path="res://UI/Scripts/lock_button_graphic.gd" id="8_6l7jc"]
 [ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="8_lwms1"]
+[ext_resource type="Texture2D" uid="uid://ck0oxmum5r402" path="res://Assets/Environment/Scenes/CaptureField/UpgradeSign.png" id="10_rh655"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6l7jc"]
 size = Vector2(1161, 702)
@@ -212,6 +213,42 @@ shape = SubResource("RectangleShape2D_6l7jc")
 [node name="Field_2" type="CollisionShape2D" parent="FieldArea" unique_id=806182123]
 position = Vector2(1410, 374)
 shape = SubResource("RectangleShape2D_rh655")
+
+[node name="UpgradeSign" type="Sprite2D" parent="." unique_id=1432951525]
+texture_filter = 3
+position = Vector2(1806, 115)
+scale = Vector2(3, 3)
+texture = ExtResource("10_rh655")
+
+[node name="UpgradeField" type="Label" parent="UpgradeSign" unique_id=1852415217]
+z_index = 4096
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -26.333334
+offset_top = -9.333333
+offset_right = -34.333336
+offset_bottom = 18.666664
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.075049154
+theme_override_fonts/font = ExtResource("3_6l7jc")
+theme_override_font_sizes/font_size = 8
+text = "Lv. 1"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="UpgradeSign" unique_id=25999302]
+offset_left = -67.0
+offset_top = 33.666664
+offset_right = 33.0
+offset_bottom = 70.666664
+theme_override_fonts/font = ExtResource("3_6l7jc")
+theme_override_font_sizes/font_size = 8
+text = "common 50%
+uncommon 2%
+rare 2%
+ultra-rare 2%"
+horizontal_alignment = 2
 
 [connection signal="button_down" from="RefreshButton" to="RefreshButton" method="_on_button_down"]
 [connection signal="button_up" from="RefreshButton" to="RefreshButton" method="_on_button_up"]
