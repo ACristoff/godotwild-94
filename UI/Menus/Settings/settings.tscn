@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cb2jggjfn6m6d"]
 
 [ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="1_ty03o"]
+[ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="2_c4f4i"]
 
 [node name="Settings" type="CanvasLayer" unique_id=359164329]
 
@@ -29,17 +30,43 @@ patch_margin_right = 8
 patch_margin_bottom = 8
 
 [node name="ButtonRefresh6" type="NinePatchRect" parent="ButtonRefresh5" unique_id=757001291]
-self_modulate = Color(0.36569998, 0.69, 0.641355, 1)
+self_modulate = Color(0.46511114, 0.6162186, 0.21819714, 1)
 z_index = 4096
 texture_filter = 3
 layout_mode = 1
 offset_left = 4.4266777
 offset_top = 3.8516629
-offset_right = 85.76001
-offset_bottom = 47.18499
+offset_right = 64.4267
+offset_bottom = 42.518326
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("1_ty03o")
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
+
+[node name="BackLabel" type="Label" parent="ButtonRefresh5/ButtonRefresh6" unique_id=1892869672]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_c4f4i")
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsLabel" type="Label" parent="ButtonRefresh5" unique_id=665866748]
+layout_mode = 0
+offset_left = 67.093346
+offset_top = 3.8516643
+offset_right = 223.76001
+offset_bottom = 43.51833
+theme_override_colors/font_color = Color(0.7254902, 0.92156863, 0.43137255, 1)
+theme_override_colors/font_outline_color = Color(0.22352941, 0.28235295, 0.13333334, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_c4f4i")
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
