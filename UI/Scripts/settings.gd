@@ -5,6 +5,12 @@ var music = 100.0
 var all_sounds = 100.0
 const UI_TICK_MINOR = preload("uid://beme2e24c1ser")
 
+func _ready() -> void:
+	get_tree().paused = true
+
+func _exit_tree() -> void:
+	get_tree().paused = false
+
 func _on_asdn_pressed() -> void:
 	if all_sounds <= 0:
 		return
