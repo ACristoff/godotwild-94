@@ -40,7 +40,6 @@ func _ready() -> void:
 	status.effects_changed.connect(health_UI.update_ailments)
 	attack.progress_changed.connect(_on_cooldown_changed)
 
-\
 func in_battle_dance():
 	$ActionsAnim.play("IdleBattle")
 
