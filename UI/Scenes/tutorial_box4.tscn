@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://r48rpjbxrdkk" path="res://UI/Scenes/allele_hover.tscn" id="8_cw1tx"]
 [ext_resource type="Texture2D" uid="uid://c8pupi4jdpi4f" path="res://UI/Textures/DNAUI1.png" id="9_ovlsg"]
 [ext_resource type="Texture2D" uid="uid://cpcgek38dfbym" path="res://UI/Textures/DNAUI2.png" id="10_cra0e"]
+[ext_resource type="Texture2D" uid="uid://bk4wqqnwqeh6l" path="res://UI/Menus/Main_Menu/Textures/pointer.png" id="11_t8rb6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6rpsl"]
 
@@ -861,6 +862,12 @@ offset_right = 12.0
 offset_bottom = 8.0
 mouse_filter = 2
 texture = SubResource("GradientTexture1D_gumfe")
+
+[node name="Pointer" type="Sprite2D" parent="." unique_id=114477318]
+texture_filter = 3
+position = Vector2(553, 207)
+scale = Vector2(3, 3)
+texture = ExtResource("11_t8rb6")
 
 [connection signal="button_down" from="StatsContainer/StatsContainer2/Button" to="StatsContainer/StatsContainer2/Button" method="_on_button_down"]
 [connection signal="button_up" from="StatsContainer/StatsContainer2/Button" to="StatsContainer/StatsContainer2/Button" method="_on_button_up"]

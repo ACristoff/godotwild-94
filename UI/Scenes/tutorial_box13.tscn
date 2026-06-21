@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://dcwhd4jcpjqw0"]
+
+[ext_resource type="Script" uid="uid://bhwuytm582rb4" path="res://UI/Scripts/tutorial_box.gd" id="1_7f2bt"]
+[ext_resource type="Texture2D" uid="uid://bcrv3534foclh" path="res://UI/Textures/UIPanel.png" id="2_qcqo3"]
+[ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="3_y10fc"]
+[ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="4_w6luv"]
+[ext_resource type="AudioStream" uid="uid://beme2e24c1ser" path="res://Assets/Audio/Sounds/UI_Tick_Minor.wav" id="5_k82hx"]
+[ext_resource type="Texture2D" uid="uid://c5qwf286x8k71" path="res://UI/Menus/Main_Menu/Textures/Arrow (2).png" id="6_qcqo3"]
+
+[node name="TutorialBox" type="Control" unique_id=1315543526]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7f2bt")
+
+[node name="StatsContainer" type="NinePatchRect" parent="." unique_id=1544857490]
+self_modulate = Color(0.69, 0.532565, 0.43469998, 1)
+texture_filter = 3
+layout_mode = 1
+offset_right = 124.333336
+offset_bottom = 38.0
+scale = Vector2(3, 3)
+texture = ExtResource("2_qcqo3")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="StatsContainer2" type="NinePatchRect" parent="StatsContainer" unique_id=1191929492]
+self_modulate = Color(0.69, 0.532565, 0.43469998, 1)
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = 1.333333
+offset_bottom = 16.666668
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_qcqo3")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Next" type="Label" parent="StatsContainer/StatsContainer2" unique_id=255028458]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.6666679
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_y10fc")
+theme_override_font_sizes/font_size = 8
+text = "OK!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="StatsContainer/StatsContainer2" unique_id=2146772956 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_w6luv")
+target_highlight = NodePath("..")
+growth_scale = 1
+click_sound = ExtResource("5_k82hx")
+
+[node name="TutorialText" type="Label" parent="StatsContainer" unique_id=1680731529]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 141.0
+offset_bottom = 38.333332
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("3_y10fc")
+text = "Yips in these slots are your active party. In battle the yip in front will be attacked first."
+autowrap_mode = 3
+
+[node name="Arrow(2)" type="Sprite2D" parent="." unique_id=710024643]
+modulate = Color(0.6901961, 0.53333336, 0.43529412, 1)
+texture_filter = 3
+position = Vector2(-74, 301)
+rotation = -1.5707964
+scale = Vector2(3, 3)
+texture = ExtResource("6_qcqo3")
+flip_v = true
+
+[node name="Arrow(2)2" type="Sprite2D" parent="." unique_id=1440638521]
+modulate = Color(0.6901961, 0.53333336, 0.43529412, 1)
+texture_filter = 3
+position = Vector2(14, 301)
+rotation = -1.5707964
+scale = Vector2(3, 3)
+texture = ExtResource("6_qcqo3")
+flip_v = true
+
+[node name="Arrow(2)3" type="Sprite2D" parent="." unique_id=669929521]
+modulate = Color(0.6901961, 0.53333336, 0.43529412, 1)
+texture_filter = 3
+position = Vector2(102, 301)
+rotation = -1.5707964
+scale = Vector2(3, 3)
+texture = ExtResource("6_qcqo3")
+flip_v = true
+
+[node name="Arrow(2)4" type="Sprite2D" parent="." unique_id=1163611495]
+modulate = Color(0.6901961, 0.53333336, 0.43529412, 1)
+texture_filter = 3
+position = Vector2(201, 301)
+rotation = -1.5707964
+scale = Vector2(3, 3)
+texture = ExtResource("6_qcqo3")
+flip_v = true
+
+[node name="Arrow(2)5" type="Sprite2D" parent="." unique_id=1720035091]
+modulate = Color(0.6901961, 0.53333336, 0.43529412, 1)
+texture_filter = 3
+position = Vector2(305, 301)
+rotation = -1.5707964
+scale = Vector2(3, 3)
+texture = ExtResource("6_qcqo3")
+flip_v = true
+
+[connection signal="button_down" from="StatsContainer/StatsContainer2/Button" to="StatsContainer/StatsContainer2/Button" method="_on_button_down"]
+[connection signal="button_up" from="StatsContainer/StatsContainer2/Button" to="StatsContainer/StatsContainer2/Button" method="_on_button_up"]
+[connection signal="mouse_entered" from="StatsContainer/StatsContainer2/Button" to="StatsContainer/StatsContainer2/Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="StatsContainer/StatsContainer2/Button" to="StatsContainer/StatsContainer2/Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="StatsContainer/StatsContainer2/Button" to="." method="_on_button_pressed"]

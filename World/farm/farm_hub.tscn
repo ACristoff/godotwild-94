@@ -17,6 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="15_4wbmb"]
 [ext_resource type="PackedScene" uid="uid://dqgfurgu7jsbg" path="res://UI/Scenes/yip_toolyip.tscn" id="15_wkn3d"]
 [ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="16_0l0ir"]
+[ext_resource type="PackedScene" uid="uid://c3lcbqjc43e3m" path="res://UI/Scenes/tutorial_box11.tscn" id="18_nw8d0"]
+[ext_resource type="PackedScene" uid="uid://cdxcqkceerren" path="res://UI/Scenes/tutorial_box12.tscn" id="19_jjcuj"]
+[ext_resource type="PackedScene" uid="uid://dcwhd4jcpjqw0" path="res://UI/Scenes/tutorial_box13.tscn" id="20_v158w"]
+[ext_resource type="PackedScene" uid="uid://djgyg3bx5cyuc" path="res://UI/Scenes/tutorial_box14.tscn" id="21_38chp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wkn3d"]
 height = 46.0
@@ -439,6 +443,68 @@ offset_bottom = 1035.0
 script = ExtResource("16_0l0ir")
 target_highlight = NodePath("../BattleButtonIcon")
 
+[node name="SecondDay" parent="." unique_id=1315543526 instance=ExtResource("18_nw8d0")]
+visible = false
+offset_left = 1517.0
+offset_top = 599.0
+offset_right = 1517.0
+offset_bottom = 599.0
+
+[node name="StatsContainer2" parent="SecondDay/StatsContainer" parent_id_path=PackedInt32Array(1315543526, 1544857490) index="0" unique_id=1191929492]
+offset_left = -120.66667
+offset_right = -93.66667
+
+[node name="BuyFirstYip" parent="." unique_id=437516398 instance=ExtResource("19_jjcuj")]
+offset_left = 60.0
+offset_top = 806.0
+offset_right = 60.0
+offset_bottom = 806.0
+
+[node name="Handle" parent="BuyFirstYip" index="2" unique_id=1447809387]
+z_index = 4096
+
+[node name="TeamSlots" parent="." unique_id=1850888262 instance=ExtResource("20_v158w")]
+visible = false
+offset_left = 751.0
+offset_top = 646.0
+offset_right = 751.0
+offset_bottom = 646.0
+
+[node name="StatsContainer2" parent="TeamSlots/StatsContainer" parent_id_path=PackedInt32Array(1850888262, 1544857490) index="0" unique_id=1191929492]
+offset_left = -75.0
+offset_right = -48.0
+
+[node name="TutorialText" parent="TeamSlots/StatsContainer" parent_id_path=PackedInt32Array(1850888262, 1544857490) index="1" unique_id=1680731529]
+offset_right = 125.666664
+text = "Yips in these slots are your active party. Yips are attacked from right to left"
+
+[node name="Arrow(2)" parent="TeamSlots" index="1" unique_id=710024643]
+z_index = 4096
+position = Vector2(-256, 332)
+
+[node name="Arrow(2)2" parent="TeamSlots" index="2" unique_id=1440638521]
+z_index = 4096
+position = Vector2(-64, 332)
+
+[node name="Arrow(2)3" parent="TeamSlots" index="3" unique_id=669929521]
+z_index = 4096
+position = Vector2(128, 332)
+
+[node name="Arrow(2)4" parent="TeamSlots" index="4" unique_id=1163611495]
+z_index = 4096
+position = Vector2(320, 332)
+
+[node name="Arrow(2)5" parent="TeamSlots" index="5" unique_id=1720035091]
+z_index = 4096
+position = Vector2(512, 332)
+
+[node name="BreedingTut" parent="." unique_id=1534772427 instance=ExtResource("21_38chp")]
+visible = false
+offset_left = 930.0
+offset_top = 119.0
+offset_right = 930.0
+offset_bottom = 119.0
+
 [connection signal="area_entered" from="BreedingBarnGrass/BreedFarmSlot" to="Areas" method="_on_breed_farm_slot_area_entered"]
 [connection signal="area_exited" from="BreedingBarnGrass/BreedFarmSlot" to="Areas" method="_on_breed_farm_slot_area_exited"]
 [connection signal="mouse_entered" from="LabNew/Area2D" to="." method="_on_area_2d_mouse_entered"]
@@ -453,3 +519,9 @@ target_highlight = NodePath("../BattleButtonIcon")
 [connection signal="mouse_entered" from="BattleButton" to="BattleButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="BattleButton" to="BattleButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="BattleButton" to="." method="_on_battle_button_pressed"]
+[connection signal="next" from="TeamSlots" to="." method="_on_team_slots_next"]
+[connection signal="next" from="BreedingTut" to="." method="_on_breeding_tut_next"]
+
+[editable path="SecondDay"]
+[editable path="BuyFirstYip"]
+[editable path="TeamSlots"]

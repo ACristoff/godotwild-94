@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="5_55a63"]
 [ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="6_m52jh"]
 [ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="6_vm2tg"]
+[ext_resource type="PackedScene" uid="uid://c44ow0foced00" path="res://UI/Scenes/tutorial_box15.tscn" id="8_yvvln"]
 
 [node name="Battle" type="Node2D" unique_id=1472135385]
 script = ExtResource("1_2qnjf")
@@ -249,6 +250,12 @@ offset_bottom = 97.0
 script = ExtResource("6_vm2tg")
 target_highlight = NodePath("../ButtonRefresh4")
 
+[node name="TutorialBox" parent="." unique_id=1315543526 instance=ExtResource("8_yvvln")]
+offset_left = 1157.0
+offset_top = 48.0
+offset_right = 1157.0
+offset_bottom = 48.0
+
 [connection signal="button_down" from="CanvasLayer2/NextButton" to="CanvasLayer2/NextButton" method="_on_button_down"]
 [connection signal="button_up" from="CanvasLayer2/NextButton" to="CanvasLayer2/NextButton" method="_on_button_up"]
 [connection signal="mouse_entered" from="CanvasLayer2/NextButton" to="CanvasLayer2/NextButton" method="_on_mouse_entered"]
@@ -259,3 +266,4 @@ target_highlight = NodePath("../ButtonRefresh4")
 [connection signal="mouse_entered" from="GameSpeedButton" to="GameSpeedButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="GameSpeedButton" to="GameSpeedButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="GameSpeedButton" to="." method="_on_game_speed_button_pressed"]
+[connection signal="next" from="TutorialBox" to="." method="_on_tutorial_box_next"]

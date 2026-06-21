@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://r48rpjbxrdkk" path="res://UI/Scenes/allele_hover.tscn" id="8_wcr07"]
 [ext_resource type="Texture2D" uid="uid://c8pupi4jdpi4f" path="res://UI/Textures/DNAUI1.png" id="9_48clt"]
 [ext_resource type="Texture2D" uid="uid://cpcgek38dfbym" path="res://UI/Textures/DNAUI2.png" id="10_7q71t"]
-[ext_resource type="Texture2D" uid="uid://c5qwf286x8k71" path="res://UI/Menus/Main_Menu/Textures/Arrow (2).png" id="11_s3vjv"]
+[ext_resource type="Texture2D" uid="uid://bk4wqqnwqeh6l" path="res://UI/Menus/Main_Menu/Textures/pointer.png" id="12_8c3wk"]
 [ext_resource type="Texture2D" uid="uid://hw33tjyvck3t" path="res://UI/Textures/Gene.png" id="12_krb7s"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6rpsl"]
@@ -45,9 +45,9 @@ z_index = 561
 texture_filter = 3
 layout_mode = 1
 offset_left = 611.0
-offset_top = -48.0
-offset_right = 712.0
-offset_bottom = -7.3333282
+offset_top = -54.0
+offset_right = 727.0
+offset_bottom = -8.666664
 scale = Vector2(3, 3)
 texture = ExtResource("2_krb7s")
 patch_margin_left = 1
@@ -108,14 +108,14 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 2.6666667
-offset_top = 2.6666667
-offset_right = 98.6667
-offset_bottom = 39.666656
+offset_top = 2.3333337
+offset_right = 111.33336
+offset_bottom = 39.999992
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("3_8c3wk")
-text = "In that CD slot this yip has 1 Right gene. "
+text = "In that CD slot this yip has 1 Right gene. Remember, you can hover over a gene to see what it does."
 autowrap_mode = 3
 
 [node name="MainPanel" type="NinePatchRect" parent="." unique_id=569391837]
@@ -383,7 +383,7 @@ mouse_filter = 2
 texture = ExtResource("10_7q71t")
 
 [node name="RightGene1" type="TextureRect" parent="DNA" unique_id=1985042255]
-self_modulate = Color(0.13340001, 0.31303006, 0.46, 1)
+self_modulate = Color(0.38450584, 0.8035528, 1.1464093, 1)
 texture_filter = 3
 layout_mode = 0
 offset_left = 15.0
@@ -871,24 +871,16 @@ offset_bottom = 8.0
 mouse_filter = 2
 texture = SubResource("GradientTexture1D_gumfe")
 
-[node name="Arrow(2)" type="Sprite2D" parent="." unique_id=854988576]
-self_modulate = Color(0.6901961, 0.53333336, 0.43529412, 1)
-texture_filter = 3
-position = Vector2(501.99994, -87.99999)
-rotation = 1.8697809
-scale = Vector2(3, 3)
-texture = ExtResource("11_s3vjv")
-
 [node name="MainPanel2" type="NinePatchRect" parent="." unique_id=119316989]
 modulate = Color(0.19379999, 0.28785, 0.57, 1)
 self_modulate = Color(2.2241454, 2.2241454, 2.2241454, 1)
 texture_filter = 3
 custom_minimum_size = Vector2(86, 0)
 layout_mode = 0
-offset_left = 522.0
-offset_top = -180.0
-offset_right = 614.0
-offset_bottom = -170.0
+offset_left = 472.0
+offset_top = -115.000015
+offset_right = 564.0
+offset_bottom = -105.000015
 scale = Vector2(3, 3)
 pivot_offset = Vector2(0, -12.04)
 texture = ExtResource("2_krb7s")
@@ -1013,6 +1005,12 @@ theme_override_fonts/font = ExtResource("6_saebv")
 theme_override_font_sizes/font_size = 8
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="Pointer" type="Sprite2D" parent="." unique_id=199278932]
+texture_filter = 3
+position = Vector2(511, -8)
+scale = Vector2(3, 3)
+texture = ExtResource("12_8c3wk")
 
 [connection signal="button_down" from="StatsContainer/StatsContainer2/Button" to="StatsContainer/StatsContainer2/Button" method="_on_button_down"]
 [connection signal="button_up" from="StatsContainer/StatsContainer2/Button" to="StatsContainer/StatsContainer2/Button" method="_on_button_up"]

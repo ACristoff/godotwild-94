@@ -1,0 +1,191 @@
+[gd_scene format=3 uid="uid://djgyg3bx5cyuc"]
+
+[ext_resource type="Script" uid="uid://bhwuytm582rb4" path="res://UI/Scripts/tutorial_box.gd" id="1_2mdu6"]
+[ext_resource type="Texture2D" uid="uid://bcrv3534foclh" path="res://UI/Textures/UIPanel.png" id="2_4o4ow"]
+[ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="3_rfhyn"]
+[ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="4_86mxl"]
+[ext_resource type="AudioStream" uid="uid://beme2e24c1ser" path="res://Assets/Audio/Sounds/UI_Tick_Minor.wav" id="5_o41ex"]
+[ext_resource type="Texture2D" uid="uid://bk4wqqnwqeh6l" path="res://UI/Menus/Main_Menu/Textures/pointer.png" id="6_pyb7y"]
+[ext_resource type="Texture2D" uid="uid://cem1feyqvc36p" path="res://Assets/yipee/Yipretard.png" id="7_4o4ow"]
+
+[sub_resource type="Animation" id="Animation_rfhyn"]
+resource_name = "Drag"
+
+[sub_resource type="Animation" id="Animation_c5xfd"]
+resource_name = "Point"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Handle/Pointer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1.9318731, 0.37892914, 1),
+"update": 0,
+"values": [Vector2(72, 180), Vector2(143.99997, 252.00002), Vector2(72, 180)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Handle/Pointer:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.7666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.06632251, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_3o8lt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Handle/Pointer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(72, 180)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Handle/Pointer:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.06632251]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3o8lt"]
+_data = {
+&"Drag": SubResource("Animation_rfhyn"),
+&"Point": SubResource("Animation_c5xfd"),
+&"RESET": SubResource("Animation_3o8lt")
+}
+
+[node name="TutorialBox" type="Control" unique_id=1315543526]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2mdu6")
+
+[node name="StatsContainer" type="NinePatchRect" parent="." unique_id=1544857490]
+self_modulate = Color(0.69, 0.532565, 0.43469998, 1)
+texture_filter = 3
+layout_mode = 1
+offset_left = -79.0
+offset_top = -60.0
+offset_right = 24.000008
+offset_bottom = -13.333336
+scale = Vector2(3, 3)
+texture = ExtResource("2_4o4ow")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="StatsContainer2" type="NinePatchRect" parent="StatsContainer" unique_id=1191929492]
+self_modulate = Color(0.69, 0.532565, 0.43469998, 1)
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = 1.333333
+offset_bottom = 16.666668
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_4o4ow")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Next" type="Label" parent="StatsContainer/StatsContainer2" unique_id=255028458]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.6666679
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_rfhyn")
+theme_override_font_sizes/font_size = 8
+text = "OK!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="StatsContainer/StatsContainer2" unique_id=2146772956 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_86mxl")
+target_highlight = NodePath("..")
+growth_scale = 1
+click_sound = ExtResource("5_o41ex")
+
+[node name="TutorialText" type="Label" parent="StatsContainer" unique_id=1680731529]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.33333397
+offset_top = -0.3333397
+offset_right = 103.99999
+offset_bottom = 49.33332
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("3_rfhyn")
+text = "Drag 2 Yips into this barn to breed them. Breeding is free and yips can do it once per day!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=101867749]
+libraries/ = SubResource("AnimationLibrary_3o8lt")
+autoplay = &"Point"
+
+[node name="Handle" type="Node2D" parent="." unique_id=1447809387]
+
+[node name="Pointer" type="Sprite2D" parent="Handle" unique_id=2005537715]
+texture_filter = 3
+position = Vector2(72, 180)
+scale = Vector2(3, 3)
+skew = -0.06632251
+texture = ExtResource("6_pyb7y")
+
+[node name="Yipretard" type="Sprite2D" parent="Handle/Pointer" unique_id=2073288174]
+modulate = Color(1, 1, 1, 0.5254902)
+show_behind_parent = true
+texture_filter = 3
+position = Vector2(-8.469874, -13.028644)
+scale = Vector2(1, 1.0044019)
+skew = 0.06617713
+texture = ExtResource("7_4o4ow")
+
+[connection signal="button_down" from="StatsContainer/StatsContainer2/Button" to="StatsContainer/StatsContainer2/Button" method="_on_button_down"]
+[connection signal="button_up" from="StatsContainer/StatsContainer2/Button" to="StatsContainer/StatsContainer2/Button" method="_on_button_up"]
+[connection signal="mouse_entered" from="StatsContainer/StatsContainer2/Button" to="StatsContainer/StatsContainer2/Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="StatsContainer/StatsContainer2/Button" to="StatsContainer/StatsContainer2/Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="StatsContainer/StatsContainer2/Button" to="." method="_on_button_pressed"]

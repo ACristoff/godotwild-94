@@ -11,12 +11,7 @@ var drag_offset : Vector2 = Vector2.ZERO
 @onready var special_areas : Node2D = $Areas
 @onready var tooltip: Toolyip = $CanvasLayer/YipToolyip
 
-@onready var farm_slot : Area2D = %BreedFarmSlot
-@onready var farm_doors : Sprite2D = %BreedingBarnLargeDoor
-
-
 var team_slots: Array[Area2D]
-@onready var barn_slots: Array[Area2D] = [%b_slot1, %b_slot2]
 
 ## Where will store yips globally
 var yip_farm_party_position : Dictionary[int, Yipee] = {
@@ -27,27 +22,11 @@ var yip_farm_party_position : Dictionary[int, Yipee] = {
 	5: null
 }
 
-var yip_farm_barn_position : Dictionary[int, Yipee] = {
-	1: null,
-	2: null
-}
-
-
 #endregion
 
 #region Built in Functions
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# Setting barn door stuff
-	farm_slot.area_entered.connect(_on_breed_farm_slot_area_entered.bind(farm_slot))
-	farm_slot.area_exited.connect(_on_breed_farm_slot_area_exited.bind(farm_slot))
-	
-	barn_slots[0].area_entered.connect(_on_breed_farm_slot_area_entered.bind(barn_slots[0]))
-	barn_slots[0].area_exited.connect(_on_breed_farm_slot_area_exited.bind(barn_slots[0]))
-
-	barn_slots[1].area_entered.connect(_on_breed_farm_slot_area_entered.bind(barn_slots[1]))
-	barn_slots[1].area_exited.connect(_on_breed_farm_slot_area_exited.bind(barn_slots[1]))
-	
 	# Setting up party slots
 	for child in special_areas.get_children():
 		if child.name != &"MainPen":
@@ -66,7 +45,22 @@ func _ready() -> void:
 		wire_yip(spawn_yip(yip, index))
 		index += 1
 	
-	_update_barn_doors()
+	#Tutorials
+	if SignalBus.field_clicked:
+		$BuyFirstYip.hide()
+	if SignalBus.first_yip_bought:
+		if !SignalBus.f_y_b_setter:
+			$TeamSlots.show()
+	if SignalBus.party_slot_tutorial_clicked:
+		$TeamSlots.hide()
+	if SignalBus.first_yip_bought and not SignalBus.party_slot_tutorial_clicked:
+		$TeamSlots.show()
+	if SignalBus.breeding_tut_clicked:
+		$BreedingTut.hide()
+	if SignalBus.party_slot_tutorial_clicked and not SignalBus.breeding_tut_clicked:
+		$BreedingTut.show()
+	
+	
 
 # On exit set it so no one can be grabbed
 func _exit_tree() -> void:
@@ -89,13 +83,11 @@ func _input(event : InputEvent) -> void:
 		else:
 			if dragged_yip:
 				_drop_yip(dragged_yip)
-				_update_barn_doors()
 				dragged_yip.animation_player.play(&"RESET")
 				dragged_yip = null
 				
 	elif event is InputEventMouseMotion:
-		#print("Barn SLot", SignalBus.yip_breed_barn)
-		#print("Party SLot", SignalBus.yip_party)
+		#print(SignalBus.yip_party)
 		if dragged_yip:
 			dragged_yip.global_position = get_global_mouse_position() + drag_offset
 
@@ -105,6 +97,8 @@ func _input(event : InputEvent) -> void:
 const MIN_DISTANCE_BETWEEN_POINTS: float = 200.0
 const MAX_ATTEMPTS_PER_POINT : int = 30
 var resserved_spots : Array[Vector2] = []
+
+
 
 ## Picks a random spot for a yip to spawn in, tries to space yips away from eachother, not guranteed.
 func get_random_point_in_area(count : int) -> Array[Vector2]:
@@ -184,6 +178,7 @@ func get_random_point_in_area(count : int) -> Array[Vector2]:
 	
 	return points
 
+
 ## Picks a random shape, generates a random point inside its local bound then convert to global.
 func _random_point_in_random_shape(shapes : Array[CollisionShape2D]) -> Vector2:
 	var shape_node : CollisionShape2D = shapes[randi() % shapes.size()]
@@ -210,6 +205,8 @@ func _is_far_enough(point : Vector2, existing_points : Array[Vector2]) -> bool:
 		if point.distance_to(p) < MIN_DISTANCE_BETWEEN_POINTS:
 			return false
 	return true
+
+
 
 func spawn_yip(data: YipeeData, index : int) -> Yipee:
 	# Creating yip node
@@ -242,125 +239,89 @@ func spawn_yip(data: YipeeData, index : int) -> Yipee:
 	# Remember party location between scenes if placed in a party
 	if yip.data.yip_party_slot != 0:
 		yip.global_position = team_slots[yip.data.yip_party_slot - 1].global_position
-		SignalBus.yip_party[yip.data.yip_party_slot] = yip.data
+		SignalBus.yip_party[_to_party_slot(yip.data.yip_party_slot)] = yip.data
 		yip_farm_party_position[yip.data.yip_party_slot] = yip
-
-	# Remember barn location between scenes if placed in the barn
-	if yip.data.yip_barn_slot != 0:
-		yip.global_position = barn_slots[yip.data.yip_barn_slot - 1].global_position
-		SignalBus.yip_breed_barn[yip.data.yip_barn_slot] = yip.data
-		yip_farm_barn_position[yip.data.yip_barn_slot] = yip
 	
 	return yip
 
 func _drop_yip(yip: Yipee) -> void:
+	# Party slot
 	var landed_slot: Area2D = null
-	var landed_type: String = ""
-
+	
+	# Check if our yip is overlapping with a party slot and store it
 	for slot in team_slots:
 		if slot.overlaps_area(yip.farmslot):
 			landed_slot = slot
-			landed_type = "party"
 			break
-
-	if landed_slot == null:
-		for slot in barn_slots:
-			if slot.overlaps_area(yip.farmslot):
-				landed_slot = slot
-				landed_type = "barn"
-				break
-
-	# Always clear the yip out of wherever it currently lives,
-	# before placing it anywhere new.
-	var vacated_party_slot : int = yip.data.yip_party_slot
-	var vacated_barn_slot : int = yip.data.yip_barn_slot
-	_clear_yip_from_all(yip)
-
+			
+	# We are hovering over a slot
 	if landed_slot != null:
+		
+		# Grab the slot number
 		var slot_number : int = int(landed_slot.name.right(1))
+	
+		# Find if another yip already occupies the target slot
+		var displaced_yip_data: YipeeData = SignalBus.yip_party[_to_party_slot(slot_number)]
+		var displaced_yip_node: Yipee = yip_farm_party_position[slot_number]
+		
+		# Updating party position
+		for key in SignalBus.yip_party.keys():
+			
+			# Remove yip from old slot
+			if SignalBus.yip_party[key] == yip.data:
+				SignalBus.yip_party[key] = null
+				yip_farm_party_position[key] = null
+				
+		# Put yip in new slot
+		SignalBus.yip_party[_to_party_slot(slot_number)] = yip.data
+		yip_farm_party_position[slot_number] = yip
 
-		if landed_type == "party":
-			var displaced_data : YipeeData = SignalBus.yip_party[slot_number]
-			var displaced_node : Yipee = yip_farm_party_position[slot_number]
-
-			SignalBus.yip_party[slot_number] = yip.data
-			yip_farm_party_position[slot_number] = yip
-			yip.data.yip_party_slot = slot_number
-
-			if displaced_data != null and displaced_data != yip.data:
-				_relocate_displaced(displaced_data, displaced_node, vacated_party_slot, vacated_barn_slot)
-
-			yip.global_position = landed_slot.global_position
-
-		else: # barn
-			var displaced_data : YipeeData = SignalBus.yip_breed_barn[slot_number]
-			var displaced_node : Yipee = yip_farm_barn_position[slot_number]
-
-			SignalBus.yip_breed_barn[slot_number] = yip.data
-			yip_farm_barn_position[slot_number] = yip
-			yip.data.yip_barn_slot = slot_number
-
-			if displaced_data != null and displaced_data != yip.data:
-				_relocate_displaced(displaced_data, displaced_node, vacated_party_slot, vacated_barn_slot)
-
-			yip.global_position = landed_slot.global_position
+		# Swapping logic
+		# Yip in target slot and is not one we are moving
+		if displaced_yip_data != null and displaced_yip_data != yip.data:
+			
+			# get slot number of old dragged yip
+			var old_slot_number : int = yip.data.yip_party_slot
+			
+			# dragged yip came from another party slot
+			if old_slot_number != 0:
+				# Move displaced yip into the slot the dragged yip came from
+				SignalBus.yip_party[_to_party_slot(old_slot_number)] = displaced_yip_data
+				displaced_yip_data.yip_party_slot = old_slot_number
+				
+				yip_farm_party_position[old_slot_number] = displaced_yip_node
+				if displaced_yip_node != null:
+					displaced_yip_node.global_position = team_slots[old_slot_number - 1].global_position
+			else:
+				displaced_yip_data.yip_party_slot = 0
+				if displaced_yip_node != null:
+					displaced_yip_node.global_position = displaced_yip_node.data.farm_last_known_position
+		
+		# Updating our position
+		yip.global_position = landed_slot.global_position
+		yip.data.yip_party_slot = slot_number
+	
 		return
-
-	# Grazing area or snap to graze area
+	
+	# Check if yip is inside of the grazing area
+	# If it is, then place it there, set last known location
 	if %GrazingArea.overlaps_area(yip.hover_area):
 		yip.data.farm_last_known_position = yip.global_position
 	else:
+		# If it is not, then don't place it there, place it at its last known location
 		yip.global_position = yip.data.farm_last_known_position
-
-# Removes a yip from both party/barn it currently occupies,
-# in both SignalBus dictionaries and both local node-position dictionaries.
-# ignores grazing postion
-func _clear_yip_from_all(yip: Yipee) -> void:
-	for key in SignalBus.yip_party.keys():
-		if SignalBus.yip_party[key] == yip.data:
-			SignalBus.yip_party[key] = null
-	for key in yip_farm_party_position.keys():
-		if yip_farm_party_position[key] == yip:
-			yip_farm_party_position[key] = null
-
-	for key in SignalBus.yip_breed_barn.keys():
-		if SignalBus.yip_breed_barn[key] == yip.data:
-			SignalBus.yip_breed_barn[key] = null
-	for key in yip_farm_barn_position.keys():
-		if yip_farm_barn_position[key] == yip:
-			yip_farm_barn_position[key] = null
-
-	yip.data.yip_party_slot = 0
-	yip.data.yip_barn_slot = 0
-
-# Sends the displaced yip back to wherever the dragged yip came from a party slot, a barn slot, or (if neither) the grazing/field area.
-func _relocate_displaced(displaced_data: YipeeData, displaced_node: Yipee, vacated_party_slot: int, vacated_barn_slot: int) -> void:
-	if vacated_party_slot != 0:
-		SignalBus.yip_party[vacated_party_slot] = displaced_data
-		displaced_data.yip_party_slot = vacated_party_slot
-		displaced_data.yip_barn_slot = 0
-		yip_farm_party_position[vacated_party_slot] = displaced_node
-		if displaced_node != null:
-			displaced_node.global_position = team_slots[vacated_party_slot - 1].global_position
 	
-	elif vacated_barn_slot != 0:
-		SignalBus.yip_breed_barn[vacated_barn_slot] = displaced_data
-		displaced_data.yip_barn_slot = vacated_barn_slot
-		displaced_data.yip_party_slot = 0
-		yip_farm_barn_position[vacated_barn_slot] = displaced_node
-		if displaced_node != null:
-			displaced_node.global_position = barn_slots[vacated_barn_slot - 1].global_position
+	# Removing yip from party when we removing it
+	if yip.data.yip_party_slot != 0:
+		SignalBus.yip_party[_to_party_slot(yip.data.yip_party_slot)] = null
+		yip_farm_party_position[yip.data.yip_party_slot] = null
+		yip.data.yip_party_slot = 0
 
-	else:
-		displaced_data.yip_party_slot = 0
-		displaced_data.yip_barn_slot = 0
-		if displaced_node != null:
-			displaced_node.global_position = displaced_node.data.farm_last_known_position
-
-func _update_barn_doors() -> void:
-	print("Should the doors be visible: ", (yip_farm_barn_position[1] == null and yip_farm_barn_position[2] == null))
-	farm_doors.visible = (yip_farm_barn_position[1] == null and yip_farm_barn_position[2] == null)
-
+# TeamSlot1 (front of the farm row) is the front of the battle formation, which
+# battle reads as party slot 5. Maps a visual TeamSlot number <-> party slot key.
+# Symmetric (6 - n is its own inverse), so it works for both reads and writes.
+func _to_party_slot(team_slot: int) -> int:
+	return 6 - team_slot
 
 #endregion
 
@@ -368,6 +329,7 @@ func _update_barn_doors() -> void:
 
 
 func _on_field_button_pressed():
+	SignalBus.field_clicked = true
 	SignalBus.go_to.emit(SignalBus.Locations.FIELD)
 	pass # Replace with function body.
 
@@ -395,20 +357,6 @@ func _on_yip_animation_finished(anim_name: StringName, yip: Yipee) -> void:
 		print(yip, " finished spawning")
 		yip.animation_player.play(&"IdleNormal")
 
-func _on_any_area_entered(entered_area: Area2D, source_area: Area2D) -> void:
-	print(source_area.name, " was entered by ", entered_area.name)
-	
-func _on_any_area_exited(entered_area: Area2D, source_area: Area2D) -> void:
-	print(source_area.name, " was exited by ", entered_area.name)
-
-func _on_breed_farm_slot_area_entered(entered_area: Area2D, source_area: Area2D) -> void:
-	print(source_area.name, " was entered by ", entered_area.name)
-	farm_doors.visible = false
-
-func _on_breed_farm_slot_area_exited(entered_area: Area2D, source_area: Area2D) -> void:
-	print(source_area.name, " was exited by ", entered_area.name)
-	_update_barn_doors()
-
 func _on_yip_hovered(yip: Yipee) -> void:
 	var screen_size = get_viewport().get_visible_rect().size / 3
 	tooltip.display(yip)
@@ -423,10 +371,29 @@ func _on_yip_hovered(yip: Yipee) -> void:
 func _on_yip_unhovered() -> void:
 	tooltip.hide()
 	focused_yip = null
+	
+func _on_any_area_entered(entered_area: Area2D, source_area: Area2D) -> void:
+	print(source_area.name, " was entered by ", entered_area.name)
+	
+func _on_any_area_exited(entered_area: Area2D, source_area: Area2D) -> void:
+	print(source_area.name, " was exited by ", entered_area.name)
+
+#endregion
+
 
 func _on_area_2d_mouse_entered() -> void:
 	$LabDoor2.play("DoorOpen")
 func _on_area_2d_mouse_exited() -> void:
 	$LabDoor2.play("DoorClose")
 
-#endregion
+
+func _on_team_slots_next() -> void:
+	SignalBus.party_slot_tutorial_clicked = true
+	$TeamSlots.hide()
+	$BreedingTut.show()
+	SignalBus.f_y_b_setter = true
+
+
+func _on_breeding_tut_next() -> void:
+	SignalBus.breeding_tut_clicked = true
+	$BreedingTut.hide()

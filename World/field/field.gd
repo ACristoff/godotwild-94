@@ -307,6 +307,7 @@ func buy_yip(yip_bought: Yipee) -> void:
 		yip_bought.queue_free()
 		tooltip.hide()
 		print(SignalBus.yip_inventory)
+		SignalBus.first_yip_bought = true
 
 func check_empty_party() -> int:
 	for slot in SignalBus.yip_party:

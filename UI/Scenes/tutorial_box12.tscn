@@ -1,0 +1,176 @@
+[gd_scene format=3 uid="uid://cdxcqkceerren"]
+
+[ext_resource type="Script" uid="uid://bhwuytm582rb4" path="res://UI/Scripts/tutorial_box.gd" id="1_adguk"]
+[ext_resource type="Texture2D" uid="uid://bcrv3534foclh" path="res://UI/Textures/UIPanel.png" id="2_c5xfd"]
+[ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="3_3o8lt"]
+[ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="4_jtkwf"]
+[ext_resource type="AudioStream" uid="uid://beme2e24c1ser" path="res://Assets/Audio/Sounds/UI_Tick_Minor.wav" id="5_ke7w2"]
+[ext_resource type="Texture2D" uid="uid://bk4wqqnwqeh6l" path="res://UI/Menus/Main_Menu/Textures/pointer.png" id="6_c5xfd"]
+
+[sub_resource type="Animation" id="Animation_c5xfd"]
+resource_name = "Point"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Handle/Pointer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1.9318731, 0.37892914, 1),
+"update": 0,
+"values": [Vector2(72, 180), Vector2(80, 188), Vector2(72, 180)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Handle/Pointer:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.7666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.06632251, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_3o8lt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Handle/Pointer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(72, 180)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Handle/Pointer:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.06632251]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3o8lt"]
+_data = {
+&"Point": SubResource("Animation_c5xfd"),
+&"RESET": SubResource("Animation_3o8lt")
+}
+
+[node name="TutorialBox" type="Control" unique_id=1315543526]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_adguk")
+
+[node name="StatsContainer" type="NinePatchRect" parent="." unique_id=1544857490]
+self_modulate = Color(0.69, 0.532565, 0.43469998, 1)
+texture_filter = 3
+layout_mode = 1
+offset_top = -5.0
+offset_right = 53.0
+offset_bottom = 23.333334
+scale = Vector2(3, 3)
+texture = ExtResource("2_c5xfd")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="StatsContainer2" type="NinePatchRect" parent="StatsContainer" unique_id=1191929492]
+visible = false
+self_modulate = Color(0.69, 0.532565, 0.43469998, 1)
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = 1.333333
+offset_bottom = 16.666668
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_c5xfd")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Next" type="Label" parent="StatsContainer/StatsContainer2" unique_id=255028458]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.6666679
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_3o8lt")
+theme_override_font_sizes/font_size = 8
+text = "OK!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="StatsContainer/StatsContainer2" unique_id=2146772956 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_jtkwf")
+target_highlight = NodePath("..")
+growth_scale = 1
+click_sound = ExtResource("5_ke7w2")
+
+[node name="TutorialText" type="Label" parent="StatsContainer" unique_id=1680731529]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.6666667
+offset_right = 51.0
+offset_bottom = 29.666666
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("3_3o8lt")
+text = "Let's buy our first Yip"
+autowrap_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=101867749]
+libraries/ = SubResource("AnimationLibrary_3o8lt")
+autoplay = &"Point"
+speed_scale = 1.5
+
+[node name="Handle" type="Node2D" parent="." unique_id=1447809387]
+
+[node name="Pointer" type="Sprite2D" parent="Handle" unique_id=2005537715]
+texture_filter = 3
+position = Vector2(72, 180)
+scale = Vector2(3, 3)
+skew = -0.06632251
+texture = ExtResource("6_c5xfd")
+
+[connection signal="button_down" from="StatsContainer/StatsContainer2/Button" to="StatsContainer/StatsContainer2/Button" method="_on_button_down"]
+[connection signal="button_up" from="StatsContainer/StatsContainer2/Button" to="StatsContainer/StatsContainer2/Button" method="_on_button_up"]
+[connection signal="mouse_entered" from="StatsContainer/StatsContainer2/Button" to="StatsContainer/StatsContainer2/Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="StatsContainer/StatsContainer2/Button" to="StatsContainer/StatsContainer2/Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="StatsContainer/StatsContainer2/Button" to="." method="_on_button_pressed"]

@@ -4,6 +4,14 @@ extends Node
 #I KNOW WHAT IM DOING GODOT HECK OFF
 var permadeath: bool = false
 
+var field_clicked = false
+var first_yip_bought = false
+var f_y_b_setter = false #make sure tutorial doesnt come back after clicked
+var party_slot_tutorial_clicked = false
+var breeding_tut_clicked = false
+var twice_speed_clicked = false
+var start_of_second_day = false
+
 ## Farm scene we should see yips from here in that farm area
 var yip_inventory: Array[YipeeData] = []
 
@@ -16,19 +24,13 @@ var yip_party : Dictionary[int, YipeeData] = {
 	5: null
 }
 
-## Where will store yips globally
-var yip_breed_barn : Dictionary[int, YipeeData] = {
-	1: null,
-	2: null
-}
-
 var coins: int = 12
 enum Locations { FARM, FIELD, LAB, BATTLE, WIN_LOSE }
 var game_started: bool = false
 
 var current_health = 3
 var current_wins = 0
-var debug_mode: bool = true
+var debug_mode: bool = false
 
 var victories: int = 0 
 

@@ -803,6 +803,9 @@ offset_top = 280.0
 offset_right = 462.0
 offset_bottom = 280.0
 
+[node name="Pointer" parent="TutorialBox4" index="3" unique_id=114477318]
+position = Vector2(517, 312)
+
 [node name="TutorialBox5" parent="." unique_id=73759819 instance=ExtResource("14_nngio")]
 visible = false
 offset_left = 462.0
@@ -870,4 +873,5 @@ offset_bottom = 70.66666
 [connection signal="next" from="TutorialBox9" to="." method="_on_tutorial_box_9_next"]
 [connection signal="next" from="TutorialBox10" to="." method="_on_tutorial_box_10_next"]
 
+[editable path="TutorialBox4"]
 [editable path="TutorialBox10"]
