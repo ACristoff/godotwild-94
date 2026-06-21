@@ -194,12 +194,27 @@ func _on_died(corpse: Yipee) -> void:
 	corpse.ability.on_death(self)
 	print(corpse.data.yipee_name, " fucking died!")
 	corpse.scale.y = -1
+
+	if SignalBus.permadeath and player_team.has(corpse):
+		_permadeath_remove(corpse.data)
+
 	var battle_end_cond = check_for_victory()
 	if battle_end_cond != Team.NONE:
 		prints("Battle over!", check_for_victory())
 		_battle_over = true
 		$CanvasLayer2/NextButton.visible = true
 		#TODO make button visible
+
+func _permadeath_remove(data: YipeeData) -> void:
+	SignalBus.yip_inventory.erase(data)
+	for key in SignalBus.yip_party:
+		if SignalBus.yip_party[key] == data:
+			SignalBus.yip_party[key] = null
+	for key in SignalBus.yip_breed_barn:
+		if SignalBus.yip_breed_barn[key] == data:
+			SignalBus.yip_breed_barn[key] = null
+	data.yip_party_slot = 0
+	data.yip_barn_slot = 0
 
 func _on_next():
 	var battle_end_cond = check_for_victory()

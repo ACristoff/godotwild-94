@@ -12,8 +12,8 @@ class_name Game_Manager
 @onready var menu_ui: CanvasLayer = $MenuUI
 
 @onready var main_menu = preload("res://UI/Menus/Main_Menu/main_menu.tscn")
-@onready var settings_menu
-@onready var credits_menu
+@onready var settings_menu 
+@onready var credits_menu = preload("res://UI/Menus/Credits/credits.tscn")
 #@onready var load_save_menu = preload("res://UI/Menus/LoadSave/load_save.tscn")
 @onready var game = preload("res://World/main_game.tscn")
 
@@ -25,7 +25,7 @@ var current_scene = null
 	"Main": main_menu,
 	"Start": game,
 	"Settings": 'NOT DONE YET BOZO',
-	"Credits": 'NOT DONE YET BOZO',
+	"Credits": credits_menu,
 	"Pause": 'NOT DONE YET BOZO',
 	"Quit": 'Quit za gameo'
 }

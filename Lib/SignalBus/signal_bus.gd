@@ -11,7 +11,6 @@ var party_slot_tutorial_clicked = false
 var breeding_tut_clicked = false
 var twice_speed_clicked = false
 var start_of_second_day = false
-var bred_today: bool = false
 
 ## Farm scene we should see yips from here in that farm area
 var yip_inventory: Array[YipeeData] = []
@@ -86,7 +85,6 @@ func reset_run() -> void:
 	victories = 0
 	game_started = false
 	field_generated_today = false
-	bred_today = false
 
 	field_clicked = false
 	first_yip_bought = false

@@ -376,18 +376,26 @@ func _relocate_displaced(displaced_data: YipeeData, displaced_node: Yipee, vacat
 func _barn_is_full() -> bool:
 	return yip_farm_barn_position[1] != null and yip_farm_barn_position[2] != null
 
+func _can_breed() -> bool:
+	var parent_a: YipeeData = SignalBus.yip_breed_barn[1]
+	var parent_b: YipeeData = SignalBus.yip_breed_barn[2]
+	if parent_a == null or parent_b == null:
+		return false
+	return not parent_a.bred_today and not parent_b.bred_today
+
 func _update_barn_doors() -> void:
-	farm_doors.visible = _barn_is_full() and not SignalBus.bred_today
+	farm_doors.visible = _can_breed()
 
 func _try_breed() -> void:
-	if SignalBus.bred_today:
-		return
 	var parent_a: YipeeData = SignalBus.yip_breed_barn[1]
 	var parent_b: YipeeData = SignalBus.yip_breed_barn[2]
 	if parent_a == null or parent_b == null:
 		return
-	
-	SignalBus.bred_today = true
+	if parent_a.bred_today or parent_b.bred_today:
+		return
+
+	parent_a.bred_today = true
+	parent_b.bred_today = true
 	var child := YipeeData.breed(parent_a, parent_b)
 	SignalBus.yip_inventory.append(child)
 	AudMan.play_sfx_wav(BREED_SOUND, 0.0, false)

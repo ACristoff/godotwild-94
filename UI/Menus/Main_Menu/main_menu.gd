@@ -2,6 +2,9 @@ extends Control
 
 var permadeath = false
 
+func _ready() -> void:
+	SignalBus.permadeath = permadeath
+
 func _on_start_pressed():
 	SignalBus.game_state_changed.emit("Start")
 
@@ -25,3 +28,4 @@ func _on_button_pressed() -> void:
 	else:
 		$AnimationPlayer.play_backwards("deathmode")
 		permadeath = false
+	SignalBus.permadeath = permadeath

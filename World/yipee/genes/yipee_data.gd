@@ -52,6 +52,9 @@ const YIP_TABLE := {
 # This will also let us know when they are in the farm hub
 var can_be_grabbed : bool = false
 
+# Each yip can only breed once per day; reset on day end
+var bred_today : bool = false
+
 # If the yip gets dragged off screen, we snap it back to its last known location
 # I want them to run back to the old position if possible with a cute animation. We can slide them for now
 # When the yip is spawned in the farm hub, set this variable, we will be spawning the yip in the safe areas.
