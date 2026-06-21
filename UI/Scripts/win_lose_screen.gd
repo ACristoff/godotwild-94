@@ -1,5 +1,23 @@
 extends Control
 
+func ready():
+	match SignalBus.current_health:
+		1:
+			pass
+		2:
+			pass
+		3:
+			pass
+	match SignalBus.current_wins:
+		1:
+			pass
+		2:
+			pass
+		3:
+			pass
+		4:
+			pass
+
 func lost_match():
 	var node = get_node("VBoxContainer/Hearts/Heart" + str(SignalBus.current_health))
 	#node.set_slot(slot)

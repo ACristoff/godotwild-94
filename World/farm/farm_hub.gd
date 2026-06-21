@@ -309,10 +309,7 @@ func _to_party_slot(team_slot: int) -> int:
 #endregion
 
 #region Button Stuff
-func _on_texture_button_mouse_entered() -> void:
-	$LabDoor2.play("DoorOpen")
-func _on_texture_button_mouse_exited() -> void:
-	$LabDoor2.play("DoorClose")
+
 
 func _on_field_button_pressed():
 	SignalBus.go_to.emit(SignalBus.Locations.FIELD)
@@ -364,3 +361,9 @@ func _on_any_area_exited(entered_area: Area2D, source_area: Area2D) -> void:
 	print(source_area.name, " was exited by ", entered_area.name)
 
 #endregion
+
+
+func _on_area_2d_mouse_entered() -> void:
+	$LabDoor2.play("DoorOpen")
+func _on_area_2d_mouse_exited() -> void:
+	$LabDoor2.play("DoorClose")

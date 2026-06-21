@@ -262,12 +262,10 @@ position = Vector2(960.00006, 540)
 scale = Vector2(3, 3)
 texture = ExtResource("9_b6oao")
 
-[node name="TextureButton" type="Button" parent="LabNew" unique_id=1428114972]
-self_modulate = Color(1, 1, 1, 0)
-offset_left = 107.99997
-offset_top = -180.00006
-offset_right = 319.99997
-offset_bottom = 8.666672
+[node name="Area2D" type="Area2D" parent="LabNew" unique_id=343731915]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LabNew/Area2D" unique_id=2068943545]
+polygon = PackedVector2Array(277.99997, 7.3333435, 254.33334, 7, 185.33331, -27.333328, 115.66666, -65.33333, 110.66666, -70, 109.33331, -163.66667, 163.99997, -219.33334, 354.33334, -213.33334, 334.99997, -19.333328, 319.66666, -14.6666565)
 
 [node name="LabDoor2" type="AnimationPlayer" parent="." unique_id=2037295825]
 libraries/ = SubResource("AnimationLibrary_lx74c")
@@ -417,8 +415,8 @@ target_highlight = NodePath("../BattleButtonIcon")
 
 [connection signal="area_entered" from="BreedingBarnGrass/BreedFarmSlot" to="Areas" method="_on_breed_farm_slot_area_entered"]
 [connection signal="area_exited" from="BreedingBarnGrass/BreedFarmSlot" to="Areas" method="_on_breed_farm_slot_area_exited"]
-[connection signal="mouse_entered" from="LabNew/TextureButton" to="." method="_on_texture_button_mouse_entered"]
-[connection signal="mouse_exited" from="LabNew/TextureButton" to="." method="_on_texture_button_mouse_exited"]
+[connection signal="mouse_entered" from="LabNew/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="LabNew/Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="button_down" from="FieldButton" to="FieldButton" method="_on_button_down"]
 [connection signal="button_up" from="FieldButton" to="FieldButton" method="_on_button_up"]
 [connection signal="mouse_entered" from="FieldButton" to="FieldButton" method="_on_mouse_entered"]

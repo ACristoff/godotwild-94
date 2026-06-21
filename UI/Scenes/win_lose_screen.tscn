@@ -70,6 +70,12 @@ self_modulate = Color(1, 0.85, 0.39999998, 1)
 layout_mode = 2
 texture = ExtResource("1_asrpj")
 
+[node name="Trophy5" type="TextureRect" parent="WinLoseScreen/VBoxContainer/Trophies" unique_id=757409490]
+modulate = Color(0.12225223, 0.12225223, 0.12225223, 1)
+self_modulate = Color(1, 0.85, 0.39999998, 1)
+layout_mode = 2
+texture = ExtResource("1_asrpj")
+
 [node name="Hearts" type="HBoxContainer" parent="WinLoseScreen/VBoxContainer" unique_id=137325126]
 layout_mode = 2
 size_flags_horizontal = 4
