@@ -299,3 +299,4 @@ texture = ExtResource("11_8ubfp")
 [connection signal="button_up" from="SettingsButton" to="SettingsButton" method="_on_button_up"]
 [connection signal="mouse_entered" from="SettingsButton" to="SettingsButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="SettingsButton" to="SettingsButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]

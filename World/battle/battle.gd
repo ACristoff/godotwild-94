@@ -275,3 +275,7 @@ func _on_game_speed_button_pressed() -> void:
 func _on_tutorial_box_next() -> void:
 	$TutorialBox.hide()
 	SignalBus.twice_speed_clicked = true
+
+
+func _on_settings_button_pressed() -> void:
+	SignalBus.game_state_changed.emit("Settings")

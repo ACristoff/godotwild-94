@@ -380,3 +380,7 @@ func _on_refresh_button_pressed():
 
 func _on_farm_button_pressed():
 	SignalBus.go_to.emit(SignalBus.Locations.FARM)
+
+
+func _on_settings_button_pressed() -> void:
+	SignalBus.game_state_changed.emit("Settings")

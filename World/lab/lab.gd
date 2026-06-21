@@ -332,3 +332,7 @@ func _on_conveyor_area_area_exited(area):
 func _on_farm_button_pressed():
 	SignalBus.go_to.emit(SignalBus.Locations.FARM)
 	pass # Replace with function body.
+
+
+func _on_settings_button_pressed() -> void:
+	SignalBus.game_state_changed.emit("Settings")
