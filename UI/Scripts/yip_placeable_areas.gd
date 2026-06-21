@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var pen_collision = $MainPen/CollisionShape2D
+
 func _on_main_pen_area_entered(area: Area2D) -> void:
 	pass # Replace with function body.
 func _on_main_pen_area_exited(area: Area2D) -> void:

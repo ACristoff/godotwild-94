@@ -15,7 +15,7 @@
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="13_lx74c"]
 [ext_resource type="Texture2D" uid="uid://1lmfe1dpron4" path="res://Assets/Environment/Scenes/BattleField/Coin.png" id="14_4wbmb"]
 [ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="15_4wbmb"]
-[ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="16_0l0ir"]
+[ext_resource type="Script" path="res://UI/Scripts/button_effects.gd" id="16_0l0ir"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_goe80"]
 size = Vector2(495, 343)

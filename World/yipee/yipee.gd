@@ -24,6 +24,8 @@ const YIP_BUFF = preload("uid://nkypm8ojycqe")
 
 @onready var animation_player : AnimationPlayer = $ActionsAnim
 
+var dead = false
+
 signal yip_hovered(yip_data: Yipee)
 signal yip_unhovered
 
@@ -35,6 +37,9 @@ func _ready() -> void:
 	status.setup(health)
 	status.effects_changed.connect(health_UI.update_ailments)
 	attack.progress_changed.connect(_on_cooldown_changed)
+	
+func in_battle_dance():
+	$ActionsAnim.play("IdleBattle")
 
 func enemy_flip():
 	cd_bar.scale.x *= -1
@@ -60,3 +65,17 @@ Function - To drag and drop yips, drop them at the last known location if off sc
 Variable - To keep track of position (last placed position, only in farm hub) - Done
 Yips don't roam.
 """
+
+
+func _on_throw_punch_anim_animation_finished(anim_name: StringName) -> void:
+	if !dead:
+		$ActionsAnim.play("IdleBattle")
+
+
+func _on_hit_anim_animation_finished(anim_name: StringName) -> void:
+	if !dead:
+		$ActionsAnim.play("IdleBattle")
+
+func _on_actions_anim_animation_finished(anim_name: StringName) -> void:
+	pass
+	#$ActionsAnim.play("IdleBattle")

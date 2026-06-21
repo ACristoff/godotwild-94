@@ -11,7 +11,7 @@ var yip_on_launch_pad: Yipee = null
 @onready var launch_pad = $LaunchPad
 @onready var conveyor = $ConveyorArea
 @onready var dna_screen = $Control/SubViewportContainer/SubViewport/DNATestScreen
-
+@onready var areas = $Areas
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	update_screen()
@@ -19,10 +19,31 @@ func _ready() -> void:
 		print('debug')
 		spawn_yip(sample_yip)
 
+func get_random_point_in_area() -> Vector2:
+	# Array to store each collision shape
+	var shapes : Array[CollisionShape2D] = [areas.pen_collision]
+	
+	if shapes.is_empty():
+		push_error("Why is this empty stupid add some grazing space!!!!!!")
+		return Vector2.ZERO
+	
+	# Randomly selecting a grazing spot
+	var grazing_spot : CollisionShape2D = shapes[randi() % shapes.size()]
+	var grazing_shape : RectangleShape2D = shapes[randi() % shapes.size()].shape
+	
+	var extents : Vector2 = grazing_shape.size / 2.0
+	
+	# To store random spawn point
+	var random_point_in_grazing_area : Vector2 = Vector2(randf_range(-extents.x, extents.x), randf_range(-extents.y, extents.y))
+	
+	return grazing_spot.to_global(random_point_in_grazing_area)
+
 func spawn_yip(data: YipeeData) -> Yipee:
 	var yip : Yipee = preload("res://World/yipee/yipee.tscn").instantiate() as Yipee
 	yip.data = data
-	yip.global_position = Vector2(300,300)
+	#yip.global_position = Vector2(300,300)
+	yip.global_position = get_random_point_in_area()
+	print(yip.global_position)
 	yip.data.can_be_grabbed = true
 	add_child(yip)
 	yip.z_index = 100

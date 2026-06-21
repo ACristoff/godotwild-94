@@ -78,6 +78,7 @@ func _ready():
 		var spawn = get_node("PlayerTeam/Spawn_" + str(i + 1))
 		var new_yip = _spawn(player_team_data[i], spawn.global_position + Vector2(105, 45))
 		player_team.append(new_yip)
+		new_yip.in_battle_dance()
 	#Spawn enemy team
 	for i in range(5):
 		if i >= enemy_team_data.size() or enemy_team_data[i] == null:
@@ -87,6 +88,7 @@ func _ready():
 		new_yip.body.scale.x = new_yip.body.scale.x * -1 
 		new_yip.enemy_flip()
 		enemy_team.append(new_yip)
+		new_yip.in_battle_dance()
 	#Wire up all the yips
 	for yip in player_team:
 		wire_signals(yip, Team.PLAYER)
@@ -229,3 +231,14 @@ func _process(delta):
 
 func _on_next_button_pressed() -> void:
 	_on_next()
+
+
+func _on_game_speed_button_pressed() -> void:
+	if battle_speed == 1:
+		battle_speed = 2
+		$ButtonRefresh4/SpeedLabel.text = "2x"
+		$ButtonRefresh4.self_modulate = Color("478da6")
+	else:
+		battle_speed = 1
+		$ButtonRefresh4/SpeedLabel.text = "1x"
+		$ButtonRefresh4.self_modulate = Color("2a3661ff")
