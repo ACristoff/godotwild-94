@@ -220,7 +220,7 @@ func spawn_yip(data: YipeeData, index : int) -> Yipee:
 	# Remember party location between scenes if placed in a party
 	if yip.data.yip_party_slot != 0:
 		yip.global_position = team_slots[yip.data.yip_party_slot - 1].global_position
-		SignalBus.yip_party[yip.data.yip_party_slot] = yip.data
+		SignalBus.yip_party[_to_party_slot(yip.data.yip_party_slot)] = yip.data
 		yip_farm_party_position[yip.data.yip_party_slot] = yip
 	
 	return yip
@@ -242,7 +242,7 @@ func _drop_yip(yip: Yipee) -> void:
 		var slot_number : int = int(landed_slot.name.right(1))
 	
 		# Find if another yip already occupies the target slot
-		var displaced_yip_data: YipeeData = SignalBus.yip_party[slot_number]
+		var displaced_yip_data: YipeeData = SignalBus.yip_party[_to_party_slot(slot_number)]
 		var displaced_yip_node: Yipee = yip_farm_party_position[slot_number]
 		
 		# Updating party position
@@ -254,7 +254,7 @@ func _drop_yip(yip: Yipee) -> void:
 				yip_farm_party_position[key] = null
 				
 		# Put yip in new slot
-		SignalBus.yip_party[slot_number] = yip.data
+		SignalBus.yip_party[_to_party_slot(slot_number)] = yip.data
 		yip_farm_party_position[slot_number] = yip
 
 		# Swapping logic
@@ -267,7 +267,7 @@ func _drop_yip(yip: Yipee) -> void:
 			# dragged yip came from another party slot
 			if old_slot_number != 0:
 				# Move displaced yip into the slot the dragged yip came from
-				SignalBus.yip_party[old_slot_number] = displaced_yip_data
+				SignalBus.yip_party[_to_party_slot(old_slot_number)] = displaced_yip_data
 				displaced_yip_data.yip_party_slot = old_slot_number
 				
 				yip_farm_party_position[old_slot_number] = displaced_yip_node
@@ -294,11 +294,17 @@ func _drop_yip(yip: Yipee) -> void:
 	
 	# Removing yip from party when we removing it
 	if yip.data.yip_party_slot != 0:
-		SignalBus.yip_party[yip.data.yip_party_slot] = null
+		SignalBus.yip_party[_to_party_slot(yip.data.yip_party_slot)] = null
 		yip_farm_party_position[yip.data.yip_party_slot] = null
 		yip.data.yip_party_slot = 0
 
-#endregion 
+# TeamSlot1 (front of the farm row) is the front of the battle formation, which
+# battle reads as party slot 5. Maps a visual TeamSlot number <-> party slot key.
+# Symmetric (6 - n is its own inverse), so it works for both reads and writes.
+func _to_party_slot(team_slot: int) -> int:
+	return 6 - team_slot
+
+#endregion
 
 #region Button Stuff
 func _on_texture_button_mouse_entered() -> void:
@@ -311,8 +317,15 @@ func _on_field_button_pressed():
 	pass # Replace with function body.
 
 func _on_battle_button_pressed():
+	var has_yip := false
+	for yip in SignalBus.yip_party.values():
+		if yip != null:
+			has_yip = true
+			break
+	if not has_yip:
+		return
 	SignalBus.go_to.emit(SignalBus.Locations.BATTLE)
-	pass # Replace with function body.
+
 #endregion
 
 #region Signal Stuff
