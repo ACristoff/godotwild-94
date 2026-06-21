@@ -10,6 +10,12 @@
 [ext_resource type="Script" uid="uid://dqvqbetgnjsnh" path="res://UI/Scripts/lock_button_graphic.gd" id="8_6l7jc"]
 [ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="8_lwms1"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6l7jc"]
+size = Vector2(1161, 702)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rh655"]
+size = Vector2(647.25, 433.5)
+
 [node name="Field" type="Node2D" unique_id=1076215709]
 script = ExtResource("1_sj8ve")
 
@@ -69,6 +75,7 @@ layout_mode = 2
 texture = ExtResource("4_rh655")
 
 [node name="YipToolyip" parent="CanvasLayer" unique_id=399779298 instance=ExtResource("5_8ubfp")]
+metadata/_edit_use_anchors_ = true
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1490005837]
 position = Vector2(960, 1080)
@@ -194,6 +201,17 @@ offset_right = 1893.0
 offset_bottom = 1010.0
 script = ExtResource("8_lwms1")
 target_highlight = NodePath("../FarmButtonIcon")
+
+[node name="FieldArea" type="Area2D" parent="." unique_id=41104136]
+unique_name_in_owner = true
+
+[node name="Field_1" type="CollisionShape2D" parent="FieldArea" unique_id=1298065332]
+position = Vector2(714.5, 452)
+shape = SubResource("RectangleShape2D_6l7jc")
+
+[node name="Field_2" type="CollisionShape2D" parent="FieldArea" unique_id=806182123]
+position = Vector2(1410, 374)
+shape = SubResource("RectangleShape2D_rh655")
 
 [connection signal="button_down" from="RefreshButton" to="RefreshButton" method="_on_button_down"]
 [connection signal="button_up" from="RefreshButton" to="RefreshButton" method="_on_button_up"]

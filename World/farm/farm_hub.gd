@@ -37,13 +37,17 @@ func _ready() -> void:
 	coin_label.text = str(SignalBus.coins)
 	
 	#Setting up and spawning yips
+	resserved_spots = get_random_point_in_area(SignalBus.yip_inventory.size())
+	var index : int = 0
 	for yip in SignalBus.yip_inventory:
-		wire_yip(spawn_yip(yip))
+		wire_yip(spawn_yip(yip, index))
+		index += 1
 
 # On exit set it so no one can be grabbed
 func _exit_tree() -> void:
 	for yip_data in SignalBus.yip_inventory:
 		yip_data.can_be_grabbed = false
+	resserved_spots = []
 
 func _input(event : InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -54,6 +58,7 @@ func _input(event : InputEvent) -> void:
 				print('Picked up a yip', focused_yip)
 				# Remember offset so the yip doesn't jump so its center snaps to the cursor
 				drag_offset = dragged_yip.global_position - get_global_mouse_position()
+				
 				print("Picked up a yip", dragged_yip)
 				dragged_yip.animation_player.play(&"Grabbed")
 		else:
@@ -70,9 +75,14 @@ func _input(event : InputEvent) -> void:
 #endregion
 
 #region Farm Hub Functions
+const MIN_DISTANCE_BETWEEN_POINTS: float = 200.0
+const MAX_ATTEMPTS_PER_POINT : int = 30
+var resserved_spots : Array[Vector2] = []
 
-## TODO: Edit spawn yip code, maybe make it so yips don't spawn in the same spot
-func get_random_point_in_area() -> Vector2:
+
+
+## Picks a random spot for a yip to spawn in, tries to space yips away from eachother, not guranteed.
+func get_random_point_in_area(count : int) -> Array[Vector2]:
 	# Array to store each collision shape
 	var shapes : Array[CollisionShape2D] = []
 	
@@ -83,22 +93,103 @@ func get_random_point_in_area() -> Vector2:
 			# Check if its shape is RectangleShape2D
 			if child.shape is RectangleShape2D:
 				shapes.append(child)
+				
+	# Error if we don't have any grazing spot
 	if shapes.is_empty():
 		push_error("Why is this empty stupid add some grazing space!!!!!!")
-		return Vector2.ZERO
+		return []
+		
+	# Pointts we can use as spots
+	var points : Array[Vector2] = []
 	
-	# Randomly selecting a grazing spot
-	var grazing_spot : CollisionShape2D = shapes[randi() % shapes.size()]
-	var grazing_shape : RectangleShape2D = shapes[randi() % shapes.size()].shape
+	# Active List for poisson distribution
+	var active_list : Array[Vector2] = []
 	
-	var extents : Vector2 = grazing_shape.size / 2.0
+	# Seed with one random valid point from a random box
+	var first_point : Vector2 = _random_point_in_random_shape(shapes)
+	points.append(first_point)
+	active_list.append(first_point)
 	
-	# To store random spawn point
-	var random_point_in_grazing_area : Vector2 = Vector2(randf_range(-extents.x, extents.x), randf_range(-extents.y, extents.y))
+	# Keep creating points as long as there is at least one active point to grow from and havent reached number of yips (count)
+	while active_list.size() > 0 and points.size() < count:
+		# Pick a random point in active list to spawn a new point from
+		var active_index : int = randi() % active_list.size() # Index of point we will grow from
+		var base_point : Vector2 = active_list[active_index]
+		
+		# Tracker for valid point or not
+		var found_valid : bool = false
+		
+		# Iterating until we hit limit
+		for i in MAX_ATTEMPTS_PER_POINT:
+			
+			# Point a random angle in a circle
+			var angle : float = randf_range(0.0, TAU)
+			# Pick a random distance within said circle
+			var dist : float = randf_range(MIN_DISTANCE_BETWEEN_POINTS, MIN_DISTANCE_BETWEEN_POINTS * 5.3)
+			# Grab the actual normal coordinate at angle and distance, convert it back to regular points
+			var candidate : Vector2 = base_point + Vector2(cos(angle), sin(angle)) * dist
+			
+			# Check if it falls within any of our grazing areas
+			if not _is_inside_any_shape(candidate, shapes):
+				continue
+				
+			# Check if it is far enough from all of our points
+			if not _is_far_enough(candidate, points):
+				continue
+			
+			# We found a valid point so add it to the list
+			points.append(candidate)
+			
+			# update our active list, we found a new viable canidate, update bool and stop attempting for this base point
+			active_list.append(candidate)
+			found_valid = true
+			break
+		
+		# We exuasted all tries for this canidate point so remove it from the list
+		if not found_valid:
+			active_list.remove_at(active_index)
+			
+	# We didn't produce enough points for our yips so generate random points
+	if points.size() < count:
+		var remaining : int = count - points.size()
+		push_warning("Only found %d spaced points, filling remaining %d with plain random points" % [points.size(), remaining])
+		
+		for i in remaining:
+			points.append(_random_point_in_random_shape(shapes))
 	
-	return grazing_spot.to_global(random_point_in_grazing_area)
+	return points
 
-func spawn_yip(data: YipeeData) -> Yipee:
+
+## Picks a random shape, generates a random point inside its local bound then convert to global.
+func _random_point_in_random_shape(shapes : Array[CollisionShape2D]) -> Vector2:
+	var shape_node : CollisionShape2D = shapes[randi() % shapes.size()]
+	var rect_shape : RectangleShape2D = shape_node.shape
+	var extents : Vector2 = rect_shape.size / 2.0
+	var local_point : Vector2 = Vector2(randf_range(-extents.x, extents.x), randf_range(-extents.y, extents.y))
+	return shape_node.to_global(local_point)
+
+## Checks if a global point is inside any of our shapes  (grazing areas)
+func _is_inside_any_shape(global_point : Vector2, shapes : Array[CollisionShape2D]) -> bool:
+	for shape_node in shapes:
+		var local_point : Vector2 = shape_node.to_local(global_point)
+		var rect_shape : RectangleShape2D = shape_node.shape
+		var extents : Vector2 = rect_shape.size / 2.0
+		
+		# Use abs to cover both positive and negative distance
+		if abs(local_point.x) <= extents.x and abs(local_point.y) <= extents.y:
+			return true
+	return false
+
+## Checks to see if a point is far enough basically
+func _is_far_enough(point : Vector2, existing_points : Array[Vector2]) -> bool:
+	for p in existing_points:
+		if point.distance_to(p) < MIN_DISTANCE_BETWEEN_POINTS:
+			return false
+	return true
+
+
+
+func spawn_yip(data: YipeeData, index : int) -> Yipee:
 	# Creating yip node
 	var yip : Yipee = preload("res://World/yipee/yipee.tscn").instantiate() as Yipee
 	# Setting data
@@ -111,12 +202,9 @@ func spawn_yip(data: YipeeData) -> Yipee:
 	yip.health_UI.max_health = yip.health.max_health
 	yip.health_UI.update_UI()
 	
-	
-	
-	
 	# Checking if this yip already had a farm position
 	if yip.data.farm_last_known_position == Vector2.ZERO:
-		yip.global_position = get_random_point_in_area()
+		yip.global_position = resserved_spots[index]
 		print("Generated Position: ", yip.global_position)
 		yip.data.farm_last_known_position = yip.global_position
 		yip.animation_player.play(&"Spawn")

@@ -4,7 +4,7 @@ var field_level = 0
 var base_slot_chance = 25
 var base_yip_tier_chance = 25
 
-var yips_to_spawn = 3 + field_level
+var yips_to_spawn : int = 3 + field_level
 
 var yip_tier_odds_0: Dictionary = {
 	YipeeData.YipTier.COMMON: 95,
@@ -55,17 +55,32 @@ var all_yips:  Array[Yipee] = []
 
 var focused_yip: Yipee = null
 
+var resserved_spots : Array[Vector2] = []
 
 
+const MIN_DISTANCE_BETWEEN_POINTS: float = 200.0
+const MAX_ATTEMPTS_PER_POINT : int = 30
+
+#region Built in
 func _ready():
 	#tooltip.yip_owner = self
 	coin_label.text = str(SignalBus.coins)
 	tooltip.hide()
-	for i in yips_to_spawn:
-		var new_yip = spawn_yip()
+	
+	resserved_spots = get_random_point_in_area(yips_to_spawn)
+	print("RESERVED SPOTS HERE:", resserved_spots)
+	for i in (yips_to_spawn):
+		var new_yip = spawn_yip(i)
 		wire_yip(new_yip)
 		all_yips.append(new_yip)
 
+# So we clear all reservered spots when we leave
+func _exit_tree() -> void:
+	resserved_spots = []
+	pass
+#endregion
+
+#region Signal
 func wire_yip(yip: Yipee) -> void:
 	yip.yip_hovered.connect(_on_yip_hovered)
 	yip.yip_unhovered.connect(_on_yip_unhovered)
@@ -86,7 +101,9 @@ func _on_yip_unhovered() -> void:
 	print('yip unhovered')
 	tooltip.hide()
 	focused_yip = null
+#endregion
 
+#region Allelle stuff
 func get_yip_tier():
 	var random = randi_range(0, 99)
 	var current_odds = yip_tier_dictionaries[field_level]
@@ -118,12 +135,6 @@ func generate_alleles(tier: YipeeData.YipTier, helix: Helix) -> Helix:
 			strand.left = AlleleLibrary.random_left(strand.slot, yip_tier_dictionaries[field_level])
 	return helix
 
-func random_location() -> Vector2:
-	var x = randi_range(0, 1920)
-	var y = randi_range(0, 1080)
-	var random = Vector2(x, y)
-	return random
-
 func clear_yips() -> void:
 	var yip_count = all_yips.size()
 	var total_yips = all_yips.duplicate()
@@ -132,14 +143,125 @@ func clear_yips() -> void:
 		all_yips.erase(yip)
 		yip.queue_free()
 		print(all_yips)
+		
+#endregion
 
-func spawn_yip() -> Yipee:
+#region Location
+
+## Picks a random spot for a yip to spawn in, tries to space yips away from eachother, not guranteed.
+func get_random_point_in_area(count : int) -> Array[Vector2]:
+	# Array to store each collision shape
+	var shapes : Array[CollisionShape2D] = []
+	
+	# Grab each Collisionshape2D
+	for child in %FieldArea.get_children():
+		# Check if its shape is CollisionShape2D
+		if child is CollisionShape2D:
+			# Check if its shape is RectangleShape2D
+			if child.shape is RectangleShape2D:
+				shapes.append(child)
+				
+	# Error if we don't have any grazing spot
+	if shapes.is_empty():
+		push_error("Why is this empty stupid add some grazing space!!!!!!")
+		return []
+		
+	# Pointts we can use as spots
+	var points : Array[Vector2] = []
+	
+	# Active List for poisson distribution
+	var active_list : Array[Vector2] = []
+	
+	# Seed with one random valid point from a random box
+	var first_point : Vector2 = _random_point_in_random_shape(shapes)
+	points.append(first_point)
+	active_list.append(first_point)
+	
+	# Keep creating points as long as there is at least one active point to grow from and havent reached number of yips (count)
+	while active_list.size() > 0 and points.size() < count:
+		# Pick a random point in active list to spawn a new point from
+		var active_index : int = randi() % active_list.size() # Index of point we will grow from
+		var base_point : Vector2 = active_list[active_index]
+		
+		# Tracker for valid point or not
+		var found_valid : bool = false
+		
+		# Iterating until we hit limit
+		for i in MAX_ATTEMPTS_PER_POINT:
+			
+			# Point a random angle in a circle
+			var angle : float = randf_range(0.0, TAU)
+			# Pick a random distance within said circle
+			var dist : float = randf_range(MIN_DISTANCE_BETWEEN_POINTS, MIN_DISTANCE_BETWEEN_POINTS * 5.3)
+			# Grab the actual normal coordinate at angle and distance, convert it back to regular points
+			var candidate : Vector2 = base_point + Vector2(cos(angle), sin(angle)) * dist
+			
+			# Check if it falls within any of our grazing areas
+			if not _is_inside_any_shape(candidate, shapes):
+				continue
+				
+			# Check if it is far enough from all of our points
+			if not _is_far_enough(candidate, points):
+				continue
+			
+			# We found a valid point so add it to the list
+			points.append(candidate)
+			
+			# update our active list, we found a new viable canidate, update bool and stop attempting for this base point
+			active_list.append(candidate)
+			found_valid = true
+			break
+		
+		# We exuasted all tries for this canidate point so remove it from the list
+		if not found_valid:
+			active_list.remove_at(active_index)
+			
+	# We didn't produce enough points for our yips so generate random points
+	if points.size() < count:
+		var remaining : int = count - points.size()
+		push_warning("Only found %d spaced points, filling remaining %d with plain random points" % [points.size(), remaining])
+		
+		for i in remaining:
+			points.append(_random_point_in_random_shape(shapes))
+	
+	return points
+	
+
+## Picks a random shape, generates a random point inside its local bound then convert to global.
+func _random_point_in_random_shape(shapes : Array[CollisionShape2D]) -> Vector2:
+	var shape_node : CollisionShape2D = shapes[randi() % shapes.size()]
+	var rect_shape : RectangleShape2D = shape_node.shape
+	var extents : Vector2 = rect_shape.size / 2.0
+	var local_point : Vector2 = Vector2(randf_range(-extents.x, extents.x), randf_range(-extents.y, extents.y))
+	return shape_node.to_global(local_point)
+
+## Checks if a global point is inside any of our shapes  (grazing areas)
+func _is_inside_any_shape(global_point : Vector2, shapes : Array[CollisionShape2D]) -> bool:
+	for shape_node in shapes:
+		var local_point : Vector2 = shape_node.to_local(global_point)
+		var rect_shape : RectangleShape2D = shape_node.shape
+		var extents : Vector2 = rect_shape.size / 2.0
+		
+		# Use abs to cover both positive and negative distance
+		if abs(local_point.x) <= extents.x and abs(local_point.y) <= extents.y:
+			return true
+	return false
+
+## Checks to see if a point is far enough basically
+func _is_far_enough(point : Vector2, existing_points : Array[Vector2]) -> bool:
+	for p in existing_points:
+		if point.distance_to(p) < MIN_DISTANCE_BETWEEN_POINTS:
+			return false
+	return true
+
+func spawn_yip(index : int) -> Yipee:
 	var yip_tier = get_yip_tier()
 	var new_yip_data: YipeeData = YipeeData.generate_yip(yip_tier)
 	var new_yip := preload("res://World/yipee/yipee.tscn").instantiate() as Yipee
 	generate_alleles(yip_tier, new_yip_data.helix)
+	
 	new_yip.data = new_yip_data
-	new_yip.position = random_location()
+	new_yip.position = resserved_spots[index]
 	
 	add_child(new_yip)
 	
@@ -147,6 +269,10 @@ func spawn_yip() -> Yipee:
 	new_yip.animation_player.play(&"IdleNormal")
 	
 	return new_yip
+	
+#endregion
+
+#region Buying stuff
 
 func buy_yip(yip_bought: Yipee) -> void:
 	var yip_cost = calculate_yip_price(yip_bought)
@@ -196,6 +322,8 @@ func calculate_yip_price(yip: Yipee) -> int:
 		YipeeData.YipTier.ULTRARARE:
 			cost = 6
 	return cost
+	
+#endregion
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -206,7 +334,7 @@ func _input(event):
 func _on_refresh_button_pressed():
 	clear_yips()
 	for i in yips_to_spawn:
-		var new_yip = spawn_yip()
+		var new_yip = spawn_yip(i)
 		wire_yip(new_yip)
 		all_yips.append(new_yip)
 	pass # Replace with function body.
