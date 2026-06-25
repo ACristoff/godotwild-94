@@ -69,9 +69,49 @@ base_cooldown = 9.0
 helix = SubResource("Resource_j5lcu")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 
+[sub_resource type="Resource" id="Resource_kaai4"]
+script = ExtResource("1_3kn11")
+yipee_name = "Drone"
+age = 1
+base_health = 14
+base_attack = 5
+base_cooldown = 9.0
+helix = SubResource("Resource_j5lcu")
+metadata/_custom_type_script = "uid://dpr2powm23rue"
+
+[sub_resource type="Resource" id="Resource_rjbjo"]
+script = ExtResource("1_3kn11")
+yipee_name = "Drone"
+age = 1
+base_health = 14
+base_attack = 5
+base_cooldown = 9.0
+helix = SubResource("Resource_j5lcu")
+metadata/_custom_type_script = "uid://dpr2powm23rue"
+
+[sub_resource type="Resource" id="Resource_jj0d2"]
+script = ExtResource("1_3kn11")
+yipee_name = "Drone"
+age = 1
+base_health = 14
+base_attack = 5
+base_cooldown = 9.0
+helix = SubResource("Resource_j5lcu")
+metadata/_custom_type_script = "uid://dpr2powm23rue"
+
+[sub_resource type="Resource" id="Resource_0uqkb"]
+script = ExtResource("1_3kn11")
+yipee_name = "Drone"
+age = 1
+base_health = 14
+base_attack = 5
+base_cooldown = 9.0
+helix = SubResource("Resource_j5lcu")
+metadata/_custom_type_script = "uid://dpr2powm23rue"
+
 [resource]
 script = ExtResource("2_6ap7r")
 level_name = "Godrone"
-enemy_team = Array[ExtResource("1_3kn11")]([SubResource("Resource_fa0ay")])
+enemy_team = Array[ExtResource("1_3kn11")]([SubResource("Resource_fa0ay"), SubResource("Resource_kaai4"), SubResource("Resource_rjbjo"), SubResource("Resource_jj0d2"), SubResource("Resource_0uqkb")])
 intro_animation = ExtResource("10_gy1jw")
 metadata/_custom_type_script = "uid://d2tgf0trp406f"
