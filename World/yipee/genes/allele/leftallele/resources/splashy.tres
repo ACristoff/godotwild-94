@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SplashAllele" format=3 uid="uid://cqqsfvpvs85mx"]
+
+[ext_resource type="Script" uid="uid://bi6eohv1n7txe" path="res://World/yipee/genes/allele/leftallele/subclasses/splash_allele.gd" id="1_1jabp"]
+
+[resource]
+script = ExtResource("1_1jabp")
+flat_mods = Dictionary[int, int]({
+1: 2
+})
+slot = 3
+allele_name = "Splashy"
+tooltip = "Does {falloff_pct}% splash damage to the {radius} nearest yips"
+rarity = 2
+metadata/_custom_type_script = "uid://bi6eohv1n7txe"
