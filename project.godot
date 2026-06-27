@@ -36,15 +36,8 @@ gdscript/warnings/unused_signal=0
 
 [dialogic]
 
-directories/dch_directory={
-"Anon": "res://Assets/Dialogic/Character/Anon.dch",
-"Bae": "res://Assets/Dialogic/Character/Bae.dch",
-"unit_test_character": "res://Tests/Resources/unit_test_character.dch"
-}
-directories/dtl_directory={
-"BaeEncounter": "res://Assets/Dialogic/Timelines/BaeEncounter.dtl",
-"Intro": "res://Assets/Dialogic/Timelines/Intro.dtl"
-}
+directories/dch_directory={}
+directories/dtl_directory={}
 layout/style_directory={
 "": "res://Assets/Dialogic/Styles/MainStyle.tres",
 "MainStyle": "res://Assets/Dialogic/Styles/MainStyle.tres"

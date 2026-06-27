@@ -1,36 +1,8 @@
 class_name Toolyip extends Control
 
 const STAT_PIP = preload("res://UI/Scenes/damage_toolyip.tscn")
-
-var amnt_of_stats : int
-
-@onready var stats_flow_container: FlowContainer = $StatsFlowContainer
-@onready var stats_container: NinePatchRect = $StatsContainer
-@onready var name_field: LineEdit = $MainPanel/HBoxContainer/Name/LineEdit
-@onready var age_label: Label = $MainPanel/HBoxContainer/Age/Label
-@onready var hp_label: Label = $MainPanel/Age2/Label
-@onready var cooldown_label: Label = $MainPanel/TextureRect/VBoxContainer/ActualSeconds
-@onready var mouse_hover: Panel = $MouseHover
-@onready var mouse_hover_2: Panel = $MouseHover2
-const HIDE_GRACE := 0.4
-var _yip_hovered := false
-var _hide_grace := 0.0
-var shown = true
-
-var tt_size = Vector2(149, 84)
-
-var increment = 0
-
-var types = [
-	"ATK",
-	"ATKAUG",
-	"HP",
-	"HPAUG",
-	"BREED",
-	"CD",
-	"SPEC"
-]
-
+const HIDE_GRACE: float= 0.2
+const SIDE_GAP: float = 40.0
 const SLOT_KEYS := {
 	BodyMap.Slot.HEALTH: "HP",
 	BodyMap.Slot.HEALTH_AUGMENT: "HPAUG",
@@ -42,6 +14,31 @@ const SLOT_KEYS := {
 	BodyMap.Slot.NONE: "NULL",
 }
 
+@onready var stats_flow_container: FlowContainer = $StatsFlowContainer
+@onready var stats_container: NinePatchRect = $StatsContainer
+@onready var name_field: LineEdit = $MainPanel/HBoxContainer/Name/LineEdit
+@onready var age_label: Label = $MainPanel/HBoxContainer/Age/Label
+@onready var hp_label: Label = $MainPanel/Age2/Label
+@onready var cooldown_label: Label = $MainPanel/TextureRect/VBoxContainer/ActualSeconds
+@onready var mouse_hover: Panel = $MouseHover
+@onready var mouse_hover_2: Panel = $MouseHover2
+
+var amnt_of_stats: int
+var _yip_hovered: bool = false
+var _hide_grace: float= 0.0
+var shown: bool = true
+var tt_size: Vector2 = Vector2(149, 84)
+var increment = 0
+var types = [
+	"ATK",
+	"ATKAUG",
+	"HP",
+	"HPAUG",
+	"BREED",
+	"CD",
+	"SPEC"
+]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for i in range(1, 9):
@@ -51,6 +48,22 @@ func _ready() -> void:
 		node = get_node("DNA/RightGene" + str(i))
 		node.self_modulate = get_color("NULL")
 	print(get_total_rect(self))
+
+func display_beside(yip: Yipee) -> void:
+	display(yip)
+	
+	var canvas = get_parent() as CanvasLayer
+	var screenbounds = get_viewport().get_visible_rect().size / 3
+	
+	var yip_pos = canvas.transform.affine_inverse() * yip.get_global_transform_with_canvas().origin
+	
+	if yip_pos.x > screenbounds.x / 2.0:
+		yip_pos.x = yip_pos.x - SIDE_GAP - tt_size.x
+	else:
+		yip_pos.x = yip_pos.x + SIDE_GAP
+	
+	#yip_pos.y =
+
 
 func display(yip: Yipee) -> void:
 	var data: YipeeData = yip.data
