@@ -1,8 +1,11 @@
 class_name Toolyip extends Control
 
 const STAT_PIP = preload("res://UI/Scenes/damage_toolyip.tscn")
-const HIDE_GRACE: float= 0.2
-const SIDE_GAP: float = 40.0
+
+const HIDE_GRACE: float= 0.3
+const GAP_RIGHT: float = 5.0
+const GAP_LEFT: float = 17.0
+
 const SLOT_KEYS := {
 	BodyMap.Slot.HEALTH: "HP",
 	BodyMap.Slot.HEALTH_AUGMENT: "HPAUG",
@@ -58,11 +61,16 @@ func display_beside(yip: Yipee) -> void:
 	var yip_pos = canvas.transform.affine_inverse() * yip.get_global_transform_with_canvas().origin
 	
 	if yip_pos.x > screenbounds.x / 2.0:
-		yip_pos.x = yip_pos.x - SIDE_GAP - tt_size.x
+		yip_pos.x = yip_pos.x - GAP_RIGHT - tt_size.x
 	else:
-		yip_pos.x = yip_pos.x + SIDE_GAP
+		yip_pos.x = yip_pos.x + GAP_LEFT
 	
-	#yip_pos.y =
+	yip_pos.y = yip_pos.y - tt_size.y / 2.0
+	
+	yip_pos.x = clampf(yip_pos.x, 0.0, screenbounds.x - tt_size.x)
+	yip_pos.y = clampf(yip_pos.y, 0.0, screenbounds.y - tt_size.y)
+	
+	global_position = yip_pos
 
 
 func display(yip: Yipee) -> void:

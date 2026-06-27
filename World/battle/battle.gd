@@ -44,15 +44,7 @@ func generate_random_teams():
 func _on_yip_hovered(yip: Yipee) -> void:
 	if _battle_started == false:
 		return
-	print('im hovered')
-	var screen_size = get_viewport().get_visible_rect().size / 3
-	tooltip.display(yip)
-	var screen_pos = yip.get_global_transform_with_canvas().origin
-	tooltip.global_position = $CanvasLayer.transform.affine_inverse() * screen_pos
-	tooltip.global_position.y -= 99
-	tooltip.global_position.x -= 55
-	tooltip.global_position.x = clamp(tooltip.global_position.x, 0, screen_size.x - tooltip.tt_size.x)
-	tooltip.global_position.y = clamp(tooltip.global_position.y, 0, screen_size.y - tooltip.tt_size.y)
+	tooltip.display_beside(yip)
 	focused_yip = yip
 
 func _on_yip_unhovered() -> void:
