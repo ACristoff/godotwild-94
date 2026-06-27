@@ -4,17 +4,17 @@ enum Team { PLAYER, ENEMY, NONE }
 
 @export var battle_speed: float = 1.0
 @export var level: Level
-@onready var enemy_team_data: Array[YipeeData]
-var player_team_data := SignalBus.yip_party.values()
+@export var debug_player_team_data: Array[YipeeData]
 
+var player_team_data := SignalBus.yip_party.values()
 var player_team = []
 var enemy_team = []
-
 var _battle_started: bool = false
 var _battle_over: bool = false
 var _battle_time: float = 0.0
-
 var focused_yip: Yipee = null
+
+@onready var enemy_team_data: Array[YipeeData]
 @onready var tooltip: Toolyip = $CanvasLayer/YipToolyip
 @onready var time_label: Label = $CanvasLayer2/TimeLabel
 

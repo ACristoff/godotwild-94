@@ -2,7 +2,7 @@ class_name Level
 extends Resource
 @export var level_name: String = ""
 
-@export_group("Enemy Team")
+@export_group("Team Data")
 @export var enemy_team: Array[YipeeData]
 
 @export_group("Intro")
