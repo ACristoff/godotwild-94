@@ -6,6 +6,10 @@ enum Team { PLAYER, ENEMY, NONE }
 @export var level: Level
 @export var debug_player_team_data: Array[YipeeData]
 
+@onready var enemy_team_data: Array[YipeeData]
+@onready var tooltip: Toolyip = $CanvasLayer/YipToolyip
+@onready var time_label: Label = $CanvasLayer2/TimeLabel
+
 var player_team_data := SignalBus.yip_party.values()
 var player_team = []
 var enemy_team = []
@@ -13,10 +17,11 @@ var _battle_started: bool = false
 var _battle_over: bool = false
 var _battle_time: float = 0.0
 var focused_yip: Yipee = null
-
-@onready var enemy_team_data: Array[YipeeData]
-@onready var tooltip: Toolyip = $CanvasLayer/YipToolyip
-@onready var time_label: Label = $CanvasLayer2/TimeLabel
+var sandstorm_active: bool = false
+var sandstorm_cooldown: float = 2.0
+var sandstorm_time: float = 0.0
+var sandstorm_activation: int = 60
+var sandstorm_pulses: int = 0
 
 func _spawn(data: YipeeData, pos: Vector2) -> Yipee:
 	var yip := preload("res://World/yipee/yipee.tscn").instantiate() as Yipee
@@ -228,7 +233,7 @@ func _process(delta):
 	if not _battle_started:
 		return
 	if _battle_over != true:
-		_battle_time += delta
+		_battle_time += delta * battle_speed
 		update_time_label()
 		for yip: Yipee in player_team:
 			if yip.health.current_health > 0:
@@ -240,18 +245,47 @@ func _process(delta):
 				if not yip.status.is_frozen():
 					yip.attack.tick(delta * battle_speed)
 				yip.status.tick(delta * battle_speed)
+		if sandstorm_active:
+			sandstorm_tick(delta * battle_speed)
 
 
 func update_time_label() -> void:
 	var total_seconds := int(_battle_time)
+	@warning_ignore("integer_division")
 	var minutes := total_seconds / 60
 	var seconds := total_seconds % 60
+	if sandstorm_active == false && total_seconds > sandstorm_activation:
+		activate_sandstorm()
 	time_label.text = "%d:%02d" % [minutes, seconds]
 
+#Trigger sandstorm animation or whatever here
+func activate_sandstorm() -> void:
+	sandstorm_active = true
+
+func sandstorm_tick(delta):
+	var sandstorm_damage: DamageInfo = DamageInfo.new()
+	sandstorm_damage.tags.append(&"ignore_shield")
+	
+	if sandstorm_cooldown <= 0.0:
+		return
+	
+	sandstorm_time += delta
+	
+	while sandstorm_time >= sandstorm_cooldown:
+		sandstorm_damage.amount = 1 + sandstorm_pulses
+		sandstorm_time -= sandstorm_cooldown
+		for yip: Yipee in player_team:
+			if yip.health.current_health > 0:
+				sandstorm_damage.target = yip
+				apply_damage(yip, sandstorm_damage)
+		for yip: Yipee in enemy_team:
+			if yip.health.current_health > 0:
+				sandstorm_damage.target = yip
+				apply_damage(yip, sandstorm_damage)
+		sandstorm_pulses += 1
 
 func _on_next_button_pressed() -> void:
 	_on_next()
-
 
 func _on_game_speed_button_pressed() -> void:
 	if battle_speed == 1:
