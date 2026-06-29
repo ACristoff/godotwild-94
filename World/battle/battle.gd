@@ -265,7 +265,7 @@ func activate_sandstorm() -> void:
 
 func sandstorm_tick(delta):
 	var sandstorm_damage: DamageInfo = DamageInfo.new()
-	sandstorm_damage.tags.append(&"ignore_shield")
+	#sandstorm_damage.tags.append(&"ignore_shield")
 	
 	if sandstorm_cooldown <= 0.0:
 		return
@@ -273,7 +273,7 @@ func sandstorm_tick(delta):
 	sandstorm_time += delta
 	
 	while sandstorm_time >= sandstorm_cooldown:
-		sandstorm_damage.amount = 1 + sandstorm_pulses
+		sandstorm_damage.amount = 1 * sandstorm_pulses
 		sandstorm_time -= sandstorm_cooldown
 		for yip: Yipee in player_team:
 			if yip.health.current_health > 0:
