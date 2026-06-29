@@ -20,7 +20,7 @@ var focused_yip: Yipee = null
 var sandstorm_active: bool = false
 var sandstorm_cooldown: float = 2.0
 var sandstorm_time: float = 0.0
-var sandstorm_activation: int = 60
+var sandstorm_activation: int = 30
 var sandstorm_pulses: int = 0
 
 func _spawn(data: YipeeData, pos: Vector2) -> Yipee:
@@ -261,6 +261,7 @@ func update_time_label() -> void:
 #Trigger sandstorm animation or whatever here
 func activate_sandstorm() -> void:
 	sandstorm_active = true
+	$CanvasLayer2/Sandstorm.start()
 
 func sandstorm_tick(delta):
 	var sandstorm_damage: DamageInfo = DamageInfo.new()

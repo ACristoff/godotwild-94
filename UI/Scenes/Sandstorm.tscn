@@ -2,6 +2,7 @@
 
 [ext_resource type="Material" uid="uid://b6m0q5bry4wg2" path="res://Assets/Shaders/new_particle_process_material1.tres" id="1_6tok7"]
 [ext_resource type="Shader" uid="uid://c7lobwvl6e44u" path="res://Assets/Shaders/vignette.gdshader" id="1_18ox1"]
+[ext_resource type="Script" uid="uid://c1g5fdy6qe5gp" path="res://UI/Scripts/sandstormvisual.gd" id="1_q01we"]
 [ext_resource type="Material" uid="uid://bayqtkaokm3jh" path="res://Assets/Shaders/new_particle_process_material2.tres" id="2_q01we"]
 
 [sub_resource type="Gradient" id="Gradient_v52w4"]
@@ -55,23 +56,8 @@ color_ramp = SubResource("GradientTexture1D_fo6ce")
 shader = ExtResource("1_18ox1")
 shader_parameter/alpha = 0.555
 shader_parameter/inner_radius = 0.695
-shader_parameter/outer_radius = 1.165
+shader_parameter/outer_radius = 14.02
 shader_parameter/vignette_color = Color(0.5, 0.40933335, 0.32999998, 1)
-
-[sub_resource type="Gradient" id="Gradient_6tok7"]
-colors = PackedColorArray(0.01, 0.00985, 0.0085, 1, 1, 0.9825, 0.95, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_q01we"]
-gradient = SubResource("Gradient_6tok7")
-
-[sub_resource type="Environment" id="Environment_6tok7"]
-background_mode = 3
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.2683
-volumetric_fog_albedo = Color(1, 0.9525, 0.85, 1)
-adjustment_enabled = true
-adjustment_brightness = 0.77
-adjustment_color_correction = SubResource("GradientTexture2D_q01we")
 
 [sub_resource type="Animation" id="Animation_q01we"]
 length = 0.001
@@ -133,7 +119,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.165]
+"values": [14.02]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -157,7 +143,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -181,8 +167,34 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [SubResource("Environment_6tok7")]
+"values": [null]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("WorldEnvironment:environment:adjustment_brightness")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Gradient" id="Gradient_6tok7"]
+colors = PackedColorArray(0.01, 0.00985, 0.0085, 1, 1, 0.9825, 0.95, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q01we"]
+gradient = SubResource("Gradient_6tok7")
+
+[sub_resource type="Environment" id="Environment_6tok7"]
+background_mode = 3
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.2683
+volumetric_fog_albedo = Color(1, 0.9525, 0.85, 1)
+adjustment_enabled = true
+adjustment_color_correction = SubResource("GradientTexture2D_q01we")
 
 [sub_resource type="Animation" id="Animation_6tok7"]
 resource_name = "SandstormBegin"
@@ -292,7 +304,19 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [null, SubResource("Environment_6tok7")]
+"values": [SubResource("Environment_6tok7"), SubResource("Environment_6tok7")]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("WorldEnvironment:environment:adjustment_brightness")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.77]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q01we"]
@@ -308,8 +332,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_q01we")
 
 [node name="Wind" type="GPUParticles2D" parent="." unique_id=1458179733]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(1606, 540)
 scale = Vector2(3, 3)
 amount = 1
@@ -355,10 +382,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=15896470]
 libraries/ = SubResource("AnimationLibrary_q01we")
-autoplay = &"SandstormBegin"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=421041000]
-environment = SubResource("Environment_6tok7")
