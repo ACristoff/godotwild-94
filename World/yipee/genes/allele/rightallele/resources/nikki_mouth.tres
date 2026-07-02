@@ -7,7 +7,7 @@
 script = ExtResource("1_oacbf")
 body_part = ExtResource("1_c6lge")
 body_target = 8
-buff = 4.0
+buff = -0.5
 slot = 4
 allele_name = "Depression"
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

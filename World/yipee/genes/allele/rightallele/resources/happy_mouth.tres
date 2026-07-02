@@ -7,7 +7,7 @@
 script = ExtResource("1_2dyei")
 body_part = ExtResource("1_8fvho")
 body_target = 8
-buff = 4.0
+buff = -1.0
 slot = 4
 allele_name = "Happy"
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

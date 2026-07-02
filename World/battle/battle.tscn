@@ -8,7 +8,7 @@
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="5_55a63"]
 [ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="6_m52jh"]
 [ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="6_vm2tg"]
-[ext_resource type="PackedScene" uid="uid://c44ow0foced00" path="res://UI/Scenes/tutorial_box15.tscn" id="8_yvvln"]
+[ext_resource type="PackedScene" uid="uid://cy4k7ji8g5l4l" path="res://UI/Scenes/tutorial_box15.tscn" id="8_yvvln"]
 [ext_resource type="Texture2D" uid="uid://duipa70vx5fn3" path="res://UI/Menus/Main_Menu/Textures/SettingsButt.png" id="9_263ry"]
 [ext_resource type="PackedScene" uid="uid://63up8np8h7fn" path="res://UI/Scenes/Sandstorm.tscn" id="9_d03ew"]
 

@@ -2,7 +2,7 @@ class_name Toolyip extends Control
 
 const STAT_PIP = preload("res://UI/Scenes/damage_toolyip.tscn")
 
-const HIDE_GRACE: float= 0.3
+const HIDE_GRACE: float= 0.05
 const GAP_RIGHT: float = 5.0
 const GAP_LEFT: float = 17.0
 

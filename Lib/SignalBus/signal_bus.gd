@@ -12,6 +12,8 @@ var breeding_tut_clicked = false
 var twice_speed_clicked = false
 var start_of_second_day = false
 
+var battle_speed = 1
+
 ## Farm scene we should see yips from here in that farm area
 var yip_inventory: Array[YipeeData] = []
 

@@ -15,8 +15,8 @@
 [ext_resource type="Resource" uid="uid://bksqk8hq88nl3" path="res://World/yipee/genes/allele/rightallele/resources/fire_eyes.tres" id="9_i3xyg"]
 [ext_resource type="Resource" uid="uid://dpameiob5gmqe" path="res://World/yipee/genes/allele/leftallele/resources/maul.tres" id="10_ldwtw"]
 [ext_resource type="Resource" uid="uid://lifs2chtemol" path="res://World/yipee/genes/allele/leftallele/resources/heart_of_steel.tres" id="11_fs1mh"]
-[ext_resource type="Resource" uid="uid://1j6cvthyeunj" path="res://World/yipee/genes/allele/leftallele/resources/adrenaline.tres" id="13_gfgkf"]
 [ext_resource type="PackedScene" uid="uid://c05tod24hy2bn" path="res://UI/Scenes/battle_clash_bae.tscn" id="13_i3xyg"]
+[ext_resource type="Resource" uid="uid://bl7owj3m2m8ob" path="res://World/yipee/genes/allele/leftallele/resources/runner.tres" id="13_ldwtw"]
 [ext_resource type="Resource" uid="uid://djqcpmh7wbkqc" path="res://World/yipee/genes/allele/rightallele/resources/exhaust_wings.tres" id="14_eymjj"]
 [ext_resource type="Resource" uid="uid://bg3dw2dhd884f" path="res://Assets/Dialogic/Timelines/BaeEncounter.dtl" id="14_yrj48"]
 [ext_resource type="Resource" uid="uid://cpwaytslqdlbw" path="res://World/yipee/genes/allele/rightallele/resources/avatar_misc.tres" id="15_5cyq1"]
@@ -127,14 +127,14 @@ metadata/_custom_type_script = "uid://cra0emwdv78rw"
 [sub_resource type="Resource" id="Resource_g4xgt"]
 script = ExtResource("3_4k8cn")
 slot = 4
-left = ExtResource("13_gfgkf")
+left = ExtResource("13_ldwtw")
 right = ExtResource("14_eymjj")
 metadata/_custom_type_script = "uid://cra0emwdv78rw"
 
 [sub_resource type="Resource" id="Resource_bywoh"]
 script = ExtResource("3_4k8cn")
 slot = 4
-left = ExtResource("13_gfgkf")
+left = ExtResource("13_ldwtw")
 metadata/_custom_type_script = "uid://cra0emwdv78rw"
 
 [sub_resource type="Resource" id="Resource_vq6we"]
@@ -203,7 +203,7 @@ yipee_name = "Freeze Slave"
 age = 1
 base_health = 28
 base_attack = 0
-base_cooldown = 1.0
+base_cooldown = 2.5
 helix = SubResource("Resource_gduyp")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 

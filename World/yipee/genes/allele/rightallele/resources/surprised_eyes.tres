@@ -7,6 +7,7 @@
 script = ExtResource("1_m0djo")
 body_part = ExtResource("1_2k7bw")
 body_target = 9
+buff = -1.5
 slot = 4
 allele_name = "Skittish"
 rarity = 1

@@ -95,6 +95,7 @@ offset_left = 19.0
 offset_top = 16.0
 offset_right = 105.0
 offset_bottom = 84.0
+scale = Vector2(0.195, 1e-05)
 pivot_offset_ratio = Vector2(0.5, 1)
 mouse_filter = 0
 texture = ExtResource("2_m2pjb")
@@ -320,6 +321,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="DNA" type="Control" parent="." unique_id=81975585]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 0
 offset_left = 18.0
 offset_top = 15.0
@@ -813,6 +815,7 @@ offset_bottom = 66.0
 mouse_filter = 2
 
 [node name="StatsFlowContainer" type="FlowContainer" parent="." unique_id=2007240977]
+modulate = Color(1, 1, 1, 0)
 z_index = 1
 layout_mode = 1
 anchors_preset = 10
@@ -832,6 +835,7 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="StatsContainer" type="NinePatchRect" parent="." unique_id=70282764]
+modulate = Color(1, 1, 1, 0)
 self_modulate = Color(0.21960784, 0.16862746, 0.13725491, 1)
 texture_filter = 3
 layout_mode = 0

@@ -95,6 +95,7 @@ func _ready():
 		wire_signals(yip, Team.ENEMY)
 	if SignalBus.twice_speed_clicked:
 		$TutorialBox.hide()
+	battle_speed = SignalBus.battle_speed
 	
 
 func _play_intro() -> void:
@@ -291,10 +292,12 @@ func _on_next_button_pressed() -> void:
 func _on_game_speed_button_pressed() -> void:
 	if battle_speed == 1:
 		battle_speed = 2
+		SignalBus.battle_speed = 2
 		$ButtonRefresh4/SpeedLabel.text = "2x"
 		$ButtonRefresh4.self_modulate = Color("478da6")
 	else:
 		battle_speed = 1
+		SignalBus.battle_speed = 1
 		$ButtonRefresh4/SpeedLabel.text = "1x"
 		$ButtonRefresh4.self_modulate = Color("2a3661ff")
 

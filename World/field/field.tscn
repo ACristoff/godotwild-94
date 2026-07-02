@@ -128,6 +128,7 @@ patch_margin_right = 30
 patch_margin_bottom = 10
 
 [node name="LockButtonGraphic" type="Sprite2D" parent="." unique_id=1330098914]
+visible = false
 z_index = 4096
 texture_filter = 3
 position = Vector2(960, 921.00006)
@@ -187,6 +188,7 @@ script = ExtResource("8_lwms1")
 target_highlight = NodePath("../ButtonRefreshButtonIcon")
 
 [node name="LockButton" type="Button" parent="." unique_id=1234442090 node_paths=PackedStringArray("target_highlight")]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 offset_left = 891.0
 offset_top = 888.0

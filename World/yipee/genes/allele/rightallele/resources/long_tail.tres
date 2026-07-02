@@ -7,6 +7,7 @@
 script = ExtResource("1_6g06r")
 body_part = ExtResource("1_dutrc")
 body_target = 4
+buff = -3.0
 slot = 4
 allele_name = "Long Tail"
 rarity = 2

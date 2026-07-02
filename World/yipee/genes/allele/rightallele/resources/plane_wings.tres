@@ -7,6 +7,7 @@
 script = ExtResource("1_hisnf")
 body_part = ExtResource("1_n81kd")
 body_target = 3
+buff = -3.0
 slot = 4
 allele_name = "Aviation"
 rarity = 3

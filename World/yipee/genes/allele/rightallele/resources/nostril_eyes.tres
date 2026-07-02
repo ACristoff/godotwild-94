@@ -7,6 +7,7 @@
 script = ExtResource("1_mmv52")
 body_part = ExtResource("1_mkt71")
 body_target = 9
+buff = -0.5
 slot = 4
 allele_name = "Beady"
 rarity = 1

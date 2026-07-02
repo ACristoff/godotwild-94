@@ -92,7 +92,7 @@ func _derived(base: float, stat: BodyMap.Stat) -> float:
 		if strand.right:
 			flat_sum += strand.right.flat_for(stat)
 			pct_sum += strand.right.percent_for(stat)
-	return maxf(0.0, (base + flat_sum) * (1.0 + pct_sum))
+	return maxf(0.1, (base + flat_sum) * (1.0 + pct_sum))
 
 func clone() -> YipeeData:
 	return duplicate(true) as YipeeData

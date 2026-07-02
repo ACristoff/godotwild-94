@@ -5,10 +5,10 @@
 [resource]
 script = ExtResource("1_x73k6")
 percent_mods = Dictionary[int, float]({
-2: 0.5
+2: -0.5
 })
 slot = 4
 allele_name = "Adrenaline"
-tooltip = "+{cooldown_pct} Cooldown Speed"
+tooltip = "{cooldown_pct}% Cooldown Speed"
 rarity = 3
 metadata/_custom_type_script = "uid://mc42eixh1d8t"

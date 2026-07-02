@@ -7,6 +7,7 @@
 script = ExtResource("1_7hjuq")
 body_part = ExtResource("1_51nku")
 body_target = 6
+buff = -2.5
 slot = 4
 allele_name = "Fin"
 rarity = 2

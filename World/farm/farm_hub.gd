@@ -100,7 +100,7 @@ func _input(event : InputEvent) -> void:
 				print('Picked up a yip', focused_yip)
 				# Remember offset so the yip doesn't jump so its center snaps to the cursor
 				drag_offset = dragged_yip.global_position - get_global_mouse_position()
-
+				tooltip.request_hide()
 				print("Picked up a yip", dragged_yip)
 				dragged_yip.animation_player.play(&"Grabbed")
 		else:
