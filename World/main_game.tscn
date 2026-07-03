@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://d2tgf0trp406f" path="res://World/battle/levels/level.gd" id="4_xkfpm"]
 [ext_resource type="Resource" uid="uid://bbdaf751fbph3" path="res://World/battle/levels/bugboy1.tres" id="6_a7n0g"]
 [ext_resource type="Script" uid="uid://ihlwlq687iua" path="res://Lib/Fight_Organizer/bracket.gd" id="7_dq3qm"]
-[ext_resource type="Resource" uid="uid://cl0parjqwwa4v" path="res://World/battle/levels/office_guy1.tres" id="7_n2gs6"]
+[ext_resource type="Resource" uid="uid://dfbgj6ik5n2dw" path="res://World/battle/levels/yiploversophie.tres" id="7_e30yk"]
 [ext_resource type="Resource" uid="uid://c7dwossk3d7da" path="res://World/battle/levels/kayla_fire_girl2.tres" id="8_6a4mh"]
 [ext_resource type="Resource" uid="uid://bkoj12ws844c3" path="res://World/battle/levels/bladabeer2.tres" id="9_e30yk"]
 [ext_resource type="Resource" uid="uid://dyvdhk217xukr" path="res://World/battle/levels/jocelyntheyippa3.tres" id="10_v7kkf"]
@@ -17,7 +17,7 @@
 
 [sub_resource type="Resource" id="Resource_goquv"]
 script = ExtResource("7_dq3qm")
-levels = Array[ExtResource("4_xkfpm")]([ExtResource("6_a7n0g"), ExtResource("7_n2gs6")])
+levels = Array[ExtResource("4_xkfpm")]([ExtResource("6_a7n0g"), ExtResource("7_e30yk")])
 metadata/_custom_type_script = "uid://ihlwlq687iua"
 
 [sub_resource type="Resource" id="Resource_enera"]

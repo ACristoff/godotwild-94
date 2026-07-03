@@ -66,7 +66,7 @@ metadata/_custom_type_script = "uid://ckc2iq0roikyx"
 script = ExtResource("1_7jv8h")
 yipee_name = "Buggy"
 age = 2
-base_health = 10
+base_health = 13
 base_attack = 2
 helix = SubResource("Resource_ixsi6")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
@@ -128,7 +128,7 @@ yipee_name = "Araknik"
 age = 3
 base_health = 5
 base_attack = 0
-base_cooldown = 4.0
+base_cooldown = 2.2
 helix = SubResource("Resource_k6trn")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 

@@ -96,6 +96,12 @@ func _ready():
 	if SignalBus.twice_speed_clicked:
 		$TutorialBox.hide()
 	battle_speed = SignalBus.battle_speed
+	if battle_speed == 2:
+		$ButtonRefresh4/SpeedLabel.text = "2x"
+		$ButtonRefresh4.self_modulate = Color("478da6")
+	else:
+		$ButtonRefresh4/SpeedLabel.text = "1x"
+		$ButtonRefresh4.self_modulate = Color("2a3661ff")
 	
 
 func _play_intro() -> void:
@@ -274,7 +280,7 @@ func sandstorm_tick(delta):
 	sandstorm_time += delta
 	
 	while sandstorm_time >= sandstorm_cooldown:
-		sandstorm_damage.amount = 1 * sandstorm_pulses
+		sandstorm_damage.amount = pow(sandstorm_pulses, 2)
 		sandstorm_time -= sandstorm_cooldown
 		for yip: Yipee in player_team:
 			if yip.health.current_health > 0:
@@ -290,6 +296,18 @@ func _on_next_button_pressed() -> void:
 	_on_next()
 
 func _on_game_speed_button_pressed() -> void:
+	if battle_speed == 1:
+		battle_speed = 2
+		SignalBus.battle_speed = 2
+		$ButtonRefresh4/SpeedLabel.text = "2x"
+		$ButtonRefresh4.self_modulate = Color("478da6")
+	else:
+		battle_speed = 1
+		SignalBus.battle_speed = 1
+		$ButtonRefresh4/SpeedLabel.text = "1x"
+		$ButtonRefresh4.self_modulate = Color("2a3661ff")
+		
+func update_game_speed():
 	if battle_speed == 1:
 		battle_speed = 2
 		SignalBus.battle_speed = 2

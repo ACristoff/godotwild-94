@@ -10,14 +10,23 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h22ow"]
 shader = ExtResource("6_r3e0n")
 shader_parameter/blur_radius = 0.49200002337
-shader_parameter/blur_amount = 1.0
-shader_parameter/blur_inner = 0.6
+shader_parameter/blur_amount = 0.5830000276925
+shader_parameter/blur_inner = 0.85600004066
 shader_parameter/blur_outer = 0.66
 
 [node name="Settings" type="CanvasLayer" unique_id=359164329]
 process_mode = 3
 layer = 100
 script = ExtResource("1_jk7ur")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=695010326]
+material = SubResource("ShaderMaterial_h22ow")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 
 [node name="ButtonRefresh5" type="NinePatchRect" parent="." unique_id=1673092843]
 self_modulate = Color(0.8, 0.8, 0.8, 1)
@@ -393,15 +402,6 @@ Settings
 "
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=695010326]
-material = SubResource("ShaderMaterial_h22ow")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
 
 [connection signal="button_down" from="ButtonRefresh5/ButtonRefresh6/BackButton" to="ButtonRefresh5/ButtonRefresh6/BackButton" method="_on_button_down"]
 [connection signal="button_up" from="ButtonRefresh5/ButtonRefresh6/BackButton" to="ButtonRefresh5/ButtonRefresh6/BackButton" method="_on_button_up"]

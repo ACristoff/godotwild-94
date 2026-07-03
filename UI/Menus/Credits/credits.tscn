@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://crlmh702of8k4" path="res://UI/Menus/Main_Menu/Textures/CreditsYips1.png" id="2_1xev8"]
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="3_ei837"]
 [ext_resource type="Texture2D" uid="uid://x8kw3vjcqhvp" path="res://UI/Menus/Main_Menu/Textures/CreditsYips2.png" id="4_hph7o"]
+[ext_resource type="Texture2D" uid="uid://kq8jbcwprmq5" path="res://UI/Menus/Main_Menu/Textures/JadeKitty.png" id="5_gjw0g"]
 [ext_resource type="Texture2D" uid="uid://ctesxfdythuji" path="res://UI/Menus/Main_Menu/Textures/CreditsYips3.png" id="5_o3p3c"]
 [ext_resource type="Texture2D" uid="uid://dgkhobd3q2koo" path="res://UI/Menus/Main_Menu/Textures/CreditsYips5.png" id="6_hph7o"]
 [ext_resource type="Texture2D" uid="uid://bhg3mugyoytso" path="res://UI/Menus/Main_Menu/Textures/CreditsYips6.png" id="7_o3p3c"]
@@ -72,6 +73,22 @@ text = "Caleb Azlin - Pixel Artist"
 texture_filter = 3
 layout_mode = 2
 texture = ExtResource("2_1xev8")
+
+[node name="Caleb6" type="HBoxContainer" parent="CanvasLayer/VBoxContainer" unique_id=1562087018]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/Caleb6" unique_id=561140379]
+texture_filter = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.18039216, 0.9490196, 0.61960787, 1)
+theme_override_fonts/font = ExtResource("3_ei837")
+text = "Jade Newman - Character Designs"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/Caleb6" unique_id=1399511706]
+texture_filter = 3
+layout_mode = 2
+texture = ExtResource("5_gjw0g")
 
 [node name="Caleb3" type="HBoxContainer" parent="CanvasLayer/VBoxContainer" unique_id=278691244]
 layout_mode = 2

@@ -75,7 +75,7 @@ yipee_name = "Precious"
 age = 5
 base_health = 123
 base_attack = 0
-base_cooldown = 2.5
+base_cooldown = 6.5
 helix = SubResource("Resource_jcogl")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 
@@ -137,7 +137,7 @@ yipee_name = "Defective"
 age = 2
 base_health = 110
 base_attack = 0
-base_cooldown = 11.0
+base_cooldown = 12.0
 helix = SubResource("Resource_rxklh")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 
@@ -183,7 +183,7 @@ metadata/_custom_type_script = "uid://ckc2iq0roikyx"
 script = ExtResource("1_hbbem")
 yipee_name = "Failure"
 base_health = 60
-base_cooldown = 7.0
+base_cooldown = 11.0
 helix = SubResource("Resource_e5won")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 

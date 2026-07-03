@@ -5,8 +5,17 @@ var music = 100.0
 var all_sounds = 100.0
 const UI_TICK_MINOR = preload("uid://beme2e24c1ser")
 
+@export var in_main = false
+
 func _ready() -> void:
-	get_tree().paused = true
+	all_sounds = db_to_linear(AudioServer.get_bus_volume_db(0)) * 100
+	music = db_to_linear(AudioServer.get_bus_volume_db(1)) * 100
+	sfx = db_to_linear(AudioServer.get_bus_volume_db(2)) * 100
+
+	$ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Value/ASL.text = str(int(round(all_sounds)), "%")
+	$ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Value/ML.text = str(int(round(music)), "%")
+	$ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Value/SFXL.text = str(int(round(sfx)), "%")
+
 
 func _exit_tree() -> void:
 	get_tree().paused = false
@@ -29,24 +38,7 @@ func _on_asup_pressed() -> void:
 		AudioServer.set_bus_volume_db(
 			0, linear_to_db(all_sounds / 100)
 		)
-func _on_mdn_pressed() -> void:
-	if music <= 0:
-		return
-	else:
-		music -= 10
-		$ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Value/ML.text = str(int(music), "%")
-		AudioServer.set_bus_volume_db(
-					1, linear_to_db(music / 100)
-				)
-func _on_mup_pressed() -> void:
-	if music >= 100:
-		return
-	else:
-		music += 10
-		$ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Value/ML.text = str(int(music), "%")
-		AudioServer.set_bus_volume_db(
-					1, linear_to_db(music / 100)
-				)
+
 func _on_sfxdn_pressed() -> void:
 	if sfx <= 0:
 		return
@@ -77,3 +69,25 @@ func _on_restart_button_pressed() -> void:
 
 func _on_back_button_pressed() -> void:
 	queue_free()
+
+
+func _on_mup_pressed() -> void:
+	if music >= 100:
+		return
+	else:
+		music += 10
+		$ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Value/ML.text = str(int(music), "%")
+		AudioServer.set_bus_volume_db(
+					1, linear_to_db(music / 100)
+				)
+
+
+func _on_mdn_pressed() -> void:
+	if music <= 0:
+		return
+	else:
+		music -= 10
+		$ButtonRefresh5/ButtonRefresh7/MarginContainer/VBoxContainer/HBoxContainer/Value/ML.text = str(int(music), "%")
+		AudioServer.set_bus_volume_db(
+					1, linear_to_db(music / 100)
+				)
