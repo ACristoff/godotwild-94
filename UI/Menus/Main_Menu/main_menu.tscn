@@ -722,6 +722,16 @@ offset_top = 463.0
 offset_right = 1230.0
 offset_bottom = 601.0
 
+[node name="Label" type="Label" parent="." unique_id=2047500468]
+layout_mode = 0
+offset_left = 1758.0
+offset_top = 1051.0
+offset_right = 1915.0
+offset_bottom = 1075.0
+theme_override_fonts/font = ExtResource("3_arllm")
+theme_override_font_sizes/font_size = 26
+text = "Ver. 0.0.3"
+
 [connection signal="button_down" from="Control/VBoxContainer/Start" to="Control/VBoxContainer/Start" method="_on_button_down"]
 [connection signal="button_up" from="Control/VBoxContainer/Start" to="Control/VBoxContainer/Start" method="_on_button_up"]
 [connection signal="mouse_entered" from="Control/VBoxContainer/Start" to="Control/VBoxContainer/Start" method="_on_mouse_entered"]

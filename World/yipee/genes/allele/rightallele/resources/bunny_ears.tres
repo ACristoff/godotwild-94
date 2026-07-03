@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_ocgkk")
 body_part = ExtResource("1_h7ga2")
-body_target = 5
+body_target = 7
 slot = 4
 allele_name = "Hoppiest"
 rarity = 1
