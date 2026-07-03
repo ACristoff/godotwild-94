@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://cp4hywyildy0h"]
+
+[ext_resource type="Texture2D" uid="uid://jb51gqdajfok" path="res://Assets/yipee/BodyPartsEdited/DinoWings2.png" id="1_dys6w"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_ew6x2"]
+
+[resource]
+script = ExtResource("1_ew6x2")
+body_part = ExtResource("1_dys6w")
+body_target = 3
+buff = -1.0
+slot = 4
+allele_name = "Silent"
+rarity = 2
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

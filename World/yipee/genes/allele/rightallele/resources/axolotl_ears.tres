@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://bsyhkwrygyq1b"]
+
+[ext_resource type="Texture2D" uid="uid://c41ppff0ov172" path="res://Assets/yipee/BodyPartsEdited/AxolotlEars.png" id="1_4nu7t"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_vq2ta"]
+
+[resource]
+script = ExtResource("1_vq2ta")
+body_part = ExtResource("1_4nu7t")
+body_target = 7
+allele_name = "Sensory"
+rarity = 1
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

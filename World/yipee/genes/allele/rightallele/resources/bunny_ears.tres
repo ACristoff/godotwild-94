@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://hhy21hyjvyu6"]
+
+[ext_resource type="Texture2D" uid="uid://c0uwwlci22bt2" path="res://Assets/yipee/BodyPartsEdited/BunnyEars.png" id="1_h7ga2"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_ocgkk"]
+
+[resource]
+script = ExtResource("1_ocgkk")
+body_part = ExtResource("1_h7ga2")
+body_target = 5
+slot = 4
+allele_name = "Hoppiest"
+rarity = 1
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

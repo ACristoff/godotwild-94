@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://cvaf06ig67m4m"]
+
+[ext_resource type="Texture2D" uid="uid://i55fekjthgxc" path="res://Assets/yipee/BodyPartsEdited/DoritoTail.png" id="1_eo0q2"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_swk3g"]
+
+[resource]
+script = ExtResource("1_swk3g")
+body_part = ExtResource("1_eo0q2")
+body_target = 4
+slot = 1
+allele_name = "Flat Tail"
+rarity = 1
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

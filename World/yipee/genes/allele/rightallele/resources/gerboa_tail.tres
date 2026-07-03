@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://o4veatag5prm"]
+
+[ext_resource type="Texture2D" uid="uid://bgrdrtnslu333" path="res://Assets/yipee/BodyPartsEdited/GerboaTail.png" id="1_48hva"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_hxg7q"]
+
+[resource]
+script = ExtResource("1_hxg7q")
+body_part = ExtResource("1_48hva")
+body_target = 4
+slot = 6
+allele_name = "Whip Tail"
+rarity = 1
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

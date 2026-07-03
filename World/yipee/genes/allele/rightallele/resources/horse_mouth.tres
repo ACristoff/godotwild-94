@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://cpf0ahp8rqrjc"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_owg5p"]
+[ext_resource type="Texture2D" uid="uid://d181p3ufr34i6" path="res://Assets/yipee/BodyPartsEdited/HorseMouth.png" id="1_rp663"]
+
+[resource]
+script = ExtResource("1_owg5p")
+body_part = ExtResource("1_rp663")
+body_target = 8
+slot = 6
+allele_name = "Large Mouth"
+tooltip = "How hungry..?"
+rarity = 2
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

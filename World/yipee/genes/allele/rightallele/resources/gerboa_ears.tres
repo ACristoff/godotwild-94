@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://c3tss0mu6ao1f"]
+
+[ext_resource type="Texture2D" uid="uid://b76qecvtbw4nk" path="res://Assets/yipee/BodyPartsEdited/GerboaEars.png" id="1_3aj2r"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_t0thy"]
+
+[resource]
+script = ExtResource("1_t0thy")
+body_part = ExtResource("1_3aj2r")
+body_target = 7
+slot = 1
+allele_name = "Sensitive"
+rarity = 1
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

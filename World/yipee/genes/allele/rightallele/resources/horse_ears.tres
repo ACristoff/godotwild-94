@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://ce2vjmt8v3njm"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_atc7r"]
+[ext_resource type="Texture2D" uid="uid://dc6pk0i8o6exh" path="res://Assets/yipee/BodyPartsEdited/HorseEars.png" id="1_dy5j3"]
+
+[resource]
+script = ExtResource("1_atc7r")
+body_part = ExtResource("1_dy5j3")
+body_target = 7
+allele_name = "Perky"
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

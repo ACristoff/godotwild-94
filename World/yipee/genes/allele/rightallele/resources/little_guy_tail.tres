@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://c27knqfmhu2ku"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_e3hof"]
+[ext_resource type="Texture2D" uid="uid://mfn50tvch7tu" path="res://Assets/yipee/BodyPartsEdited/LittleGuyTail.png" id="1_mbdft"]
+
+[resource]
+script = ExtResource("1_e3hof")
+body_part = ExtResource("1_mbdft")
+body_target = 4
+slot = 1
+allele_name = "Chill"
+tooltip = "Hello. Im sentient btw."
+rarity = 3
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

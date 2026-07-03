@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://gqo7kud2tuw7"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_6west"]
+[ext_resource type="Texture2D" uid="uid://cvc4wsn7iixwn" path="res://Assets/yipee/BodyPartsEdited/HanaEyes.png" id="1_uenya"]
+
+[resource]
+script = ExtResource("1_6west")
+body_part = ExtResource("1_uenya")
+body_target = 9
+slot = 2
+allele_name = "Baby Eyes"
+rarity = 1
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://dafucbvv6ucbk"]
+
+[ext_resource type="Texture2D" uid="uid://dujm68nam87ig" path="res://Assets/yipee/BodyPartsEdited/FeatherMisc.png" id="1_no71a"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_uioxw"]
+
+[resource]
+script = ExtResource("1_uioxw")
+body_part = ExtResource("1_no71a")
+body_target = 6
+slot = 6
+allele_name = "Feathered"
+rarity = 1
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

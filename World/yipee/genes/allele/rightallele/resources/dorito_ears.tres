@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://dor17ktqhia6y"]
+
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_0pguo"]
+[ext_resource type="Texture2D" uid="uid://cdluppbwaksg5" path="res://Assets/yipee/BodyPartsEdited/DoritoEars.png" id="1_qrnjs"]
+
+[resource]
+script = ExtResource("1_0pguo")
+body_part = ExtResource("1_qrnjs")
+body_target = 7
+slot = 3
+allele_name = "Floppy"
+rarity = 2
+metadata/_custom_type_script = "uid://hpdocbvx27nb"

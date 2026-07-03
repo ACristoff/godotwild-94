@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RightAllele" format=3 uid="uid://btu58irl3b012"]
+
+[ext_resource type="Texture2D" uid="uid://cydjma12w04va" path="res://Assets/yipee/BodyPartsEdited/UnicornHorn.png" id="1_1nkdl"]
+[ext_resource type="Script" uid="uid://hpdocbvx27nb" path="res://World/yipee/genes/allele/rightallele/right_allele.gd" id="1_ox4qb"]
+
+[resource]
+script = ExtResource("1_ox4qb")
+body_part = ExtResource("1_1nkdl")
+body_target = 6
+slot = 3
+allele_name = "Enchanted"
+tooltip = "My little Yips *wholesome*"
+rarity = 2
+metadata/_custom_type_script = "uid://hpdocbvx27nb"
