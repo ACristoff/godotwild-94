@@ -16,10 +16,7 @@
 [ext_resource type="Resource" uid="uid://dpameiob5gmqe" path="res://World/yipee/genes/allele/leftallele/resources/maul.tres" id="10_ldwtw"]
 [ext_resource type="Resource" uid="uid://lifs2chtemol" path="res://World/yipee/genes/allele/leftallele/resources/heart_of_steel.tres" id="11_fs1mh"]
 [ext_resource type="PackedScene" uid="uid://c05tod24hy2bn" path="res://UI/Scenes/battle_clash_bae.tscn" id="13_i3xyg"]
-[ext_resource type="Resource" uid="uid://bl7owj3m2m8ob" path="res://World/yipee/genes/allele/leftallele/resources/runner.tres" id="13_ldwtw"]
-[ext_resource type="Resource" uid="uid://djqcpmh7wbkqc" path="res://World/yipee/genes/allele/rightallele/resources/exhaust_wings.tres" id="14_eymjj"]
 [ext_resource type="Resource" uid="uid://bg3dw2dhd884f" path="res://Assets/Dialogic/Timelines/BaeEncounter.dtl" id="14_yrj48"]
-[ext_resource type="Resource" uid="uid://cpwaytslqdlbw" path="res://World/yipee/genes/allele/rightallele/resources/avatar_misc.tres" id="15_5cyq1"]
 [ext_resource type="Resource" uid="uid://cc2m0xv2od8x1" path="res://World/yipee/genes/allele/leftallele/resources/cold_blow.tres" id="18_y2pd3"]
 
 [sub_resource type="Resource" id="Resource_hew6r"]
@@ -56,7 +53,7 @@ script = ExtResource("1_ao7h6")
 yipee_name = "Stress Ball"
 age = 5
 base_attack = 0
-base_cooldown = 1.0
+base_cooldown = 3.0
 helix = SubResource("Resource_yrj48")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 
@@ -101,7 +98,6 @@ yipee_name = "Atk Slave"
 age = 1
 base_health = 134
 base_attack = 43
-base_cooldown = 4.3
 helix = SubResource("Resource_d608y")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 
@@ -124,23 +120,9 @@ slot = 4
 left = ExtResource("5_y2u7b")
 metadata/_custom_type_script = "uid://cra0emwdv78rw"
 
-[sub_resource type="Resource" id="Resource_g4xgt"]
-script = ExtResource("3_4k8cn")
-slot = 4
-left = ExtResource("13_ldwtw")
-right = ExtResource("14_eymjj")
-metadata/_custom_type_script = "uid://cra0emwdv78rw"
-
-[sub_resource type="Resource" id="Resource_bywoh"]
-script = ExtResource("3_4k8cn")
-slot = 4
-left = ExtResource("13_ldwtw")
-metadata/_custom_type_script = "uid://cra0emwdv78rw"
-
 [sub_resource type="Resource" id="Resource_vq6we"]
 script = ExtResource("3_4k8cn")
 slot = 1
-right = ExtResource("15_5cyq1")
 metadata/_custom_type_script = "uid://cra0emwdv78rw"
 
 [sub_resource type="Resource" id="Resource_t3yn4"]
@@ -151,14 +133,14 @@ metadata/_custom_type_script = "uid://cra0emwdv78rw"
 
 [sub_resource type="Resource" id="Resource_gfgkf"]
 script = ExtResource("2_4hwfo")
-strands = Array[ExtResource("3_4k8cn")]([SubResource("Resource_ldwtw"), SubResource("Resource_fs1mh"), SubResource("Resource_dxrp1"), SubResource("Resource_g4xgt"), SubResource("Resource_bywoh"), SubResource("Resource_vq6we"), SubResource("Resource_t3yn4"), null])
+strands = Array[ExtResource("3_4k8cn")]([SubResource("Resource_ldwtw"), SubResource("Resource_fs1mh"), SubResource("Resource_dxrp1"), null, null, SubResource("Resource_vq6we"), SubResource("Resource_t3yn4"), null])
 metadata/_custom_type_script = "uid://ckc2iq0roikyx"
 
 [sub_resource type="Resource" id="Resource_eymjj"]
 script = ExtResource("1_ao7h6")
 yipee_name = "Buff Slave"
 age = 1
-base_cooldown = 5.4
+base_cooldown = 4.0
 helix = SubResource("Resource_gfgkf")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 

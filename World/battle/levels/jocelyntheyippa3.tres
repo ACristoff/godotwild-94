@@ -6,8 +6,11 @@
 [ext_resource type="Resource" uid="uid://ckag7btt5nspw" path="res://World/yipee/genes/allele/leftallele/resources/flail.tres" id="4_w3gv5"]
 [ext_resource type="Resource" uid="uid://cpak0ql3b4vo8" path="res://World/yipee/genes/allele/rightallele/resources/slug_feet.tres" id="5_4ad2o"]
 [ext_resource type="Resource" uid="uid://cqnr5f7maaf6n" path="res://World/yipee/genes/allele/leftallele/resources/lick_wound.tres" id="6_nr0yc"]
+[ext_resource type="Resource" uid="uid://b4ok0njcu808f" path="res://World/yipee/genes/allele/rightallele/resources/aware_eyes.tres" id="7_4ad2o"]
 [ext_resource type="PackedScene" uid="uid://dhjkgi4r0o822" path="res://UI/Scenes/battle_clash.tscn" id="7_ehs1y"]
 [ext_resource type="Script" uid="uid://d2tgf0trp406f" path="res://World/battle/levels/level.gd" id="7_g64sg"]
+[ext_resource type="Resource" uid="uid://bl7owj3m2m8ob" path="res://World/yipee/genes/allele/leftallele/resources/runner.tres" id="8_nr0yc"]
+[ext_resource type="Resource" uid="uid://d035jfnxqde3c" path="res://World/yipee/genes/allele/rightallele/resources/nikki_mouth.tres" id="9_g64sg"]
 
 [sub_resource type="Resource" id="Resource_ehs1y"]
 script = ExtResource("3_5epjc")
@@ -24,96 +27,90 @@ metadata/_custom_type_script = "uid://cra0emwdv78rw"
 
 [sub_resource type="Resource" id="Resource_4estn"]
 script = ExtResource("2_ehs1y")
-strands = Array[ExtResource("3_5epjc")]([null, SubResource("Resource_ehs1y"), SubResource("Resource_ogjr6"), null, null, null, null])
+strands = Array[ExtResource("3_5epjc")]([null, SubResource("Resource_ehs1y"), SubResource("Resource_ogjr6"), null, null, null, null, null])
 metadata/_custom_type_script = "uid://ckc2iq0roikyx"
 
 [sub_resource type="Resource" id="Resource_j2iso"]
 script = ExtResource("1_sfr5n")
 yipee_name = "Suzie"
 age = 97
-base_health = 20
+base_health = 45
 base_attack = 0
 base_cooldown = 6.6
 helix = SubResource("Resource_4estn")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 
-[sub_resource type="Resource" id="Resource_mn3f1"]
+[sub_resource type="Resource" id="Resource_8wo2o"]
 script = ExtResource("3_5epjc")
 slot = 3
 right = ExtResource("5_4ad2o")
 metadata/_custom_type_script = "uid://cra0emwdv78rw"
 
-[sub_resource type="Resource" id="Resource_5yecw"]
+[sub_resource type="Resource" id="Resource_uwgjr"]
 script = ExtResource("3_5epjc")
-slot = 1
 left = ExtResource("6_nr0yc")
 metadata/_custom_type_script = "uid://cra0emwdv78rw"
 
-[sub_resource type="Resource" id="Resource_ldlqj"]
-script = ExtResource("2_ehs1y")
-strands = Array[ExtResource("3_5epjc")]([SubResource("Resource_mn3f1"), SubResource("Resource_5yecw"), null, null, null, null, null, null])
-metadata/_custom_type_script = "uid://ckc2iq0roikyx"
-
-[sub_resource type="Resource" id="Resource_jo2j4"]
-script = ExtResource("1_sfr5n")
-yipee_name = "Yop"
-age = 1
-base_health = 1
-base_attack = 0
-base_cooldown = 4.5
-helix = SubResource("Resource_ldlqj")
-metadata/_custom_type_script = "uid://dpr2powm23rue"
-
-[sub_resource type="Resource" id="Resource_e85os"]
+[sub_resource type="Resource" id="Resource_k3ujh"]
 script = ExtResource("3_5epjc")
 slot = 3
-right = ExtResource("5_4ad2o")
+right = ExtResource("7_4ad2o")
 metadata/_custom_type_script = "uid://cra0emwdv78rw"
 
-[sub_resource type="Resource" id="Resource_c2k6o"]
+[sub_resource type="Resource" id="Resource_di3yw"]
 script = ExtResource("3_5epjc")
-slot = 1
-left = ExtResource("6_nr0yc")
+left = ExtResource("8_nr0yc")
+right = ExtResource("9_g64sg")
 metadata/_custom_type_script = "uid://cra0emwdv78rw"
 
-[sub_resource type="Resource" id="Resource_qican"]
+[sub_resource type="Resource" id="Resource_nuxy8"]
 script = ExtResource("2_ehs1y")
-strands = Array[ExtResource("3_5epjc")]([SubResource("Resource_e85os"), SubResource("Resource_c2k6o"), null, null, null, null, null, null])
+strands = Array[ExtResource("3_5epjc")]([SubResource("Resource_8wo2o"), SubResource("Resource_uwgjr"), SubResource("Resource_k3ujh"), SubResource("Resource_di3yw"), null, null, null, null])
 metadata/_custom_type_script = "uid://ckc2iq0roikyx"
 
-[sub_resource type="Resource" id="Resource_t0t5h"]
+[sub_resource type="Resource" id="Resource_v1urn"]
 script = ExtResource("1_sfr5n")
-yipee_name = "Dop"
-age = 1
-base_health = 1
+yipee_name = "Yhastly"
+age = 999
+base_health = 6
 base_attack = 0
-base_cooldown = 5.0
-helix = SubResource("Resource_qican")
+base_cooldown = 0.9
+helix = SubResource("Resource_nuxy8")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 
-[sub_resource type="Resource" id="Resource_5epjc"]
+[sub_resource type="Resource" id="Resource_24cfw"]
 script = ExtResource("1_sfr5n")
-yipee_name = "Dop"
-age = 1
-base_health = 1
+yipee_name = "Yhastly"
+age = 999
+base_health = 5
 base_attack = 0
-base_cooldown = 5.0
-helix = SubResource("Resource_qican")
+base_cooldown = 1.1
+helix = SubResource("Resource_nuxy8")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 
-[sub_resource type="Resource" id="Resource_w3gv5"]
+[sub_resource type="Resource" id="Resource_lequg"]
 script = ExtResource("1_sfr5n")
-yipee_name = "Dop"
-age = 1
-base_health = 1
+yipee_name = "Yhastly"
+age = 999
+base_health = 4
 base_attack = 0
-base_cooldown = 5.0
-helix = SubResource("Resource_qican")
+base_cooldown = 1.3
+helix = SubResource("Resource_nuxy8")
+metadata/_custom_type_script = "uid://dpr2powm23rue"
+
+[sub_resource type="Resource" id="Resource_g42yt"]
+script = ExtResource("1_sfr5n")
+yipee_name = "Yhastly"
+age = 999
+base_health = 3
+base_attack = 0
+base_cooldown = 1.5
+helix = SubResource("Resource_nuxy8")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 
 [resource]
 script = ExtResource("7_g64sg")
 level_name = "Jocelyn The Yippa"
-enemy_team = Array[ExtResource("1_sfr5n")]([SubResource("Resource_j2iso"), SubResource("Resource_jo2j4"), SubResource("Resource_t0t5h"), SubResource("Resource_5epjc"), SubResource("Resource_w3gv5")])
+enemy_team = Array[ExtResource("1_sfr5n")]([SubResource("Resource_j2iso"), SubResource("Resource_v1urn"), SubResource("Resource_24cfw"), SubResource("Resource_lequg"), SubResource("Resource_g42yt")])
 intro_animation = ExtResource("7_ehs1y")
 metadata/_custom_type_script = "uid://d2tgf0trp406f"

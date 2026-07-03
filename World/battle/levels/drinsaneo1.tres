@@ -25,7 +25,6 @@
 [ext_resource type="Resource" uid="uid://d1usn64ukjx1f" path="res://World/yipee/genes/allele/leftallele/resources/tipped.tres" id="17_lmmpk"]
 [ext_resource type="Resource" uid="uid://bl7owj3m2m8ob" path="res://World/yipee/genes/allele/leftallele/resources/runner.tres" id="19_i26cp"]
 [ext_resource type="PackedScene" uid="uid://bnaphlqel3d7q" path="res://UI/Scenes/drinsaneo.tscn" id="22_isepg"]
-[ext_resource type="Resource" uid="uid://1j6cvthyeunj" path="res://World/yipee/genes/allele/leftallele/resources/adrenaline.tres" id="22_lmmpk"]
 
 [sub_resource type="Resource" id="Resource_ptjmb"]
 script = ExtResource("3_hpjvn")
@@ -75,7 +74,7 @@ yipee_name = "Precious"
 age = 5
 base_health = 123
 base_attack = 0
-base_cooldown = 6.5
+base_cooldown = 8.0
 helix = SubResource("Resource_jcogl")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 
@@ -137,7 +136,7 @@ yipee_name = "Defective"
 age = 2
 base_health = 110
 base_attack = 0
-base_cooldown = 12.0
+base_cooldown = 13.0
 helix = SubResource("Resource_rxklh")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 
@@ -164,14 +163,12 @@ metadata/_custom_type_script = "uid://cra0emwdv78rw"
 [sub_resource type="Resource" id="Resource_bcysq"]
 script = ExtResource("3_hpjvn")
 slot = 4
-left = ExtResource("22_lmmpk")
 right = ExtResource("10_8hw56")
 metadata/_custom_type_script = "uid://cra0emwdv78rw"
 
 [sub_resource type="Resource" id="Resource_xrxy5"]
 script = ExtResource("3_hpjvn")
 slot = 4
-left = ExtResource("22_lmmpk")
 metadata/_custom_type_script = "uid://cra0emwdv78rw"
 
 [sub_resource type="Resource" id="Resource_e5won"]
@@ -183,7 +180,7 @@ metadata/_custom_type_script = "uid://ckc2iq0roikyx"
 script = ExtResource("1_hbbem")
 yipee_name = "Failure"
 base_health = 60
-base_cooldown = 11.0
+base_cooldown = 10.0
 helix = SubResource("Resource_e5won")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 
