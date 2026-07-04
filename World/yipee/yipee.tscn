@@ -5,15 +5,121 @@
 [ext_resource type="Texture2D" uid="uid://2ixdmmyr2pbq" path="res://Assets/Environment/Scenes/BattleField/BearTrap1.png" id="2_sceo7"]
 [ext_resource type="Script" uid="uid://81jkr63gjvq8" path="res://World/yipee/components/health.gd" id="3_0w75r"]
 [ext_resource type="Script" uid="uid://cgytvo8likyf3" path="res://World/yipee/components/attack.gd" id="4_igyue"]
+[ext_resource type="Shader" uid="uid://kx17clukav2s" path="res://Assets/Shaders/scroll.gdshader" id="4_vrfs1"]
+[ext_resource type="Texture2D" uid="uid://dobpiqknek3fj" path="res://UI/Menus/Main_Menu/Textures/UpgradeEffect.png" id="5_fo53w"]
 [ext_resource type="Script" uid="uid://cyixrd0wnn7a" path="res://World/yipee/components/ability_runner.gd" id="5_mjiai"]
 [ext_resource type="PackedScene" uid="uid://bmdpogph1dw37" path="res://UI/Scenes/health_bar.tscn" id="5_tt34i"]
 [ext_resource type="Script" uid="uid://duy3ch27wcqnc" path="res://World/yipee/components/status_effects.gd" id="7_2cy03"]
+[ext_resource type="Texture2D" uid="uid://ior2fsrwa8n4" path="res://UI/Menus/Main_Menu/Textures/IceTexture.jpg" id="7_3um72"]
 [ext_resource type="Texture2D" uid="uid://ck1r6l0dymdjs" path="res://Assets/yipee/ThrowPunch.png" id="8_2j0cg"]
+[ext_resource type="Shader" uid="uid://bb8dxx44bbjn1" path="res://Assets/Shaders/fire.gdshader" id="8_3um72"]
 [ext_resource type="Texture2D" uid="uid://4fmv33e3pnws" path="res://Assets/yipee/GetHit.png" id="9_7esd8"]
+[ext_resource type="Shader" uid="uid://ctplrlcmv4kxn" path="res://Assets/Shaders/poison.gdshader" id="9_k37iv"]
+[ext_resource type="Texture2D" uid="uid://brgr4b13foinr" path="res://UI/Menus/Main_Menu/Textures/bubblespixel.png" id="10_wg8yy"]
 [ext_resource type="Texture2D" uid="uid://bs38yoka37nkw" path="res://Assets/Environment/Scenes/BattleField/BearTrap2.png" id="11_6vhmf"]
 [ext_resource type="Texture2D" uid="uid://cnd44vg4ar23d" path="res://Assets/Environment/Scenes/BattleField/yipnervous.png" id="12_6vhmf"]
 [ext_resource type="Texture2D" uid="uid://bg5f0ibitqrce" path="res://UI/Textures/StatUI.png" id="13_khqkn"]
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="14_8rhy8"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_khqkn"]
+viewport_path = NodePath("AnimScaleHandle/BodyParts")
+
+[sub_resource type="Gradient" id="Gradient_vrfs1"]
+offsets = PackedFloat32Array(0.33680555, 0.3923611, 0.4548611, 0.5138889, 0.5694444, 0.6319444, 0.6979167)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.36550003, 0.19, 1, 1, 0.91200006, 0.120000005, 1, 1, 1, 1, 1, 1, 0.906, 0.060000002, 1, 1, 0.4666667, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fo53w"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_vrfs1")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+repeat = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ot5o3"]
+resource_local_to_scene = true
+shader = ExtResource("4_vrfs1")
+shader_parameter/texture_to_scroll = ExtResource("5_fo53w")
+shader_parameter/gradient_texture = SubResource("GradientTexture2D_fo53w")
+shader_parameter/scroll_speed = 1.4
+shader_parameter/angle_degrees = 270.000012825
+shader_parameter/repeat_x = 5.00000019
+shader_parameter/repeat_y = 2.0000000475
+shader_parameter/row_offset = 1.0
+
+[sub_resource type="Gradient" id="Gradient_fo53w"]
+offsets = PackedFloat32Array(0.4513889, 0.5104167, 0.5486111, 0.5868056, 0.6354167)
+colors = PackedColorArray(0.20149988, 0, 0.31, 1, 1, 0.33999997, 0.9229999, 1, 1, 0.84000003, 0.94666666, 1, 0.97866666, 0.36, 1, 1, 0.20473991, 0.046400007, 0.29, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ot5o3"]
+gradient = SubResource("Gradient_fo53w")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3um72"]
+shader = ExtResource("4_vrfs1")
+shader_parameter/texture_to_scroll = ExtResource("5_fo53w")
+shader_parameter/gradient_texture = SubResource("GradientTexture2D_ot5o3")
+shader_parameter/scroll_speed = 1.4
+shader_parameter/angle_degrees = 90.000004275
+shader_parameter/repeat_x = 5.00000019
+shader_parameter/repeat_y = 2.0000000475
+shader_parameter/row_offset = 1.0
+
+[sub_resource type="Gradient" id="Gradient_dhs36"]
+offsets = PackedFloat32Array(0, 0.10069445, 0.2361111, 0.3715278, 0.4861111)
+colors = PackedColorArray(1, 1, 1, 0, 1.753959, 0, 0, 1, 0.9, 0.495, 0, 1, 1, 0.9253333, 0.44, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k37iv"]
+gradient = SubResource("Gradient_dhs36")
+fill_to = Vector2(0.25213677, 0)
+
+[sub_resource type="Gradient" id="Gradient_wg8yy"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pqr1k"]
+gradient = SubResource("Gradient_wg8yy")
+fill_from = Vector2(0, 0.23504274)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_de0dm"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gk4rq"]
+noise = SubResource("FastNoiseLite_de0dm")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_c20ic"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jcg7t"]
+gradient = SubResource("Gradient_c20ic")
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_r84on"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_33ncc"]
+gradient = SubResource("Gradient_r84on")
+fill_to = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jfbw8"]
+shader = ExtResource("8_3um72")
+shader_parameter/fire_scale = Vector2(3, 3)
+shader_parameter/fire_speed_direction = Vector2(0, 0.75)
+shader_parameter/rect_size = Vector2(512, 512)
+shader_parameter/pixel_scale = 3.0
+shader_parameter/fire_noise = SubResource("NoiseTexture2D_gk4rq")
+shader_parameter/fire_height_gradient = SubResource("GradientTexture2D_pqr1k")
+shader_parameter/fire_shape_gradient = SubResource("GradientTexture2D_jcg7t")
+shader_parameter/flame_height_gradient = SubResource("GradientTexture2D_33ncc")
+shader_parameter/fire_color = SubResource("GradientTexture2D_k37iv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pqr1k"]
+shader = ExtResource("9_k37iv")
+shader_parameter/bottom_color = Color(0.028333388, 0, 0.34, 1)
+shader_parameter/top_color = Color(0.8321367, 0.50141376, 1, 0)
+shader_parameter/tex = ExtResource("10_wg8yy")
+shader_parameter/layer_count = 10
+shader_parameter/time_scale = 0.24800001178
+shader_parameter/base_intensity = 0.34000001615
+shader_parameter/size = 0.6770100321572501
+shader_parameter/rect_size = Vector2(512, 512)
+shader_parameter/pixel_scale = 3.0
 
 [sub_resource type="Animation" id="Animation_2cy03"]
 resource_name = "Attack"
@@ -878,8 +984,69 @@ texture = ExtResource("2_sceo7")
 position = Vector2(0, 66)
 
 [node name="BodyParts" parent="AnimScaleHandle" unique_id=1418422023 instance=ExtResource("2_2j0cg")]
+
+[node name="VisualYip" type="Sprite2D" parent="AnimScaleHandle" unique_id=1023514487]
+clip_children = 2
+texture_filter = 3
 position = Vector2(0, -66)
 scale = Vector2(3, 3)
+texture = SubResource("ViewportTexture_khqkn")
+
+[node name="Buff" type="ColorRect" parent="AnimScaleHandle/VisualYip" unique_id=386415173]
+visible = false
+material = SubResource("ShaderMaterial_ot5o3")
+offset_left = -66.0
+offset_top = -65.333336
+offset_right = 65.0
+offset_bottom = 65.666664
+mouse_filter = 2
+mouse_behavior_recursive = 2
+
+[node name="Debuff" type="ColorRect" parent="AnimScaleHandle/VisualYip" unique_id=1811258778]
+visible = false
+material = SubResource("ShaderMaterial_3um72")
+custom_minimum_size = Vector2(131, 131)
+offset_left = -65.333336
+offset_top = -65.0
+offset_right = 65.666664
+offset_bottom = 66.0
+mouse_filter = 2
+mouse_behavior_recursive = 2
+
+[node name="Ice" type="TextureRect" parent="AnimScaleHandle/VisualYip" unique_id=1415509144]
+visible = false
+modulate = Color(0, 1.0641178, 1.6197081, 0.74509805)
+texture_filter = 3
+custom_minimum_size = Vector2(131, 131)
+offset_left = -55.565002
+offset_top = -65.333336
+offset_right = 75.435
+offset_bottom = 65.666664
+mouse_filter = 2
+mouse_behavior_recursive = 2
+texture = ExtResource("7_3um72")
+
+[node name="Fire" type="ColorRect" parent="AnimScaleHandle/VisualYip" unique_id=135995115]
+visible = false
+material = SubResource("ShaderMaterial_jfbw8")
+custom_minimum_size = Vector2(131, 131)
+offset_left = -65.333336
+offset_top = -65.0
+offset_right = 65.666664
+offset_bottom = 66.0
+mouse_filter = 2
+mouse_behavior_recursive = 2
+
+[node name="Poison" type="ColorRect" parent="AnimScaleHandle/VisualYip" unique_id=1848937053]
+visible = false
+material = SubResource("ShaderMaterial_pqr1k")
+custom_minimum_size = Vector2(131, 131)
+offset_left = -65.333374
+offset_top = -65.66667
+offset_right = 65.666626
+offset_bottom = 65.33333
+mouse_filter = 2
+mouse_behavior_recursive = 2
 
 [node name="ActionsAnim" type="AnimationPlayer" parent="." unique_id=824352016]
 libraries/ = SubResource("AnimationLibrary_7esd8")

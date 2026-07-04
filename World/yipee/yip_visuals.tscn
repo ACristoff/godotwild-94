@@ -22,37 +22,48 @@ shader_parameter/to_color = Color(1, 1, 1, 1)
 shader_parameter/modulate_from_color = Color(0.79607844, 0.85882354, 0.9882353, 1)
 shader_parameter/modulate_color = Color(1, 1, 1, 1)
 
-[node name="BodyParts" type="Node2D" unique_id=1418422023]
-texture_filter = 3
+[node name="BodyParts" type="SubViewport" unique_id=2044976066]
+transparent_bg = true
+physics_object_picking = true
+size = Vector2i(124, 124)
 script = ExtResource("1_m1hkj")
 
 [node name="Feet" type="Sprite2D" parent="." unique_id=1134384492]
 material = SubResource("ShaderMaterial_fjbme")
+position = Vector2(62, 62)
 texture = ExtResource("3_wkbj6")
 
 [node name="Body" type="Sprite2D" parent="." unique_id=2060721043]
 material = SubResource("ShaderMaterial_5876g")
+position = Vector2(62, 62)
 texture = ExtResource("4_xswnl")
 
 [node name="Tail" type="Sprite2D" parent="." unique_id=2710217]
 material = SubResource("ShaderMaterial_5876g")
+position = Vector2(62, 62)
 
 [node name="Wings" type="Sprite2D" parent="." unique_id=1097039327]
 material = SubResource("ShaderMaterial_5876g")
+position = Vector2(62, 62)
 
 [node name="Head" type="Sprite2D" parent="." unique_id=293114598]
 material = SubResource("ShaderMaterial_5876g")
+position = Vector2(62, 62)
 texture = ExtResource("6_skvs2")
 
 [node name="Misc" type="Sprite2D" parent="." unique_id=981484355]
 material = SubResource("ShaderMaterial_5876g")
+position = Vector2(62, 62)
 
 [node name="Ears" type="Sprite2D" parent="." unique_id=2049323421]
 material = SubResource("ShaderMaterial_5876g")
+position = Vector2(62, 62)
 
 [node name="Mouth" type="Sprite2D" parent="." unique_id=2071850856]
 material = SubResource("ShaderMaterial_5876g")
+position = Vector2(62, 62)
 texture = ExtResource("6_2d4jw")
 
 [node name="Eyes" type="Sprite2D" parent="." unique_id=1402129529]
+position = Vector2(62, 62)
 texture = ExtResource("9_xswnl")

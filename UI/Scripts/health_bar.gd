@@ -12,6 +12,11 @@ class_name HealthBar extends Control
 const DAMAGE_TOOLYIP = preload("uid://cxcii53yccour")
 const DAMAGE_INDICATOR = preload("uid://b1wbuxori6udj")
 
+@onready var buff: ColorRect = $"../AnimScaleHandle/VisualYip/Buff"
+@onready var debuff: ColorRect = $"../AnimScaleHandle/VisualYip/Debuff"
+@onready var ice: TextureRect = $"../AnimScaleHandle/VisualYip/Ice"
+@onready var fire: ColorRect = $"../AnimScaleHandle/VisualYip/Fire"
+@onready var poison: ColorRect = $"../AnimScaleHandle/VisualYip/Poison"
 
 
 @export var max_health : int
@@ -102,6 +107,12 @@ func update_ailments(status_name: String, ailment_value: int):
 		var ailment = current_ailments[i]
 		if ailment["status_name"] == status_name:
 			if ailment_value <= 0:
+				if ailment["status_name"] == "POISON":
+					poison.hide()
+				if ailment["status_name"] == "FIRE":
+					fire.hide()
+				if ailment["status_name"] == "ICE":
+					ice.hide()
 				ailment["node"].queue_free()
 				current_ailments.remove_at(i)
 			else:
@@ -120,3 +131,10 @@ func update_ailments(status_name: String, ailment_value: int):
 		"value": ailment_value,
 		"node": dmg_note
 	})
+	for ailment in current_ailments:
+		if ailment["status_name"] == "POISON":
+			poison.show()
+		if ailment["status_name"] == "FIRE":
+			fire.show()
+		if ailment["status_name"] == "ICE":
+			ice.show()

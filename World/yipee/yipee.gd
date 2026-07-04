@@ -17,6 +17,7 @@ const YIP_BUFF = preload("uid://nkypm8ojycqe")
 @onready var ability: AbilityRunner = $AbilityRunner
 @onready var status: StatusEffects = $StatusEffects
 @onready var body: YipBody = $AnimScaleHandle/BodyParts
+@onready var visual: Node2D = $AnimScaleHandle/VisualYip
 
 @onready var health_UI: HealthBar = $HealthBar
 @onready var hover_area: Area2D = $HoverArea

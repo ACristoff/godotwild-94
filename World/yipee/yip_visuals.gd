@@ -1,6 +1,6 @@
-class_name YipBody extends Node2D
+class_name YipBody extends SubViewport
 
-@onready var body_parts: Node2D = $"."
+@onready var body_parts: SubViewport = $"."
 
 @onready var feet: Sprite2D = $Feet
 @onready var body: Sprite2D = $Body

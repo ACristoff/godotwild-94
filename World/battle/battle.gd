@@ -84,7 +84,7 @@ func _ready():
 			break
 		var spawn = get_node("EnemyTeam/Spawn_" + str(i + 1))
 		var new_yip = _spawn(enemy_team_data[i], spawn.global_position + Vector2(105, 45))
-		new_yip.body.scale.x = new_yip.body.scale.x * -1 
+		new_yip.visual.scale.x = new_yip.visual.scale.x * -1 
 		new_yip.enemy_flip()
 		enemy_team.append(new_yip)
 		new_yip.in_battle_dance()
