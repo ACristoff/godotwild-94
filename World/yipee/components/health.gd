@@ -2,10 +2,12 @@ class_name Health extends Node
 
 const HURT_HIT = preload("uid://bngmp5ra6pka1")
 signal health_changed(current: int, maximum: int)
+
 #fucking DIED
 signal died
 
 var max_health: int = 0
+
 var current_health: int = 0
 
 var shield: int = 0
@@ -32,6 +34,11 @@ func take_damage(damage_data: DamageInfo) -> void:
 		$"..".dead = true
 		died.emit()
 		$"../HealthBar".hide()
+		$"../AnimScaleHandle/VisualYip/Buff".hide()
+		$"../AnimScaleHandle/VisualYip/Debuff".hide()
+		$"../AnimScaleHandle/VisualYip/Ice".hide()
+		$"../AnimScaleHandle/VisualYip/Fire".hide()
+		$"../AnimScaleHandle/VisualYip/Poison".hide()
 
 func heal(amount: float) -> void:
 	if current_health <= 0:
