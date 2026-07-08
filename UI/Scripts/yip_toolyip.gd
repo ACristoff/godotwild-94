@@ -28,6 +28,7 @@ const SLOT_KEYS := {
 
 var amnt_of_stats: int
 var _yip_hovered: bool = false
+var current_yip: Yipee = null
 var _hide_grace: float= 0.0
 var shown: bool = true
 var tt_size: Vector2 = Vector2(149, 84)
@@ -75,6 +76,7 @@ func display_beside(yip: Yipee) -> void:
 
 func display(yip: Yipee) -> void:
 	var data: YipeeData = yip.data
+	current_yip = yip
 	name_field.text = data.yipee_name if data.yipee_name != "" else "WILD YIP"
 	age_label.text = "Age:%d" % data.age
 	hp_label.text = "HP:%d" % roundi(data.get_health())
@@ -199,6 +201,7 @@ func _process(delta: float) -> void:
 			_hide_grace -= delta
 			if _hide_grace <= 0.0:
 				hide()
+				current_yip = null
 	amnt_of_stats = stats_flow_container.get_child_count()
 	match amnt_of_stats:
 		1:
@@ -224,3 +227,8 @@ func _process(delta: float) -> void:
 	stats_container.size = stats_flow_container.size
 	stats_container.size.y = stats_container.size.y + 2
 	stats_container.size.x = stats_container.size.x + 1
+
+
+func _on_line_edit_text_changed(new_text):
+	if current_yip != null:
+		current_yip.data.yipee_name = new_text
