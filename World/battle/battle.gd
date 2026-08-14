@@ -280,6 +280,7 @@ func sandstorm_tick(delta):
 	sandstorm_time += delta
 	
 	while sandstorm_time >= sandstorm_cooldown:
+		sandstorm_pulses += 1
 		sandstorm_damage.amount = pow(sandstorm_pulses, 2)
 		sandstorm_time -= sandstorm_cooldown
 		for yip: Yipee in player_team:
@@ -290,7 +291,6 @@ func sandstorm_tick(delta):
 			if yip.health.current_health > 0:
 				sandstorm_damage.target = yip
 				apply_damage(yip, sandstorm_damage)
-		sandstorm_pulses += 1
 
 func _on_next_button_pressed() -> void:
 	_on_next()
