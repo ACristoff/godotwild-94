@@ -3,14 +3,27 @@
 [ext_resource type="Texture2D" uid="uid://bsxxbhm6sgqhs" path="res://UI/Textures/gene_small.png" id="1_chip"]
 [ext_resource type="Script" uid="uid://cfxm1yk53dfcg" path="res://UI/Scripts/allele_chip.gd" id="2_chip"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ly5fx"]
+radius = 12.0
+height = 142.0
+
 [node name="AlleleChip" type="TextureRect" unique_id=1304432060]
-custom_minimum_size = Vector2(48, 48)
-offset_left = -23.0
-offset_top = -24.0
-offset_right = 25.0
-offset_bottom = 24.0
-mouse_filter = 0
+texture_filter = 3
+custom_minimum_size = Vector2(144, 42)
+offset_left = -72.0
+offset_top = -21.0
+offset_right = 72.0
+offset_bottom = 21.0
+mouse_filter = 2
 texture = ExtResource("1_chip")
-expand_mode = 1
-stretch_mode = 5
 script = ExtResource("2_chip")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=476258568]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1295988802]
+position = Vector2(72, 21)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ly5fx")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

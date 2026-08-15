@@ -280,6 +280,7 @@ offset_right = 152.0
 offset_bottom = -72.33331
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 stretch_shrink = 3
 script = ExtResource("11_1ax5p")
 
@@ -384,17 +385,19 @@ texture = ExtResource("4_uroyv")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1911432724]
 
 [node name="LeftInventory" type="VBoxContainer" parent="CanvasLayer" unique_id=2077944316]
-offset_left = 769.0
+offset_left = 842.0
 offset_top = 43.0
 offset_right = 986.0
 offset_bottom = 703.0
+mouse_filter = 2
 script = ExtResource("12_invdrop")
 
 [node name="RightInventory" type="VBoxContainer" parent="CanvasLayer" unique_id=764300082]
 offset_left = 1676.0
 offset_top = 47.0
-offset_right = 1893.0
+offset_right = 1820.0
 offset_bottom = 724.0
+mouse_filter = 2
 script = ExtResource("12_invdrop")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=939278799]
@@ -441,8 +444,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 11.666668
 offset_top = 12.0
-offset_right = 167.66667
-offset_bottom = 54.0
+offset_right = -11.999958
+offset_bottom = -10.777832
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("11_mntup")
