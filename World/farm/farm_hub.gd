@@ -396,7 +396,9 @@ func _try_breed() -> void:
 		return
 	if parent_a.bred_today or parent_b.bred_today:
 		return
-
+	if parent_a.is_baby() or parent_b.is_baby():
+		print("you sick fuck that's a child!")
+		return
 	parent_a.bred_today = true
 	parent_b.bred_today = true
 	var child := YipeeData.breed(parent_a, parent_b)

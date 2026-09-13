@@ -3,7 +3,7 @@ extends Node2D
 
 const MAIN_CHARACTER_FOOTSTEP_GRASS_STEP_3 = preload("uid://bkwvuoumm61h3")
 const YIP_BUFF = preload("uid://nkypm8ojycqe")
-
+@export var baby_age = 1
 
 ##Base Yipee class.
 @onready var cd_bar: Control = $HealthBar/NinePatchRect/CDBar
@@ -41,15 +41,19 @@ func _ready() -> void:
 	health_UI.populate_yip_stats(data)
 	status.effects_changed.connect(health_UI.update_ailments)
 	attack.progress_changed.connect(_on_cooldown_changed)
-	is_baby()
+	if is_baby():
+		resize_yip_to_baby()
 
 func is_baby():
+	if data.age < baby_age:
+		return true
+	else:
+		return false
+
+func resize_yip_to_baby():
 	if data.age < 1:
 		visual.scale = Vector2(2,2)
 		visual.position.y = -33
-	else:
-		visual.scale = Vector2(3,3)
-		visual.position.y = -66
 
 func in_battle_dance():
 	$ActionsAnim.play("IdleBattle")

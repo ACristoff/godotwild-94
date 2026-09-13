@@ -46,6 +46,7 @@ const YIP_TABLE := {
 
 @export var helix: Helix
 
+@export var baby_age = 1
 
 #region Farm Hub stuff
 # Yip can only be picked up in the Farm Hub.
@@ -66,6 +67,13 @@ var farm_last_known_position : Vector2 = Vector2.ZERO
 # Remember party location between scenes if placed in a party
 @export_range(0, 2, 1) var yip_barn_slot : int 
 #endregion
+
+#this and related variables are not DRY code but fuck it, we jank already
+func is_baby():
+	if age < baby_age:
+		return true
+	else:
+		return false
 
 func _init() -> void:
 	if helix == null:
