@@ -41,6 +41,15 @@ func _ready() -> void:
 	health_UI.populate_yip_stats(data)
 	status.effects_changed.connect(health_UI.update_ailments)
 	attack.progress_changed.connect(_on_cooldown_changed)
+	is_baby()
+
+func is_baby():
+	if data.age < 1:
+		visual.scale = Vector2(2,2)
+		visual.position.y = -33
+	else:
+		visual.scale = Vector2(3,3)
+		visual.position.y = -66
 
 func in_battle_dance():
 	$ActionsAnim.play("IdleBattle")
