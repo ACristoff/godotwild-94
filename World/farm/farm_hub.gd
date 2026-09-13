@@ -67,7 +67,7 @@ func _ready() -> void:
 		wire_yip(spawn_yip(yip, index))
 		index += 1
 
-	_update_barn_doors()
+	farm_doors.visible = false
 	_try_breed()
 
 	#Tutorials
@@ -106,7 +106,6 @@ func _input(event : InputEvent) -> void:
 		else:
 			if dragged_yip:
 				_drop_yip(dragged_yip)
-				_update_barn_doors()
 				_try_breed()
 				dragged_yip.animation_player.play(&"RESET")
 				dragged_yip = null
@@ -384,37 +383,39 @@ func _can_breed() -> bool:
 	var parent_b: YipeeData = SignalBus.yip_breed_barn[2]
 	if parent_a == null or parent_b == null:
 		return false
-	return not parent_a.bred_today and not parent_b.bred_today
-
-func _update_barn_doors() -> void:
-	farm_doors.visible = _can_breed()
-
-func _try_breed() -> void:
-	var parent_a: YipeeData = SignalBus.yip_breed_barn[1]
-	var parent_b: YipeeData = SignalBus.yip_breed_barn[2]
-	if parent_a == null or parent_b == null:
-		return
-	if parent_a.bred_today or parent_b.bred_today:
-		return
 	if parent_a.is_baby() or parent_b.is_baby():
 		print("you sick fuck that's a child!")
+		return false
+	return not parent_a.bred_today and not parent_b.bred_today
+
+
+func _try_breed() -> void:
+	if not _can_breed():
 		return
+	
+	var parent_a: YipeeData = SignalBus.yip_breed_barn[1]
+	var parent_b: YipeeData = SignalBus.yip_breed_barn[2]
 	parent_a.bred_today = true
 	parent_b.bred_today = true
+	
+	farm_doors.visible = true
+	
 	var child := YipeeData.breed(parent_a, parent_b)
 	SignalBus.yip_inventory.append(child)
 	AudMan.play_sfx_wav(BREED_SOUND, 0.0, false)
-
+	
 	var parent_node_a: Yipee = yip_farm_barn_position[1]
 	var parent_node_b: Yipee = yip_farm_barn_position[2]
 	if parent_node_a != null:
 		parent_node_a.visible = false
 	if parent_node_b != null:
 		parent_node_b.visible = false
-
+	
 	await get_tree().create_timer(3.0).timeout
 	if not is_inside_tree():
 		return
+	
+	farm_doors.visible = false
 	
 	if is_instance_valid(parent_node_a):
 		parent_node_a.visible = true
@@ -424,8 +425,6 @@ func _try_breed() -> void:
 	var spawn_points := get_random_point_in_area(1)
 	child.farm_last_known_position = spawn_points[0]
 	wire_yip(spawn_yip(child, 0))
-	_update_barn_doors()
-
 # TeamSlot1 (front of the farm row) is the front of the battle formation, which
 # battle reads as party slot 5. Maps a visual TeamSlot number <-> party slot key.
 # Symmetric (6 - n is its own inverse), so it works for both reads and writes.
@@ -477,12 +476,10 @@ func _on_any_area_exited(entered_area: Area2D, source_area: Area2D) -> void:
 
 func _on_breed_farm_slot_area_entered(entered_area: Area2D, source_area: Area2D) -> void:
 	print(source_area.name, " was entered by ", entered_area.name)
-	if not _barn_is_full():
-		farm_doors.visible = false
 
 func _on_breed_farm_slot_area_exited(entered_area: Area2D, source_area: Area2D) -> void:
 	print(source_area.name, " was exited by ", entered_area.name)
-	_update_barn_doors()
+
 
 func _on_yip_hovered(yip: Yipee) -> void:
 	tooltip.display_beside(yip)
