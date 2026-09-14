@@ -288,7 +288,8 @@ func _drop_yip(yip: Yipee) -> void:
 				landed_type = "barn"
 				break
 
-	if landed_type == "barn" and yip.data.is_baby():
+	if landed_slot != null and yip.data.is_baby():
+		#TODO add some kind of error noise here so the player knows it's not a valid thing to do with babies
 		_relocate_displaced(yip.data, yip, yip.data.yip_party_slot, yip.data.yip_barn_slot)
 		return
 
