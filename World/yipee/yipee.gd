@@ -53,7 +53,7 @@ func is_baby():
 func resize_yip_to_baby():
 	if data.age < 1:
 		visual.scale = Vector2(2,2)
-		visual.position.y = -33
+		#visual.position.y = -33
 
 func in_battle_dance():
 	$ActionsAnim.play("IdleBattle")

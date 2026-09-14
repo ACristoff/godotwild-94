@@ -288,6 +288,10 @@ func _drop_yip(yip: Yipee) -> void:
 				landed_type = "barn"
 				break
 
+	if landed_type == "barn" and yip.data.is_baby():
+		_relocate_displaced(yip.data, yip, yip.data.yip_party_slot, yip.data.yip_barn_slot)
+		return
+
 	# Always clear the yip out of wherever it currently lives,
 	# before placing it anywhere new.
 	var vacated_party_slot : int = yip.data.yip_party_slot
