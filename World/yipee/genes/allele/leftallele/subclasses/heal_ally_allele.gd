@@ -5,9 +5,9 @@ class_name HealAllele extends LeftAllele
 func effective_heal() -> int:
 	return heal_amount * tier
 
-func on_attack(damage_data: DamageInfo, battle) -> void:
-	damage_data.amount = 0
-	damage_data.type = DamageInfo.Type.HEAL
+func on_hit(damage_data: DamageInfo, battle) -> void:
+	#damage_data.amount = 0
+	#damage_data.type = DamageInfo.Type.HEAL
 	var attacker := damage_data.source as Yipee
 	var allies: Array = battle.player_team if battle.player_team.has(attacker) else battle.enemy_team
 	var target := _lowest_health_ally(allies)
