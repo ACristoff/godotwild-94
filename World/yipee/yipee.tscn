@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cnd44vg4ar23d" path="res://Assets/Environment/Scenes/BattleField/yipnervous.png" id="12_6vhmf"]
 [ext_resource type="Texture2D" uid="uid://bg5f0ibitqrce" path="res://UI/Textures/StatUI.png" id="13_khqkn"]
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="14_8rhy8"]
+[ext_resource type="Texture2D" uid="uid://474plejs27tj" path="res://UI/Textures/babyicon.png" id="21_k37iv"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_khqkn"]
 viewport_path = NodePath("AnimScaleHandle/BodyParts")
@@ -1048,6 +1049,13 @@ offset_bottom = 65.33333
 mouse_filter = 2
 mouse_behavior_recursive = 2
 
+[node name="Babyicon" type="Sprite2D" parent="AnimScaleHandle/VisualYip" unique_id=953146592]
+visible = false
+z_index = 1
+texture_filter = 3
+position = Vector2(25, -23)
+texture = ExtResource("21_k37iv")
+
 [node name="ActionsAnim" type="AnimationPlayer" parent="." unique_id=824352016]
 libraries/ = SubResource("AnimationLibrary_7esd8")
 
@@ -1156,4 +1164,5 @@ horizontal_alignment = 1
 [connection signal="mouse_entered" from="HoverArea" to="." method="_on_hover_area_mouse_entered"]
 [connection signal="mouse_exited" from="HoverArea" to="." method="_on_hover_area_mouse_exited"]
 
+[editable path="AnimScaleHandle/BodyParts"]
 [editable path="HealthBar"]

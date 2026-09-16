@@ -3,6 +3,8 @@ extends Node2D
 
 const MAIN_CHARACTER_FOOTSTEP_GRASS_STEP_3 = preload("uid://bkwvuoumm61h3")
 const YIP_BUFF = preload("uid://nkypm8ojycqe")
+const BABY_HEAD = preload("uid://c1edmyu2tbx2y")
+
 @export var baby_age = 1
 
 ##Base Yipee class.
@@ -42,13 +44,21 @@ func _ready() -> void:
 	status.effects_changed.connect(health_UI.update_ailments)
 	attack.progress_changed.connect(_on_cooldown_changed)
 	if is_baby():
+		$AnimScaleHandle/VisualYip/Babyicon.show()
+		$AnimScaleHandle/BodyParts/Eyes.texture = null
+		$AnimScaleHandle/BodyParts/Mouth.texture = null
+		$AnimScaleHandle/BodyParts/Ears.texture = null
+		$AnimScaleHandle/BodyParts/Misc.texture = null
+		$AnimScaleHandle/BodyParts/Head.texture = BABY_HEAD
 		resize_yip_to_baby()
 
 func is_baby():
 	if data.age < baby_age:
 		return true
 	else:
+		$AnimScaleHandle/VisualYip/Babyicon.hide()
 		return false
+		#$AnimScaleHandle/VisualYip/Babyicon.hide()
 
 func resize_yip_to_baby():
 	if data.age < 1:
