@@ -108,11 +108,13 @@ func wire_yip(yip: Yipee) -> void:
 
 func _on_yip_hovered(yip: Yipee) -> void:
 	tooltip.display_beside(yip)
+	CursorManager.use(CursorManager.Pointers.CURSOR_MONEY)
 	focused_yip = yip
 
 func _on_yip_unhovered() -> void:
 	print('yip unhovered')
 	tooltip.request_hide()
+	CursorManager.reset()
 	focused_yip = null
 #endregion
 
@@ -309,6 +311,7 @@ func buy_yip(yip_bought: Yipee) -> void:
 	else:
 	#happy path
 		spend_coins(yip_cost)
+		CursorManager.reset()
 		SignalBus.yip_inventory.append(yip_bought.data)
 		SignalBus.field_stock.erase(yip_bought.data)
 		all_yips.erase(yip_bought)
