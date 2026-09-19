@@ -36,6 +36,8 @@ var yip_farm_barn_position : Dictionary[int, Yipee] = {
 
 #endregion
 
+
+
 #region Built in Functions
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -97,20 +99,19 @@ func _input(event : InputEvent) -> void:
 			print("Mouse Pressed")
 			if focused_yip:
 				dragged_yip = focused_yip
-				print('Picked up a yip', focused_yip)
-				# Remember offset so the yip doesn't jump so its center snaps to the cursor
-				CursorManager.use(CursorManager.Pointers.CURSOR_GRABBED)
 				drag_offset = dragged_yip.global_position - get_global_mouse_position()
 				tooltip.request_hide()
+				dragged_yip.animation_player.play(&"Grabbed")
+				_refresh_cursor()
 				print("Picked up a yip", dragged_yip)
 				dragged_yip.animation_player.play(&"Grabbed")
 		else:
 			if dragged_yip:
 				_drop_yip(dragged_yip)
-				CursorManager.reset()
 				_try_breed()
 				dragged_yip.animation_player.play(&"RESET")
 				dragged_yip = null
+				_refresh_cursor()
 
 	elif event is InputEventMouseMotion:
 		if dragged_yip:
@@ -491,10 +492,12 @@ func _on_breed_farm_slot_area_exited(entered_area: Area2D, source_area: Area2D) 
 func _on_yip_hovered(yip: Yipee) -> void:
 	tooltip.display_beside(yip)
 	focused_yip = yip
+	_refresh_cursor()
 
 func _on_yip_unhovered() -> void:
 	tooltip.request_hide()
 	focused_yip = null
+	_refresh_cursor()
 
 func _on_area_2d_mouse_entered() -> void:
 	$LabDoor2.play("DoorOpen")
@@ -518,3 +521,11 @@ func _on_breeding_tut_next() -> void:
 	$BreedingTut.hide()
 
 #endregion
+
+func _refresh_cursor() -> void:
+	if dragged_yip != null:
+		CursorManager.use(CursorManager.Pointers.CURSOR_GRABBED)
+	elif focused_yip != null:
+		CursorManager.use(CursorManager.Pointers.CURSOR_GRABBABLE)
+	else:
+		CursorManager.reset()
