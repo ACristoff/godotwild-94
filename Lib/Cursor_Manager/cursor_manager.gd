@@ -50,13 +50,15 @@ const CURSORS := {
 		"texture": preload("res://UI/Textures/MousePointers10.png"),
 		"shape": Input.CURSOR_IBEAM,
 		"hotspot": Vector2(7, 13),
+		"scale": 2
 	},
 }
 
 func _ready() -> void:
 	for pointer in CURSORS:
 		var entry: Dictionary = CURSORS[pointer]
-		Input.set_custom_mouse_cursor(_scaled(entry["texture"]), entry["shape"], entry["hotspot"] * CURSOR_SCALE)
+		var pointer_scale: int = entry.get("scale", CURSOR_SCALE)
+		Input.set_custom_mouse_cursor(_scaled(entry["texture"], pointer_scale), entry["shape"], entry["hotspot"] * pointer_scale)
 
 func use(pointer: Pointers) -> void:
 	Input.set_default_cursor_shape(CURSORS[pointer]["shape"])
@@ -64,7 +66,7 @@ func use(pointer: Pointers) -> void:
 func reset() -> void:
 	use(Pointers.CURSOR_ARROW)
 
-func _scaled(texture: Texture2D) -> ImageTexture:
+func _scaled(texture: Texture2D, optional_scale: int = CURSOR_SCALE) -> ImageTexture:
 	var image := texture.get_image()
-	image.resize(image.get_width() * CURSOR_SCALE, image.get_height() * CURSOR_SCALE, Image.INTERPOLATE_NEAREST)
+	image.resize(image.get_width() * optional_scale, image.get_height() * optional_scale, Image.INTERPOLATE_NEAREST)
 	return ImageTexture.create_from_image(image)
