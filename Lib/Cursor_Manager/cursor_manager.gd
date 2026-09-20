@@ -12,6 +12,7 @@ enum Pointers {
 	CURSOR_POINT, 
 	CURSOR_INFO, 
 	CURSOR_QUESTION,
+	CURSOR_TEXT,
 	CURSOR_GO_TO,
 	CURSOR_GO_BACK,
 	CURSOR_YIP_TO,
@@ -44,6 +45,11 @@ const CURSORS := {
 		"texture": preload("res://UI/Textures/MousePointers6.png"),
 		"shape": Input.CURSOR_DRAG,
 		"hotspot": Vector2(8, 5),
+	},
+	Pointers.CURSOR_TEXT: {
+		"texture": preload("res://UI/Textures/MousePointers10.png"),
+		"shape": Input.CURSOR_IBEAM,
+		"hotspot": Vector2(7, 13),
 	},
 }
 
