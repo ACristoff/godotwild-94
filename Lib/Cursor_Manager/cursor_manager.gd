@@ -46,6 +46,11 @@ const CURSORS := {
 		"shape": Input.CURSOR_DRAG,
 		"hotspot": Vector2(8, 5),
 	},
+	Pointers.CURSOR_POINT: {
+		"texture": preload("res://UI/Textures/MousePointers7.png"),
+		"shape": Input.CURSOR_CROSS,
+		"hotspot": Vector2(7, 1),
+	},
 	Pointers.CURSOR_TEXT: {
 		"texture": preload("res://UI/Textures/MousePointers10.png"),
 		"shape": Input.CURSOR_IBEAM,
@@ -59,6 +64,11 @@ func _ready() -> void:
 		var entry: Dictionary = CURSORS[pointer]
 		var pointer_scale: int = entry.get("scale", CURSOR_SCALE)
 		Input.set_custom_mouse_cursor(_scaled(entry["texture"], pointer_scale), entry["shape"], entry["hotspot"] * pointer_scale)
+
+func shape_for(pointer: Pointers) -> int:
+	if not CURSORS.has(pointer):
+		return Input.CURSOR_ARROW
+	return CURSORS[pointer]["shape"]
 
 func use(pointer: Pointers) -> void:
 	Input.set_default_cursor_shape(CURSORS[pointer]["shape"])
