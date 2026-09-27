@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dcwhd4jcpjqw0" path="res://UI/Scenes/tutorial_box13.tscn" id="20_v158w"]
 [ext_resource type="PackedScene" uid="uid://djgyg3bx5cyuc" path="res://UI/Scenes/tutorial_box14.tscn" id="21_38chp"]
 [ext_resource type="Texture2D" uid="uid://duipa70vx5fn3" path="res://UI/Menus/Main_Menu/Textures/SettingsButt.png" id="22_rffto"]
+[ext_resource type="PackedScene" uid="uid://b0u4e8y8nqwnj" path="res://UI/Scenes/days_hud.tscn" id="23_piivb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wkn3d"]
 height = 46.0
@@ -536,6 +537,20 @@ patch_margin_bottom = 10
 position = Vector2(15, 15)
 texture = ExtResource("22_rffto")
 
+[node name="CanvasLayer2" parent="." unique_id=921252253 instance=ExtResource("23_piivb")]
+
+[node name="MarginContainer" parent="CanvasLayer2" index="0" unique_id=312975365]
+theme_override_constants/margin_top = 13
+
+[node name="DaysLabel" parent="CanvasLayer2/MarginContainer" index="0" unique_id=780933771]
+text = "Day 10"
+
+[node name="WinsLabel" parent="CanvasLayer2/MarginContainer2/HBoxContainer" parent_id_path=PackedInt32Array(921252253, 1899293101) index="1" unique_id=455911131]
+text = "0"
+
+[node name="LivesLabel" parent="CanvasLayer2/MarginContainer2/HBoxContainer" parent_id_path=PackedInt32Array(921252253, 1899293101) index="3" unique_id=1382897421]
+text = "5"
+
 [connection signal="area_entered" from="BreedingBarnGrass/BreedFarmSlot" to="Areas" method="_on_breed_farm_slot_area_entered"]
 [connection signal="area_exited" from="BreedingBarnGrass/BreedFarmSlot" to="Areas" method="_on_breed_farm_slot_area_exited"]
 [connection signal="input_event" from="LabNew/Area2D" to="." method="_on_lab_area_2d_input_event"]
@@ -562,3 +577,4 @@ texture = ExtResource("22_rffto")
 [editable path="SecondDay"]
 [editable path="BuyFirstYip"]
 [editable path="TeamSlots"]
+[editable path="CanvasLayer2"]
