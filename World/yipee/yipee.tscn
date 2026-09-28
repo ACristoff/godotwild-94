@@ -23,6 +23,7 @@
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="14_8rhy8"]
 [ext_resource type="Texture2D" uid="uid://474plejs27tj" path="res://UI/Textures/babyicon.png" id="21_k37iv"]
 [ext_resource type="PackedScene" uid="uid://borkww0vw6ef5" path="res://UI/Scenes/sleepy_particles.tscn" id="23_pqr1k"]
+[ext_resource type="Script" uid="uid://x20qfvx3d5sl" path="res://World/yipee/components/idle_state.gd" id="24_de0dm"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_khqkn"]
 viewport_path = NodePath("AnimScaleHandle/BodyParts")
@@ -1324,6 +1325,11 @@ visible = false
 
 [node name="Node2D" parent="Zs" unique_id=1250008839 instance=ExtResource("23_pqr1k")]
 position = Vector2(57, -38)
+
+[node name="IdleState" type="Node" parent="." unique_id=723277158]
+script = ExtResource("24_de0dm")
+
+[node name="IdleTimer" type="Timer" parent="IdleState" unique_id=413302589]
 
 [connection signal="animation_finished" from="ActionsAnim" to="." method="_on_actions_anim_animation_finished"]
 [connection signal="animation_finished" from="ThrowPunchAnim" to="." method="_on_throw_punch_anim_animation_finished"]
