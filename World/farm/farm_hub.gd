@@ -101,15 +101,15 @@ func _input(event : InputEvent) -> void:
 				dragged_yip = focused_yip
 				drag_offset = dragged_yip.global_position - get_global_mouse_position()
 				tooltip.request_hide()
+				dragged_yip.idle_state.stop()
 				dragged_yip.animation_player.play(&"Grabbed")
 				_refresh_cursor()
 				print("Picked up a yip", dragged_yip)
-				dragged_yip.animation_player.play(&"Grabbed")
 		else:
 			if dragged_yip:
 				_drop_yip(dragged_yip)
 				_try_breed()
-				dragged_yip.animation_player.play(&"RESET")
+				dragged_yip.idle_state.enter_mood(IdleState.Mood.IDLE, 20.0)
 				dragged_yip = null
 				_refresh_cursor()
 
@@ -255,8 +255,7 @@ func spawn_yip(data: YipeeData, index : int) -> Yipee:
 	# If it already had one then place it there
 	else:
 		yip.global_position = yip.data.farm_last_known_position
-		yip.animation_player.play(&"IdleNormal")
-
+		yip.idle_state.start()
 	# It can be dragged and dropped
 	yip.data.can_be_grabbed = true
 
@@ -472,9 +471,9 @@ func wire_yip(yip: Yipee) -> void:
 	yip.animation_player.animation_finished.connect(_on_yip_animation_finished.bind(yip))
 
 func _on_yip_animation_finished(anim_name: StringName, yip: Yipee) -> void:
-	if anim_name == &"Spawn" or anim_name == &"RESET":
+	if anim_name == &"Spawn":
 		print(yip, " finished spawning")
-		yip.animation_player.play(&"IdleNormal")
+		yip.idle_state.start()
 
 func _on_any_area_entered(entered_area: Area2D, source_area: Area2D) -> void:
 	print(source_area.name, " was entered by ", entered_area.name)

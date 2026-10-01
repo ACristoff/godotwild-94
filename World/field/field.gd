@@ -293,8 +293,8 @@ func spawn_yip(data: YipeeData, index : int) -> Yipee:
 	new_yip.cost_of_yip.visible = true
 	new_yip.cost.text = "$" + str(yip_costs[data.tier])
 	
-	# So they do the idle animation
-	new_yip.animation_player.play(&"IdleNormal")
+	#random idle animation
+	new_yip.idle_state.start()
 	
 	return new_yip
 	

@@ -20,6 +20,7 @@ const BABY_HEAD = preload("uid://c1edmyu2tbx2y")
 @onready var status: StatusEffects = $StatusEffects
 @onready var body: YipBody = $AnimScaleHandle/BodyParts
 @onready var visual: Node2D = $AnimScaleHandle/VisualYip
+@onready var idle_state: IdleState = $IdleState
 
 @onready var health_UI: HealthBar = $HealthBar
 @onready var hover_area: Area2D = $HoverArea
@@ -43,6 +44,7 @@ func _ready() -> void:
 	health_UI.populate_yip_stats(data)
 	status.effects_changed.connect(health_UI.update_ailments)
 	attack.progress_changed.connect(_on_cooldown_changed)
+	idle_state.setup(animation_player)
 	if is_baby():
 		$AnimScaleHandle/VisualYip/Babyicon.show()
 		$AnimScaleHandle/BodyParts/Eyes.texture = null
@@ -62,7 +64,8 @@ func is_baby():
 
 func resize_yip_to_baby():
 	if data.age < 1:
-		visual.scale = Vector2(2,2)
+		#scale = Vector2(2,2)
+		scale = Vector2(2.0 / 3.0, 2.0 / 3.0)
 		#visual.position.y = -33
 
 func in_battle_dance():

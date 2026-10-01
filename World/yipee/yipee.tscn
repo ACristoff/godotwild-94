@@ -725,6 +725,7 @@ tracks/19/keys = {
 [sub_resource type="Animation" id="Animation_wg8yy"]
 resource_name = "Sleep"
 length = 10.0
+loop_mode = 1
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -758,6 +759,18 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimScaleHandle/VisualYip/SleepFace:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.010000005),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -1330,12 +1343,14 @@ position = Vector2(57, -38)
 script = ExtResource("24_de0dm")
 
 [node name="IdleTimer" type="Timer" parent="IdleState" unique_id=413302589]
+one_shot = true
 
 [connection signal="animation_finished" from="ActionsAnim" to="." method="_on_actions_anim_animation_finished"]
 [connection signal="animation_finished" from="ThrowPunchAnim" to="." method="_on_throw_punch_anim_animation_finished"]
 [connection signal="animation_finished" from="HitAnim" to="." method="_on_hit_anim_animation_finished"]
 [connection signal="mouse_entered" from="HoverArea" to="." method="_on_hover_area_mouse_entered"]
 [connection signal="mouse_exited" from="HoverArea" to="." method="_on_hover_area_mouse_exited"]
+[connection signal="timeout" from="IdleState/IdleTimer" to="IdleState" method="_on_idle_timer_timeout"]
 
 [editable path="AnimScaleHandle/BodyParts"]
 [editable path="HealthBar"]
