@@ -40,11 +40,17 @@ func enter_mood(mood: Mood, duration: float = -1.0):
 	if anim_duration < 0:
 		var add_to = randf_range(0, variance)
 		anim_duration = MOODS[mood]["duration"] + add_to
-	
+	_play_mood(mood)
+	timer.start(anim_duration)
+
+func _play_mood(mood: Mood):
 	yip_animation_player.play("RESET")
 	yip_animation_player.advance(0)
 	yip_animation_player.play(MOODS[mood]["animation_name"])
-	timer.start(anim_duration)
+
+func hold_mood(mood: Mood):
+	stop()
+	_play_mood(mood)
 
 func _on_idle_timer_timeout():
 	start()

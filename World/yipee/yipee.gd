@@ -60,11 +60,9 @@ func is_baby():
 	else:
 		$AnimScaleHandle/VisualYip/Babyicon.hide()
 		return false
-		#$AnimScaleHandle/VisualYip/Babyicon.hide()
 
 func resize_yip_to_baby():
 	if data.age < 1:
-		#scale = Vector2(2,2)
 		scale = Vector2(2.0 / 3.0, 2.0 / 3.0)
 		#visual.position.y = -33
 

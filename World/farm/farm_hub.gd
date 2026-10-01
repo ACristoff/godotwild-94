@@ -109,14 +109,16 @@ func _input(event : InputEvent) -> void:
 			if dragged_yip:
 				_drop_yip(dragged_yip)
 				_try_breed()
-				dragged_yip.idle_state.enter_mood(IdleState.Mood.IDLE, 20.0)
+				if dragged_yip.data.yip_party_slot != 0:
+					dragged_yip.idle_state.hold_mood(IdleState.Mood.IDLE)
+				else:
+					dragged_yip.idle_state.enter_mood(IdleState.Mood.IDLE, 20.0)
 				dragged_yip = null
 				_refresh_cursor()
 
 	elif event is InputEventMouseMotion:
 		if dragged_yip:
 			dragged_yip.global_position = get_global_mouse_position() + drag_offset
-
 #endregion
 
 #region Farm Hub Functions
@@ -133,6 +135,12 @@ func _grazing_shapes() -> Array[CollisionShape2D]:
 			if child is CollisionShape2D and child.shape is RectangleShape2D:
 				shapes.append(child)
 	return shapes
+
+func _start_farm_mood(yip: Yipee) -> void:
+	if yip.data.yip_party_slot != 0:
+		yip.idle_state.hold_mood(IdleState.Mood.IDLE)
+	else:
+		yip.idle_state.start()
 
 ## Picks a random spot for a yip to spawn in, tries to space yips away from eachother, not guranteed.
 func get_random_point_in_area(count : int) -> Array[Vector2]:
@@ -255,7 +263,7 @@ func spawn_yip(data: YipeeData, index : int) -> Yipee:
 	# If it already had one then place it there
 	else:
 		yip.global_position = yip.data.farm_last_known_position
-		yip.idle_state.start()
+		_start_farm_mood(yip)
 	# It can be dragged and dropped
 	yip.data.can_be_grabbed = true
 
@@ -367,7 +375,7 @@ func _relocate_displaced(displaced_data: YipeeData, displaced_node: Yipee, vacat
 		yip_farm_party_position[vacated_party_slot] = displaced_node
 		if displaced_node != null:
 			displaced_node.global_position = team_slots[vacated_party_slot - 1].global_position
-
+	
 	elif vacated_barn_slot != 0:
 		SignalBus.yip_breed_barn[vacated_barn_slot] = displaced_data
 		displaced_data.yip_barn_slot = vacated_barn_slot
@@ -375,12 +383,15 @@ func _relocate_displaced(displaced_data: YipeeData, displaced_node: Yipee, vacat
 		yip_farm_barn_position[vacated_barn_slot] = displaced_node
 		if displaced_node != null:
 			displaced_node.global_position = barn_slots[vacated_barn_slot - 1].global_position
-
+	
 	else:
 		displaced_data.yip_party_slot = 0
 		displaced_data.yip_barn_slot = 0
 		if displaced_node != null:
 			displaced_node.global_position = displaced_node.data.farm_last_known_position
+	
+	if displaced_node != null:
+		_start_farm_mood(displaced_node)
 
 func _barn_is_full() -> bool:
 	return yip_farm_barn_position[1] != null and yip_farm_barn_position[2] != null
@@ -473,7 +484,7 @@ func wire_yip(yip: Yipee) -> void:
 func _on_yip_animation_finished(anim_name: StringName, yip: Yipee) -> void:
 	if anim_name == &"Spawn":
 		print(yip, " finished spawning")
-		yip.idle_state.start()
+		_start_farm_mood(yip)
 
 func _on_any_area_entered(entered_area: Area2D, source_area: Area2D) -> void:
 	print(source_area.name, " was entered by ", entered_area.name)
