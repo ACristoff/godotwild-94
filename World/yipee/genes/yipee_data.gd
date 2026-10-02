@@ -17,21 +17,25 @@ const YIP_TABLE := {
 		"HP": [10, 15],
 		"ATK": [1, 3],
 		"COOLDOWN": [7.0, 8.0],
+		"CRIT": [2,4]
 	},
 	YipTier.UNCOMMON: {
 		"HP": [16, 21],
 		"ATK": [4, 6],
 		"COOLDOWN": [6.5, 6.9],
+		"CRIT": [3,5]
 	},
 	YipTier.RARE: {
 		"HP": [22, 30],
 		"ATK": [7, 9],
 		"COOLDOWN": [5, 6.4],
+		"CRIT": [4,6]
 	},
 	YipTier.ULTRARARE: {
 		"HP": [31, 42],
 		"ATK": [10, 14],
 		"COOLDOWN": [4, 4.9],
+		"CRIT": [5,7]
 	},
 }
 
@@ -116,6 +120,7 @@ static func generate_yip(chosen_tier: YipTier) -> YipeeData:
 	new_yip.base_attack = randi_range(YIP_TABLE[chosen_tier]["ATK"][0], YIP_TABLE[chosen_tier]["ATK"][1])
 	new_yip.base_health = randi_range(YIP_TABLE[chosen_tier]["HP"][0], YIP_TABLE[chosen_tier]["HP"][1])
 	new_yip.base_cooldown = randf_range(YIP_TABLE[chosen_tier]["COOLDOWN"][0], YIP_TABLE[chosen_tier]["COOLDOWN"][1])
+	new_yip.base_crit_chance = randi_range(YIP_TABLE[chosen_tier]["CRIT"][0], YIP_TABLE[chosen_tier]["CRIT"][1])
 	new_yip.age = randi_range(1,20)
 	var new_helix: Helix = Helix.generate_random(chosen_tier)
 	new_yip.helix = new_helix
