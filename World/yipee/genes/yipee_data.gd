@@ -133,6 +133,7 @@ static func breed(parent_a: YipeeData, parent_b: YipeeData) -> YipeeData:
 	child.tier = maxi(parent_a.tier, parent_b.tier)
 	child.base_health = roundi((parent_a.base_health + parent_b.base_health) / 2.0)
 	child.base_attack = roundi((parent_a.base_attack + parent_b.base_attack) / 2.0)
+	child.base_crit_chance = roundi((parent_a.base_crit_chance + parent_b.base_crit_chance) / 2.0)
 	child.base_cooldown = (parent_a.base_cooldown + parent_b.base_cooldown) / 2.0
 	child.age = 0
 	child.helix = Helix.combine(parent_a.helix, parent_b.helix)
