@@ -37,7 +37,7 @@ signal yip_unhovered
 
 func _ready() -> void:
 	health.setup(data.get_health())
-	attack.setup(data.get_cooldown(), data.get_attack())
+	attack.setup(data.get_cooldown(), data.get_attack(), data.get_crit_chance())
 	ability.setup(data.helix)
 	body.apply_helix(data.helix)
 	status.setup(health)

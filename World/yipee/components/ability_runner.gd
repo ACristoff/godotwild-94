@@ -63,6 +63,13 @@ func on_hit(damage_data: DamageInfo, battle) -> void:
 		if strand:
 			strand.on_hit(damage_data, battle)
 
+func on_crit(damage_data: DamageInfo, battle) -> void:
+	if helix == null:
+		return
+	for strand: Strand in helix.strands:
+		if strand:
+			strand.on_crit(damage_data, battle)
+
 func on_take_damage(damage_data: DamageInfo, battle) -> void:
 	if helix == null:
 		return

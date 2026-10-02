@@ -43,6 +43,7 @@ const YIP_TABLE := {
 @export var base_health: int = 40
 @export var base_attack: int = 1
 @export var base_cooldown: float = 6
+@export var base_crit_chance: int = 3 #percent chance of a critical hit
 
 @export var helix: Helix
 
@@ -87,6 +88,9 @@ func get_attack() -> float:
 
 func get_cooldown() -> float:
 	return _derived(base_cooldown, BodyMap.Stat.COOLDOWN)
+
+func get_crit_chance() -> float:
+	return _derived(base_crit_chance, BodyMap.Stat.CRITICAL)
 
 func _derived(base: float, stat: BodyMap.Stat) -> float:
 	var flat_sum := 0.0

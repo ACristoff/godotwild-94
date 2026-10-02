@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LeftAllele" format=3 uid="uid://wtpbq3y5g0oe"]
+
+[ext_resource type="Script" uid="uid://mc42eixh1d8t" path="res://World/yipee/genes/allele/leftallele/left_allele.gd" id="1_jfvln"]
+
+[resource]
+script = ExtResource("1_jfvln")
+slot = 3
+allele_name = "Keen Eye"
+tooltip = "+{critical}% Crit Chance"
+flat_mods = Dictionary[int, int]({
+5: 5
+})
+metadata/_custom_type_script = "uid://cjd0l70h5j8jh"

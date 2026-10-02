@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://cqqsfvpvs85mx" path="res://World/yipee/genes/allele/leftallele/resources/splashy.tres" id="5_14g5n"]
 [ext_resource type="PackedScene" uid="uid://6e3soqgj4fc6" path="res://UI/Scenes/battle_clash_office_worker.tscn" id="5_e0r35"]
 [ext_resource type="Script" uid="uid://d2tgf0trp406f" path="res://World/battle/levels/level.gd" id="6_0pf7v"]
+[ext_resource type="Resource" uid="uid://wtpbq3y5g0oe" path="res://World/yipee/genes/allele/leftallele/resources/keen_eye.tres" id="6_e0r35"]
 
 [sub_resource type="Resource" id="Resource_80qf1"]
 script = ExtResource("3_64tnn")
@@ -16,9 +17,15 @@ left = ExtResource("4_e0r35")
 right = ExtResource("5_0pf7v")
 metadata/_custom_type_script = "uid://cra0emwdv78rw"
 
+[sub_resource type="Resource" id="Resource_0pf7v"]
+script = ExtResource("3_64tnn")
+slot = 3
+left = ExtResource("6_e0r35")
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
 [sub_resource type="Resource" id="Resource_csh63"]
 script = ExtResource("2_14g5n")
-strands = Array[ExtResource("3_64tnn")]([SubResource("Resource_80qf1")])
+strands = Array[ExtResource("3_64tnn")]([SubResource("Resource_80qf1"), SubResource("Resource_0pf7v")])
 metadata/_custom_type_script = "uid://ckc2iq0roikyx"
 
 [sub_resource type="Resource" id="Resource_c1t0w"]

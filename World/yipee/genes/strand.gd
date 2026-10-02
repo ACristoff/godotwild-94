@@ -62,6 +62,12 @@ func on_hit(_damage_data: DamageInfo, _battle) -> void:
 	if right:
 		right.on_hit(_damage_data, _battle)
 
+func on_crit(damage_data: DamageInfo, battle) -> void:
+	if left:
+		left.on_crit(damage_data, battle)
+	if right:
+		right.on_crit(damage_data, battle)
+
 func on_take_damage(_damage_data: DamageInfo, _battle) -> void:
 	if left:
 		left.on_take_damage(_damage_data, _battle)

@@ -38,16 +38,16 @@ func update_cooldown(current):
 	var converted = int(current * 34)
 	cooldown_bar.value = converted
 
-func health_change(change : int, type : String):
+func health_change(change : int, type : String, is_crit : bool = false):
 	var amount_of_change = current_health - change
 	if amount_of_change == 0:
 		return
 	if amount_of_change < 0:
 		amount_of_change *= -1
-		spawn_damage_indicator(change, type)
+		spawn_damage_indicator(change, type, is_crit)
 		current_health += amount_of_change
 		return
-	spawn_damage_indicator(change, type)
+	spawn_damage_indicator(change, type, is_crit)
 	#print("YOOOOOOOO  ", amount_of_change)
 	current_health -= change
 	
@@ -72,11 +72,11 @@ func update_UI():
 		shield.show()
 	shield_text.text = str(current_shield)
 
-func spawn_damage_indicator(value, type):
+func spawn_damage_indicator(value, type, is_crit = false):
 	var dmg_indicator = DAMAGE_INDICATOR.instantiate()
 	get_tree().get_root().add_child(dmg_indicator)
 	dmg_indicator.global_position = damage_indicator_spawn.global_position
-	dmg_indicator.popup(value, type)
+	dmg_indicator.popup(value, type, is_crit)
 
 func populate_yip_stats(data: YipeeData) -> void:
 	var pips := {}

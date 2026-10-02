@@ -6,13 +6,15 @@ signal progress_changed(fraction: float)
 
 var cooldown: float = 2.0
 var power: float = 0.0
+var crit_chance: float = 0.0
 var _elapsed: float = 0.0
 
 
 
-func setup(attack_cooldown: float, attack_power: float) -> void:
+func setup(attack_cooldown: float, attack_power: float, attack_crit_chance: float = 0.0) -> void:
 	cooldown = attack_cooldown
 	power = attack_power
+	crit_chance = attack_crit_chance
 	_elapsed = 0.0
 
 func tick(delta) -> void:
@@ -36,6 +38,7 @@ func make_damage() -> DamageInfo:
 	var damage := DamageInfo.new()
 	damage.amount = power
 	damage.source = get_parent()
+	damage.crit_chance = crit_chance
 	AudMan.play_sfx_wav(HITMARKER, -16.0, false)
 	$"../ActionsAnim".play("Attack")
 	$"../ThrowPunchAnim".play("Punch")

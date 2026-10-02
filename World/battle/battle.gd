@@ -150,15 +150,30 @@ func _on_attack_ready(damage: DamageInfo, team: Team) -> void:
 	#prints(damage, damage.amount, damage.target, team, target)
 	var attacker := damage.source as Yipee
 	damage.target = target
-	print("%s hit %s for %d → %d/%d" % [
-		damage.source.data.yipee_name, target.data.yipee_name, damage.amount,
-		target.health.current_health, target.health.max_health])
 	
 	# attacker's strands mutate the OUTGOING hit (FireAllele stamps FIRE here)
 	attacker.ability.on_attack(damage, self)
+	var is_crit := roll_crit(damage)
+	print("%s hit %s for %d%s → %d/%d" % [
+		damage.source.data.yipee_name, target.data.yipee_name, damage.amount,
+		" (CRIT)" if is_crit else "",
+		target.health.current_health, target.health.max_health])
 	apply_damage(target, damage)
 	# post-hit reactions (splash, lifesteal…) fan out AFTER the hit lands
 	attacker.ability.on_hit(damage, self)
+	if is_crit:
+		#TODO we need a crit sound effect
+		#AudMan.play_sfx_wav()
+		attacker.ability.on_crit(damage, self)
+
+func roll_crit(damage: DamageInfo) -> bool:
+	if damage.amount <= 0.0 or damage.type == DamageInfo.Type.HEAL:
+		return false
+	if randf() * 100.0 >= damage.crit_chance:
+		return false
+	damage.amount *= damage.crit_multiplier
+	damage.tags.append(DamageInfo.CRIT_TAG)
+	return true
 
 func apply_damage(target: Yipee, damage: DamageInfo) -> void:
 	target.ability.on_take_damage(damage, self)
@@ -166,7 +181,7 @@ func apply_damage(target: Yipee, damage: DamageInfo) -> void:
 	target.health.take_damage(damage)
 	var hp_lost := hp_before - target.health.current_health
 	target.health_UI.current_shield = target.health.shield
-	target.health_UI.health_change(hp_lost, damage_type_name(damage))
+	target.health_UI.health_change(hp_lost, damage_type_name(damage), damage.tags.has(DamageInfo.CRIT_TAG))
 
 func damage_type_name(damage: DamageInfo) -> String:
 	return DamageInfo.Type.keys()[damage.type]
