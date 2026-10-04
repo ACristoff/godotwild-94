@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://b0u4e8y8nqwnj"]
+
+[ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="1_olx6m"]
+[ext_resource type="Texture2D" uid="uid://bjb6p58tl3xk" path="res://UI/Textures/hudicon1.png" id="2_ks333"]
+[ext_resource type="Texture2D" uid="uid://bxagmaas7d04y" path="res://UI/Textures/hudicon2.png" id="3_tx43c"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=921252253]
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=312975365]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 14.0
+grow_horizontal = 2
+
+[node name="DaysLabel" type="Label" parent="MarginContainer" unique_id=780933771]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
+theme_override_constants/outline_size = 27
+theme_override_fonts/font = ExtResource("1_olx6m")
+theme_override_font_sizes/font_size = 32
+text = "20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1464925174]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 47
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2" unique_id=1899293101]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="WinsTexture" type="TextureRect" parent="MarginContainer2/HBoxContainer" unique_id=1775569744]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_ks333")
+expand_mode = 2
+
+[node name="WinsLabel" type="Label" parent="MarginContainer2/HBoxContainer" unique_id=455911131]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.7647059, 0.13333334, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("1_olx6m")
+theme_override_font_sizes/font_size = 50
+text = "20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LivesTexture" type="TextureRect" parent="MarginContainer2/HBoxContainer" unique_id=816932330]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_tx43c")
+expand_mode = 2
+
+[node name="LivesLabel" type="Label" parent="MarginContainer2/HBoxContainer" unique_id=1382897421]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.9843137, 0.4392157, 0.4392157, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("1_olx6m")
+theme_override_font_sizes/font_size = 50
+text = "20"
+horizontal_alignment = 1
+vertical_alignment = 1

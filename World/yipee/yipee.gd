@@ -3,7 +3,9 @@ extends Node2D
 
 const MAIN_CHARACTER_FOOTSTEP_GRASS_STEP_3 = preload("uid://bkwvuoumm61h3")
 const YIP_BUFF = preload("uid://nkypm8ojycqe")
+const BABY_HEAD = preload("uid://c1edmyu2tbx2y")
 
+@export var baby_age = 1
 
 ##Base Yipee class.
 @onready var cd_bar: Control = $HealthBar/NinePatchRect/CDBar
@@ -18,6 +20,7 @@ const YIP_BUFF = preload("uid://nkypm8ojycqe")
 @onready var status: StatusEffects = $StatusEffects
 @onready var body: YipBody = $AnimScaleHandle/BodyParts
 @onready var visual: Node2D = $AnimScaleHandle/VisualYip
+@onready var idle_state: IdleState = $IdleState
 
 @onready var health_UI: HealthBar = $HealthBar
 @onready var hover_area: Area2D = $HoverArea
@@ -34,13 +37,34 @@ signal yip_unhovered
 
 func _ready() -> void:
 	health.setup(data.get_health())
-	attack.setup(data.get_cooldown(), data.get_attack())
+	attack.setup(data.get_cooldown(), data.get_attack(), data.get_crit_chance())
 	ability.setup(data.helix)
 	body.apply_helix(data.helix)
 	status.setup(health)
 	health_UI.populate_yip_stats(data)
 	status.effects_changed.connect(health_UI.update_ailments)
 	attack.progress_changed.connect(_on_cooldown_changed)
+	idle_state.setup(animation_player)
+	if is_baby():
+		$AnimScaleHandle/VisualYip/Babyicon.show()
+		$AnimScaleHandle/BodyParts/Eyes.texture = null
+		$AnimScaleHandle/BodyParts/Mouth.texture = null
+		$AnimScaleHandle/BodyParts/Ears.texture = null
+		$AnimScaleHandle/BodyParts/Misc.texture = null
+		$AnimScaleHandle/BodyParts/Head.texture = BABY_HEAD
+		resize_yip_to_baby()
+
+func is_baby():
+	if data.age < baby_age:
+		return true
+	else:
+		$AnimScaleHandle/VisualYip/Babyicon.hide()
+		return false
+
+func resize_yip_to_baby():
+	if data.age < 1:
+		scale = Vector2(2.0 / 3.0, 2.0 / 3.0)
+		#visual.position.y = -33
 
 func in_battle_dance():
 	$ActionsAnim.play("IdleBattle")

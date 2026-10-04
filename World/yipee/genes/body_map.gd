@@ -11,7 +11,7 @@ enum Slot {
 	NONE
 }
 
-enum Stat { HEALTH, ATTACK, COOLDOWN, SPECIALIZATION, BREEDING }
+enum Stat { HEALTH, ATTACK, COOLDOWN, SPECIALIZATION, BREEDING, CRITICAL }
 
 const STAT_SLOTS := {
 	Stat.HEALTH: [Slot.HEALTH, Slot.HEALTH_AUGMENT],
@@ -19,6 +19,7 @@ const STAT_SLOTS := {
 	Stat.COOLDOWN: [Slot.COOLDOWN],
 	Stat.SPECIALIZATION: [Slot.SPECIALIZATION],
 	Stat.BREEDING: [Slot.BREED_AUGMENT],
+	Stat.CRITICAL: []
 }
 
 #This is for the right alleles

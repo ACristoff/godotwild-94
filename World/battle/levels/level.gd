@@ -4,6 +4,7 @@ extends Resource
 
 @export_group("Team Data")
 @export var enemy_team: Array[YipeeData]
+@export var debug_player_team_data: Array[YipeeData]
 
 @export_group("Intro")
 @export var intro_animation: PackedScene

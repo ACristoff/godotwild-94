@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://borkww0vw6ef5"]
+
+[ext_resource type="Texture2D" uid="uid://c1vqauqixueme" path="res://UI/Textures/SleepyZ.png" id="1_1hben"]
+
+[sub_resource type="Gradient" id="Gradient_1hben"]
+offsets = PackedFloat32Array(0, 0.7745098, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1fgqp"]
+gradient = SubResource("Gradient_1hben")
+
+[sub_resource type="Curve" id="Curve_068km"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.32795697, -1), 0.0, 0.0, 0, 0, Vector2(0.4032258, 1), 0.0, 0.0, 0, 0, Vector2(0.73655915, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_0jiml"]
+curve = SubResource("Curve_068km")
+
+[sub_resource type="Curve" id="Curve_u8je3"]
+_data = [Vector2(0, 0.5525728), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1obaf"]
+curve = SubResource("Curve_u8je3")
+
+[sub_resource type="Curve" id="Curve_exr6r"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.18817204, -0.14541388), 0.0, 0.0, 0, 0, Vector2(0.29032257, 1), 0.0, 0.0, 0, 0, Vector2(0.5376344, 0.49888146), 0.0, 0.0, 0, 0, Vector2(0.6451613, 0.89261746), 0.0, 0.0, 0, 0, Vector2(0.80645156, 0.5167785), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="CurveTexture" id="CurveTexture_ru0gi"]
+curve = SubResource("Curve_exr6r")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o3d8p"]
+particle_flag_disable_z = true
+orbit_velocity_min = 0.3000001
+orbit_velocity_max = 0.3000001
+orbit_velocity_curve = SubResource("CurveTexture_0jiml")
+gravity = Vector3(40, -40, 0)
+tangential_accel_curve = SubResource("CurveTexture_ru0gi")
+scale_min = 3.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_1obaf")
+color_ramp = SubResource("GradientTexture1D_1fgqp")
+
+[node name="Node2D" type="Node2D" unique_id=1250008839]
+
+[node name="SleepyZ" type="Sprite2D" parent="." unique_id=369985579]
+visible = false
+texture_filter = 3
+scale = Vector2(3, 3)
+texture = ExtResource("1_1hben")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=66290123]
+texture_filter = 3
+amount = 3
+texture = ExtResource("1_1hben")
+lifetime = 1.5
+speed_scale = 0.5
+process_material = SubResource("ParticleProcessMaterial_o3d8p")

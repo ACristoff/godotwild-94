@@ -29,6 +29,7 @@ buses/default_bus_layout="uid://bc5yyy02quh5r"
 SignalBus="*res://Lib/SignalBus/signal_bus.tscn"
 AudMan="*res://Lib/Audio_Manager/audio_manager.tscn"
 Dialogic="*uid://ds2q0uclmolvu"
+CursorManager="*uid://dcf7acgq0xq84"
 
 [debug]
 

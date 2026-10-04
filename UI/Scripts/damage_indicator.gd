@@ -19,11 +19,15 @@ var current_size
 func _ready() -> void:
 	color = text.modulate
 	color.a = 0
+
 func move_along_curve(t):
 	handle.global_position = quadratic_bezier(start, control, end, t)
+
 func quadratic_bezier(a, b, c, t):
 	return (1 - t) * (1 - t) * a + 2 * (1 - t) * t * b + t * t * c
-func popup(damage = 0, type = "PHYSICAL"):
+
+func popup(damage = 0, type = "PHYSICAL", is_crit = false):
+	var size_multiplier = 2.0 if is_crit else 1.0
 	start = handle.global_position
 	#handle.scale = Vector2.ZERO
 	#text.add_theme_font_size_override("font_size", 6)
@@ -58,7 +62,7 @@ func popup(damage = 0, type = "PHYSICAL"):
 	var font_sizes = [48, 96, 192, 384]
 	var t = clampf(float(damage) / 1000.0, 0.0, 1.0)
 	var index = mini(int(t * font_sizes.size()), font_sizes.size() - 1)
-	var new_size = font_sizes[index]
+	var new_size = font_sizes[index] * size_multiplier
 	set_font_size(new_size)
 	#text.add_theme_font_size_override("font_size", 8)
 	text.modulate = Color(1.0, 1.0, 1.0, 1.0)
@@ -73,7 +77,7 @@ func popup(damage = 0, type = "PHYSICAL"):
 	tween.set_parallel(true)
 	#tween.parallel().tween_method(set_font_size, 8.0, 16.0, 0.1)
 	tween.tween_method(move_along_curve, 0.0, 1.0, .8)
-	tween.parallel().tween_method(set_font_size, current_size, 48.0, 0.15)
+	tween.parallel().tween_method(set_font_size, current_size, 48.0 * size_multiplier, 0.15)
 	tween.parallel().tween_property(text, "modulate", color, .3).set_delay(.5)
 	tween.set_parallel(false)
 	tween.tween_property(text, "modulate", color, .3)

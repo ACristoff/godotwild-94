@@ -7,7 +7,7 @@
 script = ExtResource("1_ngv00")
 body_part = ExtResource("1_rfmpq")
 body_target = 4
-buff = 2.0
+buff = 0.2
 slot = 3
 allele_name = "Opposable Thumb"
 rarity = 3

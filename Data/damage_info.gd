@@ -21,6 +21,10 @@ var source: Node2D
 var target: Node2D
 #Any additional tags, types, effects etc.
 var tags: Array[StringName] = []
+const CRIT_TAG := &"crit"
+
+var crit_chance: float = 0.0
+var crit_multiplier: float = 2.0
 
 #This would be for splash damage
 func scaled(factor: float) -> DamageInfo:
@@ -30,4 +34,6 @@ func scaled(factor: float) -> DamageInfo:
 	copy.source = source
 	copy.target = target
 	copy.tags = tags.duplicate()
+	copy.crit_chance = crit_chance
+	copy.crit_multiplier = crit_multiplier
 	return copy

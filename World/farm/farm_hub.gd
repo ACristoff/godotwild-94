@@ -36,6 +36,8 @@ var yip_farm_barn_position : Dictionary[int, Yipee] = {
 
 #endregion
 
+
+
 #region Built in Functions
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -67,7 +69,7 @@ func _ready() -> void:
 		wire_yip(spawn_yip(yip, index))
 		index += 1
 
-	_update_barn_doors()
+	farm_doors.visible = false
 	_try_breed()
 
 	#Tutorials
@@ -97,24 +99,26 @@ func _input(event : InputEvent) -> void:
 			print("Mouse Pressed")
 			if focused_yip:
 				dragged_yip = focused_yip
-				print('Picked up a yip', focused_yip)
-				# Remember offset so the yip doesn't jump so its center snaps to the cursor
 				drag_offset = dragged_yip.global_position - get_global_mouse_position()
 				tooltip.request_hide()
-				print("Picked up a yip", dragged_yip)
+				dragged_yip.idle_state.stop()
 				dragged_yip.animation_player.play(&"Grabbed")
+				_refresh_cursor()
+				print("Picked up a yip", dragged_yip)
 		else:
 			if dragged_yip:
 				_drop_yip(dragged_yip)
-				_update_barn_doors()
 				_try_breed()
-				dragged_yip.animation_player.play(&"RESET")
+				if dragged_yip.data.yip_party_slot != 0:
+					dragged_yip.idle_state.hold_mood(IdleState.Mood.IDLE)
+				else:
+					dragged_yip.idle_state.enter_mood(IdleState.Mood.IDLE, 20.0)
 				dragged_yip = null
+				_refresh_cursor()
 
 	elif event is InputEventMouseMotion:
 		if dragged_yip:
 			dragged_yip.global_position = get_global_mouse_position() + drag_offset
-
 #endregion
 
 #region Farm Hub Functions
@@ -131,6 +135,12 @@ func _grazing_shapes() -> Array[CollisionShape2D]:
 			if child is CollisionShape2D and child.shape is RectangleShape2D:
 				shapes.append(child)
 	return shapes
+
+func _start_farm_mood(yip: Yipee) -> void:
+	if yip.data.yip_party_slot != 0:
+		yip.idle_state.hold_mood(IdleState.Mood.IDLE)
+	else:
+		yip.idle_state.start()
 
 ## Picks a random spot for a yip to spawn in, tries to space yips away from eachother, not guranteed.
 func get_random_point_in_area(count : int) -> Array[Vector2]:
@@ -253,8 +263,7 @@ func spawn_yip(data: YipeeData, index : int) -> Yipee:
 	# If it already had one then place it there
 	else:
 		yip.global_position = yip.data.farm_last_known_position
-		yip.animation_player.play(&"IdleNormal")
-
+		_start_farm_mood(yip)
 	# It can be dragged and dropped
 	yip.data.can_be_grabbed = true
 
@@ -288,6 +297,11 @@ func _drop_yip(yip: Yipee) -> void:
 				landed_slot = slot
 				landed_type = "barn"
 				break
+
+	if landed_slot != null and yip.data.is_baby():
+		#TODO add some kind of error noise here so the player knows it's not a valid thing to do with babies
+		_relocate_displaced(yip.data, yip, yip.data.yip_party_slot, yip.data.yip_barn_slot)
+		return
 
 	# Always clear the yip out of wherever it currently lives,
 	# before placing it anywhere new.
@@ -361,7 +375,7 @@ func _relocate_displaced(displaced_data: YipeeData, displaced_node: Yipee, vacat
 		yip_farm_party_position[vacated_party_slot] = displaced_node
 		if displaced_node != null:
 			displaced_node.global_position = team_slots[vacated_party_slot - 1].global_position
-
+	
 	elif vacated_barn_slot != 0:
 		SignalBus.yip_breed_barn[vacated_barn_slot] = displaced_data
 		displaced_data.yip_barn_slot = vacated_barn_slot
@@ -369,12 +383,15 @@ func _relocate_displaced(displaced_data: YipeeData, displaced_node: Yipee, vacat
 		yip_farm_barn_position[vacated_barn_slot] = displaced_node
 		if displaced_node != null:
 			displaced_node.global_position = barn_slots[vacated_barn_slot - 1].global_position
-
+	
 	else:
 		displaced_data.yip_party_slot = 0
 		displaced_data.yip_barn_slot = 0
 		if displaced_node != null:
 			displaced_node.global_position = displaced_node.data.farm_last_known_position
+	
+	if displaced_node != null:
+		_start_farm_mood(displaced_node)
 
 func _barn_is_full() -> bool:
 	return yip_farm_barn_position[1] != null and yip_farm_barn_position[2] != null
@@ -384,35 +401,39 @@ func _can_breed() -> bool:
 	var parent_b: YipeeData = SignalBus.yip_breed_barn[2]
 	if parent_a == null or parent_b == null:
 		return false
+	if parent_a.is_baby() or parent_b.is_baby():
+		print("you sick fuck that's a child!")
+		return false
 	return not parent_a.bred_today and not parent_b.bred_today
 
-func _update_barn_doors() -> void:
-	farm_doors.visible = _can_breed()
 
 func _try_breed() -> void:
+	if not _can_breed():
+		return
+	
 	var parent_a: YipeeData = SignalBus.yip_breed_barn[1]
 	var parent_b: YipeeData = SignalBus.yip_breed_barn[2]
-	if parent_a == null or parent_b == null:
-		return
-	if parent_a.bred_today or parent_b.bred_today:
-		return
-
 	parent_a.bred_today = true
 	parent_b.bred_today = true
+	
+	farm_doors.visible = true
+	
 	var child := YipeeData.breed(parent_a, parent_b)
 	SignalBus.yip_inventory.append(child)
 	AudMan.play_sfx_wav(BREED_SOUND, 0.0, false)
-
+	
 	var parent_node_a: Yipee = yip_farm_barn_position[1]
 	var parent_node_b: Yipee = yip_farm_barn_position[2]
 	if parent_node_a != null:
 		parent_node_a.visible = false
 	if parent_node_b != null:
 		parent_node_b.visible = false
-
+	
 	await get_tree().create_timer(3.0).timeout
 	if not is_inside_tree():
 		return
+	
+	farm_doors.visible = false
 	
 	if is_instance_valid(parent_node_a):
 		parent_node_a.visible = true
@@ -422,8 +443,6 @@ func _try_breed() -> void:
 	var spawn_points := get_random_point_in_area(1)
 	child.farm_last_known_position = spawn_points[0]
 	wire_yip(spawn_yip(child, 0))
-	_update_barn_doors()
-
 # TeamSlot1 (front of the farm row) is the front of the battle formation, which
 # battle reads as party slot 5. Maps a visual TeamSlot number <-> party slot key.
 # Symmetric (6 - n is its own inverse), so it works for both reads and writes.
@@ -463,9 +482,9 @@ func wire_yip(yip: Yipee) -> void:
 	yip.animation_player.animation_finished.connect(_on_yip_animation_finished.bind(yip))
 
 func _on_yip_animation_finished(anim_name: StringName, yip: Yipee) -> void:
-	if anim_name == &"Spawn" or anim_name == &"RESET":
+	if anim_name == &"Spawn":
 		print(yip, " finished spawning")
-		yip.animation_player.play(&"IdleNormal")
+		_start_farm_mood(yip)
 
 func _on_any_area_entered(entered_area: Area2D, source_area: Area2D) -> void:
 	print(source_area.name, " was entered by ", entered_area.name)
@@ -475,20 +494,20 @@ func _on_any_area_exited(entered_area: Area2D, source_area: Area2D) -> void:
 
 func _on_breed_farm_slot_area_entered(entered_area: Area2D, source_area: Area2D) -> void:
 	print(source_area.name, " was entered by ", entered_area.name)
-	if not _barn_is_full():
-		farm_doors.visible = false
 
 func _on_breed_farm_slot_area_exited(entered_area: Area2D, source_area: Area2D) -> void:
 	print(source_area.name, " was exited by ", entered_area.name)
-	_update_barn_doors()
+
 
 func _on_yip_hovered(yip: Yipee) -> void:
 	tooltip.display_beside(yip)
 	focused_yip = yip
+	_refresh_cursor()
 
 func _on_yip_unhovered() -> void:
 	tooltip.request_hide()
 	focused_yip = null
+	_refresh_cursor()
 
 func _on_area_2d_mouse_entered() -> void:
 	$LabDoor2.play("DoorOpen")
@@ -512,3 +531,11 @@ func _on_breeding_tut_next() -> void:
 	$BreedingTut.hide()
 
 #endregion
+
+func _refresh_cursor() -> void:
+	if dragged_yip != null:
+		CursorManager.use(CursorManager.Pointers.CURSOR_GRABBED)
+	elif focused_yip != null:
+		CursorManager.use(CursorManager.Pointers.CURSOR_GRABBABLE)
+	else:
+		CursorManager.reset()

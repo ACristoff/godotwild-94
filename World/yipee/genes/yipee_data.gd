@@ -17,21 +17,25 @@ const YIP_TABLE := {
 		"HP": [10, 15],
 		"ATK": [1, 3],
 		"COOLDOWN": [7.0, 8.0],
+		"CRIT": [2,4]
 	},
 	YipTier.UNCOMMON: {
 		"HP": [16, 21],
 		"ATK": [4, 6],
 		"COOLDOWN": [6.5, 6.9],
+		"CRIT": [3,5]
 	},
 	YipTier.RARE: {
 		"HP": [22, 30],
 		"ATK": [7, 9],
 		"COOLDOWN": [5, 6.4],
+		"CRIT": [4,6]
 	},
 	YipTier.ULTRARARE: {
 		"HP": [31, 42],
 		"ATK": [10, 14],
 		"COOLDOWN": [4, 4.9],
+		"CRIT": [5,7]
 	},
 }
 
@@ -43,9 +47,11 @@ const YIP_TABLE := {
 @export var base_health: int = 40
 @export var base_attack: int = 1
 @export var base_cooldown: float = 6
+@export var base_crit_chance: int = 3 #percent chance of a critical hit
 
 @export var helix: Helix
 
+@export var baby_age = 1
 
 #region Farm Hub stuff
 # Yip can only be picked up in the Farm Hub.
@@ -67,6 +73,13 @@ var farm_last_known_position : Vector2 = Vector2.ZERO
 @export_range(0, 2, 1) var yip_barn_slot : int 
 #endregion
 
+#this and related variables are not DRY code but fuck it, we jank already
+func is_baby():
+	if age < baby_age:
+		return true
+	else:
+		return false
+
 func _init() -> void:
 	if helix == null:
 		helix = Helix.new()
@@ -79,6 +92,9 @@ func get_attack() -> float:
 
 func get_cooldown() -> float:
 	return _derived(base_cooldown, BodyMap.Stat.COOLDOWN)
+
+func get_crit_chance() -> float:
+	return _derived(base_crit_chance, BodyMap.Stat.CRITICAL)
 
 func _derived(base: float, stat: BodyMap.Stat) -> float:
 	var flat_sum := 0.0
@@ -104,6 +120,7 @@ static func generate_yip(chosen_tier: YipTier) -> YipeeData:
 	new_yip.base_attack = randi_range(YIP_TABLE[chosen_tier]["ATK"][0], YIP_TABLE[chosen_tier]["ATK"][1])
 	new_yip.base_health = randi_range(YIP_TABLE[chosen_tier]["HP"][0], YIP_TABLE[chosen_tier]["HP"][1])
 	new_yip.base_cooldown = randf_range(YIP_TABLE[chosen_tier]["COOLDOWN"][0], YIP_TABLE[chosen_tier]["COOLDOWN"][1])
+	new_yip.base_crit_chance = randi_range(YIP_TABLE[chosen_tier]["CRIT"][0], YIP_TABLE[chosen_tier]["CRIT"][1])
 	new_yip.age = randi_range(1,20)
 	var new_helix: Helix = Helix.generate_random(chosen_tier)
 	new_yip.helix = new_helix
@@ -116,6 +133,7 @@ static func breed(parent_a: YipeeData, parent_b: YipeeData) -> YipeeData:
 	child.tier = maxi(parent_a.tier, parent_b.tier)
 	child.base_health = roundi((parent_a.base_health + parent_b.base_health) / 2.0)
 	child.base_attack = roundi((parent_a.base_attack + parent_b.base_attack) / 2.0)
+	child.base_crit_chance = roundi((parent_a.base_crit_chance + parent_b.base_crit_chance) / 2.0)
 	child.base_cooldown = (parent_a.base_cooldown + parent_b.base_cooldown) / 2.0
 	child.age = 0
 	child.helix = Helix.combine(parent_a.helix, parent_b.helix)

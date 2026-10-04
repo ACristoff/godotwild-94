@@ -4,13 +4,12 @@ enum Team { PLAYER, ENEMY, NONE }
 
 @export var battle_speed: float = 1.0
 @export var level: Level
-@export var debug_player_team_data: Array[YipeeData]
 
 @onready var enemy_team_data: Array[YipeeData]
 @onready var tooltip: Toolyip = $CanvasLayer/YipToolyip
 @onready var time_label: Label = $CanvasLayer2/TimeLabel
 
-var player_team_data := SignalBus.yip_party.values()
+var player_team_data
 var player_team = []
 var enemy_team = []
 var _battle_started: bool = false
@@ -65,23 +64,30 @@ func _ready():
 	tooltip.hide()
 	if level:
 		enemy_team_data = level.enemy_team
+	#check for the debug team and if debug mode is on
+	if SignalBus.debug_mode == true && level && !level.debug_player_team_data.is_empty():
+		player_team_data = level.debug_player_team_data
+	else:
+		player_team_data = SignalBus.yip_party.values()
 	#generate_random_teams()
 	_play_intro()
 	#Spawn player team
 	print( 'player team data ', player_team_data, SignalBus.yip_party)
 	for i in range(5):
-		if player_team_data[i] == null:
-			continue
 		if i >= player_team_data.size():
 			break
+		if player_team_data[i] == null:
+			continue
 		var spawn = get_node("PlayerTeam/Spawn_" + str(i + 1))
 		var new_yip = _spawn(player_team_data[i], spawn.global_position + Vector2(105, 45))
 		player_team.append(new_yip)
 		new_yip.in_battle_dance()
 	#Spawn enemy team
 	for i in range(5):
-		if i >= enemy_team_data.size() or enemy_team_data[i] == null:
+		if i >= enemy_team_data.size():
 			break
+		if enemy_team_data[i] == null:
+			continue
 		var spawn = get_node("EnemyTeam/Spawn_" + str(i + 1))
 		var new_yip = _spawn(enemy_team_data[i], spawn.global_position + Vector2(105, 45))
 		new_yip.visual.scale.x = new_yip.visual.scale.x * -1 
@@ -144,15 +150,30 @@ func _on_attack_ready(damage: DamageInfo, team: Team) -> void:
 	#prints(damage, damage.amount, damage.target, team, target)
 	var attacker := damage.source as Yipee
 	damage.target = target
-	print("%s hit %s for %d → %d/%d" % [
-		damage.source.data.yipee_name, target.data.yipee_name, damage.amount,
-		target.health.current_health, target.health.max_health])
 	
 	# attacker's strands mutate the OUTGOING hit (FireAllele stamps FIRE here)
 	attacker.ability.on_attack(damage, self)
+	var is_crit := roll_crit(damage)
+	print("%s hit %s for %d%s → %d/%d" % [
+		damage.source.data.yipee_name, target.data.yipee_name, damage.amount,
+		" (CRIT)" if is_crit else "",
+		target.health.current_health, target.health.max_health])
 	apply_damage(target, damage)
 	# post-hit reactions (splash, lifesteal…) fan out AFTER the hit lands
 	attacker.ability.on_hit(damage, self)
+	if is_crit:
+		#TODO we need a crit sound effect
+		#AudMan.play_sfx_wav()
+		attacker.ability.on_crit(damage, self)
+
+func roll_crit(damage: DamageInfo) -> bool:
+	if damage.amount <= 0.0 or damage.type == DamageInfo.Type.HEAL:
+		return false
+	if randf() * 100.0 >= damage.crit_chance:
+		return false
+	damage.amount *= damage.crit_multiplier
+	damage.tags.append(DamageInfo.CRIT_TAG)
+	return true
 
 func apply_damage(target: Yipee, damage: DamageInfo) -> void:
 	target.ability.on_take_damage(damage, self)
@@ -160,7 +181,7 @@ func apply_damage(target: Yipee, damage: DamageInfo) -> void:
 	target.health.take_damage(damage)
 	var hp_lost := hp_before - target.health.current_health
 	target.health_UI.current_shield = target.health.shield
-	target.health_UI.health_change(hp_lost, damage_type_name(damage))
+	target.health_UI.health_change(hp_lost, damage_type_name(damage), damage.tags.has(DamageInfo.CRIT_TAG))
 
 func damage_type_name(damage: DamageInfo) -> String:
 	return DamageInfo.Type.keys()[damage.type]

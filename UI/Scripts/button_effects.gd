@@ -7,13 +7,17 @@ extends Button
 
 func _ready() -> void:
 	target_highlight.pivot_offset_ratio = Vector2(0.5, 0.5)
+	mouse_default_cursor_shape = CursorManager.shape_for(CursorManager.Pointers.CURSOR_POINT)
 	#secondary_target_highlight.pivot_offset_ratio = Vector2(0.5, 0.5)
+
 func _on_mouse_entered() -> void:
 	target_highlight.modulate = Color(1.395, 1.395, 1.395, 1.0)
+	#CursorManager.use(CursorManager.Pointers.CURSOR_POINT)
 	#secondary_target_highlight.modulate = Color(1.395, 1.395, 1.395, 1.0)
 
 func _on_mouse_exited() -> void:
 	target_highlight.modulate = Color(1.0, 1.0, 1.0, 1.0)
+	CursorManager.reset()
 	#secondary_target_highlight.modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 func _on_button_down() -> void:
