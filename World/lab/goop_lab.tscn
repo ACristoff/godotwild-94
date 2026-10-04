@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c8opx4e746slk"]
+
+[ext_resource type="Texture2D" uid="uid://r1ibjhjfn84g" path="res://Assets/Environment/Scenes/LaboratoryNew/ConveyorNew.png" id="1_egti4"]
+[ext_resource type="Texture2D" uid="uid://pmbtgymscu7n" path="res://Assets/Environment/Scenes/LaboratoryNew/Grinder.png" id="2_xljrr"]
+[ext_resource type="Texture2D" uid="uid://blrbrpnjqgtlh" path="res://Assets/Environment/Scenes/LaboratoryNew/LabNewInterior.png" id="3_swsyr"]
+
+[node name="GoopLab" type="Node2D" unique_id=1508041924]
+
+[node name="Mulcher" type="Node2D" parent="." unique_id=1884272660]
+
+[node name="ConveyorSprite" type="Sprite2D" parent="Mulcher" unique_id=1951354024]
+position = Vector2(258, 630)
+texture = ExtResource("1_egti4")
+hframes = 8
+
+[node name="Sprite2D2" type="Sprite2D" parent="Mulcher" unique_id=1516523610]
+position = Vector2(444, 731)
+texture = ExtResource("2_xljrr")
+hframes = 6
+
+[node name="LabNewInterior" type="Sprite2D" parent="." unique_id=1972674292]
+z_index = -10
+position = Vector2(960.66675, 537.75)
+scale = Vector2(3.0097225, 3.0097225)
+texture = ExtResource("3_swsyr")
