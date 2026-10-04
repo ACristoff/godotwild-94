@@ -128,7 +128,6 @@ patch_margin_right = 30
 patch_margin_bottom = 10
 
 [node name="LockButtonGraphic" type="Sprite2D" parent="." unique_id=1330098914]
-visible = false
 z_index = 4096
 texture_filter = 3
 position = Vector2(960, 921.00006)
@@ -138,13 +137,14 @@ hframes = 2
 
 [node name="LockLabel" type="Label" parent="LockButtonGraphic" unique_id=1535533734]
 z_index = 4096
-offset_left = -12.0000105
-offset_top = -5.666697
-offset_right = 83.99999
-offset_bottom = 22.333303
+offset_left = -48.0
+offset_top = -5.667
+offset_right = 48.0
+offset_bottom = 22.333
 theme_override_fonts/font = ExtResource("3_6l7jc")
 theme_override_font_sizes/font_size = 8
 text = "Lock"
+horizontal_alignment = 1
 
 [node name="FarmButtonIcon" type="NinePatchRect" parent="." unique_id=1533065683]
 self_modulate = Color(0.6509804, 0.40784314, 0.2784314, 1)
@@ -188,7 +188,6 @@ script = ExtResource("8_lwms1")
 target_highlight = NodePath("../ButtonRefreshButtonIcon")
 
 [node name="LockButton" type="Button" parent="." unique_id=1234442090 node_paths=PackedStringArray("target_highlight")]
-visible = false
 self_modulate = Color(1, 1, 1, 0)
 offset_left = 891.0
 offset_top = 888.0
@@ -292,6 +291,7 @@ texture = ExtResource("11_8ubfp")
 [connection signal="button_up" from="LockButton" to="LockButton" method="_on_button_up"]
 [connection signal="mouse_entered" from="LockButton" to="LockButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="LockButton" to="LockButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="LockButton" to="." method="_on_lock_button_pressed"]
 [connection signal="button_down" from="FarmButton" to="FarmButton" method="_on_button_down"]
 [connection signal="button_up" from="FarmButton" to="FarmButton" method="_on_button_up"]
 [connection signal="mouse_entered" from="FarmButton" to="FarmButton" method="_on_mouse_entered"]

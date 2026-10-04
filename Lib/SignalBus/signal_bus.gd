@@ -20,6 +20,7 @@ var yip_inventory: Array[YipeeData] = []
 ## The yips currently available in the field, persisted for the day
 var field_stock: Array[YipeeData] = []
 var field_generated_today: bool = false
+var field_locked: bool = false
 
 ## Where will store yips globally
 var yip_party : Dictionary[int, YipeeData] = {
@@ -87,6 +88,7 @@ func reset_run() -> void:
 	victories = 0
 	game_started = false
 	field_generated_today = false
+	field_locked = false
 
 	field_clicked = false
 	first_yip_bought = false

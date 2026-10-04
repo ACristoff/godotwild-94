@@ -77,10 +77,12 @@ func _ready():
 	field_level = clampi(SignalBus.victories, 0, 3)
 	yips_to_spawn = 3 + field_level
 	update_field_labels()
+	update_lock_label()
 	if not SignalBus.field_generated_today:
 		generate_field_stock()
 		SignalBus.field_generated_today = true
 	spawn_field_stock()
+	
 
 func update_field_labels():
 	var field_sign = $UpgradeSign/UpgradeField
@@ -379,3 +381,17 @@ func _on_farm_button_pressed():
 
 func _on_settings_button_pressed() -> void:
 	SignalBus.game_state_changed.emit("Settings")
+
+
+func _on_lock_button_pressed():
+	SignalBus.field_locked = !SignalBus.field_locked
+	update_lock_label()
+
+func update_lock_label():
+	if SignalBus.field_locked == true:
+		$LockButtonGraphic/LockLabel.text = "Unlock"
+		#$LockButtonGraphic/LockLabel.position.x -= 5
+	else:
+		$LockButtonGraphic/LockLabel.text = "Lock"
+		#$LockButtonGraphic/LockLabel.position.x += 5
+		
