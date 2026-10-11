@@ -124,7 +124,6 @@ func display_helix(helix: Helix) -> void:
 			shells[i].set_alleles(strand.left, strand.right)
 
 func _on_area_2d_mouse_entered() -> void:
-	#print("hi")
 	$Timer.stop()
 	detect_hover = true
 

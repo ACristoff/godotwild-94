@@ -53,6 +53,7 @@ scale_max = 3.1999998
 color_ramp = SubResource("GradientTexture1D_fo6ce")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fo6ce"]
+resource_local_to_scene = true
 shader = ExtResource("1_18ox1")
 shader_parameter/alpha = 0.555
 shader_parameter/inner_radius = 0.695
@@ -229,10 +230,10 @@ tracks/2/path = NodePath("ColorRect:material:shader_parameter/alpha")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.555]
+"values": [0.555, 0.555]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -241,10 +242,10 @@ tracks/3/path = NodePath("ColorRect:material:shader_parameter/inner_radius")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.695]
+"values": [0.695, 0.695]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -319,10 +320,26 @@ tracks/9/keys = {
 "values": [1.0, 0.77]
 }
 
+[sub_resource type="Animation" id="Animation_8ym1y"]
+resource_name = "calm"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/outer_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.825]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q01we"]
 _data = {
 &"RESET": SubResource("Animation_q01we"),
-&"SandstormBegin": SubResource("Animation_6tok7")
+&"SandstormBegin": SubResource("Animation_6tok7"),
+&"calm": SubResource("Animation_8ym1y")
 }
 
 [node name="Sandstorm" type="Control" unique_id=1753604067]

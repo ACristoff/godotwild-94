@@ -14,6 +14,7 @@ const HELIX_DROP_OVERLAY = preload("res://UI/Scripts/helix_drop_overlay.gd")
 var team_slots: Array[Area2D] = []
 var yip_lab_party_position: Dictionary[int, Yipee] = {1: null, 2: null, 3: null, 4: null, 5: null}
 var allele_tooltip
+@onready var tooltip: Toolyip = $CanvasLayer2/YipToolyip
 
 @onready var canvas_layer = $CanvasLayer
 @onready var launch_pad = $LaunchPad
@@ -29,6 +30,7 @@ var allele_tooltip
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	tooltip.hide()
 	update_screen()
 	allele_tooltip = ALLELE_UI.instantiate()
 	canvas_layer.add_child(allele_tooltip)
@@ -130,15 +132,19 @@ func spawn_yip(data: YipeeData) -> Yipee:
 	return yip
 
 func _on_yip_hovered(yip: Yipee) -> void:
-	print("YIP HOVERED")
+	if not is_instance_valid(yip):
+		return
+
+	tooltip.display_beside(yip)
 	focused_yip = yip
+
+func _on_yip_unhovered() -> void:
+	tooltip.hide()
+	focused_yip = null
 
 func _on_allele_unhovered() -> void:
 	print("ALLELE UNHOVER -> hide")
 	allele_tooltip.hide()
-
-func _on_yip_unhovered() -> void:
-	focused_yip = null
 
 func update_screen():
 	left_inventory.visible = yip_placed
@@ -158,17 +164,25 @@ func update_screen():
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			print("CLICK, focused_yip = ", focused_yip)
-			if focused_yip:
-				dragged_yip = focused_yip
-				drag_offset = dragged_yip.global_position - get_global_mouse_position()
-		else:
-			dragged_yip = null
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				if focused_yip:
+					dragged_yip = focused_yip
+					drag_offset = dragged_yip.global_position - get_global_mouse_position()
+			else:
+				if dragged_yip:
+					for i in range(team_slots.size()):
+						var slot: Area2D = team_slots[i]
+
+						if slot.overlaps_area(dragged_yip.farmslot):
+							place_yip(dragged_yip, i + 1)
+							break
+
+					dragged_yip = null
+
 	elif event is InputEventMouseMotion:
 		if dragged_yip:
 			dragged_yip.global_position = get_global_mouse_position() + drag_offset
-
 func set_yip_to_launch(yip: Yipee) -> void:
 	update_screen()
 	dna_screen.display_helix(yip.data.helix)
@@ -336,3 +350,54 @@ func _on_farm_button_pressed():
 
 func _on_settings_button_pressed() -> void:
 	SignalBus.game_state_changed.emit("Settings")
+
+#var team_slots: Array[Area2D] = []
+var slot_yips: Dictionary[int, Yipee] = {
+	1: null,
+	2: null,
+	3: null,
+	4: null,
+	5: null,
+	6: null
+}
+
+func place_yip(yip: Yipee, slot_number: int) -> void:
+	if slot_number < 1 or slot_number > team_slots.size():
+		return
+
+	var old_slot: int = yip.data.yip_party_slot
+
+	# Remove from previous slot.
+	if old_slot != 0 and slot_yips.has(old_slot):
+		slot_yips[old_slot] = null
+		SignalBus.yip_party[6 - old_slot] = null
+
+	# Swap out the yip already in this slot.
+	var displaced: Yipee = slot_yips[slot_number]
+
+	if displaced != null and displaced != yip:
+		displaced.data.yip_party_slot = 0
+		displaced.global_position = displaced.data.farm_last_known_position
+
+		for key in SignalBus.yip_party.keys():
+			if SignalBus.yip_party[key] == displaced.data:
+				SignalBus.yip_party[key] = null
+
+	# Place the new yip.
+	slot_yips[slot_number] = yip
+	yip.data.yip_party_slot = slot_number
+	yip.data.yip_barn_slot = 0
+	yip.global_position = team_slots[slot_number - 1].global_position
+
+	# Update global party (visual slot 1 maps to party slot 5).
+	SignalBus.yip_party[6 - slot_number] = yip.data
+
+func register_yip(yip: Yipee) -> void:
+	var slot_number: int = yip.data.yip_party_slot
+
+	if slot_number == 0:
+		return
+
+	slot_yips[slot_number] = yip
+	yip.global_position = team_slots[slot_number - 1].global_position
+	SignalBus.yip_party[6 - slot_number] = yip.data

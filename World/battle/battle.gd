@@ -61,6 +61,7 @@ func wire_yip(yip: Yipee) -> void:
 	yip.yip_unhovered.connect(_on_yip_unhovered)
 
 func _ready():
+	$CanvasLayer2/Sandstorm.hide()
 	tooltip.hide()
 	if level:
 		enemy_team_data = level.enemy_team
@@ -288,6 +289,7 @@ func update_time_label() -> void:
 
 #Trigger sandstorm animation or whatever here
 func activate_sandstorm() -> void:
+	$CanvasLayer2/Sandstorm.show()
 	sandstorm_active = true
 	$CanvasLayer2/Sandstorm.start()
 
@@ -314,6 +316,7 @@ func sandstorm_tick(delta):
 				apply_damage(yip, sandstorm_damage)
 
 func _on_next_button_pressed() -> void:
+	SignalBus.current_day += 1
 	_on_next()
 
 func _on_game_speed_button_pressed() -> void:

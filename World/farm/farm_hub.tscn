@@ -17,10 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="15_4wbmb"]
 [ext_resource type="PackedScene" uid="uid://dqgfurgu7jsbg" path="res://UI/Scenes/yip_toolyip.tscn" id="15_wkn3d"]
 [ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="16_0l0ir"]
-[ext_resource type="PackedScene" uid="uid://c3lcbqjc43e3m" path="res://UI/Scenes/tutorial_box11.tscn" id="18_nw8d0"]
-[ext_resource type="PackedScene" uid="uid://cdxcqkceerren" path="res://UI/Scenes/tutorial_box12.tscn" id="19_jjcuj"]
-[ext_resource type="PackedScene" uid="uid://dcwhd4jcpjqw0" path="res://UI/Scenes/tutorial_box13.tscn" id="20_v158w"]
-[ext_resource type="PackedScene" uid="uid://djgyg3bx5cyuc" path="res://UI/Scenes/tutorial_box14.tscn" id="21_38chp"]
+[ext_resource type="PackedScene" uid="uid://4lvcvbffgoj6" path="res://UI/Scenes/tutorial_box11.tscn" id="18_nw8d0"]
+[ext_resource type="PackedScene" uid="uid://dulxqotk3x5gt" path="res://UI/Scenes/tutorial_box12.tscn" id="19_jjcuj"]
+[ext_resource type="PackedScene" uid="uid://bpkilgh164xpd" path="res://UI/Scenes/tutorial_box13.tscn" id="20_v158w"]
+[ext_resource type="PackedScene" uid="uid://cnbmljjfwmedf" path="res://UI/Scenes/tutorial_box14.tscn" id="21_38chp"]
 [ext_resource type="Texture2D" uid="uid://duipa70vx5fn3" path="res://UI/Menus/Main_Menu/Textures/SettingsButt.png" id="22_rffto"]
 [ext_resource type="PackedScene" uid="uid://b0u4e8y8nqwnj" path="res://UI/Scenes/days_hud.tscn" id="23_piivb"]
 
@@ -539,16 +539,29 @@ texture = ExtResource("22_rffto")
 
 [node name="CanvasLayer2" parent="." unique_id=921252253 instance=ExtResource("23_piivb")]
 
-[node name="MarginContainer" parent="CanvasLayer2" index="0" unique_id=312975365]
+[node name="MarginContainer3" parent="CanvasLayer2" index="0" unique_id=1533479778]
+mouse_filter = 2
+
+[node name="MarginContainer" parent="CanvasLayer2/MarginContainer3" index="0" unique_id=312975365]
+mouse_filter = 2
 theme_override_constants/margin_top = 13
 
-[node name="DaysLabel" parent="CanvasLayer2/MarginContainer" index="0" unique_id=780933771]
+[node name="DaysLabel" parent="CanvasLayer2/MarginContainer3/MarginContainer" index="0" unique_id=780933771]
 text = "Day 10"
 
-[node name="WinsLabel" parent="CanvasLayer2/MarginContainer2/HBoxContainer" parent_id_path=PackedInt32Array(921252253, 1899293101) index="1" unique_id=455911131]
+[node name="MarginContainer2" parent="CanvasLayer2/MarginContainer3" index="1" unique_id=1464925174]
+mouse_filter = 2
+
+[node name="WinsTexture" parent="CanvasLayer2/MarginContainer3/MarginContainer2/HBoxContainer" parent_id_path=PackedInt32Array(921252253, 1899293101) index="0" unique_id=1775569744]
+mouse_filter = 2
+
+[node name="WinsLabel" parent="CanvasLayer2/MarginContainer3/MarginContainer2/HBoxContainer" parent_id_path=PackedInt32Array(921252253, 1899293101) index="1" unique_id=455911131]
 text = "0"
 
-[node name="LivesLabel" parent="CanvasLayer2/MarginContainer2/HBoxContainer" parent_id_path=PackedInt32Array(921252253, 1899293101) index="3" unique_id=1382897421]
+[node name="LivesTexture" parent="CanvasLayer2/MarginContainer3/MarginContainer2/HBoxContainer" parent_id_path=PackedInt32Array(921252253, 1899293101) index="2" unique_id=816932330]
+mouse_filter = 2
+
+[node name="LivesLabel" parent="CanvasLayer2/MarginContainer3/MarginContainer2/HBoxContainer" parent_id_path=PackedInt32Array(921252253, 1899293101) index="3" unique_id=1382897421]
 text = "5"
 
 [connection signal="area_entered" from="BreedingBarnGrass/BreedFarmSlot" to="Areas" method="_on_breed_farm_slot_area_entered"]

@@ -13,17 +13,20 @@
 [ext_resource type="Texture2D" uid="uid://blbxak2oo2t0j" path="res://Assets/Environment/Scenes/Laboratory/LabPiecesOver.png" id="4_uroyv"]
 [ext_resource type="Resource" uid="uid://dgc504k70wwd2" path="res://World/yipee/genes/allele/rightallele/resources/dog_tail.tres" id="5_1ax5p"]
 [ext_resource type="Texture2D" uid="uid://rwpaxb4jhtyk" path="res://UI/Textures/Arrow.png" id="5_be18q"]
-[ext_resource type="PackedScene" uid="uid://38s8fl53yrsg" path="res://Assets/Test/dna_test_screen.tscn" id="5_ieswn"]
 [ext_resource type="Resource" uid="uid://cidq54ye38vgy" path="res://World/yipee/genes/allele/leftallele/resources/rally.tres" id="6_ffgas"]
-[ext_resource type="Texture2D" uid="uid://djdujp6j5ud2u" path="res://Assets/Environment/Scenes/Laboratory/Conveyor.png" id="6_fne6d"]
 [ext_resource type="Resource" uid="uid://clmny47rxgsyl" path="res://World/yipee/genes/allele/rightallele/resources/bonk_misc.tres" id="7_58ib8"]
-[ext_resource type="PackedScene" uid="uid://ba2i2glrfw55d" path="res://World/areas.tscn" id="9_ieswn"]
 [ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="10_co32c"]
+[ext_resource type="Texture2D" uid="uid://pmbtgymscu7n" path="res://Assets/Environment/Scenes/LaboratoryNew/Grinder.png" id="10_u463x"]
 [ext_resource type="Script" uid="uid://ddygeie0aq8n6" path="res://UI/Scripts/helix_drop_surface.gd" id="11_1ax5p"]
 [ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="11_co32c"]
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="11_mntup"]
+[ext_resource type="Texture2D" uid="uid://r1ibjhjfn84g" path="res://Assets/Environment/Scenes/LaboratoryNew/ConveyorNew.png" id="11_wckeq"]
+[ext_resource type="Script" uid="uid://dufxpqu2r5sh0" path="res://Assets/Test/dna_test_screen.gd" id="12_iggas"]
 [ext_resource type="Script" uid="uid://dn0twegwjngg0" path="res://UI/Scripts/inventory_drop.gd" id="12_invdrop"]
+[ext_resource type="PackedScene" uid="uid://6looit7fo72" path="res://Assets/Test/dna_stacked_shell.tscn" id="13_u463x"]
+[ext_resource type="Script" uid="uid://dbb66nclxppio" path="res://World/lab/labareas.gd" id="21_bx8m8"]
 [ext_resource type="Texture2D" uid="uid://duipa70vx5fn3" path="res://UI/Menus/Main_Menu/Textures/SettingsButt.png" id="24_58ib8"]
+[ext_resource type="PackedScene" uid="uid://dqgfurgu7jsbg" path="res://UI/Scenes/yip_toolyip.tscn" id="25_bx8m8"]
 
 [sub_resource type="Resource" id="Resource_5722r"]
 script = ExtResource("3_8wn1l")
@@ -79,6 +82,9 @@ age = 15
 helix = SubResource("Resource_qrl5x")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ijr3j"]
+size = Vector2(1089, 1201)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uroyv"]
 shader = ExtResource("4_ems3l")
 shader_parameter/brightness = 1.02
@@ -119,6 +125,13 @@ adjustment_enabled = true
 adjustment_brightness = 0.71
 adjustment_color_correction = SubResource("GradientTexture1D_04eem")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wsdy"]
+size = Vector2(493, 493)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4wsdy"]
+radius = 36.0
+height = 138.0
+
 [sub_resource type="Gradient" id="Gradient_04eem"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
@@ -146,7 +159,7 @@ radius = 78.99994
 height = 452.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_co32c"]
-size = Vector2(636, 162)
+size = Vector2(586, 162)
 
 [sub_resource type="Animation" id="Animation_be18q"]
 resource_name = "Flash"
@@ -224,6 +237,84 @@ _data = {
 &"Spin": SubResource("Animation_n5q1j")
 }
 
+[sub_resource type="Animation" id="Animation_u463x"]
+resource_name = "Grind"
+length = 0.8
+loop_mode = 1
+step = 0.13
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ConveyorNew:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 7]
+}
+
+[sub_resource type="Animation" id="Animation_wckeq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ConveyorNew:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vnrt3"]
+_data = {
+&"Grind": SubResource("Animation_u463x"),
+&"RESET": SubResource("Animation_wckeq")
+}
+
+[sub_resource type="Animation" id="Animation_vnrt3"]
+resource_name = "GrindUp"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Grinder:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 5]
+}
+
+[sub_resource type="Animation" id="Animation_hbchn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Grinder:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u53nv"]
+_data = {
+&"GrindUp": SubResource("Animation_vnrt3"),
+&"RESET": SubResource("Animation_hbchn")
+}
+
 [node name="Lab" type="Node2D" unique_id=1804512105]
 script = ExtResource("1_vq6iu")
 sample_yip = SubResource("Resource_n5q1j")
@@ -235,13 +326,19 @@ position = Vector2(960, 540)
 scale = Vector2(3, 3)
 texture = ExtResource("1_nl8f2")
 
-[node name="Conveyor" type="Sprite2D" parent="." unique_id=724460789]
-light_mask = 3
+[node name="Grinder" type="Sprite2D" parent="." unique_id=941696]
 texture_filter = 3
-position = Vector2(450, 692)
+position = Vector2(697, 682)
 scale = Vector2(3, 3)
-texture = ExtResource("6_fne6d")
-hframes = 2
+texture = ExtResource("10_u463x")
+hframes = 6
+
+[node name="ConveyorNew" type="Sprite2D" parent="." unique_id=1905849271]
+texture_filter = 3
+position = Vector2(148, 384)
+scale = Vector2(3, 3)
+texture = ExtResource("11_wckeq")
+hframes = 8
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1270990920]
 offset_left = 690.0
@@ -251,6 +348,7 @@ offset_bottom = 250.0
 scale = Vector2(3, 3)
 mouse_filter = 2
 color = Color(0.11327667, 0.039100002, 0.17, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Control" type="Control" parent="." unique_id=748581926]
 light_mask = 3
@@ -267,6 +365,7 @@ scale = Vector2(3, 3)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Control" unique_id=1477775606]
 texture_filter = 3
@@ -274,53 +373,98 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 152.0
+offset_left = 232.33333
 offset_top = 8.0
-offset_right = 152.0
+offset_right = 73.33331
 offset_bottom = -72.33331
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+focus_mode = 0
 stretch_shrink = 3
 script = ExtResource("11_1ax5p")
+metadata/_edit_use_anchors_ = true
 
 [node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer" unique_id=1842217819]
 transparent_bg = true
 handle_input_locally = false
 physics_object_picking = true
-size = Vector2i(586, 272)
+size = Vector2i(481, 272)
 render_target_update_mode = 4
 
-[node name="DNATestScreen" parent="Control/SubViewportContainer/SubViewport" unique_id=2140591040 instance=ExtResource("5_ieswn")]
-position = Vector2(302, 28)
+[node name="DNATestScreen" type="Node2D" parent="Control/SubViewportContainer/SubViewport" unique_id=2140591040]
+position = Vector2(211.66669, 28)
 scale = Vector2(0.2, 0.2)
+script = ExtResource("12_iggas")
 
-[node name="DNAStackedShell" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" parent_id_path=PackedInt32Array(2140591040, 168700534) index="0" unique_id=1936980544]
+[node name="DNA" type="Node2D" parent="Control/SubViewportContainer/SubViewport/DNATestScreen" unique_id=168700534]
+position = Vector2(4, -38)
+
+[node name="DNAStackedShell" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" unique_id=1936980544 instance=ExtResource("13_u463x")]
 title_offset = 65
+anim_start_frame = 11
 
-[node name="DNAStackedShell2" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" parent_id_path=PackedInt32Array(2140591040, 168700534) index="1" unique_id=1240801642]
+[node name="DnaAllele1" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA/DNAStackedShell" index="0" unique_id=1141063690]
+frame = 11
+
+[node name="DnaAllele2" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA/DNAStackedShell" index="1" unique_id=245642215]
+frame = 11
+
+[node name="DnaShell1" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA/DNAStackedShell" index="2" unique_id=1537355024]
+z_index = 2
+frame = 11
+
+[node name="DnaShell2" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA/DNAStackedShell" index="3" unique_id=1005190979]
+z_index = -2
+frame = 11
+
+[node name="DNAStackedShell2" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" unique_id=1240801642 instance=ExtResource("13_u463x")]
+position = Vector2(0, 150)
 title_offset = 60
+anim_start_frame = 8
 
-[node name="DNAStackedShell3" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" parent_id_path=PackedInt32Array(2140591040, 168700534) index="2" unique_id=1237795546]
+[node name="DNAStackedShell3" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" unique_id=1237795546 instance=ExtResource("13_u463x")]
+position = Vector2(0, 300)
 title_offset = 56
+anim_start_frame = 5
 
-[node name="DNAStackedShell4" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" parent_id_path=PackedInt32Array(2140591040, 168700534) index="3" unique_id=1213718929]
+[node name="DNAStackedShell4" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" unique_id=1213718929 instance=ExtResource("13_u463x")]
+position = Vector2(0, 450)
 title_offset = 54
+anim_start_frame = 2
 
-[node name="DNAStackedShell5" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" parent_id_path=PackedInt32Array(2140591040, 168700534) index="4" unique_id=898139654]
+[node name="DNAStackedShell5" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" unique_id=898139654 instance=ExtResource("13_u463x")]
+position = Vector2(0, 600)
 title_offset = 54
+anim_start_frame = 47
 
-[node name="DNAStackedShell6" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" parent_id_path=PackedInt32Array(2140591040, 168700534) index="5" unique_id=858876537]
+[node name="DNAStackedShell6" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" unique_id=858876537 instance=ExtResource("13_u463x")]
+position = Vector2(0, 750)
 title_offset = 58
+anim_start_frame = 44
 
-[node name="DNAStackedShell7" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" parent_id_path=PackedInt32Array(2140591040, 168700534) index="6" unique_id=1449613694]
+[node name="DNAStackedShell7" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" unique_id=1449613694 instance=ExtResource("13_u463x")]
+position = Vector2(0, 900)
 title_offset = 62
+anim_start_frame = 41
 
-[node name="DNAStackedShell8" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" parent_id_path=PackedInt32Array(2140591040, 168700534) index="7" unique_id=1583672614]
+[node name="DNAStackedShell8" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" unique_id=1583672614 instance=ExtResource("13_u463x")]
+position = Vector2(0, 1050)
 title_offset = 66
+anim_start_frame = 38
+
+[node name="Area2D" type="Area2D" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" unique_id=55206718]
+position = Vector2(-1, 525)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA/Area2D" unique_id=596103110]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_ijr3j")
+
+[node name="Timer" type="Timer" parent="Control/SubViewportContainer/SubViewport/DNATestScreen" unique_id=1348414813]
+wait_time = 0.05
+autostart = true
 
 [node name="Cyanspeenspritesheet" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport" unique_id=235109698]
-position = Vector2(382.66672, 111.666664)
+position = Vector2(302.33334, 111.666664)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_mntup")
 hframes = 12
@@ -335,6 +479,7 @@ theme_override_colors/font_color = Color(0, 0.75686276, 0.7137255, 1)
 theme_override_fonts/font = ExtResource("11_mntup")
 theme_override_font_sizes/font_size = 83
 text = "NO CONNECTION FOUND"
+metadata/_edit_use_anchors_ = true
 
 [node name="PlaceYip" type="Label" parent="." unique_id=22579479]
 offset_left = 994.0
@@ -348,6 +493,7 @@ text = "Place Yip on launch
 pad"
 horizontal_alignment = 1
 autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="Arrow" type="Sprite2D" parent="." unique_id=2076793394]
 texture_filter = 3
@@ -363,6 +509,7 @@ offset_right = 1148.0
 offset_bottom = 277.0
 scale = Vector2(3, 3)
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
 [node name="LabScreen" type="Sprite2D" parent="." unique_id=760138046]
 texture_filter = 3
@@ -391,6 +538,7 @@ offset_right = 986.0
 offset_bottom = 703.0
 mouse_filter = 2
 script = ExtResource("12_invdrop")
+metadata/_edit_use_anchors_ = true
 
 [node name="RightInventory" type="VBoxContainer" parent="CanvasLayer" unique_id=764300082]
 offset_left = 1676.0
@@ -399,11 +547,66 @@ offset_right = 1820.0
 offset_bottom = 724.0
 mouse_filter = 2
 script = ExtResource("12_invdrop")
+metadata/_edit_use_anchors_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=939278799]
 environment = SubResource("Environment_ems3l")
 
-[node name="Areas" parent="." unique_id=1408748551 instance=ExtResource("9_ieswn")]
+[node name="Areas" type="Node2D" parent="." unique_id=1408748551]
+script = ExtResource("21_bx8m8")
+
+[node name="MainPen" type="Area2D" parent="Areas" unique_id=1457590473]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/MainPen" unique_id=195685785]
+position = Vector2(272.5, 277.5)
+shape = SubResource("RectangleShape2D_4wsdy")
+
+[node name="TeamSlot1" type="Area2D" parent="Areas" unique_id=1340362752]
+position = Vector2(500, 930)
+collision_layer = 192
+collision_mask = 192
+
+[node name="TeamSlot_1" type="CollisionShape2D" parent="Areas/TeamSlot1" unique_id=463593819]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_4wsdy")
+
+[node name="TeamSlot2" type="Area2D" parent="Areas" unique_id=1067331854]
+position = Vector2(692, 930)
+collision_layer = 192
+collision_mask = 192
+
+[node name="TeamSlot_2" type="CollisionShape2D" parent="Areas/TeamSlot2" unique_id=474071381]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_4wsdy")
+
+[node name="TeamSlot3" type="Area2D" parent="Areas" unique_id=2081853680]
+position = Vector2(884, 930)
+collision_layer = 192
+collision_mask = 192
+
+[node name="TeamSlot_3" type="CollisionShape2D" parent="Areas/TeamSlot3" unique_id=908069046]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_4wsdy")
+
+[node name="TeamSlot4" type="Area2D" parent="Areas" unique_id=1020619911]
+position = Vector2(1076, 930)
+collision_layer = 192
+collision_mask = 192
+
+[node name="TeamSlot_4" type="CollisionShape2D" parent="Areas/TeamSlot4" unique_id=1195727188]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_4wsdy")
+
+[node name="TeamSlot5" type="Area2D" parent="Areas" unique_id=1305177398]
+position = Vector2(1268, 930)
+collision_layer = 192
+collision_mask = 192
+
+[node name="TeamSlot_5" type="CollisionShape2D" parent="Areas/TeamSlot5" unique_id=1606090572]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_4wsdy")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=482508547]
 
@@ -412,6 +615,7 @@ position = Vector2(1235, 449)
 energy = 2.62
 blend_mode = 2
 texture = SubResource("GradientTexture2D_co32c")
+metadata/_edit_lock_ = true
 
 [node name="PointLight2D2" type="PointLight2D" parent="." unique_id=210127561]
 position = Vector2(640, 669)
@@ -435,6 +639,7 @@ patch_margin_left = 15
 patch_margin_top = 10
 patch_margin_right = 30
 patch_margin_bottom = 10
+metadata/_edit_use_anchors_ = true
 
 [node name="Label4" type="Label" parent="ButtonRefresh4" unique_id=87403317]
 z_index = 4096
@@ -450,6 +655,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("11_mntup")
 text = "fARM"
+metadata/_edit_use_anchors_ = true
 
 [node name="LaunchPad" type="Area2D" parent="." unique_id=374070610]
 position = Vector2(1620, 948)
@@ -462,7 +668,7 @@ shape = SubResource("CapsuleShape2D_co32c")
 position = Vector2(301, 676)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ConveyorArea" unique_id=1506238159]
-position = Vector2(78, 1)
+position = Vector2(-36, 1)
 shape = SubResource("RectangleShape2D_co32c")
 
 [node name="SmallGeneCanvas" type="CanvasLayer" parent="." unique_id=145482404]
@@ -477,6 +683,7 @@ offset_right = 254.0
 offset_bottom = 1009.0
 script = ExtResource("11_co32c")
 target_highlight = NodePath("../ButtonRefresh4")
+metadata/_edit_use_anchors_ = true
 
 [node name="NoConnectionFoundAnim" type="AnimationPlayer" parent="." unique_id=1883718793]
 libraries/ = SubResource("AnimationLibrary_skhjb")
@@ -496,6 +703,7 @@ offset_bottom = 94.0
 text = "Settings"
 script = ExtResource("11_co32c")
 target_highlight = NodePath("../SettingsButtonOver")
+metadata/_edit_use_anchors_ = true
 
 [node name="SettingsButtonOver" type="NinePatchRect" parent="." unique_id=656298927]
 self_modulate = Color(0.59607846, 0.6509804, 0.2784314, 1)
@@ -512,11 +720,42 @@ patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 10
 patch_margin_bottom = 10
+metadata/_edit_use_anchors_ = true
 
 [node name="SettingsButt" type="Sprite2D" parent="SettingsButtonOver" unique_id=1424752254]
 position = Vector2(15, 15)
 texture = ExtResource("24_58ib8")
 
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1928294982]
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
+
+[node name="YipToolyip" parent="CanvasLayer2" unique_id=399779298 instance=ExtResource("25_bx8m8")]
+metadata/_edit_use_anchors_ = true
+
+[node name="GrinderAnim" type="AnimationPlayer" parent="." unique_id=1844336748]
+libraries/ = SubResource("AnimationLibrary_vnrt3")
+autoplay = &"Grind"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=29743004]
+libraries/ = SubResource("AnimationLibrary_u53nv")
+autoplay = &"GrindUp"
+
+[connection signal="mouse_entered" from="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA/Area2D" to="Control/SubViewportContainer/SubViewport/DNATestScreen" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA/Area2D" to="Control/SubViewportContainer/SubViewport/DNATestScreen" method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="Control/SubViewportContainer/SubViewport/DNATestScreen/Timer" to="Control/SubViewportContainer/SubViewport/DNATestScreen" method="_on_timer_timeout"]
+[connection signal="area_entered" from="Areas/MainPen" to="Areas" method="_on_main_pen_area_entered"]
+[connection signal="area_exited" from="Areas/MainPen" to="Areas" method="_on_main_pen_area_exited"]
+[connection signal="area_entered" from="Areas/TeamSlot1" to="Areas" method="_on_team_slot_area_entered"]
+[connection signal="area_exited" from="Areas/TeamSlot1" to="Areas" method="_on_team_slot_area_exited"]
+[connection signal="area_entered" from="Areas/TeamSlot2" to="Areas" method="_on_team_slot_2_area_entered"]
+[connection signal="area_exited" from="Areas/TeamSlot2" to="Areas" method="_on_team_slot_2_area_exited"]
+[connection signal="area_entered" from="Areas/TeamSlot3" to="Areas" method="_on_team_slot_3_area_entered"]
+[connection signal="area_exited" from="Areas/TeamSlot3" to="Areas" method="_on_team_slot_3_area_exited"]
+[connection signal="area_entered" from="Areas/TeamSlot4" to="Areas" method="_on_team_slot_4_area_entered"]
+[connection signal="area_exited" from="Areas/TeamSlot4" to="Areas" method="_on_team_slot_4_area_exited"]
+[connection signal="area_entered" from="Areas/TeamSlot5" to="Areas" method="_on_team_slot_5_area_entered"]
+[connection signal="area_exited" from="Areas/TeamSlot5" to="Areas" method="_on_team_slot_5_area_exited"]
 [connection signal="area_entered" from="LaunchPad" to="." method="_on_launch_pad_area_entered"]
 [connection signal="area_exited" from="LaunchPad" to="." method="_on_launch_pad_area_exited"]
 [connection signal="area_entered" from="ConveyorArea" to="." method="_on_conveyor_area_area_entered"]
@@ -532,5 +771,4 @@ texture = ExtResource("24_58ib8")
 [connection signal="mouse_exited" from="SettingsButton" to="SettingsButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
 
-[editable path="Control/SubViewportContainer/SubViewport/DNATestScreen"]
 [editable path="Control/SubViewportContainer/SubViewport/DNATestScreen/DNA/DNAStackedShell"]

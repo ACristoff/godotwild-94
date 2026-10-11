@@ -41,6 +41,7 @@ var yip_farm_barn_position : Dictionary[int, Yipee] = {
 #region Built in Functions
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	# Setting barn door stuff
 	farm_slot.area_entered.connect(_on_breed_farm_slot_area_entered.bind(farm_slot))
 	farm_slot.area_exited.connect(_on_breed_farm_slot_area_exited.bind(farm_slot))
@@ -539,3 +540,5 @@ func _refresh_cursor() -> void:
 		CursorManager.use(CursorManager.Pointers.CURSOR_GRABBABLE)
 	else:
 		CursorManager.reset()
+		
+		

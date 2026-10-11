@@ -43,6 +43,7 @@ var game_started: bool = false
 
 var current_health = 3
 var current_wins = 0
+var current_day = 1
 var debug_mode: bool = false
 
 var victories: int = 0 

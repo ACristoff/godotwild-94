@@ -11,11 +11,11 @@ const MOODS := {
 		"duration": 20,
 	},
 	Mood.WANDER: {
-		"animation_name": "Wander",
+		"animation_name": "IdleNormal",
 		"duration": 12,
 	},
 	Mood.SLEEP: {
-		"animation_name": "Sleep",
+		"animation_name": "IdleNormal",
 		"duration": 30,
 	},
 }
