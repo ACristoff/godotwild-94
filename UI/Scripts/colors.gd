@@ -24,3 +24,26 @@ static var colors = {
 	"SPEC": Color.from_string("eb6ec5", Color.BLACK),
 	"NULL": Color.from_string("828282", Color.BLACK),
 }
+static var icons = {
+	"FIRE": "res://UI/Textures/ui_effecticons/fire_icon.png",
+	"POISON": "res://UI/Textures/ui_effecticons/poison_icon.png",
+	"WEB": "res://UI/Textures/ui_effecticons/attack_aug_icon.png",
+	"ICE": "res://UI/Textures/ui_effecticons/ice_icon.png",
+	"ELECTRIC": "res://UI/Textures/ui_effecticons/attack_aug_icon.png",
+	"BLEED": "res://UI/Textures/ui_effecticons/attack_aug_icon.png",
+	"HAZED": "res://UI/Textures/ui_effecticons/attack_aug_icon.png",
+	"FREEZE": "res://UI/Textures/ui_effecticons/ice_icon.png",
+	
+	"PHYSICAL": "res://UI/Textures/ui_effecticons/attack_icon.png",
+	"LIFESTEAL": "res://UI/Textures/ui_effecticons/heal_icon.png",
+	"HEAL": "res://UI/Textures/ui_effecticons/heal_icon.png",
+	
+	"ATK": "res://UI/Textures/ui_effecticons/attack_icon.png",
+	"ATKAUG": "res://UI/Textures/ui_effecticons/attack_aug_icon.png",
+	"HP": "res://UI/Textures/ui_effecticons/heal_icon.png",
+	"HPAUG": "res://UI/Textures/ui_effecticons/heal_icon.png",
+	"CD": "res://UI/Textures/ui_effecticons/haste_icon.png",
+	"BREED": "res://UI/Textures/ui_effecticons/null_icon.png",
+	"SPEC": "res://UI/Textures/ui_effecticons/null_icon.png",
+	"NULL": "res://UI/Textures/ui_effecticons/null_icon.png",
+}
