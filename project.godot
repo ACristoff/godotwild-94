@@ -40,10 +40,12 @@ gdscript/warnings/unused_signal=0
 directories/dch_directory={
 "Anon": "res://Assets/Dialogic/Character/Anon.dch",
 "Bae": "res://Assets/Dialogic/Character/Bae.dch",
+"DrLogic": "res://Assets/Dialogic/Character/DrLogic.dch",
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
 "BaeEncounter": "res://Assets/Dialogic/Timelines/BaeEncounter.dtl",
+"DrLogic": "res://Assets/Dialogic/Timelines/DrLogic.dtl",
 "Intro": "res://Assets/Dialogic/Timelines/Intro.dtl"
 }
 layout/style_directory={
