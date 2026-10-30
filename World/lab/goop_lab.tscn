@@ -1,25 +1,224 @@
 [gd_scene format=3 uid="uid://c8opx4e746slk"]
 
 [ext_resource type="Texture2D" uid="uid://r1ibjhjfn84g" path="res://Assets/Environment/Scenes/LaboratoryNew/ConveyorNew.png" id="1_egti4"]
+[ext_resource type="Script" uid="uid://d225ugjqoeuoc" path="res://World/lab/goop_lab.gd" id="1_xljrr"]
+[ext_resource type="Script" uid="uid://dpr2powm23rue" path="res://World/yipee/genes/yipee_data.gd" id="2_16yqu"]
 [ext_resource type="Texture2D" uid="uid://pmbtgymscu7n" path="res://Assets/Environment/Scenes/LaboratoryNew/Grinder.png" id="2_xljrr"]
+[ext_resource type="Script" uid="uid://ckc2iq0roikyx" path="res://World/yipee/genes/helix.gd" id="3_gluje"]
 [ext_resource type="Texture2D" uid="uid://blrbrpnjqgtlh" path="res://Assets/Environment/Scenes/LaboratoryNew/LabNewInterior.png" id="3_swsyr"]
+[ext_resource type="Script" uid="uid://cra0emwdv78rw" path="res://World/yipee/genes/strand.gd" id="4_pm1ho"]
+[ext_resource type="Resource" uid="uid://bkj1ei4lm0wsm" path="res://World/yipee/genes/allele/leftallele/resources/thick_skin.tres" id="5_lqwge"]
+[ext_resource type="Resource" uid="uid://cw22rf6u7lx7w" path="res://World/yipee/genes/allele/rightallele/resources/dog_ears.tres" id="6_1duhs"]
+[ext_resource type="PackedScene" uid="uid://dqgfurgu7jsbg" path="res://UI/Scenes/yip_toolyip.tscn" id="10_gluje"]
+
+[sub_resource type="Resource" id="Resource_vrt46"]
+script = ExtResource("4_pm1ho")
+left = ExtResource("5_lqwge")
+right = ExtResource("6_1duhs")
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_u2vb2"]
+script = ExtResource("3_gluje")
+strands = Array[ExtResource("4_pm1ho")]([SubResource("Resource_vrt46")])
+metadata/_custom_type_script = "uid://ckc2iq0roikyx"
+
+[sub_resource type="Resource" id="Resource_0dqea"]
+script = ExtResource("2_16yqu")
+yipee_name = "Yippus"
+age = 1
+helix = SubResource("Resource_u2vb2")
+metadata/_custom_type_script = "uid://dpr2powm23rue"
+
+[sub_resource type="Animation" id="Animation_gluje"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShredderSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_pm1ho"]
+resource_name = "shredder_on"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShredderSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lqwge"]
+_data = {
+&"RESET": SubResource("Animation_gluje"),
+&"shredder_on": SubResource("Animation_pm1ho")
+}
+
+[sub_resource type="Animation" id="Animation_swsyr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ConveyorSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_xljrr"]
+resource_name = "conveyor"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ConveyorSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_swsyr"]
+_data = {
+&"RESET": SubResource("Animation_swsyr"),
+&"conveyor_on": SubResource("Animation_xljrr")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_egti4"]
+size = Vector2(253, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xljrr"]
+size = Vector2(484, 409)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gluje"]
+radius = 41.0
+height = 152.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pm1ho"]
+radius = 103.0
+height = 466.0
 
 [node name="GoopLab" type="Node2D" unique_id=1508041924]
+script = ExtResource("1_xljrr")
+debug_yips = Array[ExtResource("2_16yqu")]([SubResource("Resource_0dqea")])
+
+[node name="LabBackground" type="Sprite2D" parent="." unique_id=1972674292]
+z_index = -10
+position = Vector2(960.66675, 537.75)
+scale = Vector2(3.0097225, 3.0097225)
+texture = ExtResource("3_swsyr")
 
 [node name="Mulcher" type="Node2D" parent="." unique_id=1884272660]
+position = Vector2(686, 24)
 
 [node name="ConveyorSprite" type="Sprite2D" parent="Mulcher" unique_id=1951354024]
 position = Vector2(258, 630)
 texture = ExtResource("1_egti4")
 hframes = 8
 
-[node name="Sprite2D2" type="Sprite2D" parent="Mulcher" unique_id=1516523610]
+[node name="ShredderSprite" type="Sprite2D" parent="Mulcher" unique_id=1516523610]
 position = Vector2(444, 731)
 texture = ExtResource("2_xljrr")
 hframes = 6
 
-[node name="LabNewInterior" type="Sprite2D" parent="." unique_id=1972674292]
-z_index = -10
-position = Vector2(960.66675, 537.75)
-scale = Vector2(3.0097225, 3.0097225)
-texture = ExtResource("3_swsyr")
+[node name="ShredderAnimation" type="AnimationPlayer" parent="Mulcher" unique_id=711426635]
+libraries/ = SubResource("AnimationLibrary_lqwge")
+
+[node name="ConveyorAnimation" type="AnimationPlayer" parent="Mulcher" unique_id=756310155]
+libraries/ = SubResource("AnimationLibrary_swsyr")
+
+[node name="ConveyorArea" type="Area2D" parent="Mulcher" unique_id=273060634]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mulcher/ConveyorArea" unique_id=1281484983]
+position = Vector2(253.5, 735)
+shape = SubResource("RectangleShape2D_egti4")
+
+[node name="Pen" type="Node2D" parent="." unique_id=880166845]
+
+[node name="PenArea" type="Area2D" parent="Pen" unique_id=23391803]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pen/PenArea" unique_id=1371681978]
+position = Vector2(312, 282.5)
+shape = SubResource("RectangleShape2D_xljrr")
+
+[node name="TooltipCanvas" type="CanvasLayer" parent="." unique_id=252898851]
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
+
+[node name="YipToolyip" parent="TooltipCanvas" unique_id=399779298 instance=ExtResource("10_gluje")]
+metadata/_edit_use_anchors_ = true
+
+[node name="TeamSlots" type="Node2D" parent="." unique_id=1531305568]
+
+[node name="TeamSlot1" type="Area2D" parent="TeamSlots" unique_id=1331481330]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeamSlots/TeamSlot1" unique_id=419717828]
+position = Vector2(496, 937)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_gluje")
+
+[node name="TeamSlot2" type="Area2D" parent="TeamSlots" unique_id=881288105]
+position = Vector2(196, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeamSlots/TeamSlot2" unique_id=22081072]
+position = Vector2(496, 937)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_gluje")
+
+[node name="TeamSlot3" type="Area2D" parent="TeamSlots" unique_id=333665390]
+position = Vector2(387, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeamSlots/TeamSlot3" unique_id=562211154]
+position = Vector2(496, 937)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_gluje")
+
+[node name="TeamSlot4" type="Area2D" parent="TeamSlots" unique_id=2009389140]
+position = Vector2(578, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeamSlots/TeamSlot4" unique_id=1744002859]
+position = Vector2(496, 937)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_gluje")
+
+[node name="TeamSlot5" type="Area2D" parent="TeamSlots" unique_id=818725733]
+position = Vector2(773, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeamSlots/TeamSlot5" unique_id=101514964]
+position = Vector2(496, 937)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_gluje")
+
+[node name="Pedestal" type="Area2D" parent="." unique_id=38371562]
+position = Vector2(1159, -94)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pedestal" unique_id=330643990]
+position = Vector2(468, 961)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_pm1ho")
+
+[connection signal="area_entered" from="Mulcher/ConveyorArea" to="." method="_on_conveyor_area_area_entered"]
+[connection signal="area_exited" from="Mulcher/ConveyorArea" to="." method="_on_conveyor_area_area_exited"]

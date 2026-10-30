@@ -22,7 +22,7 @@ var field_stock: Array[YipeeData] = []
 var field_generated_today: bool = false
 var field_locked: bool = false
 
-## Where will store yips globally
+## Where will store yips in the party globally
 var yip_party : Dictionary[int, YipeeData] = {
 	1: null,
 	2: null,
@@ -36,6 +36,8 @@ var yip_breed_barn : Dictionary[int, YipeeData] = {
 	1: null,
 	2: null
 }
+
+var goop_inventory
 
 var coins: int = 12
 enum Locations { FARM, FIELD, LAB, BATTLE, WIN_LOSE }
