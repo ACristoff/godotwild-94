@@ -174,41 +174,47 @@ metadata/_edit_use_anchors_ = true
 [node name="TeamSlots" type="Node2D" parent="." unique_id=1531305568]
 
 [node name="TeamSlot1" type="Area2D" parent="TeamSlots" unique_id=1331481330]
+position = Vector2(496, 933)
+collision_layer = 192
+collision_mask = 192
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TeamSlots/TeamSlot1" unique_id=419717828]
-position = Vector2(496, 937)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_gluje")
 
 [node name="TeamSlot2" type="Area2D" parent="TeamSlots" unique_id=881288105]
-position = Vector2(196, 0)
+position = Vector2(692, 933)
+collision_layer = 192
+collision_mask = 192
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TeamSlots/TeamSlot2" unique_id=22081072]
-position = Vector2(496, 937)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_gluje")
 
 [node name="TeamSlot3" type="Area2D" parent="TeamSlots" unique_id=333665390]
-position = Vector2(387, 1)
+position = Vector2(885, 932)
+collision_layer = 192
+collision_mask = 192
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TeamSlots/TeamSlot3" unique_id=562211154]
-position = Vector2(496, 937)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_gluje")
 
 [node name="TeamSlot4" type="Area2D" parent="TeamSlots" unique_id=2009389140]
-position = Vector2(578, 3)
+position = Vector2(1076, 939)
+collision_layer = 192
+collision_mask = 192
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TeamSlots/TeamSlot4" unique_id=1744002859]
-position = Vector2(496, 937)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_gluje")
 
 [node name="TeamSlot5" type="Area2D" parent="TeamSlots" unique_id=818725733]
-position = Vector2(773, 1)
+position = Vector2(1269, 939)
+collision_layer = 192
+collision_mask = 192
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TeamSlots/TeamSlot5" unique_id=101514964]
-position = Vector2(496, 937)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_gluje")
 

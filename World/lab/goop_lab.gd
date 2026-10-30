@@ -31,7 +31,7 @@ func _ready():
 		team_slots.append(child)
 	for yip in debug_yips:
 		spawn_yip(yip)
-	prints(team_slots)
+	#prints(team_slots)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -42,11 +42,13 @@ func _input(event: InputEvent) -> void:
 					drag_offset = dragged_yip.global_position - get_global_mouse_position()
 			else:
 				if dragged_yip:
+					print('dropped yip')
 					for i in range(team_slots.size()):
 						var slot: Area2D = team_slots[i]
 						
 						if slot.overlaps_area(dragged_yip.farmslot):
-							#place_yip(dragged_yip, i + 1)
+							print('dropped yip on area')
+							place_yip(dragged_yip, i + 1)
 							break
 					
 					dragged_yip = null
@@ -143,8 +145,10 @@ func place_yip(yip: Yipee, slot_number: int) -> void:
 	yip.data.yip_barn_slot = 0
 	yip.global_position = team_slots[slot_number - 1].global_position
 	
+	
 	# Update global party (visual slot 1 maps to party slot 5).
 	SignalBus.yip_party[6 - slot_number] = yip.data
+	prints(SignalBus.yip_party)
 
 func _on_yip_hovered(yip: Yipee) -> void:
 	if not is_instance_valid(yip):

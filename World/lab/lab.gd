@@ -183,6 +183,7 @@ func _input(event: InputEvent) -> void:
 	elif event is InputEventMouseMotion:
 		if dragged_yip:
 			dragged_yip.global_position = get_global_mouse_position() + drag_offset
+
 func set_yip_to_launch(yip: Yipee) -> void:
 	update_screen()
 	dna_screen.display_helix(yip.data.helix)
