@@ -68,6 +68,16 @@ func resize_yip_to_baby():
 
 func in_battle_dance():
 	$ActionsAnim.play("IdleBattle")
+	
+func snare_anim():
+	$ActionsAnim.play("Snare")
+
+func unsnare():
+	$ActionsAnim.stop()
+	$BearTrap2.hide()
+	$Yipnervous.hide()
+	$BearTrap1.hide()
+	$ActionsAnim.play("IdleNormal")
 
 func enemy_flip():
 	cd_bar.scale.x *= -1

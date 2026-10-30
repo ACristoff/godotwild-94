@@ -385,6 +385,12 @@ func _on_settings_button_pressed() -> void:
 
 func _on_lock_button_pressed():
 	SignalBus.field_locked = !SignalBus.field_locked
+	if SignalBus.field_locked:
+		for yip in all_yips:
+			yip.snare_anim()
+	else:
+		for yip in all_yips:
+			yip.unsnare()
 	update_lock_label()
 
 func update_lock_label():
@@ -394,4 +400,3 @@ func update_lock_label():
 	else:
 		$LockButtonGraphic/LockLabel.text = "Lock"
 		#$LockButtonGraphic/LockLabel.position.x += 5
-		

@@ -1,14 +1,20 @@
 [gd_scene format=3 uid="uid://dtmuxi5urpswf"]
 
 [ext_resource type="Script" uid="uid://bnrhnipr8typa" path="res://UI/Scripts/yip_toolyip.gd" id="1_dfroe"]
+[ext_resource type="Texture2D" uid="uid://cbvtgs1tqr813" path="res://UI/Textures/UIPanelThickOutliner.png" id="2_kb6ys"]
 [ext_resource type="Texture2D" uid="uid://bcrv3534foclh" path="res://UI/Textures/UIPanel.png" id="2_m2pjb"]
 [ext_resource type="FontFile" uid="uid://6nvj4320wbu4" path="res://UI/Fonts/Vaticanus-G3yVG.ttf" id="3_kb6ys"]
+[ext_resource type="FontFile" uid="uid://b2o45fsyj2vco" path="res://UI/Fonts/ShareTech-Regular.ttf" id="4_5636s"]
 [ext_resource type="Texture2D" uid="uid://c70vtydchbplw" path="res://UI/Textures/CDUI.png" id="4_uits3"]
-[ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="5_5636s"]
 [ext_resource type="PackedScene" uid="uid://r48rpjbxrdkk" path="res://UI/Scenes/allele_hover.tscn" id="6_3y3ve"]
 [ext_resource type="Texture2D" uid="uid://c8pupi4jdpi4f" path="res://UI/Textures/DNAUI1.png" id="7_3vk8w"]
+[ext_resource type="Texture2D" uid="uid://lp6qbgi1ktyn" path="res://UI/Textures/UIPanelBG.png" id="8_3y3ve"]
 [ext_resource type="Texture2D" uid="uid://cpcgek38dfbym" path="res://UI/Textures/DNAUI2.png" id="8_fvbyv"]
+[ext_resource type="Texture2D" uid="uid://c3u5jl8jlgfy5" path="res://UI/Textures/UIPanelThick.png" id="8_uits3"]
 [ext_resource type="PackedScene" uid="uid://cxcii53yccour" path="res://UI/Scenes/damage_toolyip.tscn" id="9_4w3l6"]
+[ext_resource type="Texture2D" uid="uid://cnhyc41j05pop" path="res://UI/Textures/UIPanelThickInside.png" id="10_3vk8w"]
+[ext_resource type="Texture2D" uid="uid://dmgp5jtp8bdn" path="res://UI/Textures/ui_effecticons/attack_icon.png" id="14_3y3ve"]
+[ext_resource type="Texture2D" uid="uid://ba0hrexyliksm" path="res://UI/Textures/DnaSprite.png" id="15_3vk8w"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o7fgy"]
 
@@ -87,22 +93,20 @@ pivot_offset = Vector2(-19, -11)
 script = ExtResource("1_dfroe")
 
 [node name="MainPanel" type="NinePatchRect" parent="." unique_id=323900239]
-self_modulate = Color(0.44, 0.33410668, 0.2728, 1)
 texture_filter = 3
 custom_minimum_size = Vector2(86, 0)
 layout_mode = 0
 offset_left = 19.0
 offset_top = 16.0
-offset_right = 105.0
-offset_bottom = 84.0
-scale = Vector2(0.195, 1e-05)
+offset_right = 150.0
+offset_bottom = 160.0
 pivot_offset_ratio = Vector2(0.5, 1)
 mouse_filter = 0
-texture = ExtResource("2_m2pjb")
-patch_margin_left = 1
-patch_margin_top = 1
-patch_margin_right = 1
-patch_margin_bottom = 1
+texture = ExtResource("2_kb6ys")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainPanel" unique_id=3239413]
 layout_mode = 1
@@ -132,16 +136,18 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = -2.0
+offset_left = 4.0
+offset_top = 13.0
+offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-theme_override_colors/font_color = Color(1, 0.84833336, 0.74, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
 theme_override_colors/selection_color = Color(0.14901961, 0.14901961, 0.14901961, 1)
+theme_override_constants/outline_size = 2
 theme_override_constants/minimum_character_width = 4
-theme_override_fonts/font = ExtResource("3_kb6ys")
+theme_override_fonts/font = ExtResource("4_5636s")
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_o7fgy")
 theme_override_styles/read_only = SubResource("StyleBoxEmpty_oiai5")
@@ -165,14 +171,33 @@ patch_margin_bottom = 1
 
 [node name="Label" type="Label" parent="MainPanel/HBoxContainer/Age" unique_id=2108060276]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 1.0
-offset_right = 42.0
-offset_bottom = 24.0
-theme_override_colors/font_color = Color(1, 0.84705883, 0.7411765, 1)
-theme_override_fonts/font = ExtResource("3_kb6ys")
+offset_left = -39.0
+offset_top = 12.0
+offset_right = -17.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.54, 0.54, 0.54, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("4_5636s")
 theme_override_font_sizes/font_size = 8
 text = "Age:99"
+
+[node name="Label2" type="Label" parent="MainPanel/HBoxContainer/Age" unique_id=84046094]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 12.0
+offset_right = 35.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.54, 0.54, 0.54, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("4_5636s")
+theme_override_font_sizes/font_size = 8
+text = "Common"
 
 [node name="TextureRect" type="TextureRect" parent="MainPanel" unique_id=1543159434]
 self_modulate = Color(0.32, 0.24304001, 0.2016, 1)
@@ -181,19 +206,24 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -63.0
+offset_top = -12.0
+offset_right = -23.0
+offset_bottom = 28.0
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_uits3")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/TextureRect" unique_id=1311802334]
+z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 73.0
+offset_top = 16.0
+offset_right = 73.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -203,10 +233,14 @@ theme_override_constants/separation = -18
 texture_filter = 3
 layout_mode = 2
 size_flags_vertical = 6
-theme_override_colors/font_color = Color(0.8, 0.9766666, 1, 1)
-theme_override_fonts/font = ExtResource("5_5636s")
-theme_override_font_sizes/font_size = 8
-text = "4.0"
+theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
+theme_override_colors/font_shadow_color = Color(0.83137256, 0.83137256, 0.83137256, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("4_5636s")
+theme_override_font_sizes/font_size = 15
+text = "4.0s"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -214,10 +248,15 @@ vertical_alignment = 1
 texture_filter = 3
 layout_mode = 2
 size_flags_vertical = 6
-theme_override_colors/font_color = Color(1, 0.84705883, 0.7411765, 1)
-theme_override_fonts/font = ExtResource("3_kb6ys")
-theme_override_font_sizes/font_size = 8
-text = "Sec"
+theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
+theme_override_colors/font_shadow_color = Color(0.83137256, 0.83137256, 0.83137256, 1)
+theme_override_colors/font_outline_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("4_5636s")
+theme_override_font_sizes/font_size = 6
+text = "cooldown"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -241,8 +280,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = 2.0
+offset_left = -37.0
+offset_top = -30.0
+offset_right = -38.0
+offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.55600005, 1, 0.27999997, 1)
@@ -255,10 +296,10 @@ vertical_alignment = 1
 [node name="Alleles" type="HBoxContainer" parent="MainPanel" unique_id=1688296728]
 z_index = 10
 layout_mode = 0
-offset_left = 18.0
-offset_top = 2.0
-offset_right = 59.0
-offset_bottom = 66.0
+offset_left = -77.0
+offset_top = 49.0
+offset_right = -36.0
+offset_bottom = 113.0
 mouse_filter = 2
 theme_override_constants/separation = 1
 
@@ -320,8 +361,70 @@ layout_mode = 2
 [node name="L_allele8" parent="MainPanel/Alleles/Visuals" unique_id=1276020697 instance=ExtResource("6_3y3ve")]
 layout_mode = 2
 
+[node name="MainPanel3" type="NinePatchRect" parent="." unique_id=1813120843]
+texture_filter = 3
+custom_minimum_size = Vector2(86, 0)
+layout_mode = 0
+offset_left = 22.0
+offset_top = 28.0
+offset_right = 147.0
+offset_bottom = 157.0
+pivot_offset_ratio = Vector2(0.5, 1)
+mouse_filter = 0
+texture = ExtResource("8_3y3ve")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MainPanel2" type="NinePatchRect" parent="." unique_id=2018379423]
+texture_filter = 3
+custom_minimum_size = Vector2(86, 0)
+layout_mode = 0
+offset_left = 24.0
+offset_top = 30.0
+offset_right = 145.0
+offset_bottom = 85.0
+pivot_offset_ratio = Vector2(0.5, 1)
+mouse_filter = 0
+texture = ExtResource("8_uits3")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MainPanel2" type="NinePatchRect" parent="MainPanel2" unique_id=660128471]
+texture_filter = 3
+custom_minimum_size = Vector2(86, 0)
+layout_mode = 0
+offset_top = 57.0
+offset_right = 121.0
+offset_bottom = 106.0
+pivot_offset_ratio = Vector2(0.5, 1)
+mouse_filter = 0
+texture = ExtResource("8_uits3")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MainPanel2" type="NinePatchRect" parent="MainPanel2/MainPanel2" unique_id=1446592437]
+texture_filter = 3
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 45.0
+offset_bottom = 44.0
+pivot_offset_ratio = Vector2(0.5, 1)
+mouse_filter = 0
+texture = ExtResource("10_3vk8w")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
 [node name="DNA" type="Control" parent="." unique_id=81975585]
-modulate = Color(1, 1, 1, 0)
+visible = false
 anchors_preset = 0
 offset_left = 18.0
 offset_top = 15.0
@@ -808,22 +911,21 @@ texture = SubResource("GradientTexture1D_f61sd")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=371432101]
 layout_mode = 0
-offset_left = 71.0
-offset_top = 2.0
-offset_right = 94.0
-offset_bottom = 66.0
+offset_left = 211.0
+offset_top = -49.0
+offset_right = 234.0
+offset_bottom = 15.0
 mouse_filter = 2
 
 [node name="StatsFlowContainer" type="FlowContainer" parent="." unique_id=2007240977]
-modulate = Color(1, 1, 1, 0)
 z_index = 1
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 107.0
-offset_top = 17.0
-offset_right = 149.0
-offset_bottom = 30.0
+offset_left = 167.0
+offset_top = 50.0
+offset_right = 209.0
+offset_bottom = 63.0
 grow_horizontal = 2
 mouse_filter = 2
 theme_override_constants/h_separation = -2
@@ -835,14 +937,13 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="StatsContainer" type="NinePatchRect" parent="." unique_id=70282764]
-modulate = Color(1, 1, 1, 0)
 self_modulate = Color(0.21960784, 0.16862746, 0.13725491, 1)
 texture_filter = 3
 layout_mode = 0
-offset_left = 106.0
-offset_top = 16.0
-offset_right = 149.0
-offset_bottom = 43.0
+offset_left = 164.0
+offset_top = -20.0
+offset_right = 207.0
+offset_bottom = 7.0
 texture = ExtResource("2_m2pjb")
 patch_margin_left = 1
 patch_margin_top = 1
@@ -852,23 +953,34 @@ patch_margin_bottom = 1
 [node name="MouseHover" type="Panel" parent="." unique_id=3622155]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 17.0
-offset_top = 5.0
-offset_right = 106.0
-offset_bottom = 86.0
+offset_left = -107.0
+offset_top = 10.0
+offset_right = -18.0
+offset_bottom = 91.0
 mouse_filter = 2
 
 [node name="MouseHover2" type="Panel" parent="." unique_id=1758508056]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 105.0
-offset_top = 3.0
-offset_right = 149.0
-offset_bottom = 43.0
+offset_left = 164.0
+offset_top = 9.0
+offset_right = 208.0
+offset_bottom = 49.0
 mouse_filter = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=162132146]
 libraries/ = SubResource("AnimationLibrary_o4pju")
+
+[node name="AttackIcon" type="Sprite2D" parent="." unique_id=2003667750]
+texture_filter = 3
+position = Vector2(9, 42)
+texture = ExtResource("14_3y3ve")
+
+[node name="DnaSprite" type="Sprite2D" parent="." unique_id=1161581470]
+modulate = Color(0.86, 0.86, 0.86, 1)
+texture_filter = 3
+position = Vector2(84, 57)
+texture = ExtResource("15_3vk8w")
 
 [connection signal="mouse_entered" from="MouseHover" to="." method="_on_mouse_hover_mouse_entered"]
 [connection signal="mouse_exited" from="MouseHover" to="." method="_on_mouse_hover_mouse_exited"]
