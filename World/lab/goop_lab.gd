@@ -4,14 +4,16 @@ extends Node2D
 @onready var conveyor_animation = $Mulcher/ConveyorAnimation
 @onready var shredder_animation = $Mulcher/ShredderAnimation
 @onready var pen_collision : CollisionShape2D = $Pen/PenArea/CollisionShape2D
+@onready var conveyor_area : Area2D = $Mulcher/ConveyorArea
 @onready var team_slot_conatiner = $TeamSlots
 
+#Debug only variables
 @export var debug_yips : Array[YipeeData] = []
+@onready var debug_goop : Label = $DebugData/Goop
 
 var focused_yip: Yipee = null
 var dragged_yip: Yipee = null
 var drag_offset: Vector2 = Vector2.ZERO
-var yip_on_shredder: Yipee = null
 var team_slots: Array[Area2D] = []
 var conveyor_has_yip: Yipee = null
 
@@ -23,6 +25,8 @@ var slot_yips: Dictionary[int, Yipee] = {
 	5: null,
 	6: null, #I guess this is the lab pedestal?
 }
+
+@export var conveyor_speed: int = 120
 
 #region built-in-functions
 
@@ -45,11 +49,15 @@ func _input(event: InputEvent) -> void:
 					print('dropped yip')
 					for i in range(team_slots.size()):
 						var slot: Area2D = team_slots[i]
-						
 						if slot.overlaps_area(dragged_yip.farmslot):
 							print('dropped yip on area')
 							place_yip(dragged_yip, i + 1)
 							break
+					
+					if conveyor_area.overlaps_area(dragged_yip.farmslot):
+						print('on conveyor')
+						conveyor_has_yip = dragged_yip
+						pass
 					
 					dragged_yip = null
 	
@@ -57,39 +65,53 @@ func _input(event: InputEvent) -> void:
 		if dragged_yip:
 			dragged_yip.global_position = get_global_mouse_position() + drag_offset
 
+func _process(delta):
+	if !conveyor_has_yip == null :
+		conveyor_has_yip.position.x += conveyor_speed * delta
+	pass
+
 #endregion
 
 #region shredder
 
 func shred_yip(yip: Yipee):
+	prints(yip, 'TIME TO SHRED')
 	#do yip animation and effects here
 	#take yips gene goop and add it to inventory
 	#shred yip here, remove from player and kill
-	#do a random yip death sound
-	pass
+	SignalBus.yip_inventory.erase(yip)
+	yip.queue_free()
+	#TODO: do a random yip death sound
+	stop_conveyor()
+	conveyor_has_yip = null
+
+func stop_conveyor():
+	shredder_animation.current_animation = "RESET"
+	conveyor_animation.current_animation = "RESET"
 
 func start_conveyor():
 	shredder_animation.current_animation = "shredder_on"
 	conveyor_animation.current_animation = "conveyor_on"
-	pass
 
 func _on_conveyor_area_area_entered(_area):
-	
 	start_conveyor()
-	#start_conveyor(yip)
-	pass # Replace with function body.
 
 func _on_conveyor_area_area_exited(_area):
 	if !conveyor_has_yip:
-		shredder_animation.current_animation = "RESET"
-		conveyor_animation.current_animation = "RESET"
-		pass
-	pass # Replace with function body.
+		stop_conveyor()
 
+func _on_shredding_zone_area_entered(area: Area2D):
+	prints(area, 'entered shredder!', area.get_parent(), conveyor_has_yip)
+	var entered_yip = area.get_parent()
+	if entered_yip == conveyor_has_yip:
+		shred_yip(entered_yip)
 
 #endregion 
 
 #region goop_chamber
+
+func update_goop(new_goop):
+	pass
 
 #endregion
 

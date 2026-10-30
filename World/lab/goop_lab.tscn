@@ -108,7 +108,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_egti4"]
-size = Vector2(253, 72)
+size = Vector2(681, 189.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gluje"]
+size = Vector2(311, 209)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xljrr"]
 size = Vector2(484, 409)
@@ -134,15 +137,17 @@ texture = ExtResource("3_swsyr")
 [node name="Mulcher" type="Node2D" parent="." unique_id=1884272660]
 position = Vector2(686, 24)
 
-[node name="ConveyorSprite" type="Sprite2D" parent="Mulcher" unique_id=1951354024]
-position = Vector2(258, 630)
-texture = ExtResource("1_egti4")
-hframes = 8
-
 [node name="ShredderSprite" type="Sprite2D" parent="Mulcher" unique_id=1516523610]
-position = Vector2(444, 731)
+position = Vector2(334, 711)
+scale = Vector2(3, 3)
 texture = ExtResource("2_xljrr")
 hframes = 6
+
+[node name="ConveyorSprite" type="Sprite2D" parent="Mulcher" unique_id=1951354024]
+position = Vector2(-218, 431.00003)
+scale = Vector2(3, 3)
+texture = ExtResource("1_egti4")
+hframes = 8
 
 [node name="ShredderAnimation" type="AnimationPlayer" parent="Mulcher" unique_id=711426635]
 libraries/ = SubResource("AnimationLibrary_lqwge")
@@ -151,10 +156,22 @@ libraries/ = SubResource("AnimationLibrary_lqwge")
 libraries/ = SubResource("AnimationLibrary_swsyr")
 
 [node name="ConveyorArea" type="Area2D" parent="Mulcher" unique_id=273060634]
+position = Vector2(-659, -26)
+collision_layer = 192
+collision_mask = 192
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mulcher/ConveyorArea" unique_id=1281484983]
-position = Vector2(253.5, 735)
+position = Vector2(464, 767)
 shape = SubResource("RectangleShape2D_egti4")
+
+[node name="ShreddingZone" type="Area2D" parent="Mulcher" unique_id=427746511]
+position = Vector2(312, 719)
+collision_layer = 192
+collision_mask = 192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mulcher/ShreddingZone" unique_id=2028847380]
+position = Vector2(2, 10)
+shape = SubResource("RectangleShape2D_gluje")
 
 [node name="Pen" type="Node2D" parent="." unique_id=880166845]
 
@@ -165,6 +182,7 @@ position = Vector2(312, 282.5)
 shape = SubResource("RectangleShape2D_xljrr")
 
 [node name="TooltipCanvas" type="CanvasLayer" parent="." unique_id=252898851]
+visible = false
 scale = Vector2(3, 3)
 transform = Transform2D(3, 0, 0, 3, 0, 0)
 
@@ -226,5 +244,21 @@ position = Vector2(468, 961)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_pm1ho")
 
+[node name="DebugData" type="Label" parent="." unique_id=1513310404]
+offset_left = 808.0
+offset_top = 143.0
+offset_right = 1106.0
+offset_bottom = 267.0
+text = "Debug data"
+
+[node name="Goop" type="Label" parent="DebugData" unique_id=611421423]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 30.0
+offset_right = 47.0
+offset_bottom = 53.0
+text = "Goop"
+
 [connection signal="area_entered" from="Mulcher/ConveyorArea" to="." method="_on_conveyor_area_area_entered"]
 [connection signal="area_exited" from="Mulcher/ConveyorArea" to="." method="_on_conveyor_area_area_exited"]
+[connection signal="area_entered" from="Mulcher/ShreddingZone" to="." method="_on_shredding_zone_area_entered"]
