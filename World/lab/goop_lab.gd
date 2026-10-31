@@ -100,7 +100,7 @@ func shred_yip(yip: Yipee):
 			update_goop(strand_type, total)
 		pass
 	#shred yip here, remove from player and kill
-	SignalBus.yip_inventory.erase(yip)
+	SignalBus.yip_inventory.erase(yip.data)
 	yip.queue_free()
 	#TODO: do a random yip death sound
 	stop_conveyor()
@@ -123,6 +123,8 @@ func _on_conveyor_area_area_entered(_area):
 	start_conveyor()
 
 func _on_conveyor_area_area_exited(_area):
+	if dragged_yip == _area.get_parent():
+		conveyor_has_yip = null
 	if !conveyor_has_yip:
 		stop_conveyor()
 
