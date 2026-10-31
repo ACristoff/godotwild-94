@@ -41,18 +41,21 @@ directories/dch_directory={
 "Anon": "res://Assets/Dialogic/Character/Anon.dch",
 "Bae": "res://Assets/Dialogic/Character/Bae.dch",
 "DrLogic": "res://Assets/Dialogic/Character/DrLogic.dch",
+"DrLogical": "res://Assets/Dialogic/Character/DrLogical.dch",
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
 "BaeEncounter": "res://Assets/Dialogic/Timelines/BaeEncounter.dtl",
+"BeforeYouGo": "res://Assets/Dialogic/Timelines/BeforeYouGo.dtl",
 "DrLogic": "res://Assets/Dialogic/Timelines/DrLogic.dtl",
 "Intro": "res://Assets/Dialogic/Timelines/Intro.dtl"
 }
 layout/style_directory={
 "": "res://Assets/Dialogic/Styles/MainStyle.tres",
+"DrLogic": "res://Assets/Dialogic/Styles/DrLogic.tres",
 "MainStyle": "res://Assets/Dialogic/Styles/MainStyle.tres"
 }
-layout/style_list=["res://Assets/Dialogic/Styles/MainStyle.tres"]
+layout/style_list=["res://Assets/Dialogic/Styles/MainStyle.tres", "res://Assets/Dialogic/Styles/DrLogic.tres"]
 layout/default_style="res://Assets/Dialogic/Styles/MainStyle.tres"
 variables={}
 glossary/default_case_sensitive=true

@@ -19,6 +19,19 @@
 [ext_resource type="PackedScene" uid="uid://bb8e7u8p4dyvi" path="res://UI/Scenes/tutorial_box8.tscn" id="17_m5643"]
 [ext_resource type="PackedScene" uid="uid://dvqr4j66enjbg" path="res://UI/Scenes/tutorial_box9.tscn" id="18_hfses"]
 [ext_resource type="PackedScene" uid="uid://dpaojrrfpgvcw" path="res://UI/Scenes/tutorial_box10.tscn" id="19_h43vc"]
+[ext_resource type="Texture2D" uid="uid://dsqlimmnjhdwc" path="res://Assets/Environment/Scenes/Laboratory/LabNewFloor.png" id="28_aupec"]
+[ext_resource type="Texture2D" uid="uid://pmbtgymscu7n" path="res://Assets/Environment/Scenes/LaboratoryNew/Grinder.png" id="29_4j4bj"]
+[ext_resource type="Texture2D" uid="uid://r1ibjhjfn84g" path="res://Assets/Environment/Scenes/LaboratoryNew/ConveyorNew.png" id="30_6qk23"]
+[ext_resource type="Script" uid="uid://ddygeie0aq8n6" path="res://UI/Scripts/helix_drop_surface.gd" id="31_yvh3b"]
+[ext_resource type="Script" uid="uid://dufxpqu2r5sh0" path="res://Assets/Test/dna_test_screen.gd" id="32_836pr"]
+[ext_resource type="PackedScene" uid="uid://6looit7fo72" path="res://Assets/Test/dna_stacked_shell.tscn" id="33_mdl01"]
+[ext_resource type="Texture2D" uid="uid://dhyaufaxs6hjv" path="res://UI/Textures/cyanspeenspritesheet.png" id="34_ke787"]
+[ext_resource type="Texture2D" uid="uid://rwpaxb4jhtyk" path="res://UI/Textures/Arrow.png" id="35_j71bh"]
+[ext_resource type="Shader" uid="uid://bwvmkd4i76b3p" path="res://Assets/Shaders/CRT.gdshader" id="36_8o0ju"]
+[ext_resource type="Texture2D" uid="uid://c1xvm0thbin5l" path="res://Assets/Environment/Scenes/Laboratory/LabScreen.png" id="37_xoyq5"]
+[ext_resource type="Texture2D" uid="uid://dp6fox832wacg" path="res://Assets/Environment/Scenes/Laboratory/LabPieces.png" id="38_gp1xn"]
+[ext_resource type="Texture2D" uid="uid://blbxak2oo2t0j" path="res://Assets/Environment/Scenes/Laboratory/LabPiecesOver.png" id="39_thqs5"]
+[ext_resource type="Script" uid="uid://dn0twegwjngg0" path="res://UI/Scripts/inventory_drop.gd" id="40_1nqyd"]
 
 [sub_resource type="Animation" id="Animation_kw6rw"]
 resource_name = "Attempt1"
@@ -654,11 +667,231 @@ _data = {
 &"RESET": SubResource("Animation_jtax5")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ijr3j"]
+size = Vector2(1089, 1201)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uroyv"]
+shader = ExtResource("36_8o0ju")
+shader_parameter/brightness = 1.02
+shader_parameter/contrast = 1.08
+shader_parameter/saturation = 1.1
+shader_parameter/gamma = 1.24500005261773
+shader_parameter/curvature = 0.0
+shader_parameter/corner_soften = 0.0
+shader_parameter/vignette = 0.0
+shader_parameter/scanline_strength = 0.0930000044175
+shader_parameter/scanline_density = 0.5
+shader_parameter/interlace_strength = 0.2
+shader_parameter/mask_strength = 0.22
+shader_parameter/mask_scale = 1.0
+shader_parameter/chroma_offset_px = 1.6
+shader_parameter/luma_smear_px = 2.2
+shader_parameter/jitter_px = 1.8
+shader_parameter/wobble_px = 1.5
+shader_parameter/tape_noise = 0.22
+shader_parameter/tape_lines = 0.35
+shader_parameter/roll_speed = 0.1
+shader_parameter/roll_strength = 0.15
+shader_parameter/glow_strength = 0.25
+shader_parameter/glow_threshold = 0.65
+
+[sub_resource type="Gradient" id="Gradient_ieswn"]
+colors = PackedColorArray(0.0070000077, 0, 0.06, 1, 0.9716667, 0.95, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_04eem"]
+gradient = SubResource("Gradient_ieswn")
+
+[sub_resource type="Environment" id="Environment_ems3l"]
+background_mode = 3
+glow_enabled = true
+glow_strength = 1.02
+glow_bloom = 0.2
+adjustment_enabled = true
+adjustment_brightness = 0.71
+adjustment_color_correction = SubResource("GradientTexture1D_04eem")
+
+[sub_resource type="Gradient" id="Gradient_04eem"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_co32c"]
+gradient = SubResource("Gradient_04eem")
+width = 1930
+height = 1278
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.9691781, 0.5385231)
+
+[sub_resource type="Gradient" id="Gradient_co32c"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mntup"]
+gradient = SubResource("Gradient_co32c")
+width = 1167
+height = 370
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8835617, 0.34459698)
+
+[sub_resource type="Animation" id="Animation_be18q"]
+resource_name = "Flash"
+length = 1.06
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NoConnectionFound:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.53, 1.06),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_vq6iu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NoConnectionFound:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_skhjb"]
+_data = {
+&"Flash": SubResource("Animation_be18q"),
+&"RESET": SubResource("Animation_vq6iu")
+}
+
+[sub_resource type="Animation" id="Animation_skhjb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/SubViewportContainer/SubViewport/Cyanspeenspritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_n5q1j"]
+resource_name = "Spin"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/SubViewportContainer/SubViewport/Cyanspeenspritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.23333335, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.40000004, 0.43333337, 0.4666667, 0.5, 0.53333336, 0.5666667, 0.6, 0.6333334, 0.6666667, 0.70000005, 0.73333335, 0.7666667, 0.8000001, 0.8333334, 0.86666673, 0.90000004, 0.9333334, 0.9666667, 1, 1.0333334, 1.0666667, 1.1, 1.1333334, 1.1666667, 1.2, 1.2333333, 1.2666668, 1.3000001, 1.3333334, 1.3666668, 1.4000001, 1.4333334, 1.4666667, 1.5000001, 1.5333334, 1.5666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sf1g0"]
+_data = {
+&"RESET": SubResource("Animation_skhjb"),
+&"Spin": SubResource("Animation_n5q1j")
+}
+
+[sub_resource type="Animation" id="Animation_u463x"]
+resource_name = "Grind"
+length = 0.8
+loop_mode = 1
+step = 0.13
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ConveyorNew:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 7]
+}
+
+[sub_resource type="Animation" id="Animation_wckeq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ConveyorNew:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vnrt3"]
+_data = {
+&"Grind": SubResource("Animation_u463x"),
+&"RESET": SubResource("Animation_wckeq")
+}
+
+[sub_resource type="Animation" id="Animation_vnrt3"]
+resource_name = "GrindUp"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Grinder:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 5]
+}
+
+[sub_resource type="Animation" id="Animation_hbchn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Grinder:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u53nv"]
+_data = {
+&"GrindUp": SubResource("Animation_vnrt3"),
+&"RESET": SubResource("Animation_hbchn")
+}
+
 [node name="StartCutscene" type="Node2D" unique_id=588285204]
 texture_filter = 3
 script = ExtResource("1_nj425")
 
 [node name="Baesyip" type="Sprite2D" parent="." unique_id=1938684100]
+visible = false
 position = Vector2(927.00006, 532)
 scale = Vector2(3, 3)
 texture = ExtResource("2_5ac60")
@@ -860,6 +1093,288 @@ offset_top = 34.999992
 offset_right = -28.000023
 offset_bottom = 70.66666
 
+[node name="Lab" type="Node2D" parent="." unique_id=1804512105]
+z_index = -10
+
+[node name="LabFloor" type="Sprite2D" parent="Lab" unique_id=1479778400]
+light_mask = 3
+texture_filter = 3
+position = Vector2(960, 540)
+scale = Vector2(3, 3)
+texture = ExtResource("28_aupec")
+
+[node name="Grinder" type="Sprite2D" parent="Lab" unique_id=941696]
+texture_filter = 3
+position = Vector2(697, 86)
+scale = Vector2(3, 3)
+texture = ExtResource("29_4j4bj")
+hframes = 6
+
+[node name="ConveyorNew" type="Sprite2D" parent="Lab" unique_id=1905849271]
+texture_filter = 3
+position = Vector2(148, -212)
+scale = Vector2(3, 3)
+texture = ExtResource("30_6qk23")
+hframes = 8
+
+[node name="ColorRect" type="ColorRect" parent="Lab" unique_id=1270990920]
+offset_left = 690.0
+offset_top = -647.0
+offset_right = 1179.0
+offset_bottom = -358.0
+scale = Vector2(3, 3)
+mouse_filter = 2
+color = Color(0.11327667, 0.039100002, 0.17, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="Lab" unique_id=748581926]
+light_mask = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -14.0
+offset_right = 626.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Lab/Control" unique_id=1477775606]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.56296295
+anchor_right = 1.0
+anchor_bottom = 0.43703702
+offset_left = 232.33333
+offset_top = 8.0
+offset_right = 73.33331
+offset_bottom = -72.33331
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+stretch_shrink = 3
+script = ExtResource("31_yvh3b")
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="Lab/Control/SubViewportContainer" unique_id=1842217819]
+transparent_bg = true
+handle_input_locally = false
+physics_object_picking = true
+size = Vector2i(481, 272)
+render_target_update_mode = 4
+
+[node name="DNATestScreen" type="Node2D" parent="Lab/Control/SubViewportContainer/SubViewport" unique_id=2140591040]
+position = Vector2(211.66669, 28)
+scale = Vector2(0.2, 0.2)
+script = ExtResource("32_836pr")
+
+[node name="DNA" type="Node2D" parent="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen" unique_id=168700534]
+position = Vector2(4, -38)
+
+[node name="DNAStackedShell" parent="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" unique_id=1936980544 instance=ExtResource("33_mdl01")]
+title_offset = 65
+anim_start_frame = 11
+
+[node name="DnaAllele1" parent="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen/DNA/DNAStackedShell" index="0" unique_id=1141063690]
+frame = 11
+
+[node name="DnaAllele2" parent="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen/DNA/DNAStackedShell" index="1" unique_id=245642215]
+frame = 11
+
+[node name="DnaShell1" parent="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen/DNA/DNAStackedShell" index="2" unique_id=1537355024]
+z_index = 2
+frame = 11
+
+[node name="DnaShell2" parent="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen/DNA/DNAStackedShell" index="3" unique_id=1005190979]
+z_index = -2
+frame = 11
+
+[node name="DNAStackedShell2" parent="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" unique_id=1240801642 instance=ExtResource("33_mdl01")]
+position = Vector2(0, 150)
+title_offset = 60
+anim_start_frame = 8
+
+[node name="DNAStackedShell3" parent="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" unique_id=1237795546 instance=ExtResource("33_mdl01")]
+position = Vector2(0, 300)
+title_offset = 56
+anim_start_frame = 5
+
+[node name="DNAStackedShell4" parent="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" unique_id=1213718929 instance=ExtResource("33_mdl01")]
+position = Vector2(0, 450)
+title_offset = 54
+anim_start_frame = 2
+
+[node name="DNAStackedShell5" parent="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" unique_id=898139654 instance=ExtResource("33_mdl01")]
+position = Vector2(0, 600)
+title_offset = 54
+anim_start_frame = 47
+
+[node name="DNAStackedShell6" parent="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" unique_id=858876537 instance=ExtResource("33_mdl01")]
+position = Vector2(0, 750)
+title_offset = 58
+anim_start_frame = 44
+
+[node name="DNAStackedShell7" parent="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" unique_id=1449613694 instance=ExtResource("33_mdl01")]
+position = Vector2(0, 900)
+title_offset = 62
+anim_start_frame = 41
+
+[node name="DNAStackedShell8" parent="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" unique_id=1583672614 instance=ExtResource("33_mdl01")]
+position = Vector2(0, 1050)
+title_offset = 66
+anim_start_frame = 38
+
+[node name="Area2D" type="Area2D" parent="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" unique_id=55206718]
+position = Vector2(-1, 525)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen/DNA/Area2D" unique_id=596103110]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_ijr3j")
+
+[node name="Timer" type="Timer" parent="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen" unique_id=1348414813]
+wait_time = 0.05
+autostart = true
+
+[node name="Cyanspeenspritesheet" type="Sprite2D" parent="Lab/Control/SubViewportContainer/SubViewport" unique_id=235109698]
+position = Vector2(302.33334, -496.3333)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("34_ke787")
+hframes = 12
+vframes = 4
+
+[node name="NoConnectionFound" type="Label" parent="Lab" unique_id=1816128812]
+offset_left = 786.0
+offset_top = -578.0
+offset_right = 1917.0
+offset_bottom = -403.0
+theme_override_colors/font_color = Color(0, 0.75686276, 0.7137255, 1)
+theme_override_fonts/font = ExtResource("7_kw6rw")
+theme_override_font_sizes/font_size = 83
+text = "NO CONNECTION FOUND"
+metadata/_edit_use_anchors_ = true
+
+[node name="PlaceYip" type="Label" parent="Lab" unique_id=22579479]
+offset_left = 994.0
+offset_top = -254.0
+offset_right = 1386.0
+offset_bottom = 51.0
+theme_override_colors/font_color = Color(0, 0.75686276, 0.7137255, 1)
+theme_override_fonts/font = ExtResource("7_kw6rw")
+theme_override_font_sizes/font_size = 58
+text = "Place Yip on launch
+pad"
+horizontal_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Arrow" type="Sprite2D" parent="Lab" unique_id=2076793394]
+texture_filter = 3
+position = Vector2(1592, 142.99997)
+scale = Vector2(1.9259255, 0.36538458)
+texture = ExtResource("35_j71bh")
+
+[node name="ColorRect4" type="ColorRect" parent="Lab" unique_id=749799674]
+material = SubResource("ShaderMaterial_uroyv")
+offset_left = 678.0
+offset_top = -607.0
+offset_right = 1135.0
+offset_bottom = -332.0
+scale = Vector2(3, 3)
+mouse_filter = 2
+
+[node name="LabScreen" type="Sprite2D" parent="Lab" unique_id=760138046]
+texture_filter = 3
+position = Vector2(960, -68)
+scale = Vector2(3, 3)
+texture = ExtResource("37_xoyq5")
+
+[node name="LabPieces" type="Sprite2D" parent="Lab" unique_id=1245527304]
+visible = false
+texture_filter = 3
+position = Vector2(960, 540)
+scale = Vector2(3, 3)
+texture = ExtResource("38_gp1xn")
+
+[node name="LabPiecesOver" type="Sprite2D" parent="Lab" unique_id=360956867]
+visible = false
+texture_filter = 3
+position = Vector2(960, 540)
+scale = Vector2(3, 3)
+texture = ExtResource("39_thqs5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Lab" unique_id=1911432724]
+
+[node name="LeftInventory" type="VBoxContainer" parent="Lab/CanvasLayer" unique_id=2077944316]
+offset_left = 842.0
+offset_top = 43.0
+offset_right = 986.0
+offset_bottom = 703.0
+mouse_filter = 2
+script = ExtResource("40_1nqyd")
+metadata/_edit_use_anchors_ = true
+
+[node name="RightInventory" type="VBoxContainer" parent="Lab/CanvasLayer" unique_id=764300082]
+offset_left = 1676.0
+offset_top = 47.0
+offset_right = 1820.0
+offset_bottom = 724.0
+mouse_filter = 2
+script = ExtResource("40_1nqyd")
+metadata/_edit_use_anchors_ = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lab" unique_id=939278799]
+environment = SubResource("Environment_ems3l")
+
+[node name="Area2D" type="Area2D" parent="Lab" unique_id=482508547]
+position = Vector2(0, -488)
+
+[node name="PointLight2D" type="PointLight2D" parent="Lab" unique_id=688176565]
+visible = false
+position = Vector2(1235, 449)
+energy = 2.62
+blend_mode = 2
+texture = SubResource("GradientTexture2D_co32c")
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D2" type="PointLight2D" parent="Lab" unique_id=210127561]
+visible = false
+position = Vector2(640, 181)
+color = Color(0.32186756, 0, 0.58456355, 1)
+energy = 12.71
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_mntup")
+
+[node name="SmallGeneCanvas" type="CanvasLayer" parent="Lab" unique_id=145482404]
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
+
+[node name="NoConnectionFoundAnim" type="AnimationPlayer" parent="Lab" unique_id=1883718793]
+libraries/ = SubResource("AnimationLibrary_skhjb")
+autoplay = &"Flash"
+
+[node name="Spin" type="AnimationPlayer" parent="Lab" unique_id=1678701049]
+libraries/ = SubResource("AnimationLibrary_sf1g0")
+autoplay = &"Spin"
+speed_scale = 0.3
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="Lab" unique_id=1928294982]
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
+
+[node name="GrinderAnim" type="AnimationPlayer" parent="Lab" unique_id=1844336748]
+libraries/ = SubResource("AnimationLibrary_vnrt3")
+autoplay = &"Grind"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Lab" unique_id=29743004]
+libraries/ = SubResource("AnimationLibrary_u53nv")
+autoplay = &"GrindUp"
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
@@ -872,6 +1387,10 @@ offset_bottom = 70.66666
 [connection signal="next" from="TutorialBox8" to="." method="_on_tutorial_box_8_next"]
 [connection signal="next" from="TutorialBox9" to="." method="_on_tutorial_box_9_next"]
 [connection signal="next" from="TutorialBox10" to="." method="_on_tutorial_box_10_next"]
+[connection signal="mouse_entered" from="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen/DNA/Area2D" to="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen/DNA/Area2D" to="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen" method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen/Timer" to="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen" method="_on_timer_timeout"]
 
 [editable path="TutorialBox4"]
 [editable path="TutorialBox10"]
+[editable path="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen/DNA/DNAStackedShell"]

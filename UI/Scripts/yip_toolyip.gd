@@ -200,7 +200,7 @@ func _process(delta: float) -> void:
 		else:
 			_hide_grace -= delta
 			if _hide_grace <= 0.0:
-				hide()
+				#hide()
 				current_yip = null
 	amnt_of_stats = stats_flow_container.get_child_count()
 	match amnt_of_stats:

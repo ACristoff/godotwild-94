@@ -27,6 +27,8 @@ position = Vector2(960.11096, 539.99994)
 scale = Vector2(3.0003471, 2.9999998)
 texture = ExtResource("2_lwms1")
 
+[node name="CorrectScale" type="CanvasLayer" parent="." unique_id=674294151]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=802236130]
 scale = Vector2(3, 3)
 transform = Transform2D(3, 0, 0, 3, 0, 0)

@@ -12,8 +12,9 @@ func _ready() -> void:
 	var allele = ALELLE_UI.instantiate()
 	current_allele = allele
 	add_child(allele)
+	allele.scale = Vector2(0.33, 0.33)
 	allele.hide()
-
+#BRB
 
 func _on_mouse_entered() -> void:
 	if allele_data == null:

@@ -1,18 +1,24 @@
 join DrLogic center
-DrLogic (Normal): It is I! Dr Logical. At your service proud new owner of your very own Yip Ranch!
-Bae: Hi. Where do I get yips!
-DrLogic: Patience! With time I will explain everything!
-DrLogic: You see the person you are speaking to is the smartest man in the entire universe. Unlike my foolish little brother I was given the name "Dr. Logical". Ha Hu AH!
-- Who gave you that name?
-	DrLogic (Happy): My Yips of course. Isnt that right Yip love?
-	Anon: That Yip isnt speaking.. And why does it look humanoid?
-	DrLogic (Surprise): WHAT? This Yip here? Humanoid?! HA! You must be a disciple of my little brother.
-	Anon: I dont even know who that is!
-	DrLogic (Normal): mHMM. This is no laughing matter. Never mind the shape of my perfect Yips. You must learn the basics of Yip Ranching.
-- Who is your little brother?
-	DrLogic (Surprise): He goes by the name of, DR. INSANE-O MODE..
-	DrLogic (Normal): He earned that name because of his mission to destroy the world.
-	Anon: Why?
-	DrLogic (Surprise): Something about society being a fallen, hedonistic, hellscape.
-	DrLogic (Normal): I wonder where he got that idea.
-	Enough about that! You must learn the basics of Yip Ranching
+DrLogic (Normal): I'm pleased to make your aquaintance yip breeder. As you know animals were once a sort of biological machine similar to humans.
+DrLogic: But with time, humans can repopulate the earth with animals once again!
+Anon: Right.. The yips are bred.. together.
+DrLogic: See? You're a natural!
+Anon: Yip on Yip?
+DrLogic: ...Precisely.
+Anon: Two yips sitting in a tree?
+DrLogic: ♫ K-I-S-S-I-N-G ♫
+Anon: Why are your yips so humanoid?
+DrLogic (Surprise): W- What do you mean?.. My? My yips?
+- Do they all look like that?
+	DrLogic (Happy): Hah! You think any fool could genetically engineer yips as perfect as mine?! Isnt that right yipelina and yipenelope?
+	Anon: Who are you?
+	DrLogic: Ah, yes. Ahem... My name is Dr. Logical, Chief of Ethics at Tardigate. I'm in charge of overseeing these farms to make sure no abuse is done to the yips.
+	Anon: I see.. I'll be on my way then.
+	DrLogic (Surprise): Before you go I will give you one yip of your choosing. This yip will be your trusted companion. Its beautiful really.
+- Aren't there law-?
+	DrLogic (Surprise): THERE ARE NO LAWS! Ahem, there are no laws. I am the supervisor of yip ethics so if you have questions come to me.
+	Anon: Who are you?
+	DrLogic: Ah, yes. Ahem... My name is Dr. Logical , Chief of Ethics at Tardigate. I'm in charge of overseeing these farms to make sure no abuse is done to the yips.
+	Anon: I see.. I'll be on my way then.
+	DrLogic (Surprise): Before you go I will give you one yip of your choosing. This yip will be your trusted companion. Its beautiful really.
+[signal arg="drlogic_finished"]

@@ -9,6 +9,7 @@ const LETTER_IMPACT = preload("uid://dxdi7wy5wcxmn")
 const LETTER_OPEN = preload("uid://duikmvorwvx5")
 
 func _ready() -> void:
+	$Lab/WorldEnvironment.environment = null
 	Dialogic.signal_event.connect(bye_pointy)
 
 func bye_pointy(arg):
@@ -42,7 +43,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "OpenLetter":
 		letteropened = true
 	if anim_name == "ByeByeLetter":
-		$TutorialBox.show()
+		Dialogic.start("DrLogic")
+		#$TutorialBox.show()
 
 
 func _on_button_2_pressed() -> void:

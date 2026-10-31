@@ -1,27 +1,20 @@
-Bae (Happy): Look at you~! I... love you~~!
+Bae (Happy): What do you think you are doing?
 [signal arg="baeappears"]
 join Bae right
-Bae (Happy): Oh.. Hey. My name is Bae. I saw them place your ranch over yonder.
-- Why are you wearing that?
-	Bae (Pissed): It's summer? Whats your problem?
-	Anon: I was wondering if there was a pool nearb-
-	Bae (Pissed): tsk* creep..
-	Anon: Could I get that Yip, I did find it first..
-	Bae (Happy): Too bad! This Yip looks great for battle.
-	Anon: Isnt battling the Yips against the rules?
-	Bae (Pissed): Look. everyone around here battles them in a tourney called the bracket. Management doesnt care.
-	Anon: How could you do that!? Don't you love them?
-	Bae (Livid): I do love them!!
-	Bae (Happy): Ahem* Almost overreacted hehe~
-	Bae (Pissed): New guy. if you ever show your face in the bracket. I will destroy you..
-- I found that creature first!
-	Bae (Happy): Too bad! This Yip looks great for battle.
-	Anon: Isnt battling the Yips against the rules?
-	Bae (Pissed): Look. everyone around here battles them in a tourney called the bracket. Management doesnt care.
-	Anon: How could you do that!? Don't you love them?
-	Bae (Livid): I do love them!!
-	Bae (Happy): Ahem* Almost overreacted hehe~
-	Bae (Pissed): New guy. if you ever show your face in the bracket. I will crush you..
+Anon: Dr.. What was his name? Dr. Tropical? He gave me this yip.
+Bae (Happy): Oh.. Hey. My name is Bae. I didn't know you were a noobie.
+Bae: For future reference. You are on my farm. Yours is that way I believe. My dad told me about you.
+Anon: How would your dad know about me?
+Bae: Because hes the CEO of Tardigate. Idiot!
+Bae: Daddy told me to stop attacking newcomers. So I'll let you off the hook this time. But don't think the others are as graceful and beautiful as me!
+Anon: The others?
+Bae (Pissed): The other breeders of course. Do you know how BORRRIIINNNGG and gross breeding yips is? These things are so weird.
+Anon: If your father is the CEO why cant you live in some cushy mansion then?
+Bae: Aren't you nosy? Keep this a secret but me and the other breeders make our yips fight to the death.
+Anon: Isnt that against the terms of the contract? Don't you care about the yips
+Bae (Livid): I'll have you know I LOVE my yips.
+Anon: You're a monster!
+Bae (Livid): You'll learn soon enough! The other breeders won't let you off the hook easy. Come see me at the championship unless all your yips DIE before then. I'll show you whos the monster.
 leave Bae
 Anon: The people here might be insane. I need to find some Yips.
 [signal arg="opening_finished"]

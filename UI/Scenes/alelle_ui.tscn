@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://d00ic1re1l86i" path="res://UI/Scripts/alelle_ui.gd" id="1_6tcmc"]
 [ext_resource type="Texture2D" uid="uid://bcrv3534foclh" path="res://UI/Textures/UIPanel.png" id="1_ydn44"]
-[ext_resource type="FontFile" uid="uid://6nvj4320wbu4" path="res://UI/Fonts/Vaticanus-G3yVG.ttf" id="2_d66ip"]
-[ext_resource type="Texture2D" uid="uid://hw33tjyvck3t" path="res://UI/Textures/Gene.png" id="3_d66ip"]
-[ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="4_g53l3"]
+[ext_resource type="Texture2D" uid="uid://dnyp7b0axg38d" path="res://UI/Textures/Gene-export.png" id="2_ppimr"]
+[ext_resource type="Texture2D" uid="uid://c3u5jl8jlgfy5" path="res://UI/Textures/UIPanelThick.png" id="6_chwp6"]
+[ext_resource type="Texture2D" uid="uid://dmgp5jtp8bdn" path="res://UI/Textures/ui_effecticons/attack_icon.png" id="6_wvmmd"]
+[ext_resource type="FontFile" uid="uid://b2o45fsyj2vco" path="res://UI/Fonts/ShareTech-Regular.ttf" id="7_wvmmd"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g53l3"]
 
@@ -17,26 +18,26 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MainPanel:scale")
+tracks/0/path = NodePath("MainPanel:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.11439636, 0.11705674, 0.2),
-"transitions": PackedFloat32Array(0.2030631, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1.075, 0.985), Vector2(1.073, 0.89), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MainPanel:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.08779256, 0.13301903),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [-0.05235988, 0.017453292, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainPanel:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.11439636, 0.11705674, 0.2),
+"transitions": PackedFloat32Array(0.2030631, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.075, 0.985), Vector2(1.073, 0.89), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ppimr"]
@@ -44,26 +45,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MainPanel:scale")
+tracks/0/path = NodePath("MainPanel:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(0.2030631),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05)]
+"values": [-0.05235988]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MainPanel:rotation")
+tracks/1/path = NodePath("MainPanel:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(0.2030631),
 "update": 0,
-"values": [-0.05235988]
+"values": [Vector2(1e-05, 1e-05)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_chwp6"]
@@ -91,7 +92,6 @@ offset_bottom = 22.0
 rotation = -0.05235988
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(0, -12.04)
-texture = ExtResource("1_ydn44")
 patch_margin_left = 1
 patch_margin_top = 1
 patch_margin_right = 1
@@ -107,121 +107,186 @@ grow_horizontal = 2
 mouse_filter = 2
 theme_override_constants/separation = 1
 
-[node name="Gene2" type="NinePatchRect" parent="MainPanel" unique_id=1957767952]
+[node name="Description" type="NinePatchRect" parent="MainPanel" unique_id=846814661]
+z_index = -1
 texture_filter = 3
+custom_minimum_size = Vector2(363, 147)
 layout_mode = 0
-offset_left = -1.0
-offset_top = -41.0
-offset_right = 107.0
-offset_bottom = 30.0
-texture = ExtResource("3_d66ip")
-patch_margin_left = 11
-patch_margin_right = 18
+offset_right = 121.0
+offset_bottom = 49.0
+pivot_offset_ratio = Vector2(0.5, 1)
+mouse_filter = 0
+texture = ExtResource("6_chwp6")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
 
-[node name="MainPanel2" type="NinePatchRect" parent="MainPanel/Gene2" unique_id=308161464]
-self_modulate = Color(1.6852883, 1.6852883, 1.6852883, 1)
-texture_filter = 3
-layout_mode = 0
-offset_left = 2.0
-offset_top = 30.0
-offset_right = 54.0
-offset_bottom = 41.0
-texture = ExtResource("1_ydn44")
-patch_margin_left = 1
-patch_margin_top = 1
-patch_margin_right = 1
-patch_margin_bottom = 1
-
-[node name="Name" type="Label" parent="MainPanel/Gene2/MainPanel2" unique_id=97529741]
-texture_filter = 3
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/Description" unique_id=1519331585]
+custom_minimum_size = Vector2(121, 49)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = 2.0
-offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.19, 0.16118334, 0.1406, 1)
-theme_override_fonts/font = ExtResource("2_d66ip")
-theme_override_font_sizes/font_size = 8
-theme_override_styles/normal = SubResource("StyleBoxEmpty_g53l3")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_6tcmc")
-text = "Allele"
+theme_override_constants/separation = -2
+alignment = 1
 
-[node name="MainPanel3" type="NinePatchRect" parent="MainPanel/Gene2" unique_id=253295928]
-self_modulate = Color(1.6852883, 1.6852883, 1.6852883, 1)
-texture_filter = 3
-layout_mode = 0
-offset_left = 53.0
-offset_top = 30.0
-offset_right = 80.0
-offset_bottom = 41.0
-texture = ExtResource("1_ydn44")
-patch_margin_left = 1
-patch_margin_top = 1
-patch_margin_right = 1
-patch_margin_bottom = 1
-
-[node name="Type" type="Label" parent="MainPanel/Gene2/MainPanel3" unique_id=2040403477]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 42.0
-offset_bottom = 25.0
-theme_override_colors/font_color = Color(1, 0.84705883, 0.7411765, 1)
-theme_override_fonts/font = ExtResource("2_d66ip")
-theme_override_font_sizes/font_size = 8
-text = "Effect"
-
-[node name="Level" type="Label" parent="MainPanel/Gene2" unique_id=2005169275]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = 81.0
-offset_top = 32.0
-offset_right = 121.0
-offset_bottom = 55.0
-theme_override_colors/font_color = Color(1, 0.84705883, 0.7411765, 1)
-theme_override_fonts/font = ExtResource("4_g53l3")
-theme_override_font_sizes/font_size = 8
-text = "lv.1"
-
-[node name="MarginContainer" type="MarginContainer" parent="MainPanel" unique_id=663645865]
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/Description/VBoxContainer" unique_id=663645865]
 modulate = Color(1.6852883, 1.6852883, 1.6852883, 1)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -46.0
-offset_right = 46.0
-offset_bottom = 12.0
-grow_horizontal = 2
+layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="Label" type="RichTextLabel" parent="MainPanel/MarginContainer" unique_id=864073247]
+[node name="Label" type="RichTextLabel" parent="MainPanel/Description/VBoxContainer/MarginContainer" unique_id=864073247]
 custom_minimum_size = Vector2(88, 0)
 layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("2_d66ip")
-theme_override_font_sizes/normal_font_size = 8
+theme_override_colors/font_shadow_color = Color(0.44, 0.44, 0.44, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("7_wvmmd")
+theme_override_font_sizes/normal_font_size = 24
 text = "Increases ATK by 30%"
 fit_content = true
 horizontal_alignment = 1
 
-[node name="Panel" type="Panel" parent="." unique_id=2065991314]
+[node name="Panel" type="Panel" parent="MainPanel/Description" unique_id=2065991314]
 modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_right = 107.0
-offset_bottom = 22.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
+
+[node name="Gene2" type="NinePatchRect" parent="MainPanel" unique_id=1957767952]
+texture_filter = 3
+layout_mode = 0
+offset_left = -2.0
+offset_top = -126.0
+offset_right = 408.0
+offset_bottom = 87.0
+texture = ExtResource("2_ppimr")
+patch_margin_left = 9
+patch_margin_right = 51
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/Gene2" unique_id=1042231605]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 90
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 90
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/Gene2/MarginContainer" unique_id=1566021840]
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="Name" type="NinePatchRect" parent="MainPanel/Gene2/MarginContainer/HBoxContainer" unique_id=308161464]
+self_modulate = Color(1.6852883, 1.6852883, 1.6852883, 1)
+texture_filter = 3
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+texture = ExtResource("1_ydn44")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/Gene2/MarginContainer/HBoxContainer/Name" unique_id=1649430407]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 0
+
+[node name="Name" type="Label" parent="MainPanel/Gene2/MarginContainer/HBoxContainer/Name/MarginContainer" unique_id=97529741]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.19, 0.16118334, 0.1406, 1)
+theme_override_colors/font_shadow_color = Color(0.83137256, 0.83137256, 0.83137256, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_wvmmd")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_g53l3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6tcmc")
+text = "Allele"
+
+[node name="EffectPanel" type="NinePatchRect" parent="MainPanel/Gene2/MarginContainer/HBoxContainer" unique_id=253295928]
+self_modulate = Color(1.6852883, 1.6852883, 1.6852883, 1)
+texture_filter = 3
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("1_ydn44")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/Gene2/MarginContainer/HBoxContainer/EffectPanel" unique_id=248078622]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Type" type="Label" parent="MainPanel/Gene2/MarginContainer/HBoxContainer/EffectPanel/MarginContainer" unique_id=2040403477]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.83137256, 0.83137256, 0.83137256, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_wvmmd")
+theme_override_font_sizes/font_size = 24
+text = "Effect"
+
+[node name="Level" type="Label" parent="MainPanel/Gene2/MarginContainer/HBoxContainer" unique_id=2005169275]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.83137256, 0.83137256, 0.83137256, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("7_wvmmd")
+theme_override_font_sizes/font_size = 24
+text = "lv.1"
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/Gene2/MarginContainer/HBoxContainer" unique_id=1900857669]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_right = 3
+
+[node name="TypeDmg" type="TextureRect" parent="MainPanel/Gene2/MarginContainer/HBoxContainer/MarginContainer" unique_id=1364046323]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("6_wvmmd")
+expand_mode = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1999555899]
 libraries/ = SubResource("AnimationLibrary_chwp6")

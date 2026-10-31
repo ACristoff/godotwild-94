@@ -24,7 +24,7 @@
 [ext_resource type="Script" uid="uid://dufxpqu2r5sh0" path="res://Assets/Test/dna_test_screen.gd" id="12_iggas"]
 [ext_resource type="Script" uid="uid://dn0twegwjngg0" path="res://UI/Scripts/inventory_drop.gd" id="12_invdrop"]
 [ext_resource type="PackedScene" uid="uid://6looit7fo72" path="res://Assets/Test/dna_stacked_shell.tscn" id="13_u463x"]
-[ext_resource type="Script" path="res://World/lab/labareas.gd" id="21_bx8m8"]
+[ext_resource type="Script" uid="uid://dbb66nclxppio" path="res://World/lab/labareas.gd" id="21_bx8m8"]
 [ext_resource type="Texture2D" uid="uid://duipa70vx5fn3" path="res://UI/Menus/Main_Menu/Textures/SettingsButt.png" id="24_58ib8"]
 [ext_resource type="PackedScene" uid="uid://dqgfurgu7jsbg" path="res://UI/Scenes/yip_toolyip.tscn" id="25_bx8m8"]
 
@@ -518,12 +518,14 @@ scale = Vector2(3, 3)
 texture = ExtResource("2_fne6d")
 
 [node name="LabPieces" type="Sprite2D" parent="." unique_id=1245527304]
+visible = false
 texture_filter = 3
 position = Vector2(960, 540)
 scale = Vector2(3, 3)
 texture = ExtResource("3_ems3l")
 
 [node name="LabPiecesOver" type="Sprite2D" parent="." unique_id=360956867]
+visible = false
 texture_filter = 3
 position = Vector2(960, 540)
 scale = Vector2(3, 3)

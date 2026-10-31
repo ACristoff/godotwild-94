@@ -49,7 +49,7 @@ overrides = {
 "name_label_use_global_font_size": "false",
 "next_indicator_enabled": "false",
 "next_indicator_show_on_questions": "false",
-"normal_font": "\"res://UI/Fonts/RasterForge.ttf\"",
+"normal_font": "\"res://UI/Fonts/ShareTech-Regular.ttf\"",
 "text_alignment": "1",
 "text_custom_color": "Color(1, 0.7276666, 0.62, 1)",
 "text_size": "32.0",
@@ -67,7 +67,7 @@ scene = ExtResource("8_ihgnr")
 overrides = {
 "boxes_min_size": "Vector2(60, 60)",
 "boxes_offset": "Vector2(-160, 80)",
-"font_custom": "\"res://UI/Fonts/RasterForge.ttf\"",
+"font_custom": "\"res://UI/Fonts/ShareTech-Regular.ttf\"",
 "font_size_custom": "32.0",
 "font_size_use_global": "false",
 "font_use_global": "false",
@@ -101,4 +101,4 @@ layer_info = {
 "16": SubResource("Resource_lgtrd"),
 "17": SubResource("Resource_qr04d")
 }
-metadata/_latest_layer = "15"
+metadata/_latest_layer = "11"

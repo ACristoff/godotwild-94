@@ -1,26 +1,35 @@
 [gd_scene format=3 uid="uid://dtmuxi5urpswf"]
 
 [ext_resource type="Script" uid="uid://bnrhnipr8typa" path="res://UI/Scripts/yip_toolyip.gd" id="1_dfroe"]
-[ext_resource type="Texture2D" uid="uid://cbvtgs1tqr813" path="res://UI/Textures/UIPanelThickOutliner.png" id="2_kb6ys"]
 [ext_resource type="Texture2D" uid="uid://bcrv3534foclh" path="res://UI/Textures/UIPanel.png" id="2_m2pjb"]
+[ext_resource type="Texture2D" uid="uid://v2e1u2sbju5e" path="res://UI/Textures/UIPanelThickOutliner-export.png" id="2_qko4o"]
 [ext_resource type="FontFile" uid="uid://6nvj4320wbu4" path="res://UI/Fonts/Vaticanus-G3yVG.ttf" id="3_kb6ys"]
 [ext_resource type="FontFile" uid="uid://b2o45fsyj2vco" path="res://UI/Fonts/ShareTech-Regular.ttf" id="4_5636s"]
-[ext_resource type="Texture2D" uid="uid://c70vtydchbplw" path="res://UI/Textures/CDUI.png" id="4_uits3"]
-[ext_resource type="PackedScene" uid="uid://r48rpjbxrdkk" path="res://UI/Scenes/allele_hover.tscn" id="6_3y3ve"]
 [ext_resource type="Texture2D" uid="uid://c8pupi4jdpi4f" path="res://UI/Textures/DNAUI1.png" id="7_3vk8w"]
+[ext_resource type="Texture2D" uid="uid://bafnrlqunduq0" path="res://UI/Textures/UIPanelBG-export.png" id="7_awlr3"]
 [ext_resource type="Texture2D" uid="uid://lp6qbgi1ktyn" path="res://UI/Textures/UIPanelBG.png" id="8_3y3ve"]
 [ext_resource type="Texture2D" uid="uid://cpcgek38dfbym" path="res://UI/Textures/DNAUI2.png" id="8_fvbyv"]
-[ext_resource type="Texture2D" uid="uid://c3u5jl8jlgfy5" path="res://UI/Textures/UIPanelThick.png" id="8_uits3"]
-[ext_resource type="PackedScene" uid="uid://cxcii53yccour" path="res://UI/Scenes/damage_toolyip.tscn" id="9_4w3l6"]
-[ext_resource type="Texture2D" uid="uid://cnhyc41j05pop" path="res://UI/Textures/UIPanelThickInside.png" id="10_3vk8w"]
+[ext_resource type="Script" uid="uid://dxpdtgxt77i8e" path="res://UI/Scenes/CooldownAlleleSwitchUI.gd" id="8_goddc"]
+[ext_resource type="Texture2D" uid="uid://b5khwlfbb7ygh" path="res://UI/Textures/UIPanelThickInside-export.png" id="9_j6brb"]
+[ext_resource type="Script" uid="uid://d00ic1re1l86i" path="res://UI/Scripts/alelle_ui.gd" id="10_goddc"]
+[ext_resource type="Script" uid="uid://beq3u8nogbrp6" path="res://UI/Scripts/allele_star_ui.gd" id="11_awlr3"]
+[ext_resource type="Texture2D" uid="uid://dbr22fpl681iv" path="res://UI/Textures/UIPanelBeeg.png" id="12_0hi4e"]
+[ext_resource type="Texture2D" uid="uid://c3n0gpwibgkd3" path="res://UI/Textures/DNAballnull.png" id="13_awlr3"]
 [ext_resource type="Texture2D" uid="uid://dmgp5jtp8bdn" path="res://UI/Textures/ui_effecticons/attack_icon.png" id="14_3y3ve"]
+[ext_resource type="Texture2D" uid="uid://l66o3ksmbmdb" path="res://UI/Textures/DNAballSkill.png" id="14_j6brb"]
 [ext_resource type="Texture2D" uid="uid://ba0hrexyliksm" path="res://UI/Textures/DnaSprite.png" id="15_3vk8w"]
+[ext_resource type="Texture2D" uid="uid://b2p6e6q42x5qo" path="res://UI/Textures/DNAballVanity.png" id="15_goddc"]
+[ext_resource type="Texture2D" uid="uid://cn4ge10ew44ge" path="res://UI/Textures/DNAballIndicator.png" id="16_0hi4e"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o7fgy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oiai5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8eq83"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g53l3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6tcmc"]
 
 [sub_resource type="Gradient" id="Gradient_sy6ok"]
 colors = PackedColorArray(0.57, 0.57, 0.57, 0.5058824, 1, 1, 1, 0)
@@ -94,7 +103,7 @@ script = ExtResource("1_dfroe")
 
 [node name="MainPanel" type="NinePatchRect" parent="." unique_id=323900239]
 texture_filter = 3
-custom_minimum_size = Vector2(86, 0)
+custom_minimum_size = Vector2(393, 432)
 layout_mode = 0
 offset_left = 19.0
 offset_top = 16.0
@@ -102,53 +111,42 @@ offset_right = 150.0
 offset_bottom = 160.0
 pivot_offset_ratio = Vector2(0.5, 1)
 mouse_filter = 0
-texture = ExtResource("2_kb6ys")
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
+texture = ExtResource("2_qko4o")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel" unique_id=3239413]
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel" unique_id=350769527]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = -11.0
-offset_bottom = -1.0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = -6.0
+offset_bottom = 33.0
 grow_horizontal = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/MarginContainer" unique_id=3239413]
+layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="Name" type="NinePatchRect" parent="MainPanel/HBoxContainer" unique_id=2075444974]
-self_modulate = Color(0.4392157, 0.33333334, 0.27450982, 1)
+[node name="LineEdit" type="LineEdit" parent="MainPanel/MarginContainer/HBoxContainer" unique_id=1367555589]
 texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.4
-mouse_filter = 0
-texture = ExtResource("2_m2pjb")
-patch_margin_left = 1
-patch_margin_top = 1
-patch_margin_right = 1
-patch_margin_bottom = 1
-
-[node name="LineEdit" type="LineEdit" parent="MainPanel/HBoxContainer/Name" unique_id=1367555589]
-texture_filter = 3
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 13.0
-offset_bottom = 13.0
-grow_horizontal = 2
-grow_vertical = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
 theme_override_colors/selection_color = Color(0.14901961, 0.14901961, 0.14901961, 1)
-theme_override_constants/outline_size = 2
+theme_override_constants/outline_size = 6
 theme_override_constants/minimum_character_width = 4
 theme_override_fonts/font = ExtResource("4_5636s")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxEmpty_o7fgy")
 theme_override_styles/read_only = SubResource("StyleBoxEmpty_oiai5")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8eq83")
@@ -158,116 +156,38 @@ emoji_menu_enabled = false
 shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 
-[node name="Age" type="NinePatchRect" parent="MainPanel/HBoxContainer" unique_id=1427718642]
-self_modulate = Color(0.4392157, 0.33333334, 0.27450982, 1)
-texture_filter = 3
+[node name="Label" type="Label" parent="MainPanel/MarginContainer/HBoxContainer" unique_id=2108060276]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("2_m2pjb")
-patch_margin_left = 1
-patch_margin_top = 1
-patch_margin_right = 1
-patch_margin_bottom = 1
-
-[node name="Label" type="Label" parent="MainPanel/HBoxContainer/Age" unique_id=2108060276]
-layout_mode = 0
-offset_left = -39.0
-offset_top = 12.0
-offset_right = -17.0
-offset_bottom = 22.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.54, 0.54, 0.54, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
 theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/font = ExtResource("4_5636s")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 24
 text = "Age:99"
 
-[node name="Label2" type="Label" parent="MainPanel/HBoxContainer/Age" unique_id=84046094]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 12.0
-offset_right = 35.0
-offset_bottom = 22.0
+[node name="Label2" type="Label" parent="MainPanel/MarginContainer/HBoxContainer" unique_id=84046094]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.54, 0.54, 0.54, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
 theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/font = ExtResource("4_5636s")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 24
 text = "Common"
-
-[node name="TextureRect" type="TextureRect" parent="MainPanel" unique_id=1543159434]
-self_modulate = Color(0.32, 0.24304001, 0.2016, 1)
-texture_filter = 3
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = -63.0
-offset_top = -12.0
-offset_right = -23.0
-offset_bottom = 28.0
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("4_uits3")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/TextureRect" unique_id=1311802334]
-z_index = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 73.0
-offset_top = 16.0
-offset_right = 73.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/separation = -18
-
-[node name="ActualSeconds" type="Label" parent="MainPanel/TextureRect/VBoxContainer" unique_id=55184367]
-texture_filter = 3
-layout_mode = 2
-size_flags_vertical = 6
-theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
-theme_override_colors/font_shadow_color = Color(0.83137256, 0.83137256, 0.83137256, 1)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/shadow_outline_size = 1
-theme_override_fonts/font = ExtResource("4_5636s")
-theme_override_font_sizes/font_size = 15
-text = "4.0s"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Sec" type="Label" parent="MainPanel/TextureRect/VBoxContainer" unique_id=163434878]
-texture_filter = 3
-layout_mode = 2
-size_flags_vertical = 6
-theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
-theme_override_colors/font_shadow_color = Color(0.83137256, 0.83137256, 0.83137256, 1)
-theme_override_colors/font_outline_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/outline_size = 1
-theme_override_constants/shadow_outline_size = 1
-theme_override_fonts/font = ExtResource("4_5636s")
-theme_override_font_sizes/font_size = 6
-text = "cooldown"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Age2" type="NinePatchRect" parent="MainPanel" unique_id=1806588454]
 self_modulate = Color(0.4392157, 0.33333334, 0.27450982, 1)
 texture_filter = 3
 layout_mode = 1
-offset_left = 87.0
-offset_top = -11.0
-offset_right = 116.0
-offset_bottom = -1.0
+offset_left = 30.0
+offset_top = -40.0
+offset_right = 59.0
+offset_bottom = -30.0
 size_flags_horizontal = 3
 texture = ExtResource("2_m2pjb")
 patch_margin_left = 1
@@ -293,143 +213,876 @@ text = "HP:9999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Alleles" type="HBoxContainer" parent="MainPanel" unique_id=1688296728]
-z_index = 10
-layout_mode = 0
-offset_left = -77.0
-offset_top = 49.0
-offset_right = -36.0
-offset_bottom = 113.0
-mouse_filter = 2
-theme_override_constants/separation = 1
-
-[node name="Effects" type="VBoxContainer" parent="MainPanel/Alleles" unique_id=1645217549]
-layout_mode = 2
-mouse_filter = 0
-theme_override_constants/separation = 0
-
-[node name="R_allele1" parent="MainPanel/Alleles/Effects" unique_id=2129192060 instance=ExtResource("6_3y3ve")]
-layout_mode = 2
-
-[node name="R_allele2" parent="MainPanel/Alleles/Effects" unique_id=1266414659 instance=ExtResource("6_3y3ve")]
-layout_mode = 2
-
-[node name="R_allele3" parent="MainPanel/Alleles/Effects" unique_id=2025636568 instance=ExtResource("6_3y3ve")]
-layout_mode = 2
-
-[node name="R_allele4" parent="MainPanel/Alleles/Effects" unique_id=16067312 instance=ExtResource("6_3y3ve")]
-layout_mode = 2
-
-[node name="R_allele5" parent="MainPanel/Alleles/Effects" unique_id=1198413547 instance=ExtResource("6_3y3ve")]
-layout_mode = 2
-
-[node name="R_allele6" parent="MainPanel/Alleles/Effects" unique_id=249885333 instance=ExtResource("6_3y3ve")]
-layout_mode = 2
-
-[node name="R_allele7" parent="MainPanel/Alleles/Effects" unique_id=1621654074 instance=ExtResource("6_3y3ve")]
-layout_mode = 2
-
-[node name="R_allele8" parent="MainPanel/Alleles/Effects" unique_id=2109849827 instance=ExtResource("6_3y3ve")]
-layout_mode = 2
-
-[node name="Visuals" type="VBoxContainer" parent="MainPanel/Alleles" unique_id=2117453864]
-layout_mode = 2
-mouse_filter = 0
-theme_override_constants/separation = 0
-
-[node name="L_allele1" parent="MainPanel/Alleles/Visuals" unique_id=773263100 instance=ExtResource("6_3y3ve")]
-layout_mode = 2
-
-[node name="L_allele2" parent="MainPanel/Alleles/Visuals" unique_id=1459935457 instance=ExtResource("6_3y3ve")]
-layout_mode = 2
-
-[node name="L_allele3" parent="MainPanel/Alleles/Visuals" unique_id=676046620 instance=ExtResource("6_3y3ve")]
-layout_mode = 2
-
-[node name="L_allele4" parent="MainPanel/Alleles/Visuals" unique_id=1252178967 instance=ExtResource("6_3y3ve")]
-layout_mode = 2
-
-[node name="L_allele5" parent="MainPanel/Alleles/Visuals" unique_id=1568193829 instance=ExtResource("6_3y3ve")]
-layout_mode = 2
-
-[node name="L_allele6" parent="MainPanel/Alleles/Visuals" unique_id=1079782464 instance=ExtResource("6_3y3ve")]
-layout_mode = 2
-
-[node name="L_allele7" parent="MainPanel/Alleles/Visuals" unique_id=1078098084 instance=ExtResource("6_3y3ve")]
-layout_mode = 2
-
-[node name="L_allele8" parent="MainPanel/Alleles/Visuals" unique_id=1276020697 instance=ExtResource("6_3y3ve")]
-layout_mode = 2
-
 [node name="MainPanel3" type="NinePatchRect" parent="." unique_id=1813120843]
 texture_filter = 3
-custom_minimum_size = Vector2(86, 0)
+custom_minimum_size = Vector2(375, 387)
 layout_mode = 0
-offset_left = 22.0
-offset_top = 28.0
-offset_right = 147.0
-offset_bottom = 157.0
+offset_left = 28.0
+offset_top = 49.0
+offset_right = 403.0
+offset_bottom = 439.0
 pivot_offset_ratio = Vector2(0.5, 1)
 mouse_filter = 0
-texture = ExtResource("8_3y3ve")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+texture = ExtResource("7_awlr3")
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
 
 [node name="MainPanel2" type="NinePatchRect" parent="." unique_id=2018379423]
 texture_filter = 3
-custom_minimum_size = Vector2(86, 0)
+custom_minimum_size = Vector2(319.215, 165)
 layout_mode = 0
-offset_left = 24.0
-offset_top = 30.0
-offset_right = 145.0
-offset_bottom = 85.0
+offset_left = 35.0
+offset_top = 56.0
+offset_right = 397.0
+offset_bottom = 229.0
 pivot_offset_ratio = Vector2(0.5, 1)
 mouse_filter = 0
-texture = ExtResource("8_uits3")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+texture = ExtResource("8_3y3ve")
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+script = ExtResource("8_goddc")
 
-[node name="MainPanel2" type="NinePatchRect" parent="MainPanel2" unique_id=660128471]
+[node name="CooldownDamage" type="NinePatchRect" parent="MainPanel2" unique_id=660128471]
+visible = false
+texture_filter = 3
+custom_minimum_size = Vector2(363, 147)
+layout_mode = 0
+offset_left = -1.0
+offset_top = 179.0
+offset_right = 362.0
+offset_bottom = 377.0
+pivot_offset_ratio = Vector2(0.5, 1)
+mouse_filter = 0
+texture = ExtResource("8_3y3ve")
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+
+[node name="MainPanel2" type="NinePatchRect" parent="MainPanel2/CooldownDamage" unique_id=1446592437]
+texture_filter = 3
+custom_minimum_size = Vector2(123, 120)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = -60.0
+offset_right = 135.0
+offset_bottom = 60.0
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 1)
+mouse_filter = 0
+texture = ExtResource("9_j6brb")
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel2/CooldownDamage/MainPanel2" unique_id=1311802334]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = -54
+
+[node name="ActualSeconds" type="Label" parent="MainPanel2/CooldownDamage/MainPanel2/VBoxContainer" unique_id=55184367]
+texture_filter = 3
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
+theme_override_colors/font_shadow_color = Color(0.83137256, 0.83137256, 0.83137256, 1)
+theme_override_colors/font_outline_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("4_5636s")
+theme_override_font_sizes/font_size = 24
+text = "4.0s"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sec" type="Label" parent="MainPanel2/CooldownDamage/MainPanel2/VBoxContainer" unique_id=163434878]
+texture_filter = 3
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
+theme_override_colors/font_shadow_color = Color(0.83137256, 0.83137256, 0.83137256, 1)
+theme_override_colors/font_outline_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("4_5636s")
+theme_override_font_sizes/font_size = 24
+text = "cooldown"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel2/CooldownDamage" unique_id=415671385]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 138.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -2
+alignment = 1
+
+[node name="Label" type="Label" parent="MainPanel2/CooldownDamage/VBoxContainer" unique_id=1379938247]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.26999998, 0.4038334, 1)
+theme_override_colors/font_shadow_color = Color(0.83137256, 0.83137256, 0.83137256, 1)
+theme_override_colors/font_outline_color = Color(1, 0.27058825, 0.40392157, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("4_5636s")
+theme_override_font_sizes/font_size = 24
+text = "Deal 62 damage"
+
+[node name="CooldownDamage2" type="NinePatchRect" parent="MainPanel2" unique_id=1146182156]
+texture_filter = 3
+custom_minimum_size = Vector2(363, 147)
+layout_mode = 0
+offset_left = -1.0
+offset_top = 179.0
+offset_right = 362.0
+offset_bottom = 377.0
+pivot_offset_ratio = Vector2(0.5, 1)
+mouse_filter = 0
+texture = ExtResource("8_3y3ve")
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel2/CooldownDamage2" unique_id=1525627272]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel2/CooldownDamage2/MarginContainer" unique_id=1153485291]
+layout_mode = 2
+
+[node name="LeftAlelle" type="NinePatchRect" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer" unique_id=1766488413]
+texture_filter = 3
+custom_minimum_size = Vector2(123, 120)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+texture = ExtResource("9_j6brb")
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+
+[node name="Alelle_UI" type="Control" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle" unique_id=1917264788]
+z_index = 10
+anchors_preset = 0
+offset_left = 11.0
+offset_top = 40.0
+offset_right = 11.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("10_goddc")
+
+[node name="MainPanel" type="NinePatchRect" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle/Alelle_UI" unique_id=1688179199]
 texture_filter = 3
 custom_minimum_size = Vector2(86, 0)
 layout_mode = 0
-offset_top = 57.0
-offset_right = 121.0
-offset_bottom = 106.0
-pivot_offset_ratio = Vector2(0.5, 1)
-mouse_filter = 0
-texture = ExtResource("8_uits3")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+offset_top = 12.0
+offset_right = 92.0
+offset_bottom = 22.0
+pivot_offset = Vector2(0, -12.04)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
 
-[node name="MainPanel2" type="NinePatchRect" parent="MainPanel2/MainPanel2" unique_id=1446592437]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle/Alelle_UI/MainPanel" unique_id=1137033911]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -17.0
+offset_bottom = -7.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle" unique_id=663645865]
+modulate = Color(1.6852883, 1.6852883, 1.6852883, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="LA_DescriptionText" type="RichTextLabel" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle/MarginContainer" unique_id=864073247]
+custom_minimum_size = Vector2(88, 0)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.44, 0.44, 0.44, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("4_5636s")
+theme_override_font_sizes/normal_font_size = 19
+text = "Increases ATK by 30%"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle" unique_id=248359766]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 28.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = -12
+
+[node name="Name" type="NinePatchRect" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle/MarginContainer2" unique_id=51933117]
 texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("12_0hi4e")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle/MarginContainer2/Name" unique_id=947422239]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle/MarginContainer2/Name/MarginContainer" unique_id=2074356726]
+layout_mode = 2
+
+[node name="LA_NameText" type="Label" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle/MarginContainer2/Name/MarginContainer/HBoxContainer" unique_id=493629343]
+z_index = 3
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0.19, 0.16118334, 0.1406, 1)
+theme_override_colors/font_shadow_color = Color(0.83137256, 0.83137256, 0.83137256, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_5636s")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_g53l3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6tcmc")
+text = "Allele"
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle/MarginContainer2/Name/MarginContainer/HBoxContainer" unique_id=1121326831]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_right = 6
+
+[node name="LA_LevelText" type="Label" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle/MarginContainer2/Name/MarginContainer/HBoxContainer/MarginContainer" unique_id=1462911845]
+z_index = 3
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.83137256, 0.83137256, 0.83137256, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("4_5636s")
+theme_override_font_sizes/font_size = 15
+text = "lv.1"
+
+[node name="TypeDmg" type="TextureRect" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle" unique_id=1364046323]
+z_index = 1
 layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
+offset_left = 12.0
+offset_top = 126.0
 offset_right = 45.0
-offset_bottom = 44.0
-pivot_offset_ratio = Vector2(0.5, 1)
+offset_bottom = 159.0
+size_flags_horizontal = 10
+texture = ExtResource("14_3y3ve")
+expand_mode = 2
+
+[node name="DnAballSkill" type="Sprite2D" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle" unique_id=1429537644]
+z_index = 3
+texture_filter = 3
+position = Vector2(21, 31)
+scale = Vector2(3, 3)
+texture = ExtResource("14_j6brb")
+
+[node name="RightAlelle" type="NinePatchRect" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer" unique_id=897505543]
+texture_filter = 3
+custom_minimum_size = Vector2(123, 120)
+layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 0
-texture = ExtResource("10_3vk8w")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+texture = ExtResource("9_j6brb")
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+
+[node name="Alelle_UI" type="Control" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle" unique_id=795652315]
+z_index = 10
+anchors_preset = 0
+offset_left = 11.0
+offset_top = 40.0
+offset_right = 11.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("10_goddc")
+
+[node name="MainPanel" type="NinePatchRect" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle/Alelle_UI" unique_id=632648556]
+texture_filter = 3
+custom_minimum_size = Vector2(86, 0)
+layout_mode = 0
+offset_top = 12.0
+offset_right = 92.0
+offset_bottom = 22.0
+pivot_offset = Vector2(0, -12.04)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle/Alelle_UI/MainPanel" unique_id=911538555]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -17.0
+offset_bottom = -7.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle" unique_id=1342709492]
+modulate = Color(1.6852883, 1.6852883, 1.6852883, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="RA_DescriptionText" type="RichTextLabel" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle/MarginContainer" unique_id=1145368342]
+custom_minimum_size = Vector2(88, 0)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.44, 0.44, 0.44, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("4_5636s")
+theme_override_font_sizes/normal_font_size = 19
+text = "Increases ATK by 30%"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle" unique_id=2127666925]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 28.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = -12
+
+[node name="NameText" type="NinePatchRect" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle/MarginContainer2" unique_id=558639028]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("12_0hi4e")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle/MarginContainer2/NameText" unique_id=863635832]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle/MarginContainer2/NameText/MarginContainer" unique_id=1300175773]
+layout_mode = 2
+
+[node name="RA_NameText" type="Label" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle/MarginContainer2/NameText/MarginContainer/HBoxContainer" unique_id=668536889]
+z_index = 3
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0.19, 0.16118334, 0.1406, 1)
+theme_override_colors/font_shadow_color = Color(0.83137256, 0.83137256, 0.83137256, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_5636s")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_g53l3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6tcmc")
+text = "Allele"
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle/MarginContainer2/NameText/MarginContainer/HBoxContainer" unique_id=2080390680]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_right = 6
+
+[node name="RA_LevelText" type="Label" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle/MarginContainer2/NameText/MarginContainer/HBoxContainer/MarginContainer" unique_id=1840601690]
+z_index = 3
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.83137256, 0.83137256, 0.83137256, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("4_5636s")
+theme_override_font_sizes/font_size = 15
+text = "lv.1"
+
+[node name="TypeDmg" type="TextureRect" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle" unique_id=1880215623]
+z_index = 1
+layout_mode = 0
+offset_left = 12.0
+offset_top = 126.0
+offset_right = 45.0
+offset_bottom = 159.0
+size_flags_horizontal = 10
+texture = ExtResource("14_3y3ve")
+expand_mode = 2
+
+[node name="DnAballVanity" type="Sprite2D" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle" unique_id=958861240]
+z_index = 3
+texture_filter = 3
+position = Vector2(145, 20)
+scale = Vector2(3, 3)
+texture = ExtResource("15_goddc")
+
+[node name="DNARefactor" type="Control" parent="MainPanel2" unique_id=1504063863]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="BaseNullSlot1" type="TextureRect" parent="MainPanel2/DNARefactor" unique_id=818072404]
+z_index = 1
+texture_filter = 3
+layout_mode = 0
+offset_left = 35.0
+offset_top = 123.00001
+offset_right = 43.0
+offset_bottom = 131.0
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("13_awlr3")
+script = ExtResource("11_awlr3")
+
+[node name="DnaSkill" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot1" unique_id=2094660406]
+visible = false
+z_index = 1
+texture_filter = 3
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+mouse_filter = 2
+texture = ExtResource("14_j6brb")
+
+[node name="DnaVanity" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot1" unique_id=1933841770]
+visible = false
+z_index = 1
+texture_filter = 3
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+mouse_filter = 2
+texture = ExtResource("15_goddc")
+
+[node name="SkillIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot1" unique_id=1462050077]
+texture_filter = 3
+position = Vector2(2, 11)
+texture = ExtResource("16_0hi4e")
+hframes = 2
+frame = 1
+
+[node name="VanityIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot1" unique_id=1278473951]
+texture_filter = 3
+position = Vector2(6, 11)
+texture = ExtResource("16_0hi4e")
+hframes = 2
+frame = 1
+
+[node name="BaseNullSlot2" type="TextureRect" parent="MainPanel2/DNARefactor" unique_id=381543345]
+z_index = 1
+texture_filter = 3
+layout_mode = 0
+offset_left = 74.0
+offset_top = 93.00001
+offset_right = 82.0
+offset_bottom = 101.00001
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("13_awlr3")
+script = ExtResource("11_awlr3")
+
+[node name="DnaSkill" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot2" unique_id=989666357]
+visible = false
+z_index = 1
+texture_filter = 3
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+texture = ExtResource("14_j6brb")
+
+[node name="DnaVanity" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot2" unique_id=319398679]
+visible = false
+z_index = 1
+texture_filter = 3
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+texture = ExtResource("15_goddc")
+
+[node name="SkillIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot2" unique_id=1808308354]
+texture_filter = 3
+position = Vector2(2, 11)
+texture = ExtResource("16_0hi4e")
+hframes = 2
+frame = 1
+
+[node name="VanityIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot2" unique_id=896486479]
+texture_filter = 3
+position = Vector2(6, 11)
+texture = ExtResource("16_0hi4e")
+hframes = 2
+frame = 1
+
+[node name="BaseNullSlot3" type="TextureRect" parent="MainPanel2/DNARefactor" unique_id=1540155507]
+z_index = 1
+texture_filter = 3
+layout_mode = 0
+offset_left = 114.000015
+offset_top = 59.999992
+offset_right = 122.000015
+offset_bottom = 68.0
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("13_awlr3")
+script = ExtResource("11_awlr3")
+
+[node name="DnaSkill" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot3" unique_id=194737709]
+visible = false
+z_index = 1
+texture_filter = 3
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+texture = ExtResource("14_j6brb")
+
+[node name="DnaVanity" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot3" unique_id=1001043213]
+visible = false
+z_index = 1
+texture_filter = 3
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+texture = ExtResource("15_goddc")
+
+[node name="SkillIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot3" unique_id=1459625733]
+texture_filter = 3
+position = Vector2(2, 11)
+texture = ExtResource("16_0hi4e")
+hframes = 2
+frame = 1
+
+[node name="VanityIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot3" unique_id=1516874051]
+texture_filter = 3
+position = Vector2(6, 11)
+texture = ExtResource("16_0hi4e")
+hframes = 2
+frame = 1
+
+[node name="BaseNullSlot4" type="TextureRect" parent="MainPanel2/DNARefactor" unique_id=568608356]
+z_index = 1
+texture_filter = 3
+layout_mode = 0
+offset_left = 158.0
+offset_top = 33.999996
+offset_right = 166.0
+offset_bottom = 41.999996
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("13_awlr3")
+script = ExtResource("11_awlr3")
+
+[node name="DnaSkill" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot4" unique_id=52876391]
+visible = false
+z_index = 1
+texture_filter = 3
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+texture = ExtResource("14_j6brb")
+
+[node name="DnaVanity" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot4" unique_id=1574102485]
+visible = false
+z_index = 1
+texture_filter = 3
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+texture = ExtResource("15_goddc")
+
+[node name="SkillIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot4" unique_id=30384019]
+texture_filter = 3
+position = Vector2(2, 11)
+texture = ExtResource("16_0hi4e")
+hframes = 2
+frame = 1
+
+[node name="VanityIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot4" unique_id=1967445928]
+texture_filter = 3
+position = Vector2(6, 11)
+texture = ExtResource("16_0hi4e")
+hframes = 2
+frame = 1
+
+[node name="BaseNullSlot5" type="TextureRect" parent="MainPanel2/DNARefactor" unique_id=453522179]
+z_index = 1
+texture_filter = 3
+layout_mode = 0
+offset_left = 197.0
+offset_top = 121.00001
+offset_right = 205.0
+offset_bottom = 129.0
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("13_awlr3")
+script = ExtResource("11_awlr3")
+
+[node name="DnaSkill" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot5" unique_id=1161262764]
+visible = false
+z_index = 1
+texture_filter = 3
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+texture = ExtResource("14_j6brb")
+
+[node name="DnaVanity" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot5" unique_id=2012847965]
+visible = false
+z_index = 1
+texture_filter = 3
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+texture = ExtResource("15_goddc")
+
+[node name="SkillIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot5" unique_id=1151607783]
+texture_filter = 3
+position = Vector2(2, 11)
+texture = ExtResource("16_0hi4e")
+hframes = 2
+frame = 1
+
+[node name="VanityIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot5" unique_id=1853046259]
+texture_filter = 3
+position = Vector2(6, 11)
+texture = ExtResource("16_0hi4e")
+hframes = 2
+frame = 1
+
+[node name="BaseNullSlot6" type="TextureRect" parent="MainPanel2/DNARefactor" unique_id=746868739]
+z_index = 1
+texture_filter = 3
+layout_mode = 0
+offset_left = 232.99998
+offset_top = 91.00001
+offset_right = 240.99998
+offset_bottom = 99.00001
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("13_awlr3")
+script = ExtResource("11_awlr3")
+
+[node name="DnaSkill" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot6" unique_id=1913759829]
+visible = false
+z_index = 1
+texture_filter = 3
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+texture = ExtResource("14_j6brb")
+
+[node name="DnaVanity" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot6" unique_id=40374550]
+visible = false
+z_index = 1
+texture_filter = 3
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+texture = ExtResource("15_goddc")
+
+[node name="SkillIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot6" unique_id=1655291925]
+texture_filter = 3
+position = Vector2(2, 11)
+texture = ExtResource("16_0hi4e")
+hframes = 2
+frame = 1
+
+[node name="VanityIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot6" unique_id=63895133]
+texture_filter = 3
+position = Vector2(6, 11)
+texture = ExtResource("16_0hi4e")
+hframes = 2
+frame = 1
+
+[node name="BaseNullSlot7" type="TextureRect" parent="MainPanel2/DNARefactor" unique_id=1800684881]
+z_index = 1
+texture_filter = 3
+layout_mode = 0
+offset_left = 271.0
+offset_top = 58.999996
+offset_right = 279.0
+offset_bottom = 67.0
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("13_awlr3")
+script = ExtResource("11_awlr3")
+
+[node name="DnaSkill" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot7" unique_id=1944228143]
+visible = false
+z_index = 1
+texture_filter = 3
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+texture = ExtResource("14_j6brb")
+
+[node name="DnaVanity" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot7" unique_id=643425484]
+visible = false
+z_index = 1
+texture_filter = 3
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+texture = ExtResource("15_goddc")
+
+[node name="SkillIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot7" unique_id=355256708]
+texture_filter = 3
+position = Vector2(2, 11)
+texture = ExtResource("16_0hi4e")
+hframes = 2
+frame = 1
+
+[node name="VanityIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot7" unique_id=1173542710]
+texture_filter = 3
+position = Vector2(6, 11)
+texture = ExtResource("16_0hi4e")
+hframes = 2
+frame = 1
+
+[node name="BaseNullSlot8" type="TextureRect" parent="MainPanel2/DNARefactor" unique_id=1428864108]
+z_index = 1
+texture_filter = 3
+layout_mode = 0
+offset_left = 314.0
+offset_top = 34.999996
+offset_right = 322.0
+offset_bottom = 42.999996
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("13_awlr3")
+script = ExtResource("11_awlr3")
+
+[node name="DnaSkill" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot8" unique_id=347946665]
+visible = false
+z_index = 1
+texture_filter = 3
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+texture = ExtResource("14_j6brb")
+
+[node name="DnaVanity" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot8" unique_id=1748504525]
+visible = false
+z_index = 1
+texture_filter = 3
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+texture = ExtResource("15_goddc")
+
+[node name="SkillIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot8" unique_id=1656768290]
+texture_filter = 3
+position = Vector2(2, 11)
+texture = ExtResource("16_0hi4e")
+hframes = 2
+frame = 1
+
+[node name="VanityIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot8" unique_id=132070962]
+texture_filter = 3
+position = Vector2(6, 11)
+texture = ExtResource("16_0hi4e")
+hframes = 2
+frame = 1
 
 [node name="DNA" type="Control" parent="." unique_id=81975585]
-visible = false
 anchors_preset = 0
-offset_left = 18.0
-offset_top = 15.0
-offset_right = 58.0
-offset_bottom = 55.0
+offset_left = -66.0
+offset_right = -26.0
+offset_bottom = 40.0
 mouse_filter = 2
 
 [node name="LeftGene1" type="TextureRect" parent="DNA" unique_id=1867089722]
@@ -922,19 +1575,15 @@ z_index = 1
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 167.0
-offset_top = 50.0
-offset_right = 209.0
-offset_bottom = 63.0
+offset_left = 313.0
+offset_top = -47.0
+offset_right = 355.0
+offset_bottom = -34.0
 grow_horizontal = 2
 mouse_filter = 2
 theme_override_constants/h_separation = -2
 theme_override_constants/v_separation = -1
 last_wrap_alignment = 2
-
-[node name="MarginContainer" parent="StatsFlowContainer" unique_id=53233444 instance=ExtResource("9_4w3l6")]
-layout_mode = 2
-mouse_filter = 2
 
 [node name="StatsContainer" type="NinePatchRect" parent="." unique_id=70282764]
 self_modulate = Color(0.21960784, 0.16862746, 0.13725491, 1)
@@ -970,18 +1619,32 @@ mouse_filter = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=162132146]
 libraries/ = SubResource("AnimationLibrary_o4pju")
+autoplay = &"pop"
 
 [node name="AttackIcon" type="Sprite2D" parent="." unique_id=2003667750]
+z_index = 1
 texture_filter = 3
-position = Vector2(9, 42)
+position = Vector2(-131, -19)
 texture = ExtResource("14_3y3ve")
 
 [node name="DnaSprite" type="Sprite2D" parent="." unique_id=1161581470]
 modulate = Color(0.86, 0.86, 0.86, 1)
 texture_filter = 3
-position = Vector2(84, 57)
+position = Vector2(216, 141)
+scale = Vector2(3, 3)
 texture = ExtResource("15_3vk8w")
+metadata/_edit_lock_ = true
 
+[node name="Line2D" type="Line2D" parent="." unique_id=1967856837]
+points = PackedVector2Array(68, 204, 61, 281)
+default_color = Color(1, 0.52, 0.52, 0.49019608)
+
+[node name="Line2D2" type="Line2D" parent="." unique_id=1706703838]
+points = PackedVector2Array(80, 204, 366, 262)
+default_color = Color(1, 0.52, 0.52, 0.4862745)
+
+[connection signal="mouse_entered" from="MainPanel2/DNARefactor/BaseNullSlot1" to="MainPanel2/DNARefactor/BaseNullSlot1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainPanel2/DNARefactor/BaseNullSlot1" to="MainPanel2/DNARefactor/BaseNullSlot1" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="MouseHover" to="." method="_on_mouse_hover_mouse_entered"]
 [connection signal="mouse_exited" from="MouseHover" to="." method="_on_mouse_hover_mouse_exited"]
 [connection signal="mouse_entered" from="MouseHover2" to="." method="_on_mouse_hover_2_mouse_entered"]
