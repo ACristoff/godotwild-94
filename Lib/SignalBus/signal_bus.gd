@@ -37,7 +37,14 @@ var yip_breed_barn : Dictionary[int, YipeeData] = {
 	2: null
 }
 
-var goop_inventory
+var goop_inventory : Dictionary = {
+	"HEALTH"         : 0,
+	"HEALTH_AUGMENT" : 0,
+	"ATTACK"         : 0,
+	"ATTACK_AUGMENT" : 0,
+	"BREED_AUGMENT"  : 0,
+	"COOLDOWN"       : 0,
+}
 
 var coins: int = 12
 enum Locations { FARM, FIELD, LAB, BATTLE, WIN_LOSE }

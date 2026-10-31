@@ -5,6 +5,7 @@ extends Node2D
 @onready var shredder_animation = $Mulcher/ShredderAnimation
 @onready var pen_collision : CollisionShape2D = $Pen/PenArea/CollisionShape2D
 @onready var conveyor_area : Area2D = $Mulcher/ConveyorArea
+@onready var pedestal_area : Area2D = $PedestalArea
 @onready var team_slot_conatiner = $TeamSlots
 
 #Debug only variables
@@ -16,6 +17,7 @@ var dragged_yip: Yipee = null
 var drag_offset: Vector2 = Vector2.ZERO
 var team_slots: Array[Area2D] = []
 var conveyor_has_yip: Yipee = null
+var yip_on_pedestal: Yipee = null
 
 var slot_yips: Dictionary[int, Yipee] = {
 	1: null,
@@ -35,6 +37,7 @@ func _ready():
 		team_slots.append(child)
 	for yip in debug_yips:
 		spawn_yip(yip)
+	#update_goop("health", 2)
 	#prints(team_slots)
 
 func _input(event: InputEvent) -> void:
@@ -57,7 +60,10 @@ func _input(event: InputEvent) -> void:
 					if conveyor_area.overlaps_area(dragged_yip.farmslot):
 						print('on conveyor')
 						conveyor_has_yip = dragged_yip
-						pass
+					
+					if pedestal_area.overlaps_area(dragged_yip.farmslot):
+						print('on pedestal')
+						yip_on_pedestal = dragged_yip
 					
 					dragged_yip = null
 	
@@ -77,13 +83,33 @@ func _process(delta):
 func shred_yip(yip: Yipee):
 	prints(yip, 'TIME TO SHRED')
 	#do yip animation and effects here
+	#TODO CALEB
 	#take yips gene goop and add it to inventory
+	print(yip.data.helix.strands)
+	for strand in yip.data.helix.strands:
+		if strand != null:
+			var strand_type = BodyMap.Slot.find_key(strand.slot) 
+			var left_value = 0
+			var right_value = 0
+			prints(strand.left, strand.right, strand_type)
+			if strand.left:
+				left_value += calculate_value(strand.left)
+			if strand.right:
+				right_value += calculate_value(strand.right)
+			var total = left_value + right_value
+			update_goop(strand_type, total)
+		pass
 	#shred yip here, remove from player and kill
 	SignalBus.yip_inventory.erase(yip)
 	yip.queue_free()
 	#TODO: do a random yip death sound
 	stop_conveyor()
 	conveyor_has_yip = null
+
+func calculate_value(allele: Allele):
+	var tier = allele.tier
+	var rarity = allele.rarity + 1
+	return tier * rarity
 
 func stop_conveyor():
 	shredder_animation.current_animation = "RESET"
@@ -110,7 +136,10 @@ func _on_shredding_zone_area_entered(area: Area2D):
 
 #region goop_chamber
 
-func update_goop(new_goop):
+func update_goop(new_goop: String, goop_number: int):
+	SignalBus.goop_inventory[new_goop] += goop_number
+	
+	debug_goop.text += "\n %s : %s" % [new_goop, SignalBus.goop_inventory[new_goop]]
 	pass
 
 #endregion
