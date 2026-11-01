@@ -25,6 +25,9 @@ const SLOT_KEYS := {
 @onready var cooldown_label: Label = $MainInterface/CooldownInformation/CooldownPanel/VBoxContainer/ActualSecondsLabel
 @onready var mouse_hover: Panel = $MouseHover
 @onready var mouse_hover_2: Panel = $MouseHover2
+@onready var strand_pips_container: Control = $MainInterface/DNARefactor
+
+@onready var allele_information: AlleleInformation = $MainInterface/AlleleInformation
 
 var amnt_of_stats: int
 var _yip_hovered: bool = false
@@ -51,7 +54,17 @@ func _ready() -> void:
 		node.self_modulate = get_color("NULL")
 		node = get_node("DNA/RightGene" + str(i))
 		node.self_modulate = get_color("NULL")
+	if strand_pips_container != null:
+		var pips = strand_pips_container.get_children()
+		for pip in pips:
+			var new_pip: AlllelePip = pip
+			new_pip.strand_hovered.connect(on_strand_hovered)
 	print(get_total_rect(self))
+
+func on_strand_hovered(new_strand: Strand):
+	print(new_strand, 'strand hovered!')
+	allele_information.set_strand(new_strand)
+	pass
 
 func display_beside(yip: Yipee) -> void:
 	display(yip)
@@ -82,36 +95,26 @@ func display(yip: Yipee) -> void:
 	hp_label.text = "HP:%d" % roundi(data.get_health())
 	cooldown_label.text = "%.1f" % data.get_cooldown()
 	
-	var helix: Helix = yip.data.helix
-	increment = 0
-	for i in range(Helix.RUNG_COUNT):
-		var strand: Strand = helix.strands[i] if i < helix.strands.size() else null
-		var key = "NULL"
-		if strand != null:
-			key = SLOT_KEYS.get(strand.slot, "NULL")
-		set_slot_visuals(key)
-		var left_filled = strand != null and strand.left != null
-		var right_filled = strand != null and strand.right != null
-		get_node("DNA/LeftGene" + str(i + 1)).self_modulate = get_color(key) if left_filled else get_color("NULL")
-		get_node("DNA/RightGene" + str(i + 1)).self_modulate = get_color(key) if right_filled else get_color("NULL")
-		#get_node("MainPanel/Alleles/Effects/R_allele" + str(i + 1)).set_allele(
-			#strand.left if strand else null, "LEFT", key)
-		#get_node("MainPanel/Alleles/Visuals/L_allele" + str(i + 1)).set_allele(
-			#strand.right if strand else null, "RIGHT", key)
+	var container = strand_pips_container.get_children()
+	for i in range(7):
+		var new_pip: AlllelePip = container[i]
+		var new_strand: Strand = data.helix.strands[i]
+		new_pip.set_strand(new_strand)
+		prints(new_pip, new_strand, "bing bing")
 	
 	var pips := {}
 	var atk := roundi(data.get_attack())
 	if atk > 0:
 		pips["PHYSICAL"] = atk
-	for strand in helix.strands:
-		if strand == null:
-			continue
-		for allele in [strand.left, strand.right]:
-			if allele == null:
-				continue
-			var contrib: Dictionary = allele.get_damage_pips()
-			for type in contrib:
-				pips[type] = pips.get(type, 0) + contrib[type]
+	#for strand in helix.strands:
+		#if strand == null:
+			#continue
+		#for allele in [strand.left, strand.right]:
+			#if allele == null:
+				#continue
+			#var contrib: Dictionary = allele.get_damage_pips()
+			#for type in contrib:
+				#pips[type] = pips.get(type, 0) + contrib[type]
 	_rebuild_stat_pips(pips)
 	_yip_hovered = true
 	_hide_grace = HIDE_GRACE

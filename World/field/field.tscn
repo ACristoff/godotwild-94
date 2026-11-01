@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://boj74to4iulqd" path="res://Assets/Environment/Scenes/CaptureField/CaptureField.png" id="2_lwms1"]
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="3_6l7jc"]
 [ext_resource type="Texture2D" uid="uid://1lmfe1dpron4" path="res://Assets/Environment/Scenes/BattleField/Coin.png" id="4_rh655"]
-[ext_resource type="PackedScene" uid="uid://dqgfurgu7jsbg" path="res://UI/Scenes/yip_toolyip.tscn" id="5_8ubfp"]
 [ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="6_ju3ud"]
 [ext_resource type="Texture2D" uid="uid://chftxxvwdvkgk" path="res://Assets/Environment/Scenes/BattleField/LockButton.png" id="7_748j3"]
 [ext_resource type="Script" uid="uid://dqvqbetgnjsnh" path="res://UI/Scripts/lock_button_graphic.gd" id="8_6l7jc"]
@@ -80,10 +79,6 @@ theme_override_constants/margin_bottom = 5
 texture_filter = 3
 layout_mode = 2
 texture = ExtResource("4_rh655")
-
-[node name="YipToolyip" parent="CanvasLayer" unique_id=399779298 instance=ExtResource("5_8ubfp")]
-visible = false
-metadata/_edit_use_anchors_ = true
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1490005837]
 position = Vector2(960, 1080)

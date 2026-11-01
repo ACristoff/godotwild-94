@@ -1,4 +1,4 @@
-extends TextureRect
+class_name AlllelePip extends TextureRect
 
 var hovering = false
 var current_strand: Strand
@@ -11,6 +11,8 @@ var spawn_pos
 
 var skill : Sprite2D
 var vanity : Sprite2D
+
+signal strand_hovered
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,19 +28,15 @@ func _on_mouse_entered() -> void:
 	right_line.set_point_position(0, vanity.global_position)
 	#TODO
 	if current_strand == null:
+		strand_hovered.emit(current_strand)
 		return
-	
+	else:
+		strand_hovered.emit(current_strand)
 
 
 func _on_mouse_exited() -> void:
 	allele_ui_visual._allele_show()
 
 
-func set_strand(strand: Strand, slot_key: String) -> void:
-	#TODO
+func set_strand(strand: Strand) -> void:
 	current_strand = strand
-	#allele_data = allele
-	#if current_allele == null or allele == null:
-		#return
-	#current_allele.update_info(allele.allele_name, side, allele.get_tooltip(), slot_key, allele.tier)
-	pass
