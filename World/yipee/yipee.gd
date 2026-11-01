@@ -75,6 +75,14 @@ func snare_anim():
 	
 func shred():
 	$ActionsAnim.play("Shred")
+	$GPUParticles2D.show()
+	$GPUParticles2D2.show()
+	$GPUParticles2D3.show()
+
+func _process(delta: float) -> void:
+	$GPUParticles2D.global_position = $AnimScaleHandle/VisualYip.global_position
+	$GPUParticles2D2.global_position = $AnimScaleHandle/VisualYip.global_position
+	$GPUParticles2D3.global_position = $AnimScaleHandle/VisualYip.global_position
 
 func unsnare():
 	$ActionsAnim.stop()
@@ -119,5 +127,6 @@ func _on_hit_anim_animation_finished(anim_name: StringName) -> void:
 		$ActionsAnim.play("IdleBattle")
 
 func _on_actions_anim_animation_finished(anim_name: StringName) -> void:
-	pass
+	if anim_name == "Shred":
+		queue_free()
 	#$ActionsAnim.play("IdleBattle")

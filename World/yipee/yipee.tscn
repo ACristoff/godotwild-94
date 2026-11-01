@@ -25,6 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://474plejs27tj" path="res://UI/Textures/babyicon.png" id="21_k37iv"]
 [ext_resource type="PackedScene" uid="uid://borkww0vw6ef5" path="res://UI/Scenes/sleepy_particles.tscn" id="23_pqr1k"]
 [ext_resource type="Script" uid="uid://x20qfvx3d5sl" path="res://World/yipee/components/idle_state.gd" id="24_de0dm"]
+[ext_resource type="Texture2D" uid="uid://dhvgoenw1q81g" path="res://UI/Menus/Main_Menu/Textures/ShredParticle2.png" id="26_c20ic"]
+[ext_resource type="Texture2D" uid="uid://crn0h1i8r2bce" path="res://UI/Menus/Main_Menu/Textures/ShredParticle.png" id="27_jcg7t"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_khqkn"]
 viewport_path = NodePath("AnimScaleHandle/BodyParts")
@@ -1284,6 +1286,49 @@ size = Vector2(126.5, 128)
 [sub_resource type="CircleShape2D" id="CircleShape2D_6vhmf"]
 radius = 23.96
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jcg7t"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+direction = Vector3(0, -10, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 300, 0)
+scale_min = 3.0
+scale_max = 3.0
+collision_mode = 2
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 1
+
+[sub_resource type="Curve" id="Curve_r84on"]
+_data = [Vector2(0, 1), 0.0, 3.1367836, 0, 0, Vector2(0.47682118, 0.8516778), 0.0, 0.0, 0, 0, Vector2(1, 0.37181205), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_33ncc"]
+curve = SubResource("Curve_r84on")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jfbw8"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(32.425, 28.085, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 84.509995
+initial_velocity_max = 123.53
+gravity = Vector3(0, 350, 0)
+scale_min = 2.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_33ncc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h0drk"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 84.509995
+initial_velocity_max = 123.53
+gravity = Vector3(0, 350, 0)
+scale_min = 2.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_33ncc")
+
 [node name="Yipee" type="Node2D" unique_id=580016765]
 script = ExtResource("1_4lw1p")
 
@@ -1492,6 +1537,37 @@ script = ExtResource("24_de0dm")
 
 [node name="IdleTimer" type="Timer" parent="IdleState" unique_id=413302589]
 one_shot = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1580330706]
+visible = false
+texture_filter = 3
+position = Vector2(1.9073486e-06, 0)
+amount = 5
+sub_emitter = NodePath("../GPUParticles2D3")
+texture = ExtResource("26_c20ic")
+lifetime = 3.0
+speed_scale = 2.5
+explosiveness = 0.43
+process_material = SubResource("ParticleProcessMaterial_jcg7t")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="." unique_id=1963791451]
+visible = false
+texture_filter = 3
+position = Vector2(1.9073486e-06, 0)
+amount = 6
+texture = ExtResource("27_jcg7t")
+speed_scale = 2.5
+explosiveness = 0.24
+process_material = SubResource("ParticleProcessMaterial_jfbw8")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="." unique_id=1993639395]
+visible = false
+texture_filter = 3
+position = Vector2(1.9073486e-06, 0)
+amount = 3
+texture = ExtResource("27_jcg7t")
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_h0drk")
 
 [connection signal="animation_finished" from="ActionsAnim" to="." method="_on_actions_anim_animation_finished"]
 [connection signal="animation_finished" from="ThrowPunchAnim" to="." method="_on_throw_punch_anim_animation_finished"]
