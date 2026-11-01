@@ -25,13 +25,13 @@
 [ext_resource type="Script" uid="uid://ddygeie0aq8n6" path="res://UI/Scripts/helix_drop_surface.gd" id="31_yvh3b"]
 [ext_resource type="Script" uid="uid://dufxpqu2r5sh0" path="res://Assets/Test/dna_test_screen.gd" id="32_836pr"]
 [ext_resource type="PackedScene" uid="uid://6looit7fo72" path="res://Assets/Test/dna_stacked_shell.tscn" id="33_mdl01"]
+[ext_resource type="PackedScene" uid="uid://dqgfurgu7jsbg" path="res://UI/Scenes/yip_toolyip.tscn" id="33_v1780"]
 [ext_resource type="Texture2D" uid="uid://dhyaufaxs6hjv" path="res://UI/Textures/cyanspeenspritesheet.png" id="34_ke787"]
 [ext_resource type="Texture2D" uid="uid://rwpaxb4jhtyk" path="res://UI/Textures/Arrow.png" id="35_j71bh"]
 [ext_resource type="Shader" uid="uid://bwvmkd4i76b3p" path="res://Assets/Shaders/CRT.gdshader" id="36_8o0ju"]
 [ext_resource type="Texture2D" uid="uid://c1xvm0thbin5l" path="res://Assets/Environment/Scenes/Laboratory/LabScreen.png" id="37_xoyq5"]
 [ext_resource type="Texture2D" uid="uid://dp6fox832wacg" path="res://Assets/Environment/Scenes/Laboratory/LabPieces.png" id="38_gp1xn"]
 [ext_resource type="Texture2D" uid="uid://blbxak2oo2t0j" path="res://Assets/Environment/Scenes/Laboratory/LabPiecesOver.png" id="39_thqs5"]
-[ext_resource type="Script" uid="uid://dn0twegwjngg0" path="res://UI/Scripts/inventory_drop.gd" id="40_1nqyd"]
 
 [sub_resource type="Animation" id="Animation_kw6rw"]
 resource_name = "Attempt1"
@@ -990,6 +990,7 @@ offset_left = 405.30554
 offset_top = 537.1647
 offset_right = 669.6389
 offset_bottom = 577.1647
+mouse_filter = 2
 color = Color(1, 0.8901961, 0.80784315, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1206082846]
@@ -1021,6 +1022,7 @@ offset_left = 900.0
 offset_top = 361.0
 offset_right = 900.0
 offset_bottom = 361.0
+mouse_filter = 2
 
 [node name="TutorialBox2" parent="." unique_id=30235977 instance=ExtResource("12_31jui")]
 visible = false
@@ -1028,6 +1030,7 @@ offset_left = 575.0
 offset_top = 312.0
 offset_right = 575.0
 offset_bottom = 312.0
+mouse_filter = 2
 
 [node name="TutorialBox4" parent="." unique_id=1385658824 instance=ExtResource("13_bxoc8")]
 visible = false
@@ -1035,6 +1038,7 @@ offset_left = 462.0
 offset_top = 280.0
 offset_right = 462.0
 offset_bottom = 280.0
+mouse_filter = 2
 
 [node name="Pointer" parent="TutorialBox4" index="3" unique_id=114477318]
 position = Vector2(517, 312)
@@ -1045,6 +1049,7 @@ offset_left = 462.0
 offset_top = 280.0
 offset_right = 462.0
 offset_bottom = 280.0
+mouse_filter = 2
 
 [node name="TutorialBox6" parent="." unique_id=480980182 instance=ExtResource("15_o70q2")]
 visible = false
@@ -1052,6 +1057,7 @@ offset_left = 462.0
 offset_top = 280.0
 offset_right = 462.0
 offset_bottom = 280.0
+mouse_filter = 2
 
 [node name="TutorialBox7" parent="." unique_id=1467449732 instance=ExtResource("16_3q1fi")]
 visible = false
@@ -1059,6 +1065,7 @@ offset_left = 462.0
 offset_top = 280.0
 offset_right = 462.0
 offset_bottom = 280.0
+mouse_filter = 2
 
 [node name="TutorialBox8" parent="." unique_id=105377805 instance=ExtResource("17_m5643")]
 visible = false
@@ -1066,6 +1073,7 @@ offset_left = 462.0
 offset_top = 280.0
 offset_right = 462.0
 offset_bottom = 280.0
+mouse_filter = 2
 
 [node name="TutorialBox9" parent="." unique_id=819629981 instance=ExtResource("18_hfses")]
 visible = false
@@ -1073,6 +1081,7 @@ offset_left = 462.0
 offset_top = 280.0
 offset_right = 462.0
 offset_bottom = 280.0
+mouse_filter = 2
 
 [node name="TutorialBox10" parent="." unique_id=1450385155 instance=ExtResource("19_h43vc")]
 visible = false
@@ -1080,6 +1089,7 @@ offset_left = 629.0
 offset_top = 179.0
 offset_right = 629.0
 offset_bottom = 179.0
+mouse_filter = 2
 
 [node name="StatsContainer2" parent="TutorialBox10/StatsContainer" parent_id_path=PackedInt32Array(1450385155, 1544857490) index="0" unique_id=1191929492]
 self_modulate = Color(0.69, 0.532565, 0.43469998, 0)
@@ -1158,6 +1168,7 @@ offset_bottom = -72.33331
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
+mouse_filter = 2
 stretch_shrink = 3
 script = ExtResource("31_yvh3b")
 metadata/_edit_use_anchors_ = true
@@ -1194,6 +1205,9 @@ frame = 11
 [node name="DnaShell2" parent="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen/DNA/DNAStackedShell" index="3" unique_id=1005190979]
 z_index = -2
 frame = 11
+
+[node name="TextureRect" parent="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen/DNA/DNAStackedShell/RectHandle/ColorRect" parent_id_path=PackedInt32Array(1936980544, 818594923) index="0" unique_id=2109559205]
+mouse_filter = 2
 
 [node name="DNAStackedShell2" parent="Lab/Control/SubViewportContainer/SubViewport/DNATestScreen/DNA" unique_id=1240801642 instance=ExtResource("33_mdl01")]
 position = Vector2(0, 150)
@@ -1308,26 +1322,6 @@ position = Vector2(960, 540)
 scale = Vector2(3, 3)
 texture = ExtResource("39_thqs5")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Lab" unique_id=1911432724]
-
-[node name="LeftInventory" type="VBoxContainer" parent="Lab/CanvasLayer" unique_id=2077944316]
-offset_left = 842.0
-offset_top = 43.0
-offset_right = 986.0
-offset_bottom = 703.0
-mouse_filter = 2
-script = ExtResource("40_1nqyd")
-metadata/_edit_use_anchors_ = true
-
-[node name="RightInventory" type="VBoxContainer" parent="Lab/CanvasLayer" unique_id=764300082]
-offset_left = 1676.0
-offset_top = 47.0
-offset_right = 1820.0
-offset_bottom = 724.0
-mouse_filter = 2
-script = ExtResource("40_1nqyd")
-metadata/_edit_use_anchors_ = true
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lab" unique_id=939278799]
 environment = SubResource("Environment_ems3l")
 
@@ -1374,6 +1368,21 @@ autoplay = &"Grind"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Lab" unique_id=29743004]
 libraries/ = SubResource("AnimationLibrary_u53nv")
 autoplay = &"GrindUp"
+
+[node name="Marker2D1" type="Marker2D" parent="." unique_id=1554230537]
+position = Vector2(960, 540)
+
+[node name="Marker2D3" type="Marker2D" parent="." unique_id=1211437519]
+position = Vector2(1224, 540)
+
+[node name="Marker2D2" type="Marker2D" parent="." unique_id=432729338]
+position = Vector2(696, 540)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1454522115]
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
+
+[node name="YipToolyip" parent="CanvasLayer" unique_id=399779298 instance=ExtResource("33_v1780")]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
