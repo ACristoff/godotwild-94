@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cm16uwdk0k36m" path="res://World/yipee/yip_visuals.tscn" id="2_2j0cg"]
 [ext_resource type="Texture2D" uid="uid://2ixdmmyr2pbq" path="res://Assets/Environment/Scenes/BattleField/BearTrap1.png" id="2_sceo7"]
 [ext_resource type="Script" uid="uid://81jkr63gjvq8" path="res://World/yipee/components/health.gd" id="3_0w75r"]
+[ext_resource type="Script" uid="uid://ctw00ropcbbmr" path="res://World/yipee/yipee_shake.gd" id="4_gk4rq"]
 [ext_resource type="Script" uid="uid://cgytvo8likyf3" path="res://World/yipee/components/attack.gd" id="4_igyue"]
 [ext_resource type="Shader" uid="uid://kx17clukav2s" path="res://Assets/Shaders/scroll.gdshader" id="4_vrfs1"]
 [ext_resource type="Texture2D" uid="uid://dobpiqknek3fj" path="res://UI/Menus/Main_Menu/Textures/UpgradeEffect.png" id="5_fo53w"]
@@ -124,6 +125,9 @@ shader_parameter/base_intensity = 0.34000001615
 shader_parameter/size = 0.6770100321572501
 shader_parameter/rect_size = Vector2(512, 512)
 shader_parameter/pixel_scale = 3.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_de0dm"]
+viewport_path = NodePath("AnimScaleHandle/BodyParts")
 
 [sub_resource type="Animation" id="Animation_2cy03"]
 resource_name = "Attack"
@@ -757,6 +761,73 @@ tracks/22/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("AnimScaleHandle/VisualYip:clip_children")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("AnimScaleHandle/VisualYip/Sprite2D:position")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gk4rq"]
+resource_name = "Shred"
+length = 2.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimScaleHandle/VisualYip:clip_children")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimScaleHandle/VisualYip/Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.99),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 44.24)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimScaleHandle/VisualYip")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.010000005),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_wg8yy"]
 resource_name = "Sleep"
@@ -1052,6 +1123,7 @@ _data = {
 &"IdleBattle": SubResource("Animation_8rhy8"),
 &"IdleNormal": SubResource("Animation_vrfs1"),
 &"RESET": SubResource("Animation_2j0cg"),
+&"Shred": SubResource("Animation_gk4rq"),
 &"Sleep": SubResource("Animation_wg8yy"),
 &"Snare": SubResource("Animation_ot5o3"),
 &"Spawn": SubResource("Animation_fo53w"),
@@ -1233,6 +1305,7 @@ texture_filter = 3
 position = Vector2(0, -66)
 scale = Vector2(3, 3)
 texture = SubResource("ViewportTexture_khqkn")
+script = ExtResource("4_gk4rq")
 
 [node name="Buff" type="ColorRect" parent="AnimScaleHandle/VisualYip" unique_id=386415173]
 visible = false
@@ -1302,6 +1375,9 @@ visible = false
 texture_filter = 1
 position = Vector2(6.357829e-07, 0)
 texture = ExtResource("11_wg8yy")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimScaleHandle/VisualYip" unique_id=1665589499]
+texture = SubResource("ViewportTexture_de0dm")
 
 [node name="ActionsAnim" type="AnimationPlayer" parent="." unique_id=824352016]
 libraries/ = SubResource("AnimationLibrary_7esd8")

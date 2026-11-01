@@ -83,6 +83,8 @@ func _process(delta):
 func shred_yip(yip: Yipee):
 	prints(yip, 'TIME TO SHRED')
 	#do yip animation and effects here
+	yip.grind_pos = $Mulcher/ShredderSprite
+	yip.shred()
 	#TODO CALEB
 	#take yips gene goop and add it to inventory
 	print(yip.data.helix.strands)
@@ -101,7 +103,7 @@ func shred_yip(yip: Yipee):
 		pass
 	#shred yip here, remove from player and kill
 	SignalBus.yip_inventory.erase(yip.data)
-	yip.queue_free()
+	#yip.queue_free()
 	#TODO: do a random yip death sound
 	stop_conveyor()
 	conveyor_has_yip = null

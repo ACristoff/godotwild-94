@@ -31,6 +31,7 @@ const BABY_HEAD = preload("uid://c1edmyu2tbx2y")
 @onready var cost: Label = $CostOfYip/Cost
 
 var dead = false
+var grind_pos : Node2D
 
 signal yip_hovered(yip_data: Yipee)
 signal yip_unhovered
@@ -71,6 +72,9 @@ func in_battle_dance():
 	
 func snare_anim():
 	$ActionsAnim.play("Snare")
+	
+func shred():
+	$ActionsAnim.play("Shred")
 
 func unsnare():
 	$ActionsAnim.stop()

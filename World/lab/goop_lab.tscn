@@ -126,10 +126,11 @@ height = 466.0
 
 [node name="GoopLab" type="Node2D" unique_id=1508041924]
 script = ExtResource("1_xljrr")
-debug_yips = Array[ExtResource("2_16yqu")]([SubResource("Resource_0dqea")])
+debug_yips = Array[ExtResource("2_16yqu")]([SubResource("Resource_0dqea"), SubResource("Resource_0dqea"), SubResource("Resource_0dqea"), SubResource("Resource_0dqea"), SubResource("Resource_0dqea"), SubResource("Resource_0dqea"), SubResource("Resource_0dqea"), SubResource("Resource_0dqea"), SubResource("Resource_0dqea"), SubResource("Resource_0dqea"), SubResource("Resource_0dqea")])
 
 [node name="LabBackground" type="Sprite2D" parent="." unique_id=1972674292]
 z_index = -10
+texture_filter = 3
 position = Vector2(960.66675, 537.75)
 scale = Vector2(3.0097225, 3.0097225)
 texture = ExtResource("3_swsyr")
@@ -138,12 +139,14 @@ texture = ExtResource("3_swsyr")
 position = Vector2(686, 24)
 
 [node name="ShredderSprite" type="Sprite2D" parent="Mulcher" unique_id=1516523610]
+texture_filter = 3
 position = Vector2(334, 711)
 scale = Vector2(3, 3)
 texture = ExtResource("2_xljrr")
 hframes = 6
 
 [node name="ConveyorSprite" type="Sprite2D" parent="Mulcher" unique_id=1951354024]
+texture_filter = 3
 position = Vector2(-218, 431.00003)
 scale = Vector2(3, 3)
 texture = ExtResource("1_egti4")
