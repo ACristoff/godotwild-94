@@ -86,7 +86,6 @@ func display_beside(yip: Yipee) -> void:
 	
 	global_position = yip_pos
 
-
 func display(yip: Yipee) -> void:
 	var data: YipeeData = yip.data
 	current_yip = yip
