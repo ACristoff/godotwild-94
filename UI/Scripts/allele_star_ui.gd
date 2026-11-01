@@ -1,9 +1,9 @@
 extends TextureRect
 
 var hovering = false
-var current_strand
-var allele_data: Allele
-const ALELLE_UI = preload("uid://cckwntee1s0l4")
+var current_strand: Strand
+#var allele_data: Allele
+#const ALELLE_UI = preload("uid://cckwntee1s0l4")
 var spawn_pos
 @onready var left_line := $"../../../Line2D"
 @onready var right_line := $"../../../Line2D2"
@@ -24,17 +24,21 @@ func _on_mouse_entered() -> void:
 	allele_ui_visual._cooldown_show()
 	left_line.set_point_position(0, skill.global_position)
 	right_line.set_point_position(0, vanity.global_position)
-	if allele_data == null:
+	#TODO
+	if current_strand == null:
 		return
-	#current_allele.show()
+	
 
 
 func _on_mouse_exited() -> void:
 	allele_ui_visual._allele_show()
 
 
-func set_allele(allele: Allele, side: String, slot_key: String) -> void:
-	allele_data = allele
+func set_strand(strand: Strand, slot_key: String) -> void:
+	#TODO
+	current_strand = strand
+	#allele_data = allele
 	#if current_allele == null or allele == null:
 		#return
 	#current_allele.update_info(allele.allele_name, side, allele.get_tooltip(), slot_key, allele.tier)
+	pass

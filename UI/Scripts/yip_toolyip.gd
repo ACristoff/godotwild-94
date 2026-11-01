@@ -94,10 +94,10 @@ func display(yip: Yipee) -> void:
 		var right_filled = strand != null and strand.right != null
 		get_node("DNA/LeftGene" + str(i + 1)).self_modulate = get_color(key) if left_filled else get_color("NULL")
 		get_node("DNA/RightGene" + str(i + 1)).self_modulate = get_color(key) if right_filled else get_color("NULL")
-		get_node("MainPanel/Alleles/Effects/R_allele" + str(i + 1)).set_allele(
-			strand.left if strand else null, "LEFT", key)
-		get_node("MainPanel/Alleles/Visuals/L_allele" + str(i + 1)).set_allele(
-			strand.right if strand else null, "RIGHT", key)
+		#get_node("MainPanel/Alleles/Effects/R_allele" + str(i + 1)).set_allele(
+			#strand.left if strand else null, "LEFT", key)
+		#get_node("MainPanel/Alleles/Visuals/L_allele" + str(i + 1)).set_allele(
+			#strand.right if strand else null, "RIGHT", key)
 	
 	var pips := {}
 	var atk := roundi(data.get_attack())
