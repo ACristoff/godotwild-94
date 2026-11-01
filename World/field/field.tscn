@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="8_lwms1"]
 [ext_resource type="Texture2D" uid="uid://ck0oxmum5r402" path="res://Assets/Environment/Scenes/CaptureField/UpgradeSign.png" id="10_rh655"]
 [ext_resource type="Texture2D" uid="uid://duipa70vx5fn3" path="res://UI/Menus/Main_Menu/Textures/SettingsButt.png" id="11_8ubfp"]
+[ext_resource type="PackedScene" uid="uid://dtmuxi5urpswf" path="res://UI/Scenes/yip_toolyip_refactor.tscn" id="12_ju3ud"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6l7jc"]
 size = Vector2(1161, 702)
@@ -28,6 +29,8 @@ scale = Vector2(3.0003471, 2.9999998)
 texture = ExtResource("2_lwms1")
 
 [node name="CorrectScale" type="CanvasLayer" parent="." unique_id=674294151]
+
+[node name="YipToolyip2" parent="CorrectScale" unique_id=856218904 instance=ExtResource("12_ju3ud")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=802236130]
 scale = Vector2(3, 3)
@@ -79,6 +82,7 @@ layout_mode = 2
 texture = ExtResource("4_rh655")
 
 [node name="YipToolyip" parent="CanvasLayer" unique_id=399779298 instance=ExtResource("5_8ubfp")]
+visible = false
 metadata/_edit_use_anchors_ = true
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1490005837]

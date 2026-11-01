@@ -1,7 +1,7 @@
 extends TextureRect
 
 var hovering = false
-var current_allele
+var current_strand
 var allele_data: Allele
 const ALELLE_UI = preload("uid://cckwntee1s0l4")
 var spawn_pos
@@ -26,7 +26,7 @@ func _on_mouse_entered() -> void:
 	right_line.set_point_position(0, vanity.global_position)
 	if allele_data == null:
 		return
-	current_allele.show()
+	#current_allele.show()
 
 
 func _on_mouse_exited() -> void:
@@ -35,6 +35,6 @@ func _on_mouse_exited() -> void:
 
 func set_allele(allele: Allele, side: String, slot_key: String) -> void:
 	allele_data = allele
-	if current_allele == null or allele == null:
-		return
-	current_allele.update_info(allele.allele_name, side, allele.get_tooltip(), slot_key, allele.tier)
+	#if current_allele == null or allele == null:
+		#return
+	#current_allele.update_info(allele.allele_name, side, allele.get_tooltip(), slot_key, allele.tier)

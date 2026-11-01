@@ -19,10 +19,10 @@ const SLOT_KEYS := {
 
 @onready var stats_flow_container: FlowContainer = $StatsFlowContainer
 @onready var stats_container: NinePatchRect = $StatsContainer
-@onready var name_field: LineEdit = $MainPanel/HBoxContainer/Name/LineEdit
-@onready var age_label: Label = $MainPanel/HBoxContainer/Age/Label
+@onready var name_field: LineEdit = $MainPanel/MarginContainer/HBoxContainer/LineEdit
+@onready var age_label: Label = $MainPanel/MarginContainer/HBoxContainer/Label
 @onready var hp_label: Label = $MainPanel/Age2/Label
-@onready var cooldown_label: Label = $MainPanel/TextureRect/VBoxContainer/ActualSeconds
+@onready var cooldown_label: Label = $MainPanel2/CooldownDamage/MainPanel2/VBoxContainer/ActualSeconds
 @onready var mouse_hover: Panel = $MouseHover
 @onready var mouse_hover_2: Panel = $MouseHover2
 

@@ -57,6 +57,7 @@ var yip_costs = {
 
 @onready var coin_label: Label = $CanvasLayer/Control/HBoxContainer/MarginContainer2/CoinLabel
 @onready var tooltip: Toolyip = $CanvasLayer/YipToolyip
+@onready var tooltip2: Toolyip = $CorrectScale/YipToolyip2
 
 var all_yips:  Array[Yipee] = []
 
@@ -71,9 +72,9 @@ const REFRESH_COST : int = 1
 
 #region Built in
 func _ready():
-	#tooltip.yip_owner = self
 	coin_label.text = str(SignalBus.coins)
-	tooltip.hide()
+	#tooltip.hide()
+	tooltip2.hide()
 	field_level = clampi(SignalBus.victories, 0, 3)
 	yips_to_spawn = 3 + field_level
 	update_field_labels()
@@ -109,13 +110,13 @@ func wire_yip(yip: Yipee) -> void:
 	yip.yip_unhovered.connect(_on_yip_unhovered)
 
 func _on_yip_hovered(yip: Yipee) -> void:
-	tooltip.display_beside(yip)
+	tooltip2.display_beside(yip)
 	CursorManager.use(CursorManager.Pointers.CURSOR_MONEY)
 	focused_yip = yip
 
 func _on_yip_unhovered() -> void:
 	print('yip unhovered')
-	tooltip.request_hide()
+	#tooltip.request_hide()
 	CursorManager.reset()
 	focused_yip = null
 #endregion
@@ -323,7 +324,7 @@ func buy_yip(yip_bought: Yipee) -> void:
 			SignalBus.yip_party[empty_slot] = yip_bought.data
 			yip_bought.data.yip_party_slot = 6 - empty_slot
 		yip_bought.queue_free()
-		tooltip.hide()
+		#tooltip.hide()
 		print(SignalBus.yip_inventory)
 		SignalBus.first_yip_bought = true
 

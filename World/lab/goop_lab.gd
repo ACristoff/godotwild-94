@@ -16,7 +16,7 @@ var focused_yip: Yipee = null
 var dragged_yip: Yipee = null
 var drag_offset: Vector2 = Vector2.ZERO
 var team_slots: Array[Area2D] = []
-var conveyor_has_yip: Yipee = null
+var conveyor_has_yip: Array[Yipee] = []
 var yip_on_pedestal: Yipee = null
 
 var slot_yips: Dictionary[int, Yipee] = {
@@ -59,7 +59,7 @@ func _input(event: InputEvent) -> void:
 					
 					if conveyor_area.overlaps_area(dragged_yip.farmslot):
 						print('on conveyor')
-						conveyor_has_yip = dragged_yip
+						conveyor_has_yip.append(dragged_yip)
 					
 					if pedestal_area.overlaps_area(dragged_yip.farmslot):
 						print('on pedestal')
@@ -72,8 +72,11 @@ func _input(event: InputEvent) -> void:
 			dragged_yip.global_position = get_global_mouse_position() + drag_offset
 
 func _process(delta):
-	if !conveyor_has_yip == null :
-		conveyor_has_yip.position.x += conveyor_speed * delta
+	prints(conveyor_has_yip)
+	if conveyor_has_yip.size() > 0 :
+		for yip in conveyor_has_yip:
+			yip.position.x += conveyor_speed * delta
+		pass
 	pass
 
 #endregion
@@ -106,7 +109,7 @@ func shred_yip(yip: Yipee):
 	#yip.queue_free()
 	#TODO: do a random yip death sound
 	stop_conveyor()
-	conveyor_has_yip = null
+	conveyor_has_yip.erase(yip)
 
 func calculate_value(allele: Allele):
 	var tier = allele.tier
@@ -126,14 +129,17 @@ func _on_conveyor_area_area_entered(_area):
 
 func _on_conveyor_area_area_exited(_area):
 	if dragged_yip == _area.get_parent():
-		conveyor_has_yip = null
+		#conveyor_has_yip = null
+		var yip = _area.get_parent()
+		conveyor_has_yip.erase(yip)
 	if !conveyor_has_yip:
 		stop_conveyor()
 
 func _on_shredding_zone_area_entered(area: Area2D):
 	prints(area, 'entered shredder!', area.get_parent(), conveyor_has_yip)
 	var entered_yip = area.get_parent()
-	if entered_yip == conveyor_has_yip:
+	#if entered_yip == conveyor_has_yip:
+	if conveyor_has_yip.has(entered_yip):
 		shred_yip(entered_yip)
 
 #endregion 
