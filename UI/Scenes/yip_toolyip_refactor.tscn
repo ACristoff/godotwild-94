@@ -131,11 +131,11 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/MarginContainer" unique_id=3239413]
+[node name="NameAgeRarity" type="HBoxContainer" parent="MainPanel/MarginContainer" unique_id=3239413]
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="LineEdit" type="LineEdit" parent="MainPanel/MarginContainer/HBoxContainer" unique_id=1367555589]
+[node name="NameLabel" type="LineEdit" parent="MainPanel/MarginContainer/NameAgeRarity" unique_id=1367555589]
 texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -156,7 +156,7 @@ emoji_menu_enabled = false
 shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 
-[node name="Label" type="Label" parent="MainPanel/MarginContainer/HBoxContainer" unique_id=2108060276]
+[node name="AgeLabel" type="Label" parent="MainPanel/MarginContainer/NameAgeRarity" unique_id=2108060276]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -168,7 +168,7 @@ theme_override_fonts/font = ExtResource("4_5636s")
 theme_override_font_sizes/font_size = 24
 text = "Age:99"
 
-[node name="Label2" type="Label" parent="MainPanel/MarginContainer/HBoxContainer" unique_id=84046094]
+[node name="RarityLabel" type="Label" parent="MainPanel/MarginContainer/NameAgeRarity" unique_id=84046094]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -180,7 +180,7 @@ theme_override_fonts/font = ExtResource("4_5636s")
 theme_override_font_sizes/font_size = 24
 text = "Common"
 
-[node name="Age2" type="NinePatchRect" parent="MainPanel" unique_id=1806588454]
+[node name="Health" type="NinePatchRect" parent="MainPanel" unique_id=1806588454]
 self_modulate = Color(0.4392157, 0.33333334, 0.27450982, 1)
 texture_filter = 3
 layout_mode = 1
@@ -195,7 +195,7 @@ patch_margin_top = 1
 patch_margin_right = 1
 patch_margin_bottom = 1
 
-[node name="Label" type="Label" parent="MainPanel/Age2" unique_id=2041439266]
+[node name="HealthLabel" type="Label" parent="MainPanel/Health" unique_id=2041439266]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -213,7 +213,7 @@ text = "HP:9999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MainPanel3" type="NinePatchRect" parent="." unique_id=1813120843]
+[node name="MainPanelBG" type="NinePatchRect" parent="." unique_id=1813120843]
 texture_filter = 3
 custom_minimum_size = Vector2(375, 387)
 layout_mode = 0
@@ -229,7 +229,7 @@ patch_margin_top = 15
 patch_margin_right = 15
 patch_margin_bottom = 15
 
-[node name="MainPanel2" type="NinePatchRect" parent="." unique_id=2018379423]
+[node name="MainInterface" type="NinePatchRect" parent="." unique_id=2018379423]
 texture_filter = 3
 custom_minimum_size = Vector2(319.215, 165)
 layout_mode = 0
@@ -246,7 +246,7 @@ patch_margin_right = 15
 patch_margin_bottom = 15
 script = ExtResource("8_goddc")
 
-[node name="CooldownDamage" type="NinePatchRect" parent="MainPanel2" unique_id=660128471]
+[node name="CooldownInformation" type="NinePatchRect" parent="MainInterface" unique_id=660128471]
 visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(363, 147)
@@ -263,7 +263,7 @@ patch_margin_top = 15
 patch_margin_right = 15
 patch_margin_bottom = 15
 
-[node name="MainPanel2" type="NinePatchRect" parent="MainPanel2/CooldownDamage" unique_id=1446592437]
+[node name="CooldownPanel" type="NinePatchRect" parent="MainInterface/CooldownInformation" unique_id=1446592437]
 texture_filter = 3
 custom_minimum_size = Vector2(123, 120)
 layout_mode = 1
@@ -283,7 +283,7 @@ patch_margin_top = 15
 patch_margin_right = 15
 patch_margin_bottom = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel2/CooldownDamage/MainPanel2" unique_id=1311802334]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainInterface/CooldownInformation/CooldownPanel" unique_id=1311802334]
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
@@ -294,7 +294,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/separation = -54
 
-[node name="ActualSeconds" type="Label" parent="MainPanel2/CooldownDamage/MainPanel2/VBoxContainer" unique_id=55184367]
+[node name="ActualSecondsLabel" type="Label" parent="MainInterface/CooldownInformation/CooldownPanel/VBoxContainer" unique_id=55184367]
 texture_filter = 3
 layout_mode = 2
 size_flags_vertical = 6
@@ -311,7 +311,7 @@ text = "4.0s"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sec" type="Label" parent="MainPanel2/CooldownDamage/MainPanel2/VBoxContainer" unique_id=163434878]
+[node name="CooldownLabel" type="Label" parent="MainInterface/CooldownInformation/CooldownPanel/VBoxContainer" unique_id=163434878]
 texture_filter = 3
 layout_mode = 2
 size_flags_vertical = 6
@@ -327,7 +327,7 @@ text = "cooldown"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel2/CooldownDamage" unique_id=415671385]
+[node name="DamageInformationContainer" type="VBoxContainer" parent="MainInterface/CooldownInformation" unique_id=415671385]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -338,7 +338,7 @@ grow_vertical = 2
 theme_override_constants/separation = -2
 alignment = 1
 
-[node name="Label" type="Label" parent="MainPanel2/CooldownDamage/VBoxContainer" unique_id=1379938247]
+[node name="ExampleDamage" type="Label" parent="MainInterface/CooldownInformation/DamageInformationContainer" unique_id=1379938247]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(1, 0.26999998, 0.4038334, 1)
@@ -349,7 +349,7 @@ theme_override_fonts/font = ExtResource("4_5636s")
 theme_override_font_sizes/font_size = 24
 text = "Deal 62 damage"
 
-[node name="CooldownDamage2" type="NinePatchRect" parent="MainPanel2" unique_id=1146182156]
+[node name="AlleleInformation" type="NinePatchRect" parent="MainInterface" unique_id=1146182156]
 texture_filter = 3
 custom_minimum_size = Vector2(363, 147)
 layout_mode = 0
@@ -365,7 +365,7 @@ patch_margin_top = 15
 patch_margin_right = 15
 patch_margin_bottom = 15
 
-[node name="MarginContainer" type="MarginContainer" parent="MainPanel2/CooldownDamage2" unique_id=1525627272]
+[node name="MarginContainer" type="MarginContainer" parent="MainInterface/AlleleInformation" unique_id=1525627272]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -377,10 +377,10 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel2/CooldownDamage2/MarginContainer" unique_id=1153485291]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainInterface/AlleleInformation/MarginContainer" unique_id=1153485291]
 layout_mode = 2
 
-[node name="LeftAlelle" type="NinePatchRect" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer" unique_id=1766488413]
+[node name="LeftAlelle" type="NinePatchRect" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer" unique_id=1766488413]
 texture_filter = 3
 custom_minimum_size = Vector2(123, 120)
 layout_mode = 2
@@ -392,7 +392,7 @@ patch_margin_top = 15
 patch_margin_right = 15
 patch_margin_bottom = 15
 
-[node name="Alelle_UI" type="Control" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle" unique_id=1917264788]
+[node name="Alelle_UI" type="Control" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/LeftAlelle" unique_id=1917264788]
 z_index = 10
 anchors_preset = 0
 offset_left = 11.0
@@ -402,7 +402,7 @@ offset_bottom = 40.0
 mouse_filter = 2
 script = ExtResource("10_goddc")
 
-[node name="MainPanel" type="NinePatchRect" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle/Alelle_UI" unique_id=1688179199]
+[node name="MainPanel" type="NinePatchRect" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/LeftAlelle/Alelle_UI" unique_id=1688179199]
 texture_filter = 3
 custom_minimum_size = Vector2(86, 0)
 layout_mode = 0
@@ -415,7 +415,7 @@ patch_margin_top = 1
 patch_margin_right = 1
 patch_margin_bottom = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle/Alelle_UI/MainPanel" unique_id=1137033911]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/LeftAlelle/Alelle_UI/MainPanel" unique_id=1137033911]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -425,7 +425,7 @@ grow_horizontal = 2
 mouse_filter = 2
 theme_override_constants/separation = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle" unique_id=663645865]
+[node name="MarginContainer" type="MarginContainer" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/LeftAlelle" unique_id=663645865]
 modulate = Color(1.6852883, 1.6852883, 1.6852883, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -440,7 +440,7 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="LA_DescriptionText" type="RichTextLabel" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle/MarginContainer" unique_id=864073247]
+[node name="LA_DescriptionText" type="RichTextLabel" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/LeftAlelle/MarginContainer" unique_id=864073247]
 custom_minimum_size = Vector2(88, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -457,7 +457,7 @@ text = "Increases ATK by 30%"
 fit_content = true
 horizontal_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle" unique_id=248359766]
+[node name="MarginContainer2" type="MarginContainer" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/LeftAlelle" unique_id=248359766]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -468,7 +468,7 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = -12
 
-[node name="Name" type="NinePatchRect" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle/MarginContainer2" unique_id=51933117]
+[node name="Name" type="NinePatchRect" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/LeftAlelle/MarginContainer2" unique_id=51933117]
 texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -478,7 +478,7 @@ patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle/MarginContainer2/Name" unique_id=947422239]
+[node name="MarginContainer" type="MarginContainer" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/LeftAlelle/MarginContainer2/Name" unique_id=947422239]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -487,10 +487,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_top = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle/MarginContainer2/Name/MarginContainer" unique_id=2074356726]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/LeftAlelle/MarginContainer2/Name/MarginContainer" unique_id=2074356726]
 layout_mode = 2
 
-[node name="LA_NameText" type="Label" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle/MarginContainer2/Name/MarginContainer/HBoxContainer" unique_id=493629343]
+[node name="LA_NameText" type="Label" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/LeftAlelle/MarginContainer2/Name/MarginContainer/HBoxContainer" unique_id=493629343]
 z_index = 3
 texture_filter = 3
 layout_mode = 2
@@ -506,12 +506,12 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_g53l3")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_6tcmc")
 text = "Allele"
 
-[node name="MarginContainer" type="MarginContainer" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle/MarginContainer2/Name/MarginContainer/HBoxContainer" unique_id=1121326831]
+[node name="MarginContainer" type="MarginContainer" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/LeftAlelle/MarginContainer2/Name/MarginContainer/HBoxContainer" unique_id=1121326831]
 layout_mode = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_right = 6
 
-[node name="LA_LevelText" type="Label" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle/MarginContainer2/Name/MarginContainer/HBoxContainer/MarginContainer" unique_id=1462911845]
+[node name="LA_LevelText" type="Label" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/LeftAlelle/MarginContainer2/Name/MarginContainer/HBoxContainer/MarginContainer" unique_id=1462911845]
 z_index = 3
 layout_mode = 2
 size_flags_horizontal = 4
@@ -525,7 +525,7 @@ theme_override_fonts/font = ExtResource("4_5636s")
 theme_override_font_sizes/font_size = 15
 text = "lv.1"
 
-[node name="TypeDmg" type="TextureRect" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle" unique_id=1364046323]
+[node name="TypeDmg" type="TextureRect" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/LeftAlelle" unique_id=1364046323]
 z_index = 1
 layout_mode = 0
 offset_left = 12.0
@@ -536,14 +536,14 @@ size_flags_horizontal = 10
 texture = ExtResource("14_3y3ve")
 expand_mode = 2
 
-[node name="DnAballSkill" type="Sprite2D" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/LeftAlelle" unique_id=1429537644]
+[node name="DnAballSkill" type="Sprite2D" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/LeftAlelle" unique_id=1429537644]
 z_index = 3
 texture_filter = 3
 position = Vector2(21, 31)
 scale = Vector2(3, 3)
 texture = ExtResource("14_j6brb")
 
-[node name="RightAlelle" type="NinePatchRect" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer" unique_id=897505543]
+[node name="RightAlelle" type="NinePatchRect" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer" unique_id=897505543]
 texture_filter = 3
 custom_minimum_size = Vector2(123, 120)
 layout_mode = 2
@@ -555,7 +555,7 @@ patch_margin_top = 15
 patch_margin_right = 15
 patch_margin_bottom = 15
 
-[node name="Alelle_UI" type="Control" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle" unique_id=795652315]
+[node name="Alelle_UI" type="Control" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/RightAlelle" unique_id=795652315]
 z_index = 10
 anchors_preset = 0
 offset_left = 11.0
@@ -565,7 +565,7 @@ offset_bottom = 40.0
 mouse_filter = 2
 script = ExtResource("10_goddc")
 
-[node name="MainPanel" type="NinePatchRect" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle/Alelle_UI" unique_id=632648556]
+[node name="MainPanel" type="NinePatchRect" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/RightAlelle/Alelle_UI" unique_id=632648556]
 texture_filter = 3
 custom_minimum_size = Vector2(86, 0)
 layout_mode = 0
@@ -578,7 +578,7 @@ patch_margin_top = 1
 patch_margin_right = 1
 patch_margin_bottom = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle/Alelle_UI/MainPanel" unique_id=911538555]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/RightAlelle/Alelle_UI/MainPanel" unique_id=911538555]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -588,7 +588,7 @@ grow_horizontal = 2
 mouse_filter = 2
 theme_override_constants/separation = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle" unique_id=1342709492]
+[node name="MarginContainer" type="MarginContainer" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/RightAlelle" unique_id=1342709492]
 modulate = Color(1.6852883, 1.6852883, 1.6852883, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -603,7 +603,7 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="RA_DescriptionText" type="RichTextLabel" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle/MarginContainer" unique_id=1145368342]
+[node name="RA_DescriptionText" type="RichTextLabel" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/RightAlelle/MarginContainer" unique_id=1145368342]
 custom_minimum_size = Vector2(88, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -620,7 +620,7 @@ text = "Increases ATK by 30%"
 fit_content = true
 horizontal_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle" unique_id=2127666925]
+[node name="MarginContainer2" type="MarginContainer" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/RightAlelle" unique_id=2127666925]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -631,7 +631,7 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = -12
 
-[node name="NameText" type="NinePatchRect" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle/MarginContainer2" unique_id=558639028]
+[node name="NameText" type="NinePatchRect" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/RightAlelle/MarginContainer2" unique_id=558639028]
 texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -641,7 +641,7 @@ patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle/MarginContainer2/NameText" unique_id=863635832]
+[node name="MarginContainer" type="MarginContainer" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/RightAlelle/MarginContainer2/NameText" unique_id=863635832]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -650,10 +650,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_top = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle/MarginContainer2/NameText/MarginContainer" unique_id=1300175773]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/RightAlelle/MarginContainer2/NameText/MarginContainer" unique_id=1300175773]
 layout_mode = 2
 
-[node name="RA_NameText" type="Label" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle/MarginContainer2/NameText/MarginContainer/HBoxContainer" unique_id=668536889]
+[node name="RA_NameText" type="Label" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/RightAlelle/MarginContainer2/NameText/MarginContainer/HBoxContainer" unique_id=668536889]
 z_index = 3
 texture_filter = 3
 layout_mode = 2
@@ -669,12 +669,12 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_g53l3")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_6tcmc")
 text = "Allele"
 
-[node name="MarginContainer" type="MarginContainer" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle/MarginContainer2/NameText/MarginContainer/HBoxContainer" unique_id=2080390680]
+[node name="MarginContainer" type="MarginContainer" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/RightAlelle/MarginContainer2/NameText/MarginContainer/HBoxContainer" unique_id=2080390680]
 layout_mode = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_right = 6
 
-[node name="RA_LevelText" type="Label" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle/MarginContainer2/NameText/MarginContainer/HBoxContainer/MarginContainer" unique_id=1840601690]
+[node name="RA_LevelText" type="Label" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/RightAlelle/MarginContainer2/NameText/MarginContainer/HBoxContainer/MarginContainer" unique_id=1840601690]
 z_index = 3
 layout_mode = 2
 size_flags_horizontal = 4
@@ -688,7 +688,7 @@ theme_override_fonts/font = ExtResource("4_5636s")
 theme_override_font_sizes/font_size = 15
 text = "lv.1"
 
-[node name="TypeDmg" type="TextureRect" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle" unique_id=1880215623]
+[node name="TypeDmg" type="TextureRect" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/RightAlelle" unique_id=1880215623]
 z_index = 1
 layout_mode = 0
 offset_left = 12.0
@@ -699,14 +699,14 @@ size_flags_horizontal = 10
 texture = ExtResource("14_3y3ve")
 expand_mode = 2
 
-[node name="DnAballVanity" type="Sprite2D" parent="MainPanel2/CooldownDamage2/MarginContainer/HBoxContainer/RightAlelle" unique_id=958861240]
+[node name="DnAballVanity" type="Sprite2D" parent="MainInterface/AlleleInformation/MarginContainer/HBoxContainer/RightAlelle" unique_id=958861240]
 z_index = 3
 texture_filter = 3
 position = Vector2(145, 20)
 scale = Vector2(3, 3)
 texture = ExtResource("15_goddc")
 
-[node name="DNARefactor" type="Control" parent="MainPanel2" unique_id=1504063863]
+[node name="DNARefactor" type="Control" parent="MainInterface" unique_id=1504063863]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -716,7 +716,7 @@ grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_lock_ = true
 
-[node name="BaseNullSlot1" type="TextureRect" parent="MainPanel2/DNARefactor" unique_id=818072404]
+[node name="BaseNullSlot1" type="TextureRect" parent="MainInterface/DNARefactor" unique_id=818072404]
 z_index = 1
 texture_filter = 3
 layout_mode = 0
@@ -729,7 +729,7 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("13_awlr3")
 script = ExtResource("11_awlr3")
 
-[node name="DnaSkill" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot1" unique_id=2094660406]
+[node name="DnaSkill" type="TextureRect" parent="MainInterface/DNARefactor/BaseNullSlot1" unique_id=2094660406]
 visible = false
 z_index = 1
 texture_filter = 3
@@ -739,7 +739,7 @@ offset_bottom = 8.0
 mouse_filter = 2
 texture = ExtResource("14_j6brb")
 
-[node name="DnaVanity" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot1" unique_id=1933841770]
+[node name="DnaVanity" type="TextureRect" parent="MainInterface/DNARefactor/BaseNullSlot1" unique_id=1933841770]
 visible = false
 z_index = 1
 texture_filter = 3
@@ -749,21 +749,21 @@ offset_bottom = 8.0
 mouse_filter = 2
 texture = ExtResource("15_goddc")
 
-[node name="SkillIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot1" unique_id=1462050077]
+[node name="SkillIn" type="Sprite2D" parent="MainInterface/DNARefactor/BaseNullSlot1" unique_id=1462050077]
 texture_filter = 3
 position = Vector2(2, 11)
 texture = ExtResource("16_0hi4e")
 hframes = 2
 frame = 1
 
-[node name="VanityIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot1" unique_id=1278473951]
+[node name="VanityIn" type="Sprite2D" parent="MainInterface/DNARefactor/BaseNullSlot1" unique_id=1278473951]
 texture_filter = 3
 position = Vector2(6, 11)
 texture = ExtResource("16_0hi4e")
 hframes = 2
 frame = 1
 
-[node name="BaseNullSlot2" type="TextureRect" parent="MainPanel2/DNARefactor" unique_id=381543345]
+[node name="BaseNullSlot2" type="TextureRect" parent="MainInterface/DNARefactor" unique_id=381543345]
 z_index = 1
 texture_filter = 3
 layout_mode = 0
@@ -776,7 +776,7 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("13_awlr3")
 script = ExtResource("11_awlr3")
 
-[node name="DnaSkill" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot2" unique_id=989666357]
+[node name="DnaSkill" type="TextureRect" parent="MainInterface/DNARefactor/BaseNullSlot2" unique_id=989666357]
 visible = false
 z_index = 1
 texture_filter = 3
@@ -785,7 +785,7 @@ offset_right = 8.0
 offset_bottom = 8.0
 texture = ExtResource("14_j6brb")
 
-[node name="DnaVanity" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot2" unique_id=319398679]
+[node name="DnaVanity" type="TextureRect" parent="MainInterface/DNARefactor/BaseNullSlot2" unique_id=319398679]
 visible = false
 z_index = 1
 texture_filter = 3
@@ -794,21 +794,21 @@ offset_right = 8.0
 offset_bottom = 8.0
 texture = ExtResource("15_goddc")
 
-[node name="SkillIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot2" unique_id=1808308354]
+[node name="SkillIn" type="Sprite2D" parent="MainInterface/DNARefactor/BaseNullSlot2" unique_id=1808308354]
 texture_filter = 3
 position = Vector2(2, 11)
 texture = ExtResource("16_0hi4e")
 hframes = 2
 frame = 1
 
-[node name="VanityIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot2" unique_id=896486479]
+[node name="VanityIn" type="Sprite2D" parent="MainInterface/DNARefactor/BaseNullSlot2" unique_id=896486479]
 texture_filter = 3
 position = Vector2(6, 11)
 texture = ExtResource("16_0hi4e")
 hframes = 2
 frame = 1
 
-[node name="BaseNullSlot3" type="TextureRect" parent="MainPanel2/DNARefactor" unique_id=1540155507]
+[node name="BaseNullSlot3" type="TextureRect" parent="MainInterface/DNARefactor" unique_id=1540155507]
 z_index = 1
 texture_filter = 3
 layout_mode = 0
@@ -821,7 +821,7 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("13_awlr3")
 script = ExtResource("11_awlr3")
 
-[node name="DnaSkill" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot3" unique_id=194737709]
+[node name="DnaSkill" type="TextureRect" parent="MainInterface/DNARefactor/BaseNullSlot3" unique_id=194737709]
 visible = false
 z_index = 1
 texture_filter = 3
@@ -830,7 +830,7 @@ offset_right = 8.0
 offset_bottom = 8.0
 texture = ExtResource("14_j6brb")
 
-[node name="DnaVanity" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot3" unique_id=1001043213]
+[node name="DnaVanity" type="TextureRect" parent="MainInterface/DNARefactor/BaseNullSlot3" unique_id=1001043213]
 visible = false
 z_index = 1
 texture_filter = 3
@@ -839,21 +839,21 @@ offset_right = 8.0
 offset_bottom = 8.0
 texture = ExtResource("15_goddc")
 
-[node name="SkillIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot3" unique_id=1459625733]
+[node name="SkillIn" type="Sprite2D" parent="MainInterface/DNARefactor/BaseNullSlot3" unique_id=1459625733]
 texture_filter = 3
 position = Vector2(2, 11)
 texture = ExtResource("16_0hi4e")
 hframes = 2
 frame = 1
 
-[node name="VanityIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot3" unique_id=1516874051]
+[node name="VanityIn" type="Sprite2D" parent="MainInterface/DNARefactor/BaseNullSlot3" unique_id=1516874051]
 texture_filter = 3
 position = Vector2(6, 11)
 texture = ExtResource("16_0hi4e")
 hframes = 2
 frame = 1
 
-[node name="BaseNullSlot4" type="TextureRect" parent="MainPanel2/DNARefactor" unique_id=568608356]
+[node name="BaseNullSlot4" type="TextureRect" parent="MainInterface/DNARefactor" unique_id=568608356]
 z_index = 1
 texture_filter = 3
 layout_mode = 0
@@ -866,7 +866,7 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("13_awlr3")
 script = ExtResource("11_awlr3")
 
-[node name="DnaSkill" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot4" unique_id=52876391]
+[node name="DnaSkill" type="TextureRect" parent="MainInterface/DNARefactor/BaseNullSlot4" unique_id=52876391]
 visible = false
 z_index = 1
 texture_filter = 3
@@ -875,7 +875,7 @@ offset_right = 8.0
 offset_bottom = 8.0
 texture = ExtResource("14_j6brb")
 
-[node name="DnaVanity" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot4" unique_id=1574102485]
+[node name="DnaVanity" type="TextureRect" parent="MainInterface/DNARefactor/BaseNullSlot4" unique_id=1574102485]
 visible = false
 z_index = 1
 texture_filter = 3
@@ -884,21 +884,21 @@ offset_right = 8.0
 offset_bottom = 8.0
 texture = ExtResource("15_goddc")
 
-[node name="SkillIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot4" unique_id=30384019]
+[node name="SkillIn" type="Sprite2D" parent="MainInterface/DNARefactor/BaseNullSlot4" unique_id=30384019]
 texture_filter = 3
 position = Vector2(2, 11)
 texture = ExtResource("16_0hi4e")
 hframes = 2
 frame = 1
 
-[node name="VanityIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot4" unique_id=1967445928]
+[node name="VanityIn" type="Sprite2D" parent="MainInterface/DNARefactor/BaseNullSlot4" unique_id=1967445928]
 texture_filter = 3
 position = Vector2(6, 11)
 texture = ExtResource("16_0hi4e")
 hframes = 2
 frame = 1
 
-[node name="BaseNullSlot5" type="TextureRect" parent="MainPanel2/DNARefactor" unique_id=453522179]
+[node name="BaseNullSlot5" type="TextureRect" parent="MainInterface/DNARefactor" unique_id=453522179]
 z_index = 1
 texture_filter = 3
 layout_mode = 0
@@ -911,7 +911,7 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("13_awlr3")
 script = ExtResource("11_awlr3")
 
-[node name="DnaSkill" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot5" unique_id=1161262764]
+[node name="DnaSkill" type="TextureRect" parent="MainInterface/DNARefactor/BaseNullSlot5" unique_id=1161262764]
 visible = false
 z_index = 1
 texture_filter = 3
@@ -920,7 +920,7 @@ offset_right = 8.0
 offset_bottom = 8.0
 texture = ExtResource("14_j6brb")
 
-[node name="DnaVanity" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot5" unique_id=2012847965]
+[node name="DnaVanity" type="TextureRect" parent="MainInterface/DNARefactor/BaseNullSlot5" unique_id=2012847965]
 visible = false
 z_index = 1
 texture_filter = 3
@@ -929,21 +929,21 @@ offset_right = 8.0
 offset_bottom = 8.0
 texture = ExtResource("15_goddc")
 
-[node name="SkillIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot5" unique_id=1151607783]
+[node name="SkillIn" type="Sprite2D" parent="MainInterface/DNARefactor/BaseNullSlot5" unique_id=1151607783]
 texture_filter = 3
 position = Vector2(2, 11)
 texture = ExtResource("16_0hi4e")
 hframes = 2
 frame = 1
 
-[node name="VanityIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot5" unique_id=1853046259]
+[node name="VanityIn" type="Sprite2D" parent="MainInterface/DNARefactor/BaseNullSlot5" unique_id=1853046259]
 texture_filter = 3
 position = Vector2(6, 11)
 texture = ExtResource("16_0hi4e")
 hframes = 2
 frame = 1
 
-[node name="BaseNullSlot6" type="TextureRect" parent="MainPanel2/DNARefactor" unique_id=746868739]
+[node name="BaseNullSlot6" type="TextureRect" parent="MainInterface/DNARefactor" unique_id=746868739]
 z_index = 1
 texture_filter = 3
 layout_mode = 0
@@ -956,7 +956,7 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("13_awlr3")
 script = ExtResource("11_awlr3")
 
-[node name="DnaSkill" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot6" unique_id=1913759829]
+[node name="DnaSkill" type="TextureRect" parent="MainInterface/DNARefactor/BaseNullSlot6" unique_id=1913759829]
 visible = false
 z_index = 1
 texture_filter = 3
@@ -965,7 +965,7 @@ offset_right = 8.0
 offset_bottom = 8.0
 texture = ExtResource("14_j6brb")
 
-[node name="DnaVanity" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot6" unique_id=40374550]
+[node name="DnaVanity" type="TextureRect" parent="MainInterface/DNARefactor/BaseNullSlot6" unique_id=40374550]
 visible = false
 z_index = 1
 texture_filter = 3
@@ -974,21 +974,21 @@ offset_right = 8.0
 offset_bottom = 8.0
 texture = ExtResource("15_goddc")
 
-[node name="SkillIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot6" unique_id=1655291925]
+[node name="SkillIn" type="Sprite2D" parent="MainInterface/DNARefactor/BaseNullSlot6" unique_id=1655291925]
 texture_filter = 3
 position = Vector2(2, 11)
 texture = ExtResource("16_0hi4e")
 hframes = 2
 frame = 1
 
-[node name="VanityIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot6" unique_id=63895133]
+[node name="VanityIn" type="Sprite2D" parent="MainInterface/DNARefactor/BaseNullSlot6" unique_id=63895133]
 texture_filter = 3
 position = Vector2(6, 11)
 texture = ExtResource("16_0hi4e")
 hframes = 2
 frame = 1
 
-[node name="BaseNullSlot7" type="TextureRect" parent="MainPanel2/DNARefactor" unique_id=1800684881]
+[node name="BaseNullSlot7" type="TextureRect" parent="MainInterface/DNARefactor" unique_id=1800684881]
 z_index = 1
 texture_filter = 3
 layout_mode = 0
@@ -1001,7 +1001,7 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("13_awlr3")
 script = ExtResource("11_awlr3")
 
-[node name="DnaSkill" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot7" unique_id=1944228143]
+[node name="DnaSkill" type="TextureRect" parent="MainInterface/DNARefactor/BaseNullSlot7" unique_id=1944228143]
 visible = false
 z_index = 1
 texture_filter = 3
@@ -1010,7 +1010,7 @@ offset_right = 8.0
 offset_bottom = 8.0
 texture = ExtResource("14_j6brb")
 
-[node name="DnaVanity" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot7" unique_id=643425484]
+[node name="DnaVanity" type="TextureRect" parent="MainInterface/DNARefactor/BaseNullSlot7" unique_id=643425484]
 visible = false
 z_index = 1
 texture_filter = 3
@@ -1019,21 +1019,21 @@ offset_right = 8.0
 offset_bottom = 8.0
 texture = ExtResource("15_goddc")
 
-[node name="SkillIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot7" unique_id=355256708]
+[node name="SkillIn" type="Sprite2D" parent="MainInterface/DNARefactor/BaseNullSlot7" unique_id=355256708]
 texture_filter = 3
 position = Vector2(2, 11)
 texture = ExtResource("16_0hi4e")
 hframes = 2
 frame = 1
 
-[node name="VanityIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot7" unique_id=1173542710]
+[node name="VanityIn" type="Sprite2D" parent="MainInterface/DNARefactor/BaseNullSlot7" unique_id=1173542710]
 texture_filter = 3
 position = Vector2(6, 11)
 texture = ExtResource("16_0hi4e")
 hframes = 2
 frame = 1
 
-[node name="BaseNullSlot8" type="TextureRect" parent="MainPanel2/DNARefactor" unique_id=1428864108]
+[node name="BaseNullSlot8" type="TextureRect" parent="MainInterface/DNARefactor" unique_id=1428864108]
 z_index = 1
 texture_filter = 3
 layout_mode = 0
@@ -1046,7 +1046,7 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("13_awlr3")
 script = ExtResource("11_awlr3")
 
-[node name="DnaSkill" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot8" unique_id=347946665]
+[node name="DnaSkill" type="TextureRect" parent="MainInterface/DNARefactor/BaseNullSlot8" unique_id=347946665]
 visible = false
 z_index = 1
 texture_filter = 3
@@ -1055,7 +1055,7 @@ offset_right = 8.0
 offset_bottom = 8.0
 texture = ExtResource("14_j6brb")
 
-[node name="DnaVanity" type="TextureRect" parent="MainPanel2/DNARefactor/BaseNullSlot8" unique_id=1748504525]
+[node name="DnaVanity" type="TextureRect" parent="MainInterface/DNARefactor/BaseNullSlot8" unique_id=1748504525]
 visible = false
 z_index = 1
 texture_filter = 3
@@ -1064,14 +1064,14 @@ offset_right = 8.0
 offset_bottom = 8.0
 texture = ExtResource("15_goddc")
 
-[node name="SkillIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot8" unique_id=1656768290]
+[node name="SkillIn" type="Sprite2D" parent="MainInterface/DNARefactor/BaseNullSlot8" unique_id=1656768290]
 texture_filter = 3
 position = Vector2(2, 11)
 texture = ExtResource("16_0hi4e")
 hframes = 2
 frame = 1
 
-[node name="VanityIn" type="Sprite2D" parent="MainPanel2/DNARefactor/BaseNullSlot8" unique_id=132070962]
+[node name="VanityIn" type="Sprite2D" parent="MainInterface/DNARefactor/BaseNullSlot8" unique_id=132070962]
 texture_filter = 3
 position = Vector2(6, 11)
 texture = ExtResource("16_0hi4e")
@@ -1643,8 +1643,8 @@ default_color = Color(1, 0.52, 0.52, 0.49019608)
 points = PackedVector2Array(80, 204, 366, 262)
 default_color = Color(1, 0.52, 0.52, 0.4862745)
 
-[connection signal="mouse_entered" from="MainPanel2/DNARefactor/BaseNullSlot1" to="MainPanel2/DNARefactor/BaseNullSlot1" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MainPanel2/DNARefactor/BaseNullSlot1" to="MainPanel2/DNARefactor/BaseNullSlot1" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MainInterface/DNARefactor/BaseNullSlot1" to="MainInterface/DNARefactor/BaseNullSlot1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainInterface/DNARefactor/BaseNullSlot1" to="MainInterface/DNARefactor/BaseNullSlot1" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="MouseHover" to="." method="_on_mouse_hover_mouse_entered"]
 [connection signal="mouse_exited" from="MouseHover" to="." method="_on_mouse_hover_mouse_exited"]
 [connection signal="mouse_entered" from="MouseHover2" to="." method="_on_mouse_hover_2_mouse_entered"]
