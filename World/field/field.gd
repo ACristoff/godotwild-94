@@ -117,6 +117,7 @@ func _on_yip_hovered(yip: Yipee) -> void:
 func _on_yip_unhovered() -> void:
 	print('yip unhovered')
 	#tooltip.request_hide()
+	tooltip2.request_hide()
 	CursorManager.reset()
 	focused_yip = null
 #endregion
@@ -325,6 +326,7 @@ func buy_yip(yip_bought: Yipee) -> void:
 			yip_bought.data.yip_party_slot = 6 - empty_slot
 		yip_bought.queue_free()
 		#tooltip.hide()
+		tooltip2.hide()
 		print(SignalBus.yip_inventory)
 		SignalBus.first_yip_bought = true
 
