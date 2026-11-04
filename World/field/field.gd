@@ -56,7 +56,6 @@ var yip_costs = {
 }
 
 @onready var coin_label: Label = $CanvasLayer/Control/HBoxContainer/MarginContainer2/CoinLabel
-@onready var tooltip: Toolyip = $CanvasLayer/YipToolyip
 @onready var tooltip2: Toolyip = $CorrectScale/YipToolyip2
 
 var all_yips:  Array[Yipee] = []

@@ -3,8 +3,8 @@ class_name Toolyip extends Control
 const STAT_PIP = preload("res://UI/Scenes/damage_toolyip.tscn")
 
 const HIDE_GRACE: float= 0.05
-const GAP_RIGHT: float = 5.0
-const GAP_LEFT: float = 17.0
+const GAP_RIGHT: float = 50.0
+const GAP_LEFT: float = 70.0
 
 const SLOT_KEYS := {
 	BodyMap.Slot.HEALTH: "HP",
@@ -26,7 +26,7 @@ const SLOT_KEYS := {
 @onready var mouse_hover: Panel = $MainPanel/MainPanelBG/MouseHover
 @onready var mouse_hover_2: Panel = $MainPanel/MainPanelBG/MouseHover
 @onready var strand_pips_container: Control = $MainPanel/MainInterface/DNARefactor
-
+@onready var main_panel: NinePatchRect = $MainPanel
 
 @onready var allele_information: AlleleInformation = $MainPanel/MainInterface/AlleleInformation
 
@@ -35,7 +35,7 @@ var _yip_hovered: bool = false
 var current_yip: Yipee = null
 var _hide_grace: float= 0.0
 var shown: bool = true
-var tt_size: Vector2 = Vector2(149, 84)
+var tt_size: Vector2 = Vector2(400, 350)
 var increment = 0
 var types = [
 	"ATK",
@@ -69,23 +69,25 @@ func on_strand_hovered(new_strand: Strand):
 
 func display_beside(yip: Yipee) -> void:
 	display(yip)
-	
-	var canvas = get_parent() as CanvasLayer
-	var screenbounds = get_viewport().get_visible_rect().size / 3
-	
-	var yip_pos = canvas.transform.affine_inverse() * yip.get_global_transform_with_canvas().origin
-	
-	if yip_pos.x > screenbounds.x / 2.0:
-		yip_pos.x = yip_pos.x - GAP_RIGHT - tt_size.x
+
+	var canvas := get_parent() as CanvasLayer
+	var screen_bounds: Vector2 = get_viewport().get_visible_rect().size / canvas.scale
+	var yip_pos: Vector2 = canvas.transform.affine_inverse() * yip.get_global_transform_with_canvas().origin
+
+	var panel_offset: Vector2 = main_panel.position
+	var panel_size: Vector2 = main_panel.size
+	var panel_pos := Vector2.ZERO
+
+	if yip_pos.x > screen_bounds.x / 2.0:
+		panel_pos.x = yip_pos.x - GAP_RIGHT - panel_size.x
 	else:
-		yip_pos.x = yip_pos.x + GAP_LEFT
-	
-	yip_pos.y = yip_pos.y - tt_size.y / 2.0
-	
-	yip_pos.x = clampf(yip_pos.x, 0.0, screenbounds.x - tt_size.x)
-	yip_pos.y = clampf(yip_pos.y, 0.0, screenbounds.y - tt_size.y)
-	
-	global_position = yip_pos
+		panel_pos.x = yip_pos.x + GAP_LEFT
+	panel_pos.y = yip_pos.y - panel_size.y / 2.0
+
+	panel_pos.x = clampf(panel_pos.x, 0.0, screen_bounds.x - panel_size.x)
+	panel_pos.y = clampf(panel_pos.y, 0.0, screen_bounds.y - panel_size.y)
+
+	global_position = panel_pos - panel_offset
 
 func display(yip: Yipee) -> void:
 	var data: YipeeData = yip.data
@@ -203,7 +205,7 @@ func _process(delta: float) -> void:
 		else:
 			_hide_grace -= delta
 			if _hide_grace <= 0.0:
-				#hide()
+				hide()
 				current_yip = null
 	#amnt_of_stats = stats_flow_container.get_child_count()
 	#match amnt_of_stats:
