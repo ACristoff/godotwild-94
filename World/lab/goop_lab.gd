@@ -72,7 +72,7 @@ func _input(event: InputEvent) -> void:
 			dragged_yip.global_position = get_global_mouse_position() + drag_offset
 
 func _process(delta):
-	prints(conveyor_has_yip)
+	#prints(conveyor_has_yip)
 	if conveyor_has_yip.size() > 0 :
 		for yip in conveyor_has_yip:
 			yip.position.x += conveyor_speed * delta
