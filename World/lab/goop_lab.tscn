@@ -339,6 +339,7 @@ theme_override_constants/margin_top = 18
 theme_override_constants/margin_right = 12
 
 [node name="AlleleLevel" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer" unique_id=639596874]
+custom_minimum_size = Vector2(53, 72)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("3_f0hc0")
@@ -749,6 +750,7 @@ rotation = 1.5707964
 scale = Vector2(8, 8)
 texture = ExtResource("17_6mjui")
 
+[connection signal="pressed" from="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8/AddGoop" to="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1" method="_on_add_goop_pressed"]
 [connection signal="area_entered" from="Mulcher/ConveyorArea" to="." method="_on_conveyor_area_area_entered"]
 [connection signal="area_exited" from="Mulcher/ConveyorArea" to="." method="_on_conveyor_area_area_exited"]
 [connection signal="area_entered" from="Mulcher/ShreddingZone" to="." method="_on_shredding_zone_area_entered"]
