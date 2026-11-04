@@ -79,6 +79,8 @@ func _on_mouse_entered() -> void:
 		type_dmg_l.texture = null
 		name_r.modulate = Color(1.0, 1.0, 1.0, 1.0)
 		name_l.modulate = Color(1.0, 1.0, 1.0, 1.0)
+		dna_skill.hide()
+		dna_vanity.hide()
 		return
 	else:
 		strand_hovered.emit(current_strand)
