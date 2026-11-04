@@ -57,7 +57,7 @@ func _input(event: InputEvent) -> void:
 							place_yip(dragged_yip, i + 1)
 							break
 					
-					if conveyor_area.overlaps_area(dragged_yip.farmslot):
+					if conveyor_area.overlaps_area(dragged_yip.farmslot) && !conveyor_has_yip.has(dragged_yip):
 						print('on conveyor')
 						conveyor_has_yip.append(dragged_yip)
 					

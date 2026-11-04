@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://8seqqf8qy7u5"]
+
+[ext_resource type="Texture2D" uid="uid://df6qeoaximu3n" path="res://Assets/Environment/Scenes/LaboratoryNew/GoopStar.png" id="1_3sbkc"]
+[ext_resource type="Script" uid="uid://tfsfg67b7da0" path="res://World/lab/goop_star.gd" id="1_yv37b"]
+
+[sub_resource type="Gradient" id="Gradient_3sbkc"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yv37b"]
+gradient = SubResource("Gradient_3sbkc")
+
+[sub_resource type="Animation" id="Animation_3sbkc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GoopStar:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_yv37b"]
+resource_name = "wiggle"
+length = 1.5
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GoopStar:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.90000004, 1, 1.1, 1.2, 1.3000001, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u8k3d"]
+_data = {
+&"RESET": SubResource("Animation_3sbkc"),
+&"wiggle": SubResource("Animation_yv37b")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yv37b"]
+radius = 7.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=91146950]
+collision_layer = 0
+script = ExtResource("1_yv37b")
+speed = 150.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=309476167]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-1.7881393e-07, -1)
+scale = Vector2(0.12499999, 0.12499999)
+texture = SubResource("GradientTexture2D_yv37b")
+
+[node name="GoopStar" type="Sprite2D" parent="." unique_id=1775254521]
+texture_filter = 3
+position = Vector2(0, -1)
+rotation = -3.1415927
+texture = ExtResource("1_3sbkc")
+offset = Vector2(0, 1)
+hframes = 16
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=511299960]
+libraries/ = SubResource("AnimationLibrary_u8k3d")
+autoplay = &"wiggle"
+speed_scale = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=247285309]
+visible = false
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_yv37b")
