@@ -2,7 +2,7 @@ class_name Toolyip extends Control
 
 const STAT_PIP = preload("res://UI/Scenes/damage_toolyip.tscn")
 
-const HIDE_GRACE: float= 0.05
+const HIDE_GRACE: float= 0.1
 const GAP_RIGHT: float = 50.0
 const GAP_LEFT: float = 70.0
 
@@ -120,7 +120,7 @@ func display(yip: Yipee) -> void:
 	#_rebuild_stat_pips(pips)
 	_yip_hovered = true
 	_hide_grace = HIDE_GRACE
-	shown = false
+	#shown = false
 	become_visible()
 
 #func _rebuild_stat_pips(pips: Dictionary) -> void:
@@ -150,10 +150,10 @@ func set_slot_visuals(type):
 	node.self_modulate = get_color(type)
 
 func become_visible():
-	if !shown:
+	if not visible:
 		popup()
 		show()
-		shown = true
+		#shown = true
 
 func request_hide() -> void:
 	_yip_hovered = false

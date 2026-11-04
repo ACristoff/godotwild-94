@@ -50,7 +50,7 @@ _data = {
 &"pop": SubResource("Animation_sy6ok")
 }
 
-[node name="YipToolyip" type="Control" unique_id=399779298]
+[node name="MouseHover" type="Control" unique_id=399779298]
 layout_mode = 3
 anchors_preset = 0
 pivot_offset = Vector2(-19, -11)
@@ -136,7 +136,6 @@ theme_override_font_sizes/font_size = 24
 text = "Common"
 
 [node name="MainPanelBG" type="NinePatchRect" parent="MainPanel" unique_id=1813120843]
-visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(375, 387)
 layout_mode = 0
@@ -159,6 +158,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = -31.0
+offset_right = 4.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 
