@@ -21,13 +21,14 @@ const SLOT_KEYS := {
 @onready var stats_container: NinePatchRect = $StatsContainer
 @onready var name_field: LineEdit = $MainPanel/MarginContainer/NameAgeRarity/NameLabel
 @onready var age_label: Label = $MainPanel/MarginContainer/NameAgeRarity/AgeLabel
-@onready var hp_label: Label = $MainPanel/Health/HealthLabel
-@onready var cooldown_label: Label = $MainInterface/CooldownInformation/CooldownPanel/VBoxContainer/ActualSecondsLabel
-@onready var mouse_hover: Panel = $MouseHover
-@onready var mouse_hover_2: Panel = $MouseHover2
-@onready var strand_pips_container: Control = $MainInterface/DNARefactor
+@onready var hp_label: Label = $MainPanel/MarginContainer2/CooldownPanel/MarginContainer/Health/VBoxContainer/HealthLabel
+@onready var cooldown_label: Label = $MainPanel/MainInterface/CooldownInformation/CooldownPanel/VBoxContainer/ActualSecondsLabel
+@onready var mouse_hover: Panel = $MainPanel/MainPanelBG/MouseHover
+@onready var mouse_hover_2: Panel = $MainPanel/MainPanelBG/MouseHover
+@onready var strand_pips_container: Control = $MainPanel/MainInterface/DNARefactor
 
-@onready var allele_information: AlleleInformation = $MainInterface/AlleleInformation
+
+@onready var allele_information: AlleleInformation = $MainPanel/MainInterface/AlleleInformation
 
 var amnt_of_stats: int
 var _yip_hovered: bool = false
@@ -50,10 +51,10 @@ var types = [
 func _ready() -> void:
 	for i in range(1, 9):
 		var node
-		node = get_node("DNA/LeftGene" + str(i))
-		node.self_modulate = get_color("NULL")
-		node = get_node("DNA/RightGene" + str(i))
-		node.self_modulate = get_color("NULL")
+		#node = get_node("DNA/LeftGene" + str(i))
+		#node.self_modulate = get_color("NULL")
+		#node = get_node("DNA/RightGene" + str(i))
+		#node.self_modulate = get_color("NULL")
 	if strand_pips_container != null:
 		var pips = strand_pips_container.get_children()
 		for pip in pips:
@@ -91,7 +92,7 @@ func display(yip: Yipee) -> void:
 	current_yip = yip
 	name_field.text = data.yipee_name if data.yipee_name != "" else "WILD YIP"
 	age_label.text = "Age:%d" % data.age
-	hp_label.text = "HP:%d" % roundi(data.get_health())
+	hp_label.text = "%d" % roundi(data.get_health())
 	cooldown_label.text = "%.1f" % data.get_cooldown()
 	
 	var container = strand_pips_container.get_children()
@@ -114,22 +115,22 @@ func display(yip: Yipee) -> void:
 			#var contrib: Dictionary = allele.get_damage_pips()
 			#for type in contrib:
 				#pips[type] = pips.get(type, 0) + contrib[type]
-	_rebuild_stat_pips(pips)
+	#_rebuild_stat_pips(pips)
 	_yip_hovered = true
 	_hide_grace = HIDE_GRACE
 	shown = false
 	become_visible()
 
-func _rebuild_stat_pips(pips: Dictionary) -> void:
-	for child in stats_flow_container.get_children():
-		child.queue_free()
-	for type in pips:
-		if pips[type] <= 0:
-			continue
-		var pip = STAT_PIP.instantiate()
-		stats_flow_container.add_child(pip)
-		pip.ailment_name = type
-		pip.value = pips[type]
+#func _rebuild_stat_pips(pips: Dictionary) -> void:
+	#for child in stats_flow_container.get_children():
+		#child.queue_free()
+	#for type in pips:
+		#if pips[type] <= 0:
+			#continue
+		#var pip = STAT_PIP.instantiate()
+		#stats_flow_container.add_child(pip)
+		#pip.ailment_name = type
+		#pip.value = pips[type]
 
 func set_slot_visuals(type):
 	#increment = 0
@@ -204,31 +205,31 @@ func _process(delta: float) -> void:
 			if _hide_grace <= 0.0:
 				#hide()
 				current_yip = null
-	amnt_of_stats = stats_flow_container.get_child_count()
-	match amnt_of_stats:
-		1:
-			stats_flow_container.size = Vector2(22, 13)
-		2:
-			stats_flow_container.size = Vector2(42, 13)
-		3:
-			stats_flow_container.size = Vector2(42, 25)
-		4:
-			stats_flow_container.size = Vector2(42, 25)
-		5:
-			stats_flow_container.size = Vector2(42, 37)
-		6:
-			stats_flow_container.size = Vector2(42, 37)
-		7:
-			stats_flow_container.size = Vector2(42, 49)
-		8:
-			stats_flow_container.size = Vector2(42, 49)
-		9:
-			stats_flow_container.size = Vector2(42, 61)
-		10:
-			stats_flow_container.size = Vector2(42, 61)
-	stats_container.size = stats_flow_container.size
-	stats_container.size.y = stats_container.size.y + 2
-	stats_container.size.x = stats_container.size.x + 1
+	#amnt_of_stats = stats_flow_container.get_child_count()
+	#match amnt_of_stats:
+		#1:
+			#stats_flow_container.size = Vector2(22, 13)
+		#2:
+			#stats_flow_container.size = Vector2(42, 13)
+		#3:
+			#stats_flow_container.size = Vector2(42, 25)
+		#4:
+			#stats_flow_container.size = Vector2(42, 25)
+		#5:
+			#stats_flow_container.size = Vector2(42, 37)
+		#6:
+			#stats_flow_container.size = Vector2(42, 37)
+		#7:
+			#stats_flow_container.size = Vector2(42, 49)
+		#8:
+			#stats_flow_container.size = Vector2(42, 49)
+		#9:
+			#stats_flow_container.size = Vector2(42, 61)
+		#10:
+			#stats_flow_container.size = Vector2(42, 61)
+	#stats_container.size = stats_flow_container.size
+	#stats_container.size.y = stats_container.size.y + 2
+	#stats_container.size.x = stats_container.size.x + 1
 
 
 func _on_line_edit_text_changed(new_text):
