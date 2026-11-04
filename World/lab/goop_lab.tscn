@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://bkj1ei4lm0wsm" path="res://World/yipee/genes/allele/leftallele/resources/thick_skin.tres" id="5_lqwge"]
 [ext_resource type="Resource" uid="uid://cw22rf6u7lx7w" path="res://World/yipee/genes/allele/rightallele/resources/dog_ears.tres" id="6_1duhs"]
 [ext_resource type="Texture2D" uid="uid://bn1lauxcxyvc7" path="res://Assets/Environment/Scenes/LaboratoryNew/LabFrame.png" id="8_bsd1w"]
+[ext_resource type="Script" uid="uid://mwcrn5h8r2js" path="res://World/lab/allele_on_screen.gd" id="8_f0hc0"]
 [ext_resource type="Shader" uid="uid://bwvmkd4i76b3p" path="res://Assets/Shaders/CRT.gdshader" id="8_pduhj"]
 [ext_resource type="PackedScene" uid="uid://dtmuxi5urpswf" path="res://UI/Scenes/yip_toolyip_refactor.tscn" id="10_pm1ho"]
 [ext_resource type="Texture2D" uid="uid://niivva0chy8b" path="res://UI/Menus/Main_Menu/Textures/GenericBox.png" id="10_v50o5"]
@@ -186,6 +187,7 @@ grow_vertical = 2
 scale = Vector2(3, 3)
 mouse_filter = 2
 color = Color(0.11327667, 0.039100002, 0.17, 1)
+metadata/_edit_lock_ = true
 
 [node name="ColorRect5" type="ColorRect" parent="ScreenRects" unique_id=180422669]
 anchors_preset = 15
@@ -200,6 +202,7 @@ grow_vertical = 2
 scale = Vector2(3, 3)
 mouse_filter = 2
 color = Color(0.11327667, 0.039100002, 0.17, 1)
+metadata/_edit_lock_ = true
 
 [node name="ColorRect2" type="ColorRect" parent="ScreenRects" unique_id=499097822]
 anchors_preset = 15
@@ -214,6 +217,7 @@ grow_vertical = 2
 scale = Vector2(3, 3)
 mouse_filter = 2
 color = Color(0.11327667, 0.039100002, 0.17, 1)
+metadata/_edit_lock_ = true
 
 [node name="ColorRect4" type="ColorRect" parent="ScreenRects" unique_id=1990773989]
 anchors_preset = 15
@@ -228,6 +232,7 @@ grow_vertical = 2
 scale = Vector2(3, 3)
 mouse_filter = 2
 color = Color(0.11327667, 0.039100002, 0.17, 1)
+metadata/_edit_lock_ = true
 
 [node name="ColorRect3" type="ColorRect" parent="ScreenRects" unique_id=945028117]
 anchors_preset = 15
@@ -242,6 +247,7 @@ grow_vertical = 2
 scale = Vector2(3, 3)
 mouse_filter = 2
 color = Color(0.11327667, 0.039100002, 0.17, 1)
+metadata/_edit_lock_ = true
 
 [node name="Node2D" type="Control" parent="ScreenRects" unique_id=548614420]
 layout_mode = 3
@@ -268,14 +274,57 @@ theme_override_constants/margin_top = 9
 
 [node name="AllelesDisplay" type="VBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer" unique_id=923172200]
 layout_mode = 2
+size_flags_vertical = 4
 mouse_filter = 2
-theme_override_constants/separation = -23
+theme_override_constants/separation = 0
 
-[node name="Allele1" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay" unique_id=1997748984]
+[node name="Allele1" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay" unique_id=383340887 node_paths=PackedStringArray("name_label", "level_label", "type_texture", "BG_color_rect", "tick_rect")]
+layout_mode = 2
+theme_override_constants/margin_left = -9
+theme_override_constants/margin_right = 24
+script = ExtResource("8_f0hc0")
+name_label = NodePath("AlleleBG/NameBox/MarginContainer/AlleleName")
+level_label = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer/AlleleLevel")
+type_texture = NodePath("AlleleBG/NameBox/MarginContainer4/Box/AlleleTypeTexture")
+BG_color_rect = NodePath("AlleleBG")
+tick_rect = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect")
+
+[node name="AlleleBG" type="ColorRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1" unique_id=479811442]
+custom_minimum_size = Vector2(474.62, 63.305)
+layout_mode = 2
+color = Color(0.82, 0, 0, 0.12941177)
+
+[node name="NameBox" type="VBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG" unique_id=2026070792]
+layout_mode = 0
+offset_top = -23.0
+offset_right = 441.0
+offset_bottom = 66.0
+theme_override_constants/separation = -54
+
+[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox" unique_id=137649128]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 160
+theme_override_constants/margin_top = 20
+
+[node name="AlleleName" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer" unique_id=1065511321]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_f0hc0")
+theme_override_font_sizes/font_size = 29
+text = "Maul"
+vertical_alignment = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox" unique_id=1728713328]
+layout_mode = 2
+theme_override_constants/margin_left = 23
+theme_override_constants/margin_top = 12
+
+[node name="Box" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4" unique_id=1997748984]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="AlleleTypeTexture" type="TextureRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1" unique_id=715863971]
+[node name="AlleleTypeTexture" type="TextureRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box" unique_id=715863971]
 self_modulate = Color(2.2706914, 2.2706914, 2.2706914, 1)
 texture_filter = 3
 custom_minimum_size = Vector2(90, 90)
@@ -283,34 +332,36 @@ layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("12_e1p4a")
 
-[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1" unique_id=137649128]
+[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box" unique_id=1635365821]
 layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = -18
-theme_override_constants/margin_top = 19
+theme_override_constants/margin_left = -15
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 12
 
-[node name="AlleleName" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/MarginContainer" unique_id=1065511321]
+[node name="AlleleLevel" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer" unique_id=639596874]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("3_f0hc0")
-theme_override_font_sizes/font_size = 41
-text = "Maul"
+theme_override_font_sizes/font_size = 29
+text = "Lvl 1"
 vertical_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1" unique_id=1773459062]
+[node name="MarginContainer2" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box" unique_id=1773459062]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_bottom = 25
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/MarginContainer2" unique_id=752994657]
+[node name="TickRect" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2" unique_id=752994657]
+custom_minimum_size = Vector2(225, 25)
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="Tick" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/MarginContainer2/HBoxContainer" unique_id=544487578]
+[node name="Tick6" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=380059028]
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("10_v50o5")
 draw_center = false
 patch_margin_left = 3
@@ -318,9 +369,10 @@ patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
 
-[node name="Tick2" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/MarginContainer2/HBoxContainer" unique_id=116960902]
+[node name="Tick7" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1237135889]
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("10_v50o5")
 draw_center = false
 patch_margin_left = 3
@@ -328,9 +380,10 @@ patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
 
-[node name="Tick3" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/MarginContainer2/HBoxContainer" unique_id=383402531]
+[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=2139295100]
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("10_v50o5")
 draw_center = false
 patch_margin_left = 3
@@ -338,9 +391,11 @@ patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
 
-[node name="Tick4" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/MarginContainer2/HBoxContainer" unique_id=1576201410]
+[node name="Tick9" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1209027250]
+visible = false
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("10_v50o5")
 draw_center = false
 patch_margin_left = 3
@@ -348,9 +403,11 @@ patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
 
-[node name="Tick5" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/MarginContainer2/HBoxContainer" unique_id=1738397583]
+[node name="Tick10" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=949677372]
+visible = false
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("10_v50o5")
 draw_center = false
 patch_margin_left = 3
@@ -358,9 +415,11 @@ patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
 
-[node name="Tick6" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/MarginContainer2/HBoxContainer" unique_id=380059028]
+[node name="Tick11" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1194444867]
+visible = false
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("10_v50o5")
 draw_center = false
 patch_margin_left = 3
@@ -368,9 +427,11 @@ patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
 
-[node name="Tick7" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/MarginContainer2/HBoxContainer" unique_id=1237135889]
+[node name="Tick12" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=423869311]
+visible = false
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("10_v50o5")
 draw_center = false
 patch_margin_left = 3
@@ -378,9 +439,11 @@ patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
 
-[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/MarginContainer2/HBoxContainer" unique_id=2139295100]
+[node name="Tick13" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=563667909]
+visible = false
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("10_v50o5")
 draw_center = false
 patch_margin_left = 3
@@ -388,14 +451,27 @@ patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
 
-[node name="MarginContainer3" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1" unique_id=1331571259]
+[node name="Tick14" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1343420888]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="MarginContainer3" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box" unique_id=1331571259]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
-theme_override_constants/margin_top = 15
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_top = 10
 
-[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/MarginContainer3" unique_id=1819941098]
+[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3" unique_id=1819941098]
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -407,1103 +483,19 @@ patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
 
-[node name="Line2D" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/MarginContainer3/Tick8" unique_id=1319087635]
+[node name="Line2D" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=1319087635]
 position = Vector2(18.04004, 0.040000916)
 points = PackedVector2Array(0, 7, 0, 27)
 width = 2.04
 
-[node name="Line2D2" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/MarginContainer3/Tick8" unique_id=660496138]
+[node name="Line2D2" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=660496138]
 position = Vector2(35.04004, 17.04)
 rotation = 1.5707964
 points = PackedVector2Array(0, 7, 0, 27)
 width = 2.04
 
-[node name="AddGoop" type="Button" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/MarginContainer3/Tick8" unique_id=1760852491]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Allele2" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay" unique_id=732410523]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="AlleleTypeTexture" type="TextureRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2" unique_id=1496384300]
-self_modulate = Color(2.2706914, 2.2706914, 2.2706914, 1)
-texture_filter = 3
-custom_minimum_size = Vector2(90, 90)
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("12_e1p4a")
-
-[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2" unique_id=752629320]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = -18
-theme_override_constants/margin_top = 19
-
-[node name="AlleleName" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/MarginContainer" unique_id=229497029]
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("3_f0hc0")
-theme_override_font_sizes/font_size = 41
-text = "Maul"
-vertical_alignment = 1
-
-[node name="MarginContainer2" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2" unique_id=1528814428]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_top = 40
-theme_override_constants/margin_bottom = 25
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/MarginContainer2" unique_id=1324713989]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 0
-
-[node name="Tick" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/MarginContainer2/HBoxContainer" unique_id=949284912]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick2" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/MarginContainer2/HBoxContainer" unique_id=174842542]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick3" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/MarginContainer2/HBoxContainer" unique_id=320323916]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick4" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/MarginContainer2/HBoxContainer" unique_id=1336407575]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick5" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/MarginContainer2/HBoxContainer" unique_id=1754059319]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick6" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/MarginContainer2/HBoxContainer" unique_id=948827643]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick7" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/MarginContainer2/HBoxContainer" unique_id=89149456]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/MarginContainer2/HBoxContainer" unique_id=762979804]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="MarginContainer3" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2" unique_id=351888030]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
-theme_override_constants/margin_top = 15
-
-[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/MarginContainer3" unique_id=1728853659]
-custom_minimum_size = Vector2(35, 35)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Line2D" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/MarginContainer3/Tick8" unique_id=1285513363]
-position = Vector2(18.04004, 0.040000916)
-points = PackedVector2Array(0, 7, 0, 27)
-width = 2.04
-
-[node name="Line2D2" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/MarginContainer3/Tick8" unique_id=1851433819]
-position = Vector2(35.04004, 17.04)
-rotation = 1.5707964
-points = PackedVector2Array(0, 7, 0, 27)
-width = 2.04
-
-[node name="AddGoop" type="Button" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/MarginContainer3/Tick8" unique_id=1779142715]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Allele3" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay" unique_id=911308891]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="AlleleTypeTexture" type="TextureRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3" unique_id=1172268867]
-self_modulate = Color(2.2706914, 2.2706914, 2.2706914, 1)
-texture_filter = 3
-custom_minimum_size = Vector2(90, 90)
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("12_e1p4a")
-
-[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3" unique_id=2126248782]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = -18
-theme_override_constants/margin_top = 19
-
-[node name="AlleleName" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/MarginContainer" unique_id=1700487666]
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("3_f0hc0")
-theme_override_font_sizes/font_size = 41
-text = "Maul"
-vertical_alignment = 1
-
-[node name="MarginContainer2" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3" unique_id=931317467]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_top = 40
-theme_override_constants/margin_bottom = 25
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/MarginContainer2" unique_id=1010781881]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 0
-
-[node name="Tick" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/MarginContainer2/HBoxContainer" unique_id=264440001]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick2" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/MarginContainer2/HBoxContainer" unique_id=1422696756]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick3" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/MarginContainer2/HBoxContainer" unique_id=1299630610]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick4" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/MarginContainer2/HBoxContainer" unique_id=126755525]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick5" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/MarginContainer2/HBoxContainer" unique_id=419566577]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick6" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/MarginContainer2/HBoxContainer" unique_id=1202586389]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick7" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/MarginContainer2/HBoxContainer" unique_id=693584389]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/MarginContainer2/HBoxContainer" unique_id=2047083574]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="MarginContainer3" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3" unique_id=1227012359]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
-theme_override_constants/margin_top = 15
-
-[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/MarginContainer3" unique_id=2009827376]
-custom_minimum_size = Vector2(35, 35)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Line2D" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/MarginContainer3/Tick8" unique_id=2042140609]
-position = Vector2(18.04004, 0.040000916)
-points = PackedVector2Array(0, 7, 0, 27)
-width = 2.04
-
-[node name="Line2D2" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/MarginContainer3/Tick8" unique_id=496834317]
-position = Vector2(35.04004, 17.04)
-rotation = 1.5707964
-points = PackedVector2Array(0, 7, 0, 27)
-width = 2.04
-
-[node name="AddGoop" type="Button" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/MarginContainer3/Tick8" unique_id=1775844644]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Allele4" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay" unique_id=771055835]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="AlleleTypeTexture" type="TextureRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4" unique_id=1381867135]
-self_modulate = Color(2.2706914, 2.2706914, 2.2706914, 1)
-texture_filter = 3
-custom_minimum_size = Vector2(90, 90)
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("12_e1p4a")
-
-[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4" unique_id=1681860609]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = -18
-theme_override_constants/margin_top = 19
-
-[node name="AlleleName" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/MarginContainer" unique_id=316732002]
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("3_f0hc0")
-theme_override_font_sizes/font_size = 41
-text = "Maul"
-vertical_alignment = 1
-
-[node name="MarginContainer2" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4" unique_id=671728981]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_top = 40
-theme_override_constants/margin_bottom = 25
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/MarginContainer2" unique_id=486393008]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 0
-
-[node name="Tick" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/MarginContainer2/HBoxContainer" unique_id=119726917]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick2" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/MarginContainer2/HBoxContainer" unique_id=1580992430]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick3" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/MarginContainer2/HBoxContainer" unique_id=311913678]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick4" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/MarginContainer2/HBoxContainer" unique_id=318983811]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick5" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/MarginContainer2/HBoxContainer" unique_id=1291663826]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick6" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/MarginContainer2/HBoxContainer" unique_id=1719220484]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick7" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/MarginContainer2/HBoxContainer" unique_id=552936486]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/MarginContainer2/HBoxContainer" unique_id=650073057]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="MarginContainer3" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4" unique_id=941281025]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
-theme_override_constants/margin_top = 15
-
-[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/MarginContainer3" unique_id=1287023432]
-custom_minimum_size = Vector2(35, 35)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Line2D" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/MarginContainer3/Tick8" unique_id=619366550]
-position = Vector2(18.04004, 0.040000916)
-points = PackedVector2Array(0, 7, 0, 27)
-width = 2.04
-
-[node name="Line2D2" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/MarginContainer3/Tick8" unique_id=1841825574]
-position = Vector2(35.04004, 17.04)
-rotation = 1.5707964
-points = PackedVector2Array(0, 7, 0, 27)
-width = 2.04
-
-[node name="AddGoop" type="Button" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/MarginContainer3/Tick8" unique_id=718678832]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Allele5" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay" unique_id=902290934]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="AlleleTypeTexture" type="TextureRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5" unique_id=633454123]
-self_modulate = Color(2.2706914, 2.2706914, 2.2706914, 1)
-texture_filter = 3
-custom_minimum_size = Vector2(90, 90)
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("12_e1p4a")
-
-[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5" unique_id=698004051]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = -18
-theme_override_constants/margin_top = 19
-
-[node name="AlleleName" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/MarginContainer" unique_id=1030969404]
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("3_f0hc0")
-theme_override_font_sizes/font_size = 41
-text = "Maul"
-vertical_alignment = 1
-
-[node name="MarginContainer2" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5" unique_id=1100536069]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_top = 40
-theme_override_constants/margin_bottom = 25
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/MarginContainer2" unique_id=788339005]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 0
-
-[node name="Tick" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/MarginContainer2/HBoxContainer" unique_id=642386969]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick2" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/MarginContainer2/HBoxContainer" unique_id=682616015]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick3" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/MarginContainer2/HBoxContainer" unique_id=1345005541]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick4" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/MarginContainer2/HBoxContainer" unique_id=457198527]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick5" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/MarginContainer2/HBoxContainer" unique_id=906212358]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick6" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/MarginContainer2/HBoxContainer" unique_id=843319537]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick7" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/MarginContainer2/HBoxContainer" unique_id=1150219662]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/MarginContainer2/HBoxContainer" unique_id=1894042246]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="MarginContainer3" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5" unique_id=1796535696]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
-theme_override_constants/margin_top = 15
-
-[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/MarginContainer3" unique_id=1562549918]
-custom_minimum_size = Vector2(35, 35)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Line2D" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/MarginContainer3/Tick8" unique_id=1217190036]
-position = Vector2(18.04004, 0.040000916)
-points = PackedVector2Array(0, 7, 0, 27)
-width = 2.04
-
-[node name="Line2D2" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/MarginContainer3/Tick8" unique_id=941428462]
-position = Vector2(35.04004, 17.04)
-rotation = 1.5707964
-points = PackedVector2Array(0, 7, 0, 27)
-width = 2.04
-
-[node name="AddGoop" type="Button" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/MarginContainer3/Tick8" unique_id=931246228]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Allele6" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay" unique_id=397402428]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="AlleleTypeTexture" type="TextureRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6" unique_id=491888234]
-self_modulate = Color(2.2706914, 2.2706914, 2.2706914, 1)
-texture_filter = 3
-custom_minimum_size = Vector2(90, 90)
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("12_e1p4a")
-
-[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6" unique_id=1452737419]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = -18
-theme_override_constants/margin_top = 19
-
-[node name="AlleleName" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/MarginContainer" unique_id=1557740284]
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("3_f0hc0")
-theme_override_font_sizes/font_size = 41
-text = "Maul"
-vertical_alignment = 1
-
-[node name="MarginContainer2" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6" unique_id=1878770173]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_top = 40
-theme_override_constants/margin_bottom = 25
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/MarginContainer2" unique_id=2051674766]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 0
-
-[node name="Tick" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/MarginContainer2/HBoxContainer" unique_id=1805825142]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick2" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/MarginContainer2/HBoxContainer" unique_id=1960927609]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick3" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/MarginContainer2/HBoxContainer" unique_id=986999718]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick4" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/MarginContainer2/HBoxContainer" unique_id=658007818]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick5" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/MarginContainer2/HBoxContainer" unique_id=991836462]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick6" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/MarginContainer2/HBoxContainer" unique_id=471517939]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick7" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/MarginContainer2/HBoxContainer" unique_id=1109531814]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/MarginContainer2/HBoxContainer" unique_id=632597324]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="MarginContainer3" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6" unique_id=854797214]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
-theme_override_constants/margin_top = 15
-
-[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/MarginContainer3" unique_id=2029557669]
-custom_minimum_size = Vector2(35, 35)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Line2D" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/MarginContainer3/Tick8" unique_id=1915430028]
-position = Vector2(18.04004, 0.040000916)
-points = PackedVector2Array(0, 7, 0, 27)
-width = 2.04
-
-[node name="Line2D2" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/MarginContainer3/Tick8" unique_id=805854981]
-position = Vector2(35.04004, 17.04)
-rotation = 1.5707964
-points = PackedVector2Array(0, 7, 0, 27)
-width = 2.04
-
-[node name="AddGoop" type="Button" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/MarginContainer3/Tick8" unique_id=369562963]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Allele7" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay" unique_id=474384892]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="AlleleTypeTexture" type="TextureRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7" unique_id=1190448013]
-self_modulate = Color(2.2706914, 2.2706914, 2.2706914, 1)
-texture_filter = 3
-custom_minimum_size = Vector2(90, 90)
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("12_e1p4a")
-
-[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7" unique_id=796609620]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = -18
-theme_override_constants/margin_top = 19
-
-[node name="AlleleName" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/MarginContainer" unique_id=618999134]
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("3_f0hc0")
-theme_override_font_sizes/font_size = 41
-text = "Maul"
-vertical_alignment = 1
-
-[node name="MarginContainer2" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7" unique_id=956192574]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_top = 40
-theme_override_constants/margin_bottom = 25
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/MarginContainer2" unique_id=1671132324]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 0
-
-[node name="Tick" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/MarginContainer2/HBoxContainer" unique_id=1280110584]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick2" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/MarginContainer2/HBoxContainer" unique_id=1352119614]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick3" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/MarginContainer2/HBoxContainer" unique_id=1492880236]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick4" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/MarginContainer2/HBoxContainer" unique_id=1975666055]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick5" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/MarginContainer2/HBoxContainer" unique_id=348222726]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick6" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/MarginContainer2/HBoxContainer" unique_id=1819567719]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick7" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/MarginContainer2/HBoxContainer" unique_id=1196788512]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/MarginContainer2/HBoxContainer" unique_id=184855755]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="MarginContainer3" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7" unique_id=1763372841]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
-theme_override_constants/margin_top = 15
-
-[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/MarginContainer3" unique_id=1516040539]
-custom_minimum_size = Vector2(35, 35)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Line2D" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/MarginContainer3/Tick8" unique_id=1527551075]
-position = Vector2(18.04004, 0.040000916)
-points = PackedVector2Array(0, 7, 0, 27)
-width = 2.04
-
-[node name="Line2D2" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/MarginContainer3/Tick8" unique_id=1589484945]
-position = Vector2(35.04004, 17.04)
-rotation = 1.5707964
-points = PackedVector2Array(0, 7, 0, 27)
-width = 2.04
-
-[node name="AddGoop" type="Button" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/MarginContainer3/Tick8" unique_id=1046348604]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Allele8" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay" unique_id=1811476770]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="AlleleTypeTexture" type="TextureRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8" unique_id=1887746191]
-self_modulate = Color(2.2706914, 2.2706914, 2.2706914, 1)
-texture_filter = 3
-custom_minimum_size = Vector2(90, 90)
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("12_e1p4a")
-
-[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8" unique_id=896435590]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = -18
-theme_override_constants/margin_top = 19
-
-[node name="AlleleName" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/MarginContainer" unique_id=510777937]
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("3_f0hc0")
-theme_override_font_sizes/font_size = 41
-text = "Maul"
-vertical_alignment = 1
-
-[node name="MarginContainer2" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8" unique_id=359372966]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_top = 40
-theme_override_constants/margin_bottom = 25
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/MarginContainer2" unique_id=1612780782]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 0
-
-[node name="Tick" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/MarginContainer2/HBoxContainer" unique_id=1460019261]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick2" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/MarginContainer2/HBoxContainer" unique_id=1744135195]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick3" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/MarginContainer2/HBoxContainer" unique_id=1124397673]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick4" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/MarginContainer2/HBoxContainer" unique_id=97190194]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick5" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/MarginContainer2/HBoxContainer" unique_id=1285608419]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick6" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/MarginContainer2/HBoxContainer" unique_id=1302832319]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick7" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/MarginContainer2/HBoxContainer" unique_id=179222107]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/MarginContainer2/HBoxContainer" unique_id=615956057]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="MarginContainer3" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8" unique_id=780647410]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
-theme_override_constants/margin_top = 15
-
-[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/MarginContainer3" unique_id=1966049424]
-custom_minimum_size = Vector2(35, 35)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("10_v50o5")
-draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Line2D" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/MarginContainer3/Tick8" unique_id=1745835895]
-position = Vector2(18.04004, 0.040000916)
-points = PackedVector2Array(0, 7, 0, 27)
-width = 2.04
-
-[node name="Line2D2" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/MarginContainer3/Tick8" unique_id=1958545479]
-position = Vector2(35.04004, 17.04)
-rotation = 1.5707964
-points = PackedVector2Array(0, 7, 0, 27)
-width = 2.04
-
-[node name="AddGoop" type="Button" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/MarginContainer3/Tick8" unique_id=1871921103]
+[node name="AddGoop" type="Button" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=1760852491]
+self_modulate = Color(1.942335, 1.942335, 1.942335, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1519,6 +511,7 @@ offset_right = 1511.0
 offset_bottom = 299.0
 scale = Vector2(3, 3)
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
 [node name="ColorRect7" type="ColorRect" parent="ScreenRects" unique_id=719001630]
 material = SubResource("ShaderMaterial_7oy36")
@@ -1528,6 +521,7 @@ offset_right = 1518.6667
 offset_bottom = 105.0
 scale = Vector2(3, 3)
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
 [node name="ColorRect8" type="ColorRect" parent="ScreenRects" unique_id=361120425]
 material = SubResource("ShaderMaterial_7oy36")
@@ -1537,6 +531,7 @@ offset_right = 1518.6667
 offset_bottom = 621.0
 scale = Vector2(3, 3)
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
 [node name="LabFrame" type="Sprite2D" parent="." unique_id=978430515]
 texture_filter = 3
