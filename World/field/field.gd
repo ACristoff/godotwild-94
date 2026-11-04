@@ -360,8 +360,10 @@ func calculate_yip_price(yip: Yipee) -> int:
 	
 #endregion
 
-func _input(event):
+func _unhandled_input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if tooltip2.visible and tooltip2._mouse_over_tooltip():
+			return
 		if focused_yip:
 			print('buy yip', focused_yip)
 			buy_yip(focused_yip)

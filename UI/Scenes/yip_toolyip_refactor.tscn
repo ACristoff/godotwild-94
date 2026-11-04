@@ -164,6 +164,7 @@ offset_right = 4.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="MainInterface" type="NinePatchRect" parent="MainPanel" unique_id=2018379423]
 texture_filter = 3
@@ -1232,5 +1233,6 @@ visible = false
 points = PackedVector2Array(80, 204, 366, 262)
 default_color = Color(1, 0.52, 0.52, 0.4862745)
 
+[connection signal="text_changed" from="MainPanel/MarginContainer/NameAgeRarity/NameLabel" to="." method="_on_name_label_text_changed"]
 [connection signal="mouse_entered" from="MainPanel/MainInterface/DNARefactor/BaseNullSlot1" to="MainPanel/MainInterface/DNARefactor/BaseNullSlot1" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MainPanel/MainInterface/DNARefactor/BaseNullSlot1" to="MainPanel/MainInterface/DNARefactor/BaseNullSlot1" method="_on_mouse_exited"]

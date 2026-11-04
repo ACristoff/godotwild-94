@@ -13,6 +13,7 @@ const SLOT_COLORS := {
 	BodyMap.Slot.BREED_AUGMENT:  "784bcc",
 	BodyMap.Slot.NONE:           "3d3d3d",
 }
+
 func spawn_goop(amnt):
 	for i in amnt:
 		var goop_spawn = goop.instantiate()

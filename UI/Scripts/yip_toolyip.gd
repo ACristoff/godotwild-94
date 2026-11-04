@@ -233,7 +233,6 @@ func _process(delta: float) -> void:
 	#stats_container.size.y = stats_container.size.y + 2
 	#stats_container.size.x = stats_container.size.x + 1
 
-
-func _on_line_edit_text_changed(new_text):
+func _on_name_label_text_changed(new_text):
 	if current_yip != null:
 		current_yip.data.yipee_name = new_text

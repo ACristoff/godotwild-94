@@ -10,7 +10,7 @@
 [ext_resource type="Resource" uid="uid://bkj1ei4lm0wsm" path="res://World/yipee/genes/allele/leftallele/resources/thick_skin.tres" id="5_lqwge"]
 [ext_resource type="Resource" uid="uid://cw22rf6u7lx7w" path="res://World/yipee/genes/allele/rightallele/resources/dog_ears.tres" id="6_1duhs"]
 [ext_resource type="PackedScene" uid="uid://dtmuxi5urpswf" path="res://UI/Scenes/yip_toolyip_refactor.tscn" id="10_pm1ho"]
-[ext_resource type="PackedScene" uid="uid://cwa1u5a3a102e" path="res://World/lab/lab_vat.tscn" id="11_pm1ho"]
+[ext_resource type="PackedScene" path="res://World/lab/lab_vat.tscn" id="11_pm1ho"]
 [ext_resource type="Texture2D" uid="uid://dmgp5jtp8bdn" path="res://UI/Textures/ui_effecticons/attack_icon.png" id="12_e1p4a"]
 [ext_resource type="Texture2D" uid="uid://bn2wd1q4dbcyq" path="res://UI/Textures/ui_effecticons/attack_aug_icon.png" id="13_0dqea"]
 [ext_resource type="Texture2D" uid="uid://cxolh4gq1arao" path="res://UI/Textures/ui_effecticons/heal_aug.png" id="14_6mjui"]
