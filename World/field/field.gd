@@ -65,7 +65,6 @@ var focused_yip: Yipee = null
 
 var resserved_spots : Array[Vector2] = []
 
-
 const MIN_DISTANCE_BETWEEN_POINTS: float = 200.0
 const MAX_ATTEMPTS_PER_POINT : int = 30
 const REFRESH_COST : int = 1
