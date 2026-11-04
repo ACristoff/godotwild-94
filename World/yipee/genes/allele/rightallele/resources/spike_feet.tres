@@ -7,8 +7,11 @@
 script = ExtResource("1_ihlmc")
 body_part = ExtResource("1_shqyo")
 body_target = 1
-buff = -1.0
 slot = 4
 allele_name = "Spiky"
+tooltip = "{cooldown_pct}% Max Cooldown"
 rarity = 1
+percent_mods = Dictionary[int, float]({
+2: -0.1
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

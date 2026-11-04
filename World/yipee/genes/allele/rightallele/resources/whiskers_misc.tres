@@ -10,4 +10,8 @@ body_target = 6
 buff = 0.05
 slot = 1
 allele_name = "Whiskers"
+tooltip = "+{health_pct}% Max Health"
+percent_mods = Dictionary[int, float]({
+0: 0.13
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

@@ -10,5 +10,9 @@ body_target = 1
 buff = 6.0
 slot = 2
 allele_name = "Viscious"
+tooltip = "+{attack} Physical Damage"
 rarity = 1
+flat_mods = Dictionary[int, int]({
+1: 8
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

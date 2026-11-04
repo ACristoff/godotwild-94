@@ -9,5 +9,9 @@ body_part = ExtResource("1_atdwv")
 body_target = 9
 slot = 2
 allele_name = "Cyborg"
+tooltip = "+{attack_pct}% Physical Damage"
 rarity = 3
+percent_mods = Dictionary[int, float]({
+1: 0.2
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

@@ -11,5 +11,8 @@ set_id = &"NONE"
 buff = 5.0
 slot = 2
 allele_name = "Little Tail"
-tooltip = "I HIT YOU WITH MY TAIL"
+tooltip = "+{attack} Physical Damage"
+flat_mods = Dictionary[int, int]({
+1: 1
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

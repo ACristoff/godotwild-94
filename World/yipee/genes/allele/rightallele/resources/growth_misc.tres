@@ -9,5 +9,9 @@ body_part = ExtResource("1_rcjja")
 body_target = 6
 slot = 1
 allele_name = "Growth"
+tooltip = "+{health_pct}% Max Health"
 rarity = 3
+percent_mods = Dictionary[int, float]({
+0: 0.4
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

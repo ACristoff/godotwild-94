@@ -26,22 +26,22 @@ signal strand_hovered
 
 const SLOT_COLORS := {
 	BodyMap.Slot.HEALTH:         "779422",
-	BodyMap.Slot.HEALTH_AUGMENT: "779422",
+	BodyMap.Slot.HEALTH_AUGMENT: "0eb56d",
 	BodyMap.Slot.ATTACK:         "9c2424",
 	BodyMap.Slot.ATTACK_AUGMENT: "d14830",
-	BodyMap.Slot.COOLDOWN:       "56bccc",
+	BodyMap.Slot.COOLDOWN:       "5662cc",
 	BodyMap.Slot.SPECIALIZATION: "cc4bae",
 	BodyMap.Slot.BREED_AUGMENT:  "784bcc",
 	BodyMap.Slot.NONE:           "3d3d3d",
 }
 const SLOT_ICONS := {
 	BodyMap.Slot.HEALTH:         "res://UI/Textures/ui_effecticons/heal_icon.png",
-	BodyMap.Slot.HEALTH_AUGMENT: "res://UI/Textures/ui_effecticons/heal_icon.png",
+	BodyMap.Slot.HEALTH_AUGMENT: "res://UI/Textures/ui_effecticons/heal_aug.png",
 	BodyMap.Slot.ATTACK:         "res://UI/Textures/ui_effecticons/attack_icon.png",
 	BodyMap.Slot.ATTACK_AUGMENT: "res://UI/Textures/ui_effecticons/attack_aug_icon.png",
 	BodyMap.Slot.COOLDOWN:       "res://UI/Textures/ui_effecticons/haste_icon.png",
 	BodyMap.Slot.SPECIALIZATION: "res://UI/Textures/ui_effecticons/null_icon.png",
-	BodyMap.Slot.BREED_AUGMENT:  "res://UI/Textures/ui_effecticons/null_icon.png",
+	BodyMap.Slot.BREED_AUGMENT:  "res://UI/Textures/ui_effecticons/breed_icon.png",
 	BodyMap.Slot.NONE:           "res://UI/Textures/ui_effecticons/null_icon.png",
 }
 

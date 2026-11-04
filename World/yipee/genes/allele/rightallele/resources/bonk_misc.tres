@@ -9,5 +9,9 @@ body_part = ExtResource("1_m5lmp")
 body_target = 6
 slot = 3
 allele_name = "Head Trauma"
+tooltip = "{attack_pct}% Physical Damage"
 rarity = 2
+percent_mods = Dictionary[int, float]({
+1: 0.01
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

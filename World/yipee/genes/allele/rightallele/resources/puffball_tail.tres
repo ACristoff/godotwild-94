@@ -7,7 +7,10 @@
 script = ExtResource("1_8ktvb")
 body_part = ExtResource("1_qjdbr")
 body_target = 4
-buff = 0.05
 slot = 3
 allele_name = "Cotton Ball"
+tooltip = "{attack_pct}% Physical Damage"
+percent_mods = Dictionary[int, float]({
+1: 0.01
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

@@ -7,7 +7,10 @@
 script = ExtResource("1_2dyei")
 body_part = ExtResource("1_8fvho")
 body_target = 8
-buff = -1.0
 slot = 4
 allele_name = "Happy"
+tooltip = "{cooldown_pct}% Max Cooldown"
+percent_mods = Dictionary[int, float]({
+2: -0.1
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

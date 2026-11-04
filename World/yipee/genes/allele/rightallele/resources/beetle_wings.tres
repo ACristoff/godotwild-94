@@ -9,5 +9,6 @@ body_part = ExtResource("1_r85y2")
 body_target = 3
 slot = 1
 allele_name = "Shiny"
+tooltip = "+{health_pct}% Max Health"
 rarity = 1
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

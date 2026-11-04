@@ -7,7 +7,10 @@
 script = ExtResource("1_nihi5")
 body_part = ExtResource("1_foa3a")
 body_target = 7
-buff = 0.05
 slot = 1
 allele_name = "Dog Ears"
+tooltip = "+{health_pct}% Max Health"
+percent_mods = Dictionary[int, float]({
+0: 0.08
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

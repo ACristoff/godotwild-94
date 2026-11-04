@@ -9,5 +9,9 @@ body_part = ExtResource("1_htfpn")
 body_target = 8
 slot = 2
 allele_name = "Trunk"
+tooltip = "+{attack} Physical Damage"
 rarity = 2
+flat_mods = Dictionary[int, int]({
+1: 12
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

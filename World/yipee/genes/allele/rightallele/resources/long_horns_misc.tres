@@ -9,5 +9,9 @@ body_part = ExtResource("1_kfk1v")
 body_target = 6
 slot = 2
 allele_name = "Long Horns"
+tooltip = "+{attack} Physical Damage"
 rarity = 2
+flat_mods = Dictionary[int, int]({
+1: 10
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

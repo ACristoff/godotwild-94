@@ -9,6 +9,9 @@ body_part = ExtResource("1_j7fda")
 body_target = 1
 slot = 2
 allele_name = "Chainsaws"
-tooltip = "Idk what evolution was cooking either."
+tooltip = "+{attack} Physical Damage"
 rarity = 2
+flat_mods = Dictionary[int, int]({
+1: 10
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

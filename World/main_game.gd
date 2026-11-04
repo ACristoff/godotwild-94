@@ -14,8 +14,8 @@ const location_dictionary = {
 }
 
 const music = {
-	SignalBus.Locations.FARM: preload("res://Assets/Audio/Music/YIP_FARM_MKII.mp3"),
-	SignalBus.Locations.FIELD: preload("res://Assets/Audio/Music/YIP_FARM_MKII.mp3"),
+	SignalBus.Locations.FARM: preload("res://Assets/Audio/Music/Yippee!.mp3"),
+	SignalBus.Locations.FIELD: preload("res://Assets/Audio/Music/Yippee!.mp3"),
 	SignalBus.Locations.LAB: preload("res://Assets/Audio/Music/YIP_LAB.mp3"),
 	SignalBus.Locations.BATTLE: preload("res://Assets/Audio/Music/YIP_BATTLE.mp3"),
 	SignalBus.Locations.WIN_LOSE: null

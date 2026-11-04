@@ -9,5 +9,9 @@ body_part = ExtResource("1_3aj2r")
 body_target = 7
 slot = 1
 allele_name = "Sensitive"
+tooltip = "+{health_pct}% Max Health"
 rarity = 1
+percent_mods = Dictionary[int, float]({
+0: 0.12
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

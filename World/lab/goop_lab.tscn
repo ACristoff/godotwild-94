@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cwa1u5a3a102e" path="res://World/lab/lab_vat.tscn" id="11_pm1ho"]
 [ext_resource type="Texture2D" uid="uid://dmgp5jtp8bdn" path="res://UI/Textures/ui_effecticons/attack_icon.png" id="12_e1p4a"]
 [ext_resource type="Texture2D" uid="uid://bn2wd1q4dbcyq" path="res://UI/Textures/ui_effecticons/attack_aug_icon.png" id="13_0dqea"]
+[ext_resource type="Shader" uid="uid://dxr5ye6n0jskt" path="res://Assets/Shaders/splatter.gdshader" id="14_5nv62"]
 [ext_resource type="Texture2D" uid="uid://cxolh4gq1arao" path="res://UI/Textures/ui_effecticons/heal_aug.png" id="14_6mjui"]
 [ext_resource type="Texture2D" uid="uid://b35ibq1gpa462" path="res://UI/Textures/ui_effecticons/heal_icon.png" id="15_bsd1w"]
 [ext_resource type="Texture2D" uid="uid://bposp1c5xwmot" path="res://UI/Textures/ui_effecticons/haste_icon.png" id="16_pduhj"]
@@ -68,6 +69,26 @@ shader_parameter/roll_speed = 0.1
 shader_parameter/roll_strength = 0.15
 shader_parameter/glow_strength = 0.25
 shader_parameter/glow_threshold = 0.65
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4jj5m"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lowyn"]
+noise = SubResource("FastNoiseLite_4jj5m")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0n2oi"]
+shader = ExtResource("14_5nv62")
+shader_parameter/sensitivity = 0.2310000109725
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_lowyn")
+shader_parameter/noise_config_size = Vector2(136.525, 162.13)
+shader_parameter/noise_seed = 301.5170143220575
+shader_parameter/replace_color = Color(0.95, 0.965, 1, 1)
+shader_parameter/edge_color = Color(0.3529412, 0.3647059, 0.5058824, 1)
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/details_color = Color(0.34901962, 0.3647059, 0.52156866, 1)
+shader_parameter/details_opacity = 0.43200002052
+shader_parameter/edge_bias_strength = 0.7650000363375
+shader_parameter/edge_remap_min = 0.88400004199
+shader_parameter/edge_remap_max = 1.0
 
 [sub_resource type="Animation" id="Animation_gluje"]
 length = 0.001
@@ -2220,6 +2241,7 @@ position = Vector2(686, 24)
 
 [node name="ShredderSprite" type="Sprite2D" parent="Mulcher" unique_id=1516523610]
 texture_filter = 3
+material = SubResource("ShaderMaterial_0n2oi")
 position = Vector2(334, 711)
 scale = Vector2(3, 3)
 texture = ExtResource("2_xljrr")
@@ -2248,6 +2270,7 @@ position = Vector2(464, 767)
 shape = SubResource("RectangleShape2D_egti4")
 
 [node name="ShreddingZone" type="Area2D" parent="Mulcher" unique_id=427746511]
+visible = false
 position = Vector2(312, 719)
 collision_layer = 192
 collision_mask = 192

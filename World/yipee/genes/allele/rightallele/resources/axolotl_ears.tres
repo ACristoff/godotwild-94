@@ -8,5 +8,9 @@ script = ExtResource("1_vq2ta")
 body_part = ExtResource("1_4nu7t")
 body_target = 7
 allele_name = "Sensory"
+tooltip = "+{health} Max Health"
 rarity = 1
+flat_mods = Dictionary[int, int]({
+0: 12
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

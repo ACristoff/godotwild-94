@@ -9,6 +9,6 @@ body_part = ExtResource("1_1nkdl")
 body_target = 6
 slot = 3
 allele_name = "Enchanted"
-tooltip = "My little Yips *wholesome*"
+tooltip = "{attack_pct}% Physical Damage"
 rarity = 2
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

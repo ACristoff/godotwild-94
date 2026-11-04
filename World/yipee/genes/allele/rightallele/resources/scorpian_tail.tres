@@ -9,5 +9,9 @@ body_part = ExtResource("1_ylnew")
 body_target = 4
 slot = 2
 allele_name = "Scorpian"
+tooltip = "+{attack} Physical Damage"
 rarity = 1
+flat_mods = Dictionary[int, int]({
+1: 5
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

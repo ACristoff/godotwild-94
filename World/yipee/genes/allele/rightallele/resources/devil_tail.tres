@@ -9,5 +9,6 @@ body_part = ExtResource("1_fb04o")
 body_target = 4
 slot = 1
 allele_name = "Devil"
+tooltip = "+{health_pct}% Max Health"
 rarity = 2
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

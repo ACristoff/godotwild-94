@@ -24,8 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://r1ibjhjfn84g" path="res://Assets/Environment/Scenes/LaboratoryNew/ConveyorNew.png" id="30_6qk23"]
 [ext_resource type="Script" uid="uid://ddygeie0aq8n6" path="res://UI/Scripts/helix_drop_surface.gd" id="31_yvh3b"]
 [ext_resource type="Script" uid="uid://dufxpqu2r5sh0" path="res://Assets/Test/dna_test_screen.gd" id="32_836pr"]
+[ext_resource type="PackedScene" uid="uid://dtmuxi5urpswf" path="res://UI/Scenes/yip_toolyip_refactor.tscn" id="32_vyoc1"]
 [ext_resource type="PackedScene" uid="uid://6looit7fo72" path="res://Assets/Test/dna_stacked_shell.tscn" id="33_mdl01"]
-[ext_resource type="PackedScene" uid="uid://dqgfurgu7jsbg" path="res://UI/Scenes/yip_toolyip.tscn" id="33_v1780"]
 [ext_resource type="Texture2D" uid="uid://dhyaufaxs6hjv" path="res://UI/Textures/cyanspeenspritesheet.png" id="34_ke787"]
 [ext_resource type="Texture2D" uid="uid://rwpaxb4jhtyk" path="res://UI/Textures/Arrow.png" id="35_j71bh"]
 [ext_resource type="Shader" uid="uid://bwvmkd4i76b3p" path="res://Assets/Shaders/CRT.gdshader" id="36_8o0ju"]
@@ -1379,10 +1379,8 @@ position = Vector2(1224, 540)
 position = Vector2(696, 540)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1454522115]
-scale = Vector2(3, 3)
-transform = Transform2D(3, 0, 0, 3, 0, 0)
 
-[node name="YipToolyip" parent="CanvasLayer" unique_id=399779298 instance=ExtResource("33_v1780")]
+[node name="MouseHover" parent="CanvasLayer" unique_id=399779298 instance=ExtResource("32_vyoc1")]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

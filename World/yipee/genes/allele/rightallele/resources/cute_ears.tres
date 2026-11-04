@@ -8,8 +8,10 @@ script = ExtResource("1_wo7my")
 body_part = ExtResource("1_255yq")
 body_target = 7
 set_id = &"BEAR"
-buff = 0.05
 slot = 1
 allele_name = "Cuddly"
-tooltip = "Rawr :3"
+tooltip = "+{health_pct}% Max Health"
+percent_mods = Dictionary[int, float]({
+0: 0.05
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

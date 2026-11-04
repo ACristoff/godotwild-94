@@ -9,5 +9,9 @@ body_part = ExtResource("1_aoxrl")
 body_target = 4
 slot = 2
 allele_name = "Gatling"
+tooltip = "+{attack} Physical Damage"
 rarity = 3
+flat_mods = Dictionary[int, int]({
+1: 35
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

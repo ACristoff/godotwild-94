@@ -7,7 +7,9 @@
 script = ExtResource("1_64lvx")
 body_part = ExtResource("1_3ww4y")
 body_target = 9
-buff = 10.0
 allele_name = "Alien Eyes"
-tooltip = "Vorp"
+tooltip = "+{health} Max Health"
+flat_mods = Dictionary[int, int]({
+0: 5
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

@@ -10,5 +10,9 @@ body_target = 9
 buff = 8.0
 slot = 2
 allele_name = "Short Temper"
+tooltip = "+{attack} Physical Damage"
 rarity = 1
+flat_mods = Dictionary[int, int]({
+1: 5
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

@@ -7,8 +7,11 @@
 script = ExtResource("1_cmwqw")
 body_part = ExtResource("1_23spe")
 body_target = 6
-buff = 20.0
 slot = 1
 allele_name = "Arrow"
+tooltip = "+{health_pct}% Max Health"
 rarity = 3
+percent_mods = Dictionary[int, float]({
+0: 0.2
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

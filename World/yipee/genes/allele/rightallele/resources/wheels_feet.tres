@@ -9,5 +9,9 @@ body_part = ExtResource("1_4lwat")
 body_target = 1
 slot = 4
 allele_name = "Wheels"
+tooltip = "{cooldown_pct}% Max Cooldown"
 rarity = 2
+percent_mods = Dictionary[int, float]({
+2: -0.18
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

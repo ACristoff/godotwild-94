@@ -9,5 +9,9 @@ body_part = ExtResource("1_kmanq")
 body_target = 4
 slot = 1
 allele_name = "Squeaky"
+tooltip = "+{health_pct}% Max Health"
 rarity = 2
+percent_mods = Dictionary[int, float]({
+0: 0.22
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

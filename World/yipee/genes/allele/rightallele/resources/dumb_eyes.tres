@@ -9,4 +9,8 @@ body_part = ExtResource("1_8eeyi")
 body_target = 9
 slot = 3
 allele_name = "Dumb"
+tooltip = "{attack_pct}% Physical Damage"
+percent_mods = Dictionary[int, float]({
+1: 0.02
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

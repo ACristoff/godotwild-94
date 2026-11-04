@@ -8,5 +8,9 @@ script = ExtResource("1_jgrsf")
 body_part = ExtResource("1_ja24d")
 body_target = 9
 allele_name = ".exe"
+tooltip = "+{health} Max Health"
 rarity = 3
+flat_mods = Dictionary[int, int]({
+0: 35
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

@@ -63,13 +63,14 @@ var all_yips:  Array[Yipee] = []
 var focused_yip: Yipee = null
 
 var resserved_spots : Array[Vector2] = []
-@onready var tooltip: Toolyip = $CanvasLayer/YipToolyip
+@onready var tooltip: Toolyip = $CanvasLayer/MouseHover
 # Called when the node enters the scene tree for the first time.
 
 const LETTER_IMPACT = preload("uid://dxdi7wy5wcxmn")
 const LETTER_OPEN = preload("uid://duikmvorwvx5")
 
 func _ready() -> void:
+	AudMan.play_music(preload("res://Assets/Audio/Music/Learning the Ropes.mp3"))
 	$Lab/WorldEnvironment.environment = null
 	Dialogic.signal_event.connect(bye_pointy)
 	tooltip.hide()

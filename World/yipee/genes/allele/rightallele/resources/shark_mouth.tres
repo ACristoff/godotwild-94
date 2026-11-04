@@ -9,5 +9,6 @@ body_part = ExtResource("1_nccxr")
 body_target = 8
 slot = 3
 allele_name = "Jaws"
+tooltip = "{attack_pct}% Physical Damage"
 rarity = 3
 metadata/_custom_type_script = "uid://hpdocbvx27nb"

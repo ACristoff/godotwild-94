@@ -9,4 +9,8 @@ body_part = ExtResource("1_o8570")
 body_target = 8
 buff = 10.0
 allele_name = "Quirky"
+tooltip = "+{health} Max Health"
+flat_mods = Dictionary[int, int]({
+0: 7
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"
