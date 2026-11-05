@@ -214,8 +214,10 @@ func place_yip(yip: Yipee, slot_number: int) -> void:
 func _on_yip_hovered(yip: Yipee) -> void:
 	if not is_instance_valid(yip):
 		return
-	tooltip.display_beside(yip)
-	focused_yip = yip
+	if !dragged_yip:
+		tooltip.display_beside(yip)
+		focused_yip = yip
+		#_refresh_cursor()
 
 func _on_yip_unhovered() -> void:
 	tooltip.hide()

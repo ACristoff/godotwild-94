@@ -501,9 +501,10 @@ func _on_breed_farm_slot_area_exited(entered_area: Area2D, source_area: Area2D) 
 
 
 func _on_yip_hovered(yip: Yipee) -> void:
-	tooltip.display_beside(yip)
-	focused_yip = yip
-	_refresh_cursor()
+	if !dragged_yip:
+		tooltip.display_beside(yip)
+		focused_yip = yip
+		_refresh_cursor()
 
 func _on_yip_unhovered() -> void:
 	tooltip.request_hide()
