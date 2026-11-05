@@ -6,7 +6,8 @@ func _ready() -> void:
 	SignalBus.permadeath = permadeath
 
 func _on_start_pressed():
-	SignalBus.game_state_changed.emit("Start")
+	$".".hide()
+	SignalBus.game_state_changed.emit("Name")
 
 func _on_settings_pressed():
 	SignalBus.game_state_changed.emit("Settings")

@@ -11,7 +11,7 @@ var party_slot_tutorial_clicked = false
 var breeding_tut_clicked = false
 var twice_speed_clicked = false
 var start_of_second_day = false
-
+var yips_bought = 0
 var bae_encountered := false
 
 var battle_speed = 1
@@ -49,7 +49,7 @@ var goop_inventory : Dictionary = {
 }
 
 var coins: int = 12
-enum Locations { FARM, FIELD, LAB, BATTLE, WIN_LOSE }
+enum Locations {TUTO, NAME, FARM, FIELD, LAB, BATTLE, WIN_LOSE }
 var game_started: bool = false
 
 var current_health = 3
@@ -104,6 +104,7 @@ func reset_run() -> void:
 
 	field_clicked = false
 	first_yip_bought = false
+	yips_bought = 0
 	f_y_b_setter = false
 	party_slot_tutorial_clicked = false
 	breeding_tut_clicked = false

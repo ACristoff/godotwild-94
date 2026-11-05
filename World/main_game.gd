@@ -7,6 +7,8 @@ const transition_screen = preload("res://UI/Scenes/transitions.tscn")
 
 const location_dictionary = {
 	SignalBus.Locations.FARM: preload("res://World/farm/farm_hub.tscn"),
+	SignalBus.Locations.NAME: preload("res://UI/Scenes/name_select.tscn"),
+	SignalBus.Locations.TUTO: preload("res://UI/Scenes/start_cutscene.tscn"),
 	SignalBus.Locations.FIELD: preload("res://World/field/field.tscn"),
 	SignalBus.Locations.LAB: preload("res://World/lab/lab.tscn"),
 	SignalBus.Locations.BATTLE: preload("res://World/battle/battle.tscn"),
@@ -15,6 +17,8 @@ const location_dictionary = {
 
 const music = {
 	SignalBus.Locations.FARM: preload("res://Assets/Audio/Music/Yippee!.mp3"),
+	SignalBus.Locations.NAME: preload("res://Assets/Audio/Music/YIP_FARM_MKII.mp3"),
+	SignalBus.Locations.TUTO: preload("res://Assets/Audio/Music/Learning the Ropes.mp3"),
 	SignalBus.Locations.FIELD: preload("res://Assets/Audio/Music/Yippee!.mp3"),
 	SignalBus.Locations.LAB: preload("res://Assets/Audio/Music/YIP_LAB.mp3"),
 	SignalBus.Locations.BATTLE: preload("res://Assets/Audio/Music/YIP_BATTLE.mp3"),
@@ -67,6 +71,11 @@ func _on_opening_finished(argument: String) -> void:
 	if argument == "opening_finished":
 		SignalBus.game_started = true
 		change_location(SignalBus.Locations.FARM)
+	if argument == "name_me":
+		print("beans")
+		change_location(SignalBus.Locations.NAME)
+	if argument == "tutorial":
+		change_location(SignalBus.Locations.TUTO)
 
 func _on_day_end() -> void:
 	SignalBus.coins += 6

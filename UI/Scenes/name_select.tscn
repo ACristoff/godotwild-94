@@ -1,0 +1,253 @@
+[gd_scene format=3 uid="uid://b1nvw8fnnqxaf"]
+
+[ext_resource type="Script" uid="uid://c6hag4kntejyu" path="res://UI/Scripts/name_select.gd" id="1_401o2"]
+[ext_resource type="Texture2D" uid="uid://p6ulevyqsv3g" path="res://UI/Menus/Main_Menu/Textures/Anon.png" id="1_k6bvc"]
+[ext_resource type="Texture2D" uid="uid://8o1ahvcwcivs" path="res://UI/Menus/Main_Menu/Textures/AnonGirl.png" id="2_6k118"]
+[ext_resource type="Texture2D" uid="uid://niivva0chy8b" path="res://UI/Menus/Main_Menu/Textures/GenericBox.png" id="2_mtnii"]
+[ext_resource type="FontFile" uid="uid://b2o45fsyj2vco" path="res://UI/Fonts/ShareTech-Regular.ttf" id="3_6k118"]
+[ext_resource type="Texture2D" uid="uid://fiegkybmvkd2" path="res://UI/Menus/Main_Menu/Textures/YipScroll.png" id="7_norlw"]
+
+[sub_resource type="Shader" id="Shader_yqs3n"]
+code = "shader_type canvas_item;
+
+uniform sampler2D texture_to_scroll;
+uniform sampler2D gradient_texture : source_color;
+
+uniform float scroll_speed = 0.1;
+uniform float angle_degrees : hint_range(0.0, 360.0) = 0.0;
+
+uniform float repeat_x : hint_range(1.0, 20.0) = 20.0;
+uniform float repeat_y : hint_range(1.0, 20.0) = 12.0;
+uniform float row_offset : hint_range(0.0, 1.0) = 1.0;
+
+void fragment() {
+    float angle_rad = radians(angle_degrees);
+    vec2 direction = vec2(cos(angle_rad), sin(angle_rad));
+
+    vec2 uv = UV - TIME * scroll_speed * direction;
+
+    float row = floor(uv.y * repeat_y);
+    if (mod(row, 2.0) > 0.5) {
+        uv.x += row_offset / repeat_x;
+    }
+
+    uv = fract(uv * vec2(repeat_x, repeat_y));
+
+    vec2 tex_size = vec2(textureSize(texture_to_scroll, 0));
+    uv = (floor(uv * tex_size) + 0.5) / tex_size;
+
+    vec4 tex = texture(texture_to_scroll, uv);
+
+    // Sample a GradientTexture2D using the sprite's UV.
+    vec4 gradient = texture(gradient_texture, vec2(0.5, UV.y));
+
+    COLOR = tex * gradient;
+}"
+
+[sub_resource type="Gradient" id="Gradient_yqs3n"]
+colors = PackedColorArray(0.39, 0.39, 0.39, 0, 1, 1, 1, 0.49411765)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tpfa2"]
+gradient = SubResource("Gradient_yqs3n")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m6egi"]
+shader = SubResource("Shader_yqs3n")
+shader_parameter/texture_to_scroll = ExtResource("7_norlw")
+shader_parameter/gradient_texture = SubResource("GradientTexture1D_tpfa2")
+shader_parameter/scroll_speed = 0.010000000475
+shader_parameter/angle_degrees = 45.0
+shader_parameter/repeat_x = 3.000000095
+shader_parameter/repeat_y = 3.000000095
+shader_parameter/row_offset = 1.0
+
+[node name="ChooseYourFighter" type="Control" unique_id=722900375]
+z_index = 4096
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_401o2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1907098912]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1773465527]
+layout_mode = 2
+theme_override_constants/margin_left = 280
+theme_override_constants/margin_top = 216
+theme_override_constants/margin_right = 280
+theme_override_constants/margin_bottom = 117
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=822689702]
+layout_mode = 2
+theme_override_constants/separation = -420
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=608228057]
+texture_filter = 3
+custom_minimum_size = Vector2(339, 339)
+layout_mode = 2
+size_flags_horizontal = 6
+texture = ExtResource("1_k6bvc")
+
+[node name="Man" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer/TextureRect" unique_id=612952726]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/TextureRect/Man" unique_id=1385671947]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/MarginContainer/HBoxContainer/TextureRect/Man/MarginContainer" unique_id=819276147]
+self_modulate = Color(0.63, 0.63, 0.63, 1)
+layout_mode = 2
+texture = ExtResource("2_mtnii")
+draw_center = false
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=499757045]
+texture_filter = 3
+custom_minimum_size = Vector2(339, 339)
+layout_mode = 2
+size_flags_horizontal = 6
+texture = ExtResource("2_6k118")
+
+[node name="Woman" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer/TextureRect2" unique_id=985226609]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/TextureRect2/Woman" unique_id=456682317]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/MarginContainer/HBoxContainer/TextureRect2/Woman/MarginContainer" unique_id=269071341]
+self_modulate = Color(0.63, 0.63, 0.63, 1)
+layout_mode = 2
+texture = ExtResource("2_mtnii")
+draw_center = false
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1523656783]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_bottom = 174.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 440
+theme_override_constants/margin_top = 96
+theme_override_constants/margin_right = 440
+
+[node name="TextEdit" type="LineEdit" parent="MarginContainer" unique_id=1753552593]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6k118")
+theme_override_font_sizes/font_size = 55
+placeholder_text = "What Is Your Name?"
+alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=2065184487]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -8.0
+offset_right = 960.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 820
+theme_override_constants/margin_top = -276
+theme_override_constants/margin_right = 820
+theme_override_constants/margin_bottom = 160
+
+[node name="Button" type="Button" parent="MarginContainer2" unique_id=1178415636]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.88, 0.88, 0.69411767)
+theme_override_fonts/font = ExtResource("3_6k118")
+theme_override_font_sizes/font_size = 88
+text = "Confirm"
+
+[node name="Label" type="Label" parent="." unique_id=1706948174]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -41.0
+offset_top = 112.0
+offset_right = 42.0
+offset_bottom = 135.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.44313726)
+theme_override_fonts/font = ExtResource("3_6k118")
+theme_override_font_sizes/font_size = 46
+text = "Select One"
+
+[node name="ColorRect" type="TextureRect" parent="." unique_id=1802170298]
+z_index = -10
+texture_repeat = 2
+material = SubResource("ShaderMaterial_m6egi")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = -23.0
+offset_right = -861.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+mouse_filter = 2
+texture = ExtResource("7_norlw")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1318571675]
+z_index = -481
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.336, 0.33763334, 0.35, 1)
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/TextureRect/Man" to="." method="_on_man_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/TextureRect2/Woman" to="." method="_on_woman_pressed"]
+[connection signal="pressed" from="MarginContainer2/Button" to="." method="_on_button_pressed"]

@@ -16,13 +16,16 @@ class_name Game_Manager
 @onready var credits_menu = preload("res://UI/Menus/Credits/credits.tscn")
 #@onready var load_save_menu = preload("res://UI/Menus/LoadSave/load_save.tscn")
 @onready var game = preload("res://World/main_game.tscn")
-
+@onready var name_select = preload("res://UI/Scenes/name_select.tscn")
+@onready var tutorial = preload("res://UI/Scenes/start_cutscene.tscn")
 #@onready var current_menu = $Transitions/Splash
 
 var current_scene = null
 
 @onready var Menu_Scenes: Dictionary = {
 	"Main": main_menu,
+	"Name": name_select,
+	"Tuto": tutorial,
 	"Start": game,
 	"Settings": settings_menu,
 	"Credits": credits_menu,

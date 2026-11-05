@@ -27,13 +27,12 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pje28"]
 shader = ExtResource("5_i2im2")
+shader_parameter/texture_to_scroll = ExtResource("6_hkq0q")
 shader_parameter/scroll_speed = 0.010000000475
 shader_parameter/angle_degrees = 45.0
 shader_parameter/repeat_x = 3.000000095
 shader_parameter/repeat_y = 3.000000095
 shader_parameter/row_offset = 1.0
-shader_parameter/texture_to_scroll = ExtResource("6_hkq0q")
-shader_parameter/tint_color = Color(1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_e60ur"]
 length = 0.001
@@ -350,7 +349,7 @@ target_highlight = NodePath("ButtonPlay")
 
 [node name="ButtonPlay" type="NinePatchRect" parent="Control/VBoxContainer/Start" unique_id=670215522]
 self_modulate = Color(0.8352941, 0.3882353, 0.4745098, 1)
-z_index = 4096
+z_index = 4028
 texture_filter = 3
 custom_minimum_size = Vector2(119.061, 45)
 layout_mode = 1
@@ -375,7 +374,7 @@ patch_margin_bottom = 10
 
 [node name="PlayLabel" type="Label" parent="Control/VBoxContainer/Start/ButtonPlay" unique_id=1693795338]
 modulate = Color(0.91764706, 0.8862745, 0.7647059, 1)
-z_index = 4096
+z_index = 4066
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -402,7 +401,7 @@ target_highlight = NodePath("SettingsButton")
 
 [node name="SettingsButton" type="NinePatchRect" parent="Control/VBoxContainer/Settings" unique_id=1963612904]
 self_modulate = Color(0.30980393, 0.6666667, 0.75686276, 1)
-z_index = 4096
+z_index = 4028
 texture_filter = 3
 custom_minimum_size = Vector2(102.641, 35.539)
 layout_mode = 1
@@ -427,7 +426,7 @@ patch_margin_bottom = 10
 
 [node name="SettingsLabel" type="Label" parent="Control/VBoxContainer/Settings/SettingsButton" unique_id=1563029112]
 modulate = Color(0.91764706, 0.8862745, 0.7647059, 1)
-z_index = 4096
+z_index = 4066
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -454,7 +453,7 @@ target_highlight = NodePath("CreditsButton")
 
 [node name="CreditsButton" type="NinePatchRect" parent="Control/VBoxContainer/Credits" unique_id=474598314]
 self_modulate = Color(0.45882353, 0.69411767, 0.32156864, 1)
-z_index = 4096
+z_index = 4028
 texture_filter = 3
 custom_minimum_size = Vector2(102.641, 35.539)
 layout_mode = 1
@@ -479,7 +478,7 @@ patch_margin_bottom = 10
 
 [node name="CreditsLabel" type="Label" parent="Control/VBoxContainer/Credits/CreditsButton" unique_id=949807213]
 modulate = Color(0.91764706, 0.8862745, 0.7647059, 1)
-z_index = 4096
+z_index = 4066
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -506,7 +505,7 @@ target_highlight = NodePath("QuitButton")
 
 [node name="QuitButton" type="NinePatchRect" parent="Control/VBoxContainer/Quit" unique_id=336067638]
 self_modulate = Color(0.8784314, 0.80784315, 0.36078432, 1)
-z_index = 4096
+z_index = 4028
 texture_filter = 3
 custom_minimum_size = Vector2(102.641, 35.539)
 layout_mode = 1
@@ -531,7 +530,7 @@ patch_margin_bottom = 10
 
 [node name="QuitLabel" type="Label" parent="Control/VBoxContainer/Quit/QuitButton" unique_id=2016797081]
 modulate = Color(0.91764706, 0.8862745, 0.7647059, 1)
-z_index = 4096
+z_index = 4066
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

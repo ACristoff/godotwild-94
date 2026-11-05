@@ -76,12 +76,12 @@ func _ready() -> void:
 	#Tutorials
 	if SignalBus.field_clicked:
 		$BuyFirstYip.hide()
-	if SignalBus.first_yip_bought:
+	if SignalBus.first_yip_bought and SignalBus.yips_bought >= 1:
 		if !SignalBus.f_y_b_setter:
 			$TeamSlots.show()
 	if SignalBus.party_slot_tutorial_clicked:
 		$TeamSlots.hide()
-	if SignalBus.first_yip_bought and not SignalBus.party_slot_tutorial_clicked:
+	if SignalBus.first_yip_bought and not SignalBus.party_slot_tutorial_clicked and SignalBus.yips_bought >= 1:
 		$TeamSlots.show()
 	if SignalBus.breeding_tut_clicked:
 		$BreedingTut.hide()
