@@ -1,24 +1,13 @@
 [gd_scene format=3 uid="uid://dpd3hr3oj8eku"]
 
-[ext_resource type="Script" uid="uid://thr31oec5n80" path="res://World/lab/lab_vat.gd" id="1_5jf13"]
-[ext_resource type="PackedScene" uid="uid://8seqqf8qy7u5" path="res://World/lab/goop_star.tscn" id="2_frkjt"]
-[ext_resource type="Texture2D" uid="uid://d102aqyxm3dd5" path="res://Assets/Environment/Scenes/LaboratoryNew/LabVatMask.png" id="3_y8v4q"]
-[ext_resource type="Texture2D" uid="uid://l34fsa2jsqmw" path="res://Assets/Environment/Scenes/LaboratoryNew/LabVat.png" id="4_rv4pf"]
+[ext_resource type="Script" uid="uid://dctefpcpjml37" path="res://Lib/Game_Manager/game_manager.gd" id="1_7omqw"]
+[ext_resource type="PackedScene" uid="uid://coksihbtre2rd" path="res://UI/Menus/Splash_Screen/splash_screen.tscn" id="2_0mw2e"]
 
-[node name="LabVat" type="Node2D" unique_id=1037930385]
-script = ExtResource("1_5jf13")
-goop = ExtResource("2_frkjt")
+[node name="GameManager" type="Node" unique_id=554058649]
+script = ExtResource("1_7omqw")
 
-[node name="LabVatMaskSpawn" type="Sprite2D" parent="." unique_id=1664532794]
-clip_children = 1
-texture_filter = 3
-texture = ExtResource("3_y8v4q")
+[node name="MenuUI" type="CanvasLayer" parent="." unique_id=1679395588]
 
-[node name="LabVat" type="Sprite2D" parent="." unique_id=1567317258]
-texture_filter = 3
-texture = ExtResource("4_rv4pf")
+[node name="Transitions" type="CanvasLayer" parent="." unique_id=476649765]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=220080211]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1664542802]
-polygon = PackedVector2Array(35, 0, 35, -18, 33, -37, 18, -50, -11, -50, -28, -40, -34, -24, -34, -2, -34, 45, -34, 61, -23, 69, 5, 72, 29, 67, 35, 57, 35, 4, 34, 4, 34, 47, 34, 56, 31, 60, 14, 66, -13, 66, -26, 62, -33, 57, -33, -18, -29, -31, -21, -39, -12, -44, -5, -46, 5, -46, 13, -44, 24, -37, 29, -31, 33, -22, 34, -18, 34, 4, 35, 4)
+[node name="Splash" parent="Transitions" unique_id=368181289 instance=ExtResource("2_0mw2e")]

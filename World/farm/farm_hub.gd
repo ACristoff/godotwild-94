@@ -11,7 +11,7 @@ var drag_offset : Vector2 = Vector2.ZERO
 
 @onready var coin_label: Label = $CanvasLayer/Control/HBoxContainer/MarginContainer2/CoinLabel
 @onready var special_areas : Node2D = $Areas
-@onready var tooltip: Toolyip = $CanvasLayer/YipToolyip
+@onready var tooltip: Toolyip = $CorrectScale/YipToolyip2
 
 @onready var farm_slot : Area2D = %BreedFarmSlot
 @onready var farm_doors : Sprite2D = %BreedingBarnLargeDoor

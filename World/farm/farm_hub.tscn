@@ -15,13 +15,13 @@
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="13_lx74c"]
 [ext_resource type="Texture2D" uid="uid://1lmfe1dpron4" path="res://Assets/Environment/Scenes/BattleField/Coin.png" id="14_4wbmb"]
 [ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="15_4wbmb"]
-[ext_resource type="PackedScene" uid="uid://dqgfurgu7jsbg" path="res://UI/Scenes/yip_toolyip.tscn" id="15_wkn3d"]
 [ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="16_0l0ir"]
-[ext_resource type="PackedScene" uid="uid://4lvcvbffgoj6" path="res://UI/Scenes/tutorial_box11.tscn" id="18_nw8d0"]
-[ext_resource type="PackedScene" uid="uid://dulxqotk3x5gt" path="res://UI/Scenes/tutorial_box12.tscn" id="19_jjcuj"]
-[ext_resource type="PackedScene" uid="uid://bpkilgh164xpd" path="res://UI/Scenes/tutorial_box13.tscn" id="20_v158w"]
-[ext_resource type="PackedScene" uid="uid://cnbmljjfwmedf" path="res://UI/Scenes/tutorial_box14.tscn" id="21_38chp"]
+[ext_resource type="PackedScene" uid="uid://c3lcbqjc43e3m" path="res://UI/Scenes/tutorial_box11.tscn" id="18_nw8d0"]
+[ext_resource type="PackedScene" uid="uid://cdxcqkceerren" path="res://UI/Scenes/tutorial_box12.tscn" id="19_jjcuj"]
+[ext_resource type="PackedScene" uid="uid://dcwhd4jcpjqw0" path="res://UI/Scenes/tutorial_box13.tscn" id="20_v158w"]
+[ext_resource type="PackedScene" uid="uid://djgyg3bx5cyuc" path="res://UI/Scenes/tutorial_box14.tscn" id="21_38chp"]
 [ext_resource type="Texture2D" uid="uid://duipa70vx5fn3" path="res://UI/Menus/Main_Menu/Textures/SettingsButt.png" id="22_rffto"]
+[ext_resource type="PackedScene" uid="uid://dtmuxi5urpswf" path="res://UI/Scenes/yip_toolyip_refactor.tscn" id="23_k8lvf"]
 [ext_resource type="PackedScene" uid="uid://b0u4e8y8nqwnj" path="res://UI/Scenes/days_hud.tscn" id="23_piivb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wkn3d"]
@@ -351,8 +351,6 @@ texture_filter = 3
 layout_mode = 2
 texture = ExtResource("14_4wbmb")
 
-[node name="YipToolyip" parent="CanvasLayer" unique_id=399779298 instance=ExtResource("15_wkn3d")]
-
 [node name="ButtonRefresh2" type="NinePatchRect" parent="." unique_id=252918501]
 z_index = 4096
 texture_filter = 3
@@ -563,6 +561,10 @@ mouse_filter = 2
 
 [node name="LivesLabel" parent="CanvasLayer2/MarginContainer3/MarginContainer2/HBoxContainer" parent_id_path=PackedInt32Array(921252253, 1899293101) index="3" unique_id=1382897421]
 text = "5"
+
+[node name="CorrectScale" type="CanvasLayer" parent="." unique_id=497617235]
+
+[node name="YipToolyip2" parent="CorrectScale" unique_id=399779298 instance=ExtResource("23_k8lvf")]
 
 [connection signal="area_entered" from="BreedingBarnGrass/BreedFarmSlot" to="Areas" method="_on_breed_farm_slot_area_entered"]
 [connection signal="area_exited" from="BreedingBarnGrass/BreedFarmSlot" to="Areas" method="_on_breed_farm_slot_area_exited"]
