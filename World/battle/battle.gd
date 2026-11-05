@@ -6,7 +6,7 @@ enum Team { PLAYER, ENEMY, NONE }
 @export var level: Level
 
 @onready var enemy_team_data: Array[YipeeData]
-@onready var tooltip: Toolyip = $CanvasLayer/YipToolyip
+@onready var tooltip: Toolyip = $CorrectScale/YipToolyip2
 @onready var time_label: Label = $CanvasLayer2/TimeLabel
 
 var player_team_data
