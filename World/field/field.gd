@@ -70,6 +70,9 @@ const REFRESH_COST : int = 1
 
 #region Built in
 func _ready():
+	if !SignalBus.bae_encountered:
+		Dialogic.start("Intro")
+	Dialogic.signal_event.connect(bye_pointy)
 	coin_label.text = str(SignalBus.coins)
 	#tooltip.hide()
 	tooltip2.hide()
@@ -81,7 +84,9 @@ func _ready():
 		generate_field_stock()
 		SignalBus.field_generated_today = true
 	spawn_field_stock()
-	
+func bye_pointy(arg):
+	if arg == "bae_done":
+		SignalBus.bae_encountered = true
 
 func update_field_labels():
 	var field_sign = $UpgradeSign/UpgradeField

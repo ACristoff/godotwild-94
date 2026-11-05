@@ -81,6 +81,7 @@ func bye_pointy(arg):
 	if arg == "drlogic_finished":
 		generate_field_stock()
 		spawn_field_stock()
+		$TutorialBox2.show()
 
 func _on_button_pressed() -> void:
 	match  hit_amnt:
@@ -172,6 +173,8 @@ func buy_yip(yip_bought: Yipee) -> void:
 	tooltip.hide()
 	print(SignalBus.yip_inventory)
 	SignalBus.first_yip_bought = true
+	$TutorialBox2.hide()
+	Dialogic.start("StartEnd")
 
 func spawn_yip(data: YipeeData, index : int) -> Yipee:
 	var new_yip := preload("res://World/yipee/yipee.tscn").instantiate() as Yipee
@@ -210,7 +213,7 @@ func chance_to_fill(yip_tier: YipeeData.YipTier) -> bool:
 	if random < current_odds:
 		return true
 	return false
-	
+
 func generate_field_stock() -> void:
 	SignalBus.field_stock.clear()
 	for i in yips_to_spawn:
@@ -218,7 +221,7 @@ func generate_field_stock() -> void:
 		var new_yip_data: YipeeData = YipeeData.generate_yip(yip_tier)
 		generate_alleles(yip_tier, new_yip_data.helix)
 		SignalBus.field_stock.append(new_yip_data)
-		
+
 func get_yip_tier():
 	var random = randi_range(0, 99)
 	var current_odds = yip_tier_dictionaries[field_level]

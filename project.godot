@@ -48,7 +48,8 @@ directories/dtl_directory={
 "BaeEncounter": "res://Assets/Dialogic/Timelines/BaeEncounter.dtl",
 "BeforeYouGo": "res://Assets/Dialogic/Timelines/BeforeYouGo.dtl",
 "DrLogic": "res://Assets/Dialogic/Timelines/DrLogic.dtl",
-"Intro": "res://Assets/Dialogic/Timelines/Intro.dtl"
+"Intro": "res://Assets/Dialogic/Timelines/Intro.dtl",
+"StartEnd": "res://Assets/Dialogic/Timelines/StartEnd.dtl"
 }
 layout/style_directory={
 "": "res://Assets/Dialogic/Styles/MainStyle.tres",

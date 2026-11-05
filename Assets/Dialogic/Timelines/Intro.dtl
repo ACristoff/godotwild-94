@@ -1,7 +1,7 @@
 Bae (Happy): What do you think you are doing?
 [signal arg="baeappears"]
 join Bae right
-Anon: Dr.. What was his name? Dr. Tropical? He gave me this yip.
+Anon: I'm looking for more yips.
 Bae (Happy): Oh.. Hey. My name is Bae. I didn't know you were a noobie.
 Bae: For future reference. You are on my farm. Yours is that way I believe. My dad told me about you.
 Anon: How would your dad know about me?
@@ -16,5 +16,5 @@ Bae (Livid): I'll have you know I LOVE my yips.
 Anon: You're a monster!
 Bae (Livid): You'll learn soon enough! The other breeders won't let you off the hook easy. Come see me at the championship unless all your yips DIE before then. I'll show you whos the monster.
 leave Bae
-Anon: The people here might be insane. I need to find some Yips.
-[signal arg="opening_finished"]
+Anon: This wont be the dream getaway I thought it would be.
+[signal arg="bae_done"]

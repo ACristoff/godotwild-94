@@ -11,4 +11,7 @@ slot = 1
 allele_name = "Devil"
 tooltip = "+{health_pct}% Max Health"
 rarity = 2
+percent_mods = Dictionary[int, float]({
+0: 0.1
+})
 metadata/_custom_type_script = "uid://hpdocbvx27nb"
