@@ -110,8 +110,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		letteropened = true
 	if anim_name == "ByeByeLetter":
 		Dialogic.start("DrLogic")
-		$Button2.mouse_filter = 3
-		$Button.mouse_filter = 3
+		$Button2.mouse_filter = 2
+		$Button.mouse_filter = 2
 		#$TutorialBox.show()
 
 
@@ -146,7 +146,33 @@ func _on_yip_unhovered() -> void:
 	tooltip.request_hide()
 	CursorManager.reset()
 	focused_yip = null
-		
+
+func _unhandled_input(event):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if tooltip.visible and tooltip._mouse_over_tooltip():
+			return
+		if focused_yip:
+			print('buy yip', focused_yip)
+			buy_yip(focused_yip)
+
+func buy_yip(yip_bought: Yipee) -> void:
+	#print(yip_cost, '<- price')
+	#spend_coins(yip_cost)
+	CursorManager.reset()
+	SignalBus.yip_inventory.append(yip_bought.data)
+	SignalBus.field_stock.erase(yip_bought.data)
+	all_yips.erase(yip_bought)
+	#SignalBus.yip_party[1] = yip_bought.data
+	#var empty_slot = check_empty_party()
+	#if empty_slot > 0:
+		#SignalBus.yip_party[empty_slot] = yip_bought.data
+		#yip_bought.data.yip_party_slot = 6 - empty_slot
+	yip_bought.queue_free()
+	#tooltip.hide()
+	tooltip.hide()
+	print(SignalBus.yip_inventory)
+	SignalBus.first_yip_bought = true
+
 func spawn_yip(data: YipeeData, index : int) -> Yipee:
 	var new_yip := preload("res://World/yipee/yipee.tscn").instantiate() as Yipee
 	new_yip.data = data
