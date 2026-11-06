@@ -348,3 +348,7 @@ func get_random_point_in_area() -> Vector2:
 
 func _exit_tree() -> void:
 	CursorManager.reset()
+
+
+func _on_farm_button_pressed() -> void:
+	SignalBus.go_to.emit(SignalBus.Locations.FARM)
