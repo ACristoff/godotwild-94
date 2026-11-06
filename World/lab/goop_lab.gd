@@ -166,7 +166,8 @@ func shred_yip(yip: Yipee):
 	SignalBus.yip_inventory.erase(yip.data)
 	#yip.queue_free()
 	#TODO: do a random yip death sound
-	stop_conveyor()
+	if conveyor_has_yip.size() == 0:
+		stop_conveyor()
 	conveyor_has_yip.erase(yip)
 
 func calculate_value(allele: Allele):
