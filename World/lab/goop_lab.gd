@@ -117,6 +117,9 @@ func screen_yip():
 				allele_icon.texture = load(SLOT_ICONS[allele.slot])
 				allele_bg.color = SLOT_COLORS[allele.slot]
 				allele_button.disabled = false
+				if allele.tier > 1:
+					print('greater than')
+					row.change_tick(allele.tier * 3)
 		else:
 			allele_name.text = "Empty"
 			allele_level.text = "Lvl 0"

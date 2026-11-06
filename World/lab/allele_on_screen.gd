@@ -42,7 +42,7 @@ func _on_add_goop_pressed() -> void:
 		add_tick()
 		await get_tree().create_timer(.5).timeout
 		reset_ticks()
-	
+
 func reset_ticks():
 	if current_tick_level == max_tick_level:
 		level_label.text = "MAX"
