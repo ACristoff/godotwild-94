@@ -98,11 +98,10 @@ func display(yip: Yipee) -> void:
 	cooldown_label.text = "%.1f" % data.get_cooldown()
 	
 	var container = strand_pips_container.get_children()
-	for i in range(7):
+	for i in range(8):
 		var new_pip: AlllelePip = container[i]
 		var new_strand: Strand = data.helix.strands[i]
 		new_pip.set_strand(new_strand)
-		prints(new_pip, new_strand, "bing bing")
 	
 	var pips := {}
 	var atk := roundi(data.get_attack())

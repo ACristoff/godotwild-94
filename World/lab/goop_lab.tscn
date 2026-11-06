@@ -2360,6 +2360,7 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_pm1ho")
 
 [node name="DebugData" type="Label" parent="." unique_id=1513310404]
+visible = false
 offset_left = 808.0
 offset_top = 143.0
 offset_right = 907.0

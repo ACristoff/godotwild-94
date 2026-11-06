@@ -60,8 +60,14 @@ var slot_yips: Dictionary[int, Yipee] = {
 func _ready():
 	for child in team_slot_conatiner.get_children():
 		team_slots.append(child)
-	for yip in debug_yips:
-		spawn_yip(yip)
+	if SignalBus.debug_mode == true:
+		$DebugData.visible = true
+		for yip in debug_yips:
+			spawn_yip(yip)
+	else:
+		for yip in SignalBus.yip_inventory:
+			spawn_yip(yip)
+		pass
 	for vat in vat_container.get_children():
 		vats[vat.type] = vat
 	#update_goop("health", 2)
@@ -103,12 +109,17 @@ func screen_yip():
 	var data: YipeeData = yip_on_pedestal.data
 	var index := 0
 	for row in $ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay.get_children():
-		var new_allele = null
 		var allele_name = row.get_node("AlleleBG/NameBox/MarginContainer/AlleleName")
 		var allele_level = row.get_node("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer/AlleleLevel")
 		var allele_icon = row.get_node("AlleleBG/NameBox/MarginContainer4/Box/AlleleTypeTexture")
 		var allele_bg = row.get_node("AlleleBG")
 		var allele_button = row.get_node("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8/AddGoop")
+		allele_name.text = "Empty"
+		allele_level.text = "Lvl 0"
+		allele_icon.texture = load("res://UI/Textures/ui_effecticons/null_icon.png")
+		allele_bg.color = Color(0.3, 0.3, 0.3, 1.0)
+		allele_button.disabled = true
+		
 		if data.helix.strands[index] != null:
 			if data.helix.strands[index].left != null:
 				var allele : Allele = data.helix.strands[index].left
@@ -127,9 +138,8 @@ func screen_yip():
 			allele_bg.color = Color(0.3, 0.3, 0.3, 1.0)
 			allele_button.disabled = true
 		index += 1
-		
-		
-	
+
+
 
 func _process(delta):
 	#prints(conveyor_has_yip)
@@ -152,26 +162,41 @@ func shred_yip(yip: Yipee):
 	#take yips gene goop and add it to inventory
 	print(yip.data.helix.strands)
 	for strand in yip.data.helix.strands:
-		if strand != null:
-			var strand_type = BodyMap.Slot.find_key(strand.slot) 
-			var left_value = 0
-			var right_value = 0
-			prints(strand.left, strand.right, strand_type)
-			if strand.left:
-				left_value += calculate_value(strand.left)
-			if strand.right:
-				right_value += calculate_value(strand.right)
-			var total = left_value + right_value
-			update_goop(strand_type, total)
-			spawn_stars(strand_type, total)
-		pass
+		if strand == null:
+			continue
+		var strand_type = BodyMap.Slot.find_key(strand.slot)
+		if not SignalBus.goop_inventory.has(strand_type):
+			continue
+		var left_value = 0
+		var right_value = 0
+		prints(strand.left, strand.right, strand_type)
+		if strand.left:
+			left_value += calculate_value(strand.left)
+		if strand.right:
+			right_value += calculate_value(strand.right)
+		var total = left_value + right_value
+		update_goop(strand_type, total)
+		spawn_stars(strand_type, total)
 	#shred yip here, remove from player and kill
-	SignalBus.yip_inventory.erase(yip.data)
+	#SignalBus.yip_inventory.erase(yip.data)
+	delete_yip(yip.data)
 	#yip.queue_free()
 	#TODO: do a random yip death sound
+	conveyor_has_yip.erase(yip)
 	if conveyor_has_yip.size() == 0:
 		stop_conveyor()
-	conveyor_has_yip.erase(yip)
+
+func delete_yip(data: YipeeData) -> void:
+	SignalBus.yip_inventory.erase(data)
+	for key in SignalBus.yip_party:
+		if SignalBus.yip_party[key] == data:
+			SignalBus.yip_party[key] = null
+	for key in SignalBus.yip_breed_barn:
+		if SignalBus.yip_breed_barn[key] == data:
+			SignalBus.yip_breed_barn[key] = null
+	data.yip_party_slot = 0
+	data.yip_barn_slot = 0
+
 
 func calculate_value(allele: Allele):
 	var tier = allele.tier
@@ -234,9 +259,10 @@ func spawn_yip(data: YipeeData) -> Yipee:
 	yip.yip_hovered.connect(_on_yip_hovered)
 	yip.yip_unhovered.connect(_on_yip_unhovered)
 	
-	if yip.data.yip_party_slot != 0:
-		#yip.global_position = team_slots[yip.data.yip_party_slot - 1].global_position
-		#yip_lab_party_position[yip.data.yip_party_slot] = yip
+	var party_slot : int = yip.data.yip_party_slot
+	if party_slot != 0 and party_slot <= team_slots.size():
+		yip.global_position = team_slots[party_slot - 1].global_position
+		slot_yips[party_slot] = yip
 		yip.animation_player.play(&"IdleNormal")
 	else:
 		yip.global_position = get_random_point_in_area()
@@ -262,7 +288,7 @@ func place_yip(yip: Yipee, slot_number: int) -> void:
 	
 	if displaced != null and displaced != yip:
 		displaced.data.yip_party_slot = 0
-		displaced.global_position = displaced.data.farm_last_known_position
+		displaced.global_position = get_random_point_in_area()
 	
 		for key in SignalBus.yip_party.keys():
 			if SignalBus.yip_party[key] == displaced.data:
@@ -271,6 +297,10 @@ func place_yip(yip: Yipee, slot_number: int) -> void:
 	# Place the new yip.
 	slot_yips[slot_number] = yip
 	yip.data.yip_party_slot = slot_number
+	#yip.data.yip_barn_slot = 0
+	for key in SignalBus.yip_breed_barn.keys():
+		if SignalBus.yip_breed_barn[key] == yip.data:
+			SignalBus.yip_breed_barn[key] = null
 	yip.data.yip_barn_slot = 0
 	yip.global_position = team_slots[slot_number - 1].global_position
 	
