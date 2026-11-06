@@ -80,6 +80,7 @@ func _input(event: InputEvent) -> void:
 				if focused_yip:
 					dragged_yip = focused_yip
 					drag_offset = dragged_yip.global_position - get_global_mouse_position()
+					_refresh_cursor()
 			else:
 				if dragged_yip:
 					print('dropped yip')
@@ -89,17 +90,15 @@ func _input(event: InputEvent) -> void:
 							print('dropped yip on area')
 							place_yip(dragged_yip, i + 1)
 							break
-					
 					if conveyor_area.overlaps_area(dragged_yip.farmslot) && !conveyor_has_yip.has(dragged_yip):
 						print('on conveyor')
 						conveyor_has_yip.append(dragged_yip)
-					
 					if pedestal_area.overlaps_area(dragged_yip.farmslot):
 						print('on pedestal')
 						yip_on_pedestal = dragged_yip
 						screen_yip()
-					
 					dragged_yip = null
+					_refresh_cursor()
 	
 	elif event is InputEventMouseMotion:
 		if dragged_yip:
@@ -155,6 +154,10 @@ func _process(delta):
 
 func shred_yip(yip: Yipee):
 	prints(yip, 'TIME TO SHRED')
+	if focused_yip == yip:
+		focused_yip = null
+		tooltip.hide()
+		_refresh_cursor()
 	#do yip animation and effects here
 	yip.grind_pos = $Mulcher/ShredderSprite
 	yip.shred()
@@ -314,12 +317,20 @@ func _on_yip_hovered(yip: Yipee) -> void:
 	if !dragged_yip:
 		tooltip.display_beside(yip)
 		focused_yip = yip
-		#_refresh_cursor()
+		_refresh_cursor()
 
 func _on_yip_unhovered() -> void:
 	tooltip.hide()
 	focused_yip = null
-	pass
+	_refresh_cursor()
+
+func _refresh_cursor() -> void:
+	if dragged_yip != null:
+		CursorManager.use(CursorManager.Pointers.CURSOR_GRABBED)
+	elif focused_yip != null:
+		CursorManager.use(CursorManager.Pointers.CURSOR_GRABBABLE)
+	else:
+		CursorManager.reset()
 
 func get_random_point_in_area() -> Vector2:
 	# Array to store each collision shape
@@ -334,3 +345,6 @@ func get_random_point_in_area() -> Vector2:
 	var random_point_in_grazing_area : Vector2 = Vector2(randf_range(-extents.x, extents.x), randf_range(-extents.y, extents.y))
 	
 	return grazing_spot.to_global(random_point_in_grazing_area)
+
+func _exit_tree() -> void:
+	CursorManager.reset()
