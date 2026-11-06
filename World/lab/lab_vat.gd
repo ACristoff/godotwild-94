@@ -15,7 +15,10 @@ const SLOT_COLORS := {
 }
 
 func spawn_goop(amnt):
+	var slot = BodyMap.Slot.get(type, BodyMap.Slot.NONE)
+	var color := Color(SLOT_COLORS[slot])
 	for i in amnt:
 		var goop_spawn = goop.instantiate()
 		$LabVatMaskSpawn.add_child(goop_spawn)
+		goop_spawn.color = color
 		await get_tree().create_timer(0.06).timeout

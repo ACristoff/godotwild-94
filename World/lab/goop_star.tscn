@@ -57,7 +57,7 @@ script = ExtResource("1_yv37b")
 speed = 150.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=309476167]
-modulate = Color(1, 0, 0, 1)
+self_modulate = Color(1.5598607, 1.5598607, 1.5598607, 1)
 position = Vector2(-1.7881393e-07, -1)
 scale = Vector2(0.12499999, 0.12499999)
 texture = SubResource("GradientTexture2D_yv37b")

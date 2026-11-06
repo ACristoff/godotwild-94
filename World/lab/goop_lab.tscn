@@ -316,10 +316,11 @@ BG_color_rect = NodePath("AlleleBG")
 tick_rect = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect")
 
 [node name="AlleleBG" type="ColorRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1" unique_id=479811442]
+self_modulate = Color(1, 1, 1, 0.12941177)
 custom_minimum_size = Vector2(474.62, 63.305)
 layout_mode = 2
 mouse_filter = 2
-color = Color(0.82, 0, 0, 0.12941177)
+color = Color(0.81960785, 0, 0, 0.12941177)
 
 [node name="NameBox" type="VBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG" unique_id=2026070792]
 layout_mode = 0
@@ -553,6 +554,7 @@ BG_color_rect = NodePath("AlleleBG")
 tick_rect = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect")
 
 [node name="AlleleBG" type="ColorRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2" unique_id=210398275]
+self_modulate = Color(1, 1, 1, 0.12941177)
 custom_minimum_size = Vector2(474.62, 63.305)
 layout_mode = 2
 mouse_filter = 2
@@ -790,6 +792,7 @@ BG_color_rect = NodePath("AlleleBG")
 tick_rect = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect")
 
 [node name="AlleleBG" type="ColorRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3" unique_id=850994748]
+self_modulate = Color(1, 1, 1, 0.12941177)
 custom_minimum_size = Vector2(474.62, 63.305)
 layout_mode = 2
 mouse_filter = 2
@@ -1027,6 +1030,7 @@ BG_color_rect = NodePath("AlleleBG")
 tick_rect = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect")
 
 [node name="AlleleBG" type="ColorRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4" unique_id=1701067816]
+self_modulate = Color(1, 1, 1, 0.12941177)
 custom_minimum_size = Vector2(474.62, 63.305)
 layout_mode = 2
 mouse_filter = 2
@@ -1264,6 +1268,7 @@ BG_color_rect = NodePath("AlleleBG")
 tick_rect = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect")
 
 [node name="AlleleBG" type="ColorRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5" unique_id=795555954]
+self_modulate = Color(1, 1, 1, 0.12941177)
 custom_minimum_size = Vector2(474.62, 63.305)
 layout_mode = 2
 mouse_filter = 2
@@ -1501,6 +1506,7 @@ BG_color_rect = NodePath("AlleleBG")
 tick_rect = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect")
 
 [node name="AlleleBG" type="ColorRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6" unique_id=1082267065]
+self_modulate = Color(1, 1, 1, 0.12941177)
 custom_minimum_size = Vector2(474.62, 63.305)
 layout_mode = 2
 mouse_filter = 2
@@ -1738,6 +1744,7 @@ BG_color_rect = NodePath("AlleleBG")
 tick_rect = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect")
 
 [node name="AlleleBG" type="ColorRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7" unique_id=614650532]
+self_modulate = Color(1, 1, 1, 0.12941177)
 custom_minimum_size = Vector2(474.62, 63.305)
 layout_mode = 2
 mouse_filter = 2
@@ -1975,6 +1982,7 @@ BG_color_rect = NodePath("AlleleBG")
 tick_rect = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect")
 
 [node name="AlleleBG" type="ColorRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8" unique_id=1107030092]
+self_modulate = Color(1, 1, 1, 0.12941177)
 custom_minimum_size = Vector2(474.62, 63.305)
 layout_mode = 2
 mouse_filter = 2
@@ -2366,36 +2374,6 @@ offset_right = 45.0
 offset_bottom = 62.0
 text = "Goop"
 
-[node name="LabVatAtk" parent="." unique_id=1037930385 instance=ExtResource("11_pm1ho")]
-position = Vector2(819, 108.00001)
-rotation = 1.5707964
-scale = Vector2(3, 3)
-
-[node name="LabVatHp" parent="." unique_id=976261634 instance=ExtResource("11_pm1ho")]
-position = Vector2(819, 314.99997)
-rotation = 1.5707964
-scale = Vector2(3, 3)
-
-[node name="LabVatHaste" parent="." unique_id=2146620219 instance=ExtResource("11_pm1ho")]
-position = Vector2(819, 523.00006)
-rotation = 1.5707964
-scale = Vector2(3, 3)
-
-[node name="LabVatHpAug" parent="." unique_id=462397222 instance=ExtResource("11_pm1ho")]
-position = Vector2(1106, 315)
-rotation = 1.5707964
-scale = Vector2(3, -3)
-
-[node name="LabVatAtkAug" parent="." unique_id=1776217255 instance=ExtResource("11_pm1ho")]
-position = Vector2(1106, 108)
-rotation = 1.5707964
-scale = Vector2(3, -3)
-
-[node name="LabVatBreed" parent="." unique_id=717030181 instance=ExtResource("11_pm1ho")]
-position = Vector2(1106, 523.00006)
-rotation = 1.5707964
-scale = Vector2(3, -3)
-
 [node name="VatIcons" type="Node2D" parent="." unique_id=1358472908]
 position = Vector2(676, 169)
 rotation = -1.5707964
@@ -2447,6 +2425,44 @@ position = Vector2(-356.00003, 550)
 rotation = 1.5707964
 scale = Vector2(8, 8)
 texture = ExtResource("17_6mjui")
+
+[node name="Vats" type="Node2D" parent="." unique_id=37485910]
+
+[node name="LabVatAtk" parent="Vats" unique_id=1037930385 instance=ExtResource("11_pm1ho")]
+position = Vector2(819, 108.00001)
+rotation = 1.5707964
+scale = Vector2(3, 3)
+type = "ATTACK"
+
+[node name="LabVatHp" parent="Vats" unique_id=976261634 instance=ExtResource("11_pm1ho")]
+position = Vector2(819, 314.99997)
+rotation = 1.5707964
+scale = Vector2(3, 3)
+type = "HEALTH"
+
+[node name="LabVatHaste" parent="Vats" unique_id=2146620219 instance=ExtResource("11_pm1ho")]
+position = Vector2(819, 523.00006)
+rotation = 1.5707964
+scale = Vector2(3, 3)
+type = "COOLDOWN"
+
+[node name="LabVatHpAug" parent="Vats" unique_id=462397222 instance=ExtResource("11_pm1ho")]
+position = Vector2(1106, 315)
+rotation = 1.5707964
+scale = Vector2(3, -3)
+type = "HEALTH_AUGMENT"
+
+[node name="LabVatAtkAug" parent="Vats" unique_id=1776217255 instance=ExtResource("11_pm1ho")]
+position = Vector2(1106, 108)
+rotation = 1.5707964
+scale = Vector2(3, -3)
+type = "ATTACK_AUGMENT"
+
+[node name="LabVatBreed" parent="Vats" unique_id=717030181 instance=ExtResource("11_pm1ho")]
+position = Vector2(1106, 523.00006)
+rotation = 1.5707964
+scale = Vector2(3, -3)
+type = "BREED_AUGMENT"
 
 [connection signal="pressed" from="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8/AddGoop" to="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1" method="_on_add_goop_pressed"]
 [connection signal="pressed" from="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8/AddGoop" to="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2" method="_on_add_goop_pressed"]

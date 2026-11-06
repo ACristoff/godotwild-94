@@ -1,5 +1,10 @@
 extends Node2D
 
+var current_strand: Strand
+
+@onready var vat_container = $Vats
+var vats: Dictionary[String, Node2D] = {}
+
 @onready var tooltip: Toolyip = $TooltipCanvas/YipToolyip
 @onready var conveyor_animation = $Mulcher/ConveyorAnimation
 @onready var shredder_animation = $Mulcher/ShredderAnimation
@@ -19,6 +24,26 @@ var team_slots: Array[Area2D] = []
 var conveyor_has_yip: Array[Yipee] = []
 var yip_on_pedestal: Yipee = null
 
+const SLOT_COLORS := {
+	BodyMap.Slot.HEALTH:         "779422",
+	BodyMap.Slot.HEALTH_AUGMENT: "0eb56d",
+	BodyMap.Slot.ATTACK:         "9c2424",
+	BodyMap.Slot.ATTACK_AUGMENT: "d14830",
+	BodyMap.Slot.COOLDOWN:       "5662cc",
+	BodyMap.Slot.SPECIALIZATION: "cc4bae",
+	BodyMap.Slot.BREED_AUGMENT:  "784bcc",
+	BodyMap.Slot.NONE:           "3d3d3d",
+}
+const SLOT_ICONS := {
+	BodyMap.Slot.HEALTH:         "res://UI/Textures/ui_effecticons/heal_icon.png",
+	BodyMap.Slot.HEALTH_AUGMENT: "res://UI/Textures/ui_effecticons/heal_aug.png",
+	BodyMap.Slot.ATTACK:         "res://UI/Textures/ui_effecticons/attack_icon.png",
+	BodyMap.Slot.ATTACK_AUGMENT: "res://UI/Textures/ui_effecticons/attack_aug_icon.png",
+	BodyMap.Slot.COOLDOWN:       "res://UI/Textures/ui_effecticons/haste_icon.png",
+	BodyMap.Slot.SPECIALIZATION: "res://UI/Textures/ui_effecticons/null_icon.png",
+	BodyMap.Slot.BREED_AUGMENT:  "res://UI/Textures/ui_effecticons/breed_icon.png",
+	BodyMap.Slot.NONE:           "res://UI/Textures/ui_effecticons/null_icon.png",
+}
 var slot_yips: Dictionary[int, Yipee] = {
 	1: null,
 	2: null,
@@ -37,6 +62,8 @@ func _ready():
 		team_slots.append(child)
 	for yip in debug_yips:
 		spawn_yip(yip)
+	for vat in vat_container.get_children():
+		vats[vat.type] = vat
 	#update_goop("health", 2)
 	#prints(team_slots)
 
@@ -64,12 +91,42 @@ func _input(event: InputEvent) -> void:
 					if pedestal_area.overlaps_area(dragged_yip.farmslot):
 						print('on pedestal')
 						yip_on_pedestal = dragged_yip
+						screen_yip()
 					
 					dragged_yip = null
 	
 	elif event is InputEventMouseMotion:
 		if dragged_yip:
 			dragged_yip.global_position = get_global_mouse_position() + drag_offset
+
+func screen_yip():
+	var data: YipeeData = yip_on_pedestal.data
+	var index := 0
+	for row in $ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay.get_children():
+		var new_allele = null
+		var allele_name = row.get_node("AlleleBG/NameBox/MarginContainer/AlleleName")
+		var allele_level = row.get_node("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer/AlleleLevel")
+		var allele_icon = row.get_node("AlleleBG/NameBox/MarginContainer4/Box/AlleleTypeTexture")
+		var allele_bg = row.get_node("AlleleBG")
+		var allele_button = row.get_node("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8/AddGoop")
+		if data.helix.strands[index] != null:
+			if data.helix.strands[index].left != null:
+				var allele : Allele = data.helix.strands[index].left
+				allele_name.text = str(allele.allele_name)
+				allele_level.text = str("Lvl ", allele.tier)
+				allele_icon.texture = load(SLOT_ICONS[allele.slot])
+				allele_bg.color = SLOT_COLORS[allele.slot]
+				allele_button.disabled = false
+		else:
+			allele_name.text = "Empty"
+			allele_level.text = "Lvl 0"
+			allele_icon.texture = load("res://UI/Textures/ui_effecticons/null_icon.png")
+			allele_bg.color = Color(0.3, 0.3, 0.3, 1.0)
+			allele_button.disabled = true
+		index += 1
+		
+		
+	
 
 func _process(delta):
 	#prints(conveyor_has_yip)
@@ -103,6 +160,7 @@ func shred_yip(yip: Yipee):
 				right_value += calculate_value(strand.right)
 			var total = left_value + right_value
 			update_goop(strand_type, total)
+			spawn_stars(strand_type, total)
 		pass
 	#shred yip here, remove from player and kill
 	SignalBus.yip_inventory.erase(yip.data)
@@ -150,10 +208,16 @@ func update_goop(new_goop: String, goop_number: int):
 	SignalBus.goop_inventory[new_goop] += goop_number
 	
 	debug_goop.text += "\n %s : %s" % [new_goop, SignalBus.goop_inventory[new_goop]]
-	pass
+	
 
 #endregion
-
+func spawn_stars(slot_key: String, amount: int) -> void:
+	if not vats.has(slot_key):
+		push_warning("No vat for key '%s'. Have: %s" % [slot_key, vats.keys()])
+		return
+	var vat: Node2D = vats[slot_key]
+	vat.spawn_goop(amount)
+		
 #region pen
 
 func spawn_yip(data: YipeeData) -> Yipee:
@@ -205,7 +269,6 @@ func place_yip(yip: Yipee, slot_number: int) -> void:
 	yip.data.yip_party_slot = slot_number
 	yip.data.yip_barn_slot = 0
 	yip.global_position = team_slots[slot_number - 1].global_position
-	
 	
 	# Update global party (visual slot 1 maps to party slot 5).
 	SignalBus.yip_party[6 - slot_number] = yip.data
