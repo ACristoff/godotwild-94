@@ -519,7 +519,8 @@ func _on_area_2d_mouse_exited() -> void:
 
 func _on_lab_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		SignalBus.go_to.emit(SignalBus.Locations.LAB)
+		#SignalBus.go_to.emit(SignalBus.Locations.LAB)
+		SignalBus.go_to.emit(SignalBus.Locations.LAB2)
 
 func _on_team_slots_next() -> void:
 	SignalBus.party_slot_tutorial_clicked = true

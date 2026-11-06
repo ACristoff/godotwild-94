@@ -11,6 +11,7 @@ const location_dictionary = {
 	SignalBus.Locations.TUTO: preload("res://UI/Scenes/start_cutscene.tscn"),
 	SignalBus.Locations.FIELD: preload("res://World/field/field.tscn"),
 	SignalBus.Locations.LAB: preload("res://World/lab/lab.tscn"),
+	SignalBus.Locations.LAB2: preload("res://World/lab/goop_lab.tscn"),
 	SignalBus.Locations.BATTLE: preload("res://World/battle/battle.tscn"),
 	SignalBus.Locations.WIN_LOSE: preload("res://UI/Scenes/win_lose_screen.tscn")
 }
@@ -21,6 +22,7 @@ const music = {
 	SignalBus.Locations.TUTO: preload("res://Assets/Audio/Music/Learning the Ropes.mp3"),
 	SignalBus.Locations.FIELD: preload("res://Assets/Audio/Music/Yippee!.mp3"),
 	SignalBus.Locations.LAB: preload("res://Assets/Audio/Music/YIP_LAB.mp3"),
+	SignalBus.Locations.LAB2: preload("res://Assets/Audio/Music/YIP_LAB.mp3"),
 	SignalBus.Locations.BATTLE: preload("res://Assets/Audio/Music/YIP_BATTLE.mp3"),
 	SignalBus.Locations.WIN_LOSE: null
 }

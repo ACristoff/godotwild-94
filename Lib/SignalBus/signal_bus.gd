@@ -49,7 +49,7 @@ var goop_inventory : Dictionary = {
 }
 
 var coins: int = 12
-enum Locations {TUTO, NAME, FARM, FIELD, LAB, BATTLE, WIN_LOSE }
+enum Locations {TUTO, NAME, FARM, FIELD, LAB, LAB2, BATTLE, WIN_LOSE }
 var game_started: bool = false
 
 var current_health = 3
@@ -82,6 +82,8 @@ signal go_to(new_area: Locations)
 signal opening_scene_finished
 
 signal day_finished
+
+signal gene_levelled_up(yip: Yipee, gene: Allele)
 
 ## Wipe all run progress back to defaults for a fresh game. Leaves settings
 ## (permadeath, debug_mode) alone.
