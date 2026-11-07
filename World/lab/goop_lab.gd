@@ -118,6 +118,7 @@ func screen_yip():
 		allele_icon.texture = load("res://UI/Textures/ui_effecticons/null_icon.png")
 		allele_bg.color = Color(0.3, 0.3, 0.3, 1.0)
 		allele_button.disabled = true
+		row.type = null
 		
 		if data.helix.strands[index] != null:
 			if data.helix.strands[index].left != null:
@@ -127,6 +128,7 @@ func screen_yip():
 				allele_icon.texture = load(SLOT_ICONS[allele.slot])
 				allele_bg.color = SLOT_COLORS[allele.slot]
 				allele_button.disabled = false
+				row.type = data.helix.strands[index].slot
 				if allele.tier > 1:
 					print('greater than')
 					row.change_tick(allele.tier * 3)

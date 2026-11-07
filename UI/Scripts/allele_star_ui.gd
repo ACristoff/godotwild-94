@@ -60,7 +60,8 @@ func _ready() -> void:
 	focus_r = find_child("DnaFocusLight_R", true, false)
 	focus_l.hide()
 	focus_r.hide()
-func _process(delta: float) -> void:
+
+func _process(_delta: float) -> void:
 	if rotate_dir:
 		focus_l.rotation_degrees += rotate_speed
 		focus_r.rotation_degrees += rotate_speed

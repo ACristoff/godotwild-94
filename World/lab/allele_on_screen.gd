@@ -9,6 +9,7 @@ extends MarginContainer
 var current_tick_level : int = 3
 var max_tick_level : int = 9
 var ticked : int = 0
+var type
 var clamped : int
 var leveling_up : bool = false
 
@@ -30,6 +31,7 @@ func change_tick(amnt):
 func add_tick():
 	for i in ticked:
 		tick_rect.get_child(i).draw_center = true
+		SignalBus.spent_goop.emit(type)
 	
 func _on_add_goop_pressed() -> void:
 	if leveling_up:

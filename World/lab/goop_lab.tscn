@@ -172,7 +172,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_egti4"]
-size = Vector2(681, 189.5)
+size = Vector2(697.5, 189.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gluje"]
 size = Vector2(311, 209)
@@ -2277,7 +2277,7 @@ collision_layer = 192
 collision_mask = 192
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mulcher/ConveyorArea" unique_id=1281484983]
-position = Vector2(464, 767)
+position = Vector2(455.75, 767)
 shape = SubResource("RectangleShape2D_egti4")
 
 [node name="ShreddingZone" type="Area2D" parent="Mulcher" unique_id=427746511]

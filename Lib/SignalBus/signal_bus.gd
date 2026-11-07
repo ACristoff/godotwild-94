@@ -85,6 +85,8 @@ signal day_finished
 
 signal gene_levelled_up(yip: Yipee, gene: Allele)
 
+signal spent_goop(type)
+
 ## Wipe all run progress back to defaults for a fresh game. Leaves settings
 ## (permadeath, debug_mode) alone.
 func reset_run() -> void:

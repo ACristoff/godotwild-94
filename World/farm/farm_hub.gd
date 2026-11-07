@@ -7,6 +7,7 @@ var all_yips:  Array[Yipee] = []
 
 var focused_yip: Yipee = null
 var dragged_yip: Yipee = null
+var lab_hovered: bool = false
 var drag_offset : Vector2 = Vector2.ZERO
 
 @onready var coin_label: Label = $CanvasLayer/Control/HBoxContainer/MarginContainer2/CoinLabel
@@ -93,6 +94,7 @@ func _exit_tree() -> void:
 	for yip_data in SignalBus.yip_inventory:
 		yip_data.can_be_grabbed = false
 	resserved_spots = []
+	CursorManager.reset()
 
 func _input(event : InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -513,9 +515,13 @@ func _on_yip_unhovered() -> void:
 
 func _on_area_2d_mouse_entered() -> void:
 	$LabDoor2.play("DoorOpen")
+	lab_hovered = true
+	_refresh_cursor()
 
 func _on_area_2d_mouse_exited() -> void:
 	$LabDoor2.play("DoorClose")
+	lab_hovered = false
+	_refresh_cursor()
 
 func _on_lab_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -540,7 +546,7 @@ func _refresh_cursor() -> void:
 		CursorManager.use(CursorManager.Pointers.CURSOR_GRABBED)
 	elif focused_yip != null:
 		CursorManager.use(CursorManager.Pointers.CURSOR_GRABBABLE)
+	elif lab_hovered:
+		CursorManager.use(CursorManager.Pointers.CURSOR_DNA)
 	else:
 		CursorManager.reset()
-		
-		
