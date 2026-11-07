@@ -58,6 +58,7 @@ var slot_yips: Dictionary[int, Yipee] = {
 #region built-in-functions
 
 func _ready():
+	SignalBus.spent_goop.connect(_on_goop_spent)
 	for child in team_slot_conatiner.get_children():
 		team_slots.append(child)
 	if SignalBus.debug_mode == true:
@@ -128,10 +129,9 @@ func screen_yip():
 				allele_icon.texture = load(SLOT_ICONS[allele.slot])
 				allele_bg.color = SLOT_COLORS[allele.slot]
 				allele_button.disabled = false
-				row.type = data.helix.strands[index].slot
 				if allele.tier > 1:
-					print('greater than')
 					row.change_tick(allele.tier * 3)
+				row.type = data.helix.strands[index].slot
 		else:
 			allele_name.text = "Empty"
 			allele_level.text = "Lvl 0"
@@ -325,6 +325,23 @@ func _on_yip_unhovered() -> void:
 	tooltip2.hide()
 	focused_yip = null
 	_refresh_cursor()
+
+#enum Slot {
+	#HEALTH,
+	#HEALTH_AUGMENT,
+	#ATTACK,
+	#ATTACK_AUGMENT,
+	#COOLDOWN,
+	#SPECIALIZATION,
+	#BREED_AUGMENT,
+	#NONE
+#}
+
+func _on_goop_spent(type: BodyMap.Slot):
+	print('goop spent of type:', BodyMap.Slot.keys()[type])
+	var type_slot = BodyMap.Slot.keys()[type]
+	SignalBus.goop_inventory[type_slot] -= 1
+	print('goop leftover:', SignalBus.goop_inventory[type_slot], )
 
 func _refresh_cursor() -> void:
 	if dragged_yip != null:

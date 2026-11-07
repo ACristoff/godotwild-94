@@ -31,10 +31,13 @@ func change_tick(amnt):
 func add_tick():
 	for i in ticked:
 		tick_rect.get_child(i).draw_center = true
-		SignalBus.spent_goop.emit(type)
-	
+
 func _on_add_goop_pressed() -> void:
 	if leveling_up:
+		return
+	var type_slot = BodyMap.Slot.keys()[type]
+	
+	if SignalBus.goop_inventory[type_slot] == 0:
 		return
 	ticked += 1
 	if ticked < clamped:
@@ -44,6 +47,7 @@ func _on_add_goop_pressed() -> void:
 		add_tick()
 		await get_tree().create_timer(.5).timeout
 		reset_ticks()
+	SignalBus.spent_goop.emit(type)
 
 func reset_ticks():
 	if current_tick_level == max_tick_level:
