@@ -316,8 +316,15 @@ func sandstorm_tick(delta):
 				apply_damage(yip, sandstorm_damage)
 
 func _on_next_button_pressed() -> void:
+	_save_party_snapshot()
 	SignalBus.current_day += 1
 	_on_next()
+
+func _save_party_snapshot() -> void:
+	if SignalBus.debug_mode:
+		return
+	var won := check_for_victory() == Team.PLAYER
+	SnapshotStore.save_party(player_team_data, won, SignalBus.current_day)
 
 func _on_game_speed_button_pressed() -> void:
 	if battle_speed == 1:

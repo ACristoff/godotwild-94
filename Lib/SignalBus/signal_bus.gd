@@ -55,6 +55,8 @@ var game_started: bool = false
 var current_health = 3
 var current_wins = 0
 var current_day = 1
+var player_name: String = ""
+var player_portrait: String = ""
 var debug_mode: bool = false
 
 var victories: int = 0 
@@ -102,6 +104,7 @@ func reset_run() -> void:
 	current_health = 3
 	current_wins = 0
 	victories = 0
+	current_day = 1
 	game_started = false
 	field_generated_today = false
 	field_locked = false
