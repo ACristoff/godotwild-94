@@ -11,3 +11,4 @@ extends Resource
 @export var intro_timeline: DialogicTimeline
 @export var enemy_portait: Texture2D
 @export var enemy_color: Color
+var opponent_portrait: String = ""

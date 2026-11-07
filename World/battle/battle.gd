@@ -114,6 +114,8 @@ func _ready():
 func _play_intro() -> void:
 	if level and level.intro_animation:
 		var anim := level.intro_animation.instantiate()
+		if anim.has_method("setup"):
+			anim.setup(level)
 		add_child(anim)
 		anim.tree_exited.connect(_play_intro_timeline)
 	else:

@@ -119,5 +119,6 @@ static func dict_to_level(snapshot: Dictionary) -> Level:
 		return null
 	var level := Level.new()
 	level.level_name = str(snapshot.get("player_name", ""))
+	level.opponent_portrait = str(snapshot.get("player_portrait", ""))
 	level.enemy_team = enemy_team
 	return level

@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://684tj6krofje"]
+[gd_scene format=3 uid="uid://l6a0cips4cy8"]
 
-[ext_resource type="Script" uid="uid://da6q2ddnpbxsn" path="res://UI/Scripts/battle_clash.gd" id="1_omah1"]
+[ext_resource type="Script" uid="uid://br2qiyp1wfdsi" path="res://UI/Scripts/battle_clash_pvp.gd" id="1_i3feb"]
 [ext_resource type="Texture2D" uid="uid://w7j2mv3smk5a" path="res://UI/Menus/Main_Menu/Textures/VSwall.png" id="2_dqext"]
 [ext_resource type="Texture2D" uid="uid://p6ulevyqsv3g" path="res://UI/Menus/Main_Menu/Textures/Anon.png" id="3_vjmvs"]
 [ext_resource type="Texture2D" uid="uid://33t0bjb52yro" path="res://UI/Menus/Main_Menu/Textures/BattleFrame.png" id="4_xoegd"]
@@ -236,7 +236,7 @@ shader_parameter/inner_radius = 0.0
 shader_parameter/outer_radius = 2.59
 
 [node name="BattleClash" type="CanvasLayer" unique_id=1404525973]
-script = ExtResource("1_omah1")
+script = ExtResource("1_i3feb")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=733712090]
 anchors_preset = 15

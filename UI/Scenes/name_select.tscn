@@ -179,6 +179,7 @@ theme_override_fonts/font = ExtResource("3_6k118")
 theme_override_font_sizes/font_size = 55
 placeholder_text = "What Is Your Name?"
 alignment = 1
+max_length = 12
 
 [node name="MarginContainer2" type="MarginContainer" parent="." unique_id=2065184487]
 layout_mode = 1

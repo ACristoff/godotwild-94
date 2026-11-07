@@ -1,6 +1,7 @@
 class_name FightOrganizer extends Node
 
 @export var brackets: Array[Bracket] 
+@export var player_clash_scene: PackedScene
 
 func is_player_fight_day() -> bool:
 	return SignalBus.current_day % 2 == 0
@@ -9,6 +10,7 @@ func get_next_fight() -> Level:
 	if is_player_fight_day():
 		var player_fight := SnapshotStore.load_random_opponent(SignalBus.current_day - 1)
 		if player_fight != null:
+			player_fight.intro_animation = player_clash_scene
 			return player_fight
 	var current_wins = SignalBus.victories
 	var current_bracket = brackets[current_wins]
