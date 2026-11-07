@@ -37,7 +37,7 @@ var current_scene = null
 func _ready() -> void:
 	SignalBus.game_state_changed.connect(change_scene.bind())
 	print(Engine.get_version_info())
-	AudMan.play_music(preload("res://Assets/Audio/Music/YIP_PRESS_START.mp3"))
+	AudMan.play_music(preload("res://Assets/Audio/Sounds/YIP_START_AND_TUTORIAL.mp3"))
 	if debug_mode == true:
 		SignalBus.debug_mode = true
 		$Transitions/Splash.queue_free()

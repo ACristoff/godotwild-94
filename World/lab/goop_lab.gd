@@ -141,6 +141,7 @@ func _process(delta):
 #region shredder
 
 func shred_yip(yip: Yipee):
+	$Scream.play()
 	prints(yip, 'TIME TO SHRED')
 	if focused_yip == yip:
 		focused_yip = null
@@ -152,6 +153,12 @@ func shred_yip(yip: Yipee):
 	#TODO CALEB
 	#take yips gene goop and add it to inventory
 	print(yip.data.helix.strands)
+	if yip.data.age == 0:
+		$Scream.pitch_scale = 3.0
+		$Scream.play()
+	else:
+		$Scream.pitch_scale = 1.0
+		$Scream.play()
 	for strand in yip.data.helix.strands:
 		if strand == null:
 			continue
@@ -195,10 +202,12 @@ func calculate_value(allele: Allele):
 	return tier * rarity
 
 func stop_conveyor():
+	$Conveyor.stop()
 	shredder_animation.current_animation = "RESET"
 	conveyor_animation.current_animation = "RESET"
 
 func start_conveyor():
+	$Conveyor.play()
 	shredder_animation.current_animation = "shredder_on"
 	conveyor_animation.current_animation = "conveyor_on"
 
@@ -219,6 +228,7 @@ func _on_shredding_zone_area_entered(area: Area2D):
 	#if entered_yip == conveyor_has_yip:
 	if conveyor_has_yip.has(entered_yip):
 		shred_yip(entered_yip)
+		$Shredder.play()
 
 #endregion 
 

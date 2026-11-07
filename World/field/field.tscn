@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="8_lwms1"]
 [ext_resource type="Texture2D" uid="uid://ck0oxmum5r402" path="res://Assets/Environment/Scenes/CaptureField/UpgradeSign.png" id="10_rh655"]
 [ext_resource type="Texture2D" uid="uid://duipa70vx5fn3" path="res://UI/Menus/Main_Menu/Textures/SettingsButt.png" id="11_8ubfp"]
+[ext_resource type="AudioStream" uid="uid://c3m8hg78poppt" path="res://Assets/Audio/Sounds/BEARTRAP.wav" id="12_748j3"]
 [ext_resource type="PackedScene" uid="uid://dtmuxi5urpswf" path="res://UI/Scenes/yip_toolyip_refactor.tscn" id="12_ju3ud"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6l7jc"]
@@ -282,6 +283,9 @@ patch_margin_bottom = 10
 [node name="SettingsButt" type="Sprite2D" parent="SettingsButtonOver" unique_id=237522819]
 position = Vector2(15, 15)
 texture = ExtResource("11_8ubfp")
+
+[node name="BearTrap" type="AudioStreamPlayer2D" parent="." unique_id=1162267094]
+stream = ExtResource("12_748j3")
 
 [connection signal="button_down" from="RefreshButton" to="RefreshButton" method="_on_button_down"]
 [connection signal="button_up" from="RefreshButton" to="RefreshButton" method="_on_button_up"]

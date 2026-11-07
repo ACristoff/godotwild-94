@@ -18,7 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://cwa1u5a3a102e" path="res://World/lab/lab_vat.tscn" id="11_pm1ho"]
 [ext_resource type="Texture2D" uid="uid://dmgp5jtp8bdn" path="res://UI/Textures/ui_effecticons/attack_icon.png" id="12_e1p4a"]
 [ext_resource type="Texture2D" uid="uid://bn2wd1q4dbcyq" path="res://UI/Textures/ui_effecticons/attack_aug_icon.png" id="13_0dqea"]
-[ext_resource type="Shader" uid="uid://dxr5ye6n0jskt" path="res://Assets/Shaders/splatter.gdshader" id="14_5nv62"]
 [ext_resource type="Texture2D" uid="uid://cxolh4gq1arao" path="res://UI/Textures/ui_effecticons/heal_aug.png" id="14_6mjui"]
 [ext_resource type="Texture2D" uid="uid://b35ibq1gpa462" path="res://UI/Textures/ui_effecticons/heal_icon.png" id="15_bsd1w"]
 [ext_resource type="Texture2D" uid="uid://bposp1c5xwmot" path="res://UI/Textures/ui_effecticons/haste_icon.png" id="16_pduhj"]
@@ -26,6 +25,15 @@
 [ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="24_0n2oi"]
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="25_vk4kp"]
 [ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="26_ff60u"]
+[ext_resource type="AudioStream" uid="uid://fo5jojpeaawm" path="res://Assets/Audio/Sounds/Conveyor_Loop (1).mp3" id="26_vk4kp"]
+[ext_resource type="AudioStream" uid="uid://b3ek1jf6iuvo5" path="res://Assets/Audio/Sounds/GRIND.mp3" id="27_ff60u"]
+[ext_resource type="AudioStream" uid="uid://bxmwbbe4br05o" path="res://Assets/Audio/Sounds/Scream1.mp3" id="28_a8jsx"]
+[ext_resource type="AudioStream" uid="uid://bgt0iktuoompe" path="res://Assets/Audio/Sounds/Scream2.mp3" id="29_6svup"]
+[ext_resource type="AudioStream" uid="uid://bbcb8dvmih7au" path="res://Assets/Audio/Sounds/Scream3.mp3" id="30_kwt80"]
+[ext_resource type="AudioStream" uid="uid://cxgn2yn4xy0kv" path="res://Assets/Audio/Sounds/Scream4.mp3" id="31_wffdq"]
+[ext_resource type="AudioStream" uid="uid://cyrmc6n6i6n24" path="res://Assets/Audio/Sounds/Scream5.mp3" id="32_3ntt4"]
+[ext_resource type="AudioStream" uid="uid://cy7nuwvtmeku5" path="res://Assets/Audio/Sounds/Scream6.mp3" id="33_y2557"]
+[ext_resource type="AudioStream" uid="uid://klh4s0nhk4kc" path="res://Assets/Audio/Sounds/Scream7.mp3" id="34_acjve"]
 
 [sub_resource type="Resource" id="Resource_ff60u"]
 script = ExtResource("5_0n2oi")
@@ -96,26 +104,6 @@ shader_parameter/roll_speed = 0.1
 shader_parameter/roll_strength = 0.15
 shader_parameter/glow_strength = 0.25
 shader_parameter/glow_threshold = 0.65
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_4jj5m"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lowyn"]
-noise = SubResource("FastNoiseLite_4jj5m")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0n2oi"]
-shader = ExtResource("14_5nv62")
-shader_parameter/sensitivity = 0.2310000109725
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_lowyn")
-shader_parameter/noise_config_size = Vector2(136.525, 162.13)
-shader_parameter/noise_seed = 301.5170143220575
-shader_parameter/replace_color = Color(0.95, 0.965, 1, 1)
-shader_parameter/edge_color = Color(0.3529412, 0.3647059, 0.5058824, 1)
-shader_parameter/outline_color = Color(0, 0, 0, 1)
-shader_parameter/details_color = Color(0.34901962, 0.3647059, 0.52156866, 1)
-shader_parameter/details_opacity = 0.43200002052
-shader_parameter/edge_bias_strength = 0.7650000363375
-shader_parameter/edge_remap_min = 0.88400004199
-shader_parameter/edge_remap_max = 1.0
 
 [sub_resource type="Animation" id="Animation_gluje"]
 length = 0.001
@@ -211,6 +199,16 @@ height = 152.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pm1ho"]
 radius = 103.0
 height = 466.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_07mkt"]
+streams_count = 7
+stream_0/stream = ExtResource("28_a8jsx")
+stream_1/stream = ExtResource("29_6svup")
+stream_2/stream = ExtResource("30_kwt80")
+stream_3/stream = ExtResource("31_wffdq")
+stream_4/stream = ExtResource("32_3ntt4")
+stream_5/stream = ExtResource("33_y2557")
+stream_6/stream = ExtResource("34_acjve")
 
 [node name="GoopLab" type="Node2D" unique_id=1508041924]
 script = ExtResource("1_xljrr")
@@ -2276,7 +2274,6 @@ position = Vector2(686, 24)
 
 [node name="ShredderSprite" type="Sprite2D" parent="Mulcher" unique_id=1516523610]
 texture_filter = 3
-material = SubResource("ShaderMaterial_0n2oi")
 position = Vector2(334, 711)
 scale = Vector2(3, 3)
 texture = ExtResource("2_xljrr")
@@ -2538,6 +2535,20 @@ metadata/_edit_use_anchors_ = true
 [node name="CorrectScale" type="CanvasLayer" parent="." unique_id=2129624034]
 
 [node name="YipToolyip2" parent="CorrectScale" unique_id=867696650 instance=ExtResource("10_pm1ho")]
+
+[node name="Conveyor" type="AudioStreamPlayer2D" parent="." unique_id=1806944995]
+position = Vector2(479, 751)
+stream = ExtResource("26_vk4kp")
+
+[node name="Shredder" type="AudioStreamPlayer2D" parent="." unique_id=971517372]
+position = Vector2(1004, 744)
+stream = ExtResource("27_ff60u")
+
+[node name="Scream" type="AudioStreamPlayer2D" parent="." unique_id=977547143]
+position = Vector2(1000, 742)
+stream = SubResource("AudioStreamRandomizer_07mkt")
+volume_db = 23.0
+max_polyphony = 10
 
 [connection signal="pressed" from="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8/AddGoop" to="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1" method="_on_add_goop_pressed"]
 [connection signal="pressed" from="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8/AddGoop" to="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2" method="_on_add_goop_pressed"]

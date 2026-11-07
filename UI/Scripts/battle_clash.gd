@@ -4,7 +4,11 @@ const YIP_VS_BONK = preload("uid://cgj1x1lw7b77j")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	match SignalBus.player_portrait:
+		"chud":
+			$AnonWall/Anon.texture = load("res://UI/Menus/Main_Menu/Textures/Anon.png")
+		"chudette":
+			$AnonWall/Anon.texture = load("res://UI/Menus/Main_Menu/Textures/AnonGirl.png")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

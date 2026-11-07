@@ -393,6 +393,7 @@ func _on_settings_button_pressed() -> void:
 
 
 func _on_lock_button_pressed():
+	$BearTrap.play()
 	SignalBus.field_locked = !SignalBus.field_locked
 	if SignalBus.field_locked:
 		for yip in all_yips:
