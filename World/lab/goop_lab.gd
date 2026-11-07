@@ -5,7 +5,7 @@ var current_strand: Strand
 @onready var vat_container = $Vats
 var vats: Dictionary[String, Node2D] = {}
 
-@onready var tooltip: Toolyip = $TooltipCanvas/YipToolyip
+@onready var tooltip2: Toolyip = $CorrectScale/YipToolyip2
 @onready var conveyor_animation = $Mulcher/ConveyorAnimation
 @onready var shredder_animation = $Mulcher/ShredderAnimation
 @onready var pen_collision : CollisionShape2D = $Pen/PenArea/CollisionShape2D
@@ -156,7 +156,7 @@ func shred_yip(yip: Yipee):
 	prints(yip, 'TIME TO SHRED')
 	if focused_yip == yip:
 		focused_yip = null
-		tooltip.hide()
+		tooltip2.hide()
 		_refresh_cursor()
 	#do yip animation and effects here
 	yip.grind_pos = $Mulcher/ShredderSprite
@@ -315,12 +315,12 @@ func _on_yip_hovered(yip: Yipee) -> void:
 	if not is_instance_valid(yip):
 		return
 	if !dragged_yip:
-		tooltip.display_beside(yip)
+		tooltip2.display_beside(yip)
 		focused_yip = yip
 		_refresh_cursor()
 
 func _on_yip_unhovered() -> void:
-	tooltip.hide()
+	tooltip2.hide()
 	focused_yip = null
 	_refresh_cursor()
 
@@ -348,7 +348,6 @@ func get_random_point_in_area() -> Vector2:
 
 func _exit_tree() -> void:
 	CursorManager.reset()
-
 
 func _on_farm_button_pressed() -> void:
 	SignalBus.go_to.emit(SignalBus.Locations.FARM)

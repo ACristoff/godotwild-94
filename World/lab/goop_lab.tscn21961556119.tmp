@@ -1,0 +1,2534 @@
+[gd_scene format=3 uid="uid://c8opx4e746slk"]
+
+[ext_resource type="Texture2D" uid="uid://r1ibjhjfn84g" path="res://Assets/Environment/Scenes/LaboratoryNew/ConveyorNew.png" id="1_egti4"]
+[ext_resource type="Script" uid="uid://d225ugjqoeuoc" path="res://World/lab/goop_lab.gd" id="1_xljrr"]
+[ext_resource type="Script" uid="uid://dpr2powm23rue" path="res://World/yipee/genes/yipee_data.gd" id="2_16yqu"]
+[ext_resource type="Texture2D" uid="uid://pmbtgymscu7n" path="res://Assets/Environment/Scenes/LaboratoryNew/Grinder.png" id="2_xljrr"]
+[ext_resource type="FontFile" uid="uid://b2o45fsyj2vco" path="res://UI/Fonts/ShareTech-Regular.ttf" id="3_f0hc0"]
+[ext_resource type="Script" uid="uid://ckc2iq0roikyx" path="res://World/yipee/genes/helix.gd" id="3_gluje"]
+[ext_resource type="Texture2D" uid="uid://blrbrpnjqgtlh" path="res://Assets/Environment/Scenes/LaboratoryNew/LabNewInterior.png" id="3_swsyr"]
+[ext_resource type="Script" uid="uid://cra0emwdv78rw" path="res://World/yipee/genes/strand.gd" id="4_pm1ho"]
+[ext_resource type="Resource" uid="uid://bkj1ei4lm0wsm" path="res://World/yipee/genes/allele/leftallele/resources/thick_skin.tres" id="5_lqwge"]
+[ext_resource type="Resource" uid="uid://cw22rf6u7lx7w" path="res://World/yipee/genes/allele/rightallele/resources/dog_ears.tres" id="6_1duhs"]
+[ext_resource type="Texture2D" uid="uid://bn1lauxcxyvc7" path="res://Assets/Environment/Scenes/LaboratoryNew/LabFrame.png" id="8_bsd1w"]
+[ext_resource type="Script" uid="uid://mwcrn5h8r2js" path="res://World/lab/allele_on_screen.gd" id="8_f0hc0"]
+[ext_resource type="Shader" uid="uid://bwvmkd4i76b3p" path="res://Assets/Shaders/CRT.gdshader" id="8_pduhj"]
+[ext_resource type="PackedScene" uid="uid://dtmuxi5urpswf" path="res://UI/Scenes/yip_toolyip_refactor.tscn" id="10_pm1ho"]
+[ext_resource type="Texture2D" uid="uid://niivva0chy8b" path="res://UI/Menus/Main_Menu/Textures/GenericBox.png" id="10_v50o5"]
+[ext_resource type="PackedScene" uid="uid://cwa1u5a3a102e" path="res://World/lab/lab_vat.tscn" id="11_pm1ho"]
+[ext_resource type="Texture2D" uid="uid://dmgp5jtp8bdn" path="res://UI/Textures/ui_effecticons/attack_icon.png" id="12_e1p4a"]
+[ext_resource type="Texture2D" uid="uid://bn2wd1q4dbcyq" path="res://UI/Textures/ui_effecticons/attack_aug_icon.png" id="13_0dqea"]
+[ext_resource type="Shader" uid="uid://dxr5ye6n0jskt" path="res://Assets/Shaders/splatter.gdshader" id="14_5nv62"]
+[ext_resource type="Texture2D" uid="uid://cxolh4gq1arao" path="res://UI/Textures/ui_effecticons/heal_aug.png" id="14_6mjui"]
+[ext_resource type="Texture2D" uid="uid://b35ibq1gpa462" path="res://UI/Textures/ui_effecticons/heal_icon.png" id="15_bsd1w"]
+[ext_resource type="Texture2D" uid="uid://bposp1c5xwmot" path="res://UI/Textures/ui_effecticons/haste_icon.png" id="16_pduhj"]
+[ext_resource type="Texture2D" uid="uid://bgxbob5vr2i5u" path="res://UI/Textures/ui_effecticons/breed_icon.png" id="17_6mjui"]
+[ext_resource type="Texture2D" uid="uid://do4vlk7xoxl03" path="res://Assets/Environment/Scenes/BattleField/ButtonRefresh.png" id="24_0n2oi"]
+[ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="25_vk4kp"]
+[ext_resource type="Script" uid="uid://cmqyel13y3xeh" path="res://UI/Scripts/button_effects.gd" id="26_ff60u"]
+
+[sub_resource type="Resource" id="Resource_vrt46"]
+script = ExtResource("4_pm1ho")
+left = ExtResource("5_lqwge")
+right = ExtResource("6_1duhs")
+metadata/_custom_type_script = "uid://cra0emwdv78rw"
+
+[sub_resource type="Resource" id="Resource_u2vb2"]
+script = ExtResource("3_gluje")
+strands = Array[ExtResource("4_pm1ho")]([SubResource("Resource_vrt46")])
+metadata/_custom_type_script = "uid://ckc2iq0roikyx"
+
+[sub_resource type="Resource" id="Resource_0dqea"]
+script = ExtResource("2_16yqu")
+yipee_name = "Yippus"
+age = 1
+helix = SubResource("Resource_u2vb2")
+metadata/_custom_type_script = "uid://dpr2powm23rue"
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f0hc0"]
+blend_mode = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7oy36"]
+shader = ExtResource("8_pduhj")
+shader_parameter/brightness = 1.02
+shader_parameter/contrast = 1.08
+shader_parameter/saturation = 1.1
+shader_parameter/gamma = 1.24500005261773
+shader_parameter/curvature = 0.0
+shader_parameter/corner_soften = 0.0
+shader_parameter/vignette = 0.0
+shader_parameter/scanline_strength = 0.1070000050825
+shader_parameter/scanline_density = 0.5
+shader_parameter/interlace_strength = 0.2
+shader_parameter/mask_strength = 0.22
+shader_parameter/mask_scale = 1.0
+shader_parameter/chroma_offset_px = 1.3090000621775
+shader_parameter/luma_smear_px = 2.2
+shader_parameter/jitter_px = 0.218000010355
+shader_parameter/wobble_px = 1.5
+shader_parameter/tape_noise = 0.22
+shader_parameter/tape_lines = 0.20400000969
+shader_parameter/roll_speed = 0.1
+shader_parameter/roll_strength = 0.15
+shader_parameter/glow_strength = 0.25
+shader_parameter/glow_threshold = 0.65
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4jj5m"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lowyn"]
+noise = SubResource("FastNoiseLite_4jj5m")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0n2oi"]
+shader = ExtResource("14_5nv62")
+shader_parameter/sensitivity = 0.2310000109725
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_lowyn")
+shader_parameter/noise_config_size = Vector2(136.525, 162.13)
+shader_parameter/noise_seed = 301.5170143220575
+shader_parameter/replace_color = Color(0.95, 0.965, 1, 1)
+shader_parameter/edge_color = Color(0.3529412, 0.3647059, 0.5058824, 1)
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/details_color = Color(0.34901962, 0.3647059, 0.52156866, 1)
+shader_parameter/details_opacity = 0.43200002052
+shader_parameter/edge_bias_strength = 0.7650000363375
+shader_parameter/edge_remap_min = 0.88400004199
+shader_parameter/edge_remap_max = 1.0
+
+[sub_resource type="Animation" id="Animation_gluje"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShredderSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_pm1ho"]
+resource_name = "shredder_on"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShredderSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lqwge"]
+_data = {
+&"RESET": SubResource("Animation_gluje"),
+&"shredder_on": SubResource("Animation_pm1ho")
+}
+
+[sub_resource type="Animation" id="Animation_swsyr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ConveyorSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_xljrr"]
+resource_name = "conveyor"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ConveyorSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_swsyr"]
+_data = {
+&"RESET": SubResource("Animation_swsyr"),
+&"conveyor_on": SubResource("Animation_xljrr")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_egti4"]
+size = Vector2(681, 189.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gluje"]
+size = Vector2(311, 209)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xljrr"]
+size = Vector2(484, 409)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gluje"]
+radius = 41.0
+height = 152.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pm1ho"]
+radius = 103.0
+height = 466.0
+
+[node name="GoopLab" type="Node2D" unique_id=1508041924]
+script = ExtResource("1_xljrr")
+debug_yips = Array[ExtResource("2_16yqu")]([SubResource("Resource_0dqea"), SubResource("Resource_0dqea"), SubResource("Resource_0dqea"), SubResource("Resource_0dqea"), SubResource("Resource_0dqea"), SubResource("Resource_0dqea"), SubResource("Resource_0dqea"), SubResource("Resource_0dqea"), SubResource("Resource_0dqea"), SubResource("Resource_0dqea"), SubResource("Resource_0dqea")])
+conveyor_speed = null
+
+[node name="LabBackground" type="Sprite2D" parent="." unique_id=1972674292]
+z_index = -10
+texture_filter = 3
+position = Vector2(960.66675, 537.75)
+scale = Vector2(3.0097225, 3.0097225)
+texture = ExtResource("3_swsyr")
+
+[node name="ScreenRects" type="Node2D" parent="." unique_id=1270074000]
+
+[node name="ColorRect" type="ColorRect" parent="ScreenRects" unique_id=1764268755]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1378.0
+offset_top = 82.0
+offset_right = 1518.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+mouse_filter = 2
+color = Color(0.11327667, 0.039100002, 0.17, 1)
+metadata/_edit_lock_ = true
+
+[node name="ColorRect5" type="ColorRect" parent="ScreenRects" unique_id=180422669]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1378.0
+offset_top = 583.0
+offset_right = 1518.0
+offset_bottom = 611.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+mouse_filter = 2
+color = Color(0.11327667, 0.039100002, 0.17, 1)
+metadata/_edit_lock_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="ScreenRects" unique_id=499097822]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1359.0
+offset_top = 137.0
+offset_right = 1513.6667
+offset_bottom = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+mouse_filter = 2
+color = Color(0.11327667, 0.039100002, 0.17, 1)
+metadata/_edit_lock_ = true
+
+[node name="ColorRect4" type="ColorRect" parent="ScreenRects" unique_id=1990773989]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1359.0
+offset_top = 541.0
+offset_right = 1513.6667
+offset_bottom = 566.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+mouse_filter = 2
+color = Color(0.11327667, 0.039100002, 0.17, 1)
+metadata/_edit_lock_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="ScreenRects" unique_id=945028117]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1350.0
+offset_top = 207.0
+offset_right = 1510.6667
+offset_bottom = 336.33334
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+mouse_filter = 2
+color = Color(0.11327667, 0.039100002, 0.17, 1)
+metadata/_edit_lock_ = true
+
+[node name="Node2D" type="Control" parent="ScreenRects" unique_id=548614420]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="ScreenRects/Node2D" unique_id=2069095994]
+layout_mode = 0
+offset_left = 1355.0
+offset_top = 84.0
+offset_right = 1828.0
+offset_bottom = 663.0
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel" unique_id=1671208363]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 9
+
+[node name="AllelesDisplay" type="VBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer" unique_id=923172200]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Allele1" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay" unique_id=383340887 node_paths=PackedStringArray("name_label", "level_label", "type_texture", "BG_color_rect", "tick_rect")]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -9
+theme_override_constants/margin_right = 24
+script = ExtResource("8_f0hc0")
+name_label = NodePath("AlleleBG/NameBox/MarginContainer/AlleleName")
+level_label = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer/AlleleLevel")
+type_texture = NodePath("AlleleBG/NameBox/MarginContainer4/Box/AlleleTypeTexture")
+BG_color_rect = NodePath("AlleleBG")
+tick_rect = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect")
+
+[node name="AlleleBG" type="ColorRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1" unique_id=479811442]
+self_modulate = Color(1, 1, 1, 0.12941177)
+custom_minimum_size = Vector2(474.62, 63.305)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.81960785, 0, 0, 0.12941177)
+
+[node name="NameBox" type="VBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG" unique_id=2026070792]
+layout_mode = 0
+offset_top = -23.0
+offset_right = 441.0
+offset_bottom = 66.0
+mouse_filter = 2
+theme_override_constants/separation = -54
+
+[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox" unique_id=137649128]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 160
+theme_override_constants/margin_top = 20
+
+[node name="AlleleName" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer" unique_id=1065511321]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_f0hc0")
+theme_override_font_sizes/font_size = 29
+text = "Maul"
+vertical_alignment = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox" unique_id=1728713328]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 23
+theme_override_constants/margin_top = 12
+
+[node name="Box" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4" unique_id=1997748984]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="AlleleTypeTexture" type="TextureRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box" unique_id=715863971]
+self_modulate = Color(2.2706914, 2.2706914, 2.2706914, 1)
+texture_filter = 3
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("12_e1p4a")
+
+[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box" unique_id=1635365821]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -15
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 12
+
+[node name="AlleleLevel" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer" unique_id=639596874]
+custom_minimum_size = Vector2(53, 72)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_f0hc0")
+theme_override_font_sizes/font_size = 29
+text = "Lvl 1"
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box" unique_id=1773459062]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_bottom = 25
+
+[node name="TickRect" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2" unique_id=752994657]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Tick6" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=380059028]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick7" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1237135889]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=2139295100]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick9" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1209027250]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick10" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=949677372]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick11" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1194444867]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick12" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=423869311]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick13" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=563667909]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick14" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1343420888]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="MarginContainer3" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box" unique_id=1331571259]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_top = 10
+
+[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3" unique_id=1819941098]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Line2D" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=1319087635]
+position = Vector2(18.04004, 0.040000916)
+points = PackedVector2Array(0, 7, 0, 27)
+width = 2.04
+
+[node name="Line2D2" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=660496138]
+position = Vector2(35.04004, 17.04)
+rotation = 1.5707964
+points = PackedVector2Array(0, 7, 0, 27)
+width = 2.04
+
+[node name="AddGoop" type="Button" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=1760852491]
+self_modulate = Color(6.4832726, 6.4832726, 6.4832726, 1)
+z_index = 747
+material = SubResource("CanvasItemMaterial_f0hc0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Allele2" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay" unique_id=1575882843 node_paths=PackedStringArray("name_label", "level_label", "type_texture", "BG_color_rect", "tick_rect")]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -9
+theme_override_constants/margin_right = 24
+script = ExtResource("8_f0hc0")
+name_label = NodePath("AlleleBG/NameBox/MarginContainer/AlleleName")
+level_label = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer/AlleleLevel")
+type_texture = NodePath("AlleleBG/NameBox/MarginContainer4/Box/AlleleTypeTexture")
+BG_color_rect = NodePath("AlleleBG")
+tick_rect = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect")
+
+[node name="AlleleBG" type="ColorRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2" unique_id=210398275]
+self_modulate = Color(1, 1, 1, 0.12941177)
+custom_minimum_size = Vector2(474.62, 63.305)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.82, 0, 0, 0.12941177)
+
+[node name="NameBox" type="VBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG" unique_id=1956527844]
+layout_mode = 0
+offset_top = -23.0
+offset_right = 441.0
+offset_bottom = 66.0
+mouse_filter = 2
+theme_override_constants/separation = -54
+
+[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox" unique_id=120688834]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 160
+theme_override_constants/margin_top = 20
+
+[node name="AlleleName" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer" unique_id=1705656411]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_f0hc0")
+theme_override_font_sizes/font_size = 29
+text = "Maul"
+vertical_alignment = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox" unique_id=653796826]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 23
+theme_override_constants/margin_top = 12
+
+[node name="Box" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer4" unique_id=1333118105]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="AlleleTypeTexture" type="TextureRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer4/Box" unique_id=1493352073]
+self_modulate = Color(2.2706914, 2.2706914, 2.2706914, 1)
+texture_filter = 3
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("12_e1p4a")
+
+[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer4/Box" unique_id=793079031]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -15
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 12
+
+[node name="AlleleLevel" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer" unique_id=1056604137]
+custom_minimum_size = Vector2(53, 72)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_f0hc0")
+theme_override_font_sizes/font_size = 29
+text = "Lvl 1"
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer4/Box" unique_id=2035950781]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_bottom = 25
+
+[node name="TickRect" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2" unique_id=2113271187]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Tick6" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=501800937]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick7" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=2141992951]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1709032828]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick9" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=182140730]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick10" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=788943956]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick11" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=887917552]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick12" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=2138445043]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick13" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1345091568]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick14" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1161828608]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="MarginContainer3" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer4/Box" unique_id=2144587969]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_top = 10
+
+[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3" unique_id=202510768]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Line2D" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=14950211]
+position = Vector2(18.04004, 0.040000916)
+points = PackedVector2Array(0, 7, 0, 27)
+width = 2.04
+
+[node name="Line2D2" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=304251768]
+position = Vector2(35.04004, 17.04)
+rotation = 1.5707964
+points = PackedVector2Array(0, 7, 0, 27)
+width = 2.04
+
+[node name="AddGoop" type="Button" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=1685770599]
+self_modulate = Color(6.4832726, 6.4832726, 6.4832726, 1)
+z_index = 747
+material = SubResource("CanvasItemMaterial_f0hc0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Allele3" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay" unique_id=32836637 node_paths=PackedStringArray("name_label", "level_label", "type_texture", "BG_color_rect", "tick_rect")]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -9
+theme_override_constants/margin_right = 24
+script = ExtResource("8_f0hc0")
+name_label = NodePath("AlleleBG/NameBox/MarginContainer/AlleleName")
+level_label = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer/AlleleLevel")
+type_texture = NodePath("AlleleBG/NameBox/MarginContainer4/Box/AlleleTypeTexture")
+BG_color_rect = NodePath("AlleleBG")
+tick_rect = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect")
+
+[node name="AlleleBG" type="ColorRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3" unique_id=850994748]
+self_modulate = Color(1, 1, 1, 0.12941177)
+custom_minimum_size = Vector2(474.62, 63.305)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.82, 0, 0, 0.12941177)
+
+[node name="NameBox" type="VBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG" unique_id=429124029]
+layout_mode = 0
+offset_top = -23.0
+offset_right = 441.0
+offset_bottom = 66.0
+mouse_filter = 2
+theme_override_constants/separation = -54
+
+[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG/NameBox" unique_id=1906465194]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 160
+theme_override_constants/margin_top = 20
+
+[node name="AlleleName" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG/NameBox/MarginContainer" unique_id=1319615023]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_f0hc0")
+theme_override_font_sizes/font_size = 29
+text = "Maul"
+vertical_alignment = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG/NameBox" unique_id=840011589]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 23
+theme_override_constants/margin_top = 12
+
+[node name="Box" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG/NameBox/MarginContainer4" unique_id=129407608]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="AlleleTypeTexture" type="TextureRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG/NameBox/MarginContainer4/Box" unique_id=125234220]
+self_modulate = Color(2.2706914, 2.2706914, 2.2706914, 1)
+texture_filter = 3
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("12_e1p4a")
+
+[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG/NameBox/MarginContainer4/Box" unique_id=1498590787]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -15
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 12
+
+[node name="AlleleLevel" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer" unique_id=591923749]
+custom_minimum_size = Vector2(53, 72)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_f0hc0")
+theme_override_font_sizes/font_size = 29
+text = "Lvl 1"
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG/NameBox/MarginContainer4/Box" unique_id=1623524414]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_bottom = 25
+
+[node name="TickRect" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2" unique_id=712684208]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Tick6" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1939237956]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick7" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=478701682]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1537750956]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick9" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=2101316530]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick10" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1835392453]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick11" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=50487575]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick12" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=229590695]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick13" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=2059220739]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick14" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=691930599]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="MarginContainer3" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG/NameBox/MarginContainer4/Box" unique_id=268300187]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_top = 10
+
+[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3" unique_id=962397186]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Line2D" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=1218273725]
+position = Vector2(18.04004, 0.040000916)
+points = PackedVector2Array(0, 7, 0, 27)
+width = 2.04
+
+[node name="Line2D2" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=1768797710]
+position = Vector2(35.04004, 17.04)
+rotation = 1.5707964
+points = PackedVector2Array(0, 7, 0, 27)
+width = 2.04
+
+[node name="AddGoop" type="Button" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=646396677]
+self_modulate = Color(6.4832726, 6.4832726, 6.4832726, 1)
+z_index = 747
+material = SubResource("CanvasItemMaterial_f0hc0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Allele4" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay" unique_id=764985276 node_paths=PackedStringArray("name_label", "level_label", "type_texture", "BG_color_rect", "tick_rect")]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -9
+theme_override_constants/margin_right = 24
+script = ExtResource("8_f0hc0")
+name_label = NodePath("AlleleBG/NameBox/MarginContainer/AlleleName")
+level_label = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer/AlleleLevel")
+type_texture = NodePath("AlleleBG/NameBox/MarginContainer4/Box/AlleleTypeTexture")
+BG_color_rect = NodePath("AlleleBG")
+tick_rect = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect")
+
+[node name="AlleleBG" type="ColorRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4" unique_id=1701067816]
+self_modulate = Color(1, 1, 1, 0.12941177)
+custom_minimum_size = Vector2(474.62, 63.305)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.82, 0, 0, 0.12941177)
+
+[node name="NameBox" type="VBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/AlleleBG" unique_id=1744389884]
+layout_mode = 0
+offset_top = -23.0
+offset_right = 441.0
+offset_bottom = 66.0
+mouse_filter = 2
+theme_override_constants/separation = -54
+
+[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/AlleleBG/NameBox" unique_id=1210313442]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 160
+theme_override_constants/margin_top = 20
+
+[node name="AlleleName" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/AlleleBG/NameBox/MarginContainer" unique_id=1554939285]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_f0hc0")
+theme_override_font_sizes/font_size = 29
+text = "Maul"
+vertical_alignment = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/AlleleBG/NameBox" unique_id=1366262803]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 23
+theme_override_constants/margin_top = 12
+
+[node name="Box" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/AlleleBG/NameBox/MarginContainer4" unique_id=1630035017]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="AlleleTypeTexture" type="TextureRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/AlleleBG/NameBox/MarginContainer4/Box" unique_id=1260934190]
+self_modulate = Color(2.2706914, 2.2706914, 2.2706914, 1)
+texture_filter = 3
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("12_e1p4a")
+
+[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/AlleleBG/NameBox/MarginContainer4/Box" unique_id=389364287]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -15
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 12
+
+[node name="AlleleLevel" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer" unique_id=1389097397]
+custom_minimum_size = Vector2(53, 72)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_f0hc0")
+theme_override_font_sizes/font_size = 29
+text = "Lvl 1"
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/AlleleBG/NameBox/MarginContainer4/Box" unique_id=622636524]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_bottom = 25
+
+[node name="TickRect" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2" unique_id=2093530976]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Tick6" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=985011829]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick7" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=366195066]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=153478769]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick9" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=747098002]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick10" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1348576455]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick11" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1433030988]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick12" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1067610668]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick13" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1317116863]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick14" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=203299310]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="MarginContainer3" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/AlleleBG/NameBox/MarginContainer4/Box" unique_id=2033616619]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_top = 10
+
+[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3" unique_id=1049150083]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Line2D" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=857399309]
+position = Vector2(18.04004, 0.040000916)
+points = PackedVector2Array(0, 7, 0, 27)
+width = 2.04
+
+[node name="Line2D2" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=1827253596]
+position = Vector2(35.04004, 17.04)
+rotation = 1.5707964
+points = PackedVector2Array(0, 7, 0, 27)
+width = 2.04
+
+[node name="AddGoop" type="Button" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=480689263]
+self_modulate = Color(6.4832726, 6.4832726, 6.4832726, 1)
+z_index = 747
+material = SubResource("CanvasItemMaterial_f0hc0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Allele5" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay" unique_id=881393017 node_paths=PackedStringArray("name_label", "level_label", "type_texture", "BG_color_rect", "tick_rect")]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -9
+theme_override_constants/margin_right = 24
+script = ExtResource("8_f0hc0")
+name_label = NodePath("AlleleBG/NameBox/MarginContainer/AlleleName")
+level_label = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer/AlleleLevel")
+type_texture = NodePath("AlleleBG/NameBox/MarginContainer4/Box/AlleleTypeTexture")
+BG_color_rect = NodePath("AlleleBG")
+tick_rect = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect")
+
+[node name="AlleleBG" type="ColorRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5" unique_id=795555954]
+self_modulate = Color(1, 1, 1, 0.12941177)
+custom_minimum_size = Vector2(474.62, 63.305)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.82, 0, 0, 0.12941177)
+
+[node name="NameBox" type="VBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/AlleleBG" unique_id=1551373250]
+layout_mode = 0
+offset_top = -23.0
+offset_right = 441.0
+offset_bottom = 66.0
+mouse_filter = 2
+theme_override_constants/separation = -54
+
+[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/AlleleBG/NameBox" unique_id=827075015]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 160
+theme_override_constants/margin_top = 20
+
+[node name="AlleleName" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/AlleleBG/NameBox/MarginContainer" unique_id=2072509028]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_f0hc0")
+theme_override_font_sizes/font_size = 29
+text = "Maul"
+vertical_alignment = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/AlleleBG/NameBox" unique_id=296381230]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 23
+theme_override_constants/margin_top = 12
+
+[node name="Box" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/AlleleBG/NameBox/MarginContainer4" unique_id=153708350]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="AlleleTypeTexture" type="TextureRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/AlleleBG/NameBox/MarginContainer4/Box" unique_id=145686112]
+self_modulate = Color(2.2706914, 2.2706914, 2.2706914, 1)
+texture_filter = 3
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("12_e1p4a")
+
+[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/AlleleBG/NameBox/MarginContainer4/Box" unique_id=758016245]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -15
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 12
+
+[node name="AlleleLevel" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer" unique_id=1710480465]
+custom_minimum_size = Vector2(53, 72)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_f0hc0")
+theme_override_font_sizes/font_size = 29
+text = "Lvl 1"
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/AlleleBG/NameBox/MarginContainer4/Box" unique_id=1536878746]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_bottom = 25
+
+[node name="TickRect" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2" unique_id=1585903598]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Tick6" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=652511687]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick7" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1033328894]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=367867064]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick9" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=784756772]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick10" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1592945423]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick11" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1302095422]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick12" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1847714432]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick13" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=421133823]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick14" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=317299452]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="MarginContainer3" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/AlleleBG/NameBox/MarginContainer4/Box" unique_id=1968023844]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_top = 10
+
+[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3" unique_id=2020994597]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Line2D" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=2083484686]
+position = Vector2(18.04004, 0.040000916)
+points = PackedVector2Array(0, 7, 0, 27)
+width = 2.04
+
+[node name="Line2D2" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=1368885106]
+position = Vector2(35.04004, 17.04)
+rotation = 1.5707964
+points = PackedVector2Array(0, 7, 0, 27)
+width = 2.04
+
+[node name="AddGoop" type="Button" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=1067261189]
+self_modulate = Color(6.4832726, 6.4832726, 6.4832726, 1)
+z_index = 747
+material = SubResource("CanvasItemMaterial_f0hc0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Allele6" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay" unique_id=1261858726 node_paths=PackedStringArray("name_label", "level_label", "type_texture", "BG_color_rect", "tick_rect")]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -9
+theme_override_constants/margin_right = 24
+script = ExtResource("8_f0hc0")
+name_label = NodePath("AlleleBG/NameBox/MarginContainer/AlleleName")
+level_label = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer/AlleleLevel")
+type_texture = NodePath("AlleleBG/NameBox/MarginContainer4/Box/AlleleTypeTexture")
+BG_color_rect = NodePath("AlleleBG")
+tick_rect = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect")
+
+[node name="AlleleBG" type="ColorRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6" unique_id=1082267065]
+self_modulate = Color(1, 1, 1, 0.12941177)
+custom_minimum_size = Vector2(474.62, 63.305)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.82, 0, 0, 0.12941177)
+
+[node name="NameBox" type="VBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/AlleleBG" unique_id=2079627616]
+layout_mode = 0
+offset_top = -23.0
+offset_right = 441.0
+offset_bottom = 66.0
+mouse_filter = 2
+theme_override_constants/separation = -54
+
+[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/AlleleBG/NameBox" unique_id=1395932639]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 160
+theme_override_constants/margin_top = 20
+
+[node name="AlleleName" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/AlleleBG/NameBox/MarginContainer" unique_id=82951623]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_f0hc0")
+theme_override_font_sizes/font_size = 29
+text = "Maul"
+vertical_alignment = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/AlleleBG/NameBox" unique_id=1703370188]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 23
+theme_override_constants/margin_top = 12
+
+[node name="Box" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/AlleleBG/NameBox/MarginContainer4" unique_id=1690013339]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="AlleleTypeTexture" type="TextureRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/AlleleBG/NameBox/MarginContainer4/Box" unique_id=201316471]
+self_modulate = Color(2.2706914, 2.2706914, 2.2706914, 1)
+texture_filter = 3
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("12_e1p4a")
+
+[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/AlleleBG/NameBox/MarginContainer4/Box" unique_id=233768204]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -15
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 12
+
+[node name="AlleleLevel" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer" unique_id=429546764]
+custom_minimum_size = Vector2(53, 72)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_f0hc0")
+theme_override_font_sizes/font_size = 29
+text = "Lvl 1"
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/AlleleBG/NameBox/MarginContainer4/Box" unique_id=1947610617]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_bottom = 25
+
+[node name="TickRect" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2" unique_id=1897556340]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Tick6" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=2007760134]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick7" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=534370242]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1594459500]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick9" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=308693336]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick10" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1968623549]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick11" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1272016758]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick12" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=518449075]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick13" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1947219168]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick14" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1508236272]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="MarginContainer3" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/AlleleBG/NameBox/MarginContainer4/Box" unique_id=270807364]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_top = 10
+
+[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3" unique_id=1776084589]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Line2D" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=639002]
+position = Vector2(18.04004, 0.040000916)
+points = PackedVector2Array(0, 7, 0, 27)
+width = 2.04
+
+[node name="Line2D2" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=1454062429]
+position = Vector2(35.04004, 17.04)
+rotation = 1.5707964
+points = PackedVector2Array(0, 7, 0, 27)
+width = 2.04
+
+[node name="AddGoop" type="Button" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=425121942]
+self_modulate = Color(6.4832726, 6.4832726, 6.4832726, 1)
+z_index = 747
+material = SubResource("CanvasItemMaterial_f0hc0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Allele7" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay" unique_id=628968108 node_paths=PackedStringArray("name_label", "level_label", "type_texture", "BG_color_rect", "tick_rect")]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -9
+theme_override_constants/margin_right = 24
+script = ExtResource("8_f0hc0")
+name_label = NodePath("AlleleBG/NameBox/MarginContainer/AlleleName")
+level_label = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer/AlleleLevel")
+type_texture = NodePath("AlleleBG/NameBox/MarginContainer4/Box/AlleleTypeTexture")
+BG_color_rect = NodePath("AlleleBG")
+tick_rect = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect")
+
+[node name="AlleleBG" type="ColorRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7" unique_id=614650532]
+self_modulate = Color(1, 1, 1, 0.12941177)
+custom_minimum_size = Vector2(474.62, 63.305)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.82, 0, 0, 0.12941177)
+
+[node name="NameBox" type="VBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/AlleleBG" unique_id=291252798]
+layout_mode = 0
+offset_top = -23.0
+offset_right = 441.0
+offset_bottom = 66.0
+mouse_filter = 2
+theme_override_constants/separation = -54
+
+[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/AlleleBG/NameBox" unique_id=274853806]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 160
+theme_override_constants/margin_top = 20
+
+[node name="AlleleName" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/AlleleBG/NameBox/MarginContainer" unique_id=1543099158]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_f0hc0")
+theme_override_font_sizes/font_size = 29
+text = "Maul"
+vertical_alignment = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/AlleleBG/NameBox" unique_id=713896130]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 23
+theme_override_constants/margin_top = 12
+
+[node name="Box" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/AlleleBG/NameBox/MarginContainer4" unique_id=704843557]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="AlleleTypeTexture" type="TextureRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/AlleleBG/NameBox/MarginContainer4/Box" unique_id=793158068]
+self_modulate = Color(2.2706914, 2.2706914, 2.2706914, 1)
+texture_filter = 3
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("12_e1p4a")
+
+[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/AlleleBG/NameBox/MarginContainer4/Box" unique_id=865812349]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -15
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 12
+
+[node name="AlleleLevel" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer" unique_id=1651857996]
+custom_minimum_size = Vector2(53, 72)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_f0hc0")
+theme_override_font_sizes/font_size = 29
+text = "Lvl 1"
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/AlleleBG/NameBox/MarginContainer4/Box" unique_id=1740556833]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_bottom = 25
+
+[node name="TickRect" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2" unique_id=641414158]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Tick6" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1090553681]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick7" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1317322815]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1192622129]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick9" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1085080740]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick10" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1174145330]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick11" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=2111126379]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick12" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=911726177]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick13" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=505971110]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick14" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=124006006]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="MarginContainer3" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/AlleleBG/NameBox/MarginContainer4/Box" unique_id=312863776]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_top = 10
+
+[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3" unique_id=240793571]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Line2D" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=1418699430]
+position = Vector2(18.04004, 0.040000916)
+points = PackedVector2Array(0, 7, 0, 27)
+width = 2.04
+
+[node name="Line2D2" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=213410362]
+position = Vector2(35.04004, 17.04)
+rotation = 1.5707964
+points = PackedVector2Array(0, 7, 0, 27)
+width = 2.04
+
+[node name="AddGoop" type="Button" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=245977083]
+self_modulate = Color(6.4832726, 6.4832726, 6.4832726, 1)
+z_index = 747
+material = SubResource("CanvasItemMaterial_f0hc0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Allele8" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay" unique_id=1107150726 node_paths=PackedStringArray("name_label", "level_label", "type_texture", "BG_color_rect", "tick_rect")]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -9
+theme_override_constants/margin_right = 24
+script = ExtResource("8_f0hc0")
+name_label = NodePath("AlleleBG/NameBox/MarginContainer/AlleleName")
+level_label = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer/AlleleLevel")
+type_texture = NodePath("AlleleBG/NameBox/MarginContainer4/Box/AlleleTypeTexture")
+BG_color_rect = NodePath("AlleleBG")
+tick_rect = NodePath("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect")
+
+[node name="AlleleBG" type="ColorRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8" unique_id=1107030092]
+self_modulate = Color(1, 1, 1, 0.12941177)
+custom_minimum_size = Vector2(474.62, 63.305)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.82, 0, 0, 0.12941177)
+
+[node name="NameBox" type="VBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/AlleleBG" unique_id=1660250007]
+layout_mode = 0
+offset_top = -23.0
+offset_right = 441.0
+offset_bottom = 66.0
+mouse_filter = 2
+theme_override_constants/separation = -54
+
+[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/AlleleBG/NameBox" unique_id=1663165043]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 160
+theme_override_constants/margin_top = 20
+
+[node name="AlleleName" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/AlleleBG/NameBox/MarginContainer" unique_id=1544071080]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_f0hc0")
+theme_override_font_sizes/font_size = 29
+text = "Maul"
+vertical_alignment = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/AlleleBG/NameBox" unique_id=381147838]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 23
+theme_override_constants/margin_top = 12
+
+[node name="Box" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/AlleleBG/NameBox/MarginContainer4" unique_id=19411984]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="AlleleTypeTexture" type="TextureRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/AlleleBG/NameBox/MarginContainer4/Box" unique_id=136989046]
+self_modulate = Color(2.2706914, 2.2706914, 2.2706914, 1)
+texture_filter = 3
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("12_e1p4a")
+
+[node name="MarginContainer" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/AlleleBG/NameBox/MarginContainer4/Box" unique_id=187630592]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -15
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 12
+
+[node name="AlleleLevel" type="Label" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer" unique_id=1523753586]
+custom_minimum_size = Vector2(53, 72)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_f0hc0")
+theme_override_font_sizes/font_size = 29
+text = "Lvl 1"
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/AlleleBG/NameBox/MarginContainer4/Box" unique_id=1436993299]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_bottom = 25
+
+[node name="TickRect" type="HBoxContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2" unique_id=214643278]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Tick6" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1248112471]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick7" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1650785724]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=1069749748]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick9" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=479987041]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick10" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=395543318]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick11" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=2124329156]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick12" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=90672227]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick13" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=837802557]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Tick14" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer2/TickRect" unique_id=2007768605]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="MarginContainer3" type="MarginContainer" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/AlleleBG/NameBox/MarginContainer4/Box" unique_id=1155667596]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_top = 10
+
+[node name="Tick8" type="NinePatchRect" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3" unique_id=1260021263]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_v50o5")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Line2D" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=37886670]
+position = Vector2(18.04004, 0.040000916)
+points = PackedVector2Array(0, 7, 0, 27)
+width = 2.04
+
+[node name="Line2D2" type="Line2D" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=631654121]
+position = Vector2(35.04004, 17.04)
+rotation = 1.5707964
+points = PackedVector2Array(0, 7, 0, 27)
+width = 2.04
+
+[node name="AddGoop" type="Button" parent="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8" unique_id=1364158296]
+self_modulate = Color(6.4832726, 6.4832726, 6.4832726, 1)
+z_index = 747
+material = SubResource("CanvasItemMaterial_f0hc0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect6" type="ColorRect" parent="ScreenRects" unique_id=1246611828]
+material = SubResource("ShaderMaterial_7oy36")
+offset_left = 1352.0
+offset_top = 149.0
+offset_right = 1511.0
+offset_bottom = 299.0
+scale = Vector2(3, 3)
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="ColorRect7" type="ColorRect" parent="ScreenRects" unique_id=719001630]
+material = SubResource("ShaderMaterial_7oy36")
+offset_left = 1377.0
+offset_top = 83.0
+offset_right = 1518.6667
+offset_bottom = 105.0
+scale = Vector2(3, 3)
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="ColorRect8" type="ColorRect" parent="ScreenRects" unique_id=361120425]
+material = SubResource("ShaderMaterial_7oy36")
+offset_left = 1377.0
+offset_top = 599.0
+offset_right = 1518.6667
+offset_bottom = 621.0
+scale = Vector2(3, 3)
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="LabFrame" type="Sprite2D" parent="." unique_id=978430515]
+z_index = 3746
+texture_filter = 3
+position = Vector2(964, 537)
+scale = Vector2(3, 3)
+texture = ExtResource("8_bsd1w")
+
+[node name="Mulcher" type="Node2D" parent="." unique_id=1884272660]
+position = Vector2(686, 24)
+
+[node name="ShredderSprite" type="Sprite2D" parent="Mulcher" unique_id=1516523610]
+texture_filter = 3
+material = SubResource("ShaderMaterial_0n2oi")
+position = Vector2(334, 711)
+scale = Vector2(3, 3)
+texture = ExtResource("2_xljrr")
+hframes = 6
+
+[node name="ConveyorSprite" type="Sprite2D" parent="Mulcher" unique_id=1951354024]
+texture_filter = 3
+position = Vector2(-218, 431.00003)
+scale = Vector2(3, 3)
+texture = ExtResource("1_egti4")
+hframes = 8
+
+[node name="ShredderAnimation" type="AnimationPlayer" parent="Mulcher" unique_id=711426635]
+libraries/ = SubResource("AnimationLibrary_lqwge")
+
+[node name="ConveyorAnimation" type="AnimationPlayer" parent="Mulcher" unique_id=756310155]
+libraries/ = SubResource("AnimationLibrary_swsyr")
+
+[node name="ConveyorArea" type="Area2D" parent="Mulcher" unique_id=273060634]
+position = Vector2(-659, -26)
+collision_layer = 192
+collision_mask = 192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mulcher/ConveyorArea" unique_id=1281484983]
+position = Vector2(464, 767)
+shape = SubResource("RectangleShape2D_egti4")
+
+[node name="ShreddingZone" type="Area2D" parent="Mulcher" unique_id=427746511]
+visible = false
+position = Vector2(312, 719)
+collision_layer = 192
+collision_mask = 192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mulcher/ShreddingZone" unique_id=2028847380]
+position = Vector2(2, 10)
+shape = SubResource("RectangleShape2D_gluje")
+
+[node name="Pen" type="Node2D" parent="." unique_id=880166845]
+
+[node name="PenArea" type="Area2D" parent="Pen" unique_id=23391803]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pen/PenArea" unique_id=1371681978]
+position = Vector2(312, 282.5)
+shape = SubResource("RectangleShape2D_xljrr")
+
+[node name="TooltipCanvas" type="CanvasLayer" parent="." unique_id=252898851]
+visible = false
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
+
+[node name="YipToolyip" parent="TooltipCanvas" unique_id=399779298 instance=ExtResource("10_pm1ho")]
+
+[node name="TeamSlots" type="Node2D" parent="." unique_id=1531305568]
+
+[node name="TeamSlot1" type="Area2D" parent="TeamSlots" unique_id=1331481330]
+position = Vector2(496, 933)
+collision_layer = 192
+collision_mask = 192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeamSlots/TeamSlot1" unique_id=419717828]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_gluje")
+
+[node name="TeamSlot2" type="Area2D" parent="TeamSlots" unique_id=881288105]
+position = Vector2(692, 933)
+collision_layer = 192
+collision_mask = 192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeamSlots/TeamSlot2" unique_id=22081072]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_gluje")
+
+[node name="TeamSlot3" type="Area2D" parent="TeamSlots" unique_id=333665390]
+position = Vector2(885, 932)
+collision_layer = 192
+collision_mask = 192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeamSlots/TeamSlot3" unique_id=562211154]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_gluje")
+
+[node name="TeamSlot4" type="Area2D" parent="TeamSlots" unique_id=2009389140]
+position = Vector2(1076, 939)
+collision_layer = 192
+collision_mask = 192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeamSlots/TeamSlot4" unique_id=1744002859]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_gluje")
+
+[node name="TeamSlot5" type="Area2D" parent="TeamSlots" unique_id=818725733]
+position = Vector2(1269, 939)
+collision_layer = 192
+collision_mask = 192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeamSlots/TeamSlot5" unique_id=101514964]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_gluje")
+
+[node name="PedestalArea" type="Area2D" parent="." unique_id=38371562]
+position = Vector2(1159, -94)
+collision_layer = 192
+collision_mask = 192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PedestalArea" unique_id=330643990]
+position = Vector2(468, 961)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_pm1ho")
+
+[node name="DebugData" type="Label" parent="." unique_id=1513310404]
+visible = false
+offset_left = 808.0
+offset_top = 143.0
+offset_right = 907.0
+offset_bottom = 171.0
+text = "Debug data"
+
+[node name="Goop" type="Label" parent="DebugData" unique_id=611421423]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 39.0
+offset_right = 45.0
+offset_bottom = 62.0
+text = "Goop"
+
+[node name="VatIcons" type="Node2D" parent="." unique_id=1358472908]
+position = Vector2(676, 169)
+rotation = -1.5707964
+
+[node name="Atk" type="Sprite2D" parent="VatIcons" unique_id=526563559]
+self_modulate = Color(1, 1, 1, 0.54901963)
+texture_filter = 3
+position = Vector2(59, 23)
+rotation = 1.5707964
+scale = Vector2(8, 8)
+texture = ExtResource("12_e1p4a")
+
+[node name="Atk2" type="Sprite2D" parent="VatIcons" unique_id=233832683]
+self_modulate = Color(1, 1, 1, 0.54901963)
+texture_filter = 3
+position = Vector2(58.999977, 550)
+rotation = 1.5707964
+scale = Vector2(8, 8)
+texture = ExtResource("13_0dqea")
+
+[node name="Atk3" type="Sprite2D" parent="VatIcons" unique_id=1145992004]
+self_modulate = Color(1, 1, 1, 0.54901963)
+texture_filter = 3
+position = Vector2(-148.00003, 550)
+rotation = 1.5707964
+scale = Vector2(8, 8)
+texture = ExtResource("14_6mjui")
+
+[node name="Atk4" type="Sprite2D" parent="VatIcons" unique_id=1146711241]
+self_modulate = Color(1, 1, 1, 0.54901963)
+texture_filter = 3
+position = Vector2(-148, 24)
+rotation = 1.5707964
+scale = Vector2(8, 8)
+texture = ExtResource("15_bsd1w")
+
+[node name="Atk5" type="Sprite2D" parent="VatIcons" unique_id=1343157834]
+self_modulate = Color(1, 1, 1, 0.54901963)
+texture_filter = 3
+position = Vector2(-356, 23.99999)
+rotation = 1.5707964
+scale = Vector2(8, 8)
+texture = ExtResource("16_pduhj")
+
+[node name="Atk6" type="Sprite2D" parent="VatIcons" unique_id=533733923]
+self_modulate = Color(1, 1, 1, 0.54901963)
+texture_filter = 3
+position = Vector2(-356.00003, 550)
+rotation = 1.5707964
+scale = Vector2(8, 8)
+texture = ExtResource("17_6mjui")
+
+[node name="Vats" type="Node2D" parent="." unique_id=37485910]
+
+[node name="LabVatAtk" parent="Vats" unique_id=1037930385 instance=ExtResource("11_pm1ho")]
+position = Vector2(819, 108.00001)
+rotation = 1.5707964
+scale = Vector2(3, 3)
+type = "ATTACK"
+
+[node name="LabVatHp" parent="Vats" unique_id=976261634 instance=ExtResource("11_pm1ho")]
+position = Vector2(819, 314.99997)
+rotation = 1.5707964
+scale = Vector2(3, 3)
+type = "HEALTH"
+
+[node name="LabVatHaste" parent="Vats" unique_id=2146620219 instance=ExtResource("11_pm1ho")]
+position = Vector2(819, 523.00006)
+rotation = 1.5707964
+scale = Vector2(3, 3)
+type = "COOLDOWN"
+
+[node name="LabVatHpAug" parent="Vats" unique_id=462397222 instance=ExtResource("11_pm1ho")]
+position = Vector2(1106, 315)
+rotation = 1.5707964
+scale = Vector2(3, -3)
+type = "HEALTH_AUGMENT"
+
+[node name="LabVatAtkAug" parent="Vats" unique_id=1776217255 instance=ExtResource("11_pm1ho")]
+position = Vector2(1106, 108)
+rotation = 1.5707964
+scale = Vector2(3, -3)
+type = "ATTACK_AUGMENT"
+
+[node name="LabVatBreed" parent="Vats" unique_id=717030181 instance=ExtResource("11_pm1ho")]
+position = Vector2(1106, 523.00006)
+rotation = 1.5707964
+scale = Vector2(3, -3)
+type = "BREED_AUGMENT"
+
+[node name="ButtonRefresh4" type="NinePatchRect" parent="." unique_id=2101102561]
+self_modulate = Color(0.6509804, 0.40784314, 0.2784314, 1)
+z_index = 4096
+texture_filter = 3
+offset_left = 103.0
+offset_top = 935.00006
+offset_right = 178.66663
+offset_bottom = 971.7779
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("24_0n2oi")
+patch_margin_left = 15
+patch_margin_top = 10
+patch_margin_right = 30
+patch_margin_bottom = 10
+metadata/_edit_use_anchors_ = true
+
+[node name="Label4" type="Label" parent="ButtonRefresh4" unique_id=767799624]
+z_index = 4096
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.666668
+offset_top = 12.0
+offset_right = -11.999958
+offset_bottom = -10.777832
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("25_vk4kp")
+text = "fARM"
+metadata/_edit_use_anchors_ = true
+
+[node name="FarmButton" type="Button" parent="." unique_id=2073249379 node_paths=PackedStringArray("target_highlight")]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 27.0
+offset_top = 898.0
+offset_right = 254.0
+offset_bottom = 1009.0
+script = ExtResource("26_ff60u")
+target_highlight = NodePath("../ButtonRefresh4")
+metadata/_edit_use_anchors_ = true
+
+[node name="CorrectScale" type="CanvasLayer" parent="." unique_id=2129624034]
+
+[node name="YipToolyip2" parent="CorrectScale" unique_id=867696650 instance=ExtResource("10_pm1ho")]
+
+[connection signal="pressed" from="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8/AddGoop" to="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1" method="_on_add_goop_pressed"]
+[connection signal="pressed" from="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8/AddGoop" to="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2" method="_on_add_goop_pressed"]
+[connection signal="pressed" from="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8/AddGoop" to="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3" method="_on_add_goop_pressed"]
+[connection signal="pressed" from="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8/AddGoop" to="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele4" method="_on_add_goop_pressed"]
+[connection signal="pressed" from="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8/AddGoop" to="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele5" method="_on_add_goop_pressed"]
+[connection signal="pressed" from="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8/AddGoop" to="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele6" method="_on_add_goop_pressed"]
+[connection signal="pressed" from="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8/AddGoop" to="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele7" method="_on_add_goop_pressed"]
+[connection signal="pressed" from="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8/AddGoop" to="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele8" method="_on_add_goop_pressed"]
+[connection signal="area_entered" from="Mulcher/ConveyorArea" to="." method="_on_conveyor_area_area_entered"]
+[connection signal="area_exited" from="Mulcher/ConveyorArea" to="." method="_on_conveyor_area_area_exited"]
+[connection signal="area_entered" from="Mulcher/ShreddingZone" to="." method="_on_shredding_zone_area_entered"]
+[connection signal="button_down" from="FarmButton" to="FarmButton" method="_on_button_down"]
+[connection signal="button_up" from="FarmButton" to="FarmButton" method="_on_button_up"]
+[connection signal="mouse_entered" from="FarmButton" to="FarmButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="FarmButton" to="FarmButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="FarmButton" to="." method="_on_farm_button_pressed"]

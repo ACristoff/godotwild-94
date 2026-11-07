@@ -2511,6 +2511,10 @@ script = ExtResource("26_ff60u")
 target_highlight = NodePath("../ButtonRefresh4")
 metadata/_edit_use_anchors_ = true
 
+[node name="CorrectScale" type="CanvasLayer" parent="." unique_id=2129624034]
+
+[node name="YipToolyip2" parent="CorrectScale" unique_id=867696650 instance=ExtResource("10_pm1ho")]
+
 [connection signal="pressed" from="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8/AddGoop" to="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1" method="_on_add_goop_pressed"]
 [connection signal="pressed" from="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8/AddGoop" to="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2" method="_on_add_goop_pressed"]
 [connection signal="pressed" from="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8/AddGoop" to="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele3" method="_on_add_goop_pressed"]
