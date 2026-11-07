@@ -5,12 +5,16 @@ const LEFT_DIR := "res://World/yipee/genes/allele/leftallele/resources/"
 
 static var _right_by_slot: Dictionary = {}
 static var _left_by_slot: Dictionary = {}
+static var _right_by_name: Dictionary = {}
+static var _left_by_name: Dictionary = {}
 
 static func _ensure_loaded() -> void:
 	if _right_by_slot.is_empty():
 		_right_by_slot = _scan_dir(RIGHT_DIR)
+		_right_by_name = _index_by_name(_right_by_slot)
 	if _left_by_slot.is_empty():
 		_left_by_slot = _scan_dir(LEFT_DIR)
+		_left_by_name = _index_by_name(_left_by_slot)
 
 static func _scan_dir(path: String) -> Dictionary:
 	var by_slot: Dictionary = {}
@@ -54,3 +58,24 @@ static func _weighted_pick(pool: Array, weights: Dictionary) -> Allele:
 		if roll <= 0.0:
 			return a
 	return pool.back()
+
+static func _index_by_name(by_slot: Dictionary) -> Dictionary:
+	var by_name: Dictionary = {}
+	for slot_pool in by_slot.values():
+		for allele in slot_pool:
+			by_name[allele.allele_name] = allele
+	return by_name
+
+static func find_left(allele_name: String) -> LeftAllele:
+	_ensure_loaded()
+	var template = _left_by_name.get(allele_name)
+	if template == null:
+		return null
+	return template.duplicate(true) as LeftAllele
+
+static func find_right(allele_name: String) -> RightAllele:
+	_ensure_loaded()
+	var template = _right_by_name.get(allele_name)
+	if template == null:
+		return null
+	return template.duplicate(true) as RightAllele

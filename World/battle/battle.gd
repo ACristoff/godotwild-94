@@ -316,6 +316,7 @@ func sandstorm_tick(delta):
 				apply_damage(yip, sandstorm_damage)
 
 func _on_next_button_pressed() -> void:
+	$CanvasLayer2/NextButton.disabled = true
 	_save_party_snapshot()
 	SignalBus.current_day += 1
 	_on_next()
