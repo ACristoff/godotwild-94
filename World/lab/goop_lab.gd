@@ -320,21 +320,10 @@ func _on_yip_hovered(yip: Yipee) -> void:
 		_refresh_cursor()
 
 func _on_yip_unhovered() -> void:
-	tooltip2.hide()
+	tooltip2.request_hide()
 	focused_yip = null
 	_refresh_cursor()
 
-#enum Slot {
-	#HEALTH,
-	#HEALTH_AUGMENT,
-	#ATTACK,
-	#ATTACK_AUGMENT,
-	#COOLDOWN,
-	#SPECIALIZATION,
-	#BREED_AUGMENT,
-	#NONE
-#}
-#BodyMap.Slot.find_key(strand.slot)
 func _on_goop_spent(type: BodyMap.Slot):
 	print('goop spent of type:', BodyMap.Slot.keys()[type])
 	var type_slot = BodyMap.Slot.keys()[type]
