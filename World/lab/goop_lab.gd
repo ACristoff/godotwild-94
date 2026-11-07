@@ -61,12 +61,13 @@ var slot_yips: Dictionary[int, Yipee] = {
 
 func _ready():
 	SignalBus.spent_goop.connect(_on_goop_spent)
+	SignalBus.gene_levelled_up.connect(_on_level_up)
 	for child in team_slot_conatiner.get_children():
 		team_slots.append(child)
 	if SignalBus.debug_mode == true:
 		$DebugData.visible = true
 		for yip in debug_yips:
-			spawn_yip(yip)
+			spawn_yip(yip.clone())
 	else:
 		for yip in SignalBus.yip_inventory:
 			spawn_yip(yip)
@@ -111,36 +112,19 @@ func screen_yip():
 	var data: YipeeData = yip_on_pedestal.data
 	var index := 0
 	for row in $ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay.get_children():
-		var allele_name = row.get_node("AlleleBG/NameBox/MarginContainer/AlleleName")
-		var allele_level = row.get_node("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer/AlleleLevel")
-		var allele_icon = row.get_node("AlleleBG/NameBox/MarginContainer4/Box/AlleleTypeTexture")
-		var allele_bg = row.get_node("AlleleBG")
-		var allele_button = row.get_node("AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8/AddGoop")
-		allele_name.text = "Empty"
-		allele_level.text = "Lvl 0"
-		allele_icon.texture = load("res://UI/Textures/ui_effecticons/null_icon.png")
-		allele_bg.color = Color(0.3, 0.3, 0.3, 1.0)
-		allele_button.disabled = true
-		row.type = null
-		
-		if data.helix.strands[index] != null:
-			if data.helix.strands[index].left != null:
-				var allele : Allele = data.helix.strands[index].left
-				allele_name.text = str(allele.allele_name)
-				allele_level.text = str("Lvl ", allele.tier)
-				allele_icon.texture = load(SLOT_ICONS[allele.slot])
-				allele_bg.color = SLOT_COLORS[allele.slot]
-				allele_button.disabled = false
-				if allele.tier > 1:
-					row.change_tick(allele.tier * 3)
-				row.type = data.helix.strands[index].slot
-		else:
-			allele_name.text = "Empty"
-			allele_level.text = "Lvl 0"
-			allele_icon.texture = load("res://UI/Textures/ui_effecticons/null_icon.png")
-			allele_bg.color = Color(0.3, 0.3, 0.3, 1.0)
-			allele_button.disabled = true
+		var strand: Strand = data.helix.strands[index]
 		index += 1
+		if strand == null or strand.left == null:
+			row.name_label.text = "Empty"
+			row.type_texture.texture = load(SLOT_ICONS[BodyMap.Slot.NONE])
+			row.BG_color_rect.color = Color(0.3, 0.3, 0.3, 1.0)
+			row.clear()
+			continue
+		var allele: Allele = strand.left
+		row.name_label.text = allele.allele_name
+		row.type_texture.texture = load(SLOT_ICONS[allele.slot])
+		row.BG_color_rect.color = Color(SLOT_COLORS[allele.slot])
+		row.setup(allele, strand.slot)
 
 
 
@@ -359,6 +343,9 @@ func _on_goop_spent(type: BodyMap.Slot):
 	#var type_stringify = BodyMap.Slot.find_key(type_slot)
 	remove_stars(type_slot)
 	print('goop leftover:', SignalBus.goop_inventory[type_slot])
+
+func _on_level_up(_gene: Allele) -> void:
+	pass
 
 func _refresh_cursor() -> void:
 	if dragged_yip != null:

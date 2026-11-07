@@ -30,11 +30,17 @@ static func _scan_dir(path: String) -> Dictionary:
 
 static func random_right(slot: BodyMap.Slot, weights: Dictionary) -> RightAllele:
 	_ensure_loaded()
-	return _weighted_pick(_right_by_slot.get(slot, []), weights) as RightAllele
+	var picked := _weighted_pick(_right_by_slot.get(slot, []), weights)
+	if picked == null:
+		return null
+	return picked.duplicate(true) as RightAllele
 
 static func random_left(slot: BodyMap.Slot, weights: Dictionary) -> LeftAllele:
 	_ensure_loaded()
-	return _weighted_pick(_left_by_slot.get(slot, []), weights) as LeftAllele
+	var picked := _weighted_pick(_left_by_slot.get(slot, []), weights)
+	if picked == null:
+		return null
+	return picked.duplicate(true) as LeftAllele
 
 static func _weighted_pick(pool: Array, weights: Dictionary) -> Allele:
 	if pool.is_empty():

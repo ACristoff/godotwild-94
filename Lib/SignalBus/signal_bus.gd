@@ -83,7 +83,7 @@ signal opening_scene_finished
 
 signal day_finished
 
-signal gene_levelled_up(yip: Yipee, gene: Allele)
+signal gene_levelled_up(gene: Allele)
 
 signal spent_goop(type)
 

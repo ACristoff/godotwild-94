@@ -4,6 +4,14 @@ class_name Strand extends Resource
 @export var left: LeftAllele
 @export var right: RightAllele
 
+func clone() -> Strand:
+	var copy := duplicate() as Strand
+	if left:
+		copy.left = left.duplicate(true) as LeftAllele
+	if right:
+		copy.right = right.duplicate(true) as RightAllele
+	return copy
+
 func modify_stat(base_value: float, yipee_data) -> float:
 	var result := base_value
 	if left:

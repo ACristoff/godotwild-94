@@ -3,7 +3,7 @@ extends Resource
 
 enum Side { LEFT, RIGHT }
 enum AlleleRarity { COMMON, UNCOMMON, RARE, ULTRARARE}
-
+const GOOP_PER_TIER := 3
 const MAX_TIER := 3
 
 var side: Allele.Side
@@ -13,6 +13,7 @@ var side: Allele.Side
 @export var allele_name: String = ""
 @export var tooltip: String = ""
 @export var tier: int = 1
+@export var goop_progress: int = 0
 @export var rarity: AlleleRarity = AlleleRarity.COMMON
 @export var flat_mods: Dictionary[BodyMap.Stat, int] = {}
 @export var percent_mods: Dictionary[BodyMap.Stat, float] = {}
@@ -31,7 +32,21 @@ static func fuse(a: Allele, b: Allele) -> Allele:
 		return null
 	var fused: Allele = a.duplicate(true)
 	fused.tier = a.tier + 1
+	fused.goop_progress = 0
 	return fused
+
+func is_max_tier() -> bool:
+	return tier >= MAX_TIER
+
+func goop_to_next_tier() -> int:
+	return tier * GOOP_PER_TIER
+
+func level_up() -> void:
+	if is_max_tier():
+		return
+	tier += 1
+	goop_progress = 0
+	emit_changed()
 
 func get_damage_pips() -> Dictionary:
 	return {}

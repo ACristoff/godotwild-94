@@ -111,7 +111,9 @@ func _derived(base: float, stat: BodyMap.Stat) -> float:
 	return maxf(0.1, (base + flat_sum) * (1.0 + pct_sum))
 
 func clone() -> YipeeData:
-	return duplicate(true) as YipeeData
+	var copy := duplicate() as YipeeData
+	copy.helix = helix.clone()
+	return copy
 
 static func generate_yip(chosen_tier: YipTier) -> YipeeData:
 	var new_yip = YipeeData.new()

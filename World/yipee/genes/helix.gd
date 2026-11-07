@@ -53,7 +53,7 @@ static func combine(parent_a: Helix, parent_b: Helix) -> Helix:
 		elif strand_b != null:
 			chosen = strand_b
 		if chosen != null:
-			helix.strands[rung] = chosen.duplicate(true) as Strand
+			helix.strands[rung] = chosen.clone()
 	return helix
 
 func get_rung(index: int) -> Strand:
@@ -78,4 +78,12 @@ func strands_of_type(slot: BodyMap.Slot) -> Array[Strand]:
 
 ## Deep copy — strands are duplicated too, so no shared references.
 func clone() -> Helix:
-	return duplicate(true) as Helix
+	var copy := duplicate() as Helix
+	var copied_strands: Array[Strand] = []
+	for strand in strands:
+		if strand == null:
+			copied_strands.append(null)
+		else:
+			copied_strands.append(strand.clone())
+	copy.strands = copied_strands
+	return copy
