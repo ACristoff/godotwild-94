@@ -20,21 +20,21 @@ const YIP_TABLE := {
 		"CRIT": [2,4]
 	},
 	YipTier.UNCOMMON: {
-		"HP": [16, 21],
-		"ATK": [4, 6],
-		"COOLDOWN": [6.5, 6.9],
+		"HP": [11, 18],
+		"ATK": [2, 4],
+		"COOLDOWN": [6.5, 7.5],
 		"CRIT": [3,5]
 	},
 	YipTier.RARE: {
-		"HP": [22, 30],
-		"ATK": [7, 9],
-		"COOLDOWN": [5, 6.4],
+		"HP": [16, 22],
+		"ATK": [3, 5],
+		"COOLDOWN": [6.0, 7.0],
 		"CRIT": [4,6]
 	},
 	YipTier.ULTRARARE: {
-		"HP": [31, 42],
-		"ATK": [10, 14],
-		"COOLDOWN": [4, 4.9],
+		"HP": [15, 25],
+		"ATK": [4, 6],
+		"COOLDOWN": [5.8, 6.6],
 		"CRIT": [5,7]
 	},
 }

@@ -1,0 +1,511 @@
+[gd_scene format=3 uid="uid://c3be33ekgght8"]
+
+[ext_resource type="Shader" uid="uid://d0ysxiqng256p" path="res://Assets/Shaders/battle_clash.gdshader" id="1_uxckp"]
+[ext_resource type="Texture2D" uid="uid://iv7v3jdou3tk" path="res://UI/Textures/ui_effecticons/DangerLevel.png" id="2_k8i1y"]
+[ext_resource type="Texture2D" uid="uid://dq58pqllrqcni" path="res://UI/Menus/Main_Menu/Textures/BuggyBoy.png" id="2_u37gd"]
+[ext_resource type="Texture2D" uid="uid://33t0bjb52yro" path="res://UI/Menus/Main_Menu/Textures/BattleFrame.png" id="3_2pn4q"]
+[ext_resource type="FontFile" uid="uid://b2o45fsyj2vco" path="res://UI/Fonts/ShareTech-Regular.ttf" id="4_k8i1y"]
+[ext_resource type="Texture2D" uid="uid://tghyg52x0q5d" path="res://UI/Menus/Main_Menu/Textures/BattleFrameHard.png" id="6_mact8"]
+[ext_resource type="Texture2D" uid="uid://1lmfe1dpron4" path="res://Assets/Environment/Scenes/BattleField/Coin.png" id="6_nm7lq"]
+[ext_resource type="Texture2D" uid="uid://byj10jlattmdd" path="res://UI/Menus/Main_Menu/Textures/MalfoidFighterportrait.png" id="6_vinn0"]
+[ext_resource type="Texture2D" uid="uid://kdpncggx3xvd" path="res://Assets/Environment/Scenes/BattleField/AlleleSmall.png" id="7_2xmng"]
+[ext_resource type="Texture2D" uid="uid://b5bfdiwcy2dyl" path="res://UI/Menus/Main_Menu/Textures/BattleFrameHardest.png" id="7_vinn0"]
+[ext_resource type="Texture2D" uid="uid://bqy2b7v8pu5bh" path="res://UI/Menus/Main_Menu/Textures/YipLoverPortrait.png" id="8_nm7lq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mact8"]
+shader = ExtResource("1_uxckp")
+shader_parameter/alpha = 1.0
+shader_parameter/inner_radius = 0.0
+shader_parameter/outer_radius = 2.59
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nm7lq"]
+bg_color = Color(0, 0, 0, 0.33333334)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="Choose3Fight" type="CanvasLayer" unique_id=169171740]
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=356382421]
+material = SubResource("ShaderMaterial_mact8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1988016859]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 193
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 120
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1033375480]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 100
+
+[node name="Challenger1" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=997317774]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Challenger1" unique_id=144060075]
+layout_mode = 2
+
+[node name="DangerLevel" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer" unique_id=1570259230]
+layout_mode = 2
+alignment = 1
+
+[node name="ColorRect" type="Panel" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/DangerLevel" unique_id=1695025568]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_nm7lq")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/DangerLevel/ColorRect" unique_id=2031955189]
+texture_filter = 3
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_k8i1y")
+
+[node name="TrainerPortrait" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer" unique_id=1361632622]
+texture_filter = 3
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+texture = ExtResource("2_u37gd")
+
+[node name="BattleFrame" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/TrainerPortrait" unique_id=1554257211]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_2pn4q")
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/TrainerPortrait" unique_id=172143967]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerName" type="Label" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer" unique_id=1546335806]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_k8i1y")
+theme_override_font_sizes/font_size = 60
+text = "Bug Boy"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer" unique_id=1023438284]
+layout_mode = 2
+theme_override_constants/margin_top = 22
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/MarginContainer" unique_id=958738297]
+layout_mode = 2
+alignment = 1
+
+[node name="PlayerName" type="Label" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/MarginContainer/HBoxContainer2" unique_id=1385897111]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.6)
+theme_override_fonts/font = ExtResource("4_k8i1y")
+theme_override_font_sizes/font_size = 42
+text = "On Victory"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer" unique_id=407442457]
+layout_mode = 2
+theme_override_constants/margin_top = -38
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/MarginContainer2" unique_id=344695711]
+layout_mode = 2
+alignment = 1
+
+[node name="Coins" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=1709753156]
+texture_filter = 3
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = ExtResource("6_nm7lq")
+
+[node name="CoinsLabel" type="Label" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=1763852743]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_k8i1y")
+theme_override_font_sizes/font_size = 40
+text = "2 coins"
+horizontal_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer" unique_id=321558467]
+layout_mode = 2
+theme_override_constants/margin_top = -57
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/MarginContainer3" unique_id=1052275482]
+layout_mode = 2
+alignment = 1
+
+[node name="Alleles" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/MarginContainer3/HBoxContainer" unique_id=948861239]
+texture_filter = 3
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("7_2xmng")
+
+[node name="AlleleLabel" type="Label" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/MarginContainer3/HBoxContainer" unique_id=1894232661]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_k8i1y")
+theme_override_font_sizes/font_size = 40
+text = "1 ATK Goop"
+horizontal_alignment = 1
+
+[node name="Challenger2" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=639526788]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Challenger2" unique_id=151223018]
+layout_mode = 2
+
+[node name="DangerLevel" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Challenger2/VBoxContainer" unique_id=1165384455]
+layout_mode = 2
+alignment = 1
+
+[node name="ColorRect" type="Panel" parent="MarginContainer/HBoxContainer/Challenger2/VBoxContainer/DangerLevel" unique_id=1076101452]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_nm7lq")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger2/VBoxContainer/DangerLevel/ColorRect" unique_id=1699995621]
+texture_filter = 3
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_k8i1y")
+
+[node name="ColorRect2" type="Panel" parent="MarginContainer/HBoxContainer/Challenger2/VBoxContainer/DangerLevel" unique_id=1899248545]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_nm7lq")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger2/VBoxContainer/DangerLevel/ColorRect2" unique_id=1949346739]
+texture_filter = 3
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_k8i1y")
+
+[node name="TrainerPortrait" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger2/VBoxContainer" unique_id=1761458310]
+texture_filter = 3
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+texture = ExtResource("6_vinn0")
+
+[node name="BattleFrame" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger2/VBoxContainer/TrainerPortrait" unique_id=835921491]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_mact8")
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/Challenger2/VBoxContainer/TrainerPortrait" unique_id=865967435]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerName" type="Label" parent="MarginContainer/HBoxContainer/Challenger2/VBoxContainer" unique_id=335559841]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_k8i1y")
+theme_override_font_sizes/font_size = 60
+text = "Shy Girl"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Challenger2/VBoxContainer" unique_id=67004485]
+layout_mode = 2
+theme_override_constants/margin_top = 22
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Challenger2/VBoxContainer/MarginContainer" unique_id=2048016841]
+layout_mode = 2
+alignment = 1
+
+[node name="PlayerName" type="Label" parent="MarginContainer/HBoxContainer/Challenger2/VBoxContainer/MarginContainer/HBoxContainer2" unique_id=652312041]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.6)
+theme_override_fonts/font = ExtResource("4_k8i1y")
+theme_override_font_sizes/font_size = 42
+text = "On Victory"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/Challenger2/VBoxContainer" unique_id=194597790]
+layout_mode = 2
+theme_override_constants/margin_top = -38
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Challenger2/VBoxContainer/MarginContainer2" unique_id=1478750522]
+layout_mode = 2
+alignment = 1
+
+[node name="Coins" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger2/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=611069036]
+texture_filter = 3
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = ExtResource("6_nm7lq")
+
+[node name="CoinsLabel" type="Label" parent="MarginContainer/HBoxContainer/Challenger2/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=978840579]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_k8i1y")
+theme_override_font_sizes/font_size = 40
+text = "3 coins"
+horizontal_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/HBoxContainer/Challenger2/VBoxContainer" unique_id=938320200]
+layout_mode = 2
+theme_override_constants/margin_top = -57
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Challenger2/VBoxContainer/MarginContainer3" unique_id=198578704]
+layout_mode = 2
+alignment = 1
+
+[node name="Alleles" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger2/VBoxContainer/MarginContainer3/HBoxContainer" unique_id=1434188092]
+texture_filter = 3
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("7_2xmng")
+
+[node name="AlleleLabel" type="Label" parent="MarginContainer/HBoxContainer/Challenger2/VBoxContainer/MarginContainer3/HBoxContainer" unique_id=809172918]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_k8i1y")
+theme_override_font_sizes/font_size = 40
+text = "2 ATK Goop"
+horizontal_alignment = 1
+
+[node name="Challenger3" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=1394527643]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Challenger3" unique_id=793260162]
+layout_mode = 2
+
+[node name="DangerLevel" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Challenger3/VBoxContainer" unique_id=397397970]
+layout_mode = 2
+alignment = 1
+
+[node name="ColorRect" type="Panel" parent="MarginContainer/HBoxContainer/Challenger3/VBoxContainer/DangerLevel" unique_id=1055740478]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_nm7lq")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger3/VBoxContainer/DangerLevel/ColorRect" unique_id=1510454015]
+texture_filter = 3
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_k8i1y")
+
+[node name="ColorRect2" type="Panel" parent="MarginContainer/HBoxContainer/Challenger3/VBoxContainer/DangerLevel" unique_id=1607396385]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_nm7lq")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger3/VBoxContainer/DangerLevel/ColorRect2" unique_id=1813244332]
+texture_filter = 3
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_k8i1y")
+
+[node name="ColorRect3" type="Panel" parent="MarginContainer/HBoxContainer/Challenger3/VBoxContainer/DangerLevel" unique_id=1468217105]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_nm7lq")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger3/VBoxContainer/DangerLevel/ColorRect3" unique_id=2065186374]
+texture_filter = 3
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_k8i1y")
+
+[node name="TrainerPortrait" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger3/VBoxContainer" unique_id=2123313579]
+texture_filter = 3
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+texture = ExtResource("8_nm7lq")
+
+[node name="BattleFrame" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger3/VBoxContainer/TrainerPortrait" unique_id=1426919807]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_vinn0")
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/Challenger3/VBoxContainer/TrainerPortrait" unique_id=2101608622]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerName" type="Label" parent="MarginContainer/HBoxContainer/Challenger3/VBoxContainer" unique_id=2067144704]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_k8i1y")
+theme_override_font_sizes/font_size = 60
+text = "Yip Lover Sophie"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Challenger3/VBoxContainer" unique_id=1012516247]
+layout_mode = 2
+theme_override_constants/margin_top = 22
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Challenger3/VBoxContainer/MarginContainer" unique_id=759164334]
+layout_mode = 2
+alignment = 1
+
+[node name="PlayerName" type="Label" parent="MarginContainer/HBoxContainer/Challenger3/VBoxContainer/MarginContainer/HBoxContainer2" unique_id=365090916]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.6)
+theme_override_fonts/font = ExtResource("4_k8i1y")
+theme_override_font_sizes/font_size = 42
+text = "On Victory"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/Challenger3/VBoxContainer" unique_id=599336482]
+layout_mode = 2
+theme_override_constants/margin_top = -38
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Challenger3/VBoxContainer/MarginContainer2" unique_id=2144715942]
+layout_mode = 2
+alignment = 1
+
+[node name="Coins" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger3/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=1156341702]
+texture_filter = 3
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = ExtResource("6_nm7lq")
+
+[node name="CoinsLabel" type="Label" parent="MarginContainer/HBoxContainer/Challenger3/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=1057785444]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_k8i1y")
+theme_override_font_sizes/font_size = 40
+text = "5 coins"
+horizontal_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/HBoxContainer/Challenger3/VBoxContainer" unique_id=1197108415]
+layout_mode = 2
+theme_override_constants/margin_top = -57
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Challenger3/VBoxContainer/MarginContainer3" unique_id=1020743623]
+layout_mode = 2
+alignment = 1
+
+[node name="Alleles" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger3/VBoxContainer/MarginContainer3/HBoxContainer" unique_id=957527612]
+texture_filter = 3
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("7_2xmng")
+
+[node name="AlleleLabel" type="Label" parent="MarginContainer/HBoxContainer/Challenger3/VBoxContainer/MarginContainer3/HBoxContainer" unique_id=1816777689]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_k8i1y")
+theme_override_font_sizes/font_size = 40
+text = "3 ATK Goop"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1769755117]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -196.0
+offset_right = 196.0
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 51
+
+[node name="PlayerName" type="Label" parent="MarginContainer2" unique_id=643078222]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_k8i1y")
+theme_override_font_sizes/font_size = 60
+text = "Who will you face? (Choose One)"
+horizontal_alignment = 1

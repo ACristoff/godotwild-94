@@ -4,11 +4,11 @@
 
 [resource]
 script = ExtResource("1_6du33")
-flat_mods = Dictionary[int, int]({
-1: 20
-})
 slot = 2
 allele_name = "Crunch"
 tooltip = "{attack} Physical Damage"
 rarity = 1
+flat_mods = Dictionary[int, int]({
+1: 6
+})
 metadata/_custom_type_script = "uid://mc42eixh1d8t"

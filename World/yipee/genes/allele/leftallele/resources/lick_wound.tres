@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_888c8")
+heal_amount = 4
 slot = 1
 allele_name = "Lick Wound"
 tooltip = "Heal lowest HP ally {heal}"

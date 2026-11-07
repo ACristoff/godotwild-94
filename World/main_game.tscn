@@ -7,32 +7,36 @@
 [ext_resource type="Resource" uid="uid://bbdaf751fbph3" path="res://World/battle/levels/bugboy1.tres" id="6_a7n0g"]
 [ext_resource type="Script" uid="uid://ihlwlq687iua" path="res://Lib/Fight_Organizer/bracket.gd" id="7_dq3qm"]
 [ext_resource type="Resource" uid="uid://dfbgj6ik5n2dw" path="res://World/battle/levels/yiploversophie.tres" id="7_e30yk"]
+[ext_resource type="Resource" uid="uid://w8eve1h0xnia" path="res://World/battle/levels/malfoid.tres" id="8_2w4tv"]
 [ext_resource type="Resource" uid="uid://c7dwossk3d7da" path="res://World/battle/levels/kayla_fire_girl2.tres" id="8_6a4mh"]
 [ext_resource type="Resource" uid="uid://bkoj12ws844c3" path="res://World/battle/levels/bladabeer2.tres" id="9_e30yk"]
 [ext_resource type="Resource" uid="uid://dyvdhk217xukr" path="res://World/battle/levels/jocelyntheyippa3.tres" id="10_v7kkf"]
+[ext_resource type="Resource" uid="uid://xylq1lcd4ta" path="res://World/battle/levels/chill_guy.tres" id="11_0nlon"]
 [ext_resource type="Resource" uid="uid://bh2d8owmcbne5" path="res://World/battle/levels/berg3.tres" id="11_f6gyy"]
 [ext_resource type="Resource" uid="uid://blo0ieb3u4dan" path="res://World/battle/levels/drinsaneo1.tres" id="12_e30yk"]
 [ext_resource type="Resource" uid="uid://6rn88cebcpna" path="res://World/battle/levels/godotdestroyer.tres" id="13_v7kkf"]
 [ext_resource type="Resource" uid="uid://rbwqwvobgtnx" path="res://World/battle/levels/bae.tres" id="14_f6gyy"]
+[ext_resource type="Resource" uid="uid://cx7ke1jqmrbyt" path="res://World/battle/levels/beret_girl.tres" id="14_yely4"]
+[ext_resource type="Resource" uid="uid://clkkjnbpwvvov" path="res://World/battle/levels/korone.tres" id="17_dwh1l"]
 
 [sub_resource type="Resource" id="Resource_goquv"]
 script = ExtResource("7_dq3qm")
-levels = Array[ExtResource("4_xkfpm")]([ExtResource("6_a7n0g"), ExtResource("7_e30yk")])
+levels = Array[ExtResource("4_xkfpm")]([ExtResource("6_a7n0g"), ExtResource("7_e30yk"), ExtResource("8_2w4tv")])
 metadata/_custom_type_script = "uid://ihlwlq687iua"
 
 [sub_resource type="Resource" id="Resource_enera"]
 script = ExtResource("7_dq3qm")
-levels = Array[ExtResource("4_xkfpm")]([ExtResource("8_6a4mh"), ExtResource("9_e30yk")])
+levels = Array[ExtResource("4_xkfpm")]([ExtResource("8_6a4mh"), ExtResource("9_e30yk"), ExtResource("11_0nlon")])
 metadata/_custom_type_script = "uid://ihlwlq687iua"
 
 [sub_resource type="Resource" id="Resource_2w4tv"]
 script = ExtResource("7_dq3qm")
-levels = Array[ExtResource("4_xkfpm")]([ExtResource("10_v7kkf"), ExtResource("11_f6gyy")])
+levels = Array[ExtResource("4_xkfpm")]([ExtResource("10_v7kkf"), ExtResource("11_f6gyy"), ExtResource("14_yely4")])
 metadata/_custom_type_script = "uid://ihlwlq687iua"
 
 [sub_resource type="Resource" id="Resource_0nlon"]
 script = ExtResource("7_dq3qm")
-levels = Array[ExtResource("4_xkfpm")]([ExtResource("12_e30yk"), ExtResource("13_v7kkf")])
+levels = Array[ExtResource("4_xkfpm")]([ExtResource("12_e30yk"), ExtResource("13_v7kkf"), ExtResource("17_dwh1l")])
 metadata/_custom_type_script = "uid://ihlwlq687iua"
 
 [sub_resource type="Resource" id="Resource_yely4"]

@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_awc1k")
-ice_stacks = 20
+ice_stacks = 6
 allele_name = "Shatter"
 tooltip = "Apply {stacks} Freeze stacks"
 rarity = 3

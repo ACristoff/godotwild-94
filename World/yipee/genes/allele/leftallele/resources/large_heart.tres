@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_q25pn")
-flat_mods = Dictionary[int, int]({
-0: 25
-})
 allele_name = "Large Heart"
 tooltip = "+{health} Max Health"
+flat_mods = Dictionary[int, int]({
+0: 8
+})
 metadata/_custom_type_script = "uid://mc42eixh1d8t"

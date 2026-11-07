@@ -4,10 +4,10 @@
 
 [resource]
 script = ExtResource("1_ygm4b")
-flat_mods = Dictionary[int, int]({
-0: 100
-})
 allele_name = "Foot Pads"
 tooltip = "+{health} Max Health"
 rarity = 2
+flat_mods = Dictionary[int, int]({
+0: 23
+})
 metadata/_custom_type_script = "uid://mc42eixh1d8t"

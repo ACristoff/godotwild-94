@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_mcwms")
-shield_amount = 25
+shield_amount = 8
 slot = 1
 allele_name = "Defend"
 tooltip = "Shield {shield} on action"

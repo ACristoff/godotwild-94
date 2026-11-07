@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_egn01")
-ice_stacks = 6
+ice_stacks = 2
 slot = 3
 allele_name = "Cold Blow"
 tooltip = "Apply {stacks} Freeze stacks"
