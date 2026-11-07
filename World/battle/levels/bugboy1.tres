@@ -137,4 +137,8 @@ script = ExtResource("2_2cjmx")
 level_name = "Yip Catcher"
 enemy_team = Array[ExtResource("1_7jv8h")]([SubResource("Resource_audep"), SubResource("Resource_jpgy3")])
 intro_animation = ExtResource("9_j7us4")
+reward_coins = 2
+reward_goop = Dictionary[int, int]({
+2: 1
+})
 metadata/_custom_type_script = "uid://d2tgf0trp406f"

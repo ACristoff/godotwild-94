@@ -35,7 +35,7 @@ func lose_final():
 func won_match():
 	update_trophies()
 	AudMan.play_sfx_wav(YIP_TROPHY_SHEEN, 0.0, false)
-	if SignalBus.victories >= 5:
+	if SignalBus.final_boss_defeated:
 		win_final()
 	else:
 		await get_tree().create_timer(1.0).timeout

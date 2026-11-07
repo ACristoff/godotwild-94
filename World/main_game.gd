@@ -34,7 +34,7 @@ func change_location(location: SignalBus.Locations) -> void:
 	print('going to new location', location)
 	var new_location = location_dictionary[location].instantiate()
 	if location == SignalBus.Locations.BATTLE && SignalBus.debug_mode == false:
-		var next_fight = fight_org.get_next_fight()
+		var next_fight = await fight_org.choose_next_fight()
 		new_location.level = next_fight
 	if location != SignalBus.Locations.BATTLE:
 		var trans = spawn_transition()
@@ -61,6 +61,7 @@ func _ready():
 		change_location(SignalBus.Locations.FARM)
 
 func _on_battle_finished(victory: bool) -> void:
+	fight_org.finish_fight(victory)
 	await change_location(SignalBus.Locations.WIN_LOSE)
 	await get_tree().create_timer(2.0).timeout
 	if victory == true:

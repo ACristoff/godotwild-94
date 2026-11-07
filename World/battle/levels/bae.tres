@@ -212,4 +212,5 @@ level_name = "Champion Bae"
 enemy_team = Array[ExtResource("1_ao7h6")]([SubResource("Resource_d2dw7"), SubResource("Resource_6kjws"), SubResource("Resource_eymjj"), SubResource("Resource_ug6i5"), SubResource("Resource_df42b")])
 intro_animation = ExtResource("13_i3xyg")
 intro_timeline = ExtResource("14_yrj48")
+is_final_boss = true
 metadata/_custom_type_script = "uid://d2tgf0trp406f"

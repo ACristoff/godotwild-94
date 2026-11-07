@@ -12,3 +12,8 @@ extends Resource
 @export var enemy_portait: Texture2D
 @export var enemy_color: Color
 var opponent_portrait: String = ""
+
+@export_group("Rewards")
+@export var reward_coins: int = 0
+@export var reward_goop: Dictionary[BodyMap.Slot, int] = {}
+@export var is_final_boss: bool = false

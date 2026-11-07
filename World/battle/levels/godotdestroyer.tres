@@ -114,4 +114,8 @@ script = ExtResource("2_6ap7r")
 level_name = "Godrone"
 enemy_team = Array[ExtResource("1_3kn11")]([SubResource("Resource_fa0ay"), SubResource("Resource_kaai4"), SubResource("Resource_rjbjo"), SubResource("Resource_jj0d2"), SubResource("Resource_0uqkb")])
 intro_animation = ExtResource("10_gy1jw")
+reward_coins = 8
+reward_goop = Dictionary[int, int]({
+2: 6
+})
 metadata/_custom_type_script = "uid://d2tgf0trp406f"

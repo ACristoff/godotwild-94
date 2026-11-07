@@ -24,7 +24,7 @@
 [ext_resource type="Resource" uid="uid://5vr076ro1ipx" path="res://World/yipee/genes/allele/leftallele/resources/bigswing.tres" id="18_pg2os"]
 [ext_resource type="Resource" uid="uid://b4ok0njcu808f" path="res://World/yipee/genes/allele/rightallele/resources/aware_eyes.tres" id="19_kmmfv"]
 [ext_resource type="Resource" uid="uid://cqnr5f7maaf6n" path="res://World/yipee/genes/allele/leftallele/resources/lick_wound.tres" id="23_fqb4a"]
-[ext_resource type="PackedScene" uid="uid://bno8akloiexh4" path="res://UI/Scenes/battle_clash_beret.tscn" id="24_yujo3"]
+[ext_resource type="PackedScene" path="res://UI/Scenes/battle_clash_beret.tscn" id="24_yujo3"]
 
 [sub_resource type="Resource" id="Resource_lh4j8"]
 script = ExtResource("3_k2cx3")
@@ -204,4 +204,8 @@ script = ExtResource("2_6cum4")
 level_name = "Beret Girl"
 enemy_team = Array[ExtResource("1_tdk78")]([SubResource("Resource_r42vc"), SubResource("Resource_nfykc"), SubResource("Resource_uao61"), SubResource("Resource_ap2t0"), SubResource("Resource_vi8vt")])
 intro_animation = ExtResource("24_yujo3")
+reward_coins = 5
+reward_goop = Dictionary[int, int]({
+2: 4
+})
 metadata/_custom_type_script = "uid://d2tgf0trp406f"

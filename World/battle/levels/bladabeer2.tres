@@ -149,4 +149,8 @@ script = ExtResource("2_78ol4")
 level_name = "Bladabeer"
 enemy_team = Array[ExtResource("1_pi8j7")]([SubResource("Resource_cnbn6"), SubResource("Resource_07nu8"), SubResource("Resource_p7isi"), SubResource("Resource_w2f6m")])
 intro_animation = ExtResource("11_qejfg")
+reward_coins = 5
+reward_goop = Dictionary[int, int]({
+2: 3
+})
 metadata/_custom_type_script = "uid://d2tgf0trp406f"

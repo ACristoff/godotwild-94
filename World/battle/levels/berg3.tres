@@ -220,4 +220,8 @@ script = ExtResource("7_sfdi1")
 level_name = "Berg"
 enemy_team = Array[ExtResource("1_idvg4")]([SubResource("Resource_jna2f"), SubResource("Resource_q1f8t"), SubResource("Resource_xdbi0"), SubResource("Resource_251ed"), SubResource("Resource_j04d7")])
 intro_animation = ExtResource("7_j04d7")
+reward_coins = 8
+reward_goop = Dictionary[int, int]({
+2: 8
+})
 metadata/_custom_type_script = "uid://d2tgf0trp406f"

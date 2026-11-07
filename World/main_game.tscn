@@ -19,6 +19,10 @@
 [ext_resource type="Resource" uid="uid://cx7ke1jqmrbyt" path="res://World/battle/levels/beret_girl.tres" id="14_yely4"]
 [ext_resource type="Resource" uid="uid://clkkjnbpwvvov" path="res://World/battle/levels/korone.tres" id="17_dwh1l"]
 
+[ext_resource type="PackedScene" uid="uid://c3be33ekgght8" path="res://UI/Scenes/choose_3_fight_day_1.tscn" id="91_choice"]
+[ext_resource type="PackedScene" uid="uid://07loweyeptdt" path="res://UI/Scenes/choose_3_fight_day_2.tscn" id="92_choice"]
+[ext_resource type="PackedScene" uid="uid://71ebgeu8e2do" path="res://UI/Scenes/choose_3_fight_day_3.tscn" id="93_choice"]
+[ext_resource type="PackedScene" uid="uid://cr61e00j0ifwh" path="res://UI/Scenes/choose_3_fight_day_4.tscn" id="94_choice"]
 [sub_resource type="Resource" id="Resource_goquv"]
 script = ExtResource("7_dq3qm")
 levels = Array[ExtResource("4_xkfpm")]([ExtResource("6_a7n0g"), ExtResource("7_e30yk"), ExtResource("8_2w4tv")])
@@ -51,3 +55,4 @@ script = ExtResource("1_l2kwh")
 
 [node name="FightOrganizer" parent="." unique_id=239455206 instance=ExtResource("3_ob8fe")]
 brackets = Array[ExtResource("7_dq3qm")]([SubResource("Resource_goquv"), SubResource("Resource_enera"), SubResource("Resource_2w4tv"), SubResource("Resource_0nlon"), SubResource("Resource_yely4")])
+choice_scenes = Array[PackedScene]([ExtResource("91_choice"), ExtResource("92_choice"), ExtResource("93_choice"), ExtResource("94_choice")])

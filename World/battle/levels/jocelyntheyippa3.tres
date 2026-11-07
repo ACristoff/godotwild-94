@@ -113,4 +113,8 @@ script = ExtResource("7_g64sg")
 level_name = "Jocelyn The Yippa"
 enemy_team = Array[ExtResource("1_sfr5n")]([SubResource("Resource_j2iso"), SubResource("Resource_v1urn"), SubResource("Resource_24cfw"), SubResource("Resource_lequg"), SubResource("Resource_g42yt")])
 intro_animation = ExtResource("7_ehs1y")
+reward_coins = 7
+reward_goop = Dictionary[int, int]({
+2: 6
+})
 metadata/_custom_type_script = "uid://d2tgf0trp406f"

@@ -74,6 +74,10 @@ func _ready():
 		pass
 	for vat in vat_container.get_children():
 		vats[vat.type] = vat
+	for goop_key in SignalBus.goop_inventory:
+		var amount: int = SignalBus.goop_inventory[goop_key]
+		if amount > 0:
+			spawn_stars(goop_key, amount)
 	#update_goop("health", 2)
 	#prints(team_slots)
 

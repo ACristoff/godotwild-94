@@ -189,4 +189,8 @@ script = ExtResource("2_sml2w")
 level_name = "Dr. Insaneo!"
 enemy_team = Array[ExtResource("1_hbbem")]([SubResource("Resource_6yp1q"), SubResource("Resource_tiiwe"), SubResource("Resource_bs07x")])
 intro_animation = ExtResource("22_isepg")
+reward_coins = 12
+reward_goop = Dictionary[int, int]({
+2: 10
+})
 metadata/_custom_type_script = "uid://d2tgf0trp406f"

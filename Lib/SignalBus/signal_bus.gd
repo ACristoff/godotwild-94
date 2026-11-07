@@ -61,6 +61,8 @@ var player_portrait: String = ""
 var debug_mode: bool = false
 
 var victories: int = 0 
+var npc_fights_done: int = 0
+var final_boss_defeated: bool = false
 
 var allele_inventory: Array[Allele]
 
@@ -105,6 +107,8 @@ func reset_run() -> void:
 	current_health = 3
 	current_wins = 0
 	victories = 0
+	npc_fights_done = 0
+	final_boss_defeated = false
 	current_day = 1
 	run_id = "%d_%d" % [int(Time.get_unix_time_from_system()), randi()]
 	game_started = false
