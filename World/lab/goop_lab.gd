@@ -13,6 +13,8 @@ var vats: Dictionary[String, Node2D] = {}
 @onready var pedestal_area : Area2D = $PedestalArea
 @onready var team_slot_conatiner = $TeamSlots
 
+
+
 #Debug only variables
 @export var debug_yips : Array[YipeeData] = []
 @onready var debug_goop : Label = $DebugData/Goop
@@ -244,14 +246,26 @@ func update_goop(new_goop: String, goop_number: int):
 	debug_goop.text += "\n %s : %s" % [new_goop, SignalBus.goop_inventory[new_goop]]
 	
 
-#endregion
 func spawn_stars(slot_key: String, amount: int) -> void:
 	if not vats.has(slot_key):
 		push_warning("No vat for key '%s'. Have: %s" % [slot_key, vats.keys()])
 		return
 	var vat: Node2D = vats[slot_key]
 	vat.spawn_goop(amount)
-		
+
+func remove_stars(slot_key: String):
+	if not vats.has(slot_key):
+		push_warning("No vat for key '%s'. Have: %s" % [slot_key, vats.keys()])
+		return
+	var vat: Node2D = vats[slot_key]
+	vat.remove_goop()
+
+#endregion
+
+
+
+
+
 #region pen
 
 func spawn_yip(data: YipeeData) -> Yipee:
@@ -336,12 +350,15 @@ func _on_yip_unhovered() -> void:
 	#BREED_AUGMENT,
 	#NONE
 #}
-
+#BodyMap.Slot.find_key(strand.slot)
 func _on_goop_spent(type: BodyMap.Slot):
 	print('goop spent of type:', BodyMap.Slot.keys()[type])
 	var type_slot = BodyMap.Slot.keys()[type]
 	SignalBus.goop_inventory[type_slot] -= 1
-	print('goop leftover:', SignalBus.goop_inventory[type_slot], )
+	#BodyMap.Slot.find_key
+	#var type_stringify = BodyMap.Slot.find_key(type_slot)
+	remove_stars(type_slot)
+	print('goop leftover:', SignalBus.goop_inventory[type_slot])
 
 func _refresh_cursor() -> void:
 	if dragged_yip != null:
