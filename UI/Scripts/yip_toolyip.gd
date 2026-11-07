@@ -1,6 +1,14 @@
 class_name Toolyip extends Control
 
 const STAT_PIP = preload("res://UI/Scenes/damage_toolyip.tscn")
+const DAMAGE_LINE = preload("res://UI/Scenes/damage_line.tscn")
+
+const RIDER_WORDS := {
+	"PHYSICAL": "damage",
+	"FIRE": "burn",
+	"POISON": "poison",
+	"ICE": "ice",
+}
 
 const HIDE_GRACE: float= 0.1
 const GAP_RIGHT: float = 50.0
@@ -27,6 +35,7 @@ const SLOT_KEYS := {
 @onready var mouse_hover_2: Panel = $MainPanel/MainPanelBG/MouseHover
 @onready var strand_pips_container: Control = $MainPanel/MainInterface/DNARefactor
 @onready var main_panel: NinePatchRect = $MainPanel
+@onready var damage_lines_container: VBoxContainer = get_node_or_null("MainPanel/MainInterface/CooldownInformation/DamageInformationContainer")
 
 @onready var allele_information: AlleleInformation = $MainPanel/MainInterface/AlleleInformation
 
@@ -107,20 +116,36 @@ func display(yip: Yipee) -> void:
 	var atk := roundi(data.get_attack())
 	if atk > 0:
 		pips["PHYSICAL"] = atk
-	#for strand in helix.strands:
-		#if strand == null:
-			#continue
-		#for allele in [strand.left, strand.right]:
-			#if allele == null:
-				#continue
-			#var contrib: Dictionary = allele.get_damage_pips()
-			#for type in contrib:
-				#pips[type] = pips.get(type, 0) + contrib[type]
-	#_rebuild_stat_pips(pips)
+	for strand in data.helix.strands:
+		if strand == null:
+			continue
+		for allele in [strand.left, strand.right]:
+			if allele == null:
+				continue
+			var contribution: Dictionary = allele.get_damage_pips()
+			for type in contribution:
+				pips[type] = pips.get(type, 0) + contribution[type]
+	_rebuild_damage_lines(pips)
 	_yip_hovered = true
 	_hide_grace = HIDE_GRACE
 	#shown = false
 	become_visible()
+
+func _rebuild_damage_lines(pips: Dictionary) -> void:
+	if damage_lines_container == null:
+		return
+	for child in damage_lines_container.get_children():
+		damage_lines_container.remove_child(child)
+		child.queue_free()
+	for type in pips:
+		if pips[type] <= 0:
+			continue
+		var line: Label = DAMAGE_LINE.instantiate()
+		damage_lines_container.add_child(line)
+		line.text = "Does %d %s" % [pips[type], RIDER_WORDS.get(type, str(type).to_lower())]
+		if type != "PHYSICAL" and TypeColors.colors.has(type):
+			line.add_theme_color_override("font_color", TypeColors.colors[type])
+			line.add_theme_color_override("font_outline_color", TypeColors.colors[type])
 
 #func _rebuild_stat_pips(pips: Dictionary) -> void:
 	#for child in stats_flow_container.get_children():

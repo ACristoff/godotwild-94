@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="FontFile" uid="uid://b2o45fsyj2vco" path="res://UI/Fonts/ShareTech-Regular.ttf" id="1_font"]
+
+[node name="DamageLine" type="Label"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.26999998, 0.4038334, 1)
+theme_override_colors/font_shadow_color = Color(0.83137256, 0.83137256, 0.83137256, 1)
+theme_override_colors/font_outline_color = Color(1, 0.27058825, 0.40392157, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 24
+text = "Does 0 damage"
