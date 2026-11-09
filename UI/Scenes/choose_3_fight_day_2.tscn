@@ -11,12 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://tghyg52x0q5d" path="res://UI/Menus/Main_Menu/Textures/BattleFrameHard.png" id="9_dj2cm"]
 [ext_resource type="Texture2D" uid="uid://fe12ylwlih1o" path="res://UI/Menus/Main_Menu/Textures/HappyGuyportrait.png" id="10_6cv4g"]
 [ext_resource type="Texture2D" uid="uid://b5bfdiwcy2dyl" path="res://UI/Menus/Main_Menu/Textures/BattleFrameHardest.png" id="11_4q6wx"]
-
-[ext_resource type="Script" path="res://UI/Scripts/choose_fight.gd" id="90_choose"]
+[ext_resource type="Script" uid="uid://3jnl5gg5gbxx" path="res://UI/Scripts/choose_fight.gd" id="90_choose"]
 [ext_resource type="Script" uid="uid://d2tgf0trp406f" path="res://World/battle/levels/level.gd" id="91_level"]
 [ext_resource type="Resource" uid="uid://c7dwossk3d7da" path="res://World/battle/levels/kayla_fire_girl2.tres" id="92_fight"]
 [ext_resource type="Resource" uid="uid://bkoj12ws844c3" path="res://World/battle/levels/bladabeer2.tres" id="93_fight"]
 [ext_resource type="Resource" uid="uid://xylq1lcd4ta" path="res://World/battle/levels/chill_guy.tres" id="94_fight"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mact8"]
 shader = ExtResource("1_mvijt")
 shader_parameter/alpha = 1.0
@@ -35,7 +35,7 @@ layer = 10
 script = ExtResource("90_choose")
 fights = Array[ExtResource("91_level")]([ExtResource("92_fight"), ExtResource("93_fight"), ExtResource("94_fight")])
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=968414625]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -187,8 +187,8 @@ texture = ExtResource("7_sxe7a")
 [node name="AlleleLabel" type="Label" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/MarginContainer3/HBoxContainer" unique_id=1894232661]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_j8lof")
-theme_override_font_sizes/font_size = 40
-text = "6 ATK Goop"
+theme_override_font_sizes/font_size = 34
+text = "3 ATK AUGMENT Goop"
 horizontal_alignment = 1
 
 [node name="Challenger2" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=639526788]
@@ -334,8 +334,8 @@ texture = ExtResource("7_sxe7a")
 [node name="AlleleLabel" type="Label" parent="MarginContainer/HBoxContainer/Challenger2/VBoxContainer/MarginContainer3/HBoxContainer" unique_id=809172918]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_j8lof")
-theme_override_font_sizes/font_size = 40
-text = "3 ATK Goop"
+theme_override_font_sizes/font_size = 34
+text = "4 HP AUGMENT Goop"
 horizontal_alignment = 1
 
 [node name="Challenger3" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=1394527643]
@@ -506,7 +506,7 @@ texture = ExtResource("7_sxe7a")
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_j8lof")
 theme_override_font_sizes/font_size = 40
-text = "4 ATK Goop"
+text = "6 ATK Goop"
 horizontal_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1769755117]

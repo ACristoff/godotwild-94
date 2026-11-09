@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cydxip81wgpg" path="res://UI/Textures/Heart.png" id="2_smsqj"]
 [ext_resource type="Texture2D" uid="uid://bu25b116ccctr" path="res://UI/Textures/LetterJustPaper.png" id="5_ymjyh"]
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="6_8qkf6"]
+[ext_resource type="Texture2D" uid="uid://4cp6vdj18cdw" path="res://Assets/QR/https_docs_google_com_forms_d_e_1FAIpQLScmnPzrXJ_r3NKz7OkMXcvnidS9kmvY0LNgRD4JWGFkil6NDw_viewform_usp_header.png" id="7_3lwvx"]
 [ext_resource type="Texture2D" uid="uid://b23r3pwtlnxfe" path="res://UI/Menus/Main_Menu/Textures/terminated.png" id="7_8qkf6"]
 [ext_resource type="Texture2D" uid="uid://ch8oia8iqbewe" path="res://UI/Textures/LetterHand.png" id="8_vx6t1"]
 [ext_resource type="Texture2D" uid="uid://bbseau7j8c40c" path="res://UI/Menus/Main_Menu/Textures/Promotion.png" id="9_e8fb5"]
@@ -275,6 +276,13 @@ position = Vector2(530.30554, 727.498)
 rotation = 3.1415925
 texture = ExtResource("5_ymjyh")
 
+[node name="HttpsDocsGoogleComFormsDE1faIpQlScmnPzrXjR3nKz7OkMXcvnidS9KmvY0lNgRd4jwgFkil6nDwViewformUspHeader" type="Sprite2D" parent="Termination/LetterJustPaper2" unique_id=1541000147]
+z_index = 1543
+position = Vector2(-52.02781, 224.8313)
+rotation = -3.1415925
+scale = Vector2(0.021666666, 0.021666666)
+texture = ExtResource("7_3lwvx")
+
 [node name="ColorRect" type="ColorRect" parent="Termination" unique_id=1357287643]
 layout_mode = 0
 offset_left = 405.30554
@@ -300,7 +308,7 @@ texture_filter = 3
 offset_left = -651.0
 offset_top = -602.0
 offset_right = 451.26306
-offset_bottom = 143.49792
+offset_bottom = 143.4978
 scale = Vector2(3, 3)
 mouse_filter = 2
 
@@ -356,7 +364,7 @@ texture_filter = 3
 offset_left = -651.0
 offset_top = 355.0
 offset_right = 451.26306
-offset_bottom = 1100.4979
+offset_bottom = 1100.4978
 scale = Vector2(3, 3)
 mouse_filter = 2
 
@@ -419,7 +427,7 @@ texture_filter = 3
 offset_left = 679.0
 offset_top = 1979.0
 offset_right = 783.0288
-offset_bottom = 2003.617
+offset_bottom = 2003.6176
 scale = Vector2(3, 3)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("9_gnttp")
@@ -444,7 +452,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_8qkf6")
 text = "Feedback"
 
-[node name="Button" type="LinkButton" parent="BattleButtonIcon" unique_id=1023000779]
+[node name="Button" type="Button" parent="BattleButtonIcon" unique_id=1775084825]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -452,7 +460,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-uri = "https://forms.gle/RcgjkiqmRx1aAZNx9"
 
 [node name="ButtonRefresh8" type="NinePatchRect" parent="." unique_id=1904533182]
 self_modulate = Color(1, 0.8901961, 0.80784315, 1)
@@ -461,7 +468,7 @@ texture_filter = 3
 offset_left = 711.0
 offset_top = 1841.0
 offset_right = 846.6667
-offset_bottom = 1892.6669
+offset_bottom = 1892.6675
 scale = Vector2(3, 3)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 size_flags_horizontal = 3

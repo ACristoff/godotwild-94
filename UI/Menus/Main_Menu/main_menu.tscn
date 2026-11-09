@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dn1xt2faan58n" path="res://UI/Menus/Main_Menu/Textures/deathmode1.png" id="22_mnimd"]
 [ext_resource type="Texture2D" uid="uid://0hr6b2bcchso" path="res://UI/Menus/Main_Menu/Textures/cover.png" id="22_plu0x"]
 [ext_resource type="Texture2D" uid="uid://d2b3nopg51vag" path="res://UI/Menus/Main_Menu/Textures/deathmode3.png" id="23_plu0x"]
+[ext_resource type="Texture2D" uid="uid://4cp6vdj18cdw" path="res://Assets/QR/https_docs_google_com_forms_d_e_1FAIpQLScmnPzrXJ_r3NKz7OkMXcvnidS9kmvY0LNgRD4JWGFkil6NDw_viewform_usp_header.png" id="25_bbijb"]
 [ext_resource type="Texture2D" uid="uid://cabv7ai86nqur" path="res://UI/Menus/Main_Menu/Textures/Permadeath.png" id="25_plu0x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pje28"]
@@ -495,6 +496,7 @@ theme_override_fonts/font = ExtResource("3_arllm")
 text = "Credits"
 
 [node name="Quit" type="Button" parent="Control/VBoxContainer" unique_id=1805391408 node_paths=PackedStringArray("target_highlight")]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(307.923, 106.617)
 layout_mode = 2
@@ -730,6 +732,11 @@ offset_bottom = 1075.0
 theme_override_fonts/font = ExtResource("3_arllm")
 theme_override_font_sizes/font_size = 26
 text = "Ver. 0.0.3"
+
+[node name="HttpsDocsGoogleComFormsDE1faIpQlScmnPzrXjR3nKz7OkMXcvnidS9KmvY0lNgRd4jwgFkil6nDwViewformUspHeader" type="Sprite2D" parent="." unique_id=1009088670]
+position = Vector2(417, 707)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("25_bbijb")
 
 [connection signal="button_down" from="Control/VBoxContainer/Start" to="Control/VBoxContainer/Start" method="_on_button_down"]
 [connection signal="button_up" from="Control/VBoxContainer/Start" to="Control/VBoxContainer/Start" method="_on_button_up"]

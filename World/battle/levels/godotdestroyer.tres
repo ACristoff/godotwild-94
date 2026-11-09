@@ -116,6 +116,6 @@ enemy_team = Array[ExtResource("1_3kn11")]([SubResource("Resource_fa0ay"), SubRe
 intro_animation = ExtResource("10_gy1jw")
 reward_coins = 8
 reward_goop = Dictionary[int, int]({
-2: 6
+4: 6
 })
 metadata/_custom_type_script = "uid://d2tgf0trp406f"

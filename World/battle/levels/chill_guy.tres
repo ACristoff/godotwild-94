@@ -10,7 +10,7 @@
 [ext_resource type="Resource" uid="uid://c2n5t8uqph17q" path="res://World/yipee/genes/allele/rightallele/resources/scowl_eyes.tres" id="6_flt1i"]
 [ext_resource type="Resource" uid="uid://bksqk8hq88nl3" path="res://World/yipee/genes/allele/rightallele/resources/fire_eyes.tres" id="7_4msou"]
 [ext_resource type="Resource" uid="uid://cphj4u484ak60" path="res://World/yipee/genes/allele/leftallele/resources/friction.tres" id="8_8ih1o"]
-[ext_resource type="PackedScene" path="res://UI/Scenes/battle_clash_chill_guy.tscn" id="10_qq78j"]
+[ext_resource type="PackedScene" uid="uid://c32llctqkqrdj" path="res://UI/Scenes/battle_clash_chill_guy.tscn" id="10_qq78j"]
 
 [sub_resource type="Resource" id="Resource_h8qh0"]
 script = ExtResource("3_f66ha")
@@ -105,6 +105,6 @@ enemy_team = Array[ExtResource("1_vgocc")]([SubResource("Resource_jfvsj"), SubRe
 intro_animation = ExtResource("10_qq78j")
 reward_coins = 7
 reward_goop = Dictionary[int, int]({
-2: 4
+2: 6
 })
 metadata/_custom_type_script = "uid://d2tgf0trp406f"

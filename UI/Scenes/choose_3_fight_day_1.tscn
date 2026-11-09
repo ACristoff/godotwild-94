@@ -335,7 +335,7 @@ texture = ExtResource("7_2xmng")
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_k8i1y")
 theme_override_font_sizes/font_size = 40
-text = "2 ATK Goop"
+text = "1 COOLDOWN Goop"
 horizontal_alignment = 1
 
 [node name="Challenger3" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=1394527643]
@@ -505,8 +505,8 @@ texture = ExtResource("7_2xmng")
 [node name="AlleleLabel" type="Label" parent="MarginContainer/HBoxContainer/Challenger3/VBoxContainer/MarginContainer3/HBoxContainer" unique_id=1816777689]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_k8i1y")
-theme_override_font_sizes/font_size = 40
-text = "3 ATK Goop"
+theme_override_font_sizes/font_size = 33
+text = "2 ATK AUGMENT Goop"
 horizontal_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1769755117]

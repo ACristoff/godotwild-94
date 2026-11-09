@@ -16,3 +16,7 @@ func won_match():
 
 func _on_main_menu_button_pressed() -> void:
 	SignalBus.game_state_changed.emit("Main")
+
+
+func _on_button_pressed() -> void:
+	SignalBus.game_state_changed.emit("Main")
