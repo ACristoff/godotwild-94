@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://cydxip81wgpg" path="res://UI/Textures/Heart.png" id="2_smsqj"]
 [ext_resource type="Texture2D" uid="uid://bu25b116ccctr" path="res://UI/Textures/LetterJustPaper.png" id="5_ymjyh"]
 [ext_resource type="FontFile" uid="uid://bd5f71prvssmf" path="res://UI/Fonts/RasterForge.ttf" id="6_8qkf6"]
-[ext_resource type="Texture2D" uid="uid://4cp6vdj18cdw" path="res://Assets/QR/https_docs_google_com_forms_d_e_1FAIpQLScmnPzrXJ_r3NKz7OkMXcvnidS9kmvY0LNgRD4JWGFkil6NDw_viewform_usp_header.png" id="7_3lwvx"]
 [ext_resource type="Texture2D" uid="uid://b23r3pwtlnxfe" path="res://UI/Menus/Main_Menu/Textures/terminated.png" id="7_8qkf6"]
 [ext_resource type="Texture2D" uid="uid://ch8oia8iqbewe" path="res://UI/Textures/LetterHand.png" id="8_vx6t1"]
 [ext_resource type="Texture2D" uid="uid://bbseau7j8c40c" path="res://UI/Menus/Main_Menu/Textures/Promotion.png" id="9_e8fb5"]
@@ -217,6 +216,30 @@ self_modulate = Color(1, 0.85, 0.39999998, 1)
 layout_mode = 2
 texture = ExtResource("1_asrpj")
 
+[node name="Trophy6" type="TextureRect" parent="WinLoseScreen/VBoxContainer/Trophies" unique_id=967752020]
+modulate = Color(0.12225223, 0.12225223, 0.12225223, 1)
+self_modulate = Color(1, 0.85, 0.39999998, 1)
+layout_mode = 2
+texture = ExtResource("1_asrpj")
+
+[node name="Trophy7" type="TextureRect" parent="WinLoseScreen/VBoxContainer/Trophies" unique_id=1869151034]
+modulate = Color(0.12225223, 0.12225223, 0.12225223, 1)
+self_modulate = Color(1, 0.85, 0.39999998, 1)
+layout_mode = 2
+texture = ExtResource("1_asrpj")
+
+[node name="Trophy8" type="TextureRect" parent="WinLoseScreen/VBoxContainer/Trophies" unique_id=1514765328]
+modulate = Color(0.12225223, 0.12225223, 0.12225223, 1)
+self_modulate = Color(1, 0.85, 0.39999998, 1)
+layout_mode = 2
+texture = ExtResource("1_asrpj")
+
+[node name="Trophy9" type="TextureRect" parent="WinLoseScreen/VBoxContainer/Trophies" unique_id=2080286075]
+modulate = Color(0.12225223, 0.12225223, 0.12225223, 1)
+self_modulate = Color(1, 0.85, 0.39999998, 1)
+layout_mode = 2
+texture = ExtResource("1_asrpj")
+
 [node name="Hearts" type="HBoxContainer" parent="WinLoseScreen/VBoxContainer" unique_id=137325126]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -239,13 +262,25 @@ self_modulate = Color(1, 0.29000002, 0.29000002, 1)
 layout_mode = 2
 texture = ExtResource("2_smsqj")
 
+[node name="Heart4" type="TextureRect" parent="WinLoseScreen/VBoxContainer/Hearts" unique_id=2013490277]
+modulate = Color(0.19215687, 0.19215687, 0.19215687, 1)
+self_modulate = Color(1, 0.29000002, 0.29000002, 1)
+layout_mode = 2
+texture = ExtResource("2_smsqj")
+
+[node name="Heart5" type="TextureRect" parent="WinLoseScreen/VBoxContainer/Hearts" unique_id=288650158]
+modulate = Color(0.19215687, 0.19215687, 0.19215687, 1)
+self_modulate = Color(1, 0.29000002, 0.29000002, 1)
+layout_mode = 2
+texture = ExtResource("2_smsqj")
+
 [node name="Termination" type="ColorRect" parent="." unique_id=1775153674]
 clip_children = 1
 texture_filter = 3
 offset_left = -651.0
 offset_top = 355.0
 offset_right = 451.26306
-offset_bottom = 1100.4967
+offset_bottom = 1100.4968
 scale = Vector2(3, 3)
 mouse_filter = 2
 
@@ -275,13 +310,6 @@ autowrap_mode = 3
 position = Vector2(530.30554, 727.498)
 rotation = 3.1415925
 texture = ExtResource("5_ymjyh")
-
-[node name="HttpsDocsGoogleComFormsDE1faIpQlScmnPzrXjR3nKz7OkMXcvnidS9KmvY0lNgRd4jwgFkil6nDwViewformUspHeader" type="Sprite2D" parent="Termination/LetterJustPaper2" unique_id=1541000147]
-z_index = 1543
-position = Vector2(-52.02781, 224.8313)
-rotation = -3.1415925
-scale = Vector2(0.021666666, 0.021666666)
-texture = ExtResource("7_3lwvx")
 
 [node name="ColorRect" type="ColorRect" parent="Termination" unique_id=1357287643]
 layout_mode = 0
@@ -364,7 +392,7 @@ texture_filter = 3
 offset_left = -651.0
 offset_top = 355.0
 offset_right = 451.26306
-offset_bottom = 1100.4978
+offset_bottom = 1100.4976
 scale = Vector2(3, 3)
 mouse_filter = 2
 
@@ -427,7 +455,7 @@ texture_filter = 3
 offset_left = 679.0
 offset_top = 1979.0
 offset_right = 783.0288
-offset_bottom = 2003.6176
+offset_bottom = 2003.6174
 scale = Vector2(3, 3)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("9_gnttp")
@@ -452,14 +480,16 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_8qkf6")
 text = "Feedback"
 
-[node name="Button" type="Button" parent="BattleButtonIcon" unique_id=1775084825]
-self_modulate = Color(1, 1, 1, 0)
+[node name="Feedback" type="LinkButton" parent="BattleButtonIcon" unique_id=685570335]
+self_modulate = Color(0, 0, 0, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+text = "Start"
+uri = "https://forms.gle/RcgjkiqmRx1aAZNx9"
 
 [node name="ButtonRefresh8" type="NinePatchRect" parent="." unique_id=1904533182]
 self_modulate = Color(1, 0.8901961, 0.80784315, 1)
@@ -468,7 +498,7 @@ texture_filter = 3
 offset_left = 711.0
 offset_top = 1841.0
 offset_right = 846.6667
-offset_bottom = 1892.6675
+offset_bottom = 1892.6672
 scale = Vector2(3, 3)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 size_flags_horizontal = 3
@@ -502,11 +532,10 @@ grow_vertical = 2
 script = ExtResource("10_lu3uy")
 target_highlight = NodePath("..")
 
-[connection signal="button_down" from="BattleButtonIcon/Button" to="BattleButtonIcon/Button" method="_on_button_down"]
-[connection signal="button_up" from="BattleButtonIcon/Button" to="BattleButtonIcon/Button" method="_on_button_up"]
-[connection signal="mouse_entered" from="BattleButtonIcon/Button" to="BattleButtonIcon/Button" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="BattleButtonIcon/Button" to="BattleButtonIcon/Button" method="_on_mouse_exited"]
-[connection signal="pressed" from="BattleButtonIcon/Button" to="." method="_on_button_pressed"]
+[connection signal="button_down" from="BattleButtonIcon/Feedback" to="BattleButtonIcon/Feedback" method="_on_button_down"]
+[connection signal="button_up" from="BattleButtonIcon/Feedback" to="BattleButtonIcon/Feedback" method="_on_button_up"]
+[connection signal="mouse_entered" from="BattleButtonIcon/Feedback" to="BattleButtonIcon/Feedback" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BattleButtonIcon/Feedback" to="BattleButtonIcon/Feedback" method="_on_mouse_exited"]
 [connection signal="button_down" from="ButtonRefresh8/MainMenuButton" to="ButtonRefresh8/MainMenuButton" method="_on_button_down"]
 [connection signal="button_up" from="ButtonRefresh8/MainMenuButton" to="ButtonRefresh8/MainMenuButton" method="_on_button_up"]
 [connection signal="mouse_entered" from="ButtonRefresh8/MainMenuButton" to="ButtonRefresh8/MainMenuButton" method="_on_mouse_entered"]

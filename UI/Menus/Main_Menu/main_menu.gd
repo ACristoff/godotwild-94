@@ -4,6 +4,7 @@ var permadeath = false
 
 func _ready() -> void:
 	SignalBus.permadeath = permadeath
+	AudMan.play_music(preload("res://Assets/Audio/Sounds/YIP_START_AND_TUTORIAL.mp3"))
 
 func _on_start_pressed():
 	$".".hide()

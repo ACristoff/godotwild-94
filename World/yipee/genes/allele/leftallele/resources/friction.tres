@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_5u1le")
+burn_stacks = 5
 slot = 3
 allele_name = "Friction"
 tooltip = "Actions apply {stacks} fire"

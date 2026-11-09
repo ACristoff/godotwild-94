@@ -11,7 +11,7 @@ func _ready():
 	update_hearts()
 
 func update_trophies():
-	for i in range(1, 6):
+	for i in range(1, 9):
 		var trophy = get_node("VBoxContainer/Trophies/Trophy" + str(i))
 		if i <= SignalBus.victories:
 			trophy.modulate = Color.WHITE
@@ -50,7 +50,7 @@ func next_day():
 	SignalBus.day_finished.emit()
 
 func update_hearts():
-	for i in range(1, 4):
+	for i in range(1, 6):
 		var heart = get_node("VBoxContainer/Hearts/Heart" + str(i))
 		if i <= SignalBus.current_health:
 			heart.modulate = Color.WHITE

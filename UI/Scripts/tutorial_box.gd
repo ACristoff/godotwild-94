@@ -13,3 +13,7 @@ func _process(delta: float) -> void:
 
 func _on_button_pressed() -> void:
 	emit_signal("next")
+
+
+func _on_next() -> void:
+	pass # Replace with function body.

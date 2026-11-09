@@ -88,6 +88,12 @@ func _ready() -> void:
 		$BreedingTut.hide()
 	if SignalBus.party_slot_tutorial_clicked and not SignalBus.breeding_tut_clicked:
 		$BreedingTut.show()
+	if SignalBus.lab_urge:
+		$LabTut.hide()
+	if SignalBus.current_day >= 2 and not SignalBus.lab_urge:
+		$LabTut.show()
+	if SignalBus.breeding_tut_clicked and not SignalBus.battle_tutorial:
+		$BattleTut.show()
 
 # On exit set it so no one can be grabbed
 func _exit_tree() -> void:
@@ -527,6 +533,7 @@ func _on_lab_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		#SignalBus.go_to.emit(SignalBus.Locations.LAB)
 		SignalBus.go_to.emit(SignalBus.Locations.LAB2)
+		SignalBus.lab_urge = true
 
 func _on_team_slots_next() -> void:
 	SignalBus.party_slot_tutorial_clicked = true
@@ -538,6 +545,7 @@ func _on_team_slots_next() -> void:
 func _on_breeding_tut_next() -> void:
 	SignalBus.breeding_tut_clicked = true
 	$BreedingTut.hide()
+	$BattleTut.show()
 
 #endregion
 
@@ -550,3 +558,8 @@ func _refresh_cursor() -> void:
 		CursorManager.use(CursorManager.Pointers.CURSOR_DNA)
 	else:
 		CursorManager.reset()
+
+
+func _on_battle_tut_next() -> void:
+	$BattleTut.hide()
+	SignalBus.battle_tutorial = true

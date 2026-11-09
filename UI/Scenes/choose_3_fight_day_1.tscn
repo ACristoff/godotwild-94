@@ -68,129 +68,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 100
 
-[node name="Challenger1" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=997317774]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Challenger1" unique_id=144060075]
-layout_mode = 2
-
-[node name="DangerLevel" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer" unique_id=1570259230]
-layout_mode = 2
-alignment = 1
-
-[node name="ColorRect" type="Panel" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/DangerLevel" unique_id=1695025568]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_nm7lq")
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/DangerLevel/ColorRect" unique_id=2031955189]
-texture_filter = 3
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -50.0
-offset_right = 50.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_k8i1y")
-
-[node name="TrainerPortrait" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer" unique_id=1361632622]
-texture_filter = 3
-custom_minimum_size = Vector2(400, 400)
-layout_mode = 2
-texture = ExtResource("2_u37gd")
-
-[node name="BattleFrame" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/TrainerPortrait" unique_id=1554257211]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_2pn4q")
-
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/TrainerPortrait" unique_id=172143967]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PlayerName" type="Label" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer" unique_id=1546335806]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_k8i1y")
-theme_override_font_sizes/font_size = 60
-text = "Bug Boy"
-horizontal_alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer" unique_id=1023438284]
-layout_mode = 2
-theme_override_constants/margin_top = 22
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/MarginContainer" unique_id=958738297]
-layout_mode = 2
-alignment = 1
-
-[node name="PlayerName" type="Label" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/MarginContainer/HBoxContainer2" unique_id=1385897111]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.6)
-theme_override_fonts/font = ExtResource("4_k8i1y")
-theme_override_font_sizes/font_size = 42
-text = "On Victory"
-horizontal_alignment = 1
-
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer" unique_id=407442457]
-layout_mode = 2
-theme_override_constants/margin_top = -38
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/MarginContainer2" unique_id=344695711]
-layout_mode = 2
-alignment = 1
-
-[node name="Coins" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=1709753156]
-texture_filter = 3
-custom_minimum_size = Vector2(150, 150)
-layout_mode = 2
-texture = ExtResource("6_nm7lq")
-
-[node name="CoinsLabel" type="Label" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=1763852743]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_k8i1y")
-theme_override_font_sizes/font_size = 40
-text = "2 coins"
-horizontal_alignment = 1
-
-[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer" unique_id=321558467]
-layout_mode = 2
-theme_override_constants/margin_top = -57
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/MarginContainer3" unique_id=1052275482]
-layout_mode = 2
-alignment = 1
-
-[node name="Alleles" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/MarginContainer3/HBoxContainer" unique_id=948861239]
-texture_filter = 3
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-texture = ExtResource("7_2xmng")
-
-[node name="AlleleLabel" type="Label" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/MarginContainer3/HBoxContainer" unique_id=1894232661]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_k8i1y")
-theme_override_font_sizes/font_size = 40
-text = "1 ATK Goop"
-horizontal_alignment = 1
-
 [node name="Challenger2" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=639526788]
 layout_mode = 2
 
@@ -225,30 +102,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_k8i1y")
 
-[node name="ColorRect2" type="Panel" parent="MarginContainer/HBoxContainer/Challenger2/VBoxContainer/DangerLevel" unique_id=1899248545]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_nm7lq")
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger2/VBoxContainer/DangerLevel/ColorRect2" unique_id=1949346739]
-texture_filter = 3
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -50.0
-offset_right = 50.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_k8i1y")
-
 [node name="TrainerPortrait" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger2/VBoxContainer" unique_id=1761458310]
 texture_filter = 3
 custom_minimum_size = Vector2(400, 400)
@@ -262,7 +115,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_mact8")
+texture = ExtResource("3_2pn4q")
 
 [node name="Button" type="Button" parent="MarginContainer/HBoxContainer/Challenger2/VBoxContainer/TrainerPortrait" unique_id=865967435]
 self_modulate = Color(1, 1, 1, 0)
@@ -336,6 +189,153 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("4_k8i1y")
 theme_override_font_sizes/font_size = 40
 text = "1 COOLDOWN Goop"
+horizontal_alignment = 1
+
+[node name="Challenger1" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=997317774]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Challenger1" unique_id=144060075]
+layout_mode = 2
+
+[node name="DangerLevel" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer" unique_id=1570259230]
+layout_mode = 2
+alignment = 1
+
+[node name="ColorRect" type="Panel" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/DangerLevel" unique_id=1695025568]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_nm7lq")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/DangerLevel/ColorRect" unique_id=2031955189]
+texture_filter = 3
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_k8i1y")
+
+[node name="ColorRect2" type="Panel" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/DangerLevel" unique_id=616277525]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_nm7lq")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/DangerLevel/ColorRect2" unique_id=624142016]
+texture_filter = 3
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_k8i1y")
+
+[node name="TrainerPortrait" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer" unique_id=1361632622]
+texture_filter = 3
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+texture = ExtResource("2_u37gd")
+
+[node name="BattleFrame" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/TrainerPortrait" unique_id=1554257211]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_mact8")
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/TrainerPortrait" unique_id=172143967]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerName" type="Label" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer" unique_id=1546335806]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_k8i1y")
+theme_override_font_sizes/font_size = 60
+text = "Bug Boy"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer" unique_id=1023438284]
+layout_mode = 2
+theme_override_constants/margin_top = 22
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/MarginContainer" unique_id=958738297]
+layout_mode = 2
+alignment = 1
+
+[node name="PlayerName" type="Label" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/MarginContainer/HBoxContainer2" unique_id=1385897111]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.6)
+theme_override_fonts/font = ExtResource("4_k8i1y")
+theme_override_font_sizes/font_size = 42
+text = "On Victory"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer" unique_id=407442457]
+layout_mode = 2
+theme_override_constants/margin_top = -38
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/MarginContainer2" unique_id=344695711]
+layout_mode = 2
+alignment = 1
+
+[node name="Coins" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=1709753156]
+texture_filter = 3
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = ExtResource("6_nm7lq")
+
+[node name="CoinsLabel" type="Label" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=1763852743]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_k8i1y")
+theme_override_font_sizes/font_size = 40
+text = "2 coins"
+horizontal_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer" unique_id=321558467]
+layout_mode = 2
+theme_override_constants/margin_top = -57
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/MarginContainer3" unique_id=1052275482]
+layout_mode = 2
+alignment = 1
+
+[node name="Alleles" type="TextureRect" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/MarginContainer3/HBoxContainer" unique_id=948861239]
+texture_filter = 3
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("7_2xmng")
+
+[node name="AlleleLabel" type="Label" parent="MarginContainer/HBoxContainer/Challenger1/VBoxContainer/MarginContainer3/HBoxContainer" unique_id=1894232661]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_k8i1y")
+theme_override_font_sizes/font_size = 40
+text = "1 ATK Goop"
 horizontal_alignment = 1
 
 [node name="Challenger3" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=1394527643]

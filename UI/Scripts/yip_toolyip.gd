@@ -25,8 +25,8 @@ const SLOT_KEYS := {
 	BodyMap.Slot.NONE: "NULL",
 }
 
-@onready var stats_flow_container: FlowContainer = $StatsFlowContainer
-@onready var stats_container: NinePatchRect = $StatsContainer
+#@onready var stats_flow_container: FlowContainer = $StatsFlowContainer
+#@onready var stats_container: NinePatchRect = $StatsContainer
 @onready var name_field: LineEdit = $MainPanel/MarginContainer/NameAgeRarity/NameLabel
 @onready var age_label: Label = $MainPanel/MarginContainer/NameAgeRarity/AgeLabel
 @onready var hp_label: Label = $MainPanel/MarginContainer2/CooldownPanel/MarginContainer/Health/VBoxContainer/HealthLabel

@@ -34,6 +34,7 @@
 [ext_resource type="AudioStream" uid="uid://cyrmc6n6i6n24" path="res://Assets/Audio/Sounds/Scream5.mp3" id="32_3ntt4"]
 [ext_resource type="AudioStream" uid="uid://cy7nuwvtmeku5" path="res://Assets/Audio/Sounds/Scream6.mp3" id="33_y2557"]
 [ext_resource type="AudioStream" uid="uid://klh4s0nhk4kc" path="res://Assets/Audio/Sounds/Scream7.mp3" id="34_acjve"]
+[ext_resource type="PackedScene" uid="uid://4ieefmnofhvc" path="res://UI/Scenes/tutorial_box16.tscn" id="35_6svup"]
 
 [sub_resource type="Resource" id="Resource_ff60u"]
 script = ExtResource("5_0n2oi")
@@ -2539,16 +2540,26 @@ metadata/_edit_use_anchors_ = true
 [node name="Conveyor" type="AudioStreamPlayer2D" parent="." unique_id=1806944995]
 position = Vector2(479, 751)
 stream = ExtResource("26_vk4kp")
+bus = &"SFX"
 
 [node name="Shredder" type="AudioStreamPlayer2D" parent="." unique_id=971517372]
 position = Vector2(1004, 744)
 stream = ExtResource("27_ff60u")
+bus = &"SFX"
 
 [node name="Scream" type="AudioStreamPlayer2D" parent="." unique_id=977547143]
 position = Vector2(1000, 742)
 stream = SubResource("AudioStreamRandomizer_07mkt")
-volume_db = 23.0
+volume_db = 12.537
 max_polyphony = 10
+bus = &"SFX"
+
+[node name="TutorialBox" parent="." unique_id=1315543526 instance=ExtResource("35_6svup")]
+z_index = 4096
+offset_left = 1136.0
+offset_top = 629.0
+offset_right = 1136.0
+offset_bottom = 629.0
 
 [connection signal="pressed" from="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8/AddGoop" to="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele1" method="_on_add_goop_pressed"]
 [connection signal="pressed" from="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2/AlleleBG/NameBox/MarginContainer4/Box/MarginContainer3/Tick8/AddGoop" to="ScreenRects/Node2D/Panel/MarginContainer/AllelesDisplay/Allele2" method="_on_add_goop_pressed"]
@@ -2566,3 +2577,6 @@ max_polyphony = 10
 [connection signal="mouse_entered" from="FarmButton" to="FarmButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="FarmButton" to="FarmButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="FarmButton" to="." method="_on_farm_button_pressed"]
+[connection signal="pressed" from="TutorialBox/StatsContainer/StatsContainer2/Button" to="." method="_on_button_pressed"]
+
+[editable path="TutorialBox"]

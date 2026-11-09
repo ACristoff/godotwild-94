@@ -13,6 +13,11 @@ var twice_speed_clicked = false
 var start_of_second_day = false
 var yips_bought = 0
 var bae_encountered := false
+var lab_urge := false
+var lab_tutorial := false
+var battle_tutorial := false
+var buying_tutorial := false
+var field_level_tutorial := false
 
 var battle_speed = 1
 
@@ -52,7 +57,7 @@ var coins: int = 12
 enum Locations {TUTO, NAME, FARM, FIELD, LAB, LAB2, BATTLE, WIN_LOSE }
 var game_started: bool = false
 
-var current_health = 3
+var current_health = 5
 var current_wins = 0
 var current_day = 1
 var player_name: String = ""
@@ -104,7 +109,7 @@ func reset_run() -> void:
 		yip_breed_barn[key] = null
 
 	coins = 12
-	current_health = 3
+	current_health = 5
 	current_wins = 0
 	victories = 0
 	npc_fights_done = 0

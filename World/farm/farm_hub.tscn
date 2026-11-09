@@ -23,6 +23,8 @@
 [ext_resource type="Texture2D" uid="uid://duipa70vx5fn3" path="res://UI/Menus/Main_Menu/Textures/SettingsButt.png" id="22_rffto"]
 [ext_resource type="PackedScene" uid="uid://dtmuxi5urpswf" path="res://UI/Scenes/yip_toolyip_refactor.tscn" id="23_k8lvf"]
 [ext_resource type="PackedScene" uid="uid://b0u4e8y8nqwnj" path="res://UI/Scenes/days_hud.tscn" id="23_piivb"]
+[ext_resource type="PackedScene" uid="uid://bn1o0vwvrweoa" path="res://UI/Scenes/tutorial_box17.tscn" id="24_k8lvf"]
+[ext_resource type="PackedScene" uid="uid://bad684tcp65g5" path="res://UI/Scenes/tutorial_box18.tscn" id="25_03b1a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wkn3d"]
 height = 46.0
@@ -566,6 +568,21 @@ text = "5"
 
 [node name="YipToolyip2" parent="CorrectScale" unique_id=399779298 instance=ExtResource("23_k8lvf")]
 
+[node name="LabTut" parent="." unique_id=944992048 instance=ExtResource("24_k8lvf")]
+visible = false
+offset_left = 1306.0
+offset_top = 171.0
+offset_right = 1306.0
+offset_bottom = 171.0
+
+[node name="BattleTut" parent="." unique_id=444148178 instance=ExtResource("25_03b1a")]
+visible = false
+z_index = 4096
+offset_left = 1074.0
+offset_top = 596.0
+offset_right = 1074.0
+offset_bottom = 596.0
+
 [connection signal="area_entered" from="BreedingBarnGrass/BreedFarmSlot" to="Areas" method="_on_breed_farm_slot_area_entered"]
 [connection signal="area_exited" from="BreedingBarnGrass/BreedFarmSlot" to="Areas" method="_on_breed_farm_slot_area_exited"]
 [connection signal="input_event" from="LabNew/Area2D" to="." method="_on_lab_area_2d_input_event"]
@@ -588,6 +605,7 @@ text = "5"
 [connection signal="mouse_entered" from="SettingsButton" to="SettingsButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="SettingsButton" to="SettingsButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="next" from="BattleTut" to="." method="_on_battle_tut_next"]
 
 [editable path="SecondDay"]
 [editable path="BuyFirstYip"]

@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_fk8o7")
-heal_amount = 6
+heal_amount = 13
 slot = 1
 allele_name = "Mending"
 tooltip = "+{health} Max Health and heal lowest HP ally {heal}"

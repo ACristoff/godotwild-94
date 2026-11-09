@@ -70,6 +70,8 @@ const REFRESH_COST : int = 1
 
 #region Built in
 func _ready():
+	if SignalBus.buying_tutorial and not SignalBus.field_level_tutorial:
+		$TutorialBox2.show()
 	if !SignalBus.bae_encountered:
 		Dialogic.start("Intro")
 	Dialogic.signal_event.connect(bye_pointy)
@@ -87,6 +89,8 @@ func _ready():
 func bye_pointy(arg):
 	if arg == "bae_done":
 		SignalBus.bae_encountered = true
+		if !SignalBus.buying_tutorial:
+			$TutorialBox.show()
 
 func update_field_labels():
 	var field_sign = $UpgradeSign/UpgradeField
@@ -410,3 +414,15 @@ func update_lock_label():
 	else:
 		$LockButtonGraphic/LockLabel.text = "Lock"
 		#$LockButtonGraphic/LockLabel.position.x += 5
+
+
+func _on_tutorial_box_next() -> void:
+	SignalBus.buying_tutorial = true
+	$TutorialBox.hide()
+	$TutorialBox2.show()
+	
+
+
+func _on_tutorial_box_2_next() -> void:
+	$TutorialBox2.hide()
+	SignalBus.field_level_tutorial = true

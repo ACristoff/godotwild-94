@@ -60,6 +60,8 @@ var slot_yips: Dictionary[int, Yipee] = {
 #region built-in-functions
 
 func _ready():
+	if SignalBus.lab_tutorial:
+		$TutorialBox.hide()
 	SignalBus.spent_goop.connect(_on_goop_spent)
 	SignalBus.gene_levelled_up.connect(_on_level_up)
 	for child in team_slot_conatiner.get_children():
@@ -377,3 +379,8 @@ func _exit_tree() -> void:
 
 func _on_farm_button_pressed() -> void:
 	SignalBus.go_to.emit(SignalBus.Locations.FARM)
+
+
+func _on_button_pressed() -> void:
+	$TutorialBox.hide()
+	SignalBus.lab_tutorial = true

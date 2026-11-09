@@ -65,7 +65,7 @@ yipee_name = "Drone"
 age = 1
 base_health = 14
 base_attack = 5
-base_cooldown = 9.0
+base_cooldown = 10.0
 helix = SubResource("Resource_j5lcu")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 
@@ -75,7 +75,7 @@ yipee_name = "Drone"
 age = 1
 base_health = 14
 base_attack = 5
-base_cooldown = 9.0
+base_cooldown = 10.2
 helix = SubResource("Resource_j5lcu")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 
@@ -85,7 +85,7 @@ yipee_name = "Drone"
 age = 1
 base_health = 14
 base_attack = 5
-base_cooldown = 9.0
+base_cooldown = 10.4
 helix = SubResource("Resource_j5lcu")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 
@@ -95,7 +95,7 @@ yipee_name = "Drone"
 age = 1
 base_health = 14
 base_attack = 5
-base_cooldown = 9.0
+base_cooldown = 10.6
 helix = SubResource("Resource_j5lcu")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 
@@ -105,7 +105,7 @@ yipee_name = "Drone"
 age = 1
 base_health = 14
 base_attack = 5
-base_cooldown = 9.0
+base_cooldown = 10.8
 helix = SubResource("Resource_j5lcu")
 metadata/_custom_type_script = "uid://dpr2powm23rue"
 

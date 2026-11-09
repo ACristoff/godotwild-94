@@ -330,6 +330,8 @@ func _save_party_snapshot() -> void:
 	SnapshotStore.save_party(player_team_data, won, SignalBus.current_day)
 
 func _on_game_speed_button_pressed() -> void:
+	$TutorialBox.hide()
+	SignalBus.twice_speed_clicked = true
 	if battle_speed == 1:
 		battle_speed = 2
 		SignalBus.battle_speed = 2

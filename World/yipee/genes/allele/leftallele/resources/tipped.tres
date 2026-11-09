@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_ca4e4")
-poison_stacks = 4
+poison_stacks = 8
 slot = 3
 allele_name = "Tipped"
 tooltip = "Actions apply {stacks} poison"
